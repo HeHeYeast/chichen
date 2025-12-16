@@ -1,0 +1,1951 @@
+{
+  "egg_info": {
+    "egg_id": 0,
+    "name": {
+      "en": "Chicken Egg",
+      "ja": "チキの卵",
+      "zh_TW": "雞蛋",
+      "zh_CN": "鸡蛋"
+    }
+  },
+  "characters": [
+    {
+      "id": 0,
+      "name": {
+        "en": "Chick",
+        "ja": "チっちゃん",
+        "zh_TW": "雞寶",
+        "zh_CN": "鸡宝"
+      },
+      "cost": 1,
+      "price": 3,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 1,
+      "name": {
+        "en": "Sick Chick",
+        "ja": "病気チキ",
+        "zh_TW": "病雞寶",
+        "zh_CN": "病鸡宝"
+      },
+      "cost": 1,
+      "price": 2,
+      "rate": 100,
+      "required_tool_1": -1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 2,
+      "name": {
+        "en": "Burnt Chick",
+        "ja": "焦げチキ",
+        "zh_TW": "焦雞寶",
+        "zh_CN": "焦鸡宝"
+      },
+      "cost": 1,
+      "price": 1,
+      "rate": 100,
+      "required_tool_1": -1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 3,
+      "name": {
+        "en": "Chick Steak",
+        "ja": "チキステーキ",
+        "zh_TW": "香煎雞",
+        "zh_CN": "香煎鸡"
+      },
+      "cost": 1,
+      "price": 4,
+      "rate": 70,
+      "required_tool_1": 1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 4,
+      "name": {
+        "en": "Fried Egg Chick",
+        "ja": "目玉焼きチキ",
+        "zh_TW": "荷包蛋雞",
+        "zh_CN": "荷包蛋鸡"
+      },
+      "cost": 1,
+      "price": 5,
+      "rate": 30,
+      "required_tool_1": 1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 5,
+      "name": {
+        "en": "Century Egg Chick",
+        "ja": "ピータンチキ",
+        "zh_TW": "皮蛋雞",
+        "zh_CN": "皮蛋鸡"
+      },
+      "cost": 1,
+      "price": 5,
+      "rate": 20,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 6,
+      "name": {
+        "en": "Lemon Pan Fried Chick",
+        "ja": "レモンソテーチキ",
+        "zh_TW": "檸檬香煎雞",
+        "zh_CN": "柠檬香煎鸡"
+      },
+      "cost": 1,
+      "price": 6,
+      "rate": 40,
+      "required_tool_1": 1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 7,
+      "name": {
+        "en": "Teriyaki Chick",
+        "ja": "照り焼きチキ",
+        "zh_TW": "照燒雞",
+        "zh_CN": "照烧鸡"
+      },
+      "cost": 1,
+      "price": 7,
+      "rate": 40,
+      "required_tool_1": 1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 8,
+      "name": {
+        "en": "Boiled Egg Chick",
+        "ja": "ゆで卵チキ",
+        "zh_TW": "水煮蛋雞",
+        "zh_CN": "水煮蛋鸡"
+      },
+      "cost": 1,
+      "price": 4,
+      "rate": 90,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 9,
+      "name": {
+        "en": "Hot Spring Egg Chick",
+        "ja": "温泉卵チキ",
+        "zh_TW": "溫泉蛋雞",
+        "zh_CN": "温泉蛋鸡"
+      },
+      "cost": 1,
+      "price": 8,
+      "rate": 10,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 10,
+      "name": {
+        "en": "Tea Egg Chick",
+        "ja": "お茶卵チキ",
+        "zh_TW": "茶葉蛋雞",
+        "zh_CN": "茶叶蛋鸡"
+      },
+      "cost": 1,
+      "price": 7,
+      "rate": 50,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 11,
+      "name": {
+        "en": "Indian Curry Chick",
+        "ja": "インドカレーチキ",
+        "zh_TW": "印度咖哩雞",
+        "zh_CN": "印度咖哩鸡"
+      },
+      "cost": 1,
+      "price": 8,
+      "rate": 50,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 12,
+      "name": {
+        "en": "Fried Chick",
+        "ja": "揚げチキ",
+        "zh_TW": "炸雞",
+        "zh_CN": "炸鸡"
+      },
+      "cost": 1,
+      "price": 6,
+      "rate": 100,
+      "required_tool_1": 3,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 13,
+      "name": {
+        "en": "Spicy Fried Chick",
+        "ja": "ピリ辛揚げチキ",
+        "zh_TW": "辣味炸雞",
+        "zh_CN": "辣味炸鸡"
+      },
+      "cost": 1,
+      "price": 10,
+      "rate": 50,
+      "required_tool_1": 3,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 14,
+      "name": {
+        "en": "Boiling Oil Scalded Chick",
+        "ja": "ユーリンチキ",
+        "zh_TW": "油淋雞",
+        "zh_CN": "油淋鸡"
+      },
+      "cost": 1,
+      "price": 11,
+      "rate": 50,
+      "required_tool_1": 3,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 15,
+      "name": {
+        "en": "Nanban Chick",
+        "ja": "南蛮チキ",
+        "zh_TW": "南蠻雞",
+        "zh_CN": "南蛮鸡"
+      },
+      "cost": 1,
+      "price": 12,
+      "rate": 50,
+      "required_tool_1": 3,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 16,
+      "name": {
+        "en": "Roast Chick",
+        "ja": "ローストチキ",
+        "zh_TW": "烤雞",
+        "zh_CN": "烤鸡"
+      },
+      "cost": 1,
+      "price": 8,
+      "rate": 100,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 17,
+      "name": {
+        "en": "Vanilla Roast Chick",
+        "ja": "バニラローストチキ",
+        "zh_TW": "香草烤雞",
+        "zh_CN": "香草烤鸡"
+      },
+      "cost": 1,
+      "price": 15,
+      "rate": 40,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 18,
+      "name": {
+        "en": "Chick Balls",
+        "ja": "つくねチキ",
+        "zh_TW": "丸子雞三兄弟",
+        "zh_CN": "丸子鸡三兄弟"
+      },
+      "cost": 1,
+      "price": 13,
+      "rate": 60,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 19,
+      "name": {
+        "en": "Mexico Roll Chick",
+        "ja": "メキシコロールチキ",
+        "zh_TW": "墨西哥卷雞",
+        "zh_CN": "墨西哥卷鸡"
+      },
+      "cost": 1,
+      "price": 14,
+      "rate": 50,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 20,
+      "name": {
+        "en": "Water Imp",
+        "ja": "かっぱ",
+        "zh_TW": "河童",
+        "zh_CN": "河童"
+      },
+      "cost": 1,
+      "price": 30,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 21,
+      "name": {
+        "en": "Stewed Chick",
+        "ja": "煮込みチキ",
+        "zh_TW": "燉雞",
+        "zh_CN": "炖鸡"
+      },
+      "cost": 1,
+      "price": 11,
+      "rate": 100,
+      "required_tool_1": 5,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 22,
+      "name": {
+        "en": "Liquor Soaked Chick",
+        "ja": "酒漬けチキ",
+        "zh_TW": "醉雞",
+        "zh_CN": "醉鸡"
+      },
+      "cost": 1,
+      "price": 18,
+      "rate": 50,
+      "required_tool_1": 5,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 23,
+      "name": {
+        "en": "Ginseng Chick",
+        "ja": "高麗人参チキ",
+        "zh_TW": "人參雞",
+        "zh_CN": "人参鸡"
+      },
+      "cost": 1,
+      "price": 25,
+      "rate": 25,
+      "required_tool_1": 5,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 24,
+      "name": {
+        "en": "Ramen Egg Chick",
+        "ja": "味付け卵チキ",
+        "zh_TW": "溏心蛋雞",
+        "zh_CN": "溏心蛋鸡"
+      },
+      "cost": 1,
+      "price": 17,
+      "rate": 60,
+      "required_tool_1": 5,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 25,
+      "name": {
+        "en": "Snowman Chick",
+        "ja": "雪だるまチキ",
+        "zh_TW": "雪人雞",
+        "zh_CN": "雪人鸡"
+      },
+      "cost": 1,
+      "price": 20,
+      "rate": 20,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 26,
+      "name": {
+        "en": "Rudolph",
+        "ja": "ルドルフ",
+        "zh_TW": "魯道夫",
+        "zh_CN": "鲁道夫"
+      },
+      "cost": 1,
+      "price": 25,
+      "rate": 10,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 27,
+      "name": {
+        "en": "Santa Chick",
+        "ja": "サンタチキ",
+        "zh_TW": "聖誕雞寶",
+        "zh_CN": "圣诞鸡宝"
+      },
+      "cost": 1,
+      "price": 50,
+      "rate": 5,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 28,
+      "name": {
+        "en": "Ricecake Chick",
+        "ja": "モチキ",
+        "zh_TW": "年糕雞",
+        "zh_CN": "年糕鸡"
+      },
+      "cost": 1,
+      "price": 21,
+      "rate": 40,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 29,
+      "name": {
+        "en": "Chocolate Chick",
+        "ja": "チョコレートチキ",
+        "zh_TW": "巧克力雞",
+        "zh_CN": "巧克力鸡"
+      },
+      "cost": 1,
+      "price": 12,
+      "rate": 40,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 30,
+      "name": {
+        "en": "Mummy Chick",
+        "ja": "ミイラチキ",
+        "zh_TW": "木乃伊雞寶",
+        "zh_CN": "木乃伊鸡宝"
+      },
+      "cost": 1,
+      "price": 45,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 31,
+      "name": {
+        "en": "Silkie",
+        "ja": "烏骨鶏",
+        "zh_TW": "烏骨雞",
+        "zh_CN": "乌骨鸡"
+      },
+      "cost": 1,
+      "price": 10,
+      "rate": 10,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 32,
+      "name": {
+        "en": "Cupid",
+        "ja": "キュ一ピット",
+        "zh_TW": "丘比特",
+        "zh_CN": "丘比特"
+      },
+      "cost": 1,
+      "price": 50,
+      "rate": 5,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 33,
+      "name": {
+        "en": "Peafowl",
+        "ja": "孔雀",
+        "zh_TW": "孔雀",
+        "zh_CN": "孔雀"
+      },
+      "cost": 1,
+      "price": 50,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 34,
+      "name": {
+        "en": "Mold Chick",
+        "ja": "かびチキ",
+        "zh_TW": "黴菌雞",
+        "zh_CN": "霉菌鸡"
+      },
+      "cost": 1,
+      "price": 30,
+      "rate": 100,
+      "required_tool_1": -1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 35,
+      "name": {
+        "en": "Charcoal Chick",
+        "ja": "炭チキ",
+        "zh_TW": "木炭雞",
+        "zh_CN": "木炭鸡"
+      },
+      "cost": 1,
+      "price": 15,
+      "rate": 100,
+      "required_tool_1": -1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 36,
+      "name": {
+        "en": "Krapaw Chick",
+        "ja": "ガパオ",
+        "zh_TW": "打拋雞",
+        "zh_CN": "打抛鸡"
+      },
+      "cost": 1,
+      "price": 20,
+      "rate": 30,
+      "required_tool_1": 1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 37,
+      "name": {
+        "en": "Tomato Sauce Chick",
+        "ja": "トマトソース煮チキ",
+        "zh_TW": "番茄紅醬雞",
+        "zh_CN": "番茄红酱鸡"
+      },
+      "cost": 1,
+      "price": 22,
+      "rate": 30,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 38,
+      "name": {
+        "en": "Pesto Sauce Chick",
+        "ja": "バジルソース煮チキ",
+        "zh_TW": "羅勒青醬雞",
+        "zh_CN": "罗勒青酱鸡"
+      },
+      "cost": 1,
+      "price": 22,
+      "rate": 30,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 39,
+      "name": {
+        "en": "Cream Sauce Chick",
+        "ja": "バターソース煮チキ",
+        "zh_TW": "奶油白醬雞",
+        "zh_CN": "奶油白酱鸡"
+      },
+      "cost": 1,
+      "price": 22,
+      "rate": 30,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 40,
+      "name": {
+        "en": "Tatsuta Fried Chick",
+        "ja": "竜田揚げチキ",
+        "zh_TW": "龍田炸雞",
+        "zh_CN": "龙田炸鸡"
+      },
+      "cost": 1,
+      "price": 25,
+      "rate": 30,
+      "required_tool_1": 3,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 41,
+      "name": {
+        "en": "Charbroiled Chick",
+        "ja": "炭火焼きチキ",
+        "zh_TW": "炭烤雞",
+        "zh_CN": "炭烤鸡"
+      },
+      "cost": 1,
+      "price": 28,
+      "rate": 30,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 42,
+      "name": {
+        "en": "Sesame Oil Chick",
+        "ja": "黒ごま油チキ",
+        "zh_TW": "麻油雞",
+        "zh_CN": "麻油鸡"
+      },
+      "cost": 1,
+      "price": 30,
+      "rate": 30,
+      "required_tool_1": 5,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 43,
+      "name": {
+        "en": "Omelet Rice Chick",
+        "ja": "オムライスチキ",
+        "zh_TW": "蛋包飯雞",
+        "zh_CN": "蛋包饭鸡"
+      },
+      "cost": 1,
+      "price": 24,
+      "rate": 20,
+      "required_tool_1": 1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 44,
+      "name": {
+        "en": "Tempura Chick",
+        "ja": "チキ天",
+        "zh_TW": "天婦羅雞",
+        "zh_CN": "天妇罗鸡"
+      },
+      "cost": 1,
+      "price": 29,
+      "rate": 20,
+      "required_tool_1": 3,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 45,
+      "name": {
+        "en": "Honey Baked Chick",
+        "ja": "ハニーローストチキ",
+        "zh_TW": "蜜汁烤雞",
+        "zh_CN": "蜜汁烤鸡"
+      },
+      "cost": 1,
+      "price": 34,
+      "rate": 20,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 46,
+      "name": {
+        "en": "Coq au Vin",
+        "ja": "赤ワイン煮込みチキ",
+        "zh_TW": "紅酒燉雞",
+        "zh_CN": "红酒炖鸡"
+      },
+      "cost": 1,
+      "price": 39,
+      "rate": 20,
+      "required_tool_1": 5,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 47,
+      "name": {
+        "en": "Mushroom Chick",
+        "ja": "椎茸チキ",
+        "zh_TW": "菇菇雞",
+        "zh_CN": "菇菇鸡"
+      },
+      "cost": 1,
+      "price": 15,
+      "rate": 5,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 48,
+      "name": {
+        "en": "Sakura Chick",
+        "ja": "桜チキ",
+        "zh_TW": "櫻花雞",
+        "zh_CN": "樱花鸡"
+      },
+      "cost": 1,
+      "price": 32,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 49,
+      "name": {
+        "en": "Liar Chick",
+        "ja": "嘘チキ",
+        "zh_TW": "騙人雞",
+        "zh_CN": "骗人鸡"
+      },
+      "cost": 1,
+      "price": 41,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 50,
+      "name": {
+        "en": "Snow Crane",
+        "ja": "雪鶴",
+        "zh_TW": "雪鶴",
+        "zh_CN": "雪鹤"
+      },
+      "cost": 1,
+      "price": 70,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 51,
+      "name": {
+        "en": "Phoenix",
+        "ja": "フェニックス",
+        "zh_TW": "鳳凰",
+        "zh_CN": "凤凰"
+      },
+      "cost": 1,
+      "price": 100,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 52,
+      "name": {
+        "en": "Fire Phoenix",
+        "ja": "炎のフェニックス",
+        "zh_TW": "火鳳凰",
+        "zh_CN": "火凤凰"
+      },
+      "cost": 1,
+      "price": 200,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 53,
+      "name": {
+        "en": "Spider Chick",
+        "ja": "スパイダーチキ",
+        "zh_TW": "蜘蛛雞",
+        "zh_CN": "蜘蛛鸡"
+      },
+      "cost": 1,
+      "price": 60,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 54,
+      "name": {
+        "en": "Crow",
+        "ja": "カラス",
+        "zh_TW": "烏鴉",
+        "zh_CN": "乌鸦"
+      },
+      "cost": 1,
+      "price": 30,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 55,
+      "name": {
+        "en": "Sweet and Sour Chick",
+        "ja": "甘酢あんかけチキ",
+        "zh_TW": "糖醋雞",
+        "zh_CN": "糖醋鸡"
+      },
+      "cost": 1,
+      "price": 31,
+      "rate": 30,
+      "required_tool_1": 1,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 56,
+      "name": {
+        "en": "Shredded Chick",
+        "ja": "棒々チキ",
+        "zh_TW": "棒棒雞",
+        "zh_CN": "棒棒鸡"
+      },
+      "cost": 1,
+      "price": 33,
+      "rate": 30,
+      "required_tool_1": 2,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 57,
+      "name": {
+        "en": "Nugget Chick",
+        "ja": "ナゲットチキ",
+        "zh_TW": "炸雞塊",
+        "zh_CN": "炸鸡块"
+      },
+      "cost": 1,
+      "price": 35,
+      "rate": 20,
+      "required_tool_1": 3,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 58,
+      "name": {
+        "en": "Tandoori Chick",
+        "ja": "タンドリーチキ",
+        "zh_TW": "坦都里烤雞",
+        "zh_CN": "坦都里烤鸡"
+      },
+      "cost": 1,
+      "price": 37,
+      "rate": 30,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 59,
+      "name": {
+        "en": "Coq au Vin Blanc",
+        "ja": "白ワイン煮込みチキ",
+        "zh_TW": "白酒燉雞",
+        "zh_CN": "白酒炖鸡"
+      },
+      "cost": 1,
+      "price": 40,
+      "rate": 30,
+      "required_tool_1": 5,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 60,
+      "name": {
+        "en": "Carnation Chick",
+        "ja": "カーネーションチキ",
+        "zh_TW": "康乃馨雞",
+        "zh_CN": "康乃馨鸡"
+      },
+      "cost": 1,
+      "price": 45,
+      "rate": 3,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 61,
+      "name": {
+        "en": "Snail Chick",
+        "ja": "かたつむりチキ",
+        "zh_TW": "蝸牛雞",
+        "zh_CN": "蜗牛鸡"
+      },
+      "cost": 1,
+      "price": 36,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 62,
+      "name": {
+        "en": "Sunny Doll Chick",
+        "ja": "てるてるチキ",
+        "zh_TW": "晴天娃娃雞",
+        "zh_CN": "晴天娃娃鸡"
+      },
+      "cost": 1,
+      "price": 38,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 63,
+      "name": {
+        "en": "Morning Glory Chick",
+        "ja": "アサガオチキ",
+        "zh_TW": "牽牛花雞",
+        "zh_CN": "牵牛花鸡"
+      },
+      "cost": 1,
+      "price": 33,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 64,
+      "name": {
+        "en": "Firework Chick",
+        "ja": "花火チキ",
+        "zh_TW": "煙火雞",
+        "zh_CN": "烟火鸡"
+      },
+      "cost": 1,
+      "price": 35,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 65,
+      "name": {
+        "en": "Break Watermelon Chick",
+        "ja": "スイカ割りチキ",
+        "zh_TW": "打西瓜雞",
+        "zh_CN": "打西瓜鸡"
+      },
+      "cost": 1,
+      "price": 34,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 66,
+      "name": {
+        "en": "Pica Pica",
+        "ja": "カササギ",
+        "zh_TW": "喜鵲",
+        "zh_CN": "喜鹊"
+      },
+      "cost": 1,
+      "price": 38,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 67,
+      "name": {
+        "en": "Phantom Chick",
+        "ja": "幽霊チキ",
+        "zh_TW": "幽靈雞寶",
+        "zh_CN": "幽灵鸡宝"
+      },
+      "cost": 1,
+      "price": 36,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 68,
+      "name": {
+        "en": "Mosquito Chick",
+        "ja": "蚊チキ",
+        "zh_TW": "蚊子雞",
+        "zh_CN": "蚊子鸡"
+      },
+      "cost": 1,
+      "price": 65,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 69,
+      "name": {
+        "en": "Hot Water Chick",
+        "ja": "お湯チキ",
+        "zh_TW": "熱水雞",
+        "zh_CN": "热水鸡"
+      },
+      "cost": 1,
+      "price": 3,
+      "rate": 100,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 70,
+      "name": {
+        "en": "Steam Chick",
+        "ja": "水蒸気チキ",
+        "zh_TW": "水蒸氣雞",
+        "zh_CN": "水蒸气鸡"
+      },
+      "cost": 1,
+      "price": 2,
+      "rate": 100,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 71,
+      "name": {
+        "en": "American Coffee Chick",
+        "ja": "アメリカンコーヒーチキ",
+        "zh_TW": "美式咖啡雞",
+        "zh_CN": "美式咖啡鸡"
+      },
+      "cost": 1,
+      "price": 9,
+      "rate": 80,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 72,
+      "name": {
+        "en": "Espresso Chick",
+        "ja": "エスプレッソチキ",
+        "zh_TW": "濃縮咖啡雞",
+        "zh_CN": "浓缩咖啡鸡"
+      },
+      "cost": 1,
+      "price": 12,
+      "rate": 20,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 73,
+      "name": {
+        "en": "Coffee Latte Chick",
+        "ja": "カフェラテチキ",
+        "zh_TW": "拿鐵咖啡雞",
+        "zh_CN": "拿铁咖啡鸡"
+      },
+      "cost": 1,
+      "price": 17,
+      "rate": 50,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 74,
+      "name": {
+        "en": "Cappuccino Chick",
+        "ja": "カプチーノチキ",
+        "zh_TW": "卡布奇諾雞",
+        "zh_CN": "卡布奇诺鸡"
+      },
+      "cost": 1,
+      "price": 19,
+      "rate": 50,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 75,
+      "name": {
+        "en": "Caramel Macchiato Chick",
+        "ja": "キャラメルマキアートチキ",
+        "zh_TW": "焦糖瑪琪朵雞",
+        "zh_CN": "焦糖玛琪朵鸡"
+      },
+      "cost": 1,
+      "price": 21,
+      "rate": 50,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 76,
+      "name": {
+        "en": "Vietnamese Coffee Chick",
+        "ja": "ベトナムコーヒーチキ",
+        "zh_TW": "越南咖啡雞",
+        "zh_CN": "越南咖啡鸡"
+      },
+      "cost": 1,
+      "price": 23,
+      "rate": 50,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 77,
+      "name": {
+        "en": "Irish Coffee Chick",
+        "ja": "アイリッシュコーヒーチキ",
+        "zh_TW": "愛爾蘭咖啡雞",
+        "zh_CN": "爱尔兰咖啡鸡"
+      },
+      "cost": 1,
+      "price": 40,
+      "rate": 50,
+      "required_tool_1": 6,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 78,
+      "name": {
+        "en": "Jade Rabbit Chick",
+        "ja": "玉兎チキ",
+        "zh_TW": "玉兔雞",
+        "zh_CN": "玉兔鸡"
+      },
+      "cost": 1,
+      "price": 40,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 79,
+      "name": {
+        "en": "Chestnut Chick",
+        "ja": "栗チキ",
+        "zh_TW": "栗子雞",
+        "zh_CN": "栗子鸡"
+      },
+      "cost": 1,
+      "price": 34,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 80,
+      "name": {
+        "en": "Jack O'Lantern Chick",
+        "ja": "ジャックランタンチキ",
+        "zh_TW": "傑克南瓜雞",
+        "zh_CN": "杰克南瓜鸡"
+      },
+      "cost": 1,
+      "price": 39,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 81,
+      "name": {
+        "en": "Turkey",
+        "ja": "ターキー",
+        "zh_TW": "火雞",
+        "zh_CN": "火鸡"
+      },
+      "cost": 1,
+      "price": 20,
+      "rate": 5,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 82,
+      "name": {
+        "en": "Roast Turkey",
+        "ja": "ローストターキー",
+        "zh_TW": "烤火雞",
+        "zh_CN": "烤火鸡"
+      },
+      "cost": 1,
+      "price": 40,
+      "rate": 2,
+      "required_tool_1": 4,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 83,
+      "name": {
+        "en": "Christmas Tree Chick",
+        "ja": "クリスマスツリーチキ",
+        "zh_TW": "聖誕樹雞",
+        "zh_CN": "圣诞树鸡"
+      },
+      "cost": 1,
+      "price": 37,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 84,
+      "name": {
+        "en": "Daruma Chick",
+        "ja": "だるまチキ",
+        "zh_TW": "不倒翁雞",
+        "zh_CN": "不倒翁鸡"
+      },
+      "cost": 1,
+      "price": 38,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 85,
+      "name": {
+        "en": "Pine Decoration Chick",
+        "ja": "門松チキ",
+        "zh_TW": "門松雞",
+        "zh_CN": "门松鸡"
+      },
+      "cost": 1,
+      "price": 36,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 86,
+      "name": {
+        "en": "Prunus Mume Chick",
+        "ja": "梅チキ",
+        "zh_TW": "梅花雞",
+        "zh_CN": "梅花鸡"
+      },
+      "cost": 1,
+      "price": 33,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 87,
+      "name": {
+        "en": "Firecracker Chick",
+        "ja": "爆竹チキ",
+        "zh_TW": "爆竹雞",
+        "zh_CN": "爆竹鸡"
+      },
+      "cost": 1,
+      "price": 39,
+      "rate": 2,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 88,
+      "name": {
+        "en": "Miko Chick",
+        "ja": "巫女チキ",
+        "zh_TW": "巫女雞",
+        "zh_CN": "巫女鸡"
+      },
+      "cost": 1,
+      "price": 15,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 89,
+      "name": {
+        "en": "Very Great Luck Chick",
+        "ja": "超大吉くじチキ",
+        "zh_TW": "超大吉籤雞",
+        "zh_CN": "超大吉签鸡"
+      },
+      "cost": 1,
+      "price": 90,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 90,
+      "name": {
+        "en": "Very Good Luck Chick",
+        "ja": "大吉くじチキ",
+        "zh_TW": "大吉籤雞",
+        "zh_CN": "大吉签鸡"
+      },
+      "cost": 1,
+      "price": 30,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 91,
+      "name": {
+        "en": "Middle Luck Chick",
+        "ja": "中吉くじチキ",
+        "zh_TW": "中吉籤雞",
+        "zh_CN": "中吉签鸡"
+      },
+      "cost": 1,
+      "price": 15,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 92,
+      "name": {
+        "en": "Small Luck Chick",
+        "ja": "小吉くじチキ",
+        "zh_TW": "小吉籤雞",
+        "zh_CN": "小吉签鸡"
+      },
+      "cost": 1,
+      "price": 12,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 93,
+      "name": {
+        "en": "Good Luck Chick",
+        "ja": "吉くじチキ",
+        "zh_TW": "吉籤雞",
+        "zh_CN": "吉签鸡"
+      },
+      "cost": 1,
+      "price": 10,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 94,
+      "name": {
+        "en": "Uncertain Luck Chick",
+        "ja": "末吉くじチキ",
+        "zh_TW": "末吉籤雞",
+        "zh_CN": "末吉签鸡"
+      },
+      "cost": 1,
+      "price": 8,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 95,
+      "name": {
+        "en": "Bad Luck Chick",
+        "ja": "凶くじチキ",
+        "zh_TW": "凶籤雞",
+        "zh_CN": "凶签鸡"
+      },
+      "cost": 1,
+      "price": 5,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 96,
+      "name": {
+        "en": "Worst Luck Chick",
+        "ja": "大凶くじチキ",
+        "zh_TW": "大凶籤雞",
+        "zh_CN": "大凶签鸡"
+      },
+      "cost": 1,
+      "price": 1,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 97,
+      "name": {
+        "en": "Half Good Luck Chick",
+        "ja": "半吉くじチキ",
+        "zh_TW": "半吉籤雞",
+        "zh_CN": "半吉签鸡"
+      },
+      "cost": 1,
+      "price": 9,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 98,
+      "name": {
+        "en": "Uncertain Small Luck Chick",
+        "ja": "末小吉くじチキ",
+        "zh_TW": "末小吉籤雞",
+        "zh_CN": "末小吉签鸡"
+      },
+      "cost": 1,
+      "price": 7,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 99,
+      "name": {
+        "en": "Flat Luck Chick",
+        "ja": "平くじチキ",
+        "zh_TW": "平籤雞",
+        "zh_CN": "平签鸡"
+      },
+      "cost": 1,
+      "price": 6,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 100,
+      "name": {
+        "en": "Small Bad Luck Chick",
+        "ja": "小凶くじチキ",
+        "zh_TW": "小凶籤雞",
+        "zh_CN": "小凶签鸡"
+      },
+      "cost": 1,
+      "price": 4,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 101,
+      "name": {
+        "en": "Half Bad Luck Chick",
+        "ja": "半凶くじチキ",
+        "zh_TW": "半凶籤雞",
+        "zh_CN": "半凶签鸡"
+      },
+      "cost": 1,
+      "price": 3,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 102,
+      "name": {
+        "en": "Uncertain Bad Luck Chick",
+        "ja": "末凶くじチキ",
+        "zh_TW": "末凶籤雞",
+        "zh_CN": "末凶签鸡"
+      },
+      "cost": 1,
+      "price": 2,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 103,
+      "name": {
+        "en": "Dizzy Chick",
+        "ja": "ふらふらチキ",
+        "zh_TW": "暈眩雞",
+        "zh_CN": "晕眩鸡"
+      },
+      "cost": 1,
+      "price": 45,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 104,
+      "name": {
+        "en": "Time Chick",
+        "ja": "タイムチキ",
+        "zh_TW": "時空雞",
+        "zh_CN": "时空鸡"
+      },
+      "cost": 1,
+      "price": 70,
+      "rate": 100,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 105,
+      "name": {
+        "en": "Skeleton Chick",
+        "ja": "髑髏チキ",
+        "zh_TW": "髑髏雞",
+        "zh_CN": "髑髅鸡"
+      },
+      "cost": 1,
+      "price": 16,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 106,
+      "name": {
+        "en": "Will-o'-the-Wisp Chick",
+        "ja": "鬼火チキ",
+        "zh_TW": "鬼火雞",
+        "zh_CN": "鬼火鸡"
+      },
+      "cost": 1,
+      "price": 20,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 107,
+      "name": {
+        "en": "Ittan-Momen Chick",
+        "ja": "一反木綿チキ",
+        "zh_TW": "一反木綿雞",
+        "zh_CN": "一反木绵鸡"
+      },
+      "cost": 1,
+      "price": 25,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 108,
+      "name": {
+        "en": "Gamecock",
+        "ja": "シャモ",
+        "zh_TW": "鬥雞",
+        "zh_CN": "斗鸡"
+      },
+      "cost": 1,
+      "price": 60,
+      "rate": 1,
+      "required_tool_1": 0,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 109,
+      "name": {
+        "en": "Toast Chick",
+        "ja": "トーストチキ",
+        "zh_TW": "吐司雞",
+        "zh_CN": "吐司鸡"
+      },
+      "cost": 1,
+      "price": 7,
+      "rate": 100,
+      "required_tool_1": 7,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 110,
+      "name": {
+        "en": "Burnt Toast Chick",
+        "ja": "焦げトーストチキ",
+        "zh_TW": "烤焦吐司雞",
+        "zh_CN": "烤焦吐司鸡"
+      },
+      "cost": 1,
+      "price": 2,
+      "rate": 100,
+      "required_tool_1": 7,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 111,
+      "name": {
+        "en": "Pineapple Bun Chick",
+        "ja": "メロンパンチキ",
+        "zh_TW": "菠蘿麵包雞",
+        "zh_CN": "菠萝面包鸡"
+      },
+      "cost": 1,
+      "price": 25,
+      "rate": 10,
+      "required_tool_1": 7,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 112,
+      "name": {
+        "en": "Red Bean Bread Chick",
+        "ja": "あんパンチキ",
+        "zh_TW": "紅豆麵包雞",
+        "zh_CN": "红豆面包鸡"
+      },
+      "cost": 1,
+      "price": 38,
+      "rate": 30,
+      "required_tool_1": 7,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    },
+    {
+      "id": 113,
+      "name": {
+        "en": "Curry Bread Chick",
+        "ja": "カレーパンチキ",
+        "zh_TW": "咖喱麵包雞",
+        "zh_CN": "咖喱面包鸡"
+      },
+      "cost": 1,
+      "price": 43,
+      "rate": 15,
+      "required_tool_1": 7,
+      "required_tool_2": [],
+      "count_min": -1,
+      "count_max": -1,
+      "comment": "no"
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root characters="10">
+
+    <infos>
+        <tools_id>1</tools_id>
+        <tools_title_en>Kitchenware</tools_title_en>
+        <tools_title_ja>調理器具</tools_title_ja>
+        <tools_title_zh_TW>調理用具</tools_title_zh_TW>
+        <tools_title_zh_CN>调理用具</tools_title_zh_CN>
+    </infos>
+    
+    <tools>
+        
+        <tool>
+            <id>0</id>
+            <title_en>Lamp</title_en>
+            <title_ja>保温ランプ</title_ja>
+            <title_zh_TW>保温燈</title_zh_TW>
+            <title_zh_CN>保温灯</title_zh_CN>
+            
+            <lv_0_buy_cp>0</lv_0_buy_cp>
+            <lv_1_buy_cp>1000</lv_1_buy_cp>
+            <lv_2_buy_cp>2000</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_cook_cp>0</lv_0_cook_cp>
+            <lv_1_cook_cp>0</lv_1_cook_cp>
+            <lv_2_cook_cp>0</lv_2_cook_cp>
+            <lv_3_cook_cp>-1</lv_3_cook_cp>
+            <lv_4_cook_cp>-1</lv_4_cook_cp>
+            
+            <lv_0_min>120</lv_0_min>
+            <lv_1_min>100</lv_1_min>
+            <lv_2_min>80</lv_2_min>
+            <lv_3_min>-1</lv_3_min>
+            <lv_4_min>-1</lv_4_min>
+            
+            <lv_0_black_min>10</lv_0_black_min>
+            <lv_1_black_min>10</lv_1_black_min>
+            <lv_2_black_min>10</lv_2_black_min>
+            <lv_3_black_min>-1</lv_3_black_min>
+            <lv_4_black_min>-1</lv_4_black_min>
+            
+            <comment>no</comment>
+        </tool>   
+        
+        <tool>
+            <id>1</id>
+            <title_en>Frying Pan</title_en>
+            <title_ja>フライパン</title_ja>
+            <title_zh_TW>平底鍋</title_zh_TW>
+            <title_zh_CN>平底锅</title_zh_CN>
+            
+            <lv_0_buy_cp>500</lv_0_buy_cp>
+            <lv_1_buy_cp>1500</lv_1_buy_cp>
+            <lv_2_buy_cp>2500</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_cook_cp>90</lv_0_cook_cp>
+            <lv_1_cook_cp>90</lv_1_cook_cp>
+            <lv_2_cook_cp>90</lv_2_cook_cp>
+            <lv_3_cook_cp>-1</lv_3_cook_cp>
+            <lv_4_cook_cp>-1</lv_4_cook_cp>
+            
+            <lv_0_min>15</lv_0_min>
+            <lv_1_min>13</lv_1_min>
+            <lv_2_min>11</lv_2_min>
+            <lv_3_min>-1</lv_3_min>
+            <lv_4_min>-1</lv_4_min>
+            
+            <lv_0_black_min>10</lv_0_black_min>
+            <lv_1_black_min>10</lv_1_black_min>
+            <lv_2_black_min>10</lv_2_black_min>
+            <lv_3_black_min>-1</lv_3_black_min>
+            <lv_4_black_min>-1</lv_4_black_min>
+            
+            <comment>no</comment>
+        </tool>   
+        
+        <tool>
+            <id>2</id>
+            <title_en>Boiling Pan</title_en>
+            <title_ja>両手鍋</title_ja>
+            <title_zh_TW>水煮鍋</title_zh_TW>
+            <title_zh_CN>水煮锅</title_zh_CN>
+            
+            <lv_0_buy_cp>1000</lv_0_buy_cp>
+            <lv_1_buy_cp>3000</lv_1_buy_cp>
+            <lv_2_buy_cp>5000</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_cook_cp>60</lv_0_cook_cp>
+            <lv_1_cook_cp>60</lv_1_cook_cp>
+            <lv_2_cook_cp>60</lv_2_cook_cp>
+            <lv_3_cook_cp>-1</lv_3_cook_cp>
+            <lv_4_cook_cp>-1</lv_4_cook_cp>
+            
+            <lv_0_min>60</lv_0_min>
+            <lv_1_min>50</lv_1_min>
+            <lv_2_min>40</lv_2_min>
+            <lv_3_min>-1</lv_3_min>
+            <lv_4_min>-1</lv_4_min>
+            
+            <lv_0_black_min>10</lv_0_black_min>
+            <lv_1_black_min>10</lv_1_black_min>
+            <lv_2_black_min>10</lv_2_black_min>
+            <lv_3_black_min>-1</lv_3_black_min>
+            <lv_4_black_min>-1</lv_4_black_min>
+            
+            <comment>no</comment>
+        </tool>   
+        
+        <tool>
+            <id>3</id>
+            <title_en>Deep Fryer</title_en>
+            <title_ja>揚げ鍋</title_ja>
+            <title_zh_TW>油炸鍋</title_zh_TW>
+            <title_zh_CN>油炸锅</title_zh_CN>
+            
+            <lv_0_buy_cp>1500</lv_0_buy_cp>
+            <lv_1_buy_cp>4500</lv_1_buy_cp>
+            <lv_2_buy_cp>7500</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_cook_cp>120</lv_0_cook_cp>
+            <lv_1_cook_cp>120</lv_1_cook_cp>
+            <lv_2_cook_cp>120</lv_2_cook_cp>
+            <lv_3_cook_cp>-1</lv_3_cook_cp>
+            <lv_4_cook_cp>-1</lv_4_cook_cp>
+            
+            <lv_0_min>30</lv_0_min>
+            <lv_1_min>25</lv_1_min>
+            <lv_2_min>20</lv_2_min>
+            <lv_3_min>-1</lv_3_min>
+            <lv_4_min>-1</lv_4_min>
+            
+            <lv_0_black_min>10</lv_0_black_min>
+            <lv_1_black_min>10</lv_1_black_min>
+            <lv_2_black_min>10</lv_2_black_min>
+            <lv_3_black_min>-1</lv_3_black_min>
+            <lv_4_black_min>-1</lv_4_black_min>
+            
+            <comment>no</comment>
+        </tool>   
+        
+        <tool>
+            <id>4</id>
+            <title_en>Oven</title_en>
+            <title_ja>オーブン</title_ja>
+            <title_zh_TW>烤箱</title_zh_TW>
+            <title_zh_CN>烤箱</title_zh_CN>
+            
+            <lv_0_buy_cp>2000</lv_0_buy_cp>
+            <lv_1_buy_cp>6000</lv_1_buy_cp>
+            <lv_2_buy_cp>10000</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_cook_cp>30</lv_0_cook_cp>
+            <lv_1_cook_cp>30</lv_1_cook_cp>
+            <lv_2_cook_cp>30</lv_2_cook_cp>
+            <lv_3_cook_cp>-1</lv_3_cook_cp>
+            <lv_4_cook_cp>-1</lv_4_cook_cp>
+            
+            <lv_0_min>240</lv_0_min>
+            <lv_1_min>200</lv_1_min>
+            <lv_2_min>160</lv_2_min>
+            <lv_3_min>-1</lv_3_min>
+            <lv_4_min>-1</lv_4_min>
+            
+            <lv_0_black_min>10</lv_0_black_min>
+            <lv_1_black_min>10</lv_1_black_min>
+            <lv_2_black_min>10</lv_2_black_min>
+            <lv_3_black_min>-1</lv_3_black_min>
+            <lv_4_black_min>-1</lv_4_black_min>
+            
+            <comment>no</comment>
+        </tool>   
+        
+        <tool>
+            <id>5</id>
+            <title_en>Stew Pot</title_en>
+            <title_ja>煮込み鍋</title_ja>
+            <title_zh_TW>燉鍋</title_zh_TW>
+            <title_zh_CN>炖锅</title_zh_CN>
+            
+            <lv_0_buy_cp>3000</lv_0_buy_cp>
+            <lv_1_buy_cp>9000</lv_1_buy_cp>
+            <lv_2_buy_cp>15000</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_cook_cp>15</lv_0_cook_cp>
+            <lv_1_cook_cp>15</lv_1_cook_cp>
+            <lv_2_cook_cp>15</lv_2_cook_cp>
+            <lv_3_cook_cp>-1</lv_3_cook_cp>
+            <lv_4_cook_cp>-1</lv_4_cook_cp>
+            
+            <lv_0_min>360</lv_0_min>
+            <lv_1_min>300</lv_1_min>
+            <lv_2_min>240</lv_2_min>
+            <lv_3_min>-1</lv_3_min>
+            <lv_4_min>-1</lv_4_min>
+            
+            <lv_0_black_min>10</lv_0_black_min>
+            <lv_1_black_min>10</lv_1_black_min>
+            <lv_2_black_min>10</lv_2_black_min>
+            <lv_3_black_min>-1</lv_3_black_min>
+            <lv_4_black_min>-1</lv_4_black_min>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>6</id>
+            <title_en>Teakettle</title_en>
+            <title_ja>湯沸し</title_ja>
+            <title_zh_TW>燒水壺</title_zh_TW>
+            <title_zh_CN>烧水壶</title_zh_CN>
+            
+            <lv_0_buy_cp>2500</lv_0_buy_cp>
+            <lv_1_buy_cp>7500</lv_1_buy_cp>
+            <lv_2_buy_cp>12500</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_cook_cp>75</lv_0_cook_cp>
+            <lv_1_cook_cp>75</lv_1_cook_cp>
+            <lv_2_cook_cp>75</lv_2_cook_cp>
+            <lv_3_cook_cp>-1</lv_3_cook_cp>
+            <lv_4_cook_cp>-1</lv_4_cook_cp>
+            
+            <lv_0_min>10</lv_0_min>
+            <lv_1_min>9</lv_1_min>
+            <lv_2_min>8</lv_2_min>
+            <lv_3_min>-1</lv_3_min>
+            <lv_4_min>-1</lv_4_min>
+            
+            <lv_0_black_min>10</lv_0_black_min>
+            <lv_1_black_min>10</lv_1_black_min>
+            <lv_2_black_min>10</lv_2_black_min>
+            <lv_3_black_min>-1</lv_3_black_min>
+            <lv_4_black_min>-1</lv_4_black_min>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>7</id>
+            <title_en>Bread Machine</title_en>
+            <title_ja>パン焼き器</title_ja>
+            <title_zh_TW>麵包機</title_zh_TW>
+            <title_zh_CN>面包机</title_zh_CN>
+            
+            <lv_0_buy_cp>5000</lv_0_buy_cp>
+            <lv_1_buy_cp>15000</lv_1_buy_cp>
+            <lv_2_buy_cp>25000</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_cook_cp>45</lv_0_cook_cp>
+            <lv_1_cook_cp>45</lv_1_cook_cp>
+            <lv_2_cook_cp>45</lv_2_cook_cp>
+            <lv_3_cook_cp>-1</lv_3_cook_cp>
+            <lv_4_cook_cp>-1</lv_4_cook_cp>
+            
+            <lv_0_min>180</lv_0_min>
+            <lv_1_min>150</lv_1_min>
+            <lv_2_min>120</lv_2_min>
+            <lv_3_min>-1</lv_3_min>
+            <lv_4_min>-1</lv_4_min>
+            
+            <lv_0_black_min>10</lv_0_black_min>
+            <lv_1_black_min>10</lv_1_black_min>
+            <lv_2_black_min>10</lv_2_black_min>
+            <lv_3_black_min>-1</lv_3_black_min>
+            <lv_4_black_min>-1</lv_4_black_min>
+            
+            <comment>no</comment>
+        </tool>
+    
+    </tools>
+</root>

@@ -1,0 +1,1327 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root characters="10">
+
+    <infos>
+        <egg_id>0</egg_id>
+        <egg_title_en>Duck Egg</egg_title_en>
+        <egg_title_ja>鴨の卵</egg_title_ja>
+        <egg_title_zh_TW>鴨蛋</egg_title_zh_TW>
+        <egg_title_zh_CN>鸭蛋</egg_title_zh_CN>
+    </infos>
+    
+    <characters>
+        
+        <character>
+            <id>0</id>
+            <title_en>Duck</title_en>
+            <title_ja>カっちゃん</title_ja>
+            <title_zh_TW>鴨寶</title_zh_TW>
+            <title_zh_CN>鸭宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>3</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>1</id>
+            <title_en>Sick Duck</title_en>
+            <title_ja>病気カモ</title_ja>
+            <title_zh_TW>病鴨寶</title_zh_TW>
+            <title_zh_CN>病鸭宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>2</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>-1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>2</id>
+            <title_en>Burnt Duck</title_en>
+            <title_ja>焦げカモ</title_ja>
+            <title_zh_TW>焦鴨寶</title_zh_TW>
+            <title_zh_CN>焦鸭宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>1</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>-1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>3</id>
+            <title_en>Duck Steak</title_en>
+            <title_ja>カモステーキ</title_ja>
+            <title_zh_TW>香煎鴨</title_zh_TW>
+            <title_zh_CN>香煎鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>4</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character> 
+        
+        <character>
+            <id>4</id>
+            <title_en>Salted Egg Duck</title_en>
+            <title_ja>塩漬け卵カモ</title_ja>
+            <title_zh_TW>鹹蛋鴨</title_zh_TW>
+            <title_zh_CN>咸蛋鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>6</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character> 
+        
+        <character>
+            <id>5</id>
+            <title_en>Orange Pan Fried Duck</title_en>
+            <title_ja>オレンジソテーカモ</title_ja>
+            <title_zh_TW>橙汁香煎鴨</title_zh_TW>
+            <title_zh_CN>橙汁香煎鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>7</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character> 
+        
+        <character>
+            <id>6</id>
+            <title_en>Boiled Egg Duck</title_en>
+            <title_ja>ゆで卵カモ</title_ja>
+            <title_zh_TW>水煮蛋鴨</title_zh_TW>
+            <title_zh_CN>水煮蛋鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>4</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>7</id>
+            <title_en>Salted Duck</title_en>
+            <title_ja>塩漬けカモ</title_ja>
+            <title_zh_TW>鹽水鴨</title_zh_TW>
+            <title_zh_CN>盐水鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>10</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>8</id>
+            <title_en>Fried Duck</title_en>
+            <title_ja>揚げカモ</title_ja>
+            <title_zh_TW>炸鴨</title_zh_TW>
+            <title_zh_CN>炸鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>6</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>9</id>
+            <title_en>Croquette Duck</title_en>
+            <title_ja>コロッケカモ</title_ja>
+            <title_zh_TW>可樂餅鴨</title_zh_TW>
+            <title_zh_CN>可乐饼鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>9</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>10</id>
+            <title_en>Roast Duck</title_en>
+            <title_ja>ローストカモ</title_ja>
+            <title_zh_TW>烤鴨</title_zh_TW>
+            <title_zh_CN>烤鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>8</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>11</id>
+            <title_en>Honey Roast Duck</title_en>
+            <title_ja>ハニーチャーシューカモ</title_ja>
+            <title_zh_TW>蜜汁叉燒鴨</title_zh_TW>
+            <title_zh_CN>蜜汁叉烧鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>17</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>12</id>
+            <title_en>Stewed Duck</title_en>
+            <title_ja>煮込みカモ</title_ja>
+            <title_zh_TW>燉鴨</title_zh_TW>
+            <title_zh_CN>炖鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>11</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>13</id>
+            <title_en>Confit Duck</title_en>
+            <title_ja>コンフィカモ</title_ja>
+            <title_zh_TW>油封鴨</title_zh_TW>
+            <title_zh_CN>油封鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>19</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>14</id>
+            <title_en>Platypus</title_en>
+            <title_ja>カモノハシ</title_ja>
+            <title_zh_TW>鴨嘴獸</title_zh_TW>
+            <title_zh_CN>鸭嘴兽</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>25</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>3</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>15</id>
+            <title_en>Zombie Duck</title_en>
+            <title_ja>ゾンビカモ</title_ja>
+            <title_zh_TW>喪屍鴨寶</title_zh_TW>
+            <title_zh_CN>丧尸鸭宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>46</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>16</id>
+            <title_en>Mallard</title_en>
+            <title_ja>マガモ</title_ja>
+            <title_zh_TW>綠頭鴨</title_zh_TW>
+            <title_zh_CN>绿头鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>11</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>9</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>17</id>
+            <title_en>Male Mandarin Duck</title_en>
+            <title_ja>鴛(オシドリのオス)</title_ja>
+            <title_zh_TW>鴛</title_zh_TW>
+            <title_zh_CN>鸳</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>27</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>18</id>
+            <title_en>Female Mandarin Duck</title_en>
+            <title_ja>鴦(オシドリのメス)</title_ja>
+            <title_zh_TW>鴦</title_zh_TW>
+            <title_zh_CN>鸯</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>26</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>19</id>
+            <title_en>Dust Duck</title_en>
+            <title_ja>塵カモ</title_ja>
+            <title_zh_TW>灰塵鴨</title_zh_TW>
+            <title_zh_CN>灰尘鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>32</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>-1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>20</id>
+            <title_en>Muscovy Duck</title_en>
+            <title_ja>野バリケン</title_ja>
+            <title_zh_TW>紅面番鴨</title_zh_TW>
+            <title_zh_CN>红面番鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>16</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>-1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>21</id>
+            <title_en>Sauted Spring Onion Duck</title_en>
+            <title_ja>ネギ炒めカモ</title_ja>
+            <title_zh_TW>蔥爆鴨</title_zh_TW>
+            <title_zh_CN>葱爆鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>23</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>22</id>
+            <title_en>Green Bean Noodles Duck</title_en>
+            <title_ja>春雨スープカモ</title_ja>
+            <title_zh_TW>冬粉鴨</title_zh_TW>
+            <title_zh_CN>冬粉鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>26</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>23</id>
+            <title_en>Tempura Duck</title_en>
+            <title_ja>カモ天</title_ja>
+            <title_zh_TW>天婦羅鴨</title_zh_TW>
+            <title_zh_CN>天妇罗鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>28</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>22</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>24</id>
+            <title_en>Smoked Duck</title_en>
+            <title_ja>スモークカモ</title_ja>
+            <title_zh_TW>煙燻鴨</title_zh_TW>
+            <title_zh_CN>烟熏鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>29</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>28</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>25</id>
+            <title_en>Cassoulet de Canard</title_en>
+            <title_ja>カスレカモ</title_ja>
+            <title_zh_TW>白豆燉鴨</title_zh_TW>
+            <title_zh_CN>白豆炖鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>34</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>15</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>26</id>
+            <title_en>White Goose</title_en>
+            <title_ja>白ガチョウ</title_ja>
+            <title_zh_TW>白鵝</title_zh_TW>
+            <title_zh_CN>白鹅</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>35</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>27</id>
+            <title_en>White Swan</title_en>
+            <title_ja>白鳥</title_ja>
+            <title_zh_TW>白天鵝</title_zh_TW>
+            <title_zh_CN>白天鹅</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>80</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>28</id>
+            <title_en>Black Swan</title_en>
+            <title_ja>黒鳥</title_ja>
+            <title_zh_TW>黑天鵝</title_zh_TW>
+            <title_zh_CN>黑天鹅</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>160</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>29</id>
+            <title_en>Cockroach Duck</title_en>
+            <title_ja>ゴキブリカモ</title_ja>
+            <title_zh_TW>蟑螂鴨</title_zh_TW>
+            <title_zh_CN>蟑螂鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>61</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>30</id>
+            <title_en>Canard au Vin aux Cerise</title_en>
+            <title_ja>チェリー赤ワイン煮カモ</title_ja>
+            <title_zh_TW>紅酒櫻桃鴨</title_zh_TW>
+            <title_zh_CN>红酒樱桃鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>39</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>31</id>
+            <title_en>Nanban Duck</title_en>
+            <title_ja>南蛮カモ</title_ja>
+            <title_zh_TW>南蠻鴨</title_zh_TW>
+            <title_zh_CN>南蛮鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>32</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>25</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>32</id>
+            <title_en>Crispy Fried Duck</title_en>
+            <title_ja>香り揚げカモ</title_ja>
+            <title_zh_TW>香酥鴨</title_zh_TW>
+            <title_zh_CN>香酥鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>37</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>25</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>33</id>
+            <title_en>Peking Duck</title_en>
+            <title_ja>北京ダック</title_ja>
+            <title_zh_TW>北京烤鴨</title_zh_TW>
+            <title_zh_CN>北京烤鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>42</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>34</id>
+            <title_en>Ginger Duck</title_en>
+            <title_ja>しょうが煮込みカモ</title_ja>
+            <title_zh_TW>薑母鴨</title_zh_TW>
+            <title_zh_CN>姜母鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>45</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>35</id>
+            <title_en>Sunflower Duck</title_en>
+            <title_ja>ひまわりカモ</title_ja>
+            <title_zh_TW>向日葵鴨</title_zh_TW>
+            <title_zh_CN>向日葵鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>35</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>36</id>
+            <title_en>Housefly Duck</title_en>
+            <title_ja>イエバエカモ</title_ja>
+            <title_zh_TW>蒼蠅鴨</title_zh_TW>
+            <title_zh_CN>苍蝇鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>65</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>37</id>
+            <title_en>Hot Water Duck</title_en>
+            <title_ja>お湯カモ</title_ja>
+            <title_zh_TW>熱水鴨</title_zh_TW>
+            <title_zh_CN>热水鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>3</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>38</id>
+            <title_en>Steam Duck</title_en>
+            <title_ja>水蒸気カモ</title_ja>
+            <title_zh_TW>水蒸氣鴨</title_zh_TW>
+            <title_zh_CN>水蒸气鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>2</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>39</id>
+            <title_en>Black Tea Duck</title_en>
+            <title_ja>紅茶カモ</title_ja>
+            <title_zh_TW>紅茶鴨</title_zh_TW>
+            <title_zh_CN>红茶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>7</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>60</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>40</id>
+            <title_en>Green Tea Duck</title_en>
+            <title_ja>緑茶カモ</title_ja>
+            <title_zh_TW>綠茶鴨</title_zh_TW>
+            <title_zh_CN>绿茶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>8</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>41</id>
+            <title_en>Oolong Tea Duck</title_en>
+            <title_ja>ウーロン茶カモ</title_ja>
+            <title_zh_TW>烏龍茶鴨</title_zh_TW>
+            <title_zh_CN>乌龙茶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>9</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>42</id>
+            <title_en>Lemon Tea Duck</title_en>
+            <title_ja>レモンティーカモ</title_ja>
+            <title_zh_TW>檸檬紅茶鴨</title_zh_TW>
+            <title_zh_CN>柠檬红茶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>10</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>43</id>
+            <title_en>Milk Tea Duck</title_en>
+            <title_ja>ミルクティーカモ</title_ja>
+            <title_zh_TW>奶茶鴨</title_zh_TW>
+            <title_zh_CN>奶茶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>16</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>80</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>44</id>
+            <title_en>Chrysanthemum Tea Duck</title_en>
+            <title_ja>菊花茶カモ</title_ja>
+            <title_zh_TW>菊花茶鴨</title_zh_TW>
+            <title_zh_CN>菊花茶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>20</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>45</id>
+            <title_en>Thai Tea Duck</title_en>
+            <title_ja>タイティーカモ</title_ja>
+            <title_zh_TW>泰式奶茶鴨</title_zh_TW>
+            <title_zh_CN>泰式奶茶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>22</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>46</id>
+            <title_en>Chai Duck</title_en>
+            <title_ja>チャイカモ</title_ja>
+            <title_zh_TW>印度奶茶鴨</title_zh_TW>
+            <title_zh_CN>印度奶茶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>29</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>47</id>
+            <title_en>Pomelo Duck</title_en>
+            <title_ja>ザボンカモ</title_ja>
+            <title_zh_TW>文旦鴨</title_zh_TW>
+            <title_zh_CN>文旦鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>38</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>48</id>
+            <title_en>Maple Leaf Duck</title_en>
+            <title_ja>紅葉カモ</title_ja>
+            <title_zh_TW>楓葉鴨</title_zh_TW>
+            <title_zh_CN>枫叶鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>37</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>49</id>
+            <title_en>Melancholy Duck</title_en>
+            <title_ja>憂うつカモ</title_ja>
+            <title_zh_TW>憂鬱鴨</title_zh_TW>
+            <title_zh_CN>忧郁鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>36</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>50</id>
+            <title_en>Gingerbread Duck</title_en>
+            <title_ja>ジンジャーブレッドカモ</title_ja>
+            <title_zh_TW>薑餅鴨</title_zh_TW>
+            <title_zh_CN>姜饼鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>45</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>5</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>51</id>
+            <title_en>Lion Dance Duck</title_en>
+            <title_ja>獅子舞カモ</title_ja>
+            <title_zh_TW>舞獅鴨</title_zh_TW>
+            <title_zh_CN>舞狮鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>39</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>52</id>
+            <title_en>French Bread Duck</title_en>
+            <title_ja>フランスパンカモ</title_ja>
+            <title_zh_TW>法式麵包鴨</title_zh_TW>
+            <title_zh_CN>法式面包鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>7</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>53</id>
+            <title_en>Burnt French Bread Duck</title_en>
+            <title_ja>焦げフランスパンカモ</title_ja>
+            <title_zh_TW>烤焦法式麵包鴨</title_zh_TW>
+            <title_zh_CN>烤焦法式面包鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>2</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>54</id>
+            <title_en>Soft French Bread Duck</title_en>
+            <title_ja>ソフトフランスパンカモ</title_ja>
+            <title_zh_TW>牛奶法式麵包鴨</title_zh_TW>
+            <title_zh_CN>牛奶法式面包鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>27</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>25</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>55</id>
+            <title_en>Mentaiko French Bread Duck</title_en>
+            <title_ja>明太子フランスパンカモ</title_ja>
+            <title_zh_TW>明太子法式麵包鴨</title_zh_TW>
+            <title_zh_CN>明太子法式面包鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>37</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>56</id>
+            <title_en>Garlic French Bread Duck</title_en>
+            <title_ja>ガーリックフランスパンカモ</title_ja>
+            <title_zh_TW>香蒜法式麵包鴨</title_zh_TW>
+            <title_zh_CN>香蒜法式面包鸭</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>42</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+                
+    </characters>
+</root>

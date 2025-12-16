@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root characters="10">
+    
+    <infos>
+        <tools_id>2</tools_id>
+        <tools_title_en>Ingredient</tools_title_en>
+        <tools_title_ja>調味料</tools_title_ja>
+        <tools_title_zh_TW>調味料</tools_title_zh_TW>
+        <tools_title_zh_CN>调味料</tools_title_zh_CN>
+    </infos>
+    
+    <tools>
+        <tool>
+            <id>0</id>
+            <title_en>Salt Clay</title_en>
+            <title_ja>塩粘土</title_ja>
+            <title_zh_TW>食鹽土</title_zh_TW>
+            <title_zh_CN>食盐土</title_zh_CN>
+            
+            <buy_cp>5</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>1</id>
+            <title_en>Lemon</title_en>
+            <title_ja>レモン</title_ja>
+            <title_zh_TW>檸檬</title_zh_TW>
+            <title_zh_CN>柠檬</title_zh_CN>
+            
+            <buy_cp>5</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>2</id>
+            <title_en>Teriyaki Sauce</title_en>
+            <title_ja>照り焼きソース</title_ja>
+            <title_zh_TW>照燒醬</title_zh_TW>
+            <title_zh_CN>照烧酱</title_zh_CN>
+            
+            <buy_cp>5</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>3</id>
+            <title_en>Oolong Tea</title_en>
+            <title_ja>ウーロン茶葉</title_ja>
+            <title_zh_TW>烏龍茶葉</title_zh_TW>
+            <title_zh_CN>乌龙茶叶</title_zh_CN>
+            
+            <buy_cp>10</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>4</id>
+            <title_en>Indian Curry Sauce</title_en>
+            <title_ja>インドカレー</title_ja>
+            <title_zh_TW>印度咖喱</title_zh_TW>
+            <title_zh_CN>印度咖喱</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>5</id>
+            <title_en>Chili Powder</title_en>
+            <title_ja>七味唐辛子</title_ja>
+            <title_zh_TW>辣椒粉</title_zh_TW>
+            <title_zh_CN>辣椒粉</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>6</id>
+            <title_en>Vinegar and Soy Sauce</title_en>
+            <title_ja>酢しょうゆ</title_ja>
+            <title_zh_TW>醋醬油</title_zh_TW>
+            <title_zh_CN>醋酱油</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>7</id>
+            <title_en>Mayonnaise</title_en>
+            <title_ja>マヨネーズ</title_ja>
+            <title_zh_TW>美乃滋</title_zh_TW>
+            <title_zh_CN>美乃滋</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>8</id>
+            <title_en>Vanilla</title_en>
+            <title_ja>バニラ</title_ja>
+            <title_zh_TW>香草葉</title_zh_TW>
+            <title_zh_CN>香草叶</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>9</id>
+            <title_en>Wheat Flour</title_en>
+            <title_ja>小麦粉</title_ja>
+            <title_zh_TW>麵粉</title_zh_TW>
+            <title_zh_CN>面粉</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>10</id>
+            <title_en>Tortilla</title_en>
+            <title_ja>トルティーヤ</title_ja>
+            <title_zh_TW>墨西哥薄餅</title_zh_TW>
+            <title_zh_CN>墨西哥薄饼</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>11</id>
+            <title_en>River Water</title_en>
+            <title_ja>川の水</title_ja>
+            <title_zh_TW>河水</title_zh_TW>
+            <title_zh_CN>河水</title_zh_CN>
+            
+            <buy_cp>10</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>12</id>
+            <title_en>Cooking Wine</title_en>
+            <title_ja>料理酒</title_ja>
+            <title_zh_TW>料理酒</title_zh_TW>
+            <title_zh_CN>料理酒</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>13</id>
+            <title_en>Ginseng</title_en>
+            <title_ja>高麗人参</title_ja>
+            <title_zh_TW>人参</title_zh_TW>
+            <title_zh_CN>人参</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>14</id>
+            <title_en>Soy Sauce</title_en>
+            <title_ja>しょうゆ</title_ja>
+            <title_zh_TW>醬油</title_zh_TW>
+            <title_zh_CN>酱油</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>15</id>
+            <title_en>Snow Crystal</title_en>
+            <title_ja>雪の結晶</title_ja>
+            <title_zh_TW>雪晶</title_zh_TW>
+            <title_zh_CN>雪晶</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>16</id>
+            <title_en>Sticky Rice</title_en>
+            <title_ja>もち米</title_ja>
+            <title_zh_TW>糯米</title_zh_TW>
+            <title_zh_CN>糯米</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>17</id>
+            <title_en>Chocolate</title_en>
+            <title_ja>チョコレート</title_ja>
+            <title_zh_TW>巧克力磚</title_zh_TW>
+            <title_zh_CN>巧克力砖</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>18</id>
+            <title_en>Preservative</title_en>
+            <title_ja>防腐剤</title_ja>
+            <title_zh_TW>防腐劑</title_zh_TW>
+            <title_zh_CN>防腐剂</title_zh_CN>
+            
+            <buy_cp>5</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>19</id>
+            <title_en>Chili</title_en>
+            <title_ja>唐辛子</title_ja>
+            <title_zh_TW>辣椒</title_zh_TW>
+            <title_zh_CN>辣椒</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>20</id>
+            <title_en>Basil</title_en>
+            <title_ja>バジル</title_ja>
+            <title_zh_TW>羅勒</title_zh_TW>
+            <title_zh_CN>罗勒</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>21</id>
+            <title_en>Tomato</title_en>
+            <title_ja>トマト</title_ja>
+            <title_zh_TW>蕃茄</title_zh_TW>
+            <title_zh_CN>蕃茄</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>22</id>
+            <title_en>Onion</title_en>
+            <title_ja>玉ねぎ</title_ja>
+            <title_zh_TW>洋蔥</title_zh_TW>
+            <title_zh_CN>洋葱</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>23</id>
+            <title_en>Garlic</title_en>
+            <title_ja>にんにく</title_ja>
+            <title_zh_TW>大蒜</title_zh_TW>
+            <title_zh_CN>大蒜</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>24</id>
+            <title_en>Butter</title_en>
+            <title_ja>バター</title_ja>
+            <title_zh_TW>奶油</title_zh_TW>
+            <title_zh_CN>奶油</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>25</id>
+            <title_en>Potato Starch</title_en>
+            <title_ja>片栗粉</title_ja>
+            <title_zh_TW>太白粉</title_zh_TW>
+            <title_zh_CN>薯粉</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool> 
+        
+        <tool>
+            <id>26</id>
+            <title_en>Charcoal</title_en>
+            <title_ja>炭</title_ja>
+            <title_zh_TW>木炭</title_zh_TW>
+            <title_zh_CN>木炭</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>27</id>
+            <title_en>Salt</title_en>
+            <title_ja>塩</title_ja>
+            <title_zh_TW>鹽</title_zh_TW>
+            <title_zh_CN>盐</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>28</id>
+            <title_en>Sesame Oil</title_en>
+            <title_ja>黒ごま油</title_ja>
+            <title_zh_TW>黑麻油</title_zh_TW>
+            <title_zh_CN>黑麻油</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>29</id>
+            <title_en>Ginger</title_en>
+            <title_ja>しょうが</title_ja>
+            <title_zh_TW>生薑</title_zh_TW>
+            <title_zh_CN>生姜</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>30</id>
+            <title_en>Ketchup</title_en>
+            <title_ja>ケチャップ</title_ja>
+            <title_zh_TW>蕃茄醬</title_zh_TW>
+            <title_zh_CN>蕃茄酱</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>31</id>
+            <title_en>White Rice</title_en>
+            <title_ja>ご飯</title_ja>
+            <title_zh_TW>白飯</title_zh_TW>
+            <title_zh_CN>白米饭</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>32</id>
+            <title_en>Tempura Dipping Sauce</title_en>
+            <title_ja>天つゆ</title_ja>
+            <title_zh_TW>天婦羅醬汁</title_zh_TW>
+            <title_zh_CN>天妇罗酱汁</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>33</id>
+            <title_en>Honey</title_en>
+            <title_ja>はちみつ</title_ja>
+            <title_zh_TW>蜂蜜</title_zh_TW>
+            <title_zh_CN>蜂蜜</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>34</id>
+            <title_en>Red Wine</title_en>
+            <title_ja>赤ワイン</title_ja>
+            <title_zh_TW>紅酒</title_zh_TW>
+            <title_zh_CN>红酒</title_zh_CN>
+            
+            <buy_cp>35</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>35</id>
+            <title_en>Mushroom Growth Kit</title_en>
+            <title_ja>椎茸栽培キット</title_ja>
+            <title_zh_TW>香菇菌種包</title_zh_TW>
+            <title_zh_CN>香菇菌种包</title_zh_CN>
+            
+            <buy_cp>5</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>36</id>
+            <title_en>Sun Block</title_en>
+            <title_ja>日焼け止め乳液</title_ja>
+            <title_zh_TW>防曬乳液</title_zh_TW>
+            <title_zh_CN>防晒乳液</title_zh_CN>
+            
+            <buy_cp>10</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>37</id>
+            <title_en>White Granulated Sugar</title_en>
+            <title_ja>白砂糖</title_ja>
+            <title_zh_TW>白砂糖</title_zh_TW>
+            <title_zh_CN>白砂糖</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>38</id>
+            <title_en>Vinegar</title_en>
+            <title_ja>酢</title_ja>
+            <title_zh_TW>醋</title_zh_TW>
+            <title_zh_CN>醋</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>39</id>
+            <title_en>Sesame Paste</title_en>
+            <title_ja>ごまソース</title_ja>
+            <title_zh_TW>芝麻醬</title_zh_TW>
+            <title_zh_CN>芝麻酱</title_zh_CN>
+            
+            <buy_cp>35</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>40</id>
+            <title_en>Cucumber</title_en>
+            <title_ja>きゅうり</title_ja>
+            <title_zh_TW>小黃瓜</title_zh_TW>
+            <title_zh_CN>小黄瓜</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>41</id>
+            <title_en>Black Pepper</title_en>
+            <title_ja>ブラックペッパー</title_ja>
+            <title_zh_TW>黑胡椒</title_zh_TW>
+            <title_zh_CN>黑胡椒</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>42</id>
+            <title_en>Yogurt</title_en>
+            <title_ja>ヨーグルト</title_ja>
+            <title_zh_TW>優格</title_zh_TW>
+            <title_zh_CN>优格</title_zh_CN>
+            
+            <buy_cp>35</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>43</id>
+            <title_en>White Wine</title_en>
+            <title_ja>白ワイン</title_ja>
+            <title_zh_TW>白酒</title_zh_TW>
+            <title_zh_CN>白酒</title_zh_CN>
+            
+            <buy_cp>35</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>44</id>
+            <title_en>Orange</title_en>
+            <title_ja>オレンジ</title_ja>
+            <title_zh_TW>柳橙</title_zh_TW>
+            <title_zh_CN>柳橙</title_zh_CN>
+            
+            <buy_cp>5</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>45</id>
+            <title_en>Bread Crumbs</title_en>
+            <title_ja>パン粉</title_ja>
+            <title_zh_TW>麵包粉</title_zh_TW>
+            <title_zh_CN>面包粉</title_zh_CN>
+            
+            <buy_cp>10</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>46</id>
+            <title_en>Scallion</title_en>
+            <title_ja>ねぎ</title_ja>
+            <title_zh_TW>青蔥</title_zh_TW>
+            <title_zh_CN>青葱</title_zh_CN>
+            
+            <buy_cp>10</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>47</id>
+            <title_en>Coriander</title_en>
+            <title_ja>コリアンダー</title_ja>
+            <title_zh_TW>香菜</title_zh_TW>
+            <title_zh_CN>香菜</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>48</id>
+            <title_en>Green Bean Noodles</title_en>
+            <title_ja>春雨</title_ja>
+            <title_zh_TW>冬粉</title_zh_TW>
+            <title_zh_CN>冬粉</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>49</id>
+            <title_en>White Beans</title_en>
+            <title_ja>白インゲン豆</title_ja>
+            <title_zh_TW>白豆</title_zh_TW>
+            <title_zh_CN>白豆</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>50</id>
+            <title_en>Cherry</title_en>
+            <title_ja>チェリー</title_ja>
+            <title_zh_TW>櫻桃</title_zh_TW>
+            <title_zh_CN>樱桃</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>51</id>
+            <title_en>Seasoning Soy Sauce</title_en>
+            <title_ja>だしつゆ</title_ja>
+            <title_zh_TW>日式醤油露</title_zh_TW>
+            <title_zh_CN>日式醤油露</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>52</id>
+            <title_en>Buckwheat Noodles</title_en>
+            <title_ja>そば</title_ja>
+            <title_zh_TW>蕎麥麵</title_zh_TW>
+            <title_zh_CN>荞麦面</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>53</id>
+            <title_en>Green Prickly Ash</title_en>
+            <title_ja>青山椒</title_ja>
+            <title_zh_TW>青花椒</title_zh_TW>
+            <title_zh_CN>青花椒</title_zh_CN>
+            
+            <buy_cp>35</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>54</id>
+            <title_en>Thin Pancakes</title_en>
+            <title_ja>カオヤーピン</title_ja>
+            <title_zh_TW>薄餅皮</title_zh_TW>
+            <title_zh_CN>薄饼皮</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>55</id>
+            <title_en>Sweet Bean Sauce</title_en>
+            <title_ja>テンメンジャン</title_ja>
+            <title_zh_TW>甜麵醬</title_zh_TW>
+            <title_zh_CN>甜面酱</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>56</id>
+            <title_en>Coffee Bean</title_en>
+            <title_ja>コーヒー豆</title_ja>
+            <title_zh_TW>咖啡豆</title_zh_TW>
+            <title_zh_CN>咖啡豆</title_zh_CN>
+            
+            <buy_cp>40</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>57</id>
+            <title_en>Milk</title_en>
+            <title_ja>ミルク</title_ja>
+            <title_zh_TW>牛乳</title_zh_TW>
+            <title_zh_CN>牛乳</title_zh_CN>
+            
+            <buy_cp>45</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>58</id>
+            <title_en>Caramel Sauce</title_en>
+            <title_ja>キャラメルソース</title_ja>
+            <title_zh_TW>焦糖漿</title_zh_TW>
+            <title_zh_CN>焦糖浆</title_zh_CN>
+            
+            <buy_cp>40</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>59</id>
+            <title_en>Ice Cube</title_en>
+            <title_ja>氷</title_ja>
+            <title_zh_TW>冰塊</title_zh_TW>
+            <title_zh_CN>冰块</title_zh_CN>
+            
+            <buy_cp>5</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>60</id>
+            <title_en>Condensed Milk</title_en>
+            <title_ja>練乳</title_ja>
+            <title_zh_TW>煉乳</title_zh_TW>
+            <title_zh_CN>炼乳</title_zh_CN>
+            
+            <buy_cp>35</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>61</id>
+            <title_en>Whipped cream</title_en>
+            <title_ja>ホイップクリーム</title_ja>
+            <title_zh_TW>鮮奶油</title_zh_TW>
+            <title_zh_CN>鲜奶油</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>62</id>
+            <title_en>Irish Whiskey</title_en>
+            <title_ja>アイリッシュウイスキー</title_ja>
+            <title_zh_TW>愛爾蘭威士忌</title_zh_TW>
+            <title_zh_CN>爱尔兰威士忌</title_zh_CN>
+            
+            <buy_cp>50</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>63</id>
+            <title_en>Black Tea</title_en>
+            <title_ja>紅茶葉</title_ja>
+            <title_zh_TW>紅茶葉</title_zh_TW>
+            <title_zh_CN>红茶叶</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>64</id>
+            <title_en>Green Tea</title_en>
+            <title_ja>緑茶葉</title_ja>
+            <title_zh_TW>綠茶葉</title_zh_TW>
+            <title_zh_CN>绿茶叶</title_zh_CN>
+            
+            <buy_cp>15</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>65</id>
+            <title_en>Chrysanthemum</title_en>
+            <title_ja>菊花</title_ja>
+            <title_zh_TW>菊花</title_zh_TW>
+            <title_zh_CN>菊花</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>66</id>
+            <title_en>Crystal Sugar</title_en>
+            <title_ja>氷砂糖</title_ja>
+            <title_zh_TW>冰糖</title_zh_TW>
+            <title_zh_CN>冰糖</title_zh_CN>
+            
+            <buy_cp>25</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>67</id>
+            <title_en>Thai Tea</title_en>
+            <title_ja>タイ紅茶葉</title_ja>
+            <title_zh_TW>泰式紅茶葉</title_zh_TW>
+            <title_zh_CN>泰式红茶叶</title_zh_CN>
+            
+            <buy_cp>20</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>68</id>
+            <title_en>Omikuji</title_en>
+            <title_ja>おみくじ</title_ja>
+            <title_zh_TW>御神籤</title_zh_TW>
+            <title_zh_CN>御神签</title_zh_CN>
+            
+            <buy_cp>0</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>69</id>
+            <title_en>Flame</title_en>
+            <title_ja>炎</title_ja>
+            <title_zh_TW>火苗</title_zh_TW>
+            <title_zh_CN>火苗</title_zh_CN>
+            
+            <buy_cp>0</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>70</id>
+            <title_en>Cotton</title_en>
+            <title_ja>木綿</title_ja>
+            <title_zh_TW>木綿</title_zh_TW>
+            <title_zh_CN>木绵</title_zh_CN>
+            
+            <buy_cp>0</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>71</id>
+            <title_en>Red Bean</title_en>
+            <title_ja>あずき</title_ja>
+            <title_zh_TW>紅豆</title_zh_TW>
+            <title_zh_CN>红豆</title_zh_CN>
+            
+            <buy_cp>30</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>72</id>
+            <title_en>Black Sesame</title_en>
+            <title_ja>黒ごま</title_ja>
+            <title_zh_TW>黑芝麻</title_zh_TW>
+            <title_zh_CN>黑芝麻</title_zh_CN>
+            
+            <buy_cp>55</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>73</id>
+            <title_en>Mentaiko</title_en>
+            <title_ja>明太子</title_ja>
+            <title_zh_TW>明太子</title_zh_TW>
+            <title_zh_CN>明太子</title_zh_CN>
+            
+            <buy_cp>50</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>74</id>
+            <title_en>Laver</title_en>
+            <title_ja>のり</title_ja>
+            <title_zh_TW>海苔</title_zh_TW>
+            <title_zh_CN>海苔</title_zh_CN>
+            
+            <buy_cp>35</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+    </tools>
+</root>

@@ -1,0 +1,37 @@
+{
+  "category_info": {
+    "tools_id": 2,
+    "title": {
+      "en": "Egg",
+      "ja": "卵",
+      "zh_TW": "蛋",
+      "zh_CN": "蛋"
+    }
+  },
+  "tools": [
+    {
+      "id": 0,
+      "name": {
+        "en": "Chicken Egg",
+        "ja": "チキの卵",
+        "zh_TW": "雞蛋",
+        "zh_CN": "鸡蛋"
+      },
+      "type": "ingredient",
+      "buy_price": 0,
+      "comment": "no"
+    },
+    {
+      "id": 1,
+      "name": {
+        "en": "Duck Egg",
+        "ja": "カモの卵",
+        "zh_TW": "鴨蛋",
+        "zh_CN": "鸭蛋"
+      },
+      "type": "ingredient",
+      "buy_price": 2500,
+      "comment": "no"
+    }
+  ]
+}

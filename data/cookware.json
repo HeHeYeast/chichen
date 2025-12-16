@@ -1,0 +1,285 @@
+{
+  "category_info": {
+    "tools_id": 1,
+    "title": {
+      "en": "Kitchenware",
+      "ja": "調理器具",
+      "zh_TW": "調理用具",
+      "zh_CN": "调理用具"
+    }
+  },
+  "tools": [
+    {
+      "id": 0,
+      "name": {
+        "en": "Lamp",
+        "ja": "保温ランプ",
+        "zh_TW": "保温燈",
+        "zh_CN": "保温灯"
+      },
+      "type": "cookware",
+      "levels": [
+        {
+          "level": 0,
+          "buy_price": 0,
+          "cook_cost": 0,
+          "cook_time": 120,
+          "burn_time": 10
+        },
+        {
+          "level": 1,
+          "buy_price": 1000,
+          "cook_cost": 0,
+          "cook_time": 100,
+          "burn_time": 10
+        },
+        {
+          "level": 2,
+          "buy_price": 2000,
+          "cook_cost": 0,
+          "cook_time": 80,
+          "burn_time": 10
+        }
+      ],
+      "comment": "no"
+    },
+    {
+      "id": 1,
+      "name": {
+        "en": "Frying Pan",
+        "ja": "フライパン",
+        "zh_TW": "平底鍋",
+        "zh_CN": "平底锅"
+      },
+      "type": "cookware",
+      "levels": [
+        {
+          "level": 0,
+          "buy_price": 500,
+          "cook_cost": 90,
+          "cook_time": 15,
+          "burn_time": 10
+        },
+        {
+          "level": 1,
+          "buy_price": 1500,
+          "cook_cost": 90,
+          "cook_time": 13,
+          "burn_time": 10
+        },
+        {
+          "level": 2,
+          "buy_price": 2500,
+          "cook_cost": 90,
+          "cook_time": 11,
+          "burn_time": 10
+        }
+      ],
+      "comment": "no"
+    },
+    {
+      "id": 2,
+      "name": {
+        "en": "Boiling Pan",
+        "ja": "両手鍋",
+        "zh_TW": "水煮鍋",
+        "zh_CN": "水煮锅"
+      },
+      "type": "cookware",
+      "levels": [
+        {
+          "level": 0,
+          "buy_price": 1000,
+          "cook_cost": 60,
+          "cook_time": 60,
+          "burn_time": 10
+        },
+        {
+          "level": 1,
+          "buy_price": 3000,
+          "cook_cost": 60,
+          "cook_time": 50,
+          "burn_time": 10
+        },
+        {
+          "level": 2,
+          "buy_price": 5000,
+          "cook_cost": 60,
+          "cook_time": 40,
+          "burn_time": 10
+        }
+      ],
+      "comment": "no"
+    },
+    {
+      "id": 3,
+      "name": {
+        "en": "Deep Fryer",
+        "ja": "揚げ鍋",
+        "zh_TW": "油炸鍋",
+        "zh_CN": "油炸锅"
+      },
+      "type": "cookware",
+      "levels": [
+        {
+          "level": 0,
+          "buy_price": 1500,
+          "cook_cost": 120,
+          "cook_time": 30,
+          "burn_time": 10
+        },
+        {
+          "level": 1,
+          "buy_price": 4500,
+          "cook_cost": 120,
+          "cook_time": 25,
+          "burn_time": 10
+        },
+        {
+          "level": 2,
+          "buy_price": 7500,
+          "cook_cost": 120,
+          "cook_time": 20,
+          "burn_time": 10
+        }
+      ],
+      "comment": "no"
+    },
+    {
+      "id": 4,
+      "name": {
+        "en": "Oven",
+        "ja": "オーブン",
+        "zh_TW": "烤箱",
+        "zh_CN": "烤箱"
+      },
+      "type": "cookware",
+      "levels": [
+        {
+          "level": 0,
+          "buy_price": 2000,
+          "cook_cost": 30,
+          "cook_time": 240,
+          "burn_time": 10
+        },
+        {
+          "level": 1,
+          "buy_price": 6000,
+          "cook_cost": 30,
+          "cook_time": 200,
+          "burn_time": 10
+        },
+        {
+          "level": 2,
+          "buy_price": 10000,
+          "cook_cost": 30,
+          "cook_time": 160,
+          "burn_time": 10
+        }
+      ],
+      "comment": "no"
+    },
+    {
+      "id": 5,
+      "name": {
+        "en": "Stew Pot",
+        "ja": "煮込み鍋",
+        "zh_TW": "燉鍋",
+        "zh_CN": "炖锅"
+      },
+      "type": "cookware",
+      "levels": [
+        {
+          "level": 0,
+          "buy_price": 3000,
+          "cook_cost": 15,
+          "cook_time": 360,
+          "burn_time": 10
+        },
+        {
+          "level": 1,
+          "buy_price": 9000,
+          "cook_cost": 15,
+          "cook_time": 300,
+          "burn_time": 10
+        },
+        {
+          "level": 2,
+          "buy_price": 15000,
+          "cook_cost": 15,
+          "cook_time": 240,
+          "burn_time": 10
+        }
+      ],
+      "comment": "no"
+    },
+    {
+      "id": 6,
+      "name": {
+        "en": "Teakettle",
+        "ja": "湯沸し",
+        "zh_TW": "燒水壺",
+        "zh_CN": "烧水壶"
+      },
+      "type": "cookware",
+      "levels": [
+        {
+          "level": 0,
+          "buy_price": 2500,
+          "cook_cost": 75,
+          "cook_time": 10,
+          "burn_time": 10
+        },
+        {
+          "level": 1,
+          "buy_price": 7500,
+          "cook_cost": 75,
+          "cook_time": 9,
+          "burn_time": 10
+        },
+        {
+          "level": 2,
+          "buy_price": 12500,
+          "cook_cost": 75,
+          "cook_time": 8,
+          "burn_time": 10
+        }
+      ],
+      "comment": "no"
+    },
+    {
+      "id": 7,
+      "name": {
+        "en": "Bread Machine",
+        "ja": "パン焼き器",
+        "zh_TW": "麵包機",
+        "zh_CN": "面包机"
+      },
+      "type": "cookware",
+      "levels": [
+        {
+          "level": 0,
+          "buy_price": 5000,
+          "cook_cost": 45,
+          "cook_time": 180,
+          "burn_time": 10
+        },
+        {
+          "level": 1,
+          "buy_price": 15000,
+          "cook_cost": 45,
+          "cook_time": 150,
+          "burn_time": 10
+        },
+        {
+          "level": 2,
+          "buy_price": 25000,
+          "cook_cost": 45,
+          "cook_time": 120,
+          "burn_time": 10
+        }
+      ],
+      "comment": "no"
+    }
+  ]
+}

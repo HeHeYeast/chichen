@@ -1,0 +1,2638 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root characters="10">
+
+    <infos>
+        <egg_id>0</egg_id>
+        <egg_title_en>Chicken Egg</egg_title_en>
+        <egg_title_ja>チキの卵</egg_title_ja>
+        <egg_title_zh_TW>雞蛋</egg_title_zh_TW>
+        <egg_title_zh_CN>鸡蛋</egg_title_zh_CN>
+    </infos>
+    
+    <characters>
+        
+        <character>
+            <id>0</id>
+            <title_en>Chick</title_en>
+            <title_ja>チっちゃん</title_ja>
+            <title_zh_TW>雞寶</title_zh_TW>
+            <title_zh_CN>鸡宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>3</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>1</id>
+            <title_en>Sick Chick</title_en>
+            <title_ja>病気チキ</title_ja>
+            <title_zh_TW>病雞寶</title_zh_TW>
+            <title_zh_CN>病鸡宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>2</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>-1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>2</id>
+            <title_en>Burnt Chick</title_en>
+            <title_ja>焦げチキ</title_ja>
+            <title_zh_TW>焦雞寶</title_zh_TW>
+            <title_zh_CN>焦鸡宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>1</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>-1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>3</id>
+            <title_en>Chick Steak</title_en>
+            <title_ja>チキステーキ</title_ja>
+            <title_zh_TW>香煎雞</title_zh_TW>
+            <title_zh_CN>香煎鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>4</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>70</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character> 
+        
+        <character>
+            <id>4</id>
+            <title_en>Fried Egg Chick</title_en>
+            <title_ja>目玉焼きチキ</title_ja>
+            <title_zh_TW>荷包蛋雞</title_zh_TW>
+            <title_zh_CN>荷包蛋鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>5</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>5</id>
+            <title_en>Century Egg Chick</title_en>
+            <title_ja>ピータンチキ</title_ja>
+            <title_zh_TW>皮蛋雞</title_zh_TW>
+            <title_zh_CN>皮蛋鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>5</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character> 
+        
+        <character>
+            <id>6</id>
+            <title_en>Lemon Pan Fried Chick</title_en>
+            <title_ja>レモンソテーチキ</title_ja>
+            <title_zh_TW>檸檬香煎雞</title_zh_TW>
+            <title_zh_CN>柠檬香煎鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>6</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character> 
+        
+        <character>
+            <id>7</id>
+            <title_en>Teriyaki Chick</title_en>
+            <title_ja>照り焼きチキ</title_ja>
+            <title_zh_TW>照燒雞</title_zh_TW>
+            <title_zh_CN>照烧鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>7</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>8</id>
+            <title_en>Boiled Egg Chick</title_en>
+            <title_ja>ゆで卵チキ</title_ja>
+            <title_zh_TW>水煮蛋雞</title_zh_TW>
+            <title_zh_CN>水煮蛋鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>4</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>90</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>9</id>
+            <title_en>Hot Spring Egg Chick</title_en>
+            <title_ja>温泉卵チキ</title_ja>
+            <title_zh_TW>溫泉蛋雞</title_zh_TW>
+            <title_zh_CN>温泉蛋鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>8</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>10</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>10</id>
+            <title_en>Tea Egg Chick</title_en>
+            <title_ja>お茶卵チキ</title_ja>
+            <title_zh_TW>茶葉蛋雞</title_zh_TW>
+            <title_zh_CN>茶叶蛋鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>7</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>11</id>
+            <title_en>Indian Curry Chick</title_en>
+            <title_ja>インドカレーチキ</title_ja>
+            <title_zh_TW>印度咖哩雞</title_zh_TW>
+            <title_zh_CN>印度咖哩鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>8</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>12</id>
+            <title_en>Fried Chick</title_en>
+            <title_ja>揚げチキ</title_ja>
+            <title_zh_TW>炸雞</title_zh_TW>
+            <title_zh_CN>炸鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>6</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>13</id>
+            <title_en>Spicy Fried Chick</title_en>
+            <title_ja>ピリ辛揚げチキ</title_ja>
+            <title_zh_TW>辣味炸雞</title_zh_TW>
+            <title_zh_CN>辣味炸鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>10</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>14</id>
+            <title_en>Boiling Oil Scalded Chick</title_en>
+            <title_ja>ユーリンチキ</title_ja>
+            <title_zh_TW>油淋雞</title_zh_TW>
+            <title_zh_CN>油淋鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>11</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>15</id>
+            <title_en>Nanban Chick</title_en>
+            <title_ja>南蛮チキ</title_ja>
+            <title_zh_TW>南蠻雞</title_zh_TW>
+            <title_zh_CN>南蛮鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>12</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>16</id>
+            <title_en>Roast Chick</title_en>
+            <title_ja>ローストチキ</title_ja>
+            <title_zh_TW>烤雞</title_zh_TW>
+            <title_zh_CN>烤鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>8</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>17</id>
+            <title_en>Vanilla Roast Chick</title_en>
+            <title_ja>バニラローストチキ</title_ja>
+            <title_zh_TW>香草烤雞</title_zh_TW>
+            <title_zh_CN>香草烤鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>15</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>18</id>
+            <title_en>Chick Balls</title_en>
+            <title_ja>つくねチキ</title_ja>
+            <title_zh_TW>丸子雞三兄弟</title_zh_TW>
+            <title_zh_CN>丸子鸡三兄弟</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>13</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>60</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>19</id>
+            <title_en>Mexico Roll Chick</title_en>
+            <title_ja>メキシコロールチキ</title_ja>
+            <title_zh_TW>墨西哥卷雞</title_zh_TW>
+            <title_zh_CN>墨西哥卷鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>14</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>20</id>
+            <title_en>Water Imp</title_en>
+            <title_ja>かっぱ</title_ja>
+            <title_zh_TW>河童</title_zh_TW>
+            <title_zh_CN>河童</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>30</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>21</id>
+            <title_en>Stewed Chick</title_en>
+            <title_ja>煮込みチキ</title_ja>
+            <title_zh_TW>燉雞</title_zh_TW>
+            <title_zh_CN>炖鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>11</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>22</id>
+            <title_en>Liquor Soaked Chick</title_en>
+            <title_ja>酒漬けチキ</title_ja>
+            <title_zh_TW>醉雞</title_zh_TW>
+            <title_zh_CN>醉鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>18</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>23</id>
+            <title_en>Ginseng Chick</title_en>
+            <title_ja>高麗人参チキ</title_ja>
+            <title_zh_TW>人參雞</title_zh_TW>
+            <title_zh_CN>人参鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>25</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>25</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>24</id>
+            <title_en>Ramen Egg Chick</title_en>
+            <title_ja>味付け卵チキ</title_ja>
+            <title_zh_TW>溏心蛋雞</title_zh_TW>
+            <title_zh_CN>溏心蛋鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>17</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>60</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>25</id>
+            <title_en>Snowman Chick</title_en>
+            <title_ja>雪だるまチキ</title_ja>
+            <title_zh_TW>雪人雞</title_zh_TW>
+            <title_zh_CN>雪人鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>20</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>26</id>
+            <title_en>Rudolph</title_en>
+            <title_ja>ルドルフ</title_ja>
+            <title_zh_TW>魯道夫</title_zh_TW>
+            <title_zh_CN>鲁道夫</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>25</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>10</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>27</id>
+            <title_en>Santa Chick</title_en>
+            <title_ja>サンタチキ</title_ja>
+            <title_zh_TW>聖誕雞寶</title_zh_TW>
+            <title_zh_CN>圣诞鸡宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>50</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>5</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>28</id>
+            <title_en>Ricecake Chick</title_en>
+            <title_ja>モチキ</title_ja>
+            <title_zh_TW>年糕雞</title_zh_TW>
+            <title_zh_CN>年糕鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>21</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>29</id>
+            <title_en>Chocolate Chick</title_en>
+            <title_ja>チョコレートチキ</title_ja>
+            <title_zh_TW>巧克力雞</title_zh_TW>
+            <title_zh_CN>巧克力鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>12</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>40</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>30</id>
+            <title_en>Mummy Chick</title_en>
+            <title_ja>ミイラチキ</title_ja>
+            <title_zh_TW>木乃伊雞寶</title_zh_TW>
+            <title_zh_CN>木乃伊鸡宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>45</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>31</id>
+            <title_en>Silkie</title_en>
+            <title_ja>烏骨鶏</title_ja>
+            <title_zh_TW>烏骨雞</title_zh_TW>
+            <title_zh_CN>乌骨鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>10</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>10</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>32</id>
+            <title_en>Cupid</title_en>
+            <title_ja>キュ一ピット</title_ja>
+            <title_zh_TW>丘比特</title_zh_TW>
+            <title_zh_CN>丘比特</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>50</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>5</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>33</id>
+            <title_en>Peafowl</title_en>
+            <title_ja>孔雀</title_ja>
+            <title_zh_TW>孔雀</title_zh_TW>
+            <title_zh_CN>孔雀</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>50</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>34</id>
+            <title_en>Mold Chick</title_en>
+            <title_ja>かびチキ</title_ja>
+            <title_zh_TW>黴菌雞</title_zh_TW>
+            <title_zh_CN>霉菌鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>30</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>-1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>35</id>
+            <title_en>Charcoal Chick</title_en>
+            <title_ja>炭チキ</title_ja>
+            <title_zh_TW>木炭雞</title_zh_TW>
+            <title_zh_CN>木炭鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>15</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>-1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>36</id>
+            <title_en>Krapaw Chick</title_en>
+            <title_ja>ガパオ</title_ja>
+            <title_zh_TW>打拋雞</title_zh_TW>
+            <title_zh_CN>打抛鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>20</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>37</id>
+            <title_en>Tomato Sauce Chick</title_en>
+            <title_ja>トマトソース煮チキ</title_ja>
+            <title_zh_TW>番茄紅醬雞</title_zh_TW>
+            <title_zh_CN>番茄红酱鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>22</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>38</id>
+            <title_en>Pesto Sauce Chick</title_en>
+            <title_ja>バジルソース煮チキ</title_ja>
+            <title_zh_TW>羅勒青醬雞</title_zh_TW>
+            <title_zh_CN>罗勒青酱鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>22</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>39</id>
+            <title_en>Cream Sauce Chick</title_en>
+            <title_ja>バターソース煮チキ</title_ja>
+            <title_zh_TW>奶油白醬雞</title_zh_TW>
+            <title_zh_CN>奶油白酱鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>22</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>40</id>
+            <title_en>Tatsuta Fried Chick</title_en>
+            <title_ja>竜田揚げチキ</title_ja>
+            <title_zh_TW>龍田炸雞</title_zh_TW>
+            <title_zh_CN>龙田炸鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>25</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>41</id>
+            <title_en>Charbroiled Chick</title_en>
+            <title_ja>炭火焼きチキ</title_ja>
+            <title_zh_TW>炭烤雞</title_zh_TW>
+            <title_zh_CN>炭烤鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>28</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>42</id>
+            <title_en>Sesame Oil Chick</title_en>
+            <title_ja>黒ごま油チキ</title_ja>
+            <title_zh_TW>麻油雞</title_zh_TW>
+            <title_zh_CN>麻油鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>30</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>43</id>
+            <title_en>Omelet Rice Chick</title_en>
+            <title_ja>オムライスチキ</title_ja>
+            <title_zh_TW>蛋包飯雞</title_zh_TW>
+            <title_zh_CN>蛋包饭鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>24</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>44</id>
+            <title_en>Tempura Chick</title_en>
+            <title_ja>チキ天</title_ja>
+            <title_zh_TW>天婦羅雞</title_zh_TW>
+            <title_zh_CN>天妇罗鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>29</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>45</id>
+            <title_en>Honey Baked Chick</title_en>
+            <title_ja>ハニーローストチキ</title_ja>
+            <title_zh_TW>蜜汁烤雞</title_zh_TW>
+            <title_zh_CN>蜜汁烤鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>34</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>46</id>
+            <title_en>Coq au Vin</title_en>
+            <title_ja>赤ワイン煮込みチキ</title_ja>
+            <title_zh_TW>紅酒燉雞</title_zh_TW>
+            <title_zh_CN>红酒炖鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>39</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>47</id>
+            <title_en>Mushroom Chick</title_en>
+            <title_ja>椎茸チキ</title_ja>
+            <title_zh_TW>菇菇雞</title_zh_TW>
+            <title_zh_CN>菇菇鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>15</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>5</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>48</id>
+            <title_en>Sakura Chick</title_en>
+            <title_ja>桜チキ</title_ja>
+            <title_zh_TW>櫻花雞</title_zh_TW>
+            <title_zh_CN>樱花鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>32</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>49</id>
+            <title_en>Liar Chick</title_en>
+            <title_ja>嘘チキ</title_ja>
+            <title_zh_TW>騙人雞</title_zh_TW>
+            <title_zh_CN>骗人鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>41</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>50</id>
+            <title_en>Snow Crane</title_en>
+            <title_ja>雪鶴</title_ja>
+            <title_zh_TW>雪鶴</title_zh_TW>
+            <title_zh_CN>雪鹤</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>70</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>51</id>
+            <title_en>Phoenix</title_en>
+            <title_ja>フェニックス</title_ja>
+            <title_zh_TW>鳳凰</title_zh_TW>
+            <title_zh_CN>凤凰</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>100</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>52</id>
+            <title_en>Fire Phoenix</title_en>
+            <title_ja>炎のフェニックス</title_ja>
+            <title_zh_TW>火鳳凰</title_zh_TW>
+            <title_zh_CN>火凤凰</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>200</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>53</id>
+            <title_en>Spider Chick</title_en>
+            <title_ja>スパイダーチキ</title_ja>
+            <title_zh_TW>蜘蛛雞</title_zh_TW>
+            <title_zh_CN>蜘蛛鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>60</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>54</id>
+            <title_en>Crow</title_en>
+            <title_ja>カラス</title_ja>
+            <title_zh_TW>烏鴉</title_zh_TW>
+            <title_zh_CN>乌鸦</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>30</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>55</id>
+            <title_en>Sweet and Sour Chick</title_en>
+            <title_ja>甘酢あんかけチキ</title_ja>
+            <title_zh_TW>糖醋雞</title_zh_TW>
+            <title_zh_CN>糖醋鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>31</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>1</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>56</id>
+            <title_en>Shredded Chick</title_en>
+            <title_ja>棒々チキ</title_ja>
+            <title_zh_TW>棒棒雞</title_zh_TW>
+            <title_zh_CN>棒棒鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>33</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>2</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>57</id>
+            <title_en>Nugget Chick</title_en>
+            <title_ja>ナゲットチキ</title_ja>
+            <title_zh_TW>炸雞塊</title_zh_TW>
+            <title_zh_CN>炸鸡块</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>35</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>3</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>58</id>
+            <title_en>Tandoori Chick</title_en>
+            <title_ja>タンドリーチキ</title_ja>
+            <title_zh_TW>坦都里烤雞</title_zh_TW>
+            <title_zh_CN>坦都里烤鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>37</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>59</id>
+            <title_en>Coq au Vin Blanc</title_en>
+            <title_ja>白ワイン煮込みチキ</title_ja>
+            <title_zh_TW>白酒燉雞</title_zh_TW>
+            <title_zh_CN>白酒炖鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>40</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>5</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>60</id>
+            <title_en>Carnation Chick</title_en>
+            <title_ja>カーネーションチキ</title_ja>
+            <title_zh_TW>康乃馨雞</title_zh_TW>
+            <title_zh_CN>康乃馨鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>45</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>3</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>61</id>
+            <title_en>Snail Chick</title_en>
+            <title_ja>かたつむりチキ</title_ja>
+            <title_zh_TW>蝸牛雞</title_zh_TW>
+            <title_zh_CN>蜗牛鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>36</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>62</id>
+            <title_en>Sunny Doll Chick</title_en>
+            <title_ja>てるてるチキ</title_ja>
+            <title_zh_TW>晴天娃娃雞</title_zh_TW>
+            <title_zh_CN>晴天娃娃鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>38</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>63</id>
+            <title_en>Morning Glory Chick</title_en>
+            <title_ja>アサガオチキ</title_ja>
+            <title_zh_TW>牽牛花雞</title_zh_TW>
+            <title_zh_CN>牵牛花鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>33</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>64</id>
+            <title_en>Firework Chick</title_en>
+            <title_ja>花火チキ</title_ja>
+            <title_zh_TW>煙火雞</title_zh_TW>
+            <title_zh_CN>烟火鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>35</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>65</id>
+            <title_en>Break Watermelon Chick</title_en>
+            <title_ja>スイカ割りチキ</title_ja>
+            <title_zh_TW>打西瓜雞</title_zh_TW>
+            <title_zh_CN>打西瓜鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>34</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>66</id>
+            <title_en>Pica Pica</title_en>
+            <title_ja>カササギ</title_ja>
+            <title_zh_TW>喜鵲</title_zh_TW>
+            <title_zh_CN>喜鹊</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>38</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>67</id>
+            <title_en>Phantom Chick</title_en>
+            <title_ja>幽霊チキ</title_ja>
+            <title_zh_TW>幽靈雞寶</title_zh_TW>
+            <title_zh_CN>幽灵鸡宝</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>36</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>68</id>
+            <title_en>Mosquito Chick</title_en>
+            <title_ja>蚊チキ</title_ja>
+            <title_zh_TW>蚊子雞</title_zh_TW>
+            <title_zh_CN>蚊子鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>65</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>69</id>
+            <title_en>Hot Water Chick</title_en>
+            <title_ja>お湯チキ</title_ja>
+            <title_zh_TW>熱水雞</title_zh_TW>
+            <title_zh_CN>热水鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>3</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>70</id>
+            <title_en>Steam Chick</title_en>
+            <title_ja>水蒸気チキ</title_ja>
+            <title_zh_TW>水蒸氣雞</title_zh_TW>
+            <title_zh_CN>水蒸气鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>2</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>71</id>
+            <title_en>American Coffee Chick</title_en>
+            <title_ja>アメリカンコーヒーチキ</title_ja>
+            <title_zh_TW>美式咖啡雞</title_zh_TW>
+            <title_zh_CN>美式咖啡鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>9</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>80</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>72</id>
+            <title_en>Espresso Chick</title_en>
+            <title_ja>エスプレッソチキ</title_ja>
+            <title_zh_TW>濃縮咖啡雞</title_zh_TW>
+            <title_zh_CN>浓缩咖啡鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>12</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>20</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>73</id>
+            <title_en>Coffee Latte Chick</title_en>
+            <title_ja>カフェラテチキ</title_ja>
+            <title_zh_TW>拿鐵咖啡雞</title_zh_TW>
+            <title_zh_CN>拿铁咖啡鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>17</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>74</id>
+            <title_en>Cappuccino Chick</title_en>
+            <title_ja>カプチーノチキ</title_ja>
+            <title_zh_TW>卡布奇諾雞</title_zh_TW>
+            <title_zh_CN>卡布奇诺鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>19</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>75</id>
+            <title_en>Caramel Macchiato Chick</title_en>
+            <title_ja>キャラメルマキアートチキ</title_ja>
+            <title_zh_TW>焦糖瑪琪朵雞</title_zh_TW>
+            <title_zh_CN>焦糖玛琪朵鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>21</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>76</id>
+            <title_en>Vietnamese Coffee Chick</title_en>
+            <title_ja>ベトナムコーヒーチキ</title_ja>
+            <title_zh_TW>越南咖啡雞</title_zh_TW>
+            <title_zh_CN>越南咖啡鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>23</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>77</id>
+            <title_en>Irish Coffee Chick</title_en>
+            <title_ja>アイリッシュコーヒーチキ</title_ja>
+            <title_zh_TW>愛爾蘭咖啡雞</title_zh_TW>
+            <title_zh_CN>爱尔兰咖啡鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>40</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>50</rate>
+            
+            <tool_1_0_id>6</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>78</id>
+            <title_en>Jade Rabbit Chick</title_en>
+            <title_ja>玉兎チキ</title_ja>
+            <title_zh_TW>玉兔雞</title_zh_TW>
+            <title_zh_CN>玉兔鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>40</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>79</id>
+            <title_en>Chestnut Chick</title_en>
+            <title_ja>栗チキ</title_ja>
+            <title_zh_TW>栗子雞</title_zh_TW>
+            <title_zh_CN>栗子鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>34</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>80</id>
+            <title_en>Jack O'Lantern Chick</title_en>
+            <title_ja>ジャックランタンチキ</title_ja>
+            <title_zh_TW>傑克南瓜雞</title_zh_TW>
+            <title_zh_CN>杰克南瓜鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>39</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>81</id>
+            <title_en>Turkey</title_en>
+            <title_ja>ターキー</title_ja>
+            <title_zh_TW>火雞</title_zh_TW>
+            <title_zh_CN>火鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>20</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>5</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>82</id>
+            <title_en>Roast Turkey</title_en>
+            <title_ja>ローストターキー</title_ja>
+            <title_zh_TW>烤火雞</title_zh_TW>
+            <title_zh_CN>烤火鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>40</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>4</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>83</id>
+            <title_en>Christmas Tree Chick</title_en>
+            <title_ja>クリスマスツリーチキ</title_ja>
+            <title_zh_TW>聖誕樹雞</title_zh_TW>
+            <title_zh_CN>圣诞树鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>37</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>84</id>
+            <title_en>Daruma Chick</title_en>
+            <title_ja>だるまチキ</title_ja>
+            <title_zh_TW>不倒翁雞</title_zh_TW>
+            <title_zh_CN>不倒翁鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>38</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>85</id>
+            <title_en>Pine Decoration Chick</title_en>
+            <title_ja>門松チキ</title_ja>
+            <title_zh_TW>門松雞</title_zh_TW>
+            <title_zh_CN>门松鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>36</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>86</id>
+            <title_en>Prunus Mume Chick</title_en>
+            <title_ja>梅チキ</title_ja>
+            <title_zh_TW>梅花雞</title_zh_TW>
+            <title_zh_CN>梅花鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>33</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>87</id>
+            <title_en>Firecracker Chick</title_en>
+            <title_ja>爆竹チキ</title_ja>
+            <title_zh_TW>爆竹雞</title_zh_TW>
+            <title_zh_CN>爆竹鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>39</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>2</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>88</id>
+            <title_en>Miko Chick</title_en>
+            <title_ja>巫女チキ</title_ja>
+            <title_zh_TW>巫女雞</title_zh_TW>
+            <title_zh_CN>巫女鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>15</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>89</id>
+            <title_en>Very Great Luck Chick</title_en>
+            <title_ja>超大吉くじチキ</title_ja>
+            <title_zh_TW>超大吉籤雞</title_zh_TW>
+            <title_zh_CN>超大吉签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>90</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>90</id>
+            <title_en>Very Good Luck Chick</title_en>
+            <title_ja>大吉くじチキ</title_ja>
+            <title_zh_TW>大吉籤雞</title_zh_TW>
+            <title_zh_CN>大吉签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>30</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>91</id>
+            <title_en>Middle Luck Chick</title_en>
+            <title_ja>中吉くじチキ</title_ja>
+            <title_zh_TW>中吉籤雞</title_zh_TW>
+            <title_zh_CN>中吉签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>15</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>92</id>
+            <title_en>Small Luck Chick</title_en>
+            <title_ja>小吉くじチキ</title_ja>
+            <title_zh_TW>小吉籤雞</title_zh_TW>
+            <title_zh_CN>小吉签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>12</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>93</id>
+            <title_en>Good Luck Chick</title_en>
+            <title_ja>吉くじチキ</title_ja>
+            <title_zh_TW>吉籤雞</title_zh_TW>
+            <title_zh_CN>吉签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>10</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>94</id>
+            <title_en>Uncertain Luck Chick</title_en>
+            <title_ja>末吉くじチキ</title_ja>
+            <title_zh_TW>末吉籤雞</title_zh_TW>
+            <title_zh_CN>末吉签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>8</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>95</id>
+            <title_en>Bad Luck Chick</title_en>
+            <title_ja>凶くじチキ</title_ja>
+            <title_zh_TW>凶籤雞</title_zh_TW>
+            <title_zh_CN>凶签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>5</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>96</id>
+            <title_en>Worst Luck Chick</title_en>
+            <title_ja>大凶くじチキ</title_ja>
+            <title_zh_TW>大凶籤雞</title_zh_TW>
+            <title_zh_CN>大凶签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>1</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>97</id>
+            <title_en>Half Good Luck Chick</title_en>
+            <title_ja>半吉くじチキ</title_ja>
+            <title_zh_TW>半吉籤雞</title_zh_TW>
+            <title_zh_CN>半吉签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>9</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>98</id>
+            <title_en>Uncertain Small Luck Chick</title_en>
+            <title_ja>末小吉くじチキ</title_ja>
+            <title_zh_TW>末小吉籤雞</title_zh_TW>
+            <title_zh_CN>末小吉签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>7</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>99</id>
+            <title_en>Flat Luck Chick</title_en>
+            <title_ja>平くじチキ</title_ja>
+            <title_zh_TW>平籤雞</title_zh_TW>
+            <title_zh_CN>平签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>6</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>100</id>
+            <title_en>Small Bad Luck Chick</title_en>
+            <title_ja>小凶くじチキ</title_ja>
+            <title_zh_TW>小凶籤雞</title_zh_TW>
+            <title_zh_CN>小凶签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>4</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>101</id>
+            <title_en>Half Bad Luck Chick</title_en>
+            <title_ja>半凶くじチキ</title_ja>
+            <title_zh_TW>半凶籤雞</title_zh_TW>
+            <title_zh_CN>半凶签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>3</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>102</id>
+            <title_en>Uncertain Bad Luck Chick</title_en>
+            <title_ja>末凶くじチキ</title_ja>
+            <title_zh_TW>末凶籤雞</title_zh_TW>
+            <title_zh_CN>末凶签鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>2</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>103</id>
+            <title_en>Dizzy Chick</title_en>
+            <title_ja>ふらふらチキ</title_ja>
+            <title_zh_TW>暈眩雞</title_zh_TW>
+            <title_zh_CN>晕眩鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>45</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>104</id>
+            <title_en>Time Chick</title_en>
+            <title_ja>タイムチキ</title_ja>
+            <title_zh_TW>時空雞</title_zh_TW>
+            <title_zh_CN>时空鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>70</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>105</id>
+            <title_en>Skeleton Chick</title_en>
+            <title_ja>髑髏チキ</title_ja>
+            <title_zh_TW>髑髏雞</title_zh_TW>
+            <title_zh_CN>髑髅鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>16</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>106</id>
+            <title_en>Will-o'-the-Wisp Chick</title_en>
+            <title_ja>鬼火チキ</title_ja>
+            <title_zh_TW>鬼火雞</title_zh_TW>
+            <title_zh_CN>鬼火鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>20</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>107</id>
+            <title_en>Ittan-Momen Chick</title_en>
+            <title_ja>一反木綿チキ</title_ja>
+            <title_zh_TW>一反木綿雞</title_zh_TW>
+            <title_zh_CN>一反木绵鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>25</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>108</id>
+            <title_en>Gamecock</title_en>
+            <title_ja>シャモ</title_ja>
+            <title_zh_TW>鬥雞</title_zh_TW>
+            <title_zh_CN>斗鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>60</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>1</rate>
+            
+            <tool_1_0_id>0</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>109</id>
+            <title_en>Toast Chick</title_en>
+            <title_ja>トーストチキ</title_ja>
+            <title_zh_TW>吐司雞</title_zh_TW>
+            <title_zh_CN>吐司鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>7</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>110</id>
+            <title_en>Burnt Toast Chick</title_en>
+            <title_ja>焦げトーストチキ</title_ja>
+            <title_zh_TW>烤焦吐司雞</title_zh_TW>
+            <title_zh_CN>烤焦吐司鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>2</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>100</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>111</id>
+            <title_en>Pineapple Bun Chick</title_en>
+            <title_ja>メロンパンチキ</title_ja>
+            <title_zh_TW>菠蘿麵包雞</title_zh_TW>
+            <title_zh_CN>菠萝面包鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>25</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>10</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>112</id>
+            <title_en>Red Bean Bread Chick</title_en>
+            <title_ja>あんパンチキ</title_ja>
+            <title_zh_TW>紅豆麵包雞</title_zh_TW>
+            <title_zh_CN>红豆面包鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>38</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>30</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+        <character>
+            <id>113</id>
+            <title_en>Curry Bread Chick</title_en>
+            <title_ja>カレーパンチキ</title_ja>
+            <title_zh_TW>咖喱麵包雞</title_zh_TW>
+            <title_zh_CN>咖喱面包鸡</title_zh_CN>
+            
+            <cp_0>1</cp_0>
+            <cp_1>43</cp_1>
+            
+            <cnt_min>-1</cnt_min>
+            <cnt_max>-1</cnt_max>
+            
+            <rate>15</rate>
+            
+            <tool_1_0_id>7</tool_1_0_id>
+            
+            <tool_2_0_id>-1</tool_2_0_id>
+            <tool_2_1_id>-1</tool_2_1_id>
+            
+            <comment>no</comment>
+        </character>
+        
+    </characters>
+</root>

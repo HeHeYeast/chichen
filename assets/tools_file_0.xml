@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root characters="10">
+
+    <infos>
+        <tools_id>0</tools_id>
+        <tools_title_en>Facility</tools_title_en>
+        <tools_title_ja>施設</tools_title_ja>
+        <tools_title_zh_TW>設備</tools_title_zh_TW>
+        <tools_title_zh_CN>设备</tools_title_zh_CN>
+    </infos>
+    
+    <tools>
+        
+        <tool>
+            <id>0</id>
+            <title_en>Kitchen</title_en>
+            <title_ja>台所</title_ja>
+            <title_zh_TW>廚房</title_zh_TW>
+            <title_zh_CN>厨房</title_zh_CN>
+            
+            <lv_0_buy_cp>0</lv_0_buy_cp>
+            <lv_1_buy_cp>-1</lv_1_buy_cp>
+            <lv_2_buy_cp>-1</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_fix_cp>40</lv_0_fix_cp>
+            <lv_1_fix_cp>-1</lv_1_fix_cp>
+            <lv_2_fix_cp>-1</lv_2_fix_cp>
+            <lv_3_fix_cp>-1</lv_3_fix_cp>
+            <lv_4_fix_cp>-1</lv_4_fix_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>1</id>
+            <title_en>Farm</title_en>
+            <title_ja>ファーム</title_ja>
+            <title_zh_TW>農場</title_zh_TW>
+            <title_zh_CN>农场</title_zh_CN>
+            
+            <lv_0_buy_cp>0</lv_0_buy_cp>
+            <lv_1_buy_cp>-1</lv_1_buy_cp>
+            <lv_2_buy_cp>-1</lv_2_buy_cp>
+            <lv_3_buy_cp>-1</lv_3_buy_cp>
+            <lv_4_buy_cp>-1</lv_4_buy_cp>
+            
+            <lv_0_fix_cp>40</lv_0_fix_cp>
+            <lv_1_fix_cp>-1</lv_1_fix_cp>
+            <lv_2_fix_cp>-1</lv_2_fix_cp>
+            <lv_3_fix_cp>-1</lv_3_fix_cp>
+            <lv_4_fix_cp>-1</lv_4_fix_cp>
+            
+            <comment>no</comment>
+        </tool>
+
+        
+    </tools>
+</root>

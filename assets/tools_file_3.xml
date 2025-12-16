@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root characters="10">
+    
+    <infos>
+        <tools_id>2</tools_id>
+        <tools_title_en>Egg</tools_title_en>
+        <tools_title_ja>卵</tools_title_ja>
+        <tools_title_zh_TW>蛋</tools_title_zh_TW>
+        <tools_title_zh_CN>蛋</tools_title_zh_CN>
+    </infos>
+    
+    <tools>
+        <tool>
+            <id>0</id>
+            <title_en>Chicken Egg</title_en>
+            <title_ja>チキの卵</title_ja>
+            <title_zh_TW>雞蛋</title_zh_TW>
+            <title_zh_CN>鸡蛋</title_zh_CN>
+            
+            <buy_cp>0</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+        
+        <tool>
+            <id>1</id>
+            <title_en>Duck Egg</title_en>
+            <title_ja>カモの卵</title_ja>
+            <title_zh_TW>鴨蛋</title_zh_TW>
+            <title_zh_CN>鸭蛋</title_zh_CN>
+            
+            <buy_cp>2500</buy_cp>
+            
+            <comment>no</comment>
+        </tool>
+    </tools>
+</root>
