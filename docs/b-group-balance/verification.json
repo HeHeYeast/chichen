@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checks": 11,
+  "verifiedAt": "2026-09-20T16:20:34.142Z",
+  "scope": "design-model-and-artifacts-only",
+  "modelSeed": 20260920,
+  "fortuneRuns": 1200000,
+  "kitchenBatches": 200000,
+  "sourceHashCount": 15
+}

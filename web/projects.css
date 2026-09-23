@@ -1,0 +1,47 @@
+/* Projects share the business ledger's paper, ink and 44px touch scale. */
+.trade-nav button{min-width:0}
+.projects-screen{display:flex;flex-direction:column;overflow:hidden;color:#684b31;font-size:14px}
+.projects-screen button,.projects-screen input{font:inherit}
+.projects-screen button{min-height:44px}
+.projects-screen button:focus-visible,.projects-screen input:focus-visible{outline:3px solid #497657;outline-offset:2px}
+.projects-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 3px 12px}
+.projects-intro,.projects-note{font-size:13px;line-height:1.6;color:#79654b;margin:4px 0}
+.projects-card{display:flex;flex-direction:column;gap:3px;width:100%;margin:0 0 8px;padding:10px 12px;text-align:left;background:#fffbed;border:1px solid #dcc795;border-left:5px solid #8b9b66;border-radius:3px 8px 8px 3px;color:inherit}
+.projects-card strong{font-size:16px;color:#744928}.projects-card small{font-size:12.5px;color:#86704f}
+.projects-card.is-done{border-left-color:#b98a4f}.projects-card.is-locked{opacity:.75;border-left-color:#c9bb9a}
+.projects-steps{display:flex;gap:4px}.projects-steps i{width:22px;height:6px;border-radius:3px;background:#eadfc2}
+.projects-steps i.is-done{background:#b98a4f}.projects-steps i.is-ready{background:#f0b252}
+.projects-head{margin:2px 0 8px}.projects-head h3{margin:3px 0;font-size:19px;color:#744928}.projects-head p{margin:4px 0;line-height:1.7}
+.projects-eyebrow{display:block;letter-spacing:.06em;font-size:12px;color:#967750}
+.projects-stages{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.projects-stage{padding:10px 12px;background:#f5edcf;border-radius:8px}
+.projects-stage.is-current{background:#fffbed;border:1px solid #dcc795}.projects-stage.is-done{opacity:.8}
+.projects-stage header{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:#86704f}
+.projects-stage p{margin:5px 0;line-height:1.6}
+.projects-checks{list-style:none;margin:4px 0;padding:0;font-size:13.5px;line-height:1.6}.projects-checks li.is-met{color:#4e7a4f}
+.projects-delivery{font-size:13px;color:#744928}
+.projects-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.projects-actions button,.projects-footer button,.projects-portraits>button{flex:1;min-width:96px;border:1.5px solid #ac946c;border-radius:8px;background:#fff9e9;box-shadow:0 2px #c6ae7c;color:#684b31}
+.projects-screen .orange{background:#ffd16a;border-color:#b78546}
+.projects-screen button:disabled{opacity:.5}
+.projects-footer{display:flex;gap:6px;flex:none;padding-top:8px}
+.projects-locked,.projects-portraits{margin:8px 0;padding:10px 12px;background:#fffbed;border:1px solid #dcc795;border-radius:8px}
+.projects-locked h4,.projects-portraits h4{margin:0 0 4px;font-size:14.5px}
+.projects-portrait-row{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}.projects-portrait-row span{width:40px;height:40px}
+.projects-portrait-row svg,.projects-portrait-row img,.projects-art svg,.projects-art img,.projects-portrait span svg,.projects-portrait span img{width:100%;height:100%}
+.projects-keep{display:flex;gap:8px;align-items:center;min-height:44px}
+.projects-picks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.projects-pick{display:flex;align-items:center;gap:8px;padding:6px 8px;background:#fffbed;border-radius:8px}
+.projects-pick input{width:22px;height:22px}
+.projects-art{flex:none;width:40px;height:40px}
+.projects-pick-name{flex:1;min-width:0;display:flex;flex-direction:column}.projects-pick-name small{font-size:12px;color:#86704f}
+.projects-stepper{display:flex;align-items:center;gap:6px}.projects-stepper button{width:44px;border:1.5px solid #ac946c;border-radius:8px;background:#fff9e9}
+.projects-stepper strong{min-width:22px;text-align:center}
+.projects-portrait-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px}
+.projects-portrait{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;background:#fffbed;border:1px solid #e3d3a6;border-radius:8px;font-size:11.5px;text-align:center;min-height:44px}
+.projects-portrait.is-on{border-color:#b78546;background:#ffe9b8}
+.projects-portrait input{position:absolute;opacity:0;pointer-events:none}.projects-portrait span{width:44px;height:44px}
+.projects-portrait:focus-within{outline:3px solid #497657;outline-offset:1px}
+.business-presets{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 8px}
+.business-presets>button,.business-preset button{min-height:40px;padding:4px 8px;border:1.5px solid #ac946c;border-radius:8px;background:#fff9e9;font:inherit;font-size:13px}
+.business-preset{display:flex;gap:3px}

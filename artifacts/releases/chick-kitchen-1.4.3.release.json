@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.4.3",
+  "versionCode": 10,
+  "file": "chick-kitchen-1.4.3.apk",
+  "sha256": "347a949d7333cf8cabbdf2aedc2b95db32770136b818ab55530f73f078c54598",
+  "bytes": 48436360,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-15T14:29:59.9062961Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "211614b6e745b74a2b1b8e823e1b8c0640bcfdfd30644e24b889baeb1eafa0f3",
+  "runtimeFiles": 588,
+  "notes": "普通启动和重新打开时停留在开始界面，点击开始游戏后进入厨房；通知点击仍前往厨房，导入导出、权限与系统设置返回保留当前操作。包含193位伙伴的含蓄发现线索，完整配方仍在首次收取后解锁。沿用原签名与存档，保留CP、图鉴、材料及当前孵化批次。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

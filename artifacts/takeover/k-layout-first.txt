@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-09-23T13:43:48.992Z",
+  "passed": false,
+  "checks": [],
+  "screens": [
+    "kitchen-320x568",
+    "trade-explore-book-320x568",
+    "kitchen-375x812",
+    "trade-explore-book-375x812",
+    "kitchen-390x844",
+    "trade-explore-book-390x844",
+    "kitchen-430x932",
+    "trade-explore-book-430x932",
+    "kitchen-844x390",
+    "trade-explore-book-844x390",
+    "kitchen-1280x900",
+    "trade-explore-book-1280x900",
+    "failure"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: desktop opens full pages beside the live scene
+    at file:///D:/gxy_code/game/chicken_duck_test/tools/qa-work-k.mjs:59:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

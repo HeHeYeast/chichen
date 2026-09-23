@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-09-23T13:31:16.796Z",
+  "passed": true,
+  "checks": [
+    "旧档门槛未完成采购时不允许开张",
+    "旧4→5与正式备货24留1/额度reserve不减T或CP",
+    "即时出售只能选择自由1只，营业S仍为24",
+    "2h实售6只，保存刷新不重复窗口",
+    "售罄95CP精确账目，320/430/1280适配，反复查看不发奖",
+    "独立第二单18只提前收摊，余6解除S，未用额度释放",
+    "离开页面26小时后重开：resume按同一时间线结清一次（24只/95CP），账单只读、重复查看不加钱",
+    "手艺页“结算并收摊后重配”：先结清已过的2个窗口（12只），释放余货后进入重配草稿"
+  ],
+  "screens": [
+    "legacy-gate",
+    "prepare-390",
+    "first-window",
+    "receipt-95cp",
+    "receipt-320",
+    "receipt-430",
+    "receipt-1280",
+    "early18-release6",
+    "offline-return-receipt",
+    "respec-after-close"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

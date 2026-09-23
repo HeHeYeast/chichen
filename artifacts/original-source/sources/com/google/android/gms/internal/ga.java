@@ -1,0 +1,74 @@
+package com.google.android.gms.internal;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import com.google.android.gms.common.internal.safeparcel.a;
+import com.google.android.gms.internal.fv;
+import java.util.HashSet;
+import java.util.Set;
+
+/* loaded from: D:\gxy_code\game\chicken_duck_test\classes.dex */
+public class ga implements Parcelable.Creator<fv.b.C0035b> {
+    static void a(fv.b.C0035b c0035b, Parcel parcel, int i) {
+        int iK = com.google.android.gms.common.internal.safeparcel.b.k(parcel);
+        Set<Integer> setDi = c0035b.di();
+        if (setDi.contains(1)) {
+            com.google.android.gms.common.internal.safeparcel.b.c(parcel, 1, c0035b.getVersionCode());
+        }
+        if (setDi.contains(2)) {
+            com.google.android.gms.common.internal.safeparcel.b.c(parcel, 2, c0035b.getHeight());
+        }
+        if (setDi.contains(3)) {
+            com.google.android.gms.common.internal.safeparcel.b.a(parcel, 3, c0035b.getUrl(), true);
+        }
+        if (setDi.contains(4)) {
+            com.google.android.gms.common.internal.safeparcel.b.c(parcel, 4, c0035b.getWidth());
+        }
+        com.google.android.gms.common.internal.safeparcel.b.C(parcel, iK);
+    }
+
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: H, reason: merged with bridge method [inline-methods] */
+    public fv.b.C0035b createFromParcel(Parcel parcel) {
+        int iF = 0;
+        int iJ = com.google.android.gms.common.internal.safeparcel.a.j(parcel);
+        HashSet hashSet = new HashSet();
+        String strL = null;
+        int iF2 = 0;
+        int iF3 = 0;
+        while (parcel.dataPosition() < iJ) {
+            int i = com.google.android.gms.common.internal.safeparcel.a.i(parcel);
+            switch (com.google.android.gms.common.internal.safeparcel.a.y(i)) {
+                case 1:
+                    iF3 = com.google.android.gms.common.internal.safeparcel.a.f(parcel, i);
+                    hashSet.add(1);
+                    break;
+                case 2:
+                    iF2 = com.google.android.gms.common.internal.safeparcel.a.f(parcel, i);
+                    hashSet.add(2);
+                    break;
+                case 3:
+                    strL = com.google.android.gms.common.internal.safeparcel.a.l(parcel, i);
+                    hashSet.add(3);
+                    break;
+                case 4:
+                    iF = com.google.android.gms.common.internal.safeparcel.a.f(parcel, i);
+                    hashSet.add(4);
+                    break;
+                default:
+                    com.google.android.gms.common.internal.safeparcel.a.b(parcel, i);
+                    break;
+            }
+        }
+        if (parcel.dataPosition() != iJ) {
+            throw new a.C0004a("Overread allowed size end=" + iJ, parcel);
+        }
+        return new fv.b.C0035b(hashSet, iF3, iF2, strL, iF);
+    }
+
+    @Override // android.os.Parcelable.Creator
+    /* renamed from: am, reason: merged with bridge method [inline-methods] */
+    public fv.b.C0035b[] newArray(int i) {
+        return new fv.b.C0035b[i];
+    }
+}

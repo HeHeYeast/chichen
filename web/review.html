@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>鸡宝厨房 · 全界面试玩检查</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf0e9; color: #473f32; font: 14px 'Microsoft YaHei', 'PingFang SC', sans-serif; }
+    main { width: max-content; min-width: min(100%, 720px); margin: auto; display: flex; align-items: flex-start; justify-content: center; gap: 36px; padding: 28px; }
+    aside { width: 296px; flex-shrink: 0; }
+    .eyebrow { margin: 0 0 7px; color: #786c58; font-size: 12px; letter-spacing: 1px; }
+    h1 { margin: 0 0 10px; font-size: 25px; line-height: 1.4; font-weight: 700; }
+    p { margin: 8px 0 16px; line-height: 1.75; }
+    .description, .note { color: #746956; font-size: 12px; }
+    .section-label { margin: 22px 0 9px; color: #786c58; font-size: 12px; font-weight: 700; }
+    .buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
+    button, select { min-height: 36px; padding: 7px 9px; color: inherit; border: 1px solid #c2c6b5; border-radius: 5px; background: #f9faf4; font: inherit; font-size: 12px; cursor: pointer; }
+    button:hover { background: #fff0c2; }
+    button[aria-pressed="true"] { border-color: #a38440; background: #ffe29a; font-weight: 700; }
+    button:disabled, select:disabled { cursor: default; opacity: .5; }
+    button:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid #247553; outline-offset: 2px; }
+    .controls-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 10px 0; }
+    .controls-row label { font-size: 12px; }
+    select { min-width: 134px; }
+    .size-buttons { display: flex; gap: 6px; }
+    .size-buttons button { min-width: 51px; }
+    .check { display: flex; align-items: center; gap: 6px; font-size: 12px; cursor: pointer; }
+    input[type="checkbox"] { width: 16px; height: 16px; accent-color: #438362; }
+    output { display: block; margin-top: 15px; padding: 11px 12px; background: #e1e6d6; border-radius: 5px; font-size: 12px; line-height: 1.8; white-space: pre-line; font-variant-numeric: tabular-nums; }
+    .preview-column { flex-shrink: 0; width: var(--preview-width, 375px); }
+    .preview-caption { display: flex; justify-content: space-between; align-items: center; margin: 0 0 9px; color: #786c58; font-size: 12px; font-variant-numeric: tabular-nums; }
+    iframe { display: block; width: 100%; height: var(--preview-height, 665.625px); border: 0; background: #dfebd9; box-shadow: 0 3px 16px #473f321a; }
+    footer { display: flex; flex-wrap: wrap; gap: 7px 16px; margin-top: 17px; font-size: 12px; line-height: 1.7; }
+    a { color: #56704c; text-underline-offset: 3px; }
+    details { margin-top: 19px; border-top: 1px solid #d5d8cb; padding-top: 12px; color: #746956; font-size: 12px; line-height: 1.8; }
+    summary { cursor: pointer; color: #473f32; }
+    ul { padding-left: 18px; margin: 8px 0; }
+    @media(max-width: 780px) {
+      main { width: 100%; min-width: 0; flex-direction: column; align-items: center; padding: 18px 12px; gap: 23px; }
+      aside { width: min(430px, 100%); }
+      h1 { font-size: 22px; }
+      .preview-column { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <aside>
+      <p class="eyebrow">厨房与小世界 / 可玩检查</p>
+      <h1>鸡宝厨房</h1>
+      <p>看看画面，也动手试试。<br>点击厨具、等待破壳，再滑动收取。</p>
+      <p class="description">本轮房屋成长：破旧茅草房屋 → 略微整齐木板房屋 → 小康公寓厨房 → 豪华精装厨房。切换四级查看整个房间的变化；点击游戏左上角等级查看升级条件与收益。</p>
+      <p class="section-label">全部界面</p>
+      <div class="buttons" id="page-controls"><button data-scene="v8-farm">新版农场</button><button data-scene="v8-collection">新版图鉴</button><button data-scene="v8-shop">新版商店</button><button data-scene="v8-settings">新版设置</button><button data-scene="v8-harvest">农场收成买卖</button><button data-scene="v8-detail">鸡宝详情</button></div>
+      <p class="note"><a href="/web/ui-review.html">打开全界面对照 ↗</a></p>
+      <p class="section-label">图鉴配方册</p><div class="buttons"><button data-scene="v14-harvest">批量售卖</button><button data-scene="v14-recipes">按厨具查配方</button><button data-scene="v14-steamer">合并后的竹蒸笼</button><button data-scene="v14-detail">鸭宝三料配方</button><button data-scene="v14-busy">准备下一批</button><button data-scene="v14-species">档案配方入口</button><button data-scene="v14-new">未解锁配方</button><button data-scene="v14-unknown">未知档案</button><button data-scene="v14-calendar">四时收集手记</button></div><p class="section-label">四时新伙伴 · 时段预告</p><div class="buttons"><button data-scene="v12-calendar">寻宝日历</button><button data-scene="v12-preview">提前 30 分钟</button><button data-scene="v12-ending">下一时段预告</button><button data-scene="v12-recipes">16 位新伙伴</button><button data-scene="v12-detail">新配方详情</button><button data-scene="v12-busy">保留正在孵化的一批</button><button data-scene="v12-rewards">章节回礼</button><button data-scene="v12-collection">新鸭宝档案</button><button data-scene="v12-farm">新伙伴农场</button><button data-scene="v12-new">未解锁条件</button><button data-scene="v12-notice">厨房时段提醒</button></div><p class="section-label">神社御神签 · 交互改进</p><div class="buttons"><button data-scene="v11-draw">求一签</button><button data-scene="v11-book">十五格签册</button><button data-scene="v11-goals">收藏回礼</button><button data-scene="v11-held">签已放入包中</button><button data-scene="v11-busy">下一批配方准备</button><button data-scene="v11-new">新玩家的神社</button><button data-scene="v11-farm">农场快捷入口</button><button data-scene="v11-ingredients">材料选择</button><button data-scene="v11-settings">设置滚动</button></div>
+      <p class="section-label">内容补全 · 常驻流程</p><div class="buttons" id="content-access-controls"><button data-scene="v10-catalog">75 种调味料</button><button data-scene="v10-catalog-locked">待解锁的目标</button><button data-scene="v10-duck">开放鸭蛋</button><button data-scene="v10-activities">神社委托簿</button><button data-scene="v10-gifts">每日赠品</button><button data-scene="v10-travel">时空旅行</button><button data-scene="v10-collection">未发现的线索</button><button data-scene="v10-farm-shrine">农场神社入口</button></div><p class="section-label">竹笼点心坊 · 新内容</p>
+      <div class="buttons" id="dim-sum-controls"><button data-scene="v9-dim-sum">点心鸡宝收取</button><button data-scene="v9-dim-sum-recipes">六味点心配方册</button><button data-scene="v9-dim-sum-shop">竹蒸笼与原料</button><button data-scene="v9-dim-sum-farm">点心鸡宝农场</button><button data-scene="v9-dim-sum-detail">新品种档案</button></div>
+      <p class="note">第九厨具竹蒸笼与六种点心鸡宝。配方册可选材料，再回厨房开始调理。</p>
+      <p class="section-label">厨房四阶段</p>
+      <div class="buttons" id="stage-controls">
+        <button data-scene="stage1">Lv.1 初始厨房</button>
+        <button data-scene="stage2">Lv.2 厨房</button>
+        <button data-scene="stage3">Lv.3 厨房</button>
+        <button data-scene="stage4">Lv.4 厨房</button>
+      </div>
+      <p class="section-label">升级条件与结果</p>
+      <div class="buttons" id="upgrade-controls">
+        <button data-scene="upgrade-ready">条件齐全 · 可升级</button>
+        <button data-scene="upgrade-short">缺少厨具</button>
+        <button data-scene="upgrade-poor">CP 不足</button>
+        <button data-scene="upgrade-max">厨房已满级</button>
+      </div>
+      <p class="note">“可升级”场景带有 24 只鸡宝与污渍，完成升级可检查保留进度、扣款和清洁。</p>
+      <p class="section-label">操作与画面</p>
+      <div class="buttons" id="scene-controls">
+        <button data-scene="sample">厨房样板</button>
+        <button data-scene="busy">满屏与清洁入口</button>
+        <button data-scene="upgrade">升级厨具</button>
+        <button data-scene="empty">空厨房</button>
+        <button data-scene="longtext">长文字弹窗</button>
+        <button data-scene="hatching">破壳动画</button>
+        <button data-scene="ready">滑动收取鸡宝</button>
+        <button data-scene="eggs">孵化中的厨房</button>
+        <button data-scene="duck">鸭宝收取</button>
+        <button data-scene="dirty">脏乱的厨房</button>
+        <button data-scene="farm">农场与收成表</button>
+        <button data-scene="new">从新游戏开始</button>
+        <button data-scene="title">标题画面</button>
+      </div>
+      <p class="section-label">屏幕与时间</p>
+      <div class="controls-row">
+        <span class="description">预览宽度</span>
+        <div class="size-buttons" aria-label="预览宽度">
+          <button data-width="320" aria-pressed="false">320</button>
+          <button data-width="375" aria-pressed="true">375</button>
+          <button data-width="430" aria-pressed="false">430</button>
+        </div>
+      </div>
+      <label class="check"><input type="checkbox" id="tall">长屏演示（9:19.5）</label>
+      <div class="controls-row"><label for="speed">时间速度</label><select id="speed"><option value="1">原速</option><option value="30">30 倍</option><option value="120">120 倍</option></select></div>
+      <div class="buttons"><button data-skip="60000">向前 1 分钟</button><button data-skip="900000">向前 15 分钟</button></div>
+      <p class="section-label">演示与画面</p>
+      <div class="buttons"><button id="demo-collect" disabled>自动演示收取</button><button id="capture-frame" disabled>保存当前画面</button></div>
+      <p class="note">演示会重置为厨房样板；保存的是游戏画布。</p>
+      <output id="status" aria-live="off">正在载入游戏…</output>
+      <p class="note">这里使用独立测试存档。切换场景会重新开始测试，不会修改正常游戏进度。</p>
+      <footer>
+        <a href="/" target="_blank" rel="noopener">正常游戏 ↗</a>
+        <a href="/web/compare.html" target="_blank" rel="noopener">返工前后对照 ↗</a>
+        <a href="/web/art-board.html" target="_blank" rel="noopener">美术规范板 ↗</a>
+        <a href="/web/asset-plan.html" target="_blank" rel="noopener">素材与厨房阶段 ↗</a>
+        <a href="/web/stage-review.html" target="_blank" rel="noopener">四阶段可玩对照 ↗</a>
+        <a href="/web/classic.html" target="_blank" rel="noopener">原版复刻对照 ↗</a>
+      </footer>
+      <details>
+        <summary>本轮检查什么</summary>
+        <ul>
+          <li>满屏时蛋阵、厨具、翻页和导航是否整齐清楚。</li>
+          <li>鸡宝、厨具与背景的线条和明暗是否协调。</li>
+          <li>中文名称和数字是否好读，弹窗是否完整显示。</li>
+          <li>按下、破壳、收取和落篮反馈是否连贯。</li>
+          <li>四阶段设施是否可辨；升级条件、扣款、取消和满级是否清楚。</li>
+        </ul>
+        <p>农场、图鉴、商店和设置均可操作。新内容“竹笼点心坊”加入六味配方和三等级蒸笼，可检查配方选择、解锁、购买与新品种收取。</p>
+      </details>
+    </aside>
+    <section class="preview-column" aria-label="游戏预览">
+      <p class="preview-caption"><span id="scene-label">厨房样板</span><span id="dimensions">375 × 666</span></p>
+      <iframe src="/?review=1" title="鸡宝厨房预览" id="preview" allow="autoplay"></iframe>
+    </section>
+  </main>
+  <script type="module">
+    const frame = document.querySelector('#preview');
+    const previewColumn = document.querySelector('.preview-column');
+    const sceneButtons = [...document.querySelectorAll('[data-scene]')];
+    const speedSelect = document.querySelector('#speed');
+    const status = document.querySelector('#status');
+    const requestedStage = Number(new URLSearchParams(location.search).get('stage'));
+    const requestedScene = new URLSearchParams(location.search).get('scene');
+    const extraSceneLabels={'v8-farm-dawn':'清晨农场','v8-farm-evening':'黄昏农场','v8-farm-night':'夜晚农场','v8-empty-farm':'空农场','v8-farm-damaged':'需要整修的农场','v8-empty-collection':'尚未发现','v8-shop-ingredients':'调味料货架','v8-shop-poor':'商店 CP 不足','v8-full-inventory':'调味料库存已满','v8-manual':'鸡宝照顾手册'};
+    const extraScenes=Object.keys(extraSceneLabels);
+    const contentAccessScenes=['v10-activities-locked','v10-gifts-full'];
+    const initialScene = requestedScene && (extraScenes.includes(requestedScene)||contentAccessScenes.includes(requestedScene)||sceneButtons.some(button=>button.dataset.scene===requestedScene)) ? requestedScene : Number.isInteger(requestedStage) && requestedStage >= 1 && requestedStage <= 4 ? `stage${requestedStage}` : 'sample';
+    let ready = false;
+    let initialized = false;
+    let previewWidth = 375;
+    let demoStartTimeout = null;
+    function send(command, value) {
+      frame.contentWindow.postMessage({ type: 'chick-review', command, value }, location.origin);
+    }
+    function selectScene(scene) {
+      clearTimeout(demoStartTimeout);
+      demoStartTimeout = null;
+      const button = sceneButtons.find(button => button.dataset.scene === scene);
+      sceneButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      document.querySelector('#scene-label').textContent = button?.textContent ?? extraSceneLabels[scene] ?? '厨房样板';
+      speedSelect.value = '1';
+      send('scene', scene);
+    }
+    function setReady(value) {
+      ready = value;
+      document.querySelectorAll('[data-scene], [data-skip], #speed, #demo-collect, #capture-frame').forEach(control => { control.disabled = !value; });
+    }
+    function sizePreview() {
+      const availableWidth = Math.max(240, document.documentElement.clientWidth - 24);
+      const width = Math.min(previewWidth, availableWidth);
+      const ratio = document.querySelector('#tall').checked ? 19.5 / 9 : 568 / 320;
+      const height = width * ratio;
+      previewColumn.style.setProperty('--preview-width', width + 'px');
+      previewColumn.style.setProperty('--preview-height', height + 'px');
+      previewColumn.dataset.width = String(previewWidth);
+      document.querySelector('#dimensions').textContent = Math.round(width) + ' × ' + Math.round(height);
+      document.querySelectorAll('.size-buttons [data-width]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.width) === previewWidth)));
+    }
+    setReady(false);
+    sizePreview();
+    sceneButtons.forEach(button => button.addEventListener('click', () => { if (ready) selectScene(button.dataset.scene); }));
+    document.querySelector('#demo-collect').addEventListener('click', () => {
+      if (!ready) return;
+      selectScene('sample');
+      demoStartTimeout = setTimeout(() => {
+        demoStartTimeout = null;
+        if (ready) send('demo');
+      }, 250);
+    });
+    document.querySelector('#capture-frame').addEventListener('click', () => {
+      if (!ready) return;
+      const canvas = frame.contentDocument.querySelector('#scene');
+      const download = document.createElement('a');
+      download.href = canvas.toDataURL('image/png');
+      download.download = `chick-kitchen-${Date.now()}.png`;
+      document.body.append(download);
+      download.click();
+      download.remove();
+    });
+    document.querySelectorAll('[data-skip]').forEach(button => button.addEventListener('click', () => send('skip', Number(button.dataset.skip))));
+    document.querySelectorAll('.size-buttons [data-width]').forEach(button => button.addEventListener('click', () => { previewWidth = Number(button.dataset.width); sizePreview(); }));
+    document.querySelector('#tall').addEventListener('change', sizePreview);
+    speedSelect.addEventListener('change', event => send('speed', Number(event.target.value)));
+    window.addEventListener('resize', sizePreview);
+    window.addEventListener('message', event => {
+      if (event.origin !== location.origin || event.source !== frame.contentWindow) return;
+      const data = event.data;
+      if (data?.type === 'chick-capture') {
+        if (typeof data.dataUrl !== 'string' || !data.dataUrl.startsWith('data:image/png;base64,')) return;
+        const download = document.createElement('a');
+        download.href = data.dataUrl;
+        download.download = 'chick-kitchen-sample.png';
+        document.body.append(download);
+        download.click();
+        download.remove();
+        return;
+      }
+      if (data?.type !== 'chick-status') return;
+      if (data.loaded === false) return;
+      setReady(true);
+      if (!initialized) {
+        initialized = true;
+        selectScene(initialScene);
+        return;
+      }
+      status.textContent = `${data.cp} CP · 厨房 Lv.${data.kitchenLevel ?? 1} · ${data.dirty ? '待清洁' : '干净'}\n厨房 ${data.eggs} 只 · 可收取 ${data.ready} 只 · ${data.clock}`;
+    });
+  </script>
+</body>
+</html>

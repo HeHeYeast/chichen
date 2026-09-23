@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-09-23T03:59:30.286Z",
+  "passed": true,
+  "checks": [
+    "320×568、375、390、430、横屏844×390与桌面1280：底栏固定为厨房/农场/生意/寻访/图鉴五项、无“商店”标签；每页无横向溢出；厨房“补给”一击打开小卖部",
+    "桌面1280：完整页面在右侧栏打开、左侧场景保持可见；无页面时右侧显示今日小厨房摘要（锅/生意/寻访/置顶目标）",
+    "生意→订单交付页选1只后切到农场再回生意：直接回到同一交付页，草稿数量保留",
+    "交付页对缺货品种“去看做法”→配方详情显示“返回订单”→返回原交付页，选择仍在",
+    "寻访页常驻“原路线”入口：打开原来的三条路线，关闭后回到寻访页而不是厨房",
+    "未知投影扫描：寻访两页、生意四页、图鉴收藏册五页的DOM与aria中，48个未收录新品名称均未出现",
+    "旧神社委托簿仍从农场原位置（横向拖动农场后）进入",
+    "键盘聚焦“生意”并回车即进入生意页",
+    "“补给搬到厨房了”只提示一次，刷新后不再出现"
+  ],
+  "screens": [
+    "kitchen-320x568",
+    "trade-explore-book-320x568",
+    "kitchen-375x812",
+    "trade-explore-book-375x812",
+    "kitchen-390x844",
+    "trade-explore-book-390x844",
+    "kitchen-430x932",
+    "trade-explore-book-430x932",
+    "kitchen-844x390",
+    "trade-explore-book-844x390",
+    "kitchen-1280x900",
+    "trade-explore-book-1280x900",
+    "desktop-trade",
+    "desktop-desk",
+    "order-draft",
+    "order-to-recipe",
+    "explore-legacy-routes",
+    "farm-shrine"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

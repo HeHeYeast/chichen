@@ -1,0 +1,36 @@
+{
+    "checkedAt":  "2026-09-21T15:01:12.8081079Z",
+    "passed":  true,
+    "checks":  [
+                   {
+                       "name":  "Game and interface tests",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Chinese font coverage",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Native save persistence",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Native hatch notifications",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Backup and update simulations",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Browser UI regression",
+                       "exitCode":  0,
+                       "passed":  true
+                   }
+               ]
+}

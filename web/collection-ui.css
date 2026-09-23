@@ -1,0 +1,118 @@
+/* A shared paper collection book and harvest ledger. All rules stay local. */
+.collection-screen, .harvest-screen, .species-screen {
+  background: #fff7da;
+  border-color: #795632;
+  box-shadow: 0 3px 0 #b28a50, inset 4px 0 0 #dfc797, inset 7px 0 0 #f3e4bd;
+}
+.collection-screen h2, .harvest-screen h2, .species-screen h2 { margin-bottom: 7px; color: #694324; }
+.collection-tabs, .harvest-tabs { display: flex; flex-shrink: 0; gap: 5px; border-bottom: 2px solid #947044; padding: 0 4px; }
+.collection-tabs button, .harvest-tabs button { display: flex; align-items: center; justify-content: center; gap: 7px; flex: 1; min-height: 30px; padding: 3px 4px; border: 1.5px solid #8e7046; border-bottom: 0; border-radius: 9px 9px 0 0; background: #e5edce; color: #64724a; }
+.collection-tabs button.is-active, .harvest-tabs button.is-active { background: #f7ce66; color: #694324; box-shadow: inset 0 3px 0 #ffebad; }
+.collection-tab-egg, .harvest-tab-egg { width: 12px; height: 16px; border: 1.4px solid #806140; border-radius: 50% 50% 45% 45%; background: #fff9df; transform: rotate(-10deg); }
+.collection-tab-egg.is-duck, .harvest-tab-egg.is-duck { background: #cce9cf; }
+.collection-progress, .harvest-filter { display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; min-height: 28px; gap: 5px; padding: 3px 2px; color: #8a714f; font-size: 10px; font-variant-numeric: tabular-nums; }
+.collection-progress strong { color: #547741; font-size: 13px; }
+.collection-progress button, .harvest-filter button { padding: 2px 5px; min-height: 24px; color: #55773f; border: 1px solid #bfcc94; border-radius: 5px; background: #eff3d9; font-size: 10px; }
+.collection-screen .collection-book { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); grid-template-rows: repeat(3,minmax(0,1fr)); gap: 5px; padding: 5px; border: 1px solid #d3b985; border-radius: 3px 8px 8px 3px; background: #f4e9c7; min-height: 240px; overflow: hidden; }
+.collection-stamp { display: grid; grid-template-rows: 12px minmax(27px,1fr) 26px 12px; min-height: 0; min-width: 0; padding: 3px 2px; text-align: center; border: 1px dashed #ba9d68; border-radius: 4px; background: #fffaf0; box-shadow: none; overflow: hidden; }
+.collection-stamp.is-known { border-style: solid; border-color: #d3b176; background: #fffae7; }
+.collection-stamp.is-unknown { color: #a49576; background: #ebe6cd; }
+.collection-code { display: block; padding-left: 2px; text-align: left; color: #a18b61; font-size: 9px; line-height: 12px; letter-spacing: .4px; font-variant-numeric: tabular-nums; }
+.collection-picture { display: flex; align-items: center; justify-content: center; min-height: 0; overflow: hidden; }
+.collection-picture img, .collection-picture .sprite-art { display: block; width: 47px; height: 100%; max-height: 48px; object-fit: contain; }
+.collection-name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; font-size: 11px; line-height: 13px; align-self: center; }
+.collection-stock { display: block; color: #8c7651; font-size: 9px; line-height: 12px; font-variant-numeric: tabular-nums; }
+.collection-blank { border: 1px dashed #d9c69c; border-radius: 4px; opacity: .55; }
+.collection-unknown-egg { position: relative; display: inline-flex; flex-shrink: 0; width: 29px; height: 36px; align-items: center; justify-content: center; border: 1.5px solid #b9ab89; border-radius: 50% 50% 46% 46%; background: #f6f0d6; box-shadow: inset -4px -2px 0 #e1d7b8; }
+.collection-unknown-egg span { color: #b0a17b; font-size: 16px; }
+.collection-screen .collection-pager { margin-top: 6px; min-height: 28px; justify-content: center; gap: 18px; color: #92764d; font-size: 10px; }
+.collection-pager strong { color: #6a4f2b; }
+.collection-pager button { flex: 0 0 32px; width: 32px; min-height: 27px; height: 27px; padding: 0; border: 1.5px solid #987246; border-radius: 5px; background: #f6d380; box-shadow: 0 2px 0 #c29853; font-size: 23px; line-height: 23px; }
+.collection-screen .collection-book.is-empty { display: flex; align-items: center; justify-content: center; }
+.collection-empty, .harvest-empty { padding: 22px 12px; text-align: center; color: #947b51; }
+.collection-empty strong, .harvest-empty strong { display: block; margin-top: 14px; color: #765a32; font-size: 13px; }
+.collection-empty p, .harvest-empty p { margin: 8px 0 14px; font-size: 11px; line-height: 1.8; }
+.collection-empty button, .harvest-empty button { min-height: 31px; padding: 4px 18px; background: #f7d379; border: 1.5px solid #947044; border-radius: 7px; box-shadow: 0 2px 0 #c09b60; }
+.collection-stamp:active, .collection-pager button:active:not(:disabled), .collection-tabs button:active, .harvest-tabs button:active { box-shadow: inset 0 2px 0 #8a622429; }
+
+.harvest-bulk { display: flex; flex-shrink: 0; align-items: center; gap: 5px; margin: 0 0 6px; }
+.harvest-bulk span { flex: 1; min-width: 0; color: #96794b; font-size: 9px; }
+.harvest-bulk button { min-height: 40px; padding: 4px 8px; border: 1px solid #b49b6a; border-radius: 6px; color: #72542e; background: #f7df9d; font-size: 11px; transition: transform .12s, background-color .12s; }
+.harvest-bulk button[data-harvest-keep-one] { background: #e8efcb; color: #5e7544; border-color: #a5b47c; }
+.harvest-bulk button:active:not(:disabled) { transform: scale(.96); }
+.harvest-bulk button:focus-visible { outline: 2px solid #55773f; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .harvest-bulk button { transition: none; } .harvest-bulk button:active:not(:disabled) { transform: none; } }
+.harvest-list { border-top: 1px solid #d8c297; border-bottom: 1px solid #d8c297; background: #fffcf0; padding: 0 5px; }
+.harvest-row { display: flex; align-items: center; gap: 7px; padding: 8px 0; border-bottom: 1px dashed #d8cba5; }
+.harvest-row:last-child { border-bottom: 0; }
+.harvest-row.is-selected { background: #fff4c9; }
+.harvest-portrait { width: 55px; height: 65px; flex-shrink: 0; padding: 3px; border: 0; background: transparent; border-radius: 50%; }
+.harvest-portrait img, .harvest-portrait .sprite-art { width: 100%; height: 100%; object-fit: contain; }
+.harvest-entry { flex: 1; min-width: 0; }
+.harvest-code { display: block; color: #a68b5e; font-size: 8px; line-height: 11px; letter-spacing: .4px; }
+.harvest-name { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; color: #654629; font-size: 12px; line-height: 15px; }
+.harvest-meta { display: flex; justify-content: space-between; gap: 4px; margin: 3px 0 5px; color: #96794b; font-size: 9px; line-height: 13px; font-variant-numeric: tabular-nums; }
+.harvest-meta b { color: #76562d; }
+.harvest-quantity { display: flex; align-items: center; gap: 4px; }
+.harvest-quantity button, .species-quantity button { width: 29px; height: 28px; padding: 0; flex-shrink: 0; border: 1.3px solid #a48753; border-radius: 6px; background: #f6d47b; box-shadow: 0 2px 0 #d2ae68; font-size: 18px; line-height: 24px; }
+.harvest-quantity output { flex: 1; min-width: 34px; text-align: center; color: #72542e; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.harvest-quantity button.harvest-max, .species-quantity button.species-max { width: 37px; margin-left: 4px; border-color: #a5b47c; background: #e8efcb; color: #5e7544; box-shadow: 0 2px 0 #bbc994; font-size: 10px; }
+.harvest-quantity button:active:not(:disabled), .species-quantity button:active:not(:disabled), .harvest-checkout button:active:not(:disabled), .species-sell:active:not(:disabled) { box-shadow: inset 0 2px 0 #81592633; }
+.harvest-screen .harvest-footer { align-items: center; margin-top: 7px; padding: 0 1px; gap: 5px; }
+.harvest-total { flex: 1; min-width: 0; }
+.harvest-total small { display: block; color: #967c50; font-size: 9px; font-weight: 500; }
+.harvest-total span { display: block; color: #7e5b2a; font-size: 10px; line-height: 26px; }
+.harvest-total span strong { font-size: 18px; }
+.harvest-checkout { display: flex; flex-direction: column; align-items: stretch; width: 94px; gap: 2px; }
+.harvest-checkout button[data-harvest-sell] { min-height: 32px; border: 1.5px solid #866135; border-radius: 7px; background: #f8cd62; box-shadow: 0 2px 0 #bd924b; font-size: 12px; }
+.harvest-checkout button[data-harvest-clear] { min-height: 20px; padding: 0 4px; border: 0; background: transparent; color: #967c50; box-shadow: none; font-size: 9px; }
+
+.species-sheet { padding: 0 5px 4px; }
+.species-discovery-clue { position: relative; margin: 12px 0; padding: 12px 13px 10px; border: 1px solid #c2c994; border-left: 4px solid #8caa65; border-radius: 3px 10px 10px 3px; background: #f0f2d8; text-align: left; }
+.species-discovery-clue h4 { margin: 0 0 7px; color: #526537; font-size: 12px; line-height: 1.5; }
+.species-discovery-clue p { margin: 0; color: #665334; font-size: 13px; line-height: 1.9; overflow-wrap: anywhere; }
+.species-discovery-clue small { display: block; margin-top: 8px; color: #757753; font-size: 10px; line-height: 1.7; }
+.species-clue-calendar { padding: 7px 4px; border-top: 1px dashed #cdbb87; color: #786039; }
+.species-unknown-screen .species-portrait { width: 78px; height: 78px; }
+.species-unknown-screen .species-name { font-size: 16px; }
+.species-topline { display: flex; justify-content: space-between; align-items: center; color: #a38756; font-size: 10px; letter-spacing: .6px; }
+.species-seal { padding: 1px 7px; border: 1px solid #8daa71; border-radius: 4px; color: #79995a; font-size: 9px; transform: rotate(-5deg); }
+.species-portrait { display: flex; align-items: center; justify-content: center; width: 117px; height: 117px; margin: 3px auto 5px; border-radius: 50%; border: 1px dashed #dabd7a; background: #fff0b9; }
+.species-portrait img, .species-portrait .sprite-art { display: block; width: 104px; height: 104px; object-fit: contain; }
+.species-name { margin: 5px 0 11px; color: #67482c; text-align: center; font-size: 17px; line-height: 23px; overflow-wrap: anywhere; }
+.species-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; margin: 0; padding: 9px 0; border-top: 1px dashed #cfb680; border-bottom: 1px dashed #cfb680; }
+.species-stats div { text-align: center; min-width: 0; }
+.species-stats div+div { border-left: 1px solid #e0cfaa; }
+.species-stats dt { color: #9a8055; font-size: 9px; line-height: 16px; }
+.species-stats dd { margin: 2px 0 0; color: #70532b; font-size: 15px; line-height: 19px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.species-stats dd small { font-size: 8px; font-weight: 500; }
+.species-note { margin: 8px 0; color: #9b8051; text-align: center; font-size: 10px; line-height: 16px; }
+.species-quantity { display: flex; align-items: center; gap: 4px; padding: 5px 0; }
+.species-quantity > span { flex: 1; color: #92764b; font-size: 10px; }
+.species-quantity output { width: 42px; flex-shrink: 0; color: #70532b; text-align: center; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.species-screen .species-footer { margin-top: 6px; padding-top: 5px; gap: 5px; border-top: 1px solid #ddc799; }
+.species-back { flex: 0 0 auto; height: 34px; min-height: 32px; padding: 2px 3px; border: 0; background: transparent; box-shadow: none; color: #8f7145; font-size: 10px; }
+.species-sell { flex: 1; min-height: 34px; padding: 3px 4px; border: 1.5px solid #936b36; border-radius: 7px; background: #f4cc66; box-shadow: 0 2px 0 #c19a50; color: #6d4a24; font-size: 11px; }
+.species-sell strong { font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: no-preference) { .species-portrait { animation: species-appear 160ms ease-out; } }
+@keyframes species-appear { from { transform: scale(.93); } to { transform: scale(1); } }
+
+/* One paper book, four sections; inner categories use a select, not another rail. */
+.book-screen,.species-book-screen{display:flex;flex-direction:column;overflow:hidden;background:#fff7da;color:#694b30;font-size:14px}
+.book-navigation{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;flex:none;margin:0 0 8px;border-bottom:2px solid #ae8c52}
+.book-navigation button{min-width:0;min-height:44px;padding:6px 2px;border:1px solid #b29868;border-bottom:0;border-radius:8px 8px 0 0;background:#eee8d1;color:#6b6248;font:inherit;font-size:14px}
+.book-navigation button[aria-pressed=true]{background:#f4cf76;color:#603d23;font-weight:700;box-shadow:inset 0 3px #ffebad}
+.book-reader{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:3px 5px 14px}
+.book-screen button,.species-book-screen button,.book-screen select,.book-screen input,.collection-screen input{font:inherit;min-height:44px}
+.book-screen :focus-visible,.book-navigation :focus-visible,.book-search :focus-visible,.species-book-screen :focus-visible{outline:3px solid #567447;outline-offset:2px}
+.book-intro{border-bottom:1px dashed #cdb887;padding:10px 3px 12px}.book-intro h3{font-size:22px;line-height:1.4;margin:7px 0;color:#6d4629}.book-intro p,.book-intro small{font-size:14px;color:#786747;margin:4px 0}
+.book-section{padding:10px 0;border-bottom:1px dashed #ddcda6}.book-section h4{font-size:16px;margin:3px 0 9px}.book-section p,.book-muted{font-size:14px;line-height:1.7;color:#746349}
+.book-path{display:flex;flex-direction:column;align-items:flex-start;gap:6px;box-sizing:border-box;width:100%;margin:7px 0;padding:10px 12px;text-align:left;background:#fffcf0;border:1px solid #ccb982;border-radius:5px 12px 12px 5px;color:#6c4f31;line-height:1.6;white-space:normal}
+.book-path strong{font-size:16px}.book-path span{font-size:14px;color:#73694d}
+.book-recent{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.book-recent button{display:flex;flex-direction:column;align-items:center;min-width:0;background:#fcf5db;border:1px dashed #c3ae75;border-radius:8px;padding:8px 3px;font-size:14px}.book-recent .sprite-art,.book-recent img{width:54px;height:54px}.book-recent small{font-size:14px;color:#776c54}
+.book-filters{display:flex;gap:10px;flex-wrap:wrap}.book-filters label{display:flex;flex:1;flex-direction:column;gap:5px;min-width:100px}.book-filters select,.books-category select{max-width:100%;padding:6px;background:#fffcf0;color:#674d31;border:1px solid #b8a06b;border-radius:6px}
+.book-material{padding:12px;margin:12px 0;border:1px solid #ccb989;border-left:4px solid #8da270;border-radius:4px 12px 12px 4px;background:#fffdf1}.book-material h3{font-size:18px;margin:6px 0}.book-material p{font-size:14px;line-height:1.7}.book-material small{font-size:14px;color:#776949}.book-material button{width:100%;white-space:normal}
+.book-search{display:flex;flex:none;gap:6px;align-items:end;margin:6px 0}.book-search label{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px;font-size:14px}.book-search input{box-sizing:border-box;width:100%;min-width:0;border:1px solid #bda473;border-radius:5px;padding:6px 8px;background:#fffdf2;color:#62482d}.book-search button{min-height:44px;padding:6px 10px;font-size:14px}
+.collection-screen .collection-progress{flex-wrap:wrap;font-size:14px}.collection-screen .collection-progress strong{font-size:16px}.collection-screen .collection-progress button,.collection-screen .collection-tabs button{min-height:44px;font-size:14px}
+.collection-screen .collection-book{grid-template-rows:none;grid-auto-rows:minmax(128px,auto);min-height:0;overflow-y:auto;flex:1}.collection-screen .collection-stamp{grid-template-rows:18px 50px minmax(34px,auto) 20px;padding:5px 2px}.collection-screen .collection-code,.collection-screen .collection-stock{font-size:14px;line-height:18px}.collection-screen .collection-name{font-size:14px;line-height:17px}.collection-screen .collection-pager{flex:none;font-size:14px}.collection-screen .collection-pager button{min-height:44px;height:44px;flex-basis:44px;width:44px}
+.species-book-screen .species-sheet{flex:1;min-height:0;overflow-y:auto}.species-book-screen .species-story{font-size:14px;line-height:1.8}.species-book-screen .species-topline,.species-book-screen .species-seal{font-size:14px}.species-book-screen .species-footer{flex:none}.species-book-screen summary{min-height:44px;cursor:pointer;line-height:44px}.species-book-screen .species-back{font-size:14px}.species-book-screen .species-footer button{min-height:44px;height:auto;font-size:14px;white-space:normal}

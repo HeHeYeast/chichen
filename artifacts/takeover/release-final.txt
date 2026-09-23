@@ -1,0 +1,25 @@
+Runtime content generated outputs : passed
+Native content generated outputs : passed
+Runtime asset availability : passed
+Game and interface tests : passed
+✔ upgrade requirements expose each missing cookware level and distinguish insufficient CP (0.5215ms)
+✔ current schema missing extension fields is corrupt, never defaulted during load (4.7377ms)
+✔ reading or dismissing duck purchase details never mutates progress (0.23ms)
+✔ O06 cannot reload a missing or out-of-variant frozen region, even if its allowed rows were rebuilt to match (16.8885ms)
+✔ missing ingredients, levels, kitchen slots, campaign and sign identity cannot silently prepare (3.9435ms)
+✔ extra/duplicate/wrong egg/wrong tool/missing material conflict rejects before any debit (90.5123ms)
+✔ a legacy region with missing first-specimen history needs both identifications, without guessed facts (12.8832ms)
+✔ the regulars validator rejects out-of-order reads, missing results, stray baselines and bad visits (12.6557ms)
+✔ schema rejects unknown fields at root, nested objects and array members and rejects missing required fields (52.7715ms)
+✔ read-only recipe previews expose concrete gates; missing materials and duck access cannot spend or prepare (11.0063ms)
+✔ missing gift and missing cookware cannot replace next-batch choices (1.5441ms)
+Chinese font coverage : passed
+  "missing_codepoints": [],
+Native save persistence : passed
+SaveRepository: 649 behavioral assertions passed (AOSP JSON + real files; JVM AtomicFile adapter).
+Native hatch notifications : passed
+HatchScheduler: 60 behavioral assertions passed (JVM platform fakes; not device validation).
+Backup and update simulations : passed
+test_missing_process_does_not_claim_startup (test_safe_android_update.SafeUpdateTests.test_missing_process_does_not_claim_startup) ... ok
+Browser UI regression : passed
+Release preflight passed: all 9 required checks succeeded (22 browser suites: legacy seven, Works A-L, book navigation, takeover UI and compatible rollback).

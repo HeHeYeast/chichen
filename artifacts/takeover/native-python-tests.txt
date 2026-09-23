@@ -1,0 +1,34 @@
+test_apk_bytes_match_source_and_manifest (test_release_files.ReleaseFileTests.test_apk_bytes_match_source_and_manifest) ... ok
+test_apk_same_file_names_but_changed_bytes_are_rejected (test_release_files.ReleaseFileTests.test_apk_same_file_names_but_changed_bytes_are_rejected) ... ok
+test_damaged_snapshot_fails_verification (test_release_files.ReleaseFileTests.test_damaged_snapshot_fails_verification) ... ok
+test_source_changed_after_packaging_is_rejected (test_release_files.ReleaseFileTests.test_source_changed_after_packaging_is_rejected) ... ok
+test_source_snapshot_round_trip_excludes_keys_saves_and_build (test_release_files.ReleaseFileTests.test_source_snapshot_round_trip_excludes_keys_saves_and_build) ... ok
+test_backup_changes_before_install_stops (test_safe_android_update.SafeUpdateTests.test_backup_changes_before_install_stops) ... ok
+test_backup_only_never_installs (test_safe_android_update.SafeUpdateTests.test_backup_only_never_installs) ... ok
+test_backup_only_works_without_release_apk (test_safe_android_update.SafeUpdateTests.test_backup_only_works_without_release_apk) ... ok
+test_changed_first_install_time_is_rejected (test_safe_android_update.SafeUpdateTests.test_changed_first_install_time_is_rejected) ... ok
+test_corrupt_apk_never_contacts_phone (test_safe_android_update.SafeUpdateTests.test_corrupt_apk_never_contacts_phone) ... ok
+test_downgrade_stops_before_force_stop (test_safe_android_update.SafeUpdateTests.test_downgrade_stops_before_force_stop) ... ok
+test_explicit_device_choice (test_safe_android_update.SafeUpdateTests.test_explicit_device_choice) ... ok
+test_first_install_is_explicit (test_safe_android_update.SafeUpdateTests.test_first_install_is_explicit) ... ok
+test_install_failure_keeps_backup (test_safe_android_update.SafeUpdateTests.test_install_failure_keeps_backup) ... ok
+test_invalid_save_does_not_install (test_safe_android_update.SafeUpdateTests.test_invalid_save_does_not_install) ... ok
+test_launch_failure_keeps_verified_save (test_safe_android_update.SafeUpdateTests.test_launch_failure_keeps_verified_save) ... ok
+test_legacy_requires_fresh_export_before_phone_is_touched (test_safe_android_update.SafeUpdateTests.test_legacy_requires_fresh_export_before_phone_is_touched) ... ok
+test_missing_process_does_not_claim_startup (test_safe_android_update.SafeUpdateTests.test_missing_process_does_not_claim_startup) ... ok
+test_multiple_devices_require_choice (test_safe_android_update.SafeUpdateTests.test_multiple_devices_require_choice) ... ok
+test_non_primary_profile_stops (test_safe_android_update.SafeUpdateTests.test_non_primary_profile_stops) ... ok
+test_one_time_legacy_bootstrap (test_safe_android_update.SafeUpdateTests.test_one_time_legacy_bootstrap) ... ok
+test_post_install_disconnect_reports_installed_but_unverified (test_safe_android_update.SafeUpdateTests.test_post_install_disconnect_reports_installed_but_unverified) ... ok
+test_post_update_difference_keeps_both_backups_and_never_launches (test_safe_android_update.SafeUpdateTests.test_post_update_difference_keeps_both_backups_and_never_launches) ... ok
+test_provider_error_with_zero_exit_does_not_install (test_safe_android_update.SafeUpdateTests.test_provider_error_with_zero_exit_does_not_install) ... ok
+test_read_only_check_does_not_stop_install_or_back_up (test_safe_android_update.SafeUpdateTests.test_read_only_check_does_not_stop_install_or_back_up) ... ok
+test_stale_snapshot_stops (test_safe_android_update.SafeUpdateTests.test_stale_snapshot_stops) ... ok
+test_success_keeps_both_snapshots_and_launches_last (test_safe_android_update.SafeUpdateTests.test_success_keeps_both_snapshots_and_launches_last) ... ok
+test_truncated_json_does_not_install (test_safe_android_update.SafeUpdateTests.test_truncated_json_does_not_install) ... ok
+test_unauthorized_device_stops (test_safe_android_update.SafeUpdateTests.test_unauthorized_device_stops) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 5.544s
+
+OK

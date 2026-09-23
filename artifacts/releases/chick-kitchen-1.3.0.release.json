@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.3.0",
+  "versionCode": 5,
+  "file": "chick-kitchen-1.3.0.apk",
+  "sha256": "8c9986c9084c093be5614f83d7a50e21d5775d3eb747a39b4c6ff9629c771241",
+  "bytes": 48364242,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-14T02:38:41.2599089Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "e8715a7a7e82ef3af206fdc034fc518bf57ca68314e42eef5e8c34da009d74a3",
+  "runtimeFiles": 582,
+  "notes": "新增四时食谱16只伙伴（8鸡8鸭）、独立素材与配方、四份章节回礼。寻宝日历说明凤凰真实时段和永久节日委托，开放前60分钟内给游戏内预告。保留神社、点心、底部适配和已有存档，同签名覆盖更新。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

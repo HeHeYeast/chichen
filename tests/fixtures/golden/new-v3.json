@@ -1,0 +1,81 @@
+{
+  "version": 3,
+  "cp": 600,
+  "kitchenLevel": 0,
+  "toolLevels": [
+    0,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1
+  ],
+  "ingredients": {
+    "0": 1
+  },
+  "selected": [],
+  "egg": 0,
+  "duck": false,
+  "batch": null,
+  "farm": {},
+  "total": {},
+  "lastSeen": 1800000000000,
+  "lastClean": 1800000000000,
+  "farmFixed": 1800000000000,
+  "farmChecked": 1800000000000,
+  "dirty": false,
+  "alarm": false,
+  "music": true,
+  "sound": true,
+  "events": {},
+  "progress": {
+    "skillVersion": 2,
+    "migrationRespec": false,
+    "migrationNotice": false,
+    "leftovers": [],
+    "hotStove": null,
+    "lastHarvest": null,
+    "sources": {},
+    "skills": {},
+    "respecAt": null,
+    "protection": {
+      "freshness": true,
+      "sickness": true,
+      "calm": false
+    },
+    "trade": {
+      "initialGranted": false,
+      "credits": 0,
+      "harvestProgress": 0,
+      "rebateRemainder": 0,
+      "markupRemainder": 0,
+      "category": null
+    },
+    "fortune": {
+      "lastTarget": null,
+      "drought": 0
+    },
+    "knowledge": {
+      "facts": [],
+      "recipes": []
+    },
+    "orders": {},
+    "trip": null,
+    "tripSequence": 0,
+    "lastTeam": [],
+    "routeFailures": {
+      "yard": 0,
+      "water": 0,
+      "wood": 0
+    },
+    "logicalAt": 0,
+    "tutorialSeen": false
+  },
+  "cleanCycle": {
+    "hours": 36,
+    "dirtyAt": 1800129600000
+  }
+}

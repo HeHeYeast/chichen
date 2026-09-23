@@ -1,0 +1,117 @@
+{
+  "actions": [
+    "Departure, 2-hour simulated clock advance, automatic return, full-inventory claim and explicit remaining-material discard inspected.",
+    "Collected 24 via actual keyboard controls, earned 24 CP; keep-one sale sold 23 for 69 CP; retained one and discovery."
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "w": 320,
+      "h": 568,
+      "metrics": [
+        {
+          "class": "panel paper screen-panel workshop-screen",
+          "box": {
+            "width": 304,
+            "height": 430
+          },
+          "font": "16px",
+          "scroll": 426,
+          "client": 426
+        },
+        {
+          "class": "workshop-body scroll",
+          "box": {
+            "width": 280,
+            "height": 276
+          },
+          "font": "12px",
+          "scroll": 745,
+          "client": 276
+        },
+        {
+          "class": "workshop-footer",
+          "box": {
+            "width": 280,
+            "height": 48
+          },
+          "font": "12px",
+          "scroll": 47,
+          "client": 47
+        }
+      ]
+    },
+    {
+      "w": 430,
+      "h": 932,
+      "metrics": [
+        {
+          "class": "panel paper screen-panel workshop-screen",
+          "box": {
+            "width": 408.5,
+            "height": 746.5625
+          },
+          "font": "16px",
+          "scroll": 553,
+          "client": 553
+        },
+        {
+          "class": "workshop-body scroll",
+          "box": {
+            "width": 377.625,
+            "height": 541.34375
+          },
+          "font": "12px",
+          "scroll": 743,
+          "client": 403
+        },
+        {
+          "class": "workshop-footer",
+          "box": {
+            "width": 377.625,
+            "height": 64.15625
+          },
+          "font": "12px",
+          "scroll": 47,
+          "client": 47
+        }
+      ]
+    },
+    {
+      "w": 844,
+      "h": 390,
+      "metrics": [
+        {
+          "class": "panel paper screen-panel workshop-screen",
+          "box": {
+            "width": 208.71875,
+            "height": 295.234375
+          },
+          "font": "16px",
+          "scroll": 427,
+          "client": 427
+        },
+        {
+          "class": "workshop-body scroll",
+          "box": {
+            "width": 193,
+            "height": 190
+          },
+          "font": "12px",
+          "scroll": 746,
+          "client": 277
+        },
+        {
+          "class": "workshop-footer",
+          "box": {
+            "width": 193,
+            "height": 33.25
+          },
+          "font": "12px",
+          "scroll": 47,
+          "client": 47
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "checkedAt": "2026-09-23T15:42:50.498Z",
+  "engineeringAutomaticGatesPassed": true,
+  "formalReleaseAccepted": false,
+  "works": {
+    "A": "DONE (engineering)",
+    "B": "DONE (engineering)",
+    "C": "DONE (engineering)",
+    "D": "DONE (engineering)",
+    "E": "DONE (engineering)",
+    "F": "DONE (engineering)",
+    "G": "DONE (engineering)",
+    "H": "DONE (engineering)",
+    "I": "DONE (engineering)",
+    "J": "DONE (engineering)",
+    "K": "DONE (engineering)",
+    "L": "PARTIAL (automatic gates complete; external release acceptance pending)"
+  },
+  "schemaVersion": 6,
+  "contentRevision": "regional-1",
+  "rulesVersion": 1,
+  "authorSourceHash": "f5a0b0683380ee8b62afc09652f9d6f71d658f688c5324d41a3bc6923095f490",
+  "nodeTests": 587,
+  "browserSuites": 22,
+  "releaseGates": 9,
+  "nativeChecks": {
+    "nativeSaveAssertions": 649,
+    "sharedCorruptFixturesRejectedByBothPlatforms": 107,
+    "legalContractMatrixStates": 103,
+    "notifications": 60,
+    "android35CompiledSources": 9,
+    "nativeContentGeneratedCheck": true
+  },
+  "apk": {
+    "path": "artifacts/takeover/chick-kitchen-241-debug-c1e5d00d61ea.apk",
+    "sha256": "c1e5d00d61ea690f5545883ecba8ea3b13db313c4fb9465ebfa7090ded3a2dbe",
+    "bytes": 53623356,
+    "applicationId": "com.jibao.kitchen",
+    "versionName": "1.5.0",
+    "versionCode": 16,
+    "debugOnly": true,
+    "signatureV2": true,
+    "certificateSha256": "3924e188c4b7427bbce6611271e5a23789f7c7c4937ab769b7ec6aa5a85291d2"
+  },
+  "runtime": {
+    "files": 662,
+    "bytes": 53187609,
+    "contentHash": "0fbce8929a674fad2f1294e198e17451ff2f5a3825c1b8c9c452b7bb9dfa9bc6",
+    "manifestSha256": "9dd863a6e19c09e422464221ba19d9b45f77ec420e04cea57bd5af54dd3e007f",
+    "allPackagedBytesMatchCurrentSources": true
+  },
+  "realClock": {
+    "checkedAt": "2026-09-23T15:40:55.319Z",
+    "passed": true,
+    "checks": [
+      "真实时钟（未加速）：开张后离开页面；1小时回访未成交、CP不变；2小时3分回访第1窗恰好卖出6只并一次入账（+19CP），刷新不重复结算"
+    ],
+    "timeline": [
+      {
+        "at": "2026-09-23T13:37:52.285Z",
+        "text": "opened MN1 with 12 at 2026-09-23T13:37:52.203Z"
+      },
+      {
+        "at": "2026-09-23T13:37:52.344Z",
+        "text": "page closed (app left in background)"
+      },
+      {
+        "at": "2026-09-23T14:37:53.475Z",
+        "text": "1h return: no sale yet, CP unchanged"
+      },
+      {
+        "at": "2026-09-23T15:40:54.033Z",
+        "text": "2h03m return: window 1 settled once (6 sold, +19 CP)"
+      }
+    ],
+    "errors": [],
+    "acceleratedClock": false,
+    "realDeviceTest": false,
+    "note": "Desktop Chromium headless with the real device clock; not an Android device."
+  },
+  "sourceSnapshot": {
+    "path": "artifacts/source-backups/20260923-234227-2a70f6fd.zip",
+    "sha256": "b3beb709eb5c520efdba8c43312ad4030505765586242ec0ed021ebac5dad558"
+  },
+  "finalArtPendingSets": 112,
+  "externalAcceptance": [
+    "final art",
+    "Android physical-device lifecycle/process-death/file-picker restore",
+    "3–5 new-player comprehension",
+    "formal signing and release process"
+  ],
+  "evidence": {
+    "android/build/release-verification.json": {
+      "sha256": "e96d8ff63d78ed3a1c61d3235236bfee16d85f77da03cdebdc8d2cbfe013cd8e",
+      "bytes": 1859
+    },
+    "android/build/release-verification.log": {
+      "sha256": "78366bc6cdb01457bd9ef1cbe60cddcfbf75b8ff21fd8a799e857dbca085f25d",
+      "bytes": 69406
+    },
+    "artifacts/qa/release-ui/report.json": {
+      "sha256": "25a5150a31eccd4a56ce8886d00add84b940fda3cffd01bdb5f58ba29a220f9d",
+      "bytes": 3013
+    },
+    "artifacts/qa/real-window/report.json": {
+      "sha256": "f16428e2676e78931e5a4e69d83f5e328b07f471303eb32ff6a9ffa542d8d9f4",
+      "bytes": 901
+    },
+    "artifacts/qa/book-navigation/report.json": {
+      "sha256": "255dcff92a9a79b7342eb33d86e9aeedf577e28527c78ea88556f0e3056887d0",
+      "bytes": 672
+    },
+    "artifacts/qa/takeover-ui/report.json": {
+      "sha256": "b45014dd2e34bc038836127f69957deb8187bb74e8fbc323441296b95a76a6e6",
+      "bytes": 767
+    },
+    "artifacts/qa/compatible-rollback/report.json": {
+      "sha256": "17281719d0022635fd8c987b6fc004eb95947e724e90311239aa10bc4f09be50",
+      "bytes": 1421
+    },
+    "artifacts/takeover/node-final.txt": {
+      "sha256": "069f6ae99ac23677e1d67aafae0be725c6ed337fd04445916c838a7858851825",
+      "bytes": 58890
+    },
+    "artifacts/takeover/native-final-evidence.json": {
+      "sha256": "a5c506d4e6674026ff0a8c995cda172f422897c646c5d10f3792a93a96c5854d",
+      "bytes": 4088
+    },
+    "artifacts/takeover/native-runtime-manifest-final.json": {
+      "sha256": "9dd863a6e19c09e422464221ba19d9b45f77ec420e04cea57bd5af54dd3e007f",
+      "bytes": 114931
+    },
+    "artifacts/takeover/native-repair.md": {
+      "sha256": "f9f7d34a939e661c6fad4f77632a72d87513375d3d3d3599baae81d78b1b4c25",
+      "bytes": 6540
+    },
+    "artifacts/takeover/economy-audit.md": {
+      "sha256": "7b65439d5ee5b8116c7731710e6b1a22a87fcd05d3135db28eda535728150e73",
+      "bytes": 12491
+    },
+    "artifacts/takeover/economy-investment-appendix.md": {
+      "sha256": "509df3ebc1c5f89325e29bbd3e0fe2840823e37d26ab39d9f28269278ff88212",
+      "bytes": 5316
+    },
+    "artifacts/sim/reachability-summary.json": {
+      "sha256": "87dc09267a60e56ae8f89e7117333020a98fe462576a331d233d21fa2e767bd0",
+      "bytes": 2975
+    },
+    "artifacts/sim/economy-14d.json": {
+      "sha256": "df84ec72ddd99b6138a800a1da3ffe1c788875fd670f9e1f40a05c8332d1adb2",
+      "bytes": 1197326
+    },
+    "artifacts/sim/economy-pairs.json": {
+      "sha256": "e4f757f6b3daaaa75dbaa912de6202cc39076ec06102451c7efdaec51c38eda5",
+      "bytes": 1480396
+    },
+    "artifacts/sim/economy-investments.json": {
+      "sha256": "e47eac0344b4a3b910039b2b6b67a007b530119ebcfd1382eb4b74f1c914dad9",
+      "bytes": 1045635
+    },
+    "artifacts/release/rollback-compatible/manifest.json": {
+      "sha256": "89995d5ff1ee25af257c5ca38b933688ea3705a6aa55113575471723ebb4bc5e",
+      "bytes": 10652
+    },
+    "artifacts/release/rollback-compatible/web/rollback-policy.js": {
+      "sha256": "df1370d96d1ee8d94240169ceb2903659495614944d46f2e290ee77d233779a8",
+      "bytes": 1271
+    },
+    "docs/implementation-status.md": {
+      "sha256": "5c63f806b72b87c61e4486f11ddee3a34e38ccf8897348e441356c30037b8530",
+      "bytes": 7358
+    },
+    "docs/release-acceptance-report.md": {
+      "sha256": "ede2bff4d839549c4499814f192f48cfaa4f00f4b1787b29804cbfa442a76615",
+      "bytes": 16117
+    },
+    "docs/verification-coverage.md": {
+      "sha256": "36579116e7f37fa51c6f56742fa0e3601d152b78e93e847c9a0f24113b9298d9",
+      "bytes": 6439
+    },
+    "docs/device-release-checklist.md": {
+      "sha256": "85c8aa43f784c13997fb4a6c1ee9f54530bea738686c1e4193f63fa3b6514a0f",
+      "bytes": 6041
+    },
+    "docs/plan.md": {
+      "sha256": "1014cbce1df3cc9c0bd0ed37f74c5d0ca35230b88d624bc910e9ec01352caca2",
+      "bytes": 3146
+    },
+    "docs/compatible-rollback.md": {
+      "sha256": "a944e83bd02848dd1460b6c0ca972fa38cfd8e56d6f2b1cfd6112a0a858b8cb6",
+      "bytes": 5233
+    },
+    "artifacts/qa/release-ui/skill-art.log": {
+      "sha256": "98be38f63250d1ecc6a841673a41bb9c53d156ad63104659af9bdf4831938a2b",
+      "bytes": 63
+    },
+    "artifacts/qa/release-ui/integration.log": {
+      "sha256": "43677f4ba6c2b4f0b3db2471eadb97a2b039080446db51357f5303851faf4f25",
+      "bytes": 51
+    },
+    "artifacts/qa/release-ui/tool-strip.log": {
+      "sha256": "33db01e4e5dcc7c644ae6715b32b3dfc15fe2009b8feca4157f04d16f1f2daae",
+      "bytes": 61
+    },
+    "artifacts/qa/release-ui/recipe-book.log": {
+      "sha256": "cceee0e632e7f76f54cd6cd7f771e2107eed1139b4fc884b69e7a017c54a17da",
+      "bytes": 1212
+    },
+    "artifacts/qa/release-ui/save-ui.log": {
+      "sha256": "3725dd3ae0c2b4f7268c2540c8293068cc4bae29d18dde729fb591e207f4627d",
+      "bytes": 552
+    },
+    "artifacts/qa/release-ui/resume.log": {
+      "sha256": "e3a63234f93db4ccd53dd9b8822370b4445e1296e0b788736eae265e1e3f374c",
+      "bytes": 1329
+    },
+    "artifacts/qa/release-ui/kitchen-care.log": {
+      "sha256": "c11c1c5f31012468a49fe1fa56ca9eb47267be16bb6ece40ee0d2eacbd462ffa",
+      "bytes": 533
+    },
+    "artifacts/qa/release-ui/work-a.log": {
+      "sha256": "e9313dea3c8c49ccbbb0995c17484eab85b07e8e1da6ebdc294fc1cd4c2b05bb",
+      "bytes": 893
+    },
+    "artifacts/qa/release-ui/work-b.log": {
+      "sha256": "fdb4e79a29e3e102c292f10d5270360c9876740971ac5e856e406e62ebae4e89",
+      "bytes": 1000
+    },
+    "artifacts/qa/release-ui/work-c.log": {
+      "sha256": "46d24c9ea2a51a375b8da6046cb18a8760440ce70e702526832f924a437978cb",
+      "bytes": 1486
+    },
+    "artifacts/qa/release-ui/work-d.log": {
+      "sha256": "615b9dba5da7e84179d84ebcb2c397cc81c5be081f63f2b4365e6d8114a41533",
+      "bytes": 1047
+    },
+    "artifacts/qa/release-ui/work-e.log": {
+      "sha256": "75ed4ae3f9f040274c7266071bb15f2a9cd133134dc64b03f8cbb355a4955e12",
+      "bytes": 1122
+    },
+    "artifacts/qa/release-ui/work-f.log": {
+      "sha256": "84fbf5f7811d61688ed8c4362d79c505701daf64190d82210a1072be478194ae",
+      "bytes": 989
+    },
+    "artifacts/qa/release-ui/work-g.log": {
+      "sha256": "0b02e4e6cefdc2e53bab841b8c098782c4b204d9cf434e1362c7e8a1f23f58ad",
+      "bytes": 745
+    },
+    "artifacts/qa/release-ui/work-h.log": {
+      "sha256": "2c507120e7c9a600c2c32a08684db143cd701dacc08917de4e87b6ae80e0a32d",
+      "bytes": 836
+    },
+    "artifacts/qa/release-ui/work-i.log": {
+      "sha256": "11c9b4d3bf74a9584b8c18057472f4f4afd6450b61d766ef13a756b543c9a5cb",
+      "bytes": 868
+    },
+    "artifacts/qa/release-ui/work-j.log": {
+      "sha256": "73c49081f3057b03d14ba178c9c066e100f468128e8683ecee9c41954d1c46d5",
+      "bytes": 968
+    },
+    "artifacts/qa/release-ui/work-k.log": {
+      "sha256": "e9786913cc8cf8b25a2d14215c911539fdc4cab91c28e5d8fca238c44566e1e3",
+      "bytes": 1757
+    },
+    "artifacts/qa/release-ui/work-l.log": {
+      "sha256": "d02fa5a3e259f223195ce54f2a51992e1d8b0d2b220ba11c6fd7ff0218a95789",
+      "bytes": 791
+    },
+    "artifacts/qa/release-ui/book-navigation.log": {
+      "sha256": "5925aa01d1f5235b7f7c64fc5b8ee462aba59c0215c905f3b3ad2e6f2bbde953",
+      "bytes": 673
+    },
+    "artifacts/qa/release-ui/takeover-ui.log": {
+      "sha256": "be93e6e6c0ed44b51be9bb9708cd5ca1c01f2392a29908bab378b5f3e9190f2a",
+      "bytes": 768
+    },
+    "artifacts/qa/release-ui/compatible-rollback.log": {
+      "sha256": "17281719d0022635fd8c987b6fc004eb95947e724e90311239aa10bc4f09be50",
+      "bytes": 1421
+    },
+    "artifacts/takeover/formal-content-unchanged.json": {
+      "sha256": "767caecd856824df00238fe283ded74d6cea345a3f4c0de28640db3728b6aa25",
+      "bytes": 2011
+    },
+    "artifacts/takeover/kitchen-lv4-investment.md": {
+      "sha256": "95d92f3b6ee93b96f55197ef39aff2584b022c510ebf2d760dff9b1243303e63",
+      "bytes": 5371
+    },
+    "artifacts/takeover/kitchen-lv4-verification.log": {
+      "sha256": "71834431ccb6921a4038cd3b75f80202c9a8157cd28f8e3d1dc776068abbc3e2",
+      "bytes": 432
+    },
+    "artifacts/sim/kitchen-lv4/result.json": {
+      "sha256": "ddf07f256dac385a990e6a30c37fe82ce274ddd19f48dba28c48876b4ba3c2bb",
+      "bytes": 61392
+    },
+    "tools/verify-kitchen-lv4-investment.mjs": {
+      "sha256": "355c5e6ea027a685bd5a7add50366338268e34c57f7f141f70c93adc0bbe8e71",
+      "bytes": 12099
+    }
+  }
+}

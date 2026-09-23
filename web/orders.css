@@ -1,0 +1,36 @@
+/* Purchases share the business ledger's paper, ink and 44px touch scale. */
+.trade-nav{display:flex;gap:6px;flex:none;margin:0 0 8px}
+.trade-nav button{flex:1;min-height:40px;padding:5px 4px;border:1.5px solid #a9824d;border-radius:9px;background:#fff2c9;color:#6a4a2c;box-shadow:0 2px #d4b27a;font:inherit;font-size:14px}
+.trade-nav button[aria-pressed=true]{background:#ffd779;border-color:#b78546;font-weight:bold}
+.orders-screen{display:flex;flex-direction:column;overflow:hidden;color:#684b31;font-size:14px}
+.orders-screen button,.orders-screen select,.orders-screen input{font:inherit}
+.orders-screen button,.orders-screen select{min-height:44px}
+.orders-screen button:focus-visible,.orders-screen select:focus-visible,.orders-screen input:focus-visible{outline:3px solid #497657;outline-offset:2px}
+.orders-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 3px 12px}
+.orders-story{margin:2px 0 10px;padding:10px 12px;background:#f3ecd2;border:1px solid #d7c190;border-radius:8px}
+.orders-story h3{margin:4px 0;font-size:16px}.orders-story p{margin:4px 0 8px;font-size:13px;line-height:1.6}
+.orders-eyebrow{display:block;letter-spacing:.08em;font-size:12px;color:#967750}
+.orders-heading{font-size:15px;margin:12px 0 6px;color:#744928}
+.orders-card{margin:0 0 10px;padding:11px 12px;background:#fffbed;border:1px solid #dcc795;border-left:5px solid #b98a4f;border-radius:3px 8px 8px 3px}
+.orders-card.is-proposal{border-left-color:#8b9b66}
+.orders-card h3{margin:3px 0 6px;font-size:18px;color:#744928}
+.orders-card p{margin:4px 0;line-height:1.65}
+.orders-groups{list-style:none;padding:0;margin:6px 0;display:flex;flex-direction:column;gap:3px}
+.orders-groups li{padding:4px 8px;background:#f5edcf;border-radius:6px;font-size:13px}
+.orders-note{font-size:13px;color:#79654b}
+.orders-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.orders-actions button,.orders-story button{flex:1;min-width:80px;border:1.5px solid #ac946c;border-radius:8px;background:#fff9e9;box-shadow:0 2px #c6ae7c}
+.orders-screen .orange{background:#ffd16a;border-color:#b78546}
+.orders-variant{display:flex;flex-direction:column;gap:3px;font-size:13px;margin:6px 0}
+.orders-empty{color:#8b7658;font-size:13px;line-height:1.7}
+.orders-sheet-head{margin:2px 0 8px}.orders-sheet-head p{font-size:13px;line-height:1.6;margin:4px 0}
+.orders-keep{display:flex;gap:8px;align-items:center;min-height:44px}
+.orders-group{margin:8px 0}.orders-group h3{font-size:15px;margin:6px 0}
+.orders-row{display:flex;align-items:center;gap:8px;padding:6px 4px;border-bottom:1px dashed #dcc795}
+.orders-art .sprite-art,.orders-art img{width:40px;height:40px}
+.orders-row-info{flex:1;min-width:0;display:flex;flex-direction:column}.orders-row-info small{font-size:12px;color:#7d6a4f}
+.orders-qty{display:flex;align-items:center;gap:4px}.orders-qty button{width:40px;border:1.5px solid #ac946c;border-radius:8px;background:#fff9e9}.orders-qty output{min-width:24px;text-align:center;font-variant-numeric:tabular-nums}
+.orders-footer{display:flex;gap:7px;flex:none;padding-top:6px}.orders-footer button{flex:1;border:1.5px solid #a9824d;border-radius:9px;background:#fff2c9;box-shadow:0 2px #bf9c62}
+.orders-display input{width:22px;height:22px;accent-color:#789e5d}
+@media(prefers-reduced-motion:reduce){.orders-screen *{transition:none;animation:none}}
+.orders-recipe{display:inline-block;margin-top:3px;min-height:32px;padding:2px 8px;border:1px solid #ac946c;border-radius:7px;background:#fff9e9;font-size:12px}

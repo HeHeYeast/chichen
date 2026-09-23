@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-23T04:28:26.705Z",
+  "passed": true,
+  "checks": [
+    "中期旧档打开谷地册：6卡谜面、12编号剪影，名称/配方不泄露；320/390/1280无横溢",
+    "首趟保证荠菜标本；麦芽标本在4趟内取得（4趟保护，Lv.2+烤箱+面粉资格），两份材料免费辨认",
+    "谷棚两张卡共4趟取得（谷物+菜园由同一伙伴满足）；ALT-V与两种观赏方向登记",
+    "免费方法随真实完整寻访补全：REC-V-C1、REC-V-C3",
+    "ALT-V真实准备→烤箱开火：确认页说明替代模式，24只全为旧身份、无新增保底，准备模式随批次消费",
+    "REC-V-C1按已知方向准备并在3批内实收；收录后名称出现、再次准备为复刻",
+    "V-C3以真实寻访补全后蒸笼开火：地区模式只用旧加权伴随（114/115）、无旧保证插入；改回普通面粉蒸笼，确认页仍显示烧麦鸡“已安排1只”",
+    "麦穗冠鸡C134在3批内实收：可在寻访配队中选择，营业备货列表（含全部食用出品）不出现"
+  ],
+  "screens": [
+    "record-unknown-390",
+    "record-unknown-320",
+    "record-unknown-1280",
+    "identified-75",
+    "record-directions",
+    "alt-v-batch",
+    "first-valley-collected",
+    "steamer-regional-confirm",
+    "steamer-ordinary-confirm",
+    "ornamental-companion",
+    "business-edible-only"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

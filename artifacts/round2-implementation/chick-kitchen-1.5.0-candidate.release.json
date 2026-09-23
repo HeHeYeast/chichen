@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.0",
+    "versionCode":  16,
+    "file":  "chick-kitchen-1.5.0.apk",
+    "sha256":  "dde8ce97b888cb589b9f103cd19979392cf50971558c6cc44c376e0bb9f8f128",
+    "bytes":  52503075,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-09-21T15:01:44.6772180Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "555603e3a03c5a22516a3b84cc62dd83cf3f8ccd768b6e29a27e88ece79de159",
+    "runtimeFiles":  609,
+    "notes":  "第二轮厨房优化：30项单级手艺、跨方向试配、招牌与拼盘经营、安心等候、返料、普通已知出品复刻、轻装寻访。重做手艺、寻访、采购与观察界面，旧手艺一次性全额退点，原有批次与库存保留。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

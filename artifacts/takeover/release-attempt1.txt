@@ -1,0 +1,48 @@
+Runtime content generated outputs : passed
+Native content generated outputs : passed
+Runtime asset availability : passed
+Game and interface tests : passed
+✔ upgrade requirements expose each missing cookware level and distinguish insufficient CP (0.4404ms)
+✔ current schema missing extension fields is corrupt, never defaulted during load (4.2843ms)
+✔ reading or dismissing duck purchase details never mutates progress (0.5542ms)
+✔ O06 cannot reload a missing or out-of-variant frozen region, even if its allowed rows were rebuilt to match (15.714ms)
+✔ missing ingredients, levels, kitchen slots, campaign and sign identity cannot silently prepare (4.0928ms)
+✔ extra/duplicate/wrong egg/wrong tool/missing material conflict rejects before any debit (60.3043ms)
+✔ a legacy region with missing first-specimen history needs both identifications, without guessed facts (14.9239ms)
+✔ the regulars validator rejects out-of-order reads, missing results, stray baselines and bad visits (12.84ms)
+✔ schema rejects unknown fields at root, nested objects and array members and rejects missing required fields (36.7294ms)
+✔ read-only recipe previews expose concrete gates; missing materials and duck access cannot spend or prepare (8.3116ms)
+✔ missing gift and missing cookware cannot replace next-batch choices (1.4852ms)
+Chinese font coverage : passed
+  "missing_codepoints": [],
+Native save persistence : passed
+SaveRepository: 649 behavioral assertions passed (AOSP JSON + real files; JVM AtomicFile adapter).
+Native hatch notifications : passed
+HatchScheduler: 60 behavioral assertions passed (JVM platform fakes; not device validation).
+Backup and update simulations : passed
+test_missing_process_does_not_claim_startup (test_safe_android_update.SafeUpdateTests.test_missing_process_does_not_claim_startup) ... ok
+UI skill-art: passed (1/22)
+UI integration: passed (2/22)
+UI tool-strip: passed (3/22)
+UI recipe-book: passed (4/22)
+UI save-ui: passed (5/22)
+UI resume: passed (6/22)
+UI kitchen-care: passed (7/22)
+UI work-a: passed (8/22)
+UI work-b: passed (9/22)
+UI work-c: passed (10/22)
+UI work-d: passed (11/22)
+UI work-e: passed (12/22)
+UI work-f: passed (13/22)
+UI work-g: passed (14/22)
+UI work-h: passed (15/22)
+UI work-i: passed (16/22)
+UI check failed: work-j; see D:\gxy_code\game\chicken_duck_test\artifacts\qa\release-ui\work-j.log
+Release check failed: Browser UI regression. No release may be built until this is fixed.
+At D:\gxy_code\game\chicken_duck_test\tools\verify-release.ps1:28 char:53
++ ... ite-Output; throw "Release check failed: $Name. No release may be bui ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Release check f... this is fixed.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Release check failed: Browser UI regression. No release may be built until this is fixed 
+   .
+ 

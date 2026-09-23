@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-09-23T02:38:48.406Z",
+  "passed": true,
+  "checks": [
+    "旧第一采购在新版照常接取并一次交付12只，获得156CP（含原酬谢一次）",
+    "生意簿“订单”页：旧三章卡在顶，达到240/8后开放情境采购；打开页面本身不产生询问",
+    "收完一锅后出现“街坊备早饭”意向；接取冻结为鸡蛋厨房变体（未开鸭蛋）",
+    "预留6只香煎鸡：T仍为10，营业备货页只显示自由4只（Q不会被S占用）",
+    "分两批交付：第一批6只鸡宝只付基础价；第二批用预留的6只香煎鸡完成，另付酬谢12CP并记下“街坊便签”",
+    "花叶陈列：选3种各在家1只供看，不扣货、不付款，记下“花叶明信片”",
+    "320/390/1280无横溢；刷新后订单、预留与余额不变"
+  ],
+  "screens": [
+    "orders-empty-390",
+    "proposal-O01",
+    "business-sees-free-after-Q",
+    "deliver-second-batch",
+    "display-pick-3",
+    "orders-320",
+    "orders-1280"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

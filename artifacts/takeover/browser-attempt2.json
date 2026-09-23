@@ -1,0 +1,101 @@
+{
+  "checkedAt": "2026-09-23T15:08:19.633Z",
+  "release": true,
+  "passed": false,
+  "expectedCount": 22,
+  "completedCount": 11,
+  "requiredChecks": [
+    "skill-art",
+    "integration",
+    "tool-strip",
+    "recipe-book",
+    "save-ui",
+    "resume",
+    "kitchen-care",
+    "work-a",
+    "work-b",
+    "work-c",
+    "work-d",
+    "work-e",
+    "work-f",
+    "work-g",
+    "work-h",
+    "work-i",
+    "work-j",
+    "work-k",
+    "work-l",
+    "book-navigation",
+    "takeover-ui",
+    "compatible-rollback"
+  ],
+  "checks": [
+    {
+      "name": "skill-art",
+      "passed": true,
+      "exitCode": 0,
+      "log": "skill-art.log"
+    },
+    {
+      "name": "integration",
+      "passed": true,
+      "exitCode": 0,
+      "log": "integration.log"
+    },
+    {
+      "name": "tool-strip",
+      "passed": true,
+      "exitCode": 0,
+      "log": "tool-strip.log"
+    },
+    {
+      "name": "recipe-book",
+      "passed": true,
+      "exitCode": 0,
+      "log": "recipe-book.log"
+    },
+    {
+      "name": "save-ui",
+      "passed": true,
+      "exitCode": 0,
+      "log": "save-ui.log"
+    },
+    {
+      "name": "resume",
+      "passed": true,
+      "exitCode": 0,
+      "log": "resume.log"
+    },
+    {
+      "name": "kitchen-care",
+      "passed": true,
+      "exitCode": 0,
+      "log": "kitchen-care.log"
+    },
+    {
+      "name": "work-a",
+      "passed": true,
+      "exitCode": 0,
+      "log": "work-a.log"
+    },
+    {
+      "name": "work-b",
+      "passed": true,
+      "exitCode": 0,
+      "log": "work-b.log"
+    },
+    {
+      "name": "work-c",
+      "passed": true,
+      "exitCode": 0,
+      "log": "work-c.log"
+    },
+    {
+      "name": "work-d",
+      "passed": false,
+      "exitCode": 1,
+      "log": "work-d.log"
+    }
+  ],
+  "error": "UI check failed: work-d; see D:\\gxy_code\\game\\chicken_duck_test\\artifacts\\qa\\release-ui\\work-d.log",
+  "nativeDeviceTest": false
+}

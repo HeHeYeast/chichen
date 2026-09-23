@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-23T04:30:10.692Z",
+  "passed": true,
+  "checks": [
+    "六个黄金旧档（v1新手/v1与v3前期/v3中期含进行中锅与寻访/193全收/满仓近上限）升级到schema 6后，五个地方逐一打开无报错、未知新品名不泄露；刷新后CP与收录不变",
+    "schema 5旧版本在营业中（12只）且谷地寻访在途时保存；新版4小时后打开：两窗各6只只结算一次，寻访票据照常归队并保证首标本；刷新不重复"
+  ],
+  "screens": [
+    "golden-new-v3",
+    "golden-early-v1",
+    "golden-early-v3",
+    "golden-mid-v3",
+    "golden-complete193-v3",
+    "golden-rich-stock-v3",
+    "upgrade-in-flight"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

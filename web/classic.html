@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#88705d"><title>鸡宝厨房</title><link rel="icon" href="/assets/png/icon.png"><link rel="stylesheet" href="/web/classic-style.css"></head>
+<body><main id="viewport"><div id="game" aria-label="鸡宝厨房"><canvas id="scene" width="640" height="1136"></canvas><div id="controls"></div><div id="panels"></div><div id="dialog-layer"></div><p id="announcement" class="sr-only" role="status" aria-live="polite"></p></div></main><script type="module">
+// The archived renderer is available for isolated reviews only. Its legacy
+// writer must never touch a current player's transactional save.
+if(new URLSearchParams(location.search).has('review'))await import('/web/classic-app.js');
+else location.replace('/web/index.html');
+</script></body></html>
+

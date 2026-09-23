@@ -1,0 +1,69 @@
+.shrine-screen.panel { background:#fff4d5; }
+.shrine-ledger { display:flex; justify-content:space-between; gap:6px; flex-shrink:0; margin:0 0 7px; font-size:9px; color:#8a714c; }
+.shrine-ledger strong { color:#6a7d4a; font-weight:700; font-variant-numeric:tabular-nums; }
+.shrine-tabs button { position:relative; }
+.shrine-tabs i { position:absolute; right:4px; top:3px; width:7px; height:7px; background:#d56143; border:1px solid #fff4d5; border-radius:50%; }
+.shrine-body { padding:0 3px 5px; }
+.shrine-heading { font-size:12px; text-align:center; color:#8b5f39; margin:7px 0 12px; }
+.shrine-draw-scene { position:relative; display:flex; flex-direction:column; align-items:center; min-height:152px; background:radial-gradient(ellipse at center,#f7d78066,transparent 70%); }
+.shrine-cylinder { width:80px; height:100px; transform:rotate(-7deg); margin:9px 0 2px; }
+.shrine-cylinder svg { width:100%; height:100%; }
+.shrine-draw-scene>span { font-size:16px; color:#ad583b; font-weight:900; letter-spacing:3px; }
+.shrine-draw-scene>small { font-size:9px; color:#ac9060; margin-top:4px; }
+.shrine-rope { position:absolute; top:6px; left:14px; right:14px; height:17px; border-bottom:4px solid #bea06a; border-radius:0 0 50% 50%; }
+.shrine-slip { position:relative; width:174px; margin:0 auto 8px; padding:11px 15px 15px; border:2px solid #bd614a; background:#fffaf0; box-shadow:0 4px #d8bd8a; text-align:center; }
+.shrine-slip::before { content:''; position:absolute; inset:4px; border:1px solid #e5b397; pointer-events:none; }
+.shrine-slip>small { display:block; font-size:9px; color:#a58562; }
+.shrine-slip>strong { display:block; font-size:28px; line-height:43px; letter-spacing:4px; color:#b94e36; font-weight:900; margin-top:5px; }
+.shrine-slip>span { display:block; color:#77563d; font-size:11px; font-weight:700; }
+.shrine-slip p { margin:9px 0; font-size:10px; line-height:17px; color:#96815c; }
+.shrine-slip em { display:inline-block; border:1px solid #b8624c; color:#a9533d; padding:2px 5px; font-size:9px; font-style:normal; transform:rotate(-5deg); }
+.shrine-status { font-size:10px; line-height:17px; color:#79603d; margin:8px 0; text-align:center; }
+.shrine-main-action { display:block; min-width:159px; min-height:38px; margin:9px auto; }
+.shrine-fine { font-size:9px; line-height:16px; color:#8f7b55; text-align:center; margin:8px 3px; }
+.shrine-requirements { padding:0 7px; margin:9px 0; list-style:none; font-size:10px; color:#8d754f; }
+.shrine-requirements li { display:flex; justify-content:space-between; gap:6px; padding:5px 0; border-bottom:1px dashed #dec79b; }
+.shrine-requirements b { flex-shrink:0; font-variant-numeric:tabular-nums; }
+.shrine-link { display:block; margin:6px auto; padding:7px; min-height:36px; background:transparent; border:0; color:#5f7d4d; font-size:11px; }
+.shrine-footer { display:flex; align-items:center; justify-content:space-between; flex-shrink:0; gap:6px; }
+.shrine-footer button { min-height:34px; padding:4px 0; border:0; background:none; color:#876337; font-size:11px; }
+.shrine-footer>span { font-size:8px; color:#9a815c; }
+.shrine-book-intro { margin:6px 0 10px; color:#927b54; font-size:10px; line-height:17px; }
+.shrine-stamps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; padding:1px 0 5px; }
+.shrine-stamp { display:flex; align-items:center; flex-direction:column; min-height:110px; padding:6px 2px; background:#f1e6c7; border:1px dashed #bba172; border-radius:5px; }
+.shrine-stamp.is-found { border:1.5px solid #b96c50; background:#fff8df; box-shadow:0 2px #d8bd8a; }
+.shrine-stamp>small { font-size:9px; color:#967e55; }
+.shrine-stamp-art { display:block; width:49px; height:51px; margin:3px 0; }
+.shrine-stamp-art img,.shrine-stamp-art svg,.shrine-sign-portrait svg,.shrine-sign-portrait img { width:100%; height:100%; object-fit:contain; }
+.shrine-unknown { display:grid; place-items:center; margin:auto; width:32px; height:42px; background:#e5d9b7; border-radius:50% 50% 43% 43%; color:#bca778; font-size:20px; border:1px solid #c8b789; }
+.shrine-stamp strong { font-size:11px; line-height:16px; color:#856444; }
+.shrine-stamp em { margin-top:2px; font-size:9px; font-style:normal; color:#9a8059; }
+.shrine-stamp.is-found em { color:#ad6046; }
+.shrine-sign-detail { text-align:center; padding:12px 7px; }
+.shrine-sign-detail>small { color:#aa8b5e; font-size:10px; }
+.shrine-sign-portrait { display:block; width:105px; height:105px; margin:16px auto 9px; }
+.shrine-sign-portrait .shrine-unknown { width:66px; height:88px; font-size:39px; }
+.shrine-sign-detail h3 { color:#9e553a; font-size:16px; }
+.shrine-sign-detail>p { color:#977c53; font-size:11px; line-height:19px; }
+.shrine-goals { display:flex; flex-direction:column; gap:9px; }
+.shrine-goal { padding:9px; border:1px solid #d0b382; border-radius:8px; background:#fff9e4; box-shadow:0 2px #e1cb9b; }
+.shrine-goal.is-claimed { background:#ecedcf; }
+.shrine-goal-title { display:flex; justify-content:space-between; gap:7px; font-size:12px; color:#775032; }
+.shrine-goal-title b { color:#b67c31; font-size:11px; white-space:nowrap; }
+.shrine-goal>p { margin:5px 0 8px; color:#937b52; font-size:10px; line-height:16px; }
+.shrine-goal-progress { display:flex; gap:9px; align-items:center; font-size:10px; color:#897249; font-variant-numeric:tabular-nums; }
+.shrine-goal-progress progress { min-width:0; flex:1; appearance:none; height:7px; border:0; border-radius:4px; overflow:hidden; background:#e3d5ae; }
+.shrine-goal-progress progress::-webkit-progress-bar { background:#e3d5ae; }
+.shrine-goal-progress progress::-webkit-progress-value { background:#a4bb70; border-radius:4px; }
+.shrine-goal-progress progress::-moz-progress-bar { background:#a4bb70; }
+.shrine-goal-action { display:flex; align-items:center; justify-content:space-between; margin-top:7px; gap:6px; min-height:34px; }
+.shrine-goal-action small { font-size:9px; color:#928360; }
+.shrine-goal-action button { min-height:34px; padding:5px 8px; background:#e8edcb; border:1px solid #a7b179; border-radius:5px; color:#677f4e; font-size:10px; }
+.shrine-goal-action button.orange { background:#ffdc80; color:#87623a; }
+.shrine-claimed-stamp { font-size:11px; border:1px solid #81975f; padding:3px 6px; color:#718a51; transform:rotate(-5deg); }
+@media(prefers-reduced-motion:no-preference) {
+  .shrine-slip.is-revealing { animation:shrine-reveal 650ms cubic-bezier(.2,0,0,1); }
+  .shrine-cylinder { animation:shrine-sway 4s ease-in-out infinite; }
+}
+@keyframes shrine-reveal { from { opacity:.1; transform:translateY(18px) rotate(-5deg); } to { opacity:1; transform:translateY(0) rotate(0); } }
+@keyframes shrine-sway { 0%,80%,100% { transform:rotate(-7deg); } 86% { transform:rotate(6deg); } 92% { transform:rotate(-10deg); } }

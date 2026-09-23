@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>鸡宝厨房 · 四阶段可玩对照</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #443f34; background: #edf0e9; font: 14px 'Microsoft YaHei', 'PingFang SC', sans-serif; }
+    main { width: min(1408px, 100%); padding: 26px 24px 38px; margin: auto; }
+    header { max-width: 1010px; }
+    .eyebrow { margin: 0 0 6px; color: #776d5c; font-size: 12px; }
+    h1 { margin: 0 0 10px; font-size: 27px; line-height: 1.4; }
+    header p { margin: 7px 0; line-height: 1.8; }
+    a { color: #47724f; text-underline-offset: 3px; }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin: 20px 0 16px; }
+    button { min-height: 36px; padding: 7px 12px; color: inherit; background: #fffdf3; border: 1px solid #bac3af; border-radius: 5px; font: inherit; font-size: 12px; cursor: pointer; }
+    button:hover:not(:disabled) { background: #ffedb8; }
+    button:disabled { opacity: .5; cursor: default; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid #247553; outline-offset: 2px; }
+    label { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+    input[type=checkbox] { width: 17px; height: 17px; margin: 0; accent-color: #438362; }
+    #load-state { color: #756b59; font-size: 12px; }
+    #stage-grid { display: grid; grid-template-columns: repeat(4, minmax(0,320px)); gap: 24px; justify-content: center; align-items: start; }
+    #stage-grid.ends-only { grid-template-columns: repeat(2, minmax(0,320px)); gap: 28px; }
+    .stage[hidden] { display: none; }
+    .stage { width: 100%; min-width: 0; }
+    .stage h2 { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 8px; font-size: 16px; line-height: 1.5; }
+    .stage h2 small { color: #7b725f; font-size: 11px; font-weight: 400; }
+    .stage-description { min-height: 36px; margin: 0 0 10px; color: #756b59; font-size: 12px; line-height: 18px; }
+    iframe { display: block; width: 100%; height: 568px; border: 0; background: #dfebd9; box-shadow: 0 3px 14px #443f3418; }
+    .stage output { display: block; min-height: 55px; margin: 10px 0 8px; padding: 7px 9px; color: #4f5846; background: #e0e7d7; border-radius: 5px; font-size: 12px; line-height: 1.75; white-space: pre-line; font-variant-numeric: tabular-nums; }
+    .stage-actions { display: flex; align-items: center; gap: 7px; }
+    .stage-actions button { flex: 1; padding: 7px; }
+    .stage-link { display: inline-block; margin-top: 10px; font-size: 12px; }
+    .notes { max-width: 1050px; margin-top: 25px; border-top: 1px solid #d0d7c9; padding-top: 12px; color: #746b5b; font-size: 12px; line-height: 1.8; }
+    .notes p { margin: 7px 0; }
+    #notice { color: #86562f; }
+    @media (max-width: 1060px) { #stage-grid { grid-template-columns: repeat(2, 320px); gap: 27px 24px; } }
+    @media (max-width: 720px) { main { padding: 20px 12px 30px; } h1 { font-size: 23px; } #stage-grid { grid-template-columns: 320px; } }
+    @media (max-width: 720px) { #stage-grid.ends-only { grid-template-columns: minmax(0,320px); } }
+    @media (max-width: 343px) { main { padding-left: 4px; padding-right: 4px; } #stage-grid { justify-content: start; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">厨房阶段 / 可玩对照</p>
+      <h1>四个阶段，放在一起看</h1>
+      <p>破旧茅草房屋 → 略微整齐木板房屋 → 小康公寓厨房 → 豪华精装厨房。从房屋结构、家具到装修逐级改善，保留紧凑的 6×4 鸡宝和四种孵化床。可直接收取，或打开升级面板查看条件与收益。</p>
+      <p><a href="/review">单屏详细验收</a> · <a href="/web/asset-plan.html">原版阶段与素材清单</a> · <a href="/" target="_blank" rel="noopener">正常游戏 ↗</a></p>
+    </header>
+    <div class="toolbar" aria-label="四阶段展示控制">
+      <button id="reset-all" disabled>全部恢复</button>
+      <button id="upgrade-all" disabled>查看全部升级条件</button>
+      <button id="capture-all" disabled>保存当前对照</button>
+      <label><input id="ends-only" type="checkbox">只看初始与最高级</label>
+      <label><input id="dirty-all" type="checkbox">展示脏污</label>
+      <span id="load-state" role="status">正在载入 4 个厨房…</span>
+    </div>
+    <section id="stage-grid" aria-label="四阶段游戏画面"></section>
+    <div class="notes">
+      <p>四个厨房采用相同的 320×568 布局，随页面宽度等比例显示。标题表示本栏的起始阶段，升级后以游戏内等级为准。“全部恢复”会重置各栏和 24 只鸡宝。</p>
+      <p>这里的操作不会修改正常游戏进度。展示脏污会保留当前鸡宝与余额。保存画面导出当前对照中的游戏场景，不包含打开的条件面板；切回本页后再保存可获得最新状态。</p>
+      <p id="notice" role="status"></p>
+    </div>
+  </main>
+  <script type="module">
+    import { KITCHEN_STAGES } from './kitchen-stages.js';
+
+    const grid = document.querySelector('#stage-grid');
+    const dirtyCheckbox = document.querySelector('#dirty-all');
+    const loadState = document.querySelector('#load-state');
+    const notice = document.querySelector('#notice');
+    const cards = KITCHEN_STAGES.map(stage => {
+      const element = document.createElement('article');
+      element.className = 'stage';
+      element.dataset.stage = String(stage.level + 1);
+      element.innerHTML = `<h2><span></span><small>320 × 568</small></h2><iframe src="/?review=1" title="厨房 Lv.${stage.level + 1} 可玩预览" loading="eager" allow="autoplay"></iframe><output aria-live="off">正在载入…</output><div class="stage-actions"><button data-reset disabled>恢复此阶段</button><button data-upgrade disabled>查看升级条件</button></div><a class="stage-link" href="/review?stage=${stage.level + 1}">单独查看 Lv.${stage.level + 1} ↗</a>`;
+      element.querySelector('h2 span').textContent = `Lv.${stage.level + 1} ${stage.title}`;
+      const description = document.createElement('p');
+      description.className = 'stage-description';
+      description.textContent = stage.description;
+      element.querySelector('h2').after(description);
+      grid.append(element);
+      const card = { stage, element, frame: element.querySelector('iframe'), initialized: false, ready: false };
+      element.querySelector('[data-reset]').addEventListener('click', () => resetCard(card));
+      element.querySelector('[data-upgrade]').addEventListener('click', () => openUpgrade(card));
+      return card;
+    });
+    function sizeFrames(){cards.filter(card=>!card.element.hidden).forEach(card=>{card.frame.style.height=card.element.clientWidth*568/320+'px';});}
+    window.addEventListener('resize',sizeFrames);sizeFrames();
+    const endsOnly=document.querySelector('#ends-only');endsOnly.checked=new URLSearchParams(location.search).get('compare')==='ends';
+    function showComparison(){grid.classList.toggle('ends-only',endsOnly.checked);cards.forEach(card=>{card.element.hidden=endsOnly.checked&&card.stage.level>0&&card.stage.level<3;});document.querySelector('h1').textContent=endsOnly.checked?'从破旧茅草屋，到豪华精装厨房':'四个阶段，放在一起看';sizeFrames();}
+    endsOnly.addEventListener('change',showComparison);showComparison();
+    function send(card, command, value) {
+      card.frame.contentWindow.postMessage({ type: 'chick-review', command, value }, location.origin);
+    }
+    function resetCard(card) {
+      if (!card.ready) return;
+      card.element.querySelector('output').textContent = '正在恢复此阶段…';
+      send(card, 'scene', `stage${card.stage.level + 1}`);
+      send(card, 'dirty', dirtyCheckbox.checked);
+    }
+    function openUpgrade(card) {
+      if (!card.ready) return;
+      // Use the game's real control; state changes remain inside the game.
+      const levelButton = card.frame.contentDocument.querySelector('[data-control-id="level"]');
+      if (levelButton) levelButton.click();
+      else notice.textContent = `请先回到 Lv.${card.stage.level + 1} 栏的厨房，再查看升级条件。`;
+    }
+    function refreshLoadState() {
+      const count = cards.filter(card => card.ready).length;
+      loadState.textContent = count === cards.length ? '4 个厨房已就绪' : `${count} / 4 个厨房已就绪`;
+      document.querySelector('#reset-all').disabled = count === 0;
+      document.querySelector('#upgrade-all').disabled = count === 0;
+      document.querySelector('#capture-all').disabled = count !== cards.length;
+    }
+    document.querySelector('#reset-all').addEventListener('click', () => { notice.textContent = ''; cards.forEach(resetCard); });
+    document.querySelector('#upgrade-all').addEventListener('click', () => { notice.textContent = ''; cards.forEach(openUpgrade); });
+    document.querySelector('#capture-all').addEventListener('click',()=>{
+      if(cards.some(card=>!card.ready))return;
+      const visible=cards.filter(card=>!card.element.hidden);
+      const canvas=document.createElement('canvas');canvas.width=visible.length*330+8;canvas.height=620;
+      const ctx=canvas.getContext('2d');ctx.fillStyle='#edf0e9';ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.font='bold 15px "Microsoft YaHei",sans-serif';ctx.fillStyle='#443f34';
+      visible.forEach((card,i)=>{const x=8+i*330;ctx.fillText(`Lv.${card.stage.level+1} ${card.stage.title}`,x,25);ctx.drawImage(card.frame.contentDocument.querySelector('#scene'),x,38,320,568);});
+      const link=document.createElement('a');link.href=canvas.toDataURL('image/png');link.download=`chick-kitchen-stages-${Date.now()}.png`;document.body.append(link);link.click();link.remove();
+    });
+    dirtyCheckbox.addEventListener('change', () => {
+      cards.filter(card => card.ready).forEach(card => send(card, 'dirty', dirtyCheckbox.checked));
+      notice.textContent = '';
+    });
+    window.addEventListener('message', event => {
+      if (event.origin !== location.origin || event.data?.type !== 'chick-status' || event.data.loaded !== true) return;
+      const card = cards.find(item => item.frame.contentWindow === event.source);
+      if (!card) return;
+      if (!card.initialized) {
+        card.initialized = true;
+        card.ready = true;
+        card.element.querySelectorAll('button').forEach(button => { button.disabled = false; });
+        refreshLoadState();
+        resetCard(card);
+        return;
+      }
+      const data = event.data;
+      card.element.querySelector('output').textContent = `${data.cp.toLocaleString('zh-CN')} CP · 厨房 Lv.${data.kitchenLevel} · ${data.dirty ? '待清洁' : '干净'}\n厨房 ${data.eggs} 只 · 可收取 ${data.ready} 只`;
+    });
+  </script>
+</body>
+</html>

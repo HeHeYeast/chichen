@@ -1,0 +1,61 @@
+# Permanent private signing identity: back up securely; never commit.
+/.signing/
+
+# Android generated files and machine-local configuration.
+/android/.gradle/
+/android/.gradle-home/
+/android/build/
+/android/app/build/
+/android/generated-assets/
+/android/local.properties
+/android/.build.lock
+/android/.release-certificate.der
+/android/.candidate-release.json
+
+# Installable artifacts are distributed separately from source.
+/artifacts/releases/*.apk
+/artifacts/releases/*.idsig
+*.jks
+*.keystore
+
+# Private credentials and machine-local settings.
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+
+# Dependencies, downloaded tools, and generated caches.
+node_modules/
+__pycache__/
+*.py[cod]
+*.class
+/tools/jadx/
+/tools/jadx.zip
+
+# Packages, source archives, and real device saves stay on this machine.
+*.apk
+*.aab
+*.idsig
+/artifacts/source-backups/
+/artifacts/device-backups/
+/artifacts/device-qa/
+!/artifacts/device-qa/
+/artifacts/device-qa/*
+!/artifacts/device-qa/20260923/
+/artifacts/device-qa/20260923/*
+!/artifacts/device-qa/20260923/*.mjs
+!/artifacts/device-qa/20260923/*.gradle
+
+# Regenerable UI captures and temporary test workspaces.
+/artifacts/qa/
+/artifacts/takeover/python-temp/
+/artifacts/takeover/classes/
+/artifacts/takeover/rollback-tests/
+
+# Editor and operating-system temporary files.
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp

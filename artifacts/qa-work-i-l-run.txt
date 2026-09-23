@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-23T04:29:19.717Z",
+  "passed": true,
+  "checks": [
+    "不开营业：交付完成“街坊备早饭”(O01)即在常客页出现第一段；读完才显示第二段的两条路（MN2营业或O07采购），读取不扣货不付款",
+    "开MN1营业12只：第2窗来客带来“熟悉的早饭”，账单列出并可“去读”；读前刷新不丢不重复纸条，读后刷新不跳段、账款不变"
+  ],
+  "screens": [
+    "regulars-list-390",
+    "regulars-unread",
+    "regulars-reading",
+    "regulars-next-stage",
+    "regulars-320",
+    "regulars-1280",
+    "receipt-visitor"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

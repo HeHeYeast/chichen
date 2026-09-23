@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.4.8",
+    "versionCode":  15,
+    "file":  "chick-kitchen-1.4.8.apk",
+    "sha256":  "6a07f8f93c3b6465d45ecbad74f6fbd8c44275d721c869310a01c537a71a8e54",
+    "bytes":  52480548,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-09-21T01:03:52.4489105Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "4587172004eaa444fda11cef76f067fac8e0a07707e4f3642923d8b791d2fcef",
+    "runtimeFiles":  604,
+    "notes":  "A/B/C合并版：193篇伙伴介绍、三章常驻采购、五枝手艺、观察与候选预览、真实库存探索、随机签礼与清洁保鲜优化。统一在家库存和事务，存档升级v3兼容v1/v2，保留旧批次与安全覆盖备份。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

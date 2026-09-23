@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-09-23T15:07:33.140702+00:00",
+  "scope": "Isolated debug build; no installation, player saves or permanent release key access",
+  "apk": {
+    "path": "artifacts/takeover/chick-kitchen-241-debug-c1e5d00d61ea.apk",
+    "sha256": "c1e5d00d61ea690f5545883ecba8ea3b13db313c4fb9465ebfa7090ded3a2dbe",
+    "bytes": 53623356,
+    "applicationId": "com.jibao.kitchen",
+    "versionName": "1.5.0",
+    "versionCode": 16,
+    "debugOnly": true,
+    "signatureV2": true,
+    "certificateSha256": "3924e188c4b7427bbce6611271e5a23789f7c7c4937ab769b7ec6aa5a85291d2"
+  },
+  "runtime": {
+    "files": 662,
+    "bytes": 53187609,
+    "contentHash": "0fbce8929a674fad2f1294e198e17451ff2f5a3825c1b8c9c452b7bb9dfa9bc6",
+    "manifestSha256": "9dd863a6e19c09e422464221ba19d9b45f77ec420e04cea57bd5af54dd3e007f",
+    "allPackagedBytesMatchCurrentSources": true
+  },
+  "checks": {
+    "nativeSaveAssertions": 649,
+    "sharedCorruptFixturesRejectedByBothPlatforms": 107,
+    "legalContractMatrixStates": 103,
+    "notifications": 60,
+    "android35CompiledSources": 9,
+    "nativeContentGeneratedCheck": true
+  },
+  "nativeSources": {
+    "android/app/src/main/java/com/jibao/kitchen/BusinessSaveValidator.java": "23a5cd712d077a97ee89a53e82d09a9e42a4cbea6c9549d0141da9a0a3284709",
+    "android/app/src/main/java/com/jibao/kitchen/HatchAlarmReceiver.java": "7dbe4536faaeed07dc9b2496587b3b770c1f37623d3fdaf20ea9f21e44d17315",
+    "android/app/src/main/java/com/jibao/kitchen/HatchScheduler.java": "12062c66b866b23d4a1b1ee757a95ad100dd98470125d9da8d338853418a93c6",
+    "android/app/src/main/java/com/jibao/kitchen/MainActivity.java": "74e27414047f55e168a4754505a42c3f5d6315ce00eacf366384f80f2b69ca43",
+    "android/app/src/main/java/com/jibao/kitchen/RestoreAlarmsReceiver.java": "b1d1679400c1ff29897d528b9b93a36b01337715a7f92ad340621365a6cf028a",
+    "android/app/src/main/java/com/jibao/kitchen/RuntimeContent.java": "8510388f52cf43f0f6c08e128ccc1354337e60d425944c74b642260a4d0d2cf0",
+    "android/app/src/main/java/com/jibao/kitchen/SaveBridge.java": "faa14338e048ba5c2d29b3b3d2e166bf3de7aa66d5f6dfe45782278dcdfc5322",
+    "android/app/src/main/java/com/jibao/kitchen/SaveRepository.java": "e947e153248dd24665d4335471e8116acce6892629805d7339937405d54fffe0",
+    "android/app/src/main/java/com/jibao/kitchen/UpdateBackupProvider.java": "344767af6ad3c4e99fffdc9d96222e402a21aded961fd6457353a20495d3f5be"
+  },
+  "repairSources": {
+    "android/app/src/main/java/com/jibao/kitchen/SaveRepository.java": "e947e153248dd24665d4335471e8116acce6892629805d7339937405d54fffe0",
+    "android/app/src/main/java/com/jibao/kitchen/BusinessSaveValidator.java": "23a5cd712d077a97ee89a53e82d09a9e42a4cbea6c9549d0141da9a0a3284709",
+    "android/app/src/main/java/com/jibao/kitchen/RuntimeContent.java": "8510388f52cf43f0f6c08e128ccc1354337e60d425944c74b642260a4d0d2cf0",
+    "android/tests/build-native-content.mjs": "905e202a84f2b88e9c03f011842574605b5f3b961919fa86005ac5da6043de00",
+    "android/tests/build-save-fixtures.mjs": "dbea4af3f819cd6eb6d59902255227ced5d0f20ec9087777b78fee7a89a1a459",
+    "android/tests/save-negative-cases.mjs": "4ec39beb2b5079f97a670c948c596d21e758198e281e3766dd749bc9f8fd09ac",
+    "android/tests/save-contract-matrix.mjs": "634de2db0fd83f9c12baa87e03d0fcd7b9a9bf2c1209c38ad26b5fe2053a7600",
+    "android/tests/run-save-tests.ps1": "31c7f0a416b92bccd366870fe4677c82d86f9756474fe871f460e026938aeef4",
+    "android/tests/saves/com/jibao/kitchen/SaveRepositoryTest.java": "cb3078682eb8e6a74a835d3d296255f093cb9a7cf95473e85793ab06a290c2ac",
+    "android/tests/saves/README.md": "9f45afbe126ed26727c14c35267e6e50e8922e252938f13799ebc24c262dde96"
+  },
+  "supersededDebugPackages": [
+    "artifacts/takeover/chick-kitchen-241-debug-9b2fd40148e7.apk",
+    "artifacts/takeover/chick-kitchen-241-debug-e91aba27f70f.apk"
+  ],
+  "limits": [
+    "Debug signing only, not a release certificate",
+    "No physical-device lifecycle/process-death/restore validation",
+    "Concept silhouettes are not final production art"
+  ]
+}

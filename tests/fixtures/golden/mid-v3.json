@@ -1,0 +1,537 @@
+{
+  "version": 3,
+  "cp": 6174,
+  "kitchenLevel": 1,
+  "toolLevels": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    -1,
+    0,
+    -1,
+    0
+  ],
+  "ingredients": {
+    "0": 3,
+    "3": 2,
+    "27": 1,
+    "68": 1
+  },
+  "selected": [],
+  "egg": 1,
+  "duck": true,
+  "batch": {
+    "tool": 2,
+    "level": 1,
+    "egg": 1,
+    "ingredients": [
+      27
+    ],
+    "started": 1800000000000,
+    "ends": 1800003000000,
+    "eggs": [
+      {
+        "x": 81,
+        "y": 200,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 112,
+        "y": 200,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 143,
+        "y": 200,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 174,
+        "y": 200,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 205,
+        "y": 200,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 236,
+        "y": 200,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 81,
+        "y": 226,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 112,
+        "y": 226,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 143,
+        "y": 226,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 174,
+        "y": 226,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 205,
+        "y": 226,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 236,
+        "y": 226,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 81,
+        "y": 252,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 112,
+        "y": 252,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 143,
+        "y": 252,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 174,
+        "y": 252,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 205,
+        "y": 252,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 236,
+        "y": 252,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 81,
+        "y": 278,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 112,
+        "y": 278,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 143,
+        "y": 278,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 174,
+        "y": 278,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 205,
+        "y": 278,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      },
+      {
+        "x": 236,
+        "y": 278,
+        "id": 6,
+        "egg": 1,
+        "openAt": 1800002282609,
+        "blackAt": 1800011282609,
+        "gold": false,
+        "collected": false,
+        "status": "egg",
+        "flipped": true,
+        "immune": false
+      }
+    ],
+    "rules": {
+      "version": 2,
+      "calm": false,
+      "pickGold": true,
+      "returnEligible": false,
+      "returnTicket": null,
+      "finished": false,
+      "harvestBonus": 0,
+      "originalMinutes": 50,
+      "reduction": 0,
+      "freshMinutes": 150,
+      "sickness": 0.4,
+      "kitchenLevel": 1,
+      "freshness": true,
+      "protectSickness": true
+    },
+    "alarmed": true
+  },
+  "farm": {
+    "0:0": 4,
+    "0:3": 4,
+    "0:4": 4,
+    "0:6": 4,
+    "0:8": 4,
+    "0:10": 4,
+    "0:18": 4,
+    "0:19": 4,
+    "1:0": 4,
+    "1:3": 4,
+    "1:5": 4,
+    "1:7": 4
+  },
+  "total": {
+    "0:0": 288,
+    "0:3": 24,
+    "0:4": 24,
+    "0:6": 24,
+    "0:8": 24,
+    "0:10": 24,
+    "0:18": 24,
+    "0:19": 24,
+    "1:0": 24,
+    "1:3": 24,
+    "1:5": 24,
+    "1:7": 24
+  },
+  "lastSeen": 1800000000000,
+  "lastClean": 1800000000000,
+  "farmFixed": 1800000000000,
+  "farmChecked": 1800000000000,
+  "dirty": false,
+  "alarm": true,
+  "music": true,
+  "sound": true,
+  "events": {
+    "gift_tool_2_68_character_id": 95,
+    "legacyOmikujiCount": 7,
+    "shrineCollections": {
+      "duck-5": true
+    }
+  },
+  "progress": {
+    "skillVersion": 2,
+    "migrationRespec": false,
+    "migrationNotice": false,
+    "leftovers": [],
+    "hotStove": null,
+    "lastHarvest": null,
+    "sources": {
+      "harvest:24": 2,
+      "species:5": 1,
+      "species:10": 1,
+      "kitchen:1": 2,
+      "harvest:120": 2,
+      "harvest:500": 2
+    },
+    "skills": {
+      "CUL-1": 1,
+      "HOME-1": 1,
+      "TRIP-1": 1
+    },
+    "respecAt": null,
+    "protection": {
+      "freshness": true,
+      "sickness": true,
+      "calm": false
+    },
+    "trade": {
+      "initialGranted": false,
+      "credits": 0,
+      "harvestProgress": 0,
+      "rebateRemainder": 0,
+      "markupRemainder": 0,
+      "category": null
+    },
+    "fortune": {
+      "lastTarget": null,
+      "drought": 0
+    },
+    "knowledge": {
+      "facts": [],
+      "recipes": []
+    },
+    "orders": {
+      "first-sale": {
+        "accepted": true,
+        "completed": true,
+        "choice": "0:0",
+        "delivered": 12
+      },
+      "tea-party": {
+        "accepted": true,
+        "completed": false,
+        "choice": "0:10",
+        "delivered": 2
+      }
+    },
+    "trip": {
+      "id": "trip-1",
+      "version": 1,
+      "status": "running",
+      "routeId": "water",
+      "members": [
+        "0:0",
+        "1:0"
+      ],
+      "startedAt": 1800000000000,
+      "endAt": 1800021600000,
+      "remaining": [
+        0,
+        0,
+        0
+      ],
+      "cpReward": 12,
+      "cpProcessed": false,
+      "clueOrder": [
+        {
+          "key": "1:41",
+          "recipeId": "1:41/pool/6/0/3//",
+          "level": 1,
+          "fact": "1:41:L1"
+        },
+        {
+          "key": "1:4",
+          "recipeId": "1:4/pool/0/0/27//",
+          "level": 1,
+          "fact": "1:4:L1"
+        }
+      ],
+      "clueHit": true,
+      "clueProcessed": false,
+      "clueResult": null,
+      "special": false,
+      "snapshot": {
+        "light": false,
+        "baseUnits": 2,
+        "G": 8,
+        "F": 4,
+        "A": 1,
+        "materialChance": 0.29,
+        "clueChance": 0.21,
+        "hardAttempt": 8,
+        "bonus": true,
+        "directed": [],
+        "priority": null,
+        "skills": {
+          "CUL-1": 1,
+          "HOME-1": 1,
+          "TRIP-1": 1
+        }
+      }
+    },
+    "tripSequence": 1,
+    "lastTeam": [
+      "0:0",
+      "1:0"
+    ],
+    "routeFailures": {
+      "yard": 0,
+      "water": 0,
+      "wood": 0
+    },
+    "logicalAt": 1800000000000,
+    "tutorialSeen": false
+  },
+  "cleanCycle": {
+    "hours": 36,
+    "dirtyAt": 1800129600000
+  }
+}

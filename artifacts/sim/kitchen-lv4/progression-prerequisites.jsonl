@@ -1,0 +1,15 @@
+{"seq":2173,"at":1800460802902,"type":"prerequisite-tool","id":4,"from":1,"to":2,"cpBefore":250000,"cpAfter":244000,"delta":-6000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2174,"at":1800460802902,"type":"prerequisite-tool","id":5,"from":1,"to":2,"cpBefore":244000,"cpAfter":235000,"delta":-9000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2175,"at":1800460802902,"type":"upgrade-kitchen","from":2,"to":3,"cpBefore":235000,"cpAfter":215000,"delta":-20000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2176,"at":1800460802902,"type":"prerequisite-tool","id":0,"from":2,"to":3,"cpBefore":215000,"cpAfter":213000,"delta":-2000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2177,"at":1800460802902,"type":"prerequisite-tool","id":1,"from":2,"to":3,"cpBefore":213000,"cpAfter":210500,"delta":-2500,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2178,"at":1800460802902,"type":"prerequisite-tool","id":2,"from":2,"to":3,"cpBefore":210500,"cpAfter":205500,"delta":-5000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2179,"at":1800460802902,"type":"prerequisite-tool","id":3,"from":2,"to":3,"cpBefore":205500,"cpAfter":198000,"delta":-7500,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2180,"at":1800460802902,"type":"prerequisite-tool","id":4,"from":2,"to":3,"cpBefore":198000,"cpAfter":188000,"delta":-10000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2181,"at":1800460802902,"type":"prerequisite-tool","id":5,"from":2,"to":3,"cpBefore":188000,"cpAfter":173000,"delta":-15000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2182,"at":1800460802902,"type":"upgrade-kitchen","from":3,"to":4,"cpBefore":173000,"cpAfter":143000,"delta":-30000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2183,"at":1800460802902,"type":"late-kettle","to":1,"cpBefore":143000,"cpAfter":140500,"delta":-2500,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2184,"at":1800460802902,"type":"late-kettle","to":2,"cpBefore":140500,"cpAfter":133000,"delta":-7500,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2185,"at":1800460802902,"type":"late-kettle","to":3,"cpBefore":133000,"cpAfter":120500,"delta":-12500,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2186,"at":1800460802902,"type":"late-bread","to":1,"cpBefore":120500,"cpAfter":115500,"delta":-5000,"farm":{},"materials":{},"rngSeed":20260923}
+{"seq":2187,"at":1800460802902,"type":"late-bread","to":2,"cpBefore":115500,"cpAfter":100500,"delta":-15000,"farm":{},"materials":{},"rngSeed":20260923}

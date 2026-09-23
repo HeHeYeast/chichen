@@ -1,0 +1,21 @@
+✔ round2: 30 single-level nodes, 74 points total, independent tier-II and meaningful gate progress (2.2889ms)
+✔ round2: applying drafts is atomic, category cannot switch outside respec, respec never grants credits twice (11.3012ms)
+✔ round2: old skill migration refunds once and preserves all in-flight clocks, baskets, knowledge and orders (21.5741ms)
+✔ round2: kitchen snapshot gold is once per egg, whole-batch returns once and a full pending basket disables eligibility before starting (3.3212ms)
+✔ round2: pickup and return probabilities match confirmed rates with seeded samples (2842.9597ms)
+✔ round2: 10/15/20/25% timing, second ceiling, 30-minute reheat boundary, calm >=8h and snapshot independence (7.3098ms)
+✔ round2: hot stove requires full collection, cancels on other recipe or discard, no extra return for special media (2.8696ms)
+✔ round2: explicit category covers all species, excludes special species, split sales preserve fractional markup (0.8452ms)
+✔ round2: basket-first then maximum platters consumes disjoint stock, opt out preserves credits, combined skills never double credits (1.0389ms)
+✔ round2: light expedition uses 4h48/8h and actual base units, directed materials and CP are settled once even full (10.2612ms)
+✔ round2: matching team improves odds exactly and empty clue pools show zero without advancing pity (5.9976ms)
+✔ round2: observer records facts permanently, study stays secret, first discovery clue only once (4.2265ms)
+✔ round2: paid replication only accepts already collected ordinary candidates and costs exactly 10CP (22.9377ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2993.5133

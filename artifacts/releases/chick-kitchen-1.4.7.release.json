@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.4.7",
+  "versionCode": 14,
+  "file": "chick-kitchen-1.4.7.apk",
+  "sha256": "4b69f9d87a7d60491ce7e0c4c68a801dbedbb83b64fc63d80e321ddd31842f94",
+  "bytes": 52359854,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-20T15:39:45.0538904Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "8cb5e0b331ddaddb6915269fdf1a5c32a93b692f4568d310ba47f5d1ca1d1962",
+  "runtimeFiles": 593,
+  "notes": "厨具底栏支持触屏滑动和鼠标拖动，保留翻页、取消保护和配方定位；补齐中文字体缺字，统一品种发现与真实材料筛选查询。加入仅授权ADB shell读取的更新备份入口，发布强制运行更新模拟、原生与Web测试并逐文件核验APK。首次从1.4.6及更旧版接入需一次刚导出的备份，之后自动快照、覆盖安装、核对存档与原生启动；真机尚待验证。沿用原包名、签名与版本2存档，不调整玩法数值。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

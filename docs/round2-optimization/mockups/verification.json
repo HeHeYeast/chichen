@@ -1,0 +1,15 @@
+{
+  "at": "2026-09-21T13:29:08.665Z",
+  "checks": [
+    "Skill draft, points, confirmation and explicit demo feedback",
+    "Partner selection changes probabilities",
+    "Candidate to observation and back",
+    "Delivery quantity and quote update",
+    "Sale reward toggle recalculates 92 / 80 CP",
+    "Freshness toggle distinguishes original 30 minutes from protected 150 minutes",
+    "Review artifact opens at mobile width without horizontal document overflow",
+    "Document includes exactly 30 distinct skill IDs",
+    "No JavaScript page errors"
+  ],
+  "errors": []
+}

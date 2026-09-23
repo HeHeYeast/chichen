@@ -1,0 +1,49 @@
+/* The shop's ruled-paper ledger: copper ink, green cloth tabs, a red paid stamp. */
+.business-screen{display:flex;flex-direction:column;overflow:hidden;color:#684b31;font-size:14px}
+.business-screen h2{font-size:18px;flex:none;margin-bottom:10px}
+.business-screen button,.business-screen input,.business-screen select{font:inherit}
+.business-screen button,.business-screen select,.business-screen input[type=number]{min-height:44px}
+.business-screen button:focus-visible,.business-screen input:focus-visible,.business-screen select:focus-visible{outline:3px solid #497657;outline-offset:2px}
+.business-tabs{display:flex;gap:6px;flex:none;margin-bottom:9px}
+.business-tabs button{flex:1;padding:7px 4px;border:1.5px solid #a59062;background:#ebeac9;border-radius:8px 8px 3px 3px;color:#546344;box-shadow:0 2px #c4bb90;font-size:14px}
+.business-tabs button[aria-pressed=true]{background:#dbe7be;border-color:#778b55;font-weight:bold}
+.business-tabs button:disabled{opacity:.55}
+.business-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 3px 12px;scrollbar-gutter:stable}
+.business-menu-sheet{position:relative;margin:2px 0 12px;padding:13px 12px;background:#fffbed;border:1px solid #dcc795;border-radius:3px 8px 8px 3px;border-left:5px solid #8b9b66;box-shadow:1px 2px 0 #dac595}
+.business-eyebrow{display:block;letter-spacing:.1em;font-size:12px;color:#967750}
+.business-menu-sheet h3,.business-receipt-head h3{margin:5px 0 7px;font-size:22px;line-height:1.35;color:#744928}
+.business-menu-sheet p{margin:0 0 8px;line-height:1.65;font-size:14px}
+.business-menu-sheet small{display:block;font-size:13px;line-height:1.6;color:#79654b}
+.business-shop-sign{display:inline-block;transform:rotate(-5deg);padding:5px 11px;border:2px solid #698b5d;border-radius:4px;color:#55794b;background:#e5edca;font-size:17px;font-weight:bold;letter-spacing:.16em}
+.business-menu-sheet.is-open{text-align:center;border-left-width:1px;border-top:5px solid #8b9b66}
+.business-prep-summary{display:flex;justify-content:space-between;align-items:center;gap:5px;margin:12px 0 8px;font-size:14px}
+.business-tier{font-size:12px;padding:4px 6px;border-radius:5px;background:#eee2ba;white-space:nowrap}
+.business-tier.suitable{background:#dfe9bd;color:#5e7240}.business-tier.complete{background:#f7d887;color:#7c5928}
+.business-preferences{display:grid;gap:3px;border-block:1px dashed #d3ba86;padding:5px 0 9px}
+.business-preferences label{display:flex;align-items:center;gap:8px;min-height:40px;line-height:1.5}
+.business-preferences input{width:19px;height:19px;accent-color:#688551;flex:none}
+.business-preferences small{font-size:12px;color:#8a7454;padding-left:27px;line-height:1.5}
+.business-filter{display:flex;gap:5px;padding:10px 0}.business-filter button{padding:4px 7px;background:none;box-shadow:none;border:1px solid #c9b183;border-radius:7px;color:#7e6849;font-size:12px;flex:1}
+.business-filter button[aria-pressed=true]{background:#f5dfa7;color:#77502e;border-color:#b79253}
+.business-stock-list{display:grid;gap:9px}
+.business-stock-row{display:grid;grid-template-columns:46px minmax(0,1fr);gap:5px 8px;padding:9px;border:1px solid #d6c191;border-radius:9px;background:#fff8df}
+.business-stock-row.is-selected{border-color:#b29153;box-shadow:inset 3px 0 #b9c78b}
+.business-stock-art{width:46px;height:49px;display:grid;place-items:center}.business-stock-art .sprite-art{width:46px!important;height:46px!important}
+.business-stock-info{display:grid;gap:3px;min-width:0}.business-stock-info strong{font-size:15px;line-height:1.4;overflow-wrap:anywhere}.business-stock-info small{font-size:12px;color:#8b7858}.business-stock-info>span{font-size:12px;color:#69804d}
+.business-quantity{display:grid;grid-template-columns:44px minmax(36px,1fr) 44px;grid-column:1/-1;gap:5px;margin-top:4px}.business-quantity button{border:1px solid #b99860;border-radius:6px;background:#f3e5b5;color:#725133;box-shadow:0 2px #cebc8a;font-size:20px}.business-quantity button:disabled{opacity:.45}
+.business-quantity input{width:100%;min-width:0;box-sizing:border-box;padding:4px;border:1px solid #c4ae7c;border-radius:5px;text-align:center;color:#694b2e;background:#fffdf2;font-variant-numeric:tabular-nums}
+.business-role-picker{display:flex;justify-content:space-between;align-items:center;gap:8px;grid-column:1/-1;font-size:12px;margin-top:2px}.business-role-picker select{min-width:0;max-width:72%;padding:4px;border:1px solid #bdab82;border-radius:5px;background:#fff9e3;color:#6d583d}
+.business-note,.business-prep-hint,.business-readonly{font-size:12px;line-height:1.7;color:#8b7150;margin:10px 0}.business-prep-hint{padding:9px;border:1px dashed #cdbb8d;border-radius:6px;background:#fbefce;color:#7e6545}
+.business-empty{padding:24px 10px;text-align:center;line-height:1.7}.business-empty h3{font-size:18px}.business-empty p{font-size:14px}.business-empty ul{text-align:left;padding-left:22px}.business-empty.compact{padding:10px}
+.business-screen .business-footer{display:flex;gap:8px;flex:none;margin:0;padding-top:9px;padding-bottom:env(safe-area-inset-bottom,0px);background:var(--panel-paper,#fff5d4)}
+.business-footer button{padding:7px 8px;min-width:0;border:1px solid #b3935e;border-radius:7px;background:#f2e6ba;color:#715535;box-shadow:0 2px #c5ad78;flex:1;font-size:14px!important}.business-footer .orange{background:#f4c76c;flex:1.3}.business-footer button:disabled{opacity:.55}
+.business-totals{display:grid;grid-template-columns:1fr 1fr;margin:10px 0;border-block:1px dashed #cbb584;padding:12px 0}.business-totals>div{text-align:center}.business-totals>div+div{border-left:1px solid #d5bf91}.business-totals dt{font-size:12px;color:#8a7352}.business-totals dd{margin:3px 0 0;font-size:28px;color:#886134;font-variant-numeric:tabular-nums}.business-totals dd small{font-size:12px;margin-left:4px}
+.business-next-window{display:grid;gap:6px;text-align:center;padding:11px;border:1px solid #c8cca1;background:#edf0d6;border-radius:8px}.business-next-window strong{font-size:16px;color:#627543}.business-next-window span,.business-next-window small{font-size:12px;color:#7b805b}
+.business-section-label{font-size:14px;margin:18px 0 7px}.business-counter-list>div{display:flex;align-items:center;gap:6px;padding:6px 0;border-bottom:1px dashed #dac79c;min-height:40px;font-size:13px}.business-counter-list>div>span:nth-child(2){flex:1;min-width:0}.business-counter-list strong{font-size:14px;white-space:nowrap}
+.business-mini-art{width:32px;height:32px;display:inline-flex;flex:none}.business-mini-art .sprite-art{width:32px!important;height:32px!important}
+.business-windows{border:1px solid #d5c197;border-radius:6px;padding:7px 9px;margin-top:12px;font-size:12px}.business-windows summary{min-height:36px;display:list-item;align-content:center;cursor:pointer}.business-windows ol{list-style:none;margin:0;padding:0}.business-windows li{display:flex;justify-content:space-between;gap:6px;padding:7px 0;border-top:1px dashed #dfcda7}.business-windows li strong{white-space:nowrap}
+.business-receipt-head{position:relative;padding:11px 7px 12px;text-align:center;border-bottom:2px solid #ac8b51}.business-receipt-head p{font-size:13px}.business-receipt-stamp{display:inline-block;padding:3px 9px;border:2px solid #ad674b;border-radius:3px;transform:rotate(-7deg);color:#a15e44;font-weight:bold;letter-spacing:.15em}
+.business-receipt-lines{margin:10px 0}.business-receipt-lines>div{display:flex;justify-content:space-between;padding:7px 2px;gap:12px;font-size:14px}.business-receipt-lines dd{margin:0;font-variant-numeric:tabular-nums}.business-receipt-lines .business-receipt-total{border-top:1px dashed #bba274;margin-top:8px;padding-top:12px;font-size:18px;font-weight:bold}.business-report-note{background:#e8edce;border-left:3px solid #9bac72;padding:9px;font-size:13px;line-height:1.7}
+@media(min-width:700px){.business-stock-row{grid-template-columns:52px minmax(0,1fr)}.business-scroll{padding-right:7px}.business-menu-sheet{padding:17px}}
+@media(prefers-reduced-motion:reduce){.business-screen *{animation:none!important;transition:none!important}}
+.business-menu-list{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px}.business-menu-list button{flex:0 0 auto;min-height:40px;padding:4px 10px;border:1.5px solid #ac946c;border-radius:9px;background:#fff9e9;font-size:12px;display:flex;flex-direction:column;align-items:center;line-height:1.3}.business-menu-list button[aria-pressed=true]{background:#ffe9a8;border-color:#b78546}.business-menu-list button[aria-disabled=true]{opacity:.62}.business-menu-list small{font-size:10px}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "seed": 5,
+  "missingSpecies": [],
+  "missingCards": [],
+  "totals": {
+    "trips": 157,
+    "batches": 118,
+    "identify": 8,
+    "purchases": 220,
+    "repairs": 206,
+    "plainBatches": 33,
+    "virtualDays": 57.8,
+    "cpSpent": 16162
+  }
+}

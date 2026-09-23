@@ -1,0 +1,86 @@
+Game and interface tests : passed
+✔ upgrade requirements expose each missing cookware level and distinguish insufficient CP (0.5477ms)
+✔ reading or dismissing duck purchase details never mutates progress (0.2107ms)
+✔ missing ingredients, levels, kitchen slots, campaign and sign identity cannot silently prepare (3.0347ms)
+✔ read-only recipe previews expose concrete gates; missing materials and duck access cannot spend or prepare (2.63ms)
+✔ missing gift and missing cookware cannot replace next-batch choices (0.8982ms)
+Chinese font coverage : passed
+  "missing_codepoints": [],
+Native save persistence : passed
+SaveRepository: 76 behavioral assertions passed (AOSP JSON + real files; JVM AtomicFile adapter).
+Native hatch notifications : passed
+HatchScheduler: 60 behavioral assertions passed (JVM platform fakes; not device validation).
+Backup and update simulations : passed
+test_missing_process_does_not_claim_startup (test_safe_android_update.SafeUpdateTests.test_missing_process_does_not_claim_startup) ... ok
+Browser UI regression : passed
+Release preflight passed: all six required checks succeeded.
+Offline game packaged: 609 source files, 49.4 MiB. Runtime SHA-256: 555603e3a03c5a22516a3b84cc62dd83cf3f8ccd768b6e29a27e88ece79de159
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.9/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:clean
+> Task :app:preBuild UP-TO-DATE
+> Task :app:verifyReleaseIdentity
+> Task :app:preReleaseBuild
+> Task :app:generateReleaseBuildConfig
+> Task :app:generateReleaseResValues
+> Task :app:javaPreCompileRelease
+> Task :app:checkReleaseAarMetadata
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
+> Task :app:parseReleaseLocalResources
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :app:extractProguardFiles
+> Task :app:mergeReleaseJniLibFolders
+> Task :app:mergeReleaseNativeLibs NO-SOURCE
+> Task :app:stripReleaseDebugSymbols NO-SOURCE
+> Task :app:extractReleaseNativeSymbolTables NO-SOURCE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:desugarReleaseFileDependencies
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:mergeReleaseStartupProfile UP-TO-DATE
+> Task :app:mergeReleaseArtProfile UP-TO-DATE
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeExtDexRelease
+> Task :app:mergeReleaseAssets
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:processReleaseJavaRes NO-SOURCE
+> Task :app:collectReleaseDependencies
+> Task :app:mergeReleaseJavaResource
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:processReleaseManifestForPackage
+> Task :app:mergeReleaseResources
+> Task :app:processReleaseResources
+> Task :app:compressReleaseAssets
+
+> Task :app:compileReleaseJavaWithJavac
+ע: D:\gxy_code\game\chicken_duck_test\android\app\src\main\java\com\jibao\kitchen\MainActivity.javaʹ�û򸲸����ѹ�ʱ�� API��
+ע: �й���ϸ��Ϣ, ��ʹ�� -Xlint:deprecation ���±��롣
+
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:dexBuilderRelease
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :app:optimizeReleaseResources
+> Task :app:mergeDexRelease
+> Task :app:compileReleaseArtProfile
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:assembleRelease
+
+BUILD SUCCESSFUL in 29s
+46 actionable tasks: 44 executed, 2 up-to-date
+Verified 609 APK runtime files against sources
+Verified build candidate: D:\gxy_code\game\chicken_duck_test\android\app\build\outputs\apk\release\app-release.apk
+Candidate APK SHA-256: dde8ce97b888cb589b9f103cd19979392cf50971558c6cc44c376e0bb9f8f128
+No final release artifact or release-history record was published.

@@ -1,0 +1,25 @@
+经营线接管审计与定点修复（2026-09-23）
+
+依据：docs/content-pack/business.md / content.json；engineering-integration-design 的事实、库存、营业与常客合同；engineering-implementation-plan Work D/E/I/J。
+
+审计实证的缺陷：
+1. I 首段故事提前呈现。execute→advanceBusiness 售出6只即写validService；execute尾协调直接把RG1-1排队，在visitorSequence=0、lastVisit=null时readRegularStage已可成功。首段recordPolicy要求合格营业来客或手动采购。已修：reconcileRegulars对首段营业分支只在presentVisitor实际选择冻结候选时排队；手动分支与后续追认不加此门槛。未修改已保存的pending/已领权益。
+2. RG3-2第二分支错误接纳普通79用料。普通温泉锅legacy模式完整收24只也写materialUse[79]，从而T-N1+普通锅可越过“地区试做”要求。根集成者添加仅regional-trial/repeat整批79的RG3-2:regionalBatch事实；本工作regulars.js消费该准确谓词。测试包含普通锅负例与地区整收正例，不补造不精确历史。
+3. O06读档不要求地区非空。构造region=null并匹配未筛地区allowed的O06-A实例，normalizeSave原来接受。已修validateOrdersState显式拒绝缺少冻结地区；有效R仍接受，null、B（不属于O06-A）及未知地区均拒绝。
+4. I原测试只检查16条定义/2个alts存在，未覆盖全部分支；多处直接注入业务valid:true及完成事件。新增tests/regulars-command-branches.test.mjs：32条分支逐条通过execute产生真实营业销量、订单交付、地区出发/冻结票据结算、批次整收；测试初态仅提供前置收录/设备/历史已读。额外覆盖MN6/O09、R-E2、免费地点见闻、MN2溪岸实售、两种O04、跨单6+6来客等，共41项。每条主分支验证保存重载、阅读不扣CP/库存、后续空命令不重复登记成果。
+
+本工作修改范围：web/regulars.js、web/orders.js、tests/regulars.test.mjs、tests/orders.test.mjs、tests/regulars-command-branches.test.mjs、tools/qa-work-i.mjs；未修改app/engine/inventory/timeline/game-commands/migrations/schema。
+
+最新自动测试：
+node --test --test-isolation=none tests/regulars-command-branches.test.mjs tests/regulars.test.mjs tests/orders.test.mjs tests/projects.test.mjs tests/business.test.mjs tests/business-save.test.mjs
+120通过 / 0失败。完整日志：artifacts/takeover/business-tests.log。
+
+真实Chrome可玩验收：tools/qa-work-i.mjs；artifacts/qa/work-i/report.json passed=true，errors=[]。
+- 不开营业，正式O01两次交6后首段可读；阅读不消费、不付款，后续正常激活。
+- 正式MN1首窗6销量无来客/无首段阅读按钮，刷新亦不提前排队。
+- 第二窗12销量来客呈现；营业报告列常客；读前刷新不丢纸条、不重领；读后刷新不跳段。
+8张截图已保存并目视检查6销量页面与来客报告。隔离档案、加速时钟，非Android真机验证。
+
+已交根集成者跟进：常客UI固定文案“不必为看故事再开店”对尚未等到首位来客的营业路径会误导，需在首段等待来客时显示准确提示。本工作未越界改UI。
+本审计不是Work L整体完成声明；全量、Native/Android、构建manifest与最终门由根集成者汇总。
+I/E最终补充（2026-09-23）：已获根集成者授权修改regular-ui等待来客说明，首段营业达标但未来客时准确说明12只来客周期。QA-I于2026-09-23T13:49:18.361Z最终passed=true，8截图、零pageerror；320/390/1280布局通过。此前resize立即测量偶发旧布局，脚本等待2帧后测实际位置，没有放宽边界条件。

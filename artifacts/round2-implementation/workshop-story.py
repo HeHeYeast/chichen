@@ -1,0 +1,14 @@
+from pathlib import Path
+p=Path('web/workshop-ui.js');s=p.read_text(encoding='utf-8');a=s.index("    shell('小厨房 · 生意'");b=s.index("    each('[data-accept]'",a)
+s=s[:a]+'''    const current=orders.find(o=>!o.completed),cards=orders.map(o=>{
+      const c=o.choices.find(c=>c.species===(o.choice??o.choices[0].species));
+      const card=`<article class="order-card ${o.id===current?.id?'current-order':''}"><small>第 ${o.index+1} 笔生意 ${o.completed?'· 已完成':o.accepted?'· 已接单':''}</small><h3>${escape(o.chapter.title)}</h3>${!o.unlocked?`<p>${o.requirements.filter(r=>!r.met).map(r=>escape(r.text)).join(' · ')}</p>`:o.completed?`<p>酬谢 ${o.extraCP} CP 已结算。</p><button data-story-read="${o.index}">重读这一章</button>`:`<div class="order-product">${portrait(c.species)}<div><strong>${escape(c.name)} ${c.count}只</strong><p>已交付 ${o.delivered}/${c.count}<br>在家可用 ${c.atHome}只</p></div></div><progress value="${o.delivered}" max="${c.count}" aria-label="交付进度"></progress><div class="order-reward"><span>每只货款 <b>${c.price} CP</b></span><span>交齐另得 <b>${o.extraCP.toLocaleString()} CP</b></span></div>${o.choices.length>1?o.choices.map(c=>`<label class="order-choice"><input type="radio" name="order-${o.id}" data-order-choice="${o.id}" value="${c.species}" ${(o.choice??o.choices[0].species)===c.species?'checked':''} ${!c.available||o.delivered>0?'disabled':''}><span>${escape(c.name)} ×${c.count}<small>${c.available?'在家 '+c.atHome:'需先持有竹蒸笼'}</small></span></label>`).join(''):`<input type="radio" hidden checked name="order-${o.id}" value="${c.species}">`}${o.id==='tea-party'?'<p class="tea-teaching">鸡蛋＋水煮锅＋乌龙茶叶，可尝试茶叶蛋鸡。不保证一批出齐6只。</p>':''}${o.accepted?`<div class="order-delivery"><label>本次交付<input type="number" aria-label="本次交付数量" min="1" max="${Math.min(c.atHome,c.count-o.delivered)}" value="${Math.max(1,Math.min(c.atHome,c.count-o.delivered))}" data-order-quantity="${o.id}"></label><button class="orange" data-deliver="${o.id}" ${c.atHome?'':'disabled'}>${c.atHome?'核对并交付':'在家数量不足'}</button></div>`:`<button class="orange" data-accept="${o.id}">接下这笔生意</button>`}`}</article>`;
+      return o.id===current?.id?card:`<details class="order-history"><summary>${o.completed?'✓ 已完成':'后续采购'} · ${o.chapter.title.split('：').at(-1)}</summary>${card}</details>`;
+    });
+    shell('厨房里的生意',`<p class="order-intro">没有截止时间，可以分批交付。</p>${cards.join('')}`);
+'''+s[b:]
+s=s.replace("const id=b.dataset.deliver,o=", "const id=b.dataset.deliver,o=")
+s=s.replace("confirmBox(`交付 ${n} 只${c.name}", "if(!Number.isInteger(n)||n<1||n>c.atHome||n>c.count-o.delivered){alertBox('请填写有效的交付数量。');return;}\n      confirmBox(`本次交付 ${n} 只${c.name}")
+s=s.replace("'\\n交付后这种伙伴在家数量为0。'", "'\\n交付后，家中将不再有这种伙伴。已发现的图鉴仍会保留。'")
+s=s.replace('普通货款 ${n*c.price} CP。', '货款 ${n*c.price} CP。交付后进度 ${n+o.delivered}/${c.count}。')
+p.write_text(s,encoding='utf-8')

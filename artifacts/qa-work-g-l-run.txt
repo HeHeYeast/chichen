@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-09-23T04:29:02.513Z",
+  "passed": true,
+  "checks": [
+    "厨房Lv.3、发现40且谷地已辨认实收的旧档：海湾先显示“先追寻沿湾路标”；溪岸岸边摊勾选追寻路标，完整归队确定取得GUIDE-B，不计发现卡",
+    "海湾路线12小时：首趟保证盐花标本（换地点也保证），免费辨认",
+    "盐田小路带货6只：出发只占用不扣货，中途刷新不复制，完整归队才扣6只并以盐花替换1份基础材料；无售款、不计营业/采购"
+  ],
+  "screens": [
+    "bay-locked",
+    "river-guide-option",
+    "cargo-six",
+    "cargo-returned"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

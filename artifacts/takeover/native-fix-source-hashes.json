@@ -1,0 +1,12 @@
+{
+  "android/app/src/main/java/com/jibao/kitchen/SaveRepository.java": "e947e153248dd24665d4335471e8116acce6892629805d7339937405d54fffe0",
+  "android/app/src/main/java/com/jibao/kitchen/BusinessSaveValidator.java": "23a5cd712d077a97ee89a53e82d09a9e42a4cbea6c9549d0141da9a0a3284709",
+  "android/app/src/main/java/com/jibao/kitchen/RuntimeContent.java": "8510388f52cf43f0f6c08e128ccc1354337e60d425944c74b642260a4d0d2cf0",
+  "android/tests/build-native-content.mjs": "905e202a84f2b88e9c03f011842574605b5f3b961919fa86005ac5da6043de00",
+  "android/tests/build-save-fixtures.mjs": "dbea4af3f819cd6eb6d59902255227ced5d0f20ec9087777b78fee7a89a1a459",
+  "android/tests/save-negative-cases.mjs": "4ec39beb2b5079f97a670c948c596d21e758198e281e3766dd749bc9f8fd09ac",
+  "android/tests/save-contract-matrix.mjs": "634de2db0fd83f9c12baa87e03d0fcd7b9a9bf2c1209c38ad26b5fe2053a7600",
+  "android/tests/run-save-tests.ps1": "31c7f0a416b92bccd366870fe4677c82d86f9756474fe871f460e026938aeef4",
+  "android/tests/saves/com/jibao/kitchen/SaveRepositoryTest.java": "cb3078682eb8e6a74a835d3d296255f093cb9a7cf95473e85793ab06a290c2ac",
+  "android/tests/saves/README.md": "9f45afbe126ed26727c14c35267e6e50e8922e252938f13799ebc24c262dde96"
+}

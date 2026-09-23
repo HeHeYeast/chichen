@@ -1,0 +1,27 @@
+✔ golden new-v3: migration preserves independent asset and ticket expectations (15.2908ms)
+✔ golden new-v3: current JSON and portable backup round trips are lossless (13.1815ms)
+✔ golden early-v1: migration preserves independent asset and ticket expectations (14.267ms)
+✔ golden early-v1: current JSON and portable backup round trips are lossless (16.2356ms)
+✔ golden early-v3: migration preserves independent asset and ticket expectations (7.4246ms)
+✔ golden early-v3: current JSON and portable backup round trips are lossless (10.9316ms)
+✔ golden mid-v3: migration preserves independent asset and ticket expectations (9.7746ms)
+✔ golden mid-v3: current JSON and portable backup round trips are lossless (15.9264ms)
+✔ golden complete193-v3: migration preserves independent asset and ticket expectations (12.0277ms)
+✔ golden complete193-v3: current JSON and portable backup round trips are lossless (19.0361ms)
+✔ golden rich-stock-v3: migration preserves independent asset and ticket expectations (11.3022ms)
+✔ golden rich-stock-v3: current JSON and portable backup round trips are lossless (17.9844ms)
+✔ golden legacy migration requires neither ambient time nor random sampling (28.859ms)
+✔ golden v1 gives only old minimum discovery and an unowned ninth tool (5.2057ms)
+✔ golden mid-game keeps old batch and running trip without premature income (4.8564ms)
+✔ golden complete193 retains discovery after all stock was sold and mixed old claims (8.6837ms)
+✔ golden rich stock keeps near-limit CP, full pack, leftovers, residues and grandfathered credits (5.325ms)
+✔ a fully populated schema-6 save round-trips through backup and the update checker (69.1748ms)
+✔ declared asset availability matches the files the packer will copy (2.9729ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 364.0505

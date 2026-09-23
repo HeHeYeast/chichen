@@ -1,0 +1,41 @@
+{
+  "status": "design-proposal-not-runtime",
+  "version": "2026-09-21",
+  "skillPoints": {"onCollected24": 2, "discoveriesPerPoint": 5, "perKitchenUpgrade": 2, "collectionMilestones": [120,500,2000,5000], "perMilestone": 2, "currentContentMaximum": 54},
+  "skillCosts": {"A": [1,1,2], "B": [2], "C": [2,2], "D": [2], "S": [4], "baseBranchTotal": 12, "withSpecializationTotal": 16, "specializationSlots": 1},
+  "skillGates": {"A3Discoveries": 12, "BDiscoveries": 8, "C1Discoveries": 24, "C2Discoveries": 40, "CKitchenDisplayLevel": 2, "DDiscoveries": 60, "DKitchenDisplayLevel": 3, "SDiscoveries": 80, "SKitchenDisplayLevel": 3, "respecCooldownHoursAfterFirst": 72},
+  "cooking": {"reductions": [0,0.04,0.07,0.10,0.15,0.20,0.25], "minimumNominalMinutes": 6, "freshBaseMinimumMinutes": 120, "freshBaseOriginalDurationMultiplier": 2, "freshSkillAddedMinutes": [0,30,90]},
+  "housekeeping": {"cleanHours": [36,42,48,54,60,66,72], "fullCleanCPByKitchen": [100,150,200,250], "baseSicknessChance": 0.4, "specialistSicknessChance": 0.2, "reserveAtHomePerSpecies": 1},
+  "trade": {"purchaseRebateRates": [0,0.02,0.04,0.06,0.08,0.10], "basketQuantity": 24, "bonusCP": 12, "specialistBonusCP": 18, "creditCapacity": [3,6], "harvestsPerCredit": 24, "oneTimeInitialCredits": 1, "eligibleSpecies": ["0:0","0:3","0:8","0:12","0:16","0:21","1:0","1:3","1:6","1:8","1:10","1:12"]},
+  "fortune": {"speciesIDs": [89,90,91,92,93,94,95,96,97,98,99,100,101,102,103], "knownWeight": 1, "unknownWeight": 2, "softUnknownWeight": 4, "softAfterNoNewDraws": 3, "hardOnDraw": 7, "excludePreviousUnlessSoleHardPityTarget": true, "resetOnlyOnActualNewSpeciesCollection": true},
+  "observation": {"nearbySuggestionLimit": 3, "recipeStudyCP": 100, "specialistRecipeStudyCP": 50, "preciseProbabilityUIInV1": false, "specialistClueTargetChoices": 3},
+  "exploration": {
+    "teams": 1, "minMembers": 1, "maxMembers": 3, "duplicateSpeciesAllowed": false, "attributeTotalPerSpecies": 6, "attributeProfiles": [[4,2],[3,3],[2,4]],
+    "materialChance": {"base": 0.05, "perGather": 0.025, "perEnvironmentMatch": 0.04, "perARank": 0.02, "specialistAdd": 0.06, "cap": 0.6},
+    "clueChance": {"base": 0.10, "perDiscover": 0.02, "perEnvironmentMatch": 0.03, "perCRank": 0.03, "cap": 0.55, "hardAttemptBase": 8, "hardAttemptNodeD": 6, "specialNarrativeThresholdWithinClueRoll": 0.05},
+    "directedBaseUnits": {"withoutB": 0, "withB": 1, "withSpecialization": 2},
+    "lockedIngredientReplacement": 0, "returnAutomaticallyAtEnd": true, "blockNewDepartureUntilBasketCleared": true, "earlyRecallRewards": 0,
+    "routes": [
+      {"id":"yard","name":"菜园围篱","hours":2,"baseUnits":1,"pool":[0,1,2],"requiredCollected":120,"requiredDiscoveries":5},
+      {"id":"water","name":"溪岸小径","hours":6,"baseUnits":2,"pool":[11,3,27],"requiredCollected":240,"requiredDiscoveries":8},
+      {"id":"wood","name":"林间茶坡","hours":10,"baseUnits":3,"pool":[8,13,33,35],"requiredCollected":500,"requiredDiscoveries":12}
+    ]
+  },
+  "storyOrders": [
+    {"id":"first-sale","requiredCollected":24,"items":[{"species":"0:0","count":12}],"extraCP":120},
+    {"id":"tea-party","previous":"first-sale","requiredCollected":240,"requiredDiscoveries":8,"requiredTool":2,"items":[{"species":"0:10","count":6}],"extraCP":500},
+    {"id":"signature-table","previous":"tea-party","requiredCollected":1000,"requiredDiscoveries":24,"requiredKitchenDisplayLevel":2,"chooseOne":[{"species":"0:16","count":24},{"species":"0:21","count":24},{"species":"0:114","count":24,"requiredTool":8}],"extraCP":1500}
+  ],
+  "ingredientFlavorGroups": {
+    "谷豆与面食": [9,10,16,25,31,45,48,49,52,54,71],
+    "果物": [1,44,50],
+    "乳品": [24,42,57,60,61],
+    "甜味": [17,33,37,58,66],
+    "叶花与草木": [3,8,13,20,35,47,56,63,64,65,67],
+    "蔬菜": [19,21,22,23,29,40,46],
+    "海味": [73,74],
+    "调味": [0,2,4,5,6,7,12,14,27,28,30,32,34,38,39,41,43,51,53,55,62,72],
+    "调理媒介": [11,15,18,26,36,59],
+    "特殊赠品": [68,69,70]
+  }
+}

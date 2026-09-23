@@ -1,0 +1,3075 @@
+{
+  "runtimeFormat": 1,
+  "sourceHash": "f5a0b0683380ee8b62afc09652f9d6f71d658f688c5324d41a3bc6923095f490",
+  "total": 438,
+  "compiled": 438,
+  "unavailable": 0,
+  "conditions": [
+    {
+      "id": "V:gate",
+      "sourcePointer": "/regions/0/gate",
+      "sourceHash": "6c1a8d31d71a7ad78b1397ecfa71b2019dd4a50fb5c9ccbba2f35f8f7712acf8",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "R:gate",
+      "sourcePointer": "/regions/1/gate",
+      "sourceHash": "fc255253f14d314365580c0a0d154d84029132450f5603b27110a9c7174a81d3",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T:gate",
+      "sourcePointer": "/regions/2/gate",
+      "sourceHash": "a7355e028b315d0f5da009b81077a7670d785de1ca4314992a8226e58d42229d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "B:gate",
+      "sourcePointer": "/regions/3/gate",
+      "sourceHash": "41491068b0ebc1d5ef002ed6ba2754ba828cc8d652c2b1920b4084d93250e0a3",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C1:unlock.oldSupplyRules",
+      "sourcePointer": "/species/0/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C1:unlock.technologyNote",
+      "sourcePointer": "/species/0/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C1:regularRelation",
+      "sourcePointer": "/species/0/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C2:unlock.oldSupplyRules",
+      "sourcePointer": "/species/1/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C2:unlock.technologyNote",
+      "sourcePointer": "/species/1/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C2:regularRelation",
+      "sourcePointer": "/species/1/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C3:unlock.oldSupplyRules",
+      "sourcePointer": "/species/2/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C3:unlock.technologyNote",
+      "sourcePointer": "/species/2/unlock/technologyNote",
+      "sourceHash": "15d83c188cab879186c052bdc620d6ac9d8f6b44ec15d132d172b388924dec93",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C3:regularRelation",
+      "sourcePointer": "/species/2/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C4:unlock.oldSupplyRules",
+      "sourcePointer": "/species/3/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C4:unlock.technologyNote",
+      "sourcePointer": "/species/3/unlock/technologyNote",
+      "sourceHash": "7faf3e7c9ce6ec1eb6be8177a46e1db03e224da912657ead5dfe83195bc83901",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C4:regularRelation",
+      "sourcePointer": "/species/3/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C5:unlock.oldSupplyRules",
+      "sourcePointer": "/species/4/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C5:unlock.technologyNote",
+      "sourcePointer": "/species/4/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C5:regularRelation",
+      "sourcePointer": "/species/4/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C6:unlock.oldSupplyRules",
+      "sourcePointer": "/species/5/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C6:unlock.technologyNote",
+      "sourcePointer": "/species/5/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C6:businessExclusion",
+      "sourcePointer": "/species/5/businessExclusion",
+      "sourceHash": "fea063f24affe12fc3d5c3e3e3dfc506cdc63430c4291e55d00275affb0c8af1",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-C6:regularRelation",
+      "sourcePointer": "/species/5/regularRelation",
+      "sourceHash": "36b744f326d57ec5beee53b939b72182844fe48fe1a8cb09186448c12fddcafe",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D1:unlock.oldSupplyRules",
+      "sourcePointer": "/species/6/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D1:unlock.technologyNote",
+      "sourcePointer": "/species/6/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D1:regularRelation",
+      "sourcePointer": "/species/6/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D2:unlock.oldSupplyRules",
+      "sourcePointer": "/species/7/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D2:unlock.technologyNote",
+      "sourcePointer": "/species/7/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D2:regularRelation",
+      "sourcePointer": "/species/7/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D3:unlock.oldSupplyRules",
+      "sourcePointer": "/species/8/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D3:unlock.technologyNote",
+      "sourcePointer": "/species/8/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D3:regularRelation",
+      "sourcePointer": "/species/8/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D4:unlock.oldSupplyRules",
+      "sourcePointer": "/species/9/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D4:unlock.technologyNote",
+      "sourcePointer": "/species/9/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D4:regularRelation",
+      "sourcePointer": "/species/9/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D5:unlock.oldSupplyRules",
+      "sourcePointer": "/species/10/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D5:unlock.technologyNote",
+      "sourcePointer": "/species/10/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D5:regularRelation",
+      "sourcePointer": "/species/10/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D6:unlock.oldSupplyRules",
+      "sourcePointer": "/species/11/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D6:unlock.technologyNote",
+      "sourcePointer": "/species/11/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D6:businessExclusion",
+      "sourcePointer": "/species/11/businessExclusion",
+      "sourceHash": "fea063f24affe12fc3d5c3e3e3dfc506cdc63430c4291e55d00275affb0c8af1",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-D6:regularRelation",
+      "sourcePointer": "/species/11/regularRelation",
+      "sourceHash": "36b744f326d57ec5beee53b939b72182844fe48fe1a8cb09186448c12fddcafe",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C1:unlock.oldSupplyRules",
+      "sourcePointer": "/species/12/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C1:unlock.technologyNote",
+      "sourcePointer": "/species/12/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C1:regularRelation",
+      "sourcePointer": "/species/12/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C2:unlock.oldSupplyRules",
+      "sourcePointer": "/species/13/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C2:unlock.technologyNote",
+      "sourcePointer": "/species/13/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C2:regularRelation",
+      "sourcePointer": "/species/13/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C3:unlock.oldSupplyRules",
+      "sourcePointer": "/species/14/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C3:unlock.technologyNote",
+      "sourcePointer": "/species/14/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C3:regularRelation",
+      "sourcePointer": "/species/14/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C4:unlock.oldSupplyRules",
+      "sourcePointer": "/species/15/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C4:unlock.technologyNote",
+      "sourcePointer": "/species/15/unlock/technologyNote",
+      "sourceHash": "15d83c188cab879186c052bdc620d6ac9d8f6b44ec15d132d172b388924dec93",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C4:regularRelation",
+      "sourcePointer": "/species/15/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C5:unlock.oldSupplyRules",
+      "sourcePointer": "/species/16/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C5:unlock.technologyNote",
+      "sourcePointer": "/species/16/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C5:regularRelation",
+      "sourcePointer": "/species/16/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C6:unlock.oldSupplyRules",
+      "sourcePointer": "/species/17/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C6:unlock.technologyNote",
+      "sourcePointer": "/species/17/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C6:businessExclusion",
+      "sourcePointer": "/species/17/businessExclusion",
+      "sourceHash": "fea063f24affe12fc3d5c3e3e3dfc506cdc63430c4291e55d00275affb0c8af1",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-C6:regularRelation",
+      "sourcePointer": "/species/17/regularRelation",
+      "sourceHash": "36b744f326d57ec5beee53b939b72182844fe48fe1a8cb09186448c12fddcafe",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D1:unlock.oldSupplyRules",
+      "sourcePointer": "/species/18/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D1:unlock.technologyNote",
+      "sourcePointer": "/species/18/unlock/technologyNote",
+      "sourceHash": "bfbf9388451f864ee37dc5de905cbbc4a7d51deb9cec948eef717c4089f4445c",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D1:regularRelation",
+      "sourcePointer": "/species/18/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D2:unlock.oldSupplyRules",
+      "sourcePointer": "/species/19/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D2:unlock.technologyNote",
+      "sourcePointer": "/species/19/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D2:regularRelation",
+      "sourcePointer": "/species/19/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D3:unlock.oldSupplyRules",
+      "sourcePointer": "/species/20/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D3:unlock.technologyNote",
+      "sourcePointer": "/species/20/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D3:regularRelation",
+      "sourcePointer": "/species/20/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D4:unlock.oldSupplyRules",
+      "sourcePointer": "/species/21/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D4:unlock.technologyNote",
+      "sourcePointer": "/species/21/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D4:regularRelation",
+      "sourcePointer": "/species/21/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D5:unlock.oldSupplyRules",
+      "sourcePointer": "/species/22/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D5:unlock.technologyNote",
+      "sourcePointer": "/species/22/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D5:regularRelation",
+      "sourcePointer": "/species/22/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D6:unlock.oldSupplyRules",
+      "sourcePointer": "/species/23/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D6:unlock.technologyNote",
+      "sourcePointer": "/species/23/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D6:businessExclusion",
+      "sourcePointer": "/species/23/businessExclusion",
+      "sourceHash": "fea063f24affe12fc3d5c3e3e3dfc506cdc63430c4291e55d00275affb0c8af1",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-D6:regularRelation",
+      "sourcePointer": "/species/23/regularRelation",
+      "sourceHash": "36b744f326d57ec5beee53b939b72182844fe48fe1a8cb09186448c12fddcafe",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C1:unlock.oldSupplyRules",
+      "sourcePointer": "/species/24/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C1:unlock.technologyNote",
+      "sourcePointer": "/species/24/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C1:regularRelation",
+      "sourcePointer": "/species/24/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C2:unlock.oldSupplyRules",
+      "sourcePointer": "/species/25/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C2:unlock.technologyNote",
+      "sourcePointer": "/species/25/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C2:regularRelation",
+      "sourcePointer": "/species/25/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C3:unlock.oldSupplyRules",
+      "sourcePointer": "/species/26/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C3:unlock.technologyNote",
+      "sourcePointer": "/species/26/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C3:regularRelation",
+      "sourcePointer": "/species/26/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C4:unlock.oldSupplyRules",
+      "sourcePointer": "/species/27/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C4:unlock.technologyNote",
+      "sourcePointer": "/species/27/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C4:regularRelation",
+      "sourcePointer": "/species/27/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C5:unlock.oldSupplyRules",
+      "sourcePointer": "/species/28/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C5:unlock.technologyNote",
+      "sourcePointer": "/species/28/unlock/technologyNote",
+      "sourceHash": "15d83c188cab879186c052bdc620d6ac9d8f6b44ec15d132d172b388924dec93",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C5:regularRelation",
+      "sourcePointer": "/species/28/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C6:unlock.oldSupplyRules",
+      "sourcePointer": "/species/29/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C6:unlock.technologyNote",
+      "sourcePointer": "/species/29/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C6:businessExclusion",
+      "sourcePointer": "/species/29/businessExclusion",
+      "sourceHash": "fea063f24affe12fc3d5c3e3e3dfc506cdc63430c4291e55d00275affb0c8af1",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-C6:regularRelation",
+      "sourcePointer": "/species/29/regularRelation",
+      "sourceHash": "36b744f326d57ec5beee53b939b72182844fe48fe1a8cb09186448c12fddcafe",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D1:unlock.oldSupplyRules",
+      "sourcePointer": "/species/30/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D1:unlock.technologyNote",
+      "sourcePointer": "/species/30/unlock/technologyNote",
+      "sourceHash": "bfbf9388451f864ee37dc5de905cbbc4a7d51deb9cec948eef717c4089f4445c",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D1:regularRelation",
+      "sourcePointer": "/species/30/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D2:unlock.oldSupplyRules",
+      "sourcePointer": "/species/31/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D2:unlock.technologyNote",
+      "sourcePointer": "/species/31/unlock/technologyNote",
+      "sourceHash": "bfbf9388451f864ee37dc5de905cbbc4a7d51deb9cec948eef717c4089f4445c",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D2:regularRelation",
+      "sourcePointer": "/species/31/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D3:unlock.oldSupplyRules",
+      "sourcePointer": "/species/32/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D3:unlock.technologyNote",
+      "sourcePointer": "/species/32/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D3:regularRelation",
+      "sourcePointer": "/species/32/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D4:unlock.oldSupplyRules",
+      "sourcePointer": "/species/33/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D4:unlock.technologyNote",
+      "sourcePointer": "/species/33/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D4:regularRelation",
+      "sourcePointer": "/species/33/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D5:unlock.oldSupplyRules",
+      "sourcePointer": "/species/34/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D5:unlock.technologyNote",
+      "sourcePointer": "/species/34/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D5:regularRelation",
+      "sourcePointer": "/species/34/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D6:unlock.oldSupplyRules",
+      "sourcePointer": "/species/35/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D6:unlock.technologyNote",
+      "sourcePointer": "/species/35/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D6:businessExclusion",
+      "sourcePointer": "/species/35/businessExclusion",
+      "sourceHash": "fea063f24affe12fc3d5c3e3e3dfc506cdc63430c4291e55d00275affb0c8af1",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-D6:regularRelation",
+      "sourcePointer": "/species/35/regularRelation",
+      "sourceHash": "36b744f326d57ec5beee53b939b72182844fe48fe1a8cb09186448c12fddcafe",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C1:unlock.oldSupplyRules",
+      "sourcePointer": "/species/36/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C1:unlock.technologyNote",
+      "sourcePointer": "/species/36/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C1:regularRelation",
+      "sourcePointer": "/species/36/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C2:unlock.oldSupplyRules",
+      "sourcePointer": "/species/37/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C2:unlock.technologyNote",
+      "sourcePointer": "/species/37/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C2:regularRelation",
+      "sourcePointer": "/species/37/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C3:unlock.oldSupplyRules",
+      "sourcePointer": "/species/38/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C3:unlock.technologyNote",
+      "sourcePointer": "/species/38/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C3:regularRelation",
+      "sourcePointer": "/species/38/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C4:unlock.oldSupplyRules",
+      "sourcePointer": "/species/39/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C4:unlock.technologyNote",
+      "sourcePointer": "/species/39/unlock/technologyNote",
+      "sourceHash": "15d83c188cab879186c052bdc620d6ac9d8f6b44ec15d132d172b388924dec93",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C4:regularRelation",
+      "sourcePointer": "/species/39/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C5:unlock.oldSupplyRules",
+      "sourcePointer": "/species/40/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C5:unlock.technologyNote",
+      "sourcePointer": "/species/40/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C5:regularRelation",
+      "sourcePointer": "/species/40/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C6:unlock.oldSupplyRules",
+      "sourcePointer": "/species/41/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C6:unlock.technologyNote",
+      "sourcePointer": "/species/41/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C6:businessExclusion",
+      "sourcePointer": "/species/41/businessExclusion",
+      "sourceHash": "fea063f24affe12fc3d5c3e3e3dfc506cdc63430c4291e55d00275affb0c8af1",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-C6:regularRelation",
+      "sourcePointer": "/species/41/regularRelation",
+      "sourceHash": "36b744f326d57ec5beee53b939b72182844fe48fe1a8cb09186448c12fddcafe",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D1:unlock.oldSupplyRules",
+      "sourcePointer": "/species/42/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D1:unlock.technologyNote",
+      "sourcePointer": "/species/42/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D1:regularRelation",
+      "sourcePointer": "/species/42/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D2:unlock.oldSupplyRules",
+      "sourcePointer": "/species/43/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D2:unlock.technologyNote",
+      "sourcePointer": "/species/43/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D2:regularRelation",
+      "sourcePointer": "/species/43/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D3:unlock.oldSupplyRules",
+      "sourcePointer": "/species/44/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D3:unlock.technologyNote",
+      "sourcePointer": "/species/44/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D3:regularRelation",
+      "sourcePointer": "/species/44/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D4:unlock.oldSupplyRules",
+      "sourcePointer": "/species/45/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D4:unlock.technologyNote",
+      "sourcePointer": "/species/45/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D4:regularRelation",
+      "sourcePointer": "/species/45/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D5:unlock.oldSupplyRules",
+      "sourcePointer": "/species/46/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D5:unlock.technologyNote",
+      "sourcePointer": "/species/46/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D5:regularRelation",
+      "sourcePointer": "/species/46/regularRelation",
+      "sourceHash": "ec688329cfb069a565f08eb1bc099adcbc9b7fb2b9b0beb3c580876e5a3db7f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D6:unlock.oldSupplyRules",
+      "sourcePointer": "/species/47/unlock/oldSupplyRules",
+      "sourceHash": "ffaa1dda5026b119d4138331af66ccd1a525ee65d399664bc556937088be611d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D6:unlock.technologyNote",
+      "sourcePointer": "/species/47/unlock/technologyNote",
+      "sourceHash": "4475ffdf7c4bf405a3e922ece6f25d6d67e03e0760a8efc17a3b2bb9a69adb54",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D6:businessExclusion",
+      "sourcePointer": "/species/47/businessExclusion",
+      "sourceHash": "fea063f24affe12fc3d5c3e3e3dfc506cdc63430c4291e55d00275affb0c8af1",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-D6:regularRelation",
+      "sourcePointer": "/species/47/regularRelation",
+      "sourceHash": "36b744f326d57ec5beee53b939b72182844fe48fe1a8cb09186448c12fddcafe",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "75:identification",
+      "sourcePointer": "/materials/0/identification",
+      "sourceHash": "544605f9d44dd3691fea4a04d5b37a8e2f7659b82162422889fd51a2df1b67af",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "75:entryGate",
+      "sourcePointer": "/materials/0/entryGate",
+      "sourceHash": "3cdb69fd1dce779bc23cafa38ed6b111740215f81cbc725795467affe543230c",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "76:identification",
+      "sourcePointer": "/materials/1/identification",
+      "sourceHash": "544605f9d44dd3691fea4a04d5b37a8e2f7659b82162422889fd51a2df1b67af",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "76:entryGate",
+      "sourcePointer": "/materials/1/entryGate",
+      "sourceHash": "3cdb69fd1dce779bc23cafa38ed6b111740215f81cbc725795467affe543230c",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "77:identification",
+      "sourcePointer": "/materials/2/identification",
+      "sourceHash": "544605f9d44dd3691fea4a04d5b37a8e2f7659b82162422889fd51a2df1b67af",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "77:entryGate",
+      "sourcePointer": "/materials/2/entryGate",
+      "sourceHash": "3cdb69fd1dce779bc23cafa38ed6b111740215f81cbc725795467affe543230c",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "78:identification",
+      "sourcePointer": "/materials/3/identification",
+      "sourceHash": "544605f9d44dd3691fea4a04d5b37a8e2f7659b82162422889fd51a2df1b67af",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "78:entryGate",
+      "sourcePointer": "/materials/3/entryGate",
+      "sourceHash": "3cdb69fd1dce779bc23cafa38ed6b111740215f81cbc725795467affe543230c",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "79:identification",
+      "sourcePointer": "/materials/4/identification",
+      "sourceHash": "544605f9d44dd3691fea4a04d5b37a8e2f7659b82162422889fd51a2df1b67af",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "79:entryGate",
+      "sourcePointer": "/materials/4/entryGate",
+      "sourceHash": "3cdb69fd1dce779bc23cafa38ed6b111740215f81cbc725795467affe543230c",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "80:identification",
+      "sourcePointer": "/materials/5/identification",
+      "sourceHash": "544605f9d44dd3691fea4a04d5b37a8e2f7659b82162422889fd51a2df1b67af",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "80:entryGate",
+      "sourcePointer": "/materials/5/entryGate",
+      "sourceHash": "3cdb69fd1dce779bc23cafa38ed6b111740215f81cbc725795467affe543230c",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "81:identification",
+      "sourcePointer": "/materials/6/identification",
+      "sourceHash": "544605f9d44dd3691fea4a04d5b37a8e2f7659b82162422889fd51a2df1b67af",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "81:entryGate",
+      "sourcePointer": "/materials/6/entryGate",
+      "sourceHash": "3cdb69fd1dce779bc23cafa38ed6b111740215f81cbc725795467affe543230c",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "82:identification",
+      "sourcePointer": "/materials/7/identification",
+      "sourceHash": "544605f9d44dd3691fea4a04d5b37a8e2f7659b82162422889fd51a2df1b67af",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "82:entryGate",
+      "sourcePointer": "/materials/7/entryGate",
+      "sourceHash": "3cdb69fd1dce779bc23cafa38ed6b111740215f81cbc725795467affe543230c",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "ALT-V:guarantee",
+      "sourcePointer": "/alternatives/0/guarantee",
+      "sourceHash": "3be836f1f16a9da0978d5648b07a2f940a3100cefbf23ca0ed4c462632d5fd0f",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "ALT-R:guarantee",
+      "sourcePointer": "/alternatives/1/guarantee",
+      "sourceHash": "3be836f1f16a9da0978d5648b07a2f940a3100cefbf23ca0ed4c462632d5fd0f",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "ALT-T:guarantee",
+      "sourcePointer": "/alternatives/2/guarantee",
+      "sourceHash": "3be836f1f16a9da0978d5648b07a2f940a3100cefbf23ca0ed4c462632d5fd0f",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "ALT-B:guarantee",
+      "sourcePointer": "/alternatives/3/guarantee",
+      "sourceHash": "3be836f1f16a9da0978d5648b07a2f940a3100cefbf23ca0ed4c462632d5fd0f",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "V-S1:gate",
+      "sourcePointer": "/cards/0/gate",
+      "sourceHash": "7b631709cff64301fcbe4c764553176f17e5f7b03bb077a0512ce5f1139ea463",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-S1:protection",
+      "sourcePointer": "/cards/0/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-S2:gate",
+      "sourcePointer": "/cards/1/gate",
+      "sourceHash": "58111a68db5b21361f4a6dbe47689e9152af44132dea809a739da6204de1b1a3",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-S2:protection",
+      "sourcePointer": "/cards/1/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-N1:gate",
+      "sourcePointer": "/cards/2/gate",
+      "sourceHash": "c86f161476a3be5c3396c0aea6e99caaad12888fb4f3397e2146072fb7fabd8d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-N1:protection",
+      "sourcePointer": "/cards/2/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-N2:gate",
+      "sourcePointer": "/cards/3/gate",
+      "sourceHash": "b7a201043cd5ec69e1a1fcda1030ba5940a73576bede85683a0e71bd6dab03d6",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-N2:protection",
+      "sourcePointer": "/cards/3/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-E1:gate",
+      "sourcePointer": "/cards/4/gate",
+      "sourceHash": "c86f161476a3be5c3396c0aea6e99caaad12888fb4f3397e2146072fb7fabd8d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-E1:protection",
+      "sourcePointer": "/cards/4/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-E2:gate",
+      "sourcePointer": "/cards/5/gate",
+      "sourceHash": "b7a201043cd5ec69e1a1fcda1030ba5940a73576bede85683a0e71bd6dab03d6",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "V-E2:protection",
+      "sourcePointer": "/cards/5/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "R-S1:gate",
+      "sourcePointer": "/cards/6/gate",
+      "sourceHash": "0b05afba4de9ac4b1ba23fa54dddf0790804cf6b7810ab4c80b298cacb2bd107",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-S1:protection",
+      "sourcePointer": "/cards/6/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-S2:gate",
+      "sourcePointer": "/cards/7/gate",
+      "sourceHash": "41992d713edf71eda542665fe4aebd7a1145ab277be0a9f3a2034e9142c889a5",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-S2:protection",
+      "sourcePointer": "/cards/7/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-N1:gate",
+      "sourcePointer": "/cards/8/gate",
+      "sourceHash": "ba248a60c54d51ead4da73792466d3e4d34a8bc1fd7885f5e1b84b7f7a9b0ce2",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-N1:protection",
+      "sourcePointer": "/cards/8/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-N2:gate",
+      "sourcePointer": "/cards/9/gate",
+      "sourceHash": "c86f161476a3be5c3396c0aea6e99caaad12888fb4f3397e2146072fb7fabd8d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-N2:protection",
+      "sourcePointer": "/cards/9/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-E1:gate",
+      "sourcePointer": "/cards/10/gate",
+      "sourceHash": "66ec524f1a498ed8c92850d9e3b5e0b1b483e3003ef14f496816ce4a86d642dc",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-E1:protection",
+      "sourcePointer": "/cards/10/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-E2:gate",
+      "sourcePointer": "/cards/11/gate",
+      "sourceHash": "c86f161476a3be5c3396c0aea6e99caaad12888fb4f3397e2146072fb7fabd8d",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "R-E2:protection",
+      "sourcePointer": "/cards/11/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-S1:gate",
+      "sourcePointer": "/cards/12/gate",
+      "sourceHash": "943524e59db306fd4b1e9ea4928061a376e61e78a2653112770510036c2c3413",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-S1:protection",
+      "sourcePointer": "/cards/12/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-S2:gate",
+      "sourcePointer": "/cards/13/gate",
+      "sourceHash": "3f8433fe509f00ce0b5e673ccadab5a1a345252814817255bddb0fc452ac8ae5",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-S2:protection",
+      "sourcePointer": "/cards/13/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-N1:gate",
+      "sourcePointer": "/cards/14/gate",
+      "sourceHash": "ff27bbe7224d6a6f521b9041ff4314f226f684361930ab2410cbd60ed89eec87",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-N1:protection",
+      "sourcePointer": "/cards/14/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-N2:gate",
+      "sourcePointer": "/cards/15/gate",
+      "sourceHash": "cbacc8d65d89b800bae79a812bf3f6dfea9adb80ff383f1f6d47c97f310bbabe",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-N2:protection",
+      "sourcePointer": "/cards/15/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-E1:gate",
+      "sourcePointer": "/cards/16/gate",
+      "sourceHash": "ff27bbe7224d6a6f521b9041ff4314f226f684361930ab2410cbd60ed89eec87",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-E1:protection",
+      "sourcePointer": "/cards/16/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-E2:gate",
+      "sourcePointer": "/cards/17/gate",
+      "sourceHash": "cbacc8d65d89b800bae79a812bf3f6dfea9adb80ff383f1f6d47c97f310bbabe",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "T-E2:protection",
+      "sourcePointer": "/cards/17/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "B-S1:gate",
+      "sourcePointer": "/cards/18/gate",
+      "sourceHash": "373c87038dac59d7d0f5d4484ed8a6bc5d2c1aabc024ddc747cb3513e8349e32",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-S1:protection",
+      "sourcePointer": "/cards/18/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-S2:gate",
+      "sourcePointer": "/cards/19/gate",
+      "sourceHash": "a02f9ce5197c4dd21512063339b9c4b7d4a23f0e2e5ba2b3049f4ff2e5594456",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-S2:protection",
+      "sourcePointer": "/cards/19/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-N1:gate",
+      "sourcePointer": "/cards/20/gate",
+      "sourceHash": "620be356250f3cd61a09f3089af8c0910348b26526b6e983a0ed98b2eb6e28c3",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-N1:protection",
+      "sourcePointer": "/cards/20/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-N2:gate",
+      "sourcePointer": "/cards/21/gate",
+      "sourceHash": "8f00ff51fc5c1c7463a76890ddb1fefc254b276b1653ba7b458d4b3715f97b07",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-N2:protection",
+      "sourcePointer": "/cards/21/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-E1:gate",
+      "sourcePointer": "/cards/22/gate",
+      "sourceHash": "620be356250f3cd61a09f3089af8c0910348b26526b6e983a0ed98b2eb6e28c3",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-E1:protection",
+      "sourcePointer": "/cards/22/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-E2:gate",
+      "sourcePointer": "/cards/23/gate",
+      "sourceHash": "66e360099428a7bcebbc23c249df6fb7bcc46cd39b71dd1081df6134504e640d",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "B-E2:protection",
+      "sourcePointer": "/cards/23/protection",
+      "sourceHash": "be82f1639e062c23dca8766a84ef10c7f2523e2f71997179fd7143e33eb930c8",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "GUIDE-B:gate",
+      "sourcePointer": "/guide/gate",
+      "sourceHash": "41491068b0ebc1d5ef002ed6ba2754ba828cc8d652c2b1920b4084d93250e0a3",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "GUIDE-B:team",
+      "sourcePointer": "/guide/team",
+      "sourceHash": "97ff9ed70bdf3d48bff36183f38ac1a8fc06a95e34e6e8c85cad9dd5ccc16dec",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "GUIDE-B:trigger",
+      "sourcePointer": "/guide/trigger",
+      "sourceHash": "949b479076552151d1c7fc056233574c7838b02190a9cb67566685205456a587",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "GUIDE-B:effect",
+      "sourcePointer": "/guide/effect",
+      "sourceHash": "849d68bae7228ab07354714b140d6ce00cc4595f0ea76f5c42e88d2179d362a6",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "MN1:complete",
+      "sourcePointer": "/menus/0/complete",
+      "sourceHash": "02ce6a9b2f99cd70e934863f36686ba70ca743419786ad6cdbb9c81ec4969719",
+      "work": "D",
+      "status": "compiled"
+    },
+    {
+      "id": "MN1:unlock",
+      "sourcePointer": "/menus/0/unlock",
+      "sourceHash": "3974cf18d7002254836577dfd9cf6cc9394d78b3e941fe43a4285341009875b7",
+      "work": "D",
+      "status": "compiled"
+    },
+    {
+      "id": "MN1:validService",
+      "sourcePointer": "/menus/0/validService",
+      "sourceHash": "5d7df8433b3324ac83aa1b3a59fb04fd5af2b4fbb423e967b9e7d603aab12a60",
+      "work": "D",
+      "status": "compiled"
+    },
+    {
+      "id": "MN2:complete",
+      "sourcePointer": "/menus/1/complete",
+      "sourceHash": "3b652059a5ca7978ccfd96117ba3c041b344311b871e536755756244b6b35577",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN2:unlock",
+      "sourcePointer": "/menus/1/unlock",
+      "sourceHash": "c26d284005a210d48f5e4d6f4f62cd1b33f79346319c5ac2804b3501d1e4d31b",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN2:validService",
+      "sourcePointer": "/menus/1/validService",
+      "sourceHash": "5d7df8433b3324ac83aa1b3a59fb04fd5af2b4fbb423e967b9e7d603aab12a60",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN3:complete",
+      "sourcePointer": "/menus/2/complete",
+      "sourceHash": "1aea75f56f08e636b1c35484ca48edd22e2618df66b8650cb30fa2bd237f44d0",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN3:unlock",
+      "sourcePointer": "/menus/2/unlock",
+      "sourceHash": "14c497022456bed6f8e00c8877b719bbab82afd124916acfcd02b982e455e2b4",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN3:validService",
+      "sourcePointer": "/menus/2/validService",
+      "sourceHash": "5d7df8433b3324ac83aa1b3a59fb04fd5af2b4fbb423e967b9e7d603aab12a60",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN4:complete",
+      "sourcePointer": "/menus/3/complete",
+      "sourceHash": "6b4fa9ca1e371896b425ccc97b125815e1590a6ad6e8138f8cc0e5b43dc647ee",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN4:unlock",
+      "sourcePointer": "/menus/3/unlock",
+      "sourceHash": "755cf82a270a40b492f48cd4163099c4db9b5c26d1040284b46e908ea59fbf27",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN4:validService",
+      "sourcePointer": "/menus/3/validService",
+      "sourceHash": "5d7df8433b3324ac83aa1b3a59fb04fd5af2b4fbb423e967b9e7d603aab12a60",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN5:complete",
+      "sourcePointer": "/menus/4/complete",
+      "sourceHash": "b6afd6a7fe787a97d82c8596cba6bb8d28a7b937783dde0bfc51f098385ae772",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN5:unlock",
+      "sourcePointer": "/menus/4/unlock",
+      "sourceHash": "d3f83268fd3ccc079c885c79de1b193b2a8246ad980a2749ba3fdd6b3cb5f43f",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN5:validService",
+      "sourcePointer": "/menus/4/validService",
+      "sourceHash": "5d7df8433b3324ac83aa1b3a59fb04fd5af2b4fbb423e967b9e7d603aab12a60",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN6:complete",
+      "sourcePointer": "/menus/5/complete",
+      "sourceHash": "37754ce4c6a2c21a61f8d3e3f6d2f902b84fa9976a595b259c6edcbaee6ac4e3",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN6:unlock",
+      "sourcePointer": "/menus/5/unlock",
+      "sourceHash": "bb9605026728c4bec8e3f96101144c6fc854b7c075d2289f9679caff600773bf",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN6:validService",
+      "sourcePointer": "/menus/5/validService",
+      "sourceHash": "5d7df8433b3324ac83aa1b3a59fb04fd5af2b4fbb423e967b9e7d603aab12a60",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN7:complete",
+      "sourcePointer": "/menus/6/complete",
+      "sourceHash": "53d19e4cc79d44651208db1c513d8100b19718970efd6b47a39d4b749c40228c",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN7:unlock",
+      "sourcePointer": "/menus/6/unlock",
+      "sourceHash": "3a6721c6237a0921a9fa58c89fa36b9045c2bd48ff742c5902a079a4f7c9fa37",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN7:validService",
+      "sourcePointer": "/menus/6/validService",
+      "sourceHash": "5d7df8433b3324ac83aa1b3a59fb04fd5af2b4fbb423e967b9e7d603aab12a60",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN8:complete",
+      "sourcePointer": "/menus/7/complete",
+      "sourceHash": "e49a646d7367002b3406c0b2fdb3710df3cdf7d489bcadddea7a76b3b31c42d4",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN8:unlock",
+      "sourcePointer": "/menus/7/unlock",
+      "sourceHash": "11cbf555ff29a899f9f2841a75af3c42d94f6f7a2ebe27020a06efd48f1924e1",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "MN8:validService",
+      "sourcePointer": "/menus/7/validService",
+      "sourceHash": "5d7df8433b3324ac83aa1b3a59fb04fd5af2b4fbb423e967b9e7d603aab12a60",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "O01:qualification",
+      "sourcePointer": "/orders/0/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "O01:payment",
+      "sourcePointer": "/orders/0/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "O02:qualification",
+      "sourcePointer": "/orders/1/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O02:payment",
+      "sourcePointer": "/orders/1/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O03:qualification",
+      "sourcePointer": "/orders/2/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O03:payment",
+      "sourcePointer": "/orders/2/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O04:qualification",
+      "sourcePointer": "/orders/3/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "O04:payment",
+      "sourcePointer": "/orders/3/payment",
+      "sourceHash": "75566f562b45ce95e11ff572f24d4aee545136e9e2e9646024a86dd18f6e0a32",
+      "work": "E",
+      "status": "compiled"
+    },
+    {
+      "id": "O05:qualification",
+      "sourcePointer": "/orders/4/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O05:payment",
+      "sourcePointer": "/orders/4/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O06:qualification",
+      "sourcePointer": "/orders/5/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O06:payment",
+      "sourcePointer": "/orders/5/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O07:qualification",
+      "sourcePointer": "/orders/6/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O07:payment",
+      "sourcePointer": "/orders/6/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O08:qualification",
+      "sourcePointer": "/orders/7/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O08:payment",
+      "sourcePointer": "/orders/7/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O09:qualification",
+      "sourcePointer": "/orders/8/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O09:payment",
+      "sourcePointer": "/orders/8/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O10:qualification",
+      "sourcePointer": "/orders/9/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O10:payment",
+      "sourcePointer": "/orders/9/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O10:seasonRule",
+      "sourcePointer": "/orders/9/seasonRule",
+      "sourceHash": "cb801ef874ada306d0daaa230c92a4df2d13449f6797efa31440e71d7d6e4a3a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O11:qualification",
+      "sourcePointer": "/orders/10/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "O11:payment",
+      "sourcePointer": "/orders/10/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "O12:qualification",
+      "sourcePointer": "/orders/11/qualification",
+      "sourceHash": "b6631dedf580fe957c03596cd58f52ba4dc7c22206040c981c5755567ee78b2a",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "O12:payment",
+      "sourcePointer": "/orders/11/payment",
+      "sourceHash": "1c8776ba8fba4900fa95b26eb2579fd4a71f8e484b63c551f28cce208bf70925",
+      "work": "F",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1:delivery",
+      "sourcePointer": "/regulars/0/delivery",
+      "sourceHash": "c4f180cd4bdddddf3e0bedb6e32a6448dd87206a0dad3f6a9d13cb82da2321ab",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1:completion",
+      "sourcePointer": "/regulars/0/completion",
+      "sourceHash": "5f18f2383fb55635837832b5f16748c06ca40b55bff8727664830285fc446eff",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2:delivery",
+      "sourcePointer": "/regulars/1/delivery",
+      "sourceHash": "c4f180cd4bdddddf3e0bedb6e32a6448dd87206a0dad3f6a9d13cb82da2321ab",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2:completion",
+      "sourcePointer": "/regulars/1/completion",
+      "sourceHash": "5f18f2383fb55635837832b5f16748c06ca40b55bff8727664830285fc446eff",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3:delivery",
+      "sourcePointer": "/regulars/2/delivery",
+      "sourceHash": "c4f180cd4bdddddf3e0bedb6e32a6448dd87206a0dad3f6a9d13cb82da2321ab",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3:completion",
+      "sourcePointer": "/regulars/2/completion",
+      "sourceHash": "5f18f2383fb55635837832b5f16748c06ca40b55bff8727664830285fc446eff",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4:delivery",
+      "sourcePointer": "/regulars/3/delivery",
+      "sourceHash": "c4f180cd4bdddddf3e0bedb6e32a6448dd87206a0dad3f6a9d13cb82da2321ab",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4:completion",
+      "sourcePointer": "/regulars/3/completion",
+      "sourceHash": "5f18f2383fb55635837832b5f16748c06ca40b55bff8727664830285fc446eff",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-1:gate",
+      "sourcePointer": "/regulars/0/stages/0/gate",
+      "sourceHash": "9e5098d50b1e65181197e3666d20b9ee291b247009060ebc123d2b0b3f6ec69f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-1:alternatives",
+      "sourcePointer": "/regulars/0/stages/0/alternatives",
+      "sourceHash": "e37c7cffdf3421d8499d2d6b2ecd84858026a59d31cade5501863fe338975c4c",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-1:recordPolicy",
+      "sourcePointer": "/regulars/0/stages/0/recordPolicy",
+      "sourceHash": "517304d39cb0cf10e985417eb79dc52a469ead31399787ff387bdb356e7ad005",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-2:gate",
+      "sourcePointer": "/regulars/0/stages/1/gate",
+      "sourceHash": "c79890a3637b3cfdf9501f74d8574fcece44edb6ec5951f4e7ead8705842393f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-2:alternatives",
+      "sourcePointer": "/regulars/0/stages/1/alternatives",
+      "sourceHash": "a4fb5df8618eab428fdfb5e19ee1b8b495987ab9b91c4dce6dff3f0c9f7a08eb",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-2:recordPolicy",
+      "sourcePointer": "/regulars/0/stages/1/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-3:gate",
+      "sourcePointer": "/regulars/0/stages/2/gate",
+      "sourceHash": "c79890a3637b3cfdf9501f74d8574fcece44edb6ec5951f4e7ead8705842393f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-3:alternatives",
+      "sourcePointer": "/regulars/0/stages/2/alternatives",
+      "sourceHash": "3fe858ac2bab9269db6d0701c57bda777562951f24a08356a5f8ebf12c808f12",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-3:recordPolicy",
+      "sourcePointer": "/regulars/0/stages/2/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-4:gate",
+      "sourcePointer": "/regulars/0/stages/3/gate",
+      "sourceHash": "411078ed5c4d7a6aaeb0a4461ad8e386502b4cf1cf5a7f172dd3aa21269c5e12",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-4:alternatives",
+      "sourcePointer": "/regulars/0/stages/3/alternatives",
+      "sourceHash": "65c551a673e970cc9d6d59051f9f26a0faa1d9d0f0205f1dcd76e69ae48f9ed9",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG1-4:recordPolicy",
+      "sourcePointer": "/regulars/0/stages/3/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-1:gate",
+      "sourcePointer": "/regulars/1/stages/0/gate",
+      "sourceHash": "52aafc342dc236d937163ccc605b1f9187a61a7ad3bc5e4bb3c1b26238cba2c4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-1:alternatives",
+      "sourcePointer": "/regulars/1/stages/0/alternatives",
+      "sourceHash": "af44a33bdc26c230cbd93d98015357ea54d5283327babe87dac3a7d522ea98f6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-1:recordPolicy",
+      "sourcePointer": "/regulars/1/stages/0/recordPolicy",
+      "sourceHash": "517304d39cb0cf10e985417eb79dc52a469ead31399787ff387bdb356e7ad005",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-2:gate",
+      "sourcePointer": "/regulars/1/stages/1/gate",
+      "sourceHash": "84ad860359577dac36b3e903640d3672c9f836f1afd6c745e48bc2574ea8dc4b",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-2:alternatives",
+      "sourcePointer": "/regulars/1/stages/1/alternatives",
+      "sourceHash": "814ce2a6414477f207dd0f2658120f60191f28b17307cc1d17057d3ebd38412b",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-2:recordPolicy",
+      "sourcePointer": "/regulars/1/stages/1/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-3:gate",
+      "sourcePointer": "/regulars/1/stages/2/gate",
+      "sourceHash": "873f80c496ef5c0021d99fee20ba98099c39ece06bd0c10bde1a0f5036097948",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-3:alternatives",
+      "sourcePointer": "/regulars/1/stages/2/alternatives",
+      "sourceHash": "77908f168eeb40a8577fdd3417bcc28303550f585b2263109373123835ee01fc",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-3:recordPolicy",
+      "sourcePointer": "/regulars/1/stages/2/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-4:gate",
+      "sourcePointer": "/regulars/1/stages/3/gate",
+      "sourceHash": "c79890a3637b3cfdf9501f74d8574fcece44edb6ec5951f4e7ead8705842393f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-4:alternatives",
+      "sourcePointer": "/regulars/1/stages/3/alternatives",
+      "sourceHash": "356e286d67e7532a09da7de17324ef8b3bbe578214a771ac8a249f758e301f4f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG2-4:recordPolicy",
+      "sourcePointer": "/regulars/1/stages/3/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-1:gate",
+      "sourcePointer": "/regulars/2/stages/0/gate",
+      "sourceHash": "d3f83268fd3ccc079c885c79de1b193b2a8246ad980a2749ba3fdd6b3cb5f43f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-1:alternatives",
+      "sourcePointer": "/regulars/2/stages/0/alternatives",
+      "sourceHash": "d9bdd754dfbaa246c0038bbceea72b228dc8960c143bac724e9bfe3f2743a366",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-1:recordPolicy",
+      "sourcePointer": "/regulars/2/stages/0/recordPolicy",
+      "sourceHash": "517304d39cb0cf10e985417eb79dc52a469ead31399787ff387bdb356e7ad005",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-2:gate",
+      "sourcePointer": "/regulars/2/stages/1/gate",
+      "sourceHash": "1b5c48483274586c5a1c7787234327c0acae61715906f6155123b706b1d2f63d",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-2:alternatives",
+      "sourcePointer": "/regulars/2/stages/1/alternatives",
+      "sourceHash": "2b18885d6af7b59054cb387cb02138412a39ddcce69027cdf4b27da95271125b",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-2:recordPolicy",
+      "sourcePointer": "/regulars/2/stages/1/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-3:gate",
+      "sourcePointer": "/regulars/2/stages/2/gate",
+      "sourceHash": "c79890a3637b3cfdf9501f74d8574fcece44edb6ec5951f4e7ead8705842393f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-3:alternatives",
+      "sourcePointer": "/regulars/2/stages/2/alternatives",
+      "sourceHash": "2a643a8612d0ac6a53950643754d09997aa9d8f13fc0ed89321ebf325e8fc07f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-3:recordPolicy",
+      "sourcePointer": "/regulars/2/stages/2/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-4:gate",
+      "sourcePointer": "/regulars/2/stages/3/gate",
+      "sourceHash": "c79890a3637b3cfdf9501f74d8574fcece44edb6ec5951f4e7ead8705842393f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-4:alternatives",
+      "sourcePointer": "/regulars/2/stages/3/alternatives",
+      "sourceHash": "4810464862e62919a8550dd8d5abc1b7d1b2fc93db3fad68e5b69beeb6833665",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG3-4:recordPolicy",
+      "sourcePointer": "/regulars/2/stages/3/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-1:gate",
+      "sourcePointer": "/regulars/3/stages/0/gate",
+      "sourceHash": "2e45ac1f1a60bd40f98d77aea8d9783e6cf3ca55e6d8c797fc1b6633e426c038",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-1:alternatives",
+      "sourcePointer": "/regulars/3/stages/0/alternatives",
+      "sourceHash": "e0218208d7b025cf4ad4d1a514e7e7b91f05fbb9cc5633cc25e8fc13d25d86cd",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-1:recordPolicy",
+      "sourcePointer": "/regulars/3/stages/0/recordPolicy",
+      "sourceHash": "517304d39cb0cf10e985417eb79dc52a469ead31399787ff387bdb356e7ad005",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-2:gate",
+      "sourcePointer": "/regulars/3/stages/1/gate",
+      "sourceHash": "34416e43b1ef2545e2315fb3344f62d9f614c56e2be3f8d0c679fa77cd5e24da",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-2:alternatives",
+      "sourcePointer": "/regulars/3/stages/1/alternatives",
+      "sourceHash": "828c51f5c247a5b137bc086fdb71bacf56456acad5f30e858c439d0d8cae0538",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-2:recordPolicy",
+      "sourcePointer": "/regulars/3/stages/1/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-3:gate",
+      "sourcePointer": "/regulars/3/stages/2/gate",
+      "sourceHash": "c79890a3637b3cfdf9501f74d8574fcece44edb6ec5951f4e7ead8705842393f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-3:alternatives",
+      "sourcePointer": "/regulars/3/stages/2/alternatives",
+      "sourceHash": "728a8238a239d1a91298c1e51b86a2adee1047848ff345d042ad8cc054dc87b6",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-3:recordPolicy",
+      "sourcePointer": "/regulars/3/stages/2/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-4:gate",
+      "sourcePointer": "/regulars/3/stages/3/gate",
+      "sourceHash": "c79890a3637b3cfdf9501f74d8574fcece44edb6ec5951f4e7ead8705842393f",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-4:alternatives",
+      "sourcePointer": "/regulars/3/stages/3/alternatives",
+      "sourceHash": "e45c5af489dfc61d83fe0dde1210e65332bf6f75293142d0727d3e89c1679f08",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "RG4-4:recordPolicy",
+      "sourcePointer": "/regulars/3/stages/3/recordPolicy",
+      "sourceHash": "b851ad37e7cdbeca66f7e32314b0bb65ece501ad313757a5eb10a12ebeb53dd4",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-1:gate",
+      "sourcePointer": "/projects/0/gate",
+      "sourceHash": "5a58c50d42edcc1d421b7b9bfe5d0267c181f5286d75e8874091a3ce0b25c772",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-2:gate",
+      "sourcePointer": "/projects/1/gate",
+      "sourceHash": "7ac484d214b2ef2075ab69d96b403407ed0022643ff1e412aca1ce562b8b21bb",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-3:gate",
+      "sourcePointer": "/projects/2/gate",
+      "sourceHash": "d3f83268fd3ccc079c885c79de1b193b2a8246ad980a2749ba3fdd6b3cb5f43f",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-4:gate",
+      "sourcePointer": "/projects/3/gate",
+      "sourceHash": "e48fbb6e6bac24335bf2b6b23bf86e9bc86d694bc80d17ff3ee85f589c059a84",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-4:optionalDisplay.rule",
+      "sourcePointer": "/projects/3/optionalDisplay/rule",
+      "sourceHash": "7df3bb489348c81ea82c3f3b058df468218a18035bebe9e09805d4cffab28a94",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-1-A:check",
+      "sourcePointer": "/projects/0/stages/0/check",
+      "sourceHash": "55e112abc80f7fd7b877f2bb1014544f5126cf389c6a3fa2cb0d86ca6d9b98b4",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-1-B:check",
+      "sourcePointer": "/projects/0/stages/1/check",
+      "sourceHash": "7b516b07fa4e0330b4cd09fe29e1e4445adbd421a628a5cb013b4c81b599e88e",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-1-C:check",
+      "sourcePointer": "/projects/0/stages/2/check",
+      "sourceHash": "1b7e2b31261263a1de4e2a0401bec60ff514465ba786ed449a70c677069f2107",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-2-A:check",
+      "sourcePointer": "/projects/1/stages/0/check",
+      "sourceHash": "0319aeb57a1c360b0accc6986f485bb71fcbfc382db9d4fe9e213bba59136729",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-2-B:check",
+      "sourcePointer": "/projects/1/stages/1/check",
+      "sourceHash": "7f645794eb9522aa99a2760f8d4f1840614c9fcbef3ca6a88cac18f23811319d",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-2-C:check",
+      "sourcePointer": "/projects/1/stages/2/check",
+      "sourceHash": "fc222b45dc6d8dfad399596154d8c73141480724d3276ce2ce8e1cb3eec73c55",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-3-A:check",
+      "sourcePointer": "/projects/2/stages/0/check",
+      "sourceHash": "30e425f9c0cff63ac9c86ce102e9a8abdf5954f7a0b1cb9bd853e1949ec4f852",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-3-B:check",
+      "sourcePointer": "/projects/2/stages/1/check",
+      "sourceHash": "6906f4e18865073813418b1ef2a624332a9e72e1b007c2a1f9b2dc3307b17082",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-3-C:check",
+      "sourcePointer": "/projects/2/stages/2/check",
+      "sourceHash": "1d0d56a4118fd36085a9e82f195b9cb21fd09c13e1dc43f3283ec25fa3ea43e7",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-4-A:check",
+      "sourcePointer": "/projects/3/stages/0/check",
+      "sourceHash": "42f00e1b7d303b0e7d270d7a793a229d401287de47335c68b97afa46ee499560",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-4-B:check",
+      "sourcePointer": "/projects/3/stages/1/check",
+      "sourceHash": "72e0ea9982bc53e2aa8be6e757fb82f2ba544597634bb4fa1e8f5ec75687b848",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "PJ-4-C:check",
+      "sourcePointer": "/projects/3/stages/2/check",
+      "sourceHash": "92d56f66dd944ee9866f5f5d59ffc5b8c26e3eef460336406deb1d404ab1ce78",
+      "work": "J",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-1:stageRules",
+      "sourcePointer": "/collections/0/stageRules",
+      "sourceHash": "45af3aea1cf1933c7105fd074d1f749b4f9cee6305e396f32d9b164fc4c100aa",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-1:practice.any",
+      "sourcePointer": "/collections/0/practice/any",
+      "sourceHash": "fc05ee4ed761849d9f3ee1cb1f218c556f569d8da0b9275d1cb0ad260e242d32",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-1:practice.fullMenuStamp",
+      "sourcePointer": "/collections/0/practice/fullMenuStamp",
+      "sourceHash": "1ac91d7ca9e712c1029de415366439bbed785020de194639d670f74cbb714f97",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-2:stageRules",
+      "sourcePointer": "/collections/1/stageRules",
+      "sourceHash": "45af3aea1cf1933c7105fd074d1f749b4f9cee6305e396f32d9b164fc4c100aa",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-2:practice.any",
+      "sourcePointer": "/collections/1/practice/any",
+      "sourceHash": "5e314e50f5d8b200224b5a0466e88a63566d0047e52f8a667fd76616acb9339f",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-2:practice.fullMenuStamp",
+      "sourcePointer": "/collections/1/practice/fullMenuStamp",
+      "sourceHash": "995219606ac7fbd2b74a97f92dc2ea251ec57551107c0add33d9bfe6ff6f201a",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-3:stageRules",
+      "sourcePointer": "/collections/2/stageRules",
+      "sourceHash": "45af3aea1cf1933c7105fd074d1f749b4f9cee6305e396f32d9b164fc4c100aa",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-3:practice.any",
+      "sourcePointer": "/collections/2/practice/any",
+      "sourceHash": "9c5c27af2b05983948c657c5e71e049f42108e93af0196c0344cd032417283a5",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-3:practice.fullMenuStamp",
+      "sourcePointer": "/collections/2/practice/fullMenuStamp",
+      "sourceHash": "040c79d44b5531fe799c4a5083f599fa36b8c6b58d3df20c36c32ca6f8869a4b",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-4:stageRules",
+      "sourcePointer": "/collections/3/stageRules",
+      "sourceHash": "45af3aea1cf1933c7105fd074d1f749b4f9cee6305e396f32d9b164fc4c100aa",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-4:practice.any",
+      "sourcePointer": "/collections/3/practice/any",
+      "sourceHash": "0132907191d9d1a876f1289495a1e85662c19d182c980dd70ca294b6bdb8fb26",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-4:practice.fullMenuStamp",
+      "sourcePointer": "/collections/3/practice/fullMenuStamp",
+      "sourceHash": "d776d07dbeb757b6ed21d2ae74a0472d133a8c0dfbd6d13825ec37ff63b96f4b",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-5:stageRules",
+      "sourcePointer": "/collections/4/stageRules",
+      "sourceHash": "45af3aea1cf1933c7105fd074d1f749b4f9cee6305e396f32d9b164fc4c100aa",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-5:practice.any",
+      "sourcePointer": "/collections/4/practice/any",
+      "sourceHash": "335cf955930373818601a126a9a4b04f02db74a95a0a77a4553680ffeb46bf4e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-5:practice.fullMenuStamp",
+      "sourcePointer": "/collections/4/practice/fullMenuStamp",
+      "sourceHash": "a5726aab12fd4009dab26842b04c0b9748b86bbac58abe5a488d3c8d8b657e60",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-6:stageRules",
+      "sourcePointer": "/collections/5/stageRules",
+      "sourceHash": "45af3aea1cf1933c7105fd074d1f749b4f9cee6305e396f32d9b164fc4c100aa",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-6:practice.any",
+      "sourcePointer": "/collections/5/practice/any",
+      "sourceHash": "8e77c2e7be066b37069b7590dbb6555089e812a90773168c4220b02f1b7a3a7b",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-6:practice.fullMenuStamp",
+      "sourcePointer": "/collections/5/practice/fullMenuStamp",
+      "sourceHash": "566c4143c79b167706dc4341eb708f9ef6a21fa9ee41229050af903d7f1b2a4d",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-7:stageRules",
+      "sourcePointer": "/collections/6/stageRules",
+      "sourceHash": "45af3aea1cf1933c7105fd074d1f749b4f9cee6305e396f32d9b164fc4c100aa",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-7:practice.any",
+      "sourcePointer": "/collections/6/practice/any",
+      "sourceHash": "0e8ae04a4a1e179502d6e35d1fdaea51268b516568092db7f4400748629294d8",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-7:practice.fullMenuStamp",
+      "sourcePointer": "/collections/6/practice/fullMenuStamp",
+      "sourceHash": "8ad57a6459f12374abf1f4a2a44af74dec92a07942712230403611e941b6601b",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-8:stageRules",
+      "sourcePointer": "/collections/7/stageRules",
+      "sourceHash": "4a925a226dbc85662b59f9d137debf874bafb2cfa956b9f93d59fcb6bb666558",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-8:practice.any",
+      "sourcePointer": "/collections/7/practice/any",
+      "sourceHash": "905e74f5774aa054ec6d2c0b8a010b653a299fdbfe6adc21d0bb8b92feb6f4d6",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-8:practice.fullMenuStamp",
+      "sourcePointer": "/collections/7/practice/fullMenuStamp",
+      "sourceHash": "88e5958539755c7238288700cd882e02fc3b32cc532d8cef2b3b36e34d3323e2",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-V:practice.any",
+      "sourcePointer": "/collections/8/practice/any",
+      "sourceHash": "d431d0ecaede5836724668b4f3aa6ff0f399a7bb6296e9d5f63c6c4e8ca5d73d",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-R:practice.any",
+      "sourcePointer": "/collections/9/practice/any",
+      "sourceHash": "d431d0ecaede5836724668b4f3aa6ff0f399a7bb6296e9d5f63c6c4e8ca5d73d",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-T:practice.any",
+      "sourcePointer": "/collections/10/practice/any",
+      "sourceHash": "d431d0ecaede5836724668b4f3aa6ff0f399a7bb6296e9d5f63c6c4e8ca5d73d",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-B:practice.any",
+      "sourcePointer": "/collections/11/practice/any",
+      "sourceHash": "d431d0ecaede5836724668b4f3aa6ff0f399a7bb6296e9d5f63c6c4e8ca5d73d",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-V-A:requires",
+      "sourcePointer": "/collections/8/stages/0/requires",
+      "sourceHash": "261cef4e61f2dccc032b2ae6ccac79a873df3e18b81e5133946059dfb4e2e24e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-V-B:requires",
+      "sourcePointer": "/collections/8/stages/1/requires",
+      "sourceHash": "c0f50d4eded9c568a97ff5f976ca69a04a0113206e9dc75ac513123d52e98a83",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-V-C:requires",
+      "sourcePointer": "/collections/8/stages/2/requires",
+      "sourceHash": "a4cd67c45369567b5d6918af7e91004339ac11410ebc4d3b6d22d6b177a17f25",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-R-A:requires",
+      "sourcePointer": "/collections/9/stages/0/requires",
+      "sourceHash": "261cef4e61f2dccc032b2ae6ccac79a873df3e18b81e5133946059dfb4e2e24e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-R-B:requires",
+      "sourcePointer": "/collections/9/stages/1/requires",
+      "sourceHash": "c0f50d4eded9c568a97ff5f976ca69a04a0113206e9dc75ac513123d52e98a83",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-R-C:requires",
+      "sourcePointer": "/collections/9/stages/2/requires",
+      "sourceHash": "a4cd67c45369567b5d6918af7e91004339ac11410ebc4d3b6d22d6b177a17f25",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-T-A:requires",
+      "sourcePointer": "/collections/10/stages/0/requires",
+      "sourceHash": "261cef4e61f2dccc032b2ae6ccac79a873df3e18b81e5133946059dfb4e2e24e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-T-B:requires",
+      "sourcePointer": "/collections/10/stages/1/requires",
+      "sourceHash": "c0f50d4eded9c568a97ff5f976ca69a04a0113206e9dc75ac513123d52e98a83",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-T-C:requires",
+      "sourcePointer": "/collections/10/stages/2/requires",
+      "sourceHash": "a4cd67c45369567b5d6918af7e91004339ac11410ebc4d3b6d22d6b177a17f25",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-B-A:requires",
+      "sourcePointer": "/collections/11/stages/0/requires",
+      "sourceHash": "261cef4e61f2dccc032b2ae6ccac79a873df3e18b81e5133946059dfb4e2e24e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-B-B:requires",
+      "sourcePointer": "/collections/11/stages/1/requires",
+      "sourceHash": "c0f50d4eded9c568a97ff5f976ca69a04a0113206e9dc75ac513123d52e98a83",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "COL-B-C:requires",
+      "sourcePointer": "/collections/11/stages/2/requires",
+      "sourceHash": "a4cd67c45369567b5d6918af7e91004339ac11410ebc4d3b6d22d6b177a17f25",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-ALL:fixed",
+      "sourcePointer": "/specials/0/fixed",
+      "sourceHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-ALL:optional",
+      "sourcePointer": "/specials/0/optional",
+      "sourceHash": "916787f3799c47a79fd3ffd5babc9f0637f70a3987e807cfbb857328187cf8ff",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-ALL:practice",
+      "sourcePointer": "/specials/0/practice",
+      "sourceHash": "1b8778dd3f7d39f24853691374737dd42e37b7ced1674783140cb433d5ebe9c9",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-ALL:reward",
+      "sourcePointer": "/specials/0/reward",
+      "sourceHash": "27ea8ebdcc1534b9bca6b1171d38bd30ea79b0cbb8872b9583c9040f53739f9b",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-LEAF:fixed",
+      "sourcePointer": "/specials/1/fixed",
+      "sourceHash": "fbe6c6680578018687b73bc76bfdfc992b3e094467e7efe654a6e249c8650841",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-LEAF:optional",
+      "sourcePointer": "/specials/1/optional",
+      "sourceHash": "98c0670a92d7864344b8c1ec3f5e311ab3f6f6aa31b37aea1b69d2ebf6ad6307",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-LEAF:practice",
+      "sourcePointer": "/specials/1/practice",
+      "sourceHash": "6e531b7f938307dd688214f0234384014e614d6d9be77900343f6c97d4092367",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-LEAF:reward",
+      "sourcePointer": "/specials/1/reward",
+      "sourceHash": "6137881bb45b034529ea8017424c5cc5d547ba1411654ef63f7c6b2eb0253041",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-TABLE:fixed",
+      "sourcePointer": "/specials/2/fixed",
+      "sourceHash": "68eced609174bac0fceba4c69d703e453814f737238a7f367592b8b3b5bfdaff",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-TABLE:optional",
+      "sourcePointer": "/specials/2/optional",
+      "sourceHash": "9052c07ac3e2449a5a49b928534a1fbe72b8de03d81a0ce2d8087ccf4788eb4a",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-TABLE:practice",
+      "sourcePointer": "/specials/2/practice",
+      "sourceHash": "f3d33ad59a3741433566366db7741529cbf4afa65f794f2f8dc03c1de0da2d15",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-TABLE:reward",
+      "sourcePointer": "/specials/2/reward",
+      "sourceHash": "fec47460f299d57023d76f7e59a4a54c3dc8934477fe424296d5ad63618241e2",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-SHAPE:fixed",
+      "sourcePointer": "/specials/3/fixed",
+      "sourceHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-SHAPE:optional",
+      "sourcePointer": "/specials/3/optional",
+      "sourceHash": "05c5751702835bdce78a6ef8c28b374ce0db9c34fe18a5b69a366856ce312f83",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-SHAPE:practice",
+      "sourcePointer": "/specials/3/practice",
+      "sourceHash": "d8493a96fa11d5fd7236ef86b2f27f3cac1e4107822ca82f7b7510f0f6f465d3",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "SP-SHAPE:reward",
+      "sourcePointer": "/specials/3/reward",
+      "sourceHash": "1cf814729ba938b195a09af8703cd0fdc6b4db604bf5ba1753b672395cc328cd",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M01:effect",
+      "sourcePointer": "/mementos/0/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M01:unlock",
+      "sourcePointer": "/mementos/0/unlock",
+      "sourceHash": "d4868020b6cfefd87e85e9155596aca2e56859f76acd67bcf73f6c94333a674e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M02:effect",
+      "sourcePointer": "/mementos/1/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M02:unlock",
+      "sourcePointer": "/mementos/1/unlock",
+      "sourceHash": "d4868020b6cfefd87e85e9155596aca2e56859f76acd67bcf73f6c94333a674e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M03:effect",
+      "sourcePointer": "/mementos/2/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M03:unlock",
+      "sourcePointer": "/mementos/2/unlock",
+      "sourceHash": "d4868020b6cfefd87e85e9155596aca2e56859f76acd67bcf73f6c94333a674e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M04:effect",
+      "sourcePointer": "/mementos/3/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M04:unlock",
+      "sourcePointer": "/mementos/3/unlock",
+      "sourceHash": "d4868020b6cfefd87e85e9155596aca2e56859f76acd67bcf73f6c94333a674e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M05:effect",
+      "sourcePointer": "/mementos/4/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M05:unlock",
+      "sourcePointer": "/mementos/4/unlock",
+      "sourceHash": "d4868020b6cfefd87e85e9155596aca2e56859f76acd67bcf73f6c94333a674e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M06:effect",
+      "sourcePointer": "/mementos/5/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M06:unlock",
+      "sourcePointer": "/mementos/5/unlock",
+      "sourceHash": "d4868020b6cfefd87e85e9155596aca2e56859f76acd67bcf73f6c94333a674e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M07:effect",
+      "sourcePointer": "/mementos/6/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M07:unlock",
+      "sourcePointer": "/mementos/6/unlock",
+      "sourceHash": "d4868020b6cfefd87e85e9155596aca2e56859f76acd67bcf73f6c94333a674e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M08:effect",
+      "sourcePointer": "/mementos/7/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M08:unlock",
+      "sourcePointer": "/mementos/7/unlock",
+      "sourceHash": "d4868020b6cfefd87e85e9155596aca2e56859f76acd67bcf73f6c94333a674e",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M09:effect",
+      "sourcePointer": "/mementos/8/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M09:unlock",
+      "sourcePointer": "/mementos/8/unlock",
+      "sourceHash": "a5cb1c172c5d6b3650e1d6036c08bd3adffab401f2aabae23bb5d085b5fab626",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "M10:effect",
+      "sourcePointer": "/mementos/9/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M10:unlock",
+      "sourcePointer": "/mementos/9/unlock",
+      "sourceHash": "a5cb1c172c5d6b3650e1d6036c08bd3adffab401f2aabae23bb5d085b5fab626",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "M11:effect",
+      "sourcePointer": "/mementos/10/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M11:unlock",
+      "sourcePointer": "/mementos/10/unlock",
+      "sourceHash": "a5cb1c172c5d6b3650e1d6036c08bd3adffab401f2aabae23bb5d085b5fab626",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "M12:effect",
+      "sourcePointer": "/mementos/11/effect",
+      "sourceHash": "8fd2f88ea475f13b1807ab9105396301f6ea58243d64c3cee07f02db35061fa0",
+      "work": "H",
+      "status": "compiled"
+    },
+    {
+      "id": "M12:unlock",
+      "sourcePointer": "/mementos/11/unlock",
+      "sourceHash": "a5cb1c172c5d6b3650e1d6036c08bd3adffab401f2aabae23bb5d085b5fab626",
+      "work": "I",
+      "status": "compiled"
+    },
+    {
+      "id": "productionRules:knowledge",
+      "sourcePointer": "/productionRules/knowledge",
+      "sourceHash": "82567da3630b760804d55e8f971b365e4097d436bcdc7c9a1b0a1c4ae2ad812d",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "productionRules:method",
+      "sourcePointer": "/productionRules/method",
+      "sourceHash": "bf3419d9057bf54eae6a9c9f4ad96f84d9ccae91a5e7378e373aa586c7323f5c",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "productionRules:trial",
+      "sourcePointer": "/productionRules/trial",
+      "sourceHash": "b5afd70ced28e0d8bf6d29f8f71d435dc8319488df00da06895184799a3f594f",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "productionRules:companions",
+      "sourcePointer": "/productionRules/companions",
+      "sourceHash": "f04298ee0897bd09fb886e5a1c93fd77bbe448a291862af4eccd998611259999",
+      "work": "C",
+      "status": "compiled"
+    },
+    {
+      "id": "productionRules:prices",
+      "sourcePointer": "/productionRules/prices",
+      "sourceHash": "1a5f6551f3e3dd83383577bc7d2b4d6e4cf8f2deb7b46a336d94389ead984327",
+      "work": "D",
+      "status": "compiled"
+    },
+    {
+      "id": "productionRules:timing",
+      "sourcePointer": "/productionRules/timing",
+      "sourceHash": "3e42249661f6ad8982bf1061a636858865e4b44b3b05259ac7019d12510618ca",
+      "work": "D",
+      "status": "compiled"
+    },
+    {
+      "id": "productionRules:unlock",
+      "sourcePointer": "/productionRules/unlock",
+      "sourceHash": "9357e5dbf44f40701d6c8b180a0d8da4743a4caad6b4b24f5b703d2412d66c4b",
+      "work": "G",
+      "status": "compiled"
+    },
+    {
+      "id": "productionRules:ui",
+      "sourcePointer": "/productionRules/ui",
+      "sourceHash": "7c23b6536dffa56956262b65626cfad7676ac37bbd03d65a8b80cd8c71bed653",
+      "work": "K",
+      "status": "compiled"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.4.2",
+  "versionCode": 9,
+  "file": "chick-kitchen-1.4.2.apk",
+  "sha256": "9f1d0c60ef40fdd50db69099cee2cdddfd4f16b15d6fdc0d8cadf8f7821e1503",
+  "bytes": 48436232,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-15T14:09:05.7182660Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "1616b4920d35e21c0bedb3be22791e20d37d5aad0df1c9a5ff61d1f644051c2a",
+  "runtimeFiles": 588,
+  "notes": "图鉴新增193位伙伴的发现小线索，以一句味道、口感、做法或情境暗示引导探索；不直接展示未知伙伴的名称、画像、厨具、食材搭配，也不提供展开答案。节日档案单独显示开放日期，完整配方仍在首次收取后解锁。保留原孵化规则、提醒、当前批次和存档，沿用原签名覆盖更新。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

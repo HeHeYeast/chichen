@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鸡宝厨房 · 素材准备清单</title>
+  <style>
+    :root { color-scheme: light; font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; color: #3e3b33; background: #f7f6f1; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: min(1100px, calc(100% - 40px)); margin: 32px auto 64px; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; }
+    a { color: #246952; text-underline-offset: 4px; }
+    h1 { font-size: clamp(24px, 4vw, 34px); margin: 26px 0 14px; letter-spacing: .02em; }
+    h2 { font-size: 21px; margin: 34px 0 12px; }
+    h3 { font-size: 18px; margin: 14px 0 8px; }
+    p { line-height: 1.8; margin: 10px 0; }
+    .intro { max-width: 920px; }
+    .notice { padding: 14px 18px; border-left: 4px solid #c7a666; background: #fff9e9; }
+    .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 22px 0 18px; }
+    .toolbar p { font-size: 13px; color: #6d6a5e; margin: 0; }
+    .toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font-weight: 700; cursor: pointer; }
+    input { width: 19px; height: 19px; accent-color: #387b60; }
+    .stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; }
+    article { min-width: 0; }
+    .scene { position: relative; width: 240px; max-width: 100%; aspect-ratio: 640 / 1136; overflow: hidden; background: #e3d5c5; }
+    .scene img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .scene .dirty { position: absolute; inset: 0; visibility: hidden; }
+    body.show-dirt .scene .dirty { visibility: visible; }
+    .stage-code { font-size: 12px; font-weight: 700; color: #697361; }
+    .features { font-size: 13px; color: #6d6a5e; min-height: 46px; }
+    dl { margin: 12px 0 0; font-size: 13px; line-height: 1.75; }
+    dt { color: #777164; }
+    dd { margin: 0 0 10px; font-weight: 700; }
+    .pending { color: #87652e; font-size: 12px; border-top: 1px solid #dbd7c9; padding-top: 12px; }
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 620px; background: #fff; font-size: 14px; }
+    th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #e2dfd3; line-height: 1.65; vertical-align: top; }
+    th { background: #eeeee5; font-weight: 700; }
+    td:first-child { width: 160px; font-weight: 700; }
+    .note, footer { font-size: 13px; color: #777164; }
+    footer { margin-top: 28px; padding-top: 18px; border-top: 1px solid #dbd7c9; line-height: 1.8; overflow-wrap: anywhere; }
+    @media (max-width: 980px) { .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; } .scene { margin: 0 auto; } }
+    @media (max-width: 520px) { main { width: calc(100% - 28px); margin-top: 22px; } .stages { grid-template-columns: 1fr; gap: 30px; } article { max-width: 320px; width: 100%; margin: 0 auto; } .features { min-height: 0; } }
+  </style>
+</head>
+<body>
+  <main>
+    <nav aria-label="审阅入口"><a href="/review">返回可玩样板</a><a href="/web/art-board.html">美术规范板</a><a href="/web/compare.html">前后对照</a></nav>
+    <h1>先把整款游戏的素材备齐</h1>
+    <div class="intro">
+      <p>厨房要随着升级改变场景、调味槽和操作提示。素材准备需要覆盖这些状态，再按同一套规范制作角色、厨具、农场和 UI。</p>
+      <p class="notice"><strong>版本核对：</strong>当前找到的安装包 <code>com.idtinc.ckchickandduck</code> 包含“初始 + 三次升级”，共四种厨房外观。你记忆中的旧版“三阶段”仍保留为版本待核对项。下面先按现有源码与素材列出，不将这两个版本直接视为相同。</p>
+      <p><strong>新版按四种居住条件成长：</strong>破旧茅草房屋 → 略微整齐木板房屋 → 小康公寓厨房 → 豪华精装厨房。<a href="/web/stage-review.html?v=7">查看新版四阶段可玩对照</a>。下面保留原版素材作为规则与造型依据，和新版设计分别展示。</p>
+    </div>
+    <h2>原版厨房外观与进入条件</h2>
+    <div class="toolbar">
+      <label class="toggle"><input id="show-dirt" type="checkbox">叠加原版脏乱层</label>
+      <p id="layer-status" aria-live="polite">原始场景底图 · 不含角色、厨具与 UI · 四张同尺寸对照</p>
+    </div>
+    <section class="stages" aria-label="原版厨房阶段对照">
+      <article>
+        <div class="scene"><img src="/assets/png/Tool/Tool0/tool_0_0_0_0.jpg" width="640" height="1136" alt="初始厨房：木板墙、圆草窝、藤篮"><img class="dirty" src="/assets/png/Tool/Tool0/tool_0_0_0_dirty.png" width="640" height="1136" alt=""></div>
+        <h3>初始厨房</h3><span class="stage-code">显示 Lv.1 · 内部等级 0</span>
+        <p class="features">木板墙、木托架、圆草窝和藤篮。</p>
+        <dl><dt>进入条件</dt><dd>新游戏默认开放</dd><dt>可用调味槽</dt><dd>1 格</dd></dl>
+        <p class="pending">新设计对应：破旧茅草房屋 · 散草窝</p>
+      </article>
+      <article>
+        <div class="scene"><img src="/assets/png/Tool/Tool0/tool_0_0_1_0.jpg" width="640" height="1136" alt="第一次升级：红砖墙、浅色搁板、方形草料盘"><img class="dirty" src="/assets/png/Tool/Tool0/tool_0_0_1_dirty.png" width="640" height="1136" alt=""></div>
+        <h3>第一次升级</h3><span class="stage-code">显示 Lv.2 · 内部等级 1</span>
+        <p class="features">红砖墙、浅色搁板、方形草料盘和金属槽。</p>
+        <dl><dt>进入条件</dt><dd>支付 10,000 CP<br>前六种厨具均达到 Lv.1</dd><dt>可用调味槽</dt><dd>2 格</dd></dl>
+        <p class="pending">新设计对应：略微整齐木板房屋 · 木屑箱</p>
+      </article>
+      <article>
+        <div class="scene"><img src="/assets/png/Tool/Tool0/tool_0_0_2_0.jpg" width="640" height="1136" alt="第二次升级：浅色瓷砖、玻璃窗、软垫木盘"><img class="dirty" src="/assets/png/Tool/Tool0/tool_0_0_2_dirty.png" width="640" height="1136" alt=""></div>
+        <h3>第二次升级</h3><span class="stage-code">显示 Lv.3 · 内部等级 2</span>
+        <p class="features">浅色瓷砖、玻璃窗、软垫木盘和金属碗。</p>
+        <dl><dt>进入条件</dt><dd>支付 20,000 CP<br>前六种厨具均达到 Lv.2</dd><dt>可用调味槽</dt><dd>3 格</dd></dl>
+        <p class="pending">新设计对应：小康公寓厨房 · 白棉床</p>
+      </article>
+      <article>
+        <div class="scene"><img src="/assets/png/Tool/Tool0/tool_0_0_3_0.jpg" width="640" height="1136" alt="第三次升级：带帘窗户、雕花搁板、粉色软窝和桌布"><img class="dirty" src="/assets/png/Tool/Tool0/tool_0_0_3_dirty.png" width="640" height="1136" alt=""></div>
+        <h3>第三次升级</h3><span class="stage-code">显示 Lv.4 · 内部等级 3</span>
+        <p class="features">带帘窗户、花纹搁板、粉色软窝和桌布。</p>
+        <dl><dt>进入条件</dt><dd>支付 30,000 CP<br>前六种厨具均达到 Lv.3</dd><dt>可用调味槽</dt><dd>3 格 · 本包最高级</dd></dl>
+        <p class="pending">新设计对应：豪华精装厨房 · 厚软窝</p>
+      </article>
+    </section>
+    <p class="note">前六种厨具：保温灯、平底锅、水煮锅、油炸锅、烤箱、炖锅。这里的 Lv.1 / 2 / 3 指玩家看到的厨具等级；不包含烧水壶与面包机。升级金额为每次升级支出。</p>
+    <h2>整款游戏的准备规模</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">素材组</th><th scope="col">原版依据</th><th scope="col">新版需要覆盖</th></tr></thead>
+        <tbody>
+          <tr><td>厨房与升级</td><td>4 张底图 + 4 张脏层 + 1 张初始厨房前景</td><td>按阶段拆分墙面、桌面、窝、收取容器与遮挡前景；条件不足、可升级、确认、成功、满级状态</td></tr>
+          <tr><td>厨具</td><td>8 种 × 3 级 = 24 个主体<br>每个主体普通 / 选中两态，共 48 张</td><td>每级有可辨认的造型变化；购买、未解锁、选中、使用中与升级反馈。样板四个图标尚不等于 24 个主体完成</td></tr>
+          <tr><td>鸡宝与鸭宝</td><td>114 鸡 + 57 鸭 = 171 个角色<br>另 16 张特殊反向图、1 张特殊变化图、3 张阴影</td><td>保持物种身份与配方编号；原始病鸡、焦鸡也在这 171 个角色内。动作、影子、反向细节与图鉴裁切逐项验收；样板已替换 3 个角色</td></tr>
+          <tr><td>蛋与破壳</td><td>鸡蛋 / 鸭蛋各 4 张，共 8 张</td><td>完整蛋、裂蛋、破壳前景、蛋种选择状态；孵化、弹跳、收取轨迹与遮挡参数</td></tr>
+          <tr><td>调味料</td><td>75 种 × 2 态 = 150 张</td><td>图标、选中状态、数量、锁定信息及 1 / 2 / 3 槽布局</td></tr>
+          <tr><td>农场</td><td>4 时段底图 + 2 种前景<br>4 建筑 × 4 时段 × 2 交互态 = 32 张</td><td>清晨、白天、黄昏、夜晚；完好 / 破损前景；建筑入口、角色活动与收成。建筑两态是普通 / 按下，不是完好 / 破损</td></tr>
+          <tr><td>UI 与文字</td><td>原版许多面板由程序绘制，不对应独立 PNG</td><td>导航、资源栏、设置、商店、图鉴、详情、清洁、升级和提示弹窗；普通 / 按下 / 禁用 / 选中等状态；中文字体与数字排版</td></tr>
+          <tr><td>标题与说明</td><td>标题背景、4 语言 Logo、16 张说明页与分享图标</td><td>中文标题、加载画面和与新版布局一致的教程；其他语言按后续范围安排</td></tr>
+          <tr><td>音频</td><td>3 首 BGM + 18 个音效</td><td>按钮、破壳、叫声、购买、出售、清洁、维修、提示等事件映射，音量与开关</td></tr>
+          <tr><td>活动与联动</td><td>部分活动信息、图标来自历史远程服务</td><td>历史远程素材尚未找齐；先登记缺口与已有角色，后续活动内容另行制定，不计为本地素材完整</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">数量口径：<code>assets/png</code> 内有 496 个图像文件（469 PNG + 27 JPG），其中包括不同状态、语言和辅助图。这不是 496 个独立游戏对象，也不是新版待生成图片的数量。</p>
+    <footer>详细清单：docs/game-asset-inventory.md。素材范围、状态和升级条件确认后，按“整套分层场景 → 厨具等级 → 角色与动作 → 其他页面”安排制作；当前页只用于核对原版依据与缺口。</footer>
+  </main>
+  <script>
+    const dirtControl = document.querySelector('#show-dirt');
+    const layerStatus = document.querySelector('#layer-status');
+    dirtControl.addEventListener('change', () => {
+      document.body.classList.toggle('show-dirt', dirtControl.checked);
+      layerStatus.textContent = dirtControl.checked
+        ? '已叠加各阶段原版脏乱层 · 不含角色、厨具与 UI'
+        : '原始场景底图 · 不含角色、厨具与 UI · 四张同尺寸对照';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "commands": 36,
+  "atomicRejections": 5,
+  "kitchenCost": 30000,
+  "prerequisiteTools": 42000,
+  "incrementalTotal": 72000,
+  "cumulativeFreshCost": 135000,
+  "lateToolsCost": 42500,
+  "slots": [
+    3,
+    3
+  ],
+  "businessCapacity": [
+    72,
+    72
+  ],
+  "oldExecutable": [
+    81,
+    82
+  ],
+  "lateRegionalEntry": 9,
+  "report": "artifacts/takeover/kitchen-lv4-investment.md"
+}

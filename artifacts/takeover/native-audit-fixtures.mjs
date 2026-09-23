@@ -1,0 +1,21 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {normalizeSave} from '../../web/engine.js';
+const f=JSON.parse(readFileSync(new URL('../../android/build/web-command-fixtures.json',import.meta.url),'utf8'));
+const out=[];
+function add(name,base,change){const state=structuredClone(base);change(state);let webAccepted=true,webError=null;try{normalizeSave(state,state.lastSeen);}catch(e){webAccepted=false;webError=e.message;}out.push({name,state,webAccepted,webError});}
+for(const group of ['regional','valley','business','orders','bay','regulars','projects'])for(const row of f[group])add('valid/'+group+'/'+row.name,row.state,()=>{});
+add('business-missing-roles',f.business[0].state,s=>delete s.expansion.business.active.roles);
+add('business-negative-price',f.business[0].state,s=>s.expansion.business.active.prices['0:0'].baseCP=-999);
+add('business-forged-window-income',f.business[1].state,s=>s.expansion.business.active.windowReports[0].baseCP+=999);
+add('business-forged-role-cursor',f.business[0].state,s=>s.expansion.business.active.roleCursor=999);
+add('facts-invalid-material-and-negative',f.business[0].state,s=>s.expansion.facts.materialBatches={'999':-1});
+add('facts-invalid-order-counter',f.business[0].state,s=>s.expansion.facts.orderTemplateCounts={'INVALID':-1});
+add('facts-invalid-predicate',f.business[1].state,s=>s.expansion.facts.predicateWitnesses.INVALID={firstSeq:1,lastSeq:1,sourceId:'fake'});
+add('order-forged-variant',f.orders[1].state,s=>s.expansion.orders.active[0].variantId='INVALID');
+add('order-forged-allowed',f.orders[1].state,s=>s.expansion.orders.active[0].groups[0].allowed=['0:151']);
+add('order-negative-paidCP',f.orders[1].state,s=>s.expansion.orders.active[0].paidCP=-1);
+add('order-invalid-template-progress',f.orders[0].state,s=>s.expansion.orders.templateProgress.INVALID={accepted:-1,completed:9,cancelled:0,skipped:0});
+add('project-fractional-payment',f.projects[2].state,s=>s.expansion.projects['PJ-1'].payments['PJ-1-C']=200.5);
+add('project-invalid-pinned-choice',f.projects.at(-1).state,s=>s.expansion.projects['PJ-2'].pinnedChoices['PJ-2-B']=['0:3','0:999']);
+writeFileSync(new URL('./native-audit-fixtures.json',import.meta.url),JSON.stringify(out));
+console.log(JSON.stringify(out.map(({name,webAccepted,webError})=>({name,webAccepted,webError})),null,2));

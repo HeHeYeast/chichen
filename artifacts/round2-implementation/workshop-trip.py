@@ -1,0 +1,51 @@
+from pathlib import Path
+p=Path('web/workshop-ui.js');s=p.read_text(encoding='utf-8');a=s.index('  function trip(){');b=s.index('  function observe(',a)
+s=s[:a]+'''  function trip(){
+    detailKey=null;skillDetail=null;
+    const s=getState(),t=s.progress.trip,room=30-Object.values(s.ingredients).reduce((a,b)=>a+b,0);
+    if(t&&['running','returned'].includes(t.status)){
+      const route=ROUTES.find(r=>r.id===t.routeId),running=t.status==='running',minutes=Math.max(0,Math.ceil((t.endAt-getNow())/60000));
+      shell('厨房寻访',`<div class="trip-landscape ${route.id}"><span>${running?'沿着香气，慢慢走':'带着收获，回家了'}</span><h3>${route.name} · ${running?'正在寻访':'伙伴已回家'}</h3><p>${running?`预计 ${new Date(t.endAt).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false})} 归队<br>还需 ${Math.floor(minutes/60)}小时${minutes%60}分`:'今天的味道，装在小篮子里。'}</p><div class="trip-team">${t.members.map(k=>`<div>${portrait(k)}<strong>${escape(name(k))}</strong></div>`).join('')}</div></div>${running?'<p class="workshop-note">到时伙伴自动回家，奖励等你领取。</p><details class="recall-menu"><summary>行程管理</summary><p>提前召回会空手归来，也不计入线索保底。</p><button data-recall>提前召回</button></details>':`<div class="trip-return"><h3>这一趟的收获</h3><p>材料包 ${30-room}/30 · 篮中 ${t.remaining.length} 份</p>${!room&&t.remaining.length?'<p class="shortage">材料包已满，本次材料暂存在篮中。<br>可以先领CP与线索。</p>':''}<div class="material-chips">${t.remaining.map(id=>`<span>${ingredientName(id)} ×1</span>`).join('')}</div><p>${t.cpProcessed?'寻访CP已结算':'待领取CP：'+(t.cpReward??0)}${t.cpProcessed?'':' CP'}</p><p>${t.clueProcessed?(t.clueResult?'已记下 '+speciesCode(t.clueResult.key)+' 的新线索':'这次没有新的线索。'):'沿途线索等待你翻阅。'}</p>${t.clueResult?`<button data-trip-clue="${t.clueResult.key}">阅读线索</button>`:''}<details><summary>整理篮子</summary><button data-discard-trip>放弃余料</button></details></div>`}`,running?'<button data-trip-home>回厨房等候</button>':`<button data-claim-clue>先领CP与线索</button><button class="orange" ${room?'data-claim-trip':'data-trip-home'}>${room?'领取材料 · '+Math.min(room,t.remaining.length)+'份':'去使用材料'}</button>`);
+      find('[data-trip-home]')?.addEventListener('click',goKitchen);
+      find('[data-recall]')?.addEventListener('click',()=>confirmBox('现在召回会立即归队，但这趟没有材料、CP或线索奖励，也不计入线索保底。',()=>{if(transact(s=>recall(s,t.id,getNow())))trip();},false,{yes:'召回'}));
+      find('[data-claim-trip]')?.addEventListener('click',()=>{const r=transact(s=>claimTrip(s,t.id,{},getNow()));if(r){trip();alertBox(`已收下 ${r.materials.length} 份材料${r.cp?'、'+r.cp+' CP':''}。${r.clue?'另记下1条新线索。':''}${r.remaining?'篮中还剩 '+r.remaining+' 份，腾出空位后可继续领取。':''}`);}});
+      find('[data-claim-clue]')?.addEventListener('click',()=>{const r=transact(s=>claimTrip(s,t.id,{materials:false},getNow()));if(r){trip();alertBox(`${r.cp?'获得 '+r.cp+' CP。':'CP已结算。'}${r.clue?'已记下 '+speciesCode(r.clue.key)+' 的新线索。':'本次没有新的线索。'}材料继续保留在篮中。`);}});
+      find('[data-discard-trip]')?.addEventListener('click',()=>confirmBox('放弃篮中全部剩余材料，不转换CP。未领的CP和线索仍会结算。',()=>{if(transact(s=>claimTrip(s,t.id,{materials:false,discard:true},getNow())))trip();},false,{yes:'放弃余料'}));
+      find('[data-trip-clue]')?.addEventListener('click',e=>observe(e.currentTarget.dataset.tripClue,trip));return;
+    }
+    members=members.filter(k=>availableCount(s,k)>0);
+    const info=explorationInfo(s,routeId,members,getNow(),{light});light=info.light;directed=directed.slice(0,info.directedUnits);
+    shell('去哪里寻味？',`<p class="trip-intro">免费出发 · 1～3种伙伴，每种1只</p><div class="route-tabs">${ROUTES.map(r=>`<button data-route="${r.id}" aria-pressed="${routeId===r.id}">${r.name}<small>${duration(r.hours)} · ${r.baseUnits}份起</small></button>`).join('')}</div>${!info.unlocked?`<p class="workshop-note">尚未开放：收取 ${Math.min(collectedTotal(s),info.route.requiredCollected)}/${info.route.requiredCollected} 只 · 发现 ${Math.min(discoveryCount(s),info.route.requiredDiscoveries)}/${info.route.requiredDiscoveries} 种</p>`:''}<div class="team-heading"><h3>同行的小伙伴</h3><button data-last-team>上次队伍</button></div><div class="trip-slots">${[0,1,2].map(i=>`<button data-member-slot="${i}" aria-label="${members[i]?'更换'+name(members[i]):'选择同行伙伴'+(i+1)}">${members[i]?portrait(members[i]):'<span class="empty-slot">＋</span>'}<strong>${members[i]?escape(name(members[i])):'选伙伴'}</strong><small>${members[i]?`采集${ABILITIES[members[i]].gather} · 发现${ABILITIES[members[i]].discover}`:'空位'}</small>${members[i]&&ABILITIES[members[i]].environment===routeId?'<em>✓ 适应</em>':''}</button>`).join('')}</div><div class="trip-outlook"><h3>这一趟能带回什么</h3><div class="trip-yield"><strong>${info.minUnits}<small>份材料 · 保证</small></strong><span><b>${pct(info.materialChance)}</b> 再带回1份<br>${info.clues.length?'<b>'+pct(info.clueChance)+'</b> 带回1条新线索':'本路线暂无线索可寻'}</span></div>${info.cpReward?`<p>顺路拾财：20%概率额外 ${info.cpReward} CP</p>`:''}<details><summary>采集 ${info.G} · 发现 ${info.F} · 适应 ${info.A} 位</summary><p>基础材料5%＋采集每点2.5%＋适应每位4%${rank(s,'TRIP-3')?'＋因地制宜每位3%':''}${rank(s,'TRIP-S')?'＋熟途采集6%':''}，最高60%。<br>线索10%＋发现每点2%＋适应每位3%${rank(s,'TRIP-3')?'＋因地制宜每位2%':''}，最高55%。</p></details></div>${!members.length?'<p class="workshop-note">还没有选同行伙伴。选1位就能出发，加入更多伙伴可提高额外收获机会。</p>':''}<div class="trip-preferences">${rank(s,'TRIP-5')&&routeId!=='yard'?`<label><input type="checkbox" data-light ${light?'checked':''}>轻装折返 · ${duration(info.route.hours*.8)}／${info.route.baseUnits-1}份</label>`:''}<p>路线材料：${info.pool.map(p=>p.unlocked?ingredientName(p.id):'尚未解锁（以食盐土代替）').join('、')}</p>${Array.from({length:info.directedUnits},(_,i)=>`<label>指定第${i+1}份<select data-directed="${i}"><option value="">随机</option>${info.pool.filter(p=>p.unlocked).map(p=>`<option value="${p.id}" ${directed[i]===p.id?'selected':''}>${ingredientName(p.id)}</option>`).join('')}</select></label>`).join('')}<p>${info.clues.length?`线索保底 ${s.progress.routeFailures[routeId]}/${info.hardAttempt-1} · 连续${info.hardAttempt-1}趟未获新线索，下次必得`:'没有合格线索时，不累计保底。'}</p>${rank(s,'OBS-S')&&info.clues.length?`<label>优先寻找（不提高概率）<select data-priority><option value="">顺路发现</option>${info.clues.slice(0,3).map(c=>`<option value="${c.key}" ${priority===c.key?'selected':''}>${speciesCode(c.key)}</option>`).join('')}</select></label>`:''}</div>`,`<div class="trip-footer-summary">保证${info.minUnits}份 · 额外${pct(info.materialChance)}<br>${info.clues.length?'新线索 '+pct(info.clueChance):'暂无线索可寻'}</div><button class="orange" data-depart ${!members.length||!info.unlocked?'disabled':''}>${!info.unlocked?'路线未开放':!members.length?'先选伙伴':'出发 · '+duration(info.hours)}</button>`);
+    each('[data-route]',b=>b.onclick=()=>{routeId=b.dataset.route;directed=[];priority=null;trip();});
+    each('[data-member-slot]',b=>b.onclick=()=>pickMember(+b.dataset.memberSlot));
+    find('[data-last-team]').onclick=()=>{members=s.progress.lastTeam.filter(k=>availableCount(s,k)>(keepOne?1:0));trip();};
+    find('[data-light]')?.addEventListener('change',e=>{light=e.target.checked;trip();});
+    each('[data-directed]',b=>b.onchange=()=>{const slots=[...panels.querySelectorAll('[data-directed]')];directed=[];for(const el of slots){if(!el.value)break;directed.push(Number(el.value));}trip();});
+    find('[data-priority]')?.addEventListener('change',e=>priority=e.target.value||null);
+    find('[data-depart]').onclick=()=>{
+      const selected=[...members],options={routeId,members:selected,directed:[...directed],priority,light},unique=selected.filter(k=>availableCount(getState(),k)===1);
+      confirmBox(`${info.route.name} · ${duration(info.hours)}\\n${selected.map(name).join('、')}\\n保证${info.minUnits}份材料，${pct(info.materialChance)}概率额外1份；免费出发。${unique.length?'\\n'+unique.map(name).join('、')+'仅有1只，外出时家中暂时没有。':''}`,()=>{if(transact(s=>depart(s,options,getNow())))trip();},false,{yes:'确认出发'});
+    };
+  }
+  function pickMember(slot){
+    const s=getState(),available=Object.keys(ABILITIES).filter(k=>availableCount(s,k)>(keepOne?1:0)&&(!members.includes(k)||members[slot]===k));
+    const before=explorationInfo(s,routeId,members,getNow(),{light});
+    shell('选择同行伙伴',`<label class="trip-filter"><input type="checkbox" data-keep-home ${keepOne?'checked':''}>只选至少有2只在家的品种</label><p class="trip-intro">派出1只后，家里还能留下1只</p><div class="member-list">${available.map(k=>{
+      const next=[...members];next[slot]=k;const after=explorationInfo(s,routeId,next.filter(Boolean),getNow(),{light}),a=ABILITIES[k];
+      return `<button data-pick-member="${k}" aria-pressed="${members[slot]===k}">${portrait(k)}<span><strong>${escape(name(k))} ${a.environment===routeId?'· 适应':''}</strong><small>在家${availableCount(s,k)} · 采集${a.gather}／发现${a.discover}</small><small>材料 ${pct(before.materialChance)} → ${pct(after.materialChance)}<br>${after.clues.length?'线索 '+pct(before.clueChance)+' → '+pct(after.clueChance):'暂无线索可寻'}</small></span></button>`;
+    }).join('')}</div>${!available.length?'<div class="workshop-empty"><p>按当前筛选，没有可派出的伙伴。</p><button data-allow-one>允许派出仅有的1只</button><button data-pick-home>回厨房收取</button></div>':''}`,`<button data-pick-back>‹ 返回队伍</button>${members[slot]?'<button data-remove-member>空出这个位置</button>':''}`,true);
+    find('[data-keep-home]').onchange=e=>{keepOne=e.target.checked;pickMember(slot);};
+    each('[data-pick-member]',b=>b.onclick=()=>{members[slot]=b.dataset.pickMember;members=members.filter(Boolean);trip();});
+    find('[data-pick-back]').onclick=trip;find('.close').onclick=trip;
+    find('[data-remove-member]')?.addEventListener('click',()=>{members.splice(slot,1);trip();});
+    find('[data-allow-one]')?.addEventListener('click',()=>{keepOne=false;pickMember(slot);});
+    find('[data-pick-home]')?.addEventListener('click',goKitchen);
+  }
+'''+s[b:]
+# independent observation; no workshop nav or hidden clues
+s=s.replace("info.silhouette?escape(info.clue):'记录这个编号，学习观察手艺或带回线索后，再来认一认。'", "escape(info.clue)")
+s=s.replace("'还未认识的味道'", "'尚未收录'")
+s=s.replace('研读全部路径 ·', '研读获取方法 ·').replace('主动研读需要观察分支成熟能力。','学会「配方研读」后，可花CP了解全部获取方法。')
+s=s.replace("'<button data-observe-back>返回</button>');", "'<button data-observe-back>‹ 返回来源</button><button data-observe-help>观察帮助</button>',true);\n    find('[data-observe-help]').onclick=()=>alertBox(helpCopy.observe);")
+s=s.replace('refresh:()=>{if(!detailKey)open();}',"refresh:()=>{if(!detailKey&&!skillDetail&&tab==='trip'&&getState().progress.trip?.status==='returned')trip();}")
+p.write_text(s,encoding='utf-8')

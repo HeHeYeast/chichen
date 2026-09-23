@@ -1,0 +1,64 @@
+Takeover region audit — 2026-09-23
+Read current modules: region-model, regional-methods, regional-exploration, batch-plan, legacy-recipe-adapter, facts, collection-progress, visibility-model, region-view, knowledge, recipe-book, collections-ui, regional-ui.
+All 17 previously fully read frozen input hashes verified unchanged (list below).
+Stable runtime identities: legacy193 unchanged, append48 (chicken 128–151, duck65–88); materials75–82; cards V/R/T/B × S1/S2/N1/N2/E1/E2. No frozen input edits.
+Concrete defect G1: B-E1 cargo accepted portable yard-only 0:0 without water; actual return removed six0:3 and granted cargoExchange although B-E1 was not candidate. FIXED: shared teamMeets predicate before accepting cargo. Existing frozen trips unchanged.
+Concrete defect G2: GUIDE-B accepted second identified specimen despite actual first un-identified. FIXED: actual first history.cardFacts seq; missing snapshot conservative both-identified fallback. Actual execute/free-method/paid-cook/collect test verifies first75 vs fallback-first76.
+Red/green: new cargo rejection test first failed (canDepart true), then passed after domain change.
+Fresh verification: 96/96 tests across regional-bay,regional-exploration,regional-valley,regional-river-tea,regional-batch,region-view,collections,collection-ui,collection-refresh. G alone13/13. Includes 48 recipe paths and24 card legal candidates; these direct fixture tests are not a new full economic reachability simulation.
+Existing artifacts/sim/reachability-1..8.json read as historical evidence only; root owns fresh reachability/economy validation.
+QAG fixture includes explicit first-card history for V-S1. Root owns fresh browser/Native verification and stage snapshot.
+No additional confirmed C/F/H domain defect found in audited paths; K book IA gap delegated separately.
+
+engineering-integration-design.md 65467cf14a850d7dd0189539d24819bfacf456cadb714bc07f1ab53914a6d9e4
+engineering-implementation-plan.md 7a46020e0e92833e2f4b4efb5bf3701073b222f5bf954f269297a30fba8272c9
+gameplay-expansion-design.md f5c866159d4658d26658ecc7ea1015a6b33f8bad83c4dbc0259496d59aa9abf3
+ui-information-architecture.md 3244eb2b6a8e464173e23002a106cbf43fda18bf1e22e418f7864ee0041496ea
+content-expansion-assets.md be277177452156237ea8ce7aca4927351030a4944f9226af7b5b259ca84eb3da
+content-pack/art-manifest.json 66c482ab174ba9f3f32eb1624a435cbe1c962003e9b6280d0cdc88b24ce8dd7e
+content-pack/art.md d12ff0801c141eb818957ab7cb3e9a67f389f573b7dca96710d3180ac4f8dfee
+content-pack/audit.json fd40009c06bfb175d62991cdcba7569279aec771056d2fad304fe91d2e92c0c9
+content-pack/audit.md b4f0b455c16881c556fc24d71b7be78c4e377e59b7f4ec8154831c2e4b160f05
+content-pack/baseline.json 248f7796b2079b2e93f680e5ca34d189653142d41b0afa7eeda66baedb0b03e8
+content-pack/business.md b4493b0bb8cdca53ae697243268497b93b1aa6eae92a5e01f2757e620713f7af
+content-pack/collections.md 17873f70eb19df2479ec98aec1b8eb1b923822d777a0f2e0502fcd453904e530
+content-pack/content.json 41b7a4d0e09442bd0282259ac458bfa83fecb3ed1fb50073af1dfee5bc0f544f
+content-pack/materials-discoveries.md c0246e48d5d26a95e4e9d5ec754e879207952244084f25eca76bdbede322c1c9
+content-pack/relation-graph.json 025dd5c233ffd5f78a7cea16acbb5e87e35dddbea71011e6435a6f7e007cf076
+content-pack/relations.csv e04f93878395f3584bca9afc74e988e7daa25add8b55f7ba835863ca0396a752
+content-pack/species.md 92618d8eadb01986a4080488d376a2818bed8042bf4d250529c13f128577e182
+
+Changed-file SHA256:
+web/regional-exploration.js f07988a94c8462ee0bb9a7ea301c8f09e946f347973fb977fc7e4d26d8f1181e
+tests/regional-bay.test.mjs c8ab3ba1223b3e11509c6e26f5a31ab60f3d7954a425e029c43e0a4a6d825fb7
+tools/qa-work-g.mjs ee1b81e30aad497ea34be4e45d9271cd87691ed79870f6be421ce49e564a3ddb
+
+K book follow-up — 2026-09-23
+Four book sections (overview/species/collections/lore), known-name or stable-code search, executable-known-method filter, one pin and at most two directions, UI-only observed recent collections, material four-state notes, authored usage links (two primary, rest collapsed), direct inventory filter, draft preparation, independent legacy reward entry points. Encyclopedia no longer embeds a sale form; farm selling retained.
+No state/schema/economic changes. Root owns app callbacks and physical responsive shell.
+Fresh Node: 44/44 (book-ui, collection-ui, collection-refresh, collections, region-view, regional-bay).
+Browser H passed 2026-09-23T13:54:45Z; J passed 13:55:11Z; book-navigation passed 14:00:46Z. All errors empty. Book QA tests exact4tabs, hidden-name/code search, C129 region return preserving query, no sale controls on book profile, single-species inventory route, preparation no asset change, five collection classifications in select, old rewards reachable, lore four states, 320/390/1280 no overflow and nav targets >=44.
+Read screenshots overview and lore-320 visually; content readable and scroll contained. Browser isolated profile, not real Android device.
+Updated legacy QA entry paths in qa-recipe-book-v14, qa-holiday-reminders-v141, qa-tool-strip, qa-kitchen-v144; those older complete scripts not rerun in this subtask. No assertions removed.
+web/book-ui.js d6fb1c9f7a1d4adb2ab1dcccd3a34015dbd989d8650773e3e8669b83508e97b4
+web/collection-ui.js 0813ee82196d74710d1f716ab0618d323b7c716fce21b5b255fe7bf1c06a03b8
+web/collections-ui.js 624c6df9e6186213ee7a4aaf7c1672fe6059607175a5fcde6b8c8d0b16016a7f
+web/collection-ui.css b5ded61efc9cc1d4e0824ef09ea027d6d7d8cfd5b70c642177a09ef830040009
+web/collections.css 6f06f2f19c9cc64c3a5e80e5e2118531540ab95a39c5f90f6af33b6d20f422bf
+tests/book-ui.test.mjs 45de07dd4f2851795001f5751ec4ff6e52d1dbb5804cddc5090d1576858b704d
+tools/qa-book-navigation.mjs 2398448f9dd1b68096a75b16dd3fb2b39fbb89b013ff79b5ca80fae8c77c15a8
+
+L rollback follow-up — 2026-09-23
+Seven immutable build switches plus per-region flags; default all enabled. No save fields, no production mutable test override. Stops new entry commands only; validators, registry, capacity and saved-ticket interpreters unchanged.
+Fresh verification:109/109 related Node tests (rollback-policy6, region, project, regular, orders, collections,business). Real isolated web module graphs were copied into workspace artifacts and cleaned only after absolute resolved path containment check. Closed build reads and settles default-build saved regional batch/trip/business/order; default build reads settled closed-build schema6 state. Existing regular note reads without next queue; no repeated grants; early close, full24h, partial project stage continuity, per-V closure, existing ALT-V,241/83 and36capacity covered.
+Overlay built at artifacts/release/rollback-compatible; NOT INSTALLED; NOT SIGNED APK. Manifest hashes99webJS/JSON files, must regenerate after final source changes. Root owns business/batch-plan/UI integrations; module tests exercise those integrations.
+web/rollback-policy.js 68cdd84d8df220ca50a58785f7e8619ef31d6c084f07dea3167b1cc42b60efa2
+web/regional-exploration.js 44343af8d342980421e8acb19f7577c41aced1a2fb183054fd27ec24d3ffca55
+web/regional-methods.js 1dc9812448d749b6aa69ecd3ff279df6369525b63446ba381b400efd17ab765d
+web/orders.js 0c88d973ba40fe29c07b83570d2dc2644c374352d9d5fd1c65d8155912549dcd
+web/regulars.js 09278d38e2f2666b479161f4b702b2dda95c137d92824ee787ae2bed53e5a413
+web/projects.js 0f0af8debfdf22a5df5503584e88a74e1763727e1ab4c9437e582b0c8e806747
+web/collection-progress.js 66f04b76aac51a27ace39025e6bfbe7369ff7d0422e97096fee8911b333b582f
+tests/rollback-policy.test.mjs 8cc36958afccb9a02a1c6ce7c09818d6572b17284675603cc657e36487f28871
+tools/build-compatible-rollback.mjs 0dfeaa615292c65922cf7bb139ca1060b72524aed6291f6acf663864770ce97d
+docs/compatible-rollback.md a944e83bd02848dd1460b6c0ca972fa38cfd8e56d6f2b1cfd6112a0a858b8cb6

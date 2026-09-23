@@ -1,0 +1,48 @@
+.settings-screen { --panel-paper:#fff6d6; }
+.settings-hero { display:flex; align-items:center; gap:8px; flex-shrink:0; margin:0 0 11px; }
+.settings-mascot { width:60px; height:66px; flex-shrink:0; border-radius:40% 40% 45% 45%; background:#ffe294; box-shadow:inset 0 -5px #efc763; display:grid; place-items:center; }
+.settings-mascot img,.settings-mascot svg { width:51px; height:56px; object-fit:contain; }
+.settings-hero strong { font-size:13px; }
+.settings-hero p { margin:4px 0; font-size:10px; line-height:1.5; color:var(--muted); }
+.settings-hero small { font-size:10px; color:var(--muted); }
+.settings-content { padding:0 1px 4px; }
+.sound-console { border:2px solid #b98a54; border-radius:12px; padding:7px 9px 1px; background:#f5e6b9; box-shadow:inset 0 2px #fff9de,0 3px #dcc08c; }
+.settings-caption { margin:0 0 2px; color:#9a7045; font-size:10px; font-weight:700; letter-spacing:2px; }
+.settings-switch-row { display:flex; align-items:center; gap:7px; min-height:57px; }
+.settings-switch-row+.settings-switch-row { border-top:1px solid #dfc695; }
+.settings-symbol { display:grid; place-items:center; width:30px; height:31px; flex-shrink:0; color:#946232; }
+.settings-symbol svg,.settings-actions svg,.settings-home svg { width:27px; height:27px; fill:none; stroke:currentColor; stroke-width:2.1; stroke-linejoin:round; stroke-linecap:round; }
+.settings-switch-row>div { flex:1; min-width:0; }
+.settings-switch-row strong { display:block; font-size:12px; }
+.settings-switch-row small { display:block; margin-top:3px; font-size:9px; color:#8c714f; line-height:1.4; }
+.game-switch { display:flex; align-items:center; justify-content:space-between; width:55px; height:29px; border:2px solid #8c784f; background:#d3c7a7; border-radius:20px; padding:2px 4px; flex-shrink:0; color:#6e6350; font-size:11px; box-shadow:inset 0 2px #97886755; }
+.game-switch i { width:19px; height:19px; border-radius:50%; background:#fff6d4; border:1px solid #9f8459; box-shadow:0 2px #98856555; order:-1; }
+.game-switch.on { background:#89c38b; border-color:#567f4c; color:#315a34; }
+.game-switch.on i { order:1; }
+.settings-actions { margin-top:11px; border:1px solid #e0c591; border-radius:10px; background:#fffbed; }
+.settings-actions button { display:flex; width:100%; align-items:center; gap:10px; min-height:49px; border:0; padding:7px 10px; text-align:left; background:transparent; }
+.settings-actions button+button { border-top:1px dashed #d8bc83; }
+.settings-actions svg { color:#aa7339; width:25px; height:25px; flex-shrink:0; }
+.settings-actions span { flex:1; font-size:12px; }
+.settings-actions small { display:block; margin-top:2px; color:var(--muted); font-size:10px; font-weight:400; }
+.settings-actions b { font-size:21px; color:#af8952; }
+.settings-actions button:active { background:#ffe8a7; }
+.save-note { font-size:9px; line-height:1.7; color:#967e58; margin:10px 3px 0; }
+.settings-home { display:flex; align-items:center; gap:5px; font-size:11px; background:none; border:none; padding:4px 0; }
+.settings-home svg { width:19px; height:19px; }
+.guide-screen .manual-lead { display:flex; gap:10px; align-items:center; margin-bottom:9px; padding:6px 8px; background:#ecedca; border-radius:10px; }
+.manual-lead>span { width:43px; height:47px; flex-shrink:0; }
+.manual-lead img,.manual-lead svg { width:100%; height:100%; object-fit:contain; }
+.manual-lead strong { font-size:12px; line-height:1.7; }
+.guide-screen ol { list-style:none; padding:0 4px 0 0; margin:0; }
+.guide-screen li { display:flex; gap:8px; margin:0 0 12px; }
+.guide-screen li>b { display:grid; place-items:center; flex-shrink:0; width:22px; height:23px; border-radius:50%; background:#ffdb77; border:1.5px solid #ad8043; font-size:12px; }
+.guide-screen li strong { font-size:12px; }
+.guide-screen li p { font-size:11px; line-height:1.8; color:var(--muted); margin:3px 0 0; }
+.manual-page-no { font-size:10px; color:var(--muted); }
+.notification-status { font-size:10px; line-height:1.65; color:#796544; margin:8px 4px 4px; }
+.notification-actions { display:flex; flex-wrap:wrap; gap:6px; padding:4px; }
+.notification-actions button { border:1px solid #c7a568; border-radius:7px; padding:7px; background:#fff4cd; font-size:10px; color:#725431; }
+.notification-actions button:disabled { opacity:.5; }
+.settings-version { margin:8px 0 3px; text-align:center; color:#967e58; font-size:9px; }
+.recovery-copy { padding:12px; font-size:13px; line-height:1.8; }

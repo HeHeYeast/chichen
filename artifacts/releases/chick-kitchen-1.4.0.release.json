@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.4.0",
+  "versionCode": 7,
+  "file": "chick-kitchen-1.4.0.apk",
+  "sha256": "0c3b718232e90a3cb002752881ccdc67c1467f5324e9cac688ab512359170402",
+  "bytes": 48377061,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-14T05:32:36.1194773Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "22030e52a284dc201c4b1cf5de3bd574a87be99705f53eda47854015f8c3048e",
+  "runtimeFiles": 586,
+  "notes": "图鉴新增按厨具分类的配方册，仅首次收取后解锁；档案配方直达，商店蒸笼与四时配方合并。新增手作伙伴可搭配偶遇、收录后定向准备。农场售卖支持全选及每种留一只。保留启动厨房、封面、长屏和版本2存档，同签名覆盖更新。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

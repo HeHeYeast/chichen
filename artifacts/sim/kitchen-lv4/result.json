@@ -1,0 +1,2607 @@
+{
+  "checkedAt": "2026-09-23T15:27:17.958Z",
+  "passed": true,
+  "scope": "Bounded funded eligibility/cost experiment, not natural progression timing or 14-day graduation evidence.",
+  "funding": 250000,
+  "costStages": [
+    {
+      "targetKitchen": 2,
+      "tools": 8000,
+      "kitchen": 10000,
+      "total": 18000
+    },
+    {
+      "targetKitchen": 3,
+      "tools": 25000,
+      "kitchen": 20000,
+      "total": 45000
+    },
+    {
+      "targetKitchen": 4,
+      "tools": 42000,
+      "kitchen": 30000,
+      "total": 72000
+    }
+  ],
+  "cumulativeCost": 135000,
+  "rejected": [
+    {
+      "id": "lv4-insufficient-cookware",
+      "reason": "请先将前六种调理用具升至当前厨房等级。",
+      "atomic": true,
+      "stateSHA256": "15022e815579b655599269777bf82b64b52ee104eb2ea9aee6907f522681c9fe"
+    },
+    {
+      "id": "lv4-insufficient-cp",
+      "reason": "CP不足。",
+      "atomic": true,
+      "stateSHA256": "fa355362903534a4d95f462ea40a97950a0a9d45d4d80533ec6f3b9e75fc8bf2"
+    },
+    {
+      "id": "kettle-before-lv4",
+      "reason": "尚未满足购买条件。",
+      "atomic": true,
+      "stateSHA256": "fce4168276285d23a344bc7cf02d78d8e1b13bb88a755a47b29e4c70abf62c37"
+    },
+    {
+      "id": "lv4-is-maximum",
+      "reason": "厨房已达到最高等级。",
+      "atomic": true,
+      "stateSHA256": "7ccd30f709707f21d938b5f40f7048a320a9c355c10c69ee71e771be17ca4c7c"
+    },
+    {
+      "id": "bread-needs-kettle-lv3",
+      "reason": "尚未满足购买条件。",
+      "atomic": true,
+      "stateSHA256": "7ccd30f709707f21d938b5f40f7048a320a9c355c10c69ee71e771be17ca4c7c"
+    }
+  ],
+  "exactCP": {
+    "cost": 30000,
+    "remaining": 0
+  },
+  "fresh": {
+    "before": {
+      "cp": 145000,
+      "kitchenLevel": 3,
+      "tools": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        0,
+        0,
+        0
+      ],
+      "slots": 3,
+      "businessCapacity": 72,
+      "earnedSkillPoints": 4,
+      "canBuyKettle": false,
+      "canBuyBread": false,
+      "oldExecutable": [
+        "0:0",
+        "0:10",
+        "0:11",
+        "0:12",
+        "0:13",
+        "0:14",
+        "0:15",
+        "0:16",
+        "0:17",
+        "0:18",
+        "0:19",
+        "0:21",
+        "0:22",
+        "0:23",
+        "0:24",
+        "0:3",
+        "0:33",
+        "0:36",
+        "0:37",
+        "0:38",
+        "0:39",
+        "0:4",
+        "0:40",
+        "0:42",
+        "0:43",
+        "0:44",
+        "0:45",
+        "0:46",
+        "0:5",
+        "0:50",
+        "0:51",
+        "0:55",
+        "0:56",
+        "0:57",
+        "0:58",
+        "0:59",
+        "0:6",
+        "0:7",
+        "0:8",
+        "0:9"
+      ],
+      "firstSixMinutes": [
+        80,
+        11,
+        40,
+        20,
+        160,
+        240
+      ],
+      "regions": {
+        "V": {
+          "region": {
+            "id": "V",
+            "route": "yard",
+            "hours": 2,
+            "environment": "yard",
+            "materials": [
+              75,
+              76
+            ],
+            "discoveries": 5,
+            "collected": 120,
+            "kitchenLevel": 0,
+            "entrySpecies": "0:128",
+            "oldKeys": [
+              "0:0",
+              "0:3",
+              "0:4",
+              "0:8",
+              "0:18",
+              "0:114",
+              "0:115",
+              "0:116",
+              "1:0",
+              "1:3",
+              "1:6"
+            ],
+            "places": [
+              {
+                "id": "V:0",
+                "index": 0,
+                "name": "菜畦"
+              },
+              {
+                "id": "V:1",
+                "index": 1,
+                "name": "谷物棚边"
+              }
+            ],
+            "gateRequirement": "V:gate"
+          },
+          "name": "谷地早市",
+          "met": false,
+          "canEnter": false,
+          "missing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种"
+          ],
+          "places": [
+            {
+              "id": "V:0",
+              "index": 0,
+              "name": "菜畦"
+            },
+            {
+              "id": "V:1",
+              "index": 1,
+              "name": "谷物棚边"
+            }
+          ],
+          "opened": false,
+          "requirementId": "V:gate"
+        },
+        "R": {
+          "region": {
+            "id": "R",
+            "route": "water",
+            "hours": 6,
+            "environment": "water",
+            "materials": [
+              77,
+              78
+            ],
+            "discoveries": 8,
+            "collected": 240,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:134",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:10",
+              "0:19",
+              "0:43",
+              "0:116",
+              "1:0",
+              "1:5",
+              "1:7",
+              "1:9",
+              "1:22"
+            ],
+            "places": [
+              {
+                "id": "R:0",
+                "index": 0,
+                "name": "浅滩"
+              },
+              {
+                "id": "R:1",
+                "index": 1,
+                "name": "岸边摊"
+              }
+            ],
+            "gateRequirement": "R:gate"
+          },
+          "name": "溪岸小集",
+          "met": false,
+          "canEnter": false,
+          "missing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种"
+          ],
+          "places": [
+            {
+              "id": "R:0",
+              "index": 0,
+              "name": "浅滩"
+            },
+            {
+              "id": "R:1",
+              "index": 1,
+              "name": "岸边摊"
+            }
+          ],
+          "opened": false,
+          "requirementId": "R:gate"
+        },
+        "T": {
+          "region": {
+            "id": "T",
+            "route": "wood",
+            "hours": 10,
+            "environment": "wood",
+            "materials": [
+              79,
+              80
+            ],
+            "discoveries": 24,
+            "collected": 500,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:140",
+            "oldKeys": [
+              "0:10",
+              "0:18",
+              "0:28",
+              "0:114",
+              "0:117",
+              "0:121",
+              "1:11",
+              "1:39",
+              "1:40",
+              "1:41",
+              "1:57"
+            ],
+            "places": [
+              {
+                "id": "T:0",
+                "index": 0,
+                "name": "焙叶棚"
+              },
+              {
+                "id": "T:1",
+                "index": 1,
+                "name": "花树径"
+              }
+            ],
+            "gateRequirement": "T:gate"
+          },
+          "name": "林间茶坡",
+          "met": false,
+          "canEnter": false,
+          "missing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种"
+          ],
+          "places": [
+            {
+              "id": "T:0",
+              "index": 0,
+              "name": "焙叶棚"
+            },
+            {
+              "id": "T:1",
+              "index": 1,
+              "name": "花树径"
+            }
+          ],
+          "opened": false,
+          "requirementId": "T:gate"
+        },
+        "B": {
+          "region": {
+            "id": "B",
+            "route": "bay",
+            "hours": 12,
+            "environment": "water",
+            "materials": [
+              81,
+              82
+            ],
+            "discoveries": 40,
+            "collected": 240,
+            "kitchenLevel": 2,
+            "entrySpecies": "0:146",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:16",
+              "0:17",
+              "0:19",
+              "0:21",
+              "0:43",
+              "1:0",
+              "1:7",
+              "1:10",
+              "1:12",
+              "1:24"
+            ],
+            "places": [
+              {
+                "id": "B:0",
+                "index": 0,
+                "name": "盐田小路"
+              },
+              {
+                "id": "B:1",
+                "index": 1,
+                "name": "潮线草地"
+              }
+            ],
+            "gateRequirement": "B:gate"
+          },
+          "name": "风湾盐田",
+          "met": false,
+          "canEnter": false,
+          "missing": [
+            "累计收取 0/240 只",
+            "发现 0/40 种",
+            "先在溪岸岸边摊追寻沿湾路标"
+          ],
+          "places": [
+            {
+              "id": "B:0",
+              "index": 0,
+              "name": "盐田小路"
+            },
+            {
+              "id": "B:1",
+              "index": 1,
+              "name": "潮线草地"
+            }
+          ],
+          "opened": false,
+          "requirementId": "B:gate"
+        }
+      },
+      "regional": [
+        {
+          "id": "REC-V-C4",
+          "key": "0:131",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "厨房 Lv.4",
+            "面包机 Lv.1"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "厨房 Lv.4",
+            "面包机 Lv.1",
+            "先辨认麦芽。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-C5",
+          "key": "0:132",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "厨房 Lv.4",
+            "黑芝麻供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "厨房 Lv.4",
+            "黑芝麻供货尚未开放。",
+            "先找到本地区的首标本。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-D4",
+          "key": "1:68",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "厨房 Lv.4",
+            "先开放鸭蛋。",
+            "牛乳供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "厨房 Lv.4",
+            "先开放鸭蛋。",
+            "牛乳供货尚未开放。",
+            "先辨认麦芽。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D1",
+          "key": "1:71",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种",
+            "厨房 Lv.4",
+            "烧水壶 Lv.1",
+            "先开放鸭蛋。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种",
+            "厨房 Lv.4",
+            "烧水壶 Lv.1",
+            "先开放鸭蛋。",
+            "先辨认山柚。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D5",
+          "key": "1:75",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种",
+            "厨房 Lv.4",
+            "先开放鸭蛋。",
+            "黑芝麻供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种",
+            "厨房 Lv.4",
+            "先开放鸭蛋。",
+            "黑芝麻供货尚未开放。",
+            "先找到本地区的首标本。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-C4",
+          "key": "0:143",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "厨房 Lv.4",
+            "牛乳供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "厨房 Lv.4",
+            "牛乳供货尚未开放。",
+            "先辨认桂花。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D1",
+          "key": "1:77",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "厨房 Lv.4",
+            "烧水壶 Lv.2",
+            "先开放鸭蛋。",
+            "牛乳供货尚未开放。",
+            "红茶叶供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "厨房 Lv.4",
+            "烧水壶 Lv.2",
+            "先开放鸭蛋。",
+            "牛乳供货尚未开放。",
+            "红茶叶供货尚未开放。",
+            "先辨认焙香叶。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D2",
+          "key": "1:78",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "厨房 Lv.4",
+            "烧水壶 Lv.2",
+            "先开放鸭蛋。",
+            "红茶叶供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "厨房 Lv.4",
+            "烧水壶 Lv.2",
+            "先开放鸭蛋。",
+            "红茶叶供货尚未开放。",
+            "先辨认桂花。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-B-D3",
+          "key": "1:85",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/240 只",
+            "发现 0/40 种",
+            "先在溪岸岸边摊追寻沿湾路标",
+            "厨房 Lv.4",
+            "先开放鸭蛋。",
+            "焦糖浆供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/240 只",
+            "发现 0/40 种",
+            "先在溪岸岸边摊追寻沿湾路标",
+            "厨房 Lv.4",
+            "先开放鸭蛋。",
+            "焦糖浆供货尚未开放。",
+            "先辨认盐花。",
+            "先补全这份地方做法。"
+          ]
+        }
+      ]
+    },
+    "after": {
+      "cp": 115000,
+      "kitchenLevel": 4,
+      "tools": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        0,
+        0,
+        0
+      ],
+      "slots": 3,
+      "businessCapacity": 72,
+      "earnedSkillPoints": 6,
+      "canBuyKettle": true,
+      "canBuyBread": false,
+      "oldExecutable": [
+        "0:0",
+        "0:10",
+        "0:108",
+        "0:11",
+        "0:12",
+        "0:13",
+        "0:14",
+        "0:15",
+        "0:16",
+        "0:17",
+        "0:18",
+        "0:19",
+        "0:21",
+        "0:22",
+        "0:23",
+        "0:24",
+        "0:3",
+        "0:33",
+        "0:36",
+        "0:37",
+        "0:38",
+        "0:39",
+        "0:4",
+        "0:40",
+        "0:42",
+        "0:43",
+        "0:44",
+        "0:45",
+        "0:46",
+        "0:5",
+        "0:50",
+        "0:51",
+        "0:55",
+        "0:56",
+        "0:57",
+        "0:58",
+        "0:59",
+        "0:6",
+        "0:7",
+        "0:8",
+        "0:9"
+      ],
+      "firstSixMinutes": [
+        80,
+        11,
+        40,
+        20,
+        160,
+        240
+      ],
+      "regions": {
+        "V": {
+          "region": {
+            "id": "V",
+            "route": "yard",
+            "hours": 2,
+            "environment": "yard",
+            "materials": [
+              75,
+              76
+            ],
+            "discoveries": 5,
+            "collected": 120,
+            "kitchenLevel": 0,
+            "entrySpecies": "0:128",
+            "oldKeys": [
+              "0:0",
+              "0:3",
+              "0:4",
+              "0:8",
+              "0:18",
+              "0:114",
+              "0:115",
+              "0:116",
+              "1:0",
+              "1:3",
+              "1:6"
+            ],
+            "places": [
+              {
+                "id": "V:0",
+                "index": 0,
+                "name": "菜畦"
+              },
+              {
+                "id": "V:1",
+                "index": 1,
+                "name": "谷物棚边"
+              }
+            ],
+            "gateRequirement": "V:gate"
+          },
+          "name": "谷地早市",
+          "met": false,
+          "canEnter": false,
+          "missing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种"
+          ],
+          "places": [
+            {
+              "id": "V:0",
+              "index": 0,
+              "name": "菜畦"
+            },
+            {
+              "id": "V:1",
+              "index": 1,
+              "name": "谷物棚边"
+            }
+          ],
+          "opened": false,
+          "requirementId": "V:gate"
+        },
+        "R": {
+          "region": {
+            "id": "R",
+            "route": "water",
+            "hours": 6,
+            "environment": "water",
+            "materials": [
+              77,
+              78
+            ],
+            "discoveries": 8,
+            "collected": 240,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:134",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:10",
+              "0:19",
+              "0:43",
+              "0:116",
+              "1:0",
+              "1:5",
+              "1:7",
+              "1:9",
+              "1:22"
+            ],
+            "places": [
+              {
+                "id": "R:0",
+                "index": 0,
+                "name": "浅滩"
+              },
+              {
+                "id": "R:1",
+                "index": 1,
+                "name": "岸边摊"
+              }
+            ],
+            "gateRequirement": "R:gate"
+          },
+          "name": "溪岸小集",
+          "met": false,
+          "canEnter": false,
+          "missing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种"
+          ],
+          "places": [
+            {
+              "id": "R:0",
+              "index": 0,
+              "name": "浅滩"
+            },
+            {
+              "id": "R:1",
+              "index": 1,
+              "name": "岸边摊"
+            }
+          ],
+          "opened": false,
+          "requirementId": "R:gate"
+        },
+        "T": {
+          "region": {
+            "id": "T",
+            "route": "wood",
+            "hours": 10,
+            "environment": "wood",
+            "materials": [
+              79,
+              80
+            ],
+            "discoveries": 24,
+            "collected": 500,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:140",
+            "oldKeys": [
+              "0:10",
+              "0:18",
+              "0:28",
+              "0:114",
+              "0:117",
+              "0:121",
+              "1:11",
+              "1:39",
+              "1:40",
+              "1:41",
+              "1:57"
+            ],
+            "places": [
+              {
+                "id": "T:0",
+                "index": 0,
+                "name": "焙叶棚"
+              },
+              {
+                "id": "T:1",
+                "index": 1,
+                "name": "花树径"
+              }
+            ],
+            "gateRequirement": "T:gate"
+          },
+          "name": "林间茶坡",
+          "met": false,
+          "canEnter": false,
+          "missing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种"
+          ],
+          "places": [
+            {
+              "id": "T:0",
+              "index": 0,
+              "name": "焙叶棚"
+            },
+            {
+              "id": "T:1",
+              "index": 1,
+              "name": "花树径"
+            }
+          ],
+          "opened": false,
+          "requirementId": "T:gate"
+        },
+        "B": {
+          "region": {
+            "id": "B",
+            "route": "bay",
+            "hours": 12,
+            "environment": "water",
+            "materials": [
+              81,
+              82
+            ],
+            "discoveries": 40,
+            "collected": 240,
+            "kitchenLevel": 2,
+            "entrySpecies": "0:146",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:16",
+              "0:17",
+              "0:19",
+              "0:21",
+              "0:43",
+              "1:0",
+              "1:7",
+              "1:10",
+              "1:12",
+              "1:24"
+            ],
+            "places": [
+              {
+                "id": "B:0",
+                "index": 0,
+                "name": "盐田小路"
+              },
+              {
+                "id": "B:1",
+                "index": 1,
+                "name": "潮线草地"
+              }
+            ],
+            "gateRequirement": "B:gate"
+          },
+          "name": "风湾盐田",
+          "met": false,
+          "canEnter": false,
+          "missing": [
+            "累计收取 0/240 只",
+            "发现 0/40 种",
+            "先在溪岸岸边摊追寻沿湾路标"
+          ],
+          "places": [
+            {
+              "id": "B:0",
+              "index": 0,
+              "name": "盐田小路"
+            },
+            {
+              "id": "B:1",
+              "index": 1,
+              "name": "潮线草地"
+            }
+          ],
+          "opened": false,
+          "requirementId": "B:gate"
+        }
+      },
+      "regional": [
+        {
+          "id": "REC-V-C4",
+          "key": "0:131",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "面包机 Lv.1"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "面包机 Lv.1",
+            "先辨认麦芽。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-C5",
+          "key": "0:132",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "黑芝麻供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "黑芝麻供货尚未开放。",
+            "先找到本地区的首标本。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-D4",
+          "key": "1:68",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "先开放鸭蛋。",
+            "牛乳供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/120 只",
+            "发现 0/5 种",
+            "先开放鸭蛋。",
+            "牛乳供货尚未开放。",
+            "先辨认麦芽。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D1",
+          "key": "1:71",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种",
+            "烧水壶 Lv.1",
+            "先开放鸭蛋。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种",
+            "烧水壶 Lv.1",
+            "先开放鸭蛋。",
+            "先辨认山柚。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D5",
+          "key": "1:75",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种",
+            "先开放鸭蛋。",
+            "黑芝麻供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/240 只",
+            "发现 0/8 种",
+            "先开放鸭蛋。",
+            "黑芝麻供货尚未开放。",
+            "先找到本地区的首标本。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-C4",
+          "key": "0:143",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "牛乳供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "牛乳供货尚未开放。",
+            "先辨认桂花。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D1",
+          "key": "1:77",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "烧水壶 Lv.2",
+            "先开放鸭蛋。",
+            "牛乳供货尚未开放。",
+            "红茶叶供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "烧水壶 Lv.2",
+            "先开放鸭蛋。",
+            "牛乳供货尚未开放。",
+            "红茶叶供货尚未开放。",
+            "先辨认焙香叶。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D2",
+          "key": "1:78",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "烧水壶 Lv.2",
+            "先开放鸭蛋。",
+            "红茶叶供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/500 只",
+            "发现 0/24 种",
+            "烧水壶 Lv.2",
+            "先开放鸭蛋。",
+            "红茶叶供货尚未开放。",
+            "先辨认桂花。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-B-D3",
+          "key": "1:85",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "累计收取 0/240 只",
+            "发现 0/40 种",
+            "先在溪岸岸边摊追寻沿湾路标",
+            "先开放鸭蛋。",
+            "焦糖浆供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "累计收取 0/240 只",
+            "发现 0/40 种",
+            "先在溪岸岸边摊追寻沿湾路标",
+            "先开放鸭蛋。",
+            "焦糖浆供货尚未开放。",
+            "先辨认盐花。",
+            "先补全这份地方做法。"
+          ]
+        }
+      ]
+    }
+  },
+  "progression": {
+    "source": "artifacts/sim/traces/collector-frequent-none-final.json",
+    "sourceSHA256": "7acc2d8745c06783efa3df0b1f8be80919dd83a014a26d0f66643f893984187a",
+    "sourceCP": 5422,
+    "laboratoryCP": 250000,
+    "before": {
+      "cp": 173000,
+      "kitchenLevel": 3,
+      "tools": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        0,
+        0,
+        1
+      ],
+      "slots": 3,
+      "businessCapacity": 72,
+      "earnedSkillPoints": 32,
+      "canBuyKettle": false,
+      "canBuyBread": false,
+      "oldExecutable": [
+        "0:0",
+        "0:10",
+        "0:11",
+        "0:114",
+        "0:115",
+        "0:116",
+        "0:12",
+        "0:13",
+        "0:14",
+        "0:15",
+        "0:16",
+        "0:17",
+        "0:18",
+        "0:19",
+        "0:20",
+        "0:21",
+        "0:22",
+        "0:23",
+        "0:24",
+        "0:25",
+        "0:28",
+        "0:29",
+        "0:3",
+        "0:30",
+        "0:31",
+        "0:33",
+        "0:36",
+        "0:37",
+        "0:38",
+        "0:39",
+        "0:4",
+        "0:40",
+        "0:41",
+        "0:42",
+        "0:43",
+        "0:44",
+        "0:45",
+        "0:46",
+        "0:47",
+        "0:5",
+        "0:50",
+        "0:51",
+        "0:55",
+        "0:56",
+        "0:57",
+        "0:58",
+        "0:59",
+        "0:6",
+        "0:7",
+        "0:8",
+        "0:81",
+        "0:9",
+        "1:0",
+        "1:10",
+        "1:11",
+        "1:12",
+        "1:13",
+        "1:14",
+        "1:15",
+        "1:16",
+        "1:17",
+        "1:18",
+        "1:21",
+        "1:22",
+        "1:23",
+        "1:24",
+        "1:25",
+        "1:26",
+        "1:27",
+        "1:3",
+        "1:30",
+        "1:31",
+        "1:32",
+        "1:33",
+        "1:34",
+        "1:4",
+        "1:5",
+        "1:6",
+        "1:7",
+        "1:8",
+        "1:9"
+      ],
+      "firstSixMinutes": [
+        80,
+        11,
+        40,
+        20,
+        160,
+        240
+      ],
+      "regions": {
+        "V": {
+          "region": {
+            "id": "V",
+            "route": "yard",
+            "hours": 2,
+            "environment": "yard",
+            "materials": [
+              75,
+              76
+            ],
+            "discoveries": 5,
+            "collected": 120,
+            "kitchenLevel": 0,
+            "entrySpecies": "0:128",
+            "oldKeys": [
+              "0:0",
+              "0:3",
+              "0:4",
+              "0:8",
+              "0:18",
+              "0:114",
+              "0:115",
+              "0:116",
+              "1:0",
+              "1:3",
+              "1:6"
+            ],
+            "places": [
+              {
+                "id": "V:0",
+                "index": 0,
+                "name": "菜畦"
+              },
+              {
+                "id": "V:1",
+                "index": 1,
+                "name": "谷物棚边"
+              }
+            ],
+            "gateRequirement": "V:gate"
+          },
+          "name": "谷地早市",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "V:0",
+              "index": 0,
+              "name": "菜畦"
+            },
+            {
+              "id": "V:1",
+              "index": 1,
+              "name": "谷物棚边"
+            }
+          ],
+          "opened": true,
+          "requirementId": "V:gate"
+        },
+        "R": {
+          "region": {
+            "id": "R",
+            "route": "water",
+            "hours": 6,
+            "environment": "water",
+            "materials": [
+              77,
+              78
+            ],
+            "discoveries": 8,
+            "collected": 240,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:134",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:10",
+              "0:19",
+              "0:43",
+              "0:116",
+              "1:0",
+              "1:5",
+              "1:7",
+              "1:9",
+              "1:22"
+            ],
+            "places": [
+              {
+                "id": "R:0",
+                "index": 0,
+                "name": "浅滩"
+              },
+              {
+                "id": "R:1",
+                "index": 1,
+                "name": "岸边摊"
+              }
+            ],
+            "gateRequirement": "R:gate"
+          },
+          "name": "溪岸小集",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "R:0",
+              "index": 0,
+              "name": "浅滩"
+            },
+            {
+              "id": "R:1",
+              "index": 1,
+              "name": "岸边摊"
+            }
+          ],
+          "opened": true,
+          "requirementId": "R:gate"
+        },
+        "T": {
+          "region": {
+            "id": "T",
+            "route": "wood",
+            "hours": 10,
+            "environment": "wood",
+            "materials": [
+              79,
+              80
+            ],
+            "discoveries": 24,
+            "collected": 500,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:140",
+            "oldKeys": [
+              "0:10",
+              "0:18",
+              "0:28",
+              "0:114",
+              "0:117",
+              "0:121",
+              "1:11",
+              "1:39",
+              "1:40",
+              "1:41",
+              "1:57"
+            ],
+            "places": [
+              {
+                "id": "T:0",
+                "index": 0,
+                "name": "焙叶棚"
+              },
+              {
+                "id": "T:1",
+                "index": 1,
+                "name": "花树径"
+              }
+            ],
+            "gateRequirement": "T:gate"
+          },
+          "name": "林间茶坡",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "T:0",
+              "index": 0,
+              "name": "焙叶棚"
+            },
+            {
+              "id": "T:1",
+              "index": 1,
+              "name": "花树径"
+            }
+          ],
+          "opened": true,
+          "requirementId": "T:gate"
+        },
+        "B": {
+          "region": {
+            "id": "B",
+            "route": "bay",
+            "hours": 12,
+            "environment": "water",
+            "materials": [
+              81,
+              82
+            ],
+            "discoveries": 40,
+            "collected": 240,
+            "kitchenLevel": 2,
+            "entrySpecies": "0:146",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:16",
+              "0:17",
+              "0:19",
+              "0:21",
+              "0:43",
+              "1:0",
+              "1:7",
+              "1:10",
+              "1:12",
+              "1:24"
+            ],
+            "places": [
+              {
+                "id": "B:0",
+                "index": 0,
+                "name": "盐田小路"
+              },
+              {
+                "id": "B:1",
+                "index": 1,
+                "name": "潮线草地"
+              }
+            ],
+            "gateRequirement": "B:gate"
+          },
+          "name": "风湾盐田",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "B:0",
+              "index": 0,
+              "name": "盐田小路"
+            },
+            {
+              "id": "B:1",
+              "index": 1,
+              "name": "潮线草地"
+            }
+          ],
+          "opened": false,
+          "requirementId": "B:gate"
+        }
+      },
+      "regional": [
+        {
+          "id": "REC-V-C4",
+          "key": "0:131",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "面包机 Lv.1"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "面包机 Lv.1",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-C5",
+          "key": "0:132",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "黑芝麻供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "黑芝麻供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-D4",
+          "key": "1:68",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "牛乳供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "牛乳供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D1",
+          "key": "1:71",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "烧水壶 Lv.1"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "烧水壶 Lv.1",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D5",
+          "key": "1:75",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "黑芝麻供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "黑芝麻供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-C4",
+          "key": "0:143",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "牛乳供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "牛乳供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D1",
+          "key": "1:77",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "烧水壶 Lv.2",
+            "牛乳供货尚未开放。",
+            "红茶叶供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "烧水壶 Lv.2",
+            "牛乳供货尚未开放。",
+            "红茶叶供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D2",
+          "key": "1:78",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "烧水壶 Lv.2",
+            "红茶叶供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "烧水壶 Lv.2",
+            "红茶叶供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-B-D3",
+          "key": "1:85",
+          "kitchenMet": false,
+          "entryMet": false,
+          "entryMissing": [
+            "厨房 Lv.4",
+            "焦糖浆供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "厨房 Lv.4",
+            "焦糖浆供货尚未开放。",
+            "先辨认盐花。",
+            "先补全这份地方做法。"
+          ]
+        }
+      ]
+    },
+    "after": {
+      "cp": 143000,
+      "kitchenLevel": 4,
+      "tools": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        0,
+        0,
+        1
+      ],
+      "slots": 3,
+      "businessCapacity": 72,
+      "earnedSkillPoints": 34,
+      "canBuyKettle": true,
+      "canBuyBread": false,
+      "oldExecutable": [
+        "0:0",
+        "0:10",
+        "0:108",
+        "0:11",
+        "0:114",
+        "0:115",
+        "0:116",
+        "0:12",
+        "0:13",
+        "0:14",
+        "0:15",
+        "0:16",
+        "0:17",
+        "0:18",
+        "0:19",
+        "0:20",
+        "0:21",
+        "0:22",
+        "0:23",
+        "0:24",
+        "0:25",
+        "0:28",
+        "0:29",
+        "0:3",
+        "0:30",
+        "0:31",
+        "0:33",
+        "0:36",
+        "0:37",
+        "0:38",
+        "0:39",
+        "0:4",
+        "0:40",
+        "0:41",
+        "0:42",
+        "0:43",
+        "0:44",
+        "0:45",
+        "0:46",
+        "0:47",
+        "0:5",
+        "0:50",
+        "0:51",
+        "0:55",
+        "0:56",
+        "0:57",
+        "0:58",
+        "0:59",
+        "0:6",
+        "0:7",
+        "0:8",
+        "0:81",
+        "0:9",
+        "1:0",
+        "1:10",
+        "1:11",
+        "1:12",
+        "1:13",
+        "1:14",
+        "1:15",
+        "1:16",
+        "1:17",
+        "1:18",
+        "1:21",
+        "1:22",
+        "1:23",
+        "1:24",
+        "1:25",
+        "1:26",
+        "1:27",
+        "1:3",
+        "1:30",
+        "1:31",
+        "1:32",
+        "1:33",
+        "1:34",
+        "1:4",
+        "1:5",
+        "1:6",
+        "1:7",
+        "1:8",
+        "1:9"
+      ],
+      "firstSixMinutes": [
+        80,
+        11,
+        40,
+        20,
+        160,
+        240
+      ],
+      "regions": {
+        "V": {
+          "region": {
+            "id": "V",
+            "route": "yard",
+            "hours": 2,
+            "environment": "yard",
+            "materials": [
+              75,
+              76
+            ],
+            "discoveries": 5,
+            "collected": 120,
+            "kitchenLevel": 0,
+            "entrySpecies": "0:128",
+            "oldKeys": [
+              "0:0",
+              "0:3",
+              "0:4",
+              "0:8",
+              "0:18",
+              "0:114",
+              "0:115",
+              "0:116",
+              "1:0",
+              "1:3",
+              "1:6"
+            ],
+            "places": [
+              {
+                "id": "V:0",
+                "index": 0,
+                "name": "菜畦"
+              },
+              {
+                "id": "V:1",
+                "index": 1,
+                "name": "谷物棚边"
+              }
+            ],
+            "gateRequirement": "V:gate"
+          },
+          "name": "谷地早市",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "V:0",
+              "index": 0,
+              "name": "菜畦"
+            },
+            {
+              "id": "V:1",
+              "index": 1,
+              "name": "谷物棚边"
+            }
+          ],
+          "opened": true,
+          "requirementId": "V:gate"
+        },
+        "R": {
+          "region": {
+            "id": "R",
+            "route": "water",
+            "hours": 6,
+            "environment": "water",
+            "materials": [
+              77,
+              78
+            ],
+            "discoveries": 8,
+            "collected": 240,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:134",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:10",
+              "0:19",
+              "0:43",
+              "0:116",
+              "1:0",
+              "1:5",
+              "1:7",
+              "1:9",
+              "1:22"
+            ],
+            "places": [
+              {
+                "id": "R:0",
+                "index": 0,
+                "name": "浅滩"
+              },
+              {
+                "id": "R:1",
+                "index": 1,
+                "name": "岸边摊"
+              }
+            ],
+            "gateRequirement": "R:gate"
+          },
+          "name": "溪岸小集",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "R:0",
+              "index": 0,
+              "name": "浅滩"
+            },
+            {
+              "id": "R:1",
+              "index": 1,
+              "name": "岸边摊"
+            }
+          ],
+          "opened": true,
+          "requirementId": "R:gate"
+        },
+        "T": {
+          "region": {
+            "id": "T",
+            "route": "wood",
+            "hours": 10,
+            "environment": "wood",
+            "materials": [
+              79,
+              80
+            ],
+            "discoveries": 24,
+            "collected": 500,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:140",
+            "oldKeys": [
+              "0:10",
+              "0:18",
+              "0:28",
+              "0:114",
+              "0:117",
+              "0:121",
+              "1:11",
+              "1:39",
+              "1:40",
+              "1:41",
+              "1:57"
+            ],
+            "places": [
+              {
+                "id": "T:0",
+                "index": 0,
+                "name": "焙叶棚"
+              },
+              {
+                "id": "T:1",
+                "index": 1,
+                "name": "花树径"
+              }
+            ],
+            "gateRequirement": "T:gate"
+          },
+          "name": "林间茶坡",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "T:0",
+              "index": 0,
+              "name": "焙叶棚"
+            },
+            {
+              "id": "T:1",
+              "index": 1,
+              "name": "花树径"
+            }
+          ],
+          "opened": true,
+          "requirementId": "T:gate"
+        },
+        "B": {
+          "region": {
+            "id": "B",
+            "route": "bay",
+            "hours": 12,
+            "environment": "water",
+            "materials": [
+              81,
+              82
+            ],
+            "discoveries": 40,
+            "collected": 240,
+            "kitchenLevel": 2,
+            "entrySpecies": "0:146",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:16",
+              "0:17",
+              "0:19",
+              "0:21",
+              "0:43",
+              "1:0",
+              "1:7",
+              "1:10",
+              "1:12",
+              "1:24"
+            ],
+            "places": [
+              {
+                "id": "B:0",
+                "index": 0,
+                "name": "盐田小路"
+              },
+              {
+                "id": "B:1",
+                "index": 1,
+                "name": "潮线草地"
+              }
+            ],
+            "gateRequirement": "B:gate"
+          },
+          "name": "风湾盐田",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "B:0",
+              "index": 0,
+              "name": "盐田小路"
+            },
+            {
+              "id": "B:1",
+              "index": 1,
+              "name": "潮线草地"
+            }
+          ],
+          "opened": false,
+          "requirementId": "B:gate"
+        }
+      },
+      "regional": [
+        {
+          "id": "REC-V-C4",
+          "key": "0:131",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "面包机 Lv.1"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "面包机 Lv.1",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-C5",
+          "key": "0:132",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "黑芝麻供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "黑芝麻供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-D4",
+          "key": "1:68",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "牛乳供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "牛乳供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D1",
+          "key": "1:71",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "烧水壶 Lv.1"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "烧水壶 Lv.1",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D5",
+          "key": "1:75",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "黑芝麻供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "黑芝麻供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-C4",
+          "key": "0:143",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "牛乳供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "牛乳供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D1",
+          "key": "1:77",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "烧水壶 Lv.2",
+            "牛乳供货尚未开放。",
+            "红茶叶供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "烧水壶 Lv.2",
+            "牛乳供货尚未开放。",
+            "红茶叶供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D2",
+          "key": "1:78",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "烧水壶 Lv.2",
+            "红茶叶供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "烧水壶 Lv.2",
+            "红茶叶供货尚未开放。",
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-B-D3",
+          "key": "1:85",
+          "kitchenMet": true,
+          "entryMet": false,
+          "entryMissing": [
+            "焦糖浆供货尚未开放。"
+          ],
+          "fullMet": false,
+          "fullMissing": [
+            "焦糖浆供货尚未开放。",
+            "先辨认盐花。",
+            "先补全这份地方做法。"
+          ]
+        }
+      ]
+    },
+    "followupCost": 42500,
+    "withLateTools": {
+      "cp": 100500,
+      "kitchenLevel": 4,
+      "tools": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        2,
+        1
+      ],
+      "slots": 3,
+      "businessCapacity": 72,
+      "earnedSkillPoints": 34,
+      "canBuyKettle": false,
+      "canBuyBread": true,
+      "oldExecutable": [
+        "0:0",
+        "0:10",
+        "0:108",
+        "0:109",
+        "0:11",
+        "0:111",
+        "0:112",
+        "0:114",
+        "0:115",
+        "0:116",
+        "0:12",
+        "0:13",
+        "0:14",
+        "0:15",
+        "0:16",
+        "0:17",
+        "0:18",
+        "0:19",
+        "0:20",
+        "0:21",
+        "0:22",
+        "0:23",
+        "0:24",
+        "0:25",
+        "0:28",
+        "0:29",
+        "0:3",
+        "0:30",
+        "0:31",
+        "0:33",
+        "0:36",
+        "0:37",
+        "0:38",
+        "0:39",
+        "0:4",
+        "0:40",
+        "0:41",
+        "0:42",
+        "0:43",
+        "0:44",
+        "0:45",
+        "0:46",
+        "0:47",
+        "0:5",
+        "0:50",
+        "0:51",
+        "0:55",
+        "0:56",
+        "0:57",
+        "0:58",
+        "0:59",
+        "0:6",
+        "0:69",
+        "0:7",
+        "0:71",
+        "0:72",
+        "0:73",
+        "0:74",
+        "0:75",
+        "0:76",
+        "0:77",
+        "0:8",
+        "0:81",
+        "0:9",
+        "1:0",
+        "1:10",
+        "1:11",
+        "1:12",
+        "1:13",
+        "1:14",
+        "1:15",
+        "1:16",
+        "1:17",
+        "1:18",
+        "1:21",
+        "1:22",
+        "1:23",
+        "1:24",
+        "1:25",
+        "1:26",
+        "1:27",
+        "1:3",
+        "1:30",
+        "1:31",
+        "1:32",
+        "1:33",
+        "1:34",
+        "1:37",
+        "1:39",
+        "1:4",
+        "1:40",
+        "1:41",
+        "1:42",
+        "1:43",
+        "1:44",
+        "1:45",
+        "1:46",
+        "1:5",
+        "1:52",
+        "1:54",
+        "1:55",
+        "1:6",
+        "1:7",
+        "1:8",
+        "1:9"
+      ],
+      "firstSixMinutes": [
+        80,
+        11,
+        40,
+        20,
+        160,
+        240
+      ],
+      "regions": {
+        "V": {
+          "region": {
+            "id": "V",
+            "route": "yard",
+            "hours": 2,
+            "environment": "yard",
+            "materials": [
+              75,
+              76
+            ],
+            "discoveries": 5,
+            "collected": 120,
+            "kitchenLevel": 0,
+            "entrySpecies": "0:128",
+            "oldKeys": [
+              "0:0",
+              "0:3",
+              "0:4",
+              "0:8",
+              "0:18",
+              "0:114",
+              "0:115",
+              "0:116",
+              "1:0",
+              "1:3",
+              "1:6"
+            ],
+            "places": [
+              {
+                "id": "V:0",
+                "index": 0,
+                "name": "菜畦"
+              },
+              {
+                "id": "V:1",
+                "index": 1,
+                "name": "谷物棚边"
+              }
+            ],
+            "gateRequirement": "V:gate"
+          },
+          "name": "谷地早市",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "V:0",
+              "index": 0,
+              "name": "菜畦"
+            },
+            {
+              "id": "V:1",
+              "index": 1,
+              "name": "谷物棚边"
+            }
+          ],
+          "opened": true,
+          "requirementId": "V:gate"
+        },
+        "R": {
+          "region": {
+            "id": "R",
+            "route": "water",
+            "hours": 6,
+            "environment": "water",
+            "materials": [
+              77,
+              78
+            ],
+            "discoveries": 8,
+            "collected": 240,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:134",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:10",
+              "0:19",
+              "0:43",
+              "0:116",
+              "1:0",
+              "1:5",
+              "1:7",
+              "1:9",
+              "1:22"
+            ],
+            "places": [
+              {
+                "id": "R:0",
+                "index": 0,
+                "name": "浅滩"
+              },
+              {
+                "id": "R:1",
+                "index": 1,
+                "name": "岸边摊"
+              }
+            ],
+            "gateRequirement": "R:gate"
+          },
+          "name": "溪岸小集",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "R:0",
+              "index": 0,
+              "name": "浅滩"
+            },
+            {
+              "id": "R:1",
+              "index": 1,
+              "name": "岸边摊"
+            }
+          ],
+          "opened": true,
+          "requirementId": "R:gate"
+        },
+        "T": {
+          "region": {
+            "id": "T",
+            "route": "wood",
+            "hours": 10,
+            "environment": "wood",
+            "materials": [
+              79,
+              80
+            ],
+            "discoveries": 24,
+            "collected": 500,
+            "kitchenLevel": 1,
+            "entrySpecies": "0:140",
+            "oldKeys": [
+              "0:10",
+              "0:18",
+              "0:28",
+              "0:114",
+              "0:117",
+              "0:121",
+              "1:11",
+              "1:39",
+              "1:40",
+              "1:41",
+              "1:57"
+            ],
+            "places": [
+              {
+                "id": "T:0",
+                "index": 0,
+                "name": "焙叶棚"
+              },
+              {
+                "id": "T:1",
+                "index": 1,
+                "name": "花树径"
+              }
+            ],
+            "gateRequirement": "T:gate"
+          },
+          "name": "林间茶坡",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "T:0",
+              "index": 0,
+              "name": "焙叶棚"
+            },
+            {
+              "id": "T:1",
+              "index": 1,
+              "name": "花树径"
+            }
+          ],
+          "opened": true,
+          "requirementId": "T:gate"
+        },
+        "B": {
+          "region": {
+            "id": "B",
+            "route": "bay",
+            "hours": 12,
+            "environment": "water",
+            "materials": [
+              81,
+              82
+            ],
+            "discoveries": 40,
+            "collected": 240,
+            "kitchenLevel": 2,
+            "entrySpecies": "0:146",
+            "oldKeys": [
+              "0:0",
+              "0:6",
+              "0:16",
+              "0:17",
+              "0:19",
+              "0:21",
+              "0:43",
+              "1:0",
+              "1:7",
+              "1:10",
+              "1:12",
+              "1:24"
+            ],
+            "places": [
+              {
+                "id": "B:0",
+                "index": 0,
+                "name": "盐田小路"
+              },
+              {
+                "id": "B:1",
+                "index": 1,
+                "name": "潮线草地"
+              }
+            ],
+            "gateRequirement": "B:gate"
+          },
+          "name": "风湾盐田",
+          "met": true,
+          "canEnter": true,
+          "missing": [],
+          "places": [
+            {
+              "id": "B:0",
+              "index": 0,
+              "name": "盐田小路"
+            },
+            {
+              "id": "B:1",
+              "index": 1,
+              "name": "潮线草地"
+            }
+          ],
+          "opened": false,
+          "requirementId": "B:gate"
+        }
+      },
+      "regional": [
+        {
+          "id": "REC-V-C4",
+          "key": "0:131",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-C5",
+          "key": "0:132",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-V-D4",
+          "key": "1:68",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D1",
+          "key": "1:71",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-R-D5",
+          "key": "1:75",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-C4",
+          "key": "0:143",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D1",
+          "key": "1:77",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-T-D2",
+          "key": "1:78",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先补全这份地方做法。"
+          ]
+        },
+        {
+          "id": "REC-B-D3",
+          "key": "1:85",
+          "kitchenMet": true,
+          "entryMet": true,
+          "entryMissing": [],
+          "fullMet": false,
+          "fullMissing": [
+            "先辨认盐花。",
+            "先补全这份地方做法。"
+          ]
+        }
+      ]
+    }
+  },
+  "commands": 36
+}

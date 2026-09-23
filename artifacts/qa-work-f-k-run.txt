@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-09-23T03:58:42.422Z",
+  "passed": true,
+  "checks": [
+    "寻访页地区列表：谷地早市、溪岸小集、林间茶坡、风湾盐田（海湾在G开放，但本档未取得引路时仍锁定）",
+    "溪岸首趟保证山柚标本（换地点/补材料也保证），免费辨认后出现山柚方向与旧料新品方向",
+    "茶坡首标本焙香叶→辨认；未辨认的桂花只以卡片谜面提及；焙香奶茶鸭方向明确显示厨房Lv.4与烧水壶缺项，不凭空解锁",
+    "完整寻访为采购里程碑（首轮 O01、O04）；略过后空位不补，下一趟归来按轮转出现并接取F模板 O02（O02-G1×6＋O02-G2×6，需求冻结）"
+  ],
+  "screens": [
+    "river-trip-390",
+    "river-identified",
+    "tea-kettle-lock",
+    "tea-record-320",
+    "tea-record-1280",
+    "orders-after-trips",
+    "f-order-accepted"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

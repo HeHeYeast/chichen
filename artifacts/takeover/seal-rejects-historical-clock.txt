@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: historical report cannot seal this takeover
+    at fresh (file:///D:/gxy_code/game/chicken_duck_test/tools/seal-expansion-evidence.mjs:15:28)
+    at file:///D:/gxy_code/game/chicken_duck_test/tools/seal-expansion-evidence.mjs:20:63 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

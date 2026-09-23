@@ -1,0 +1,42 @@
+{
+  "at": "2026-09-21T14:57:00.934Z",
+  "checks": [
+    "320×568: all 30 icons, detail and selection fit",
+    "375×667: all 30 icons, detail and selection fit",
+    "390×844: all 30 icons, detail and selection fit",
+    "430×932: all 30 icons, detail and selection fit",
+    "844×390: all 30 icons, detail and selection fit",
+    "24 rapid pickups: +48 CP exactly once; return icon; one bounded toast; expires and no replay after reload",
+    "Reduced motion: static, readable reward at 320px",
+    "Save failure: no reward animation and no credited CP",
+    "Hot stove + calm + replicate: three simultaneous icons fit smallest screen",
+    "Trip reward appears in existing receipt once, including full bag",
+    "Real sale and purchase: basket reward and rebate animations match committed CP",
+    "First discovery: clue icon is shown only when a new clue is recorded"
+  ],
+  "shots": [
+    "skills-320",
+    "skills-375",
+    "skills-390",
+    "branch-CUL",
+    "branch-HOME",
+    "branch-TRADE",
+    "branch-OBS",
+    "branch-TRIP",
+    "selected",
+    "detail",
+    "skills-430",
+    "skills-844",
+    "gold-trigger",
+    "batch-return",
+    "reduced-motion",
+    "cooking-triggers",
+    "trip-receipt",
+    "sale-trigger",
+    "rebate-trigger",
+    "clue-trigger",
+    "all-icons"
+  ],
+  "errors": [],
+  "nativeDeviceTest": false
+}

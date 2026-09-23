@@ -1,0 +1,1546 @@
+[
+  {
+    "key": "0:0",
+    "name": "鸡宝",
+    "category": "家常",
+    "platter": false,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "0:1",
+    "name": "病鸡宝",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:2",
+    "name": "焦鸡宝",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:3",
+    "name": "香煎鸡",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "0:4",
+    "name": "荷包蛋鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:4/pool/1/0///"
+  },
+  {
+    "key": "0:5",
+    "name": "皮蛋鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:6",
+    "name": "柠檬香煎鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:6/pool/1/0/1//"
+  },
+  {
+    "key": "0:7",
+    "name": "照烧鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:7/pool/1/0/2//"
+  },
+  {
+    "key": "0:8",
+    "name": "水煮蛋鸡",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "0:9",
+    "name": "温泉蛋鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:9/pool/2/0///"
+  },
+  {
+    "key": "0:10",
+    "name": "茶叶蛋鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:10/pool/2/0/3//"
+  },
+  {
+    "key": "0:11",
+    "name": "印度咖哩鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:11/pool/2/0/4//"
+  },
+  {
+    "key": "0:12",
+    "name": "炸鸡",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "0:13",
+    "name": "辣味炸鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:13/pool/3/0/5//"
+  },
+  {
+    "key": "0:14",
+    "name": "油淋鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:14/pool/3/0/6//"
+  },
+  {
+    "key": "0:15",
+    "name": "南蛮鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:15/pool/3/0/7//"
+  },
+  {
+    "key": "0:16",
+    "name": "烤鸡",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "0:17",
+    "name": "香草烤鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:17/pool/4/0/8//"
+  },
+  {
+    "key": "0:18",
+    "name": "丸子鸡三兄弟",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:18/pool/4/0/9//"
+  },
+  {
+    "key": "0:19",
+    "name": "墨西哥卷鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:19/pool/4/0/10//"
+  },
+  {
+    "key": "0:20",
+    "name": "河童",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:21",
+    "name": "炖鸡",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "0:22",
+    "name": "醉鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:22/pool/5/0/12//"
+  },
+  {
+    "key": "0:23",
+    "name": "人参鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:23/pool/5/0/13//"
+  },
+  {
+    "key": "0:24",
+    "name": "溏心蛋鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:24/pool/5/0/14//"
+  },
+  {
+    "key": "0:25",
+    "name": "雪人鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:26",
+    "name": "鲁道夫",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:27",
+    "name": "圣诞鸡宝",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:28",
+    "name": "年糕鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:28/pool/4/0/16//"
+  },
+  {
+    "key": "0:29",
+    "name": "巧克力鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:29/pool/2/0/17//"
+  },
+  {
+    "key": "0:30",
+    "name": "木乃伊鸡宝",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:31",
+    "name": "乌骨鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:32",
+    "name": "丘比特",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:33",
+    "name": "孔雀",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:34",
+    "name": "霉菌鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:35",
+    "name": "木炭鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:36",
+    "name": "打抛鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:36/pool/1/1/19-20//"
+  },
+  {
+    "key": "0:37",
+    "name": "番茄红酱鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:37/pool/2/1/21-22//"
+  },
+  {
+    "key": "0:38",
+    "name": "罗勒青酱鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:38/pool/2/1/20-23//"
+  },
+  {
+    "key": "0:39",
+    "name": "奶油白酱鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:39/pool/2/1/9-24//"
+  },
+  {
+    "key": "0:40",
+    "name": "龙田炸鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:40/pool/3/1/14-25//"
+  },
+  {
+    "key": "0:41",
+    "name": "炭烤鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:41/pool/4/1/26-27//"
+  },
+  {
+    "key": "0:42",
+    "name": "麻油鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:42/pool/5/1/28-29//"
+  },
+  {
+    "key": "0:43",
+    "name": "蛋包饭鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:43/pool/1/1/30-31//"
+  },
+  {
+    "key": "0:44",
+    "name": "天妇罗鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:44/pool/3/1/25-32//"
+  },
+  {
+    "key": "0:45",
+    "name": "蜜汁烤鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:45/pool/4/1/23-33//"
+  },
+  {
+    "key": "0:46",
+    "name": "红酒炖鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:46/pool/5/1/23-34//"
+  },
+  {
+    "key": "0:47",
+    "name": "菇菇鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:48",
+    "name": "樱花鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:49",
+    "name": "骗人鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:50",
+    "name": "雪鹤",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:51",
+    "name": "凤凰",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:52",
+    "name": "火凤凰",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:53",
+    "name": "蜘蛛鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:54",
+    "name": "乌鸦",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:55",
+    "name": "糖醋鸡",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:55/pool/1/2/25-37-38//"
+  },
+  {
+    "key": "0:56",
+    "name": "棒棒鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:56/pool/2/2/19-39-40//"
+  },
+  {
+    "key": "0:57",
+    "name": "炸鸡块",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:57/pool/3/2/9-30-41//"
+  },
+  {
+    "key": "0:58",
+    "name": "坦都里烤鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:58/pool/4/2/27-41-42//"
+  },
+  {
+    "key": "0:59",
+    "name": "白酒炖鸡",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:59/pool/5/2/22-24-43//"
+  },
+  {
+    "key": "0:60",
+    "name": "康乃馨鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:61",
+    "name": "蜗牛鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:62",
+    "name": "晴天娃娃鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:63",
+    "name": "牵牛花鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:64",
+    "name": "烟火鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:65",
+    "name": "打西瓜鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:66",
+    "name": "喜鹊",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:67",
+    "name": "幽灵鸡宝",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:68",
+    "name": "蚊子鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:69",
+    "name": "热水鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:69/pool/6/0///"
+  },
+  {
+    "key": "0:70",
+    "name": "水蒸气鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:71",
+    "name": "美式咖啡鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:71/pool/6/0/56//"
+  },
+  {
+    "key": "0:72",
+    "name": "浓缩咖啡鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:72/pool/6/0/56//"
+  },
+  {
+    "key": "0:73",
+    "name": "拿铁咖啡鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:73/pool/6/1/56-57//"
+  },
+  {
+    "key": "0:74",
+    "name": "卡布奇诺鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:74/pool/6/1/56-57//"
+  },
+  {
+    "key": "0:75",
+    "name": "焦糖玛琪朵鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:75/pool/6/2/56-57-58//"
+  },
+  {
+    "key": "0:76",
+    "name": "越南咖啡鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:76/pool/6/2/56-59-60//"
+  },
+  {
+    "key": "0:77",
+    "name": "爱尔兰咖啡鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:77/pool/6/2/56-61-62//"
+  },
+  {
+    "key": "0:78",
+    "name": "玉兔鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:79",
+    "name": "栗子鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:80",
+    "name": "杰克南瓜鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:81",
+    "name": "火鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:82",
+    "name": "烤火鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:83",
+    "name": "圣诞树鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:84",
+    "name": "不倒翁鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:85",
+    "name": "门松鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:86",
+    "name": "梅花鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:87",
+    "name": "爆竹鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:88",
+    "name": "巫女鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:89",
+    "name": "超大吉签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:90",
+    "name": "大吉签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:91",
+    "name": "中吉签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:92",
+    "name": "小吉签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:93",
+    "name": "吉签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:94",
+    "name": "末吉签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:95",
+    "name": "凶签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:96",
+    "name": "大凶签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:97",
+    "name": "半吉签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:98",
+    "name": "末小吉签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:99",
+    "name": "平签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:100",
+    "name": "小凶签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:101",
+    "name": "半凶签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:102",
+    "name": "末凶签鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:103",
+    "name": "晕眩鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:104",
+    "name": "时空鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:105",
+    "name": "髑髅鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:106",
+    "name": "鬼火鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:107",
+    "name": "一反木绵鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:108",
+    "name": "斗鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:109",
+    "name": "吐司鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:109/pool/7/0///"
+  },
+  {
+    "key": "0:110",
+    "name": "烤焦吐司鸡",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "0:111",
+    "name": "菠萝面包鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:111/pool/7/0/37//"
+  },
+  {
+    "key": "0:112",
+    "name": "红豆面包鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:112/pool/7/1/71-72//"
+  },
+  {
+    "key": "0:113",
+    "name": "咖喱面包鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "0:113/pool/7/2/4-22-45//"
+  },
+  {
+    "key": "0:114",
+    "name": "小笼包鸡",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "0:114/dim-sum/8/0///"
+  },
+  {
+    "key": "0:115",
+    "name": "烧麦鸡",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "0:115/dim-sum/8/0/9//"
+  },
+  {
+    "key": "0:116",
+    "name": "荷叶糯米鸡",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "0:116/dim-sum/8/0/16//"
+  },
+  {
+    "key": "0:117",
+    "name": "奶黄流沙鸡",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "0:117/dim-sum/8/1/24-37//"
+  },
+  {
+    "key": "0:118",
+    "name": "水晶饺鸡",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "0:118/dim-sum/8/1/25//"
+  },
+  {
+    "key": "0:119",
+    "name": "寿桃豆沙鸡",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "0:119/dim-sum/8/2/71-37//"
+  },
+  {
+    "key": "0:120",
+    "name": "樱桃大福鸡",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "0:121",
+    "name": "蜂蜜松饼鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "0:122",
+    "name": "柠檬冰沙鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "0:123",
+    "name": "焦糖布丁鸡",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "0:124",
+    "name": "芝麻月饼鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "0:125",
+    "name": "红豆铜锣鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "0:126",
+    "name": "热可可鸡",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "0:127",
+    "name": "雪帽曲奇鸡",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "1:0",
+    "name": "鸭宝",
+    "category": "家常",
+    "platter": false,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "1:1",
+    "name": "病鸭宝",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:2",
+    "name": "焦鸭宝",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:3",
+    "name": "香煎鸭",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "1:4",
+    "name": "咸蛋鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:5",
+    "name": "橙汁香煎鸭",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:5/pool/1/0/44//"
+  },
+  {
+    "key": "1:6",
+    "name": "水煮蛋鸭",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "1:7",
+    "name": "盐水鸭",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:7/pool/2/0/27//"
+  },
+  {
+    "key": "1:8",
+    "name": "炸鸭",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "1:9",
+    "name": "可乐饼鸭",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:9/pool/3/0/45//"
+  },
+  {
+    "key": "1:10",
+    "name": "烤鸭",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "1:11",
+    "name": "蜜汁叉烧鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:11/pool/4/0/33//"
+  },
+  {
+    "key": "1:12",
+    "name": "炖鸭",
+    "category": "家常",
+    "platter": true,
+    "replicable": true,
+    "basis": "家常白名单"
+  },
+  {
+    "key": "1:13",
+    "name": "油封鸭",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:13/pool/5/0/27//"
+  },
+  {
+    "key": "1:14",
+    "name": "鸭嘴兽",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:15",
+    "name": "丧尸鸭宝",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:16",
+    "name": "绿头鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:17",
+    "name": "鸳",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:18",
+    "name": "鸯",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:19",
+    "name": "灰尘鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:20",
+    "name": "红面番鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:21",
+    "name": "葱爆鸭",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:21/pool/1/1/23-46//"
+  },
+  {
+    "key": "1:22",
+    "name": "冬粉鸭",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:22/pool/2/1/47-48//"
+  },
+  {
+    "key": "1:23",
+    "name": "天妇罗鸭",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:23/pool/3/1/25-32//"
+  },
+  {
+    "key": "1:24",
+    "name": "烟熏鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:24/pool/4/1/26-27//"
+  },
+  {
+    "key": "1:25",
+    "name": "白豆炖鸭",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:25/pool/5/1/45-49//"
+  },
+  {
+    "key": "1:26",
+    "name": "白鹅",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:27",
+    "name": "白天鹅",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:28",
+    "name": "黑天鹅",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:29",
+    "name": "蟑螂鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:30",
+    "name": "红酒樱桃鸭",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:30/pool/1/2/34-41-50//"
+  },
+  {
+    "key": "1:31",
+    "name": "南蛮鸭",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:31/pool/2/2/46-51-52//"
+  },
+  {
+    "key": "1:32",
+    "name": "香酥鸭",
+    "category": "煎炸",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:32/pool/3/2/29-46-53//"
+  },
+  {
+    "key": "1:33",
+    "name": "北京烤鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:33/pool/4/2/46-54-55//"
+  },
+  {
+    "key": "1:34",
+    "name": "姜母鸭",
+    "category": "炖煮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:34/pool/5/2/12-28-29//"
+  },
+  {
+    "key": "1:35",
+    "name": "向日葵鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:36",
+    "name": "苍蝇鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:37",
+    "name": "热水鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:37/pool/6/0///"
+  },
+  {
+    "key": "1:38",
+    "name": "水蒸气鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:39",
+    "name": "红茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:39/pool/6/0/63//"
+  },
+  {
+    "key": "1:40",
+    "name": "绿茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:40/pool/6/0/64//"
+  },
+  {
+    "key": "1:41",
+    "name": "乌龙茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:41/pool/6/0/3//"
+  },
+  {
+    "key": "1:42",
+    "name": "柠檬红茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:42/pool/6/1/1-63//"
+  },
+  {
+    "key": "1:43",
+    "name": "奶茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:43/pool/6/1/57-63//"
+  },
+  {
+    "key": "1:44",
+    "name": "菊花茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:44/pool/6/1/65-66//"
+  },
+  {
+    "key": "1:45",
+    "name": "泰式奶茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:45/pool/6/2/59-60-67//"
+  },
+  {
+    "key": "1:46",
+    "name": "印度奶茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:46/pool/6/2/29-57-63//"
+  },
+  {
+    "key": "1:47",
+    "name": "文旦鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:48",
+    "name": "枫叶鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:49",
+    "name": "忧郁鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:50",
+    "name": "姜饼鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:51",
+    "name": "舞狮鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:52",
+    "name": "法式面包鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:52/pool/7/0///"
+  },
+  {
+    "key": "1:53",
+    "name": "烤焦法式面包鸭",
+    "category": null,
+    "platter": false,
+    "replicable": false,
+    "basis": "特殊／观赏，不加价"
+  },
+  {
+    "key": "1:54",
+    "name": "牛奶法式面包鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:54/pool/7/0/57//"
+  },
+  {
+    "key": "1:55",
+    "name": "明太子法式面包鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:55/pool/7/1/73-74//"
+  },
+  {
+    "key": "1:56",
+    "name": "香蒜法式面包鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": true,
+    "basis": "1:56/pool/7/2/23-24-47//"
+  },
+  {
+    "key": "1:57",
+    "name": "抹茶团子鸭",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "1:58",
+    "name": "花香茶冻鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "1:59",
+    "name": "橙橙汽水鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "1:60",
+    "name": "红豆冰棒鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "1:61",
+    "name": "焦糖吐司鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "1:62",
+    "name": "烤菇饭团鸭",
+    "category": "烘焙",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "1:63",
+    "name": "姜糖茶鸭",
+    "category": "茶饮",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  },
+  {
+    "key": "1:64",
+    "name": "围巾汤圆鸭",
+    "category": "蒸点",
+    "platter": true,
+    "replicable": false,
+    "basis": "四时人工标签"
+  }
+]

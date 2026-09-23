@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.4.4",
+  "versionCode": 11,
+  "file": "chick-kitchen-1.4.4.apk",
+  "sha256": "b018dc82222cd38be63be4605c170e2b26c00872a4caa0c0ce54f633c9e47b24",
+  "bytes": 48436560,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-15T15:26:41.0329499Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "77e63c6f29245809c6bf089363a389c1a39f15ded02d9e1f47ab7faf72c9f855",
+  "runtimeFiles": 588,
+  "notes": "修复开始按钮快速连点误入图鉴：封面等待点击，进入厨房后短暂防止触摸穿透。厨房按上次打扫时间累计，超过一天自然变脏，在线游玩也会触发；打扫入口及时刷新，恢复病鸡宝及各等级脏污特殊伙伴的正常获取。更新照顾手册。沿用原签名与版本2存档，保留CP、图鉴、材料及当前孵化批次。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

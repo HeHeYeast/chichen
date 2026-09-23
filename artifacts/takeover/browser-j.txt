@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-09-23T13:32:12.326Z",
+  "passed": true,
+  "checks": [
+    "招牌册：两个检查阶段直接登记不花CP，第三阶段确认支付200CP；刷新后阶段与余额不变",
+    "完成招牌册后营业准备出现“菜单预设”：保存当前备货为预设1、清空后一键载入，均不占用库存",
+    "溪岸风味篮：付100→勾选2种各交6只（首次交付锁定、不付货款）→登记→付400；学会ALT-R；刷新后余额与交付记录正确",
+    "四地风味展：旧伙伴（含观赏）以永久画像入展册并在图鉴收藏册展示，不消耗库存；320/390/1280无横溢"
+  ],
+  "screens": [
+    "projects-list-390",
+    "pj1-detail",
+    "pj1-done",
+    "business-preset",
+    "pj2-deliver",
+    "pj2-done",
+    "pj4-portraits",
+    "projects-320",
+    "projects-1280",
+    "books-exhibit"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

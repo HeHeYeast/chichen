@@ -1,0 +1,78 @@
+{
+  "scenarios": 1908,
+  "batches": 122112,
+  "earlyWarnings": 16,
+  "largestEarly": [
+    {
+      "stage": "12种",
+      "egg": 1,
+      "tool": 1,
+      "recipe": "无料",
+      "ingredients": [],
+      "visits": 24,
+      "build": "trade",
+      "skills": [
+        "TRADE-1",
+        "TRADE-2",
+        "TRADE-3"
+      ],
+      "points": 7,
+      "cpPerDay": 1205.33,
+      "ci95": 0,
+      "upgrade10000Days": 8.3,
+      "changedPerBatch": 0,
+      "newKindsPerBatch": 1,
+      "returnedInventory": 0,
+      "minutes": 15,
+      "baselineCP": 653.33,
+      "uplift": 84.49022699095401
+    },
+    {
+      "stage": "12种",
+      "egg": 1,
+      "tool": 1,
+      "recipe": "高成本",
+      "ingredients": [],
+      "visits": 24,
+      "build": "trade",
+      "skills": [
+        "TRADE-1",
+        "TRADE-2",
+        "TRADE-3"
+      ],
+      "points": 7,
+      "cpPerDay": 1205.33,
+      "ci95": 0,
+      "upgrade10000Days": 8.3,
+      "changedPerBatch": 0,
+      "newKindsPerBatch": 1,
+      "returnedInventory": 0,
+      "minutes": 15,
+      "baselineCP": 653.33,
+      "uplift": 84.49022699095401
+    },
+    {
+      "stage": "12种",
+      "egg": 0,
+      "tool": 0,
+      "recipe": "无料",
+      "ingredients": [],
+      "visits": 1,
+      "build": "care",
+      "skills": [
+        "HOME-1",
+        "HOME-3"
+      ],
+      "points": 5,
+      "cpPerDay": 51.56,
+      "ci95": 0,
+      "upgrade10000Days": 193.97,
+      "changedPerBatch": 0,
+      "newKindsPerBatch": 0,
+      "returnedInventory": 0,
+      "minutes": 120,
+      "baselineCP": 29.33,
+      "uplift": 75.79270371633142
+    }
+  ]
+}

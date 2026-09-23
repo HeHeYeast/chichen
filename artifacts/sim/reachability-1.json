@@ -1,0 +1,601 @@
+{
+  "checkedAt": "2026-09-23T14:30:34.606Z",
+  "seed": 1,
+  "passed": true,
+  "missingSpecies": [],
+  "missingCards": [],
+  "totals": {
+    "trips": 161,
+    "batches": 141,
+    "identify": 8,
+    "purchases": 265,
+    "repairs": 220,
+    "plainBatches": 29,
+    "virtualDays": 59.1,
+    "cpSpent": 16873
+  },
+  "cards": {
+    "V-S2": {
+      "attempts": 4,
+      "team": [
+        "0:0"
+      ]
+    },
+    "V-N1": {
+      "attempts": 4,
+      "team": [
+        "0:0"
+      ]
+    },
+    "V-N2": {
+      "attempts": 3,
+      "team": [
+        "0:0"
+      ]
+    },
+    "V-E1": {
+      "attempts": 4,
+      "team": [
+        "0:94"
+      ]
+    },
+    "V-E2": {
+      "attempts": 4,
+      "team": [
+        "0:18"
+      ]
+    },
+    "R-S2": {
+      "attempts": 4,
+      "team": [
+        "0:0"
+      ]
+    },
+    "R-N1": {
+      "attempts": 2,
+      "team": [
+        "0:0"
+      ]
+    },
+    "R-N2": {
+      "attempts": 1,
+      "team": [
+        "0:0"
+      ]
+    },
+    "R-E1": {
+      "attempts": 4,
+      "team": [
+        "0:120"
+      ]
+    },
+    "R-E2": {
+      "attempts": 3,
+      "team": [
+        "0:116"
+      ]
+    },
+    "T-S2": {
+      "attempts": 2,
+      "team": [
+        "0:0"
+      ]
+    },
+    "T-N1": {
+      "attempts": 1,
+      "team": [
+        "0:0"
+      ]
+    },
+    "T-N2": {
+      "attempts": 4,
+      "team": [
+        "0:0"
+      ]
+    },
+    "T-E1": {
+      "attempts": 4,
+      "team": [
+        "0:10"
+      ]
+    },
+    "T-E2": {
+      "attempts": 2,
+      "team": [
+        "0:121"
+      ]
+    },
+    "B-S2": {
+      "attempts": 2,
+      "team": [
+        "0:0"
+      ]
+    },
+    "B-N1": {
+      "attempts": 4,
+      "team": [
+        "0:0"
+      ]
+    },
+    "B-N2": {
+      "attempts": 4,
+      "team": [
+        "0:0"
+      ]
+    },
+    "B-E1": {
+      "attempts": 4,
+      "team": [
+        "0:116"
+      ]
+    },
+    "B-E2": {
+      "attempts": 1,
+      "team": [
+        "0:20"
+      ]
+    }
+  },
+  "species": {
+    "0:128": {
+      "recipeId": "REC-V-C1",
+      "batches": 4,
+      "trips": 3
+    },
+    "0:130": {
+      "recipeId": "REC-V-C3",
+      "batches": 3,
+      "trips": 3
+    },
+    "0:132": {
+      "recipeId": "REC-V-C5",
+      "batches": 3,
+      "trips": 3
+    },
+    "1:65": {
+      "recipeId": "REC-V-D1",
+      "batches": 4,
+      "trips": 3
+    },
+    "1:67": {
+      "recipeId": "REC-V-D3",
+      "batches": 4,
+      "trips": 3
+    },
+    "1:69": {
+      "recipeId": "REC-V-D5",
+      "batches": 4,
+      "trips": 3
+    },
+    "0:129": {
+      "recipeId": "REC-V-C2",
+      "batches": 2,
+      "trips": 0
+    },
+    "0:131": {
+      "recipeId": "REC-V-C4",
+      "batches": 2,
+      "trips": 0
+    },
+    "0:133": {
+      "recipeId": "REC-V-C6",
+      "batches": 1,
+      "trips": 0
+    },
+    "1:66": {
+      "recipeId": "REC-V-D2",
+      "batches": 3,
+      "trips": 0
+    },
+    "1:68": {
+      "recipeId": "REC-V-D4",
+      "batches": 1,
+      "trips": 0
+    },
+    "1:70": {
+      "recipeId": "REC-V-D6",
+      "batches": 4,
+      "trips": 3
+    },
+    "0:134": {
+      "recipeId": "REC-R-C1",
+      "batches": 4,
+      "trips": 3
+    },
+    "0:136": {
+      "recipeId": "REC-R-C3",
+      "batches": 4,
+      "trips": 3
+    },
+    "0:138": {
+      "recipeId": "REC-R-C5",
+      "batches": 3,
+      "trips": 3
+    },
+    "1:71": {
+      "recipeId": "REC-R-D1",
+      "batches": 4,
+      "trips": 3
+    },
+    "1:73": {
+      "recipeId": "REC-R-D3",
+      "batches": 3,
+      "trips": 3
+    },
+    "1:75": {
+      "recipeId": "REC-R-D5",
+      "batches": 1,
+      "trips": 3
+    },
+    "0:135": {
+      "recipeId": "REC-R-C2",
+      "batches": 3,
+      "trips": 0
+    },
+    "0:137": {
+      "recipeId": "REC-R-C4",
+      "batches": 2,
+      "trips": 0
+    },
+    "0:139": {
+      "recipeId": "REC-R-C6",
+      "batches": 4,
+      "trips": 0
+    },
+    "1:72": {
+      "recipeId": "REC-R-D2",
+      "batches": 4,
+      "trips": 2
+    },
+    "1:74": {
+      "recipeId": "REC-R-D4",
+      "batches": 2,
+      "trips": 3
+    },
+    "1:76": {
+      "recipeId": "REC-R-D6",
+      "batches": 2,
+      "trips": 3
+    },
+    "0:140": {
+      "recipeId": "REC-T-C1",
+      "batches": 1,
+      "trips": 3
+    },
+    "0:142": {
+      "recipeId": "REC-T-C3",
+      "batches": 3,
+      "trips": 3
+    },
+    "0:144": {
+      "recipeId": "REC-T-C5",
+      "batches": 4,
+      "trips": 3
+    },
+    "1:77": {
+      "recipeId": "REC-T-D1",
+      "batches": 4,
+      "trips": 3
+    },
+    "1:79": {
+      "recipeId": "REC-T-D3",
+      "batches": 4,
+      "trips": 3
+    },
+    "1:81": {
+      "recipeId": "REC-T-D5",
+      "batches": 3,
+      "trips": 3
+    },
+    "0:141": {
+      "recipeId": "REC-T-C2",
+      "batches": 4,
+      "trips": 0
+    },
+    "0:143": {
+      "recipeId": "REC-T-C4",
+      "batches": 1,
+      "trips": 0
+    },
+    "0:145": {
+      "recipeId": "REC-T-C6",
+      "batches": 2,
+      "trips": 0
+    },
+    "1:78": {
+      "recipeId": "REC-T-D2",
+      "batches": 4,
+      "trips": 1
+    },
+    "1:80": {
+      "recipeId": "REC-T-D4",
+      "batches": 1,
+      "trips": 3
+    },
+    "1:82": {
+      "recipeId": "REC-T-D6",
+      "batches": 4,
+      "trips": 3
+    },
+    "0:146": {
+      "recipeId": "REC-B-C1",
+      "batches": 1,
+      "trips": 3
+    },
+    "0:148": {
+      "recipeId": "REC-B-C3",
+      "batches": 4,
+      "trips": 3
+    },
+    "0:150": {
+      "recipeId": "REC-B-C5",
+      "batches": 1,
+      "trips": 3
+    },
+    "1:83": {
+      "recipeId": "REC-B-D1",
+      "batches": 4,
+      "trips": 3
+    },
+    "1:85": {
+      "recipeId": "REC-B-D3",
+      "batches": 1,
+      "trips": 3
+    },
+    "1:87": {
+      "recipeId": "REC-B-D5",
+      "batches": 4,
+      "trips": 3
+    },
+    "0:147": {
+      "recipeId": "REC-B-C2",
+      "batches": 4,
+      "trips": 0
+    },
+    "0:149": {
+      "recipeId": "REC-B-C4",
+      "batches": 4,
+      "trips": 0
+    },
+    "0:151": {
+      "recipeId": "REC-B-C6",
+      "batches": 3,
+      "trips": 0
+    },
+    "1:84": {
+      "recipeId": "REC-B-D2",
+      "batches": 2,
+      "trips": 0
+    },
+    "1:86": {
+      "recipeId": "REC-B-D4",
+      "batches": 4,
+      "trips": 2
+    },
+    "1:88": {
+      "recipeId": "REC-B-D6",
+      "batches": 3,
+      "trips": 3
+    }
+  },
+  "finalValid": true,
+  "log": [
+    "identify 75",
+    "trip V/V:0/specimen [0:0] intro specimen → V-S1",
+    "trip V/V:0/materials [0:0] method REC-V-C1 → -",
+    "trip V/V:0/materials [0:0] method REC-V-C1 → -",
+    "trip V/V:0/materials [0:0] method REC-V-C1 → -",
+    "collected 0:128 via REC-V-C1 in 4 batch(es)",
+    "trip V/V:0/materials [0:0] method REC-V-C3 → -",
+    "trip V/V:0/materials [0:0] method REC-V-C3 → -",
+    "trip V/V:0/materials [0:0] method REC-V-C3 → -",
+    "collected 0:130 via REC-V-C3 in 3 batch(es)",
+    "trip V/V:0/materials [0:0] method REC-V-C5 → -",
+    "trip V/V:0/materials [0:0] method REC-V-C5 → -",
+    "trip V/V:0/materials [0:0] method REC-V-C5 → -",
+    "collected 0:132 via REC-V-C5 in 3 batch(es)",
+    "trip V/V:0/materials [0:0] method REC-V-D1 → -",
+    "trip V/V:0/materials [0:0] method REC-V-D1 → -",
+    "trip V/V:0/materials [0:0] method REC-V-D1 → -",
+    "collected 1:65 via REC-V-D1 in 4 batch(es)",
+    "trip V/V:0/materials [0:0] method REC-V-D3 → -",
+    "trip V/V:0/materials [0:0] method REC-V-D3 → -",
+    "trip V/V:0/materials [0:0] method REC-V-D3 → -",
+    "collected 1:67 via REC-V-D3 in 4 batch(es)",
+    "trip V/V:0/materials [0:0] method REC-V-D5 → -",
+    "trip V/V:0/materials [0:0] method REC-V-D5 → -",
+    "trip V/V:0/materials [0:0] method REC-V-D5 → -",
+    "collected 1:69 via REC-V-D5 in 4 batch(es)",
+    "trip V/V:1/specimen [0:0] for V-S2 → -",
+    "trip V/V:1/specimen [0:0] for V-S2 → -",
+    "trip V/V:1/specimen [0:0] for V-S2 → -",
+    "identify 76",
+    "trip V/V:1/specimen [0:0] for V-S2 → V-S2",
+    "trip V/V:0/lore [0:0] for V-N1 → -",
+    "trip V/V:0/lore [0:0] for V-N1 → -",
+    "trip V/V:0/lore [0:0] for V-N1 → -",
+    "trip V/V:0/lore [0:0] for V-N1 → V-N1",
+    "trip V/V:1/lore [0:0] for V-N2 → -",
+    "trip V/V:1/lore [0:0] for V-N2 → -",
+    "trip V/V:1/lore [0:0] for V-N2 → V-N2",
+    "trip V/V:0/lore [0:94] for V-E1 → -",
+    "trip V/V:0/lore [0:94] for V-E1 → -",
+    "trip V/V:0/lore [0:94] for V-E1 → -",
+    "trip V/V:0/lore [0:94] for V-E1 → V-E1",
+    "trip V/V:1/lore [0:18] for V-E2 → -",
+    "trip V/V:1/lore [0:18] for V-E2 → -",
+    "trip V/V:1/lore [0:18] for V-E2 → -",
+    "trip V/V:1/lore [0:18] for V-E2 → V-E2",
+    "collected 0:129 via REC-V-C2 in 2 batch(es)",
+    "collected 0:131 via REC-V-C4 in 2 batch(es)",
+    "collected 0:133 via REC-V-C6 in 1 batch(es)",
+    "collected 1:66 via REC-V-D2 in 3 batch(es)",
+    "collected 1:68 via REC-V-D4 in 1 batch(es)",
+    "trip V/V:0/materials [0:0] method REC-V-D6 → -",
+    "trip V/V:0/materials [0:0] method REC-V-D6 → -",
+    "trip V/V:0/materials [0:0] method REC-V-D6 → -",
+    "collected 1:70 via REC-V-D6 in 4 batch(es)",
+    "identify 77",
+    "trip R/R:0/specimen [0:0] intro specimen → R-S1",
+    "trip R/R:0/materials [0:0] method REC-R-C1 → -",
+    "trip R/R:0/materials [0:0] method REC-R-C1 → -",
+    "trip R/R:0/materials [0:0] method REC-R-C1 → -",
+    "collected 0:134 via REC-R-C1 in 4 batch(es)",
+    "trip R/R:0/materials [0:0] method REC-R-C3 → -",
+    "trip R/R:0/materials [0:0] method REC-R-C3 → -",
+    "trip R/R:0/materials [0:0] method REC-R-C3 → -",
+    "collected 0:136 via REC-R-C3 in 4 batch(es)",
+    "trip R/R:0/materials [0:0] method REC-R-C5 → -",
+    "trip R/R:0/materials [0:0] method REC-R-C5 → -",
+    "trip R/R:0/materials [0:0] method REC-R-C5 → -",
+    "collected 0:138 via REC-R-C5 in 3 batch(es)",
+    "trip R/R:0/materials [0:0] method REC-R-D1 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D1 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D1 → -",
+    "collected 1:71 via REC-R-D1 in 4 batch(es)",
+    "trip R/R:0/materials [0:0] method REC-R-D3 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D3 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D3 → -",
+    "collected 1:73 via REC-R-D3 in 3 batch(es)",
+    "trip R/R:0/materials [0:0] method REC-R-D5 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D5 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D5 → -",
+    "collected 1:75 via REC-R-D5 in 1 batch(es)",
+    "trip R/R:1/specimen [0:0] for R-S2 → -",
+    "trip R/R:1/specimen [0:0] for R-S2 → -",
+    "trip R/R:1/specimen [0:0] for R-S2 → -",
+    "identify 78",
+    "trip R/R:1/specimen [0:0] for R-S2 → R-S2",
+    "trip R/R:0/lore [0:0] for R-N1 → -",
+    "trip R/R:0/lore [0:0] for R-N1 → R-N1",
+    "trip R/R:1/lore [0:0] for R-N2 → R-N2",
+    "trip R/R:0/lore [0:120] for R-E1 → -",
+    "trip R/R:0/lore [0:120] for R-E1 → -",
+    "trip R/R:0/lore [0:120] for R-E1 → -",
+    "trip R/R:0/lore [0:120] for R-E1 → R-E1",
+    "trip R/R:1/lore [0:116] for R-E2 → -",
+    "trip R/R:1/lore [0:116] for R-E2 → -",
+    "trip R/R:1/lore [0:116] for R-E2 → R-E2",
+    "collected 0:135 via REC-R-C2 in 3 batch(es)",
+    "collected 0:137 via REC-R-C4 in 2 batch(es)",
+    "collected 0:139 via REC-R-C6 in 4 batch(es)",
+    "trip R/R:0/materials [0:0] method REC-R-D2 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D2 → -",
+    "collected 1:72 via REC-R-D2 in 4 batch(es)",
+    "trip R/R:0/materials [0:0] method REC-R-D4 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D4 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D4 → -",
+    "collected 1:74 via REC-R-D4 in 2 batch(es)",
+    "trip R/R:0/materials [0:0] method REC-R-D6 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D6 → -",
+    "trip R/R:0/materials [0:0] method REC-R-D6 → -",
+    "collected 1:76 via REC-R-D6 in 2 batch(es)",
+    "identify 79",
+    "trip T/T:0/specimen [0:0] intro specimen → T-S1",
+    "trip T/T:0/materials [0:0] method REC-T-C1 → -",
+    "trip T/T:0/materials [0:0] method REC-T-C1 → -",
+    "trip T/T:0/materials [0:0] method REC-T-C1 → -",
+    "collected 0:140 via REC-T-C1 in 1 batch(es)",
+    "trip T/T:0/materials [0:0] method REC-T-C3 → -",
+    "trip T/T:0/materials [0:0] method REC-T-C3 → -",
+    "trip T/T:0/materials [0:0] method REC-T-C3 → -",
+    "collected 0:142 via REC-T-C3 in 3 batch(es)",
+    "trip T/T:0/materials [0:0] method REC-T-C5 → -",
+    "trip T/T:0/materials [0:0] method REC-T-C5 → -",
+    "trip T/T:0/materials [0:0] method REC-T-C5 → -",
+    "collected 0:144 via REC-T-C5 in 4 batch(es)",
+    "trip T/T:0/materials [0:0] method REC-T-D1 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D1 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D1 → -",
+    "collected 1:77 via REC-T-D1 in 4 batch(es)",
+    "trip T/T:0/materials [0:0] method REC-T-D3 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D3 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D3 → -",
+    "collected 1:79 via REC-T-D3 in 4 batch(es)",
+    "trip T/T:0/materials [0:0] method REC-T-D5 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D5 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D5 → -",
+    "collected 1:81 via REC-T-D5 in 3 batch(es)",
+    "trip T/T:1/specimen [0:0] for T-S2 → -",
+    "identify 80",
+    "trip T/T:1/specimen [0:0] for T-S2 → T-S2",
+    "trip T/T:0/lore [0:0] for T-N1 → T-N1",
+    "trip T/T:1/lore [0:0] for T-N2 → -",
+    "trip T/T:1/lore [0:0] for T-N2 → -",
+    "trip T/T:1/lore [0:0] for T-N2 → -",
+    "trip T/T:1/lore [0:0] for T-N2 → T-N2",
+    "trip T/T:0/lore [0:10] for T-E1 → -",
+    "trip T/T:0/lore [0:10] for T-E1 → -",
+    "trip T/T:0/lore [0:10] for T-E1 → -",
+    "trip T/T:0/lore [0:10] for T-E1 → T-E1",
+    "trip T/T:1/lore [0:121] for T-E2 → -",
+    "trip T/T:1/lore [0:121] for T-E2 → T-E2",
+    "collected 0:141 via REC-T-C2 in 4 batch(es)",
+    "collected 0:143 via REC-T-C4 in 1 batch(es)",
+    "collected 0:145 via REC-T-C6 in 2 batch(es)",
+    "trip T/T:0/materials [0:0] method REC-T-D2 → -",
+    "collected 1:78 via REC-T-D2 in 4 batch(es)",
+    "trip T/T:0/materials [0:0] method REC-T-D4 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D4 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D4 → -",
+    "collected 1:80 via REC-T-D4 in 1 batch(es)",
+    "trip T/T:0/materials [0:0] method REC-T-D6 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D6 → -",
+    "trip T/T:0/materials [0:0] method REC-T-D6 → -",
+    "collected 1:82 via REC-T-D6 in 4 batch(es)",
+    "trip R/R:1/materials [0:0] follow the bay signs → -",
+    "identify 81",
+    "trip B/B:0/specimen [0:0] intro specimen → B-S1",
+    "trip B/B:0/materials [0:0] method REC-B-C1 → -",
+    "trip B/B:0/materials [0:0] method REC-B-C1 → -",
+    "trip B/B:0/materials [0:0] method REC-B-C1 → -",
+    "collected 0:146 via REC-B-C1 in 1 batch(es)",
+    "trip B/B:0/materials [0:0] method REC-B-C3 → -",
+    "trip B/B:0/materials [0:0] method REC-B-C3 → -",
+    "trip B/B:0/materials [0:0] method REC-B-C3 → -",
+    "collected 0:148 via REC-B-C3 in 4 batch(es)",
+    "trip B/B:0/materials [0:0] method REC-B-C5 → -",
+    "trip B/B:0/materials [0:0] method REC-B-C5 → -",
+    "trip B/B:0/materials [0:0] method REC-B-C5 → -",
+    "collected 0:150 via REC-B-C5 in 1 batch(es)",
+    "trip B/B:0/materials [0:0] method REC-B-D1 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D1 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D1 → -",
+    "collected 1:83 via REC-B-D1 in 4 batch(es)",
+    "trip B/B:0/materials [0:0] method REC-B-D3 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D3 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D3 → -",
+    "collected 1:85 via REC-B-D3 in 1 batch(es)",
+    "trip B/B:0/materials [0:0] method REC-B-D5 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D5 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D5 → -",
+    "collected 1:87 via REC-B-D5 in 4 batch(es)",
+    "trip B/B:1/specimen [0:0] for B-S2 → -",
+    "identify 82",
+    "trip B/B:1/specimen [0:0] for B-S2 → B-S2",
+    "trip B/B:0/lore [0:0] for B-N1 → -",
+    "trip B/B:0/lore [0:0] for B-N1 → -",
+    "trip B/B:0/lore [0:0] for B-N1 → -",
+    "trip B/B:0/lore [0:0] for B-N1 → B-N1",
+    "trip B/B:1/lore [0:0] for B-N2 → -",
+    "trip B/B:1/lore [0:0] for B-N2 → -",
+    "trip B/B:1/lore [0:0] for B-N2 → -",
+    "trip B/B:1/lore [0:0] for B-N2 → B-N2",
+    "trip B/B:0/lore [0:116] for B-E1 → -",
+    "trip B/B:0/lore [0:116] for B-E1 → -",
+    "trip B/B:0/lore [0:116] for B-E1 → -",
+    "trip B/B:0/lore [0:116] for B-E1 → B-E1",
+    "trip B/B:1/lore [0:20] for B-E2 → B-E2",
+    "collected 0:147 via REC-B-C2 in 4 batch(es)",
+    "collected 0:149 via REC-B-C4 in 4 batch(es)",
+    "collected 0:151 via REC-B-C6 in 3 batch(es)",
+    "collected 1:84 via REC-B-D2 in 2 batch(es)",
+    "trip B/B:0/materials [0:0] method REC-B-D4 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D4 → -",
+    "collected 1:86 via REC-B-D4 in 4 batch(es)",
+    "trip B/B:0/materials [0:0] method REC-B-D6 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D6 → -",
+    "trip B/B:0/materials [0:0] method REC-B-D6 → -",
+    "collected 1:88 via REC-B-D6 in 3 batch(es)"
+  ]
+}

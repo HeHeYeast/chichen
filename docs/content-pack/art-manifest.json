@@ -1,0 +1,1406 @@
+{
+  "style": "原作小厨房风味生物；棕色粗轮廓、少量暖面高光，食物结构先于饰品；不采用现代餐厅或宝石养成图标。",
+  "sizes": {
+    "speciesMaster": "512×512透明PNG，另交分层源稿；脚底与视觉中心单独记裁切元数据",
+    "portrait": "256×256透明PNG，安全边12%，48/64/96像素复核",
+    "silhouette": "同尺寸纯色实心外轮廓保留必要负空间，未知状态不露细纹",
+    "material": "128×128透明PNG＋256×192标本局部",
+    "card": "480×270无字插画局部，关键物件置中60%；320宽仍可读",
+    "memento": "256×256透明PNG＋48像素简化图；项目变体复用底图",
+    "region": "960×540无字地区局部，拆两地点；不生成全屏新厨房"
+  },
+  "species": [
+    {
+      "id": "ART-V-C1",
+      "content": "V-C1",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "扁圆饼身，边缘两处小缺口",
+      "foodAndMaterial": "浅金煎面嵌不规则荠叶碎，尖嘴从薄边探出",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:4 荷包蛋鸡的白蛋边；本品没有中央蛋黄大圆",
+      "portrait": "四分之三视角，完整容纳扁圆饼身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留扁圆饼身，边缘两处小缺口；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-C2",
+      "content": "V-C2",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "三片错开的菱形脆片，后高前低",
+      "foodAndMaterial": "琥珀麦芽薄膜只连片角，碎麦点在切面",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:124 芝麻月饼鸡的圆花边；改成不对称薄片叠层",
+      "portrait": "四分之三视角，完整容纳三片错开的菱形脆片；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留三片错开的菱形脆片，后高前低；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-C3",
+      "content": "V-C3",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "矮圆锥窝窝身，底缘外翻",
+      "foodAndMaterial": "粗面细孔、荠叶绿点，头顶凹窝而非包子收口",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:114 小笼包鸡；不画褶口或汤汁肚",
+      "portrait": "四分之三视角，完整容纳矮圆锥窝窝身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留矮圆锥窝窝身，底缘外翻；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-C4",
+      "content": "V-C4",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "矮胖三股辫结，短尾从结后翘起",
+      "foodAndMaterial": "麦芽亮边沿编纹走，奶油色只留辫缝",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:111 菠萝面包鸡；不用格纹圆顶，保留编结孔",
+      "portrait": "四分之三视角，完整容纳矮胖三股辫结；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留矮胖三股辫结，短尾从结后翘起；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-C5",
+      "content": "V-C5",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "半展开的折扇饼，五道宽折",
+      "foodAndMaterial": "黑芝麻沿折谷排，淡盐烤色，脸在扇轴上方",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:124 芝麻月饼鸡；无圆边、月饼压花，咸味折片",
+      "portrait": "四分之三视角，完整容纳半展开的折扇饼；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留半展开的折扇饼，五道宽折；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-C6",
+      "content": "V-C6",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "水滴谷粒身，一束向右弯的长麦芒",
+      "foodAndMaterial": "哑光麦壳纹、窄叶翼，穗冠不发光",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:33 孔雀；非尾部开屏，0:85 门松鸡无竹节绳饰",
+      "portrait": "四分之三视角，完整容纳水滴谷粒身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留水滴谷粒身，一束向右弯的长麦芒；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-D1",
+      "content": "V-D1",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "斜切短圆筒，宽嘴从一端露出",
+      "foodAndMaterial": "蛋卷横截面三圈绿线，短鸭尾在另一端",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "V-C1 扁饼鸡；加盐、卷芯与横向鸭身，非圆饼换嘴",
+      "portrait": "四分之三视角，完整容纳斜切短圆筒；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留斜切短圆筒，宽嘴从一端露出；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-D2",
+      "content": "V-D2",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "低矮长方切糕，切面斜出一角",
+      "foodAndMaterial": "米粒纵向压实，琥珀麦芽夹层靠底，无顶帽",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "T-C2 桂花糕；切块米粒实心与斜角，非透明花冠",
+      "portrait": "四分之三视角，完整容纳低矮长方切糕；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留低矮长方切糕，切面斜出一角；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-D3",
+      "content": "V-D3",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "扁椭圆粉结窝，鸭颈从结心探出",
+      "foodAndMaterial": "冬粉是粗细明确的绕结，荠叶只夹两处",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:22 冬粉鸭的垂发；改成低位闭合结窝，避开蒸笼鸭蛋限制",
+      "portrait": "四分之三视角，完整容纳扁椭圆粉结窝；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留扁椭圆粉结窝，鸭颈从结心探出；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-D4",
+      "content": "V-D4",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "横卧奶白砖形，圆角只在背部",
+      "foodAndMaterial": "薯粉凝成乳白方身，麦芽透明纹在侧壁，不挂焦糖帽",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "0:123 焦糖布丁鸡；无布丁倒扣形，非T-C4花奶环",
+      "portrait": "四分之三视角，完整容纳横卧奶白砖形；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留横卧奶白砖形，圆角只在背部；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-D5",
+      "content": "V-D5",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "三角饭团顶压低，宽嘴横跨短边",
+      "foodAndMaterial": "米粒白身、胡椒小点集中脚边，不戴海苔围裙",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:62 烤菇饭团鸭；没有菇帽，无烤壳，辛香水煮饭团",
+      "portrait": "四分之三视角，完整容纳三角饭团顶压低；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留三角饭团顶压低，宽嘴横跨短边；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-V-D6",
+      "content": "V-D6",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "矮宽鸭身，背部三排突出谷粒羽",
+      "foodAndMaterial": "稻白、麦棕点斑不对称；谷粒是羽纹不是食物",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:18 鸯的小浅斑；改成凸起谷粒背，脸不加眼线",
+      "portrait": "四分之三视角，完整容纳矮宽鸭身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留矮宽鸭身，背部三排突出谷粒羽；不依赖颜色、小颗粒或文字识别",
+      "palette": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。"
+    },
+    {
+      "id": "ART-R-C1",
+      "content": "R-C1",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "半月煎身，厚柚皮弧包一侧",
+      "foodAndMaterial": "蜂蜜只亮在煎纹上，柚皮油点大且疏",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:6 柠檬香煎鸡；无头顶柠檬片，半月厚皮包身",
+      "portrait": "四分之三视角，完整容纳半月煎身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留半月煎身，厚柚皮弧包一侧；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-C2",
+      "content": "R-C2",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "扁椭圆双饭瓣，短芹梗横系中腰",
+      "foodAndMaterial": "米粒明显，芹叶仅在结扣，不包成整片荷叶",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:116 荷叶糯米鸡；白米裸露、横束芹梗，没有叶被",
+      "portrait": "四分之三视角，完整容纳扁椭圆双饭瓣；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留扁椭圆双饭瓣，短芹梗横系中腰；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-C3",
+      "content": "R-C3",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "矩形鼓口袋，一角翻开",
+      "foodAndMaterial": "柚皮小丁露在袋口，酥层侧边三道，尖嘴在翻口下",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:127 雪帽曲奇鸡；无圆花边糖帽，酥袋空口可见",
+      "portrait": "四分之三视角，完整容纳矩形鼓口袋；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留矩形鼓口袋，一角翻开；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-C4",
+      "content": "R-C4",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "四角捏起的方枕饺，前角低于后角",
+      "foodAndMaterial": "微透皮只透出芹梗直线，四角无连续月牙褶",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:118 水晶饺鸡；从月牙改方枕，竹蒸笼Lv.2才稳定供应薯粉",
+      "portrait": "四分之三视角，完整容纳四角捏起的方枕饺；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留四角捏起的方枕饺，前角低于后角；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-C5",
+      "content": "R-C5",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "窄长舟形锅贴，背脊封口单线",
+      "foodAndMaterial": "姜丝只从端口伸出两根；金底白背无糖霜",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "1:50 姜饼鸭；由烤甜饼改咸锅贴、舟形剪影",
+      "portrait": "四分之三视角，完整容纳窄长舟形锅贴；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留窄长舟形锅贴，背脊封口单线；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-C6",
+      "content": "R-C6",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "中空柚皮环，顶部短柄，脸在环下缘",
+      "foodAndMaterial": "纸白柚瓤内壁与黄皮穿孔；不自发光、不挂灯笼穗",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "1:47 文旦鸭整果身、0:80 南瓜鸡实心橙身；本品环形负空间",
+      "portrait": "四分之三视角，完整容纳中空柚皮环；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留中空柚皮环，顶部短柄，脸在环下缘；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-D1",
+      "content": "R-D1",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "矮梨形清茶身，长柚皮卷从肩绕到尾",
+      "foodAndMaterial": "淡黄茶身中留细叶影，不顶圆果片",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:42 柠檬红茶鸭；无红茶暖红色、果片冠，长卷颈圈",
+      "portrait": "四分之三视角，完整容纳矮梨形清茶身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留矮梨形清茶身，长柚皮卷从肩绕到尾；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-D2",
+      "content": "R-D2",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "浅碗状矮身，背后两根弯芹梗",
+      "foodAndMaterial": "清煨乳灰汤纹、浅绿茎节，不画温泉桶或油封罐",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:7 盐水鸭小碟饰；本品芹梗拱桥与敞口浅碗身",
+      "portrait": "四分之三视角，完整容纳浅碗状矮身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留浅碗状矮身，背后两根弯芹梗；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-D3",
+      "content": "R-D3",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "一大一小相贴双团，小团偏后",
+      "foodAndMaterial": "厚柚瓤白绵层，黄皮细屑沿两团接缝，不包绿叶",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:57 抹茶团子鸭；双团裸露白身、无叶被",
+      "portrait": "四分之三视角，完整容纳一大一小相贴双团；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留一大一小相贴双团，小团偏后；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-D4",
+      "content": "R-D4",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "长椭圆薄饼，前缘卷起成低檐",
+      "foodAndMaterial": "芹叶压出完整三小叶影，油点细，宽嘴从卷檐下露出",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "V-C1 荠叶碎圆饼；长卷檐与整叶压痕，不是绿圆饼换鸭嘴",
+      "portrait": "四分之三视角，完整容纳长椭圆薄饼；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留长椭圆薄饼，前缘卷起成低檐；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-D5",
+      "content": "R-D5",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "斜立空心脆筒，筒口椭圆",
+      "foodAndMaterial": "黑芝麻在外壁疏密两带，内壁淡金；嘴从筒口横伸",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "V-C5 芝麻折扇鸡；油炸空筒与烘烤扇面分开",
+      "portrait": "四分之三视角，完整容纳斜立空心脆筒；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留斜立空心脆筒，筒口椭圆；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-R-D6",
+      "content": "R-D6",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "横向舟叶身，前后尖端反翘",
+      "foodAndMaterial": "灰青叶脉和留白水线交叉，表面哑光不呈汤冻",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:48 枫叶鸭尖角放射；本品两端反翘长舟叶",
+      "portrait": "四分之三视角，完整容纳横向舟叶身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留横向舟叶身，前后尖端反翘；不依赖颜色、小颗粒或文字识别",
+      "palette": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。"
+    },
+    {
+      "id": "ART-T-C1",
+      "content": "T-C1",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "短梨形蛋身，两瓣焙叶衣在肩侧翻开",
+      "foodAndMaterial": "茶褐面细密压叶纹；无蛋壳帽，浅胸露尖嘴",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:10 茶叶蛋鸡；去掉同款圆壳帽，以翻叶肩衣区分",
+      "portrait": "四分之三视角，完整容纳短梨形蛋身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留短梨形蛋身，两瓣焙叶衣在肩侧翻开；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-C2",
+      "content": "T-C2",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "三层矮梯台，顶层偏小",
+      "foodAndMaterial": "半透米糕层间细金花点，花不聚成皇冠",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "V-D2 实心切糕；透亮梯层、细花夹层非谷粒方砖",
+      "portrait": "四分之三视角，完整容纳三层矮梯台；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留三层矮梯台，顶层偏小；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-C3",
+      "content": "T-C3",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "长六角薄饼，中央一条叶脉压槽",
+      "foodAndMaterial": "深焙色边、灰褐哑面，无奶油或糖霜",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:127 曲奇圆花边；六角长饼与一条清晰叶脉",
+      "portrait": "四分之三视角，完整容纳长六角薄饼；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留长六角薄饼，中央一条叶脉压槽；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-C4",
+      "content": "T-C4",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "乳白圆环身，脸在环上缘",
+      "foodAndMaterial": "薯粉凝奶环，桂花只在内圈，中央小孔透背景",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "V-D4 麦芽奶砖与0:123布丁；环形负空间，无焦糖帽",
+      "portrait": "四分之三视角，完整容纳乳白圆环身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留乳白圆环身，脸在环上缘；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-C5",
+      "content": "T-C5",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "开裂四瓣发糕，圆底低顶",
+      "foodAndMaterial": "粗孔断面、蜂蜜只挂裂缝，无松饼堆叠",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:121 蜂蜜松饼鸡；蒸裂糕而非黄油三层煎饼",
+      "portrait": "四分之三视角，完整容纳开裂四瓣发糕；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留开裂四瓣发糕，圆底低顶；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-C6",
+      "content": "T-C6",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "细长芽滴身，一芽两叶竖起",
+      "foodAndMaterial": "叶背铜褐，叶面灰绿，无饮品透明感",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:48 樱花鸡/0:85 门松鸡；纵向单芽不铺花、不捆竹节",
+      "portrait": "四分之三视角，完整容纳细长芽滴身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留细长芽滴身，一芽两叶竖起；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-D1",
+      "content": "T-D1",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "矮圆柱双层茶身，顶部平斜面",
+      "foodAndMaterial": "上层奶白下层深焙，叶形小泡在层界，无奶瓶饰物",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:43 奶茶鸭单色圆身奶瓶；本品分层短柱",
+      "portrait": "四分之三视角，完整容纳矮圆柱双层茶身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留矮圆柱双层茶身，顶部平斜面；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-D2",
+      "content": "T-D2",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "浅敞口茶盏身，两侧低短翼",
+      "foodAndMaterial": "红茶淡琥珀，细桂花漂在边缘，不戴完整大花",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:44 菊花茶鸭/1:58 花香茶冻鸭；无大花冠、非冻体",
+      "portrait": "四分之三视角，完整容纳浅敞口茶盏身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留浅敞口茶盏身，两侧低短翼；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-D3",
+      "content": "T-D3",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "横卧长米枕，两端压出浅折",
+      "foodAndMaterial": "焙叶碎夹在白米中线，枕面米粒裸露无裹叶",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:57 抹茶团子鸭；长白米枕与短绿糯团区分",
+      "portrait": "四分之三视角，完整容纳横卧长米枕；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留横卧长米枕，两端压出浅折；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-D4",
+      "content": "T-D4",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "四角向心翻折的风车酥",
+      "foodAndMaterial": "桂花碎只在中心酥窝，鸭嘴从下角横出",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "0:124 月饼/0:127曲奇；四翼折角不做花瓣圆饼",
+      "portrait": "四分之三视角，完整容纳四角向心翻折的风车酥；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留四角向心翻折的风车酥；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-D5",
+      "content": "T-D5",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "上窄下宽的水滴糖身，侧边短卷梗",
+      "foodAndMaterial": "姜蜜半透琥珀纤维，圆润糖块边；无水果切面、果核或果皮",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:50 姜饼鸭烤饼、1:63姜糖茶鸭饮品；改慢炖凝润实体",
+      "portrait": "四分之三视角，完整容纳水滴糖身；主体占框约78%，保留宽嘴与脚下空白",
+      "silhouette": "保留窄顶宽底的凝润糖块和短卷梗，不依赖糖色或姜丝细纹",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-T-D6",
+      "content": "T-D6",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "细颈宽尾，三束下垂花穗羽",
+      "foodAndMaterial": "桂花小四瓣与哑光露点，不画可饮用透明身体",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:35 向日葵鸭/1:58花冻；垂穗尾羽不围面花盘",
+      "portrait": "四分之三视角，完整容纳细颈宽尾；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留细颈宽尾，三束下垂花穗羽；不依赖颜色、小颗粒或文字识别",
+      "palette": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。"
+    },
+    {
+      "id": "ART-B-C1",
+      "content": "B-C1",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "宽肩梯形烤身，侧面裂皮向外翘",
+      "foodAndMaterial": "盐晶只落裂缝，香草细叶在肩，烤皮大块拼面",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:17 香草烤鸡帽叶珠串；无帽饰，以裂皮梯形区分",
+      "portrait": "四分之三视角，完整容纳宽肩梯形烤身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留宽肩梯形烤身，侧面裂皮向外翘；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-C2",
+      "content": "B-C2",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "椭圆网孔薄饼，三处大孔贯穿",
+      "foodAndMaterial": "面粉金线交织，海蓬分叉梗在网结，非整绿饼",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "V-C1荠菜饼/R-D4芹叶饼；镂空网结而非实心饼",
+      "portrait": "四分之三视角，完整容纳椭圆网孔薄饼；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留椭圆网孔薄饼，三处大孔贯穿；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-C3",
+      "content": "B-C3",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "两片厚短酥条交叠成十字",
+      "foodAndMaterial": "奶油酥层、疏大盐片落顶角，粉白切面不糖霜覆盖",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:127 雪帽曲奇鸡；十字短条、无雪帽和彩点",
+      "portrait": "四分之三视角，完整容纳两片厚短酥条交叠成十字；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留两片厚短酥条交叠成十字；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-C4",
+      "content": "B-C4",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "立式开口卷，顶部V形缺口",
+      "foodAndMaterial": "海蓬分叉梗从卷心上探，哑白面皮不透明",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:114 小笼包收口；竖直开口卷、无收褶圆包",
+      "portrait": "四分之三视角，完整容纳立式开口卷；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留立式开口卷，顶部V形缺口；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-C5",
+      "content": "B-C5",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "凹边不规则米片，背后两块翘角",
+      "foodAndMaterial": "米饭煎成浅金脆底，胡椒集中边缘，无饭团立体心",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "V-D5椒香饭团鸭；平锅焦脆米片与水煮三角米团分开",
+      "portrait": "四分之三视角，完整容纳凹边不规则米片；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留凹边不规则米片，背后两块翘角；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-C6",
+      "content": "B-C6",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "矮方晶身，头上两片错高方晶冠",
+      "foodAndMaterial": "乳白晶面边薄透，冠为直角空心片，不雪晶尖瓣",
+      "identity": "短尖橙嘴、圆眼、小鸡爪；可用短冠羽但不能盖住主体形状",
+      "contrast": "0:25 雪人鸡/0:51凤凰；方晶与矮方身，不围巾、不火羽",
+      "portrait": "四分之三视角，完整容纳矮方晶身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留矮方晶身，头上两片错高方晶冠；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-D1",
+      "content": "B-D1",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "低圆炖身，上搭单个宽葱结",
+      "foodAndMaterial": "盐白汤膜与青葱结，侧边浅凹无汤桶或罐盖",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:7盐水鸭/1:13油封鸭；明确葱结低冠，炖锅并用青葱",
+      "portrait": "四分之三视角，完整容纳低圆炖身；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留低圆炖身，上搭单个宽葱结；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-D2",
+      "content": "B-D2",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "长舟形饭团，头低尾高",
+      "foodAndMaterial": "海蓬枝沿侧面叉开，白米细粒露顶，无海苔裹身",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:62烤菇饭团鸭/V-D5三角团；长舟侧叉枝、无菇帽",
+      "portrait": "四分之三视角，完整容纳长舟形饭团；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留长舟形饭团，头低尾高；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-D3",
+      "content": "B-D3",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "扁水滴糖壳，后缘有短短缺口",
+      "foodAndMaterial": "浅琥珀硬壳厚边，盐晶在内部亮点，无奶布丁芯",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "0:123焦糖布丁鸡/1:61焦糖吐司鸭；无乳白布丁或方吐司，糖壳实体",
+      "portrait": "四分之三视角，完整容纳扁水滴糖壳；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留扁水滴糖壳，后缘有短短缺口；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-D4",
+      "content": "B-D4",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "白豆簇成低窝，鸭颈从偏侧露出",
+      "foodAndMaterial": "海蓬叉枝托住豆粒，豆粒大于米粒，无汤包皮",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "V-D3粉结鸭/旧小笼包；豆簇开放窝，无蒸笼鸭蛋要求",
+      "portrait": "四分之三视角，完整容纳白豆簇成低窝；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留白豆簇成低窝，鸭颈从偏侧露出；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-D5",
+      "content": "B-D5",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "单片弧帆薄饼直立，侧身低矮",
+      "foodAndMaterial": "柳橙皮短丝沿帆边，金色薄饼不是螺旋卷",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "R-C3柚口袋酥/R-D5芝麻筒；旧柳橙与墨西哥薄饼，弧帆非闭卷",
+      "portrait": "四分之三视角，完整容纳单片弧帆薄饼直立；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留单片弧帆薄饼直立，侧身低矮；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    },
+    {
+      "id": "ART-B-D6",
+      "content": "B-D6",
+      "deliverables": [
+        "full",
+        "portrait",
+        "silhouette"
+      ],
+      "body": "双壳扇翼半开，中间留窄长脸缝",
+      "foodAndMaterial": "灰白壳面两条潮线、内侧淡青，无珍珠发光",
+      "identity": "扁宽橙嘴、低位眼线、两只短蹼足；不画鸡冠",
+      "contrast": "1:27白天鹅翼羽/1:14鸭嘴兽；两片壳铰接，不羽毛开屏",
+      "portrait": "四分之三视角，完整容纳双壳扇翼半开；主体占框约78%，面朝内侧，保留脚下8%空白",
+      "silhouette": "保留双壳扇翼半开，中间留窄长脸缝；不依赖颜色、小颗粒或文字识别",
+      "palette": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。"
+    }
+  ],
+  "materials": [
+    {
+      "id": "ART-MAT-75",
+      "content": 75,
+      "brief": "一束整叶、碎叶小碟、标本单叶；缺齿大形在32像素仍可读",
+      "deliverables": [
+        "ingredient-icon",
+        "specimen-cutout",
+        "shop-bundle"
+      ]
+    },
+    {
+      "id": "ART-MAT-76",
+      "content": 76,
+      "brief": "带短芽麦粒、琥珀薄膜、开口纸包三态",
+      "deliverables": [
+        "ingredient-icon",
+        "specimen-cutout",
+        "shop-bundle"
+      ]
+    },
+    {
+      "id": "ART-MAT-77",
+      "content": 77,
+      "brief": "完整略扁果、厚皮切面、细皮卷；不画新角色脸",
+      "deliverables": [
+        "ingredient-icon",
+        "specimen-cutout",
+        "shop-bundle"
+      ]
+    },
+    {
+      "id": "ART-MAT-78",
+      "content": 78,
+      "brief": "三叶带节梗、沥水小束、压在米饭上的叶印",
+      "deliverables": [
+        "ingredient-icon",
+        "specimen-cutout",
+        "shop-bundle"
+      ]
+    },
+    {
+      "id": "ART-MAT-79",
+      "content": 79,
+      "brief": "一叶正反两面、卷边叶堆、纸袋；不画焦黑烧毁叶",
+      "deliverables": [
+        "ingredient-icon",
+        "specimen-cutout",
+        "shop-bundle"
+      ]
+    },
+    {
+      "id": "ART-MAT-80",
+      "content": 80,
+      "brief": "干花小撮、单簇四瓣、夹层点花；不做樱花粉色",
+      "deliverables": [
+        "ingredient-icon",
+        "specimen-cutout",
+        "shop-bundle"
+      ]
+    },
+    {
+      "id": "ART-MAT-81",
+      "content": 81,
+      "brief": "方晶近景、白纸小盒、疏落烤皮盐粒",
+      "deliverables": [
+        "ingredient-icon",
+        "specimen-cutout",
+        "shop-bundle"
+      ]
+    },
+    {
+      "id": "ART-MAT-82",
+      "content": 82,
+      "brief": "分叉整梗、切段小碟、束装；灰绿与节状剪影优先",
+      "deliverables": [
+        "ingredient-icon",
+        "specimen-cutout",
+        "shop-bundle"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "ART-V-S1",
+      "content": "V-S1",
+      "brief": "缺齿单叶压在奶油纸角，背后一点菜畦土色",
+      "reuse": "ART-MAT-75标本近景",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-V-S2",
+      "content": "V-S2",
+      "brief": "麻布折边、三粒带芽麦、小张编号签",
+      "reuse": "ART-MAT-76标本近景",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-V-N1",
+      "content": "V-N1",
+      "brief": "竹筛圆框局部与透孔叶影",
+      "reuse": "ART-REG-V地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-V-N2",
+      "content": "V-N2",
+      "brief": "长麦芒影与不整齐谷粒，保留一大一小对照",
+      "reuse": "ART-REG-V地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-V-E1",
+      "content": "V-E1",
+      "brief": "压平叶与两枚脚印，不画指定稀有角色",
+      "reuse": "ART-REG-V地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-V-E2",
+      "content": "V-E2",
+      "brief": "一袋麦芽旁各画薄片与丸子线稿",
+      "reuse": "ART-REG-V地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-R-S1",
+      "content": "R-S1",
+      "brief": "浅滩灰石与半月厚柚皮，不出现成品鸡",
+      "reuse": "ART-MAT-77标本近景",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-R-S2",
+      "content": "R-S2",
+      "brief": "竹夹上的三叶芹束和两滴水",
+      "reuse": "ART-MAT-78标本近景",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-R-N1",
+      "content": "R-N1",
+      "brief": "石面双水线、空心柚皮影、舟叶轮廓",
+      "reuse": "ART-REG-R地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-R-N2",
+      "content": "R-N2",
+      "brief": "折布一角与两格无字配货图",
+      "reuse": "ART-REG-R地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-R-E1",
+      "content": "R-E1",
+      "brief": "石头两侧的薄香线和厚柚皮，非魔法光效",
+      "reuse": "ART-REG-R地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-R-E2",
+      "content": "R-E2",
+      "brief": "四折布、小篮空角，两件占位轮廓",
+      "reuse": "ART-REG-R地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-T-S1",
+      "content": "T-S1",
+      "brief": "正反焙叶两片与浅炭褐纸角",
+      "reuse": "ART-MAT-79标本近景",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-T-S2",
+      "content": "T-S2",
+      "brief": "四瓣小花簇与纸边，不画手或规定NPC外貌",
+      "reuse": "ART-MAT-80标本近景",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-T-N1",
+      "content": "T-N1",
+      "brief": "一芽两叶正反面，焙棚低檐局部",
+      "reuse": "ART-REG-T地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-T-N2",
+      "content": "T-N2",
+      "brief": "三垂花穗、两处细露点、浅树影",
+      "reuse": "ART-REG-T地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-T-E1",
+      "content": "T-E1",
+      "brief": "左右叶样对照、锅的线稿，不复制两张发现卡",
+      "reuse": "ART-REG-T地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-T-E2",
+      "content": "T-E2",
+      "brief": "两小纸碟，一侧细花、一侧叶影，无必需成品",
+      "reuse": "ART-REG-T地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-B-S1",
+      "content": "B-S1",
+      "brief": "白纸、疏落方盐晶和浅金盐畦",
+      "reuse": "ART-MAT-81标本近景",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-B-S2",
+      "content": "B-S2",
+      "brief": "灰绿分叉梗、纸包、潮地浅灰底",
+      "reuse": "ART-MAT-82标本近景",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-B-N1",
+      "content": "B-N1",
+      "brief": "大小方印，边薄中心空，避免雪花六角",
+      "reuse": "ART-REG-B地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-B-N2",
+      "content": "B-N2",
+      "brief": "双壳内外弧线与一点潮湿草影",
+      "reuse": "ART-REG-B地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-B-E1",
+      "content": "B-E1",
+      "brief": "货筐角、盐晶、空白货签；交换只加小图标",
+      "reuse": "ART-REG-B地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    },
+    {
+      "id": "ART-B-E2",
+      "content": "B-E2",
+      "brief": "分叉梗支住纸篮角、豆粒与米粒示意",
+      "reuse": "ART-REG-B地点底图",
+      "deliverables": [
+        "discovery-vignette"
+      ]
+    }
+  ],
+  "mementos": [
+    {
+      "id": "ART-M01",
+      "content": "M01",
+      "brief": "木夹夹住折起的账页，缺一角的旧纸作轮廓",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M02",
+      "content": "M02",
+      "brief": "双折纸包配一片细茶叶压纹，签绳短短",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M03",
+      "content": "M03",
+      "brief": "扁圆竹编垫，右上缺一小格，留蒸气印而非厨具",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M04",
+      "content": "M04",
+      "brief": "折纸篮套、斜压布角、开口留白",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M05",
+      "content": "M05",
+      "brief": "长椭圆托盘两小凹位，叶印与细花印分列",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M06",
+      "content": "M06",
+      "brief": "短胖木筷枕两道凹槽，配一张暖锅纸签",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M07",
+      "content": "M07",
+      "brief": "方盐晶形纸夹压住灰绿折页，无水晶宝石高光",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M08",
+      "content": "M08",
+      "brief": "四片错开的纸页围一个小铆钉，四种季节纹样",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M09",
+      "content": "M09",
+      "brief": "两次折痕的便签靠在小木片上，桌角图案无人物",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M10",
+      "content": "M10",
+      "brief": "青灰方格布折四层，一角微翘，细线不糊成噪点",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M11",
+      "content": "M11",
+      "brief": "矮圆陶罐与铜褐纸封、细花点；不画昂贵礼盒",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    },
+    {
+      "id": "ART-M12",
+      "content": "M12",
+      "brief": "哑白贝壳形木签，两条潮纹，粗短绳结",
+      "deliverables": [
+        "display",
+        "small-icon"
+      ]
+    }
+  ],
+  "regions": [
+    {
+      "id": "ART-REG-V",
+      "content": "V",
+      "brief": "麦秆黄、荠菜绿、琥珀；扁圆、折片、谷粒；干燥纸包与矮棚，不画秋收节庆。",
+      "places": [
+        "菜畦",
+        "谷物棚边"
+      ],
+      "deliverables": [
+        "regional-insert",
+        "two-place-crops"
+      ]
+    },
+    {
+      "id": "ART-REG-R",
+      "content": "R",
+      "brief": "柚皮黄、水芹青、溪水灰蓝；半月、折角、长梗；浅滩石阶与折叠布，不画远游船。",
+      "places": [
+        "浅滩",
+        "岸边摊"
+      ],
+      "deliverables": [
+        "regional-insert",
+        "two-place-crops"
+      ]
+    },
+    {
+      "id": "ART-REG-T",
+      "content": "T",
+      "brief": "焙叶褐、桂花金、奶纸白；压印方饼、窄卷、细花簇；低棚与树影，不画整套茶楼。",
+      "places": [
+        "焙叶棚",
+        "花树径"
+      ],
+      "deliverables": [
+        "regional-insert",
+        "two-place-crops"
+      ]
+    },
+    {
+      "id": "ART-REG-B",
+      "content": "B",
+      "brief": "盐白、海蓬灰绿、浅烤金；方晶、叉枝、梯形、贝壳扇；近郊盐畦和潮痕，不画港口远航。",
+      "places": [
+        "盐田小路",
+        "潮线草地"
+      ],
+      "deliverables": [
+        "regional-insert",
+        "two-place-crops"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "ART-PJ-1",
+      "content": "PJ-1",
+      "brief": "M01账页夹的打开态：6格小图位置、两枚菜单印、空白题签；不烘焙文字",
+      "deliverables": [
+        "overlay-components",
+        "result-page"
+      ]
+    },
+    {
+      "id": "ART-PJ-2",
+      "content": "PJ-2",
+      "brief": "M04纸篮外套的竹篮底座、M10折布覆篮态、溪岸双标本夹页",
+      "deliverables": [
+        "overlay-components",
+        "result-page"
+      ]
+    },
+    {
+      "id": "ART-PJ-3",
+      "content": "PJ-3",
+      "brief": "M05茶点托盘加窄桌布、M11茶罐旁薄册；三份小点用已收录角色头像占位",
+      "deliverables": [
+        "overlay-components",
+        "result-page"
+      ]
+    },
+    {
+      "id": "ART-PJ-4",
+      "content": "PJ-4",
+      "brief": "四张地区局部拼成折页；中心纪念章是覆盖层；12件纪念物重排，无全新大型场景",
+      "deliverables": [
+        "overlay-components",
+        "result-page"
+      ]
+    }
+  ],
+  "menus": [
+    {
+      "id": "ART-MN1",
+      "content": "MN1",
+      "brief": "家常小铺纸菜单题签，复用对应M01主题物件，无文字烘焙，无新增角色绘制",
+      "deliverables": [
+        "menu-object-crop"
+      ]
+    },
+    {
+      "id": "ART-MN2",
+      "content": "MN2",
+      "brief": "茶香便当纸菜单题签，复用对应M02主题物件，无文字烘焙，无新增角色绘制",
+      "deliverables": [
+        "menu-object-crop"
+      ]
+    },
+    {
+      "id": "ART-MN3",
+      "content": "MN3",
+      "brief": "蒸笼早市纸菜单题签，复用对应M03主题物件，无文字烘焙，无新增角色绘制",
+      "deliverables": [
+        "menu-object-crop"
+      ]
+    },
+    {
+      "id": "ART-MN4",
+      "content": "MN4",
+      "brief": "溪岸野餐纸菜单题签，复用对应M04主题物件，无文字烘焙，无新增角色绘制",
+      "deliverables": [
+        "menu-object-crop"
+      ]
+    },
+    {
+      "id": "ART-MN5",
+      "content": "MN5",
+      "brief": "茶坡小点纸菜单题签，复用对应M05主题物件，无文字烘焙，无新增角色绘制",
+      "deliverables": [
+        "menu-object-crop"
+      ]
+    },
+    {
+      "id": "ART-MN6",
+      "content": "MN6",
+      "brief": "暖锅小聚纸菜单题签，复用对应M06主题物件，无文字烘焙，无新增角色绘制",
+      "deliverables": [
+        "menu-object-crop"
+      ]
+    },
+    {
+      "id": "ART-MN7",
+      "content": "MN7",
+      "brief": "海风轻食纸菜单题签，复用对应M07主题物件，无文字烘焙，无新增角色绘制",
+      "deliverables": [
+        "menu-object-crop"
+      ]
+    },
+    {
+      "id": "ART-MN8",
+      "content": "MN8",
+      "brief": "四时相逢纸菜单题签，复用对应M08主题物件，无文字烘焙，无新增角色绘制",
+      "deliverables": [
+        "menu-object-crop"
+      ]
+    }
+  ],
+  "specials": [
+    {
+      "id": "ART-SP-ALL",
+      "content": "SP-ALL",
+      "brief": "复用已收录角色头像、材料标本、脚印/叶脉/餐垫/剪影覆页；不为每格画新插画",
+      "deliverables": [
+        "page-overlay"
+      ]
+    },
+    {
+      "id": "ART-SP-LEAF",
+      "content": "SP-LEAF",
+      "brief": "复用已收录角色头像、材料标本、脚印/叶脉/餐垫/剪影覆页；不为每格画新插画",
+      "deliverables": [
+        "page-overlay"
+      ]
+    },
+    {
+      "id": "ART-SP-TABLE",
+      "content": "SP-TABLE",
+      "brief": "复用已收录角色头像、材料标本、脚印/叶脉/餐垫/剪影覆页；不为每格画新插画",
+      "deliverables": [
+        "page-overlay"
+      ]
+    },
+    {
+      "id": "ART-SP-SHAPE",
+      "content": "SP-SHAPE",
+      "brief": "复用已收录角色头像、材料标本、脚印/叶脉/餐垫/剪影覆页；不为每格画新插画",
+      "deliverables": [
+        "page-overlay"
+      ]
+    }
+  ],
+  "qa": [
+    "先做每区鸡鸭各1张线稿，共8张，连同各区2个材料和一个地点局部一起评轮廓；这只是后续制作顺序，本轮未生成。",
+    "48个剪影去色并排；相似组必须仍能分清：所有饼、米团、奶凝、茶饮、叶形观赏。",
+    "同菜系不得只换鸡嘴/鸭嘴；逐项对照art.contrast中的旧品与近邻。",
+    "精确配方没用的材料不作为主视觉：盐花不是雪晶，桂花不是菊花，橙皮风帆不是山柚，姜蜜软糖没有水果原料。",
+    "主图与头像保留鸡/鸭嘴型；头饰、饼边、长梗、晶角不可裁掉；无姓名、编号、UI标签烘入素材。",
+    "没有最终角色图时用明确标注概念剪影，不能把旧图当新品；概念图不作为风格已批准证据。"
+  ],
+  "totals": {
+    "newSpeciesMaster": 48,
+    "derivedPortrait": 48,
+    "derivedSilhouette": 48,
+    "materialSets": 8,
+    "discoveryVignettes": 24,
+    "standaloneMementos": 12,
+    "regionInserts": 4,
+    "placeCrops": 8,
+    "projectComponentSets": 4,
+    "menuCrops": 8,
+    "specialOverlays": 4,
+    "fullNewKitchenScenes": 0
+  }
+}

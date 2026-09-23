@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-23T04:29:08.592Z",
+  "passed": true,
+  "checks": [
+    "193全收的schema5旧档载入：迁移到6后以独立事务一次登记8张主题插页与M01–M08，不发CP、不动旧四时/神社记录、不补造实践印；再次载入不重复",
+    "纪念物页选择两件陈列（农场陈列架显示概念占位），刷新保留；更换陈列不改CP或库存；12件中常客的4件显示“尚未得到”",
+    "新旧混合队伍（荠菜煎饼鸡＋鸡宝）完整寻访谷地：点亮同行脚步格并自动盖上谷地地区实践印"
+  ],
+  "screens": [
+    "books-theme-390",
+    "books-col8",
+    "books-mementos",
+    "books-mementos-320",
+    "books-mementos-1280",
+    "farm-shelf"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

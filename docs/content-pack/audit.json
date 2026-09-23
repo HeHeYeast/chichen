@@ -1,0 +1,3473 @@
+{
+  "status": "PASS",
+  "checks": 1593,
+  "failed": [],
+  "scope": "作者内容静态审计；非运行时实现、迁移、真人、最终美术或完整经济验证。",
+  "materialCoverage": [
+    {
+      "material": "荠菜",
+      "count": 4,
+      "chicken": 2,
+      "duck": 2,
+      "tools": [
+        1,
+        8,
+        2
+      ]
+    },
+    {
+      "material": "麦芽",
+      "count": 6,
+      "chicken": 3,
+      "duck": 3,
+      "tools": [
+        4,
+        7,
+        0,
+        2,
+        5
+      ]
+    },
+    {
+      "material": "山柚",
+      "count": 5,
+      "chicken": 3,
+      "duck": 2,
+      "tools": [
+        1,
+        4,
+        0,
+        6,
+        2
+      ]
+    },
+    {
+      "material": "水芹",
+      "count": 5,
+      "chicken": 2,
+      "duck": 3,
+      "tools": [
+        2,
+        8,
+        5,
+        1,
+        0
+      ]
+    },
+    {
+      "material": "焙香叶",
+      "count": 5,
+      "chicken": 3,
+      "duck": 2,
+      "tools": [
+        2,
+        4,
+        0,
+        6
+      ]
+    },
+    {
+      "material": "桂花",
+      "count": 5,
+      "chicken": 2,
+      "duck": 3,
+      "tools": [
+        2,
+        5,
+        6,
+        4,
+        0
+      ]
+    },
+    {
+      "material": "盐花",
+      "count": 6,
+      "chicken": 3,
+      "duck": 3,
+      "tools": [
+        4,
+        0,
+        5,
+        2
+      ]
+    },
+    {
+      "material": "海蓬菜",
+      "count": 4,
+      "chicken": 2,
+      "duck": 2,
+      "tools": [
+        1,
+        8,
+        2,
+        5
+      ]
+    }
+  ],
+  "stageDistribution": [
+    {
+      "kitchen": 1,
+      "count": 1,
+      "ids": [
+        "V-C1"
+      ]
+    },
+    {
+      "kitchen": 2,
+      "count": 25,
+      "ids": [
+        "V-C2",
+        "V-C3",
+        "V-C6",
+        "V-D1",
+        "V-D2",
+        "V-D3",
+        "V-D6",
+        "R-C1",
+        "R-C2",
+        "R-C3",
+        "R-C5",
+        "R-C6",
+        "R-D2",
+        "R-D3",
+        "R-D4",
+        "R-D6",
+        "T-C1",
+        "T-C2",
+        "T-C3",
+        "T-C5",
+        "T-C6",
+        "T-D3",
+        "T-D4",
+        "T-D5",
+        "T-D6"
+      ]
+    },
+    {
+      "kitchen": 3,
+      "count": 13,
+      "ids": [
+        "V-D5",
+        "R-C4",
+        "B-C1",
+        "B-C2",
+        "B-C3",
+        "B-C4",
+        "B-C5",
+        "B-C6",
+        "B-D1",
+        "B-D2",
+        "B-D4",
+        "B-D5",
+        "B-D6"
+      ]
+    },
+    {
+      "kitchen": 4,
+      "count": 9,
+      "ids": [
+        "V-C4",
+        "V-C5",
+        "V-D4",
+        "R-D1",
+        "R-D5",
+        "T-C4",
+        "T-D1",
+        "T-D2",
+        "B-D3"
+      ]
+    }
+  ],
+  "exactOldRecipeCollisions": [],
+  "legacySubsetMatches": [
+    {
+      "id": "V-C2",
+      "old": [
+        "0:18"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "V-C3",
+      "old": [
+        "0:115"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "V-C5",
+      "old": [
+        "0:18"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "V-C6",
+      "old": [
+        "0:5"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "R-C3",
+      "old": [
+        "0:18"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "R-C4",
+      "old": [
+        "0:118"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "R-C6",
+      "old": [
+        "0:5"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "R-D1",
+      "old": [
+        "1:41"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "R-D2",
+      "old": [
+        "1:13"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "R-D6",
+      "old": [
+        "1:4"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "T-C3",
+      "old": [
+        "0:18"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "T-C5",
+      "old": [
+        "0:115"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "T-C6",
+      "old": [
+        "0:5"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "T-D1",
+      "old": [
+        "1:39",
+        "1:43"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "T-D2",
+      "old": [
+        "1:39"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "B-C1",
+      "old": [
+        "0:17"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "B-C3",
+      "old": [
+        "0:18"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "B-C4",
+      "old": [
+        "0:115"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "B-C6",
+      "old": [
+        "0:5"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    },
+    {
+      "id": "B-D6",
+      "old": [
+        "1:4"
+      ],
+      "resolution": "显式地区模式；旧材料继续参与普通伴随池，但旧蒸笼/四时/礼物的保证插入互斥。"
+    }
+  ],
+  "swappedEggDuplicates": [],
+  "supply": [
+    {
+      "id": "V-C1",
+      "kitchen": 1,
+      "missing": [],
+      "requiredToolsForOldSupply": []
+    },
+    {
+      "id": "V-C2",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-C3",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-C4",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 24,
+          "name": "奶油",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-C5",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        },
+        {
+          "id": 27,
+          "name": "盐",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 0,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 0
+              }
+            ]
+          ]
+        },
+        {
+          "id": 72,
+          "name": "黑芝麻",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 7,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-C6",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 0,
+          "name": "食盐土",
+          "anyOf": [
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-D1",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 27,
+          "name": "盐",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 0,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-D2",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 16,
+          "name": "糯米",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 0,
+                "id": 18
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-D3",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 48,
+          "name": "冬粉",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-D4",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 25,
+          "name": "薯粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 3,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 1
+              }
+            ]
+          ]
+        },
+        {
+          "id": 57,
+          "name": "牛乳",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-D5",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 31,
+          "name": "白米饭",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 1
+              }
+            ]
+          ]
+        },
+        {
+          "id": 41,
+          "name": "黑胡椒",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 3,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 2
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-D6",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 31,
+          "name": "白米饭",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-C1",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 33,
+          "name": "蜂蜜",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-C2",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 31,
+          "name": "白米饭",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-C3",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-C4",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 25,
+          "name": "薯粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 3,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-C5",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        },
+        {
+          "id": 29,
+          "name": "生姜",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 3,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 2
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-C6",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 0,
+          "name": "食盐土",
+          "anyOf": [
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-D1",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 3,
+          "name": "乌龙茶叶",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-D2",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 27,
+          "name": "盐",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 0,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-D3",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 16,
+          "name": "糯米",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 0,
+                "id": 18
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-D4",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-D5",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        },
+        {
+          "id": 72,
+          "name": "黑芝麻",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 7,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R-D6",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 27,
+          "name": "盐",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 0,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-C1",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": []
+    },
+    {
+      "id": "T-C2",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 16,
+          "name": "糯米",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 0,
+                "id": 18
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-C3",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-C4",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 25,
+          "name": "薯粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 3,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 1
+              }
+            ]
+          ]
+        },
+        {
+          "id": 57,
+          "name": "牛乳",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-C5",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        },
+        {
+          "id": 33,
+          "name": "蜂蜜",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-C6",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 0,
+          "name": "食盐土",
+          "anyOf": [
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-D1",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 57,
+          "name": "牛乳",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 1
+              }
+            ]
+          ]
+        },
+        {
+          "id": 63,
+          "name": "红茶叶",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-D2",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 63,
+          "name": "红茶叶",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-D3",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 31,
+          "name": "白米饭",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-D4",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-D5",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 29,
+          "name": "生姜",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 3,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 2
+              }
+            ]
+          ]
+        },
+        {
+          "id": 33,
+          "name": "蜂蜜",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T-D6",
+      "kitchen": 2,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 0,
+          "name": "食盐土",
+          "anyOf": [
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-C1",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 8,
+          "name": "香草叶",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-C2",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-C3",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        },
+        {
+          "id": 24,
+          "name": "奶油",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-C4",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 9,
+          "name": "面粉",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 8,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-C5",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 31,
+          "name": "白米饭",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 1
+              }
+            ]
+          ]
+        },
+        {
+          "id": 41,
+          "name": "黑胡椒",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 3,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 2
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-C6",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 0,
+          "name": "食盐土",
+          "anyOf": [
+            []
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-D1",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 46,
+          "name": "青葱",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 3,
+                "level": 2
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 2
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-D2",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 31,
+          "name": "白米饭",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-D3",
+      "kitchen": 4,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 58,
+          "name": "焦糖浆",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 6,
+                "level": 2
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-D4",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 49,
+          "name": "白豆",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 1
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-D5",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 10,
+          "name": "墨西哥薄饼",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 0
+              }
+            ]
+          ]
+        },
+        {
+          "id": 44,
+          "name": "柳橙",
+          "anyOf": [
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 1,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B-D6",
+      "kitchen": 3,
+      "missing": [],
+      "requiredToolsForOldSupply": [
+        {
+          "id": 27,
+          "name": "盐",
+          "anyOf": [
+            [
+              {
+                "kind": "tool",
+                "id": 4,
+                "level": 1
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 0,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 2,
+                "level": 0
+              }
+            ],
+            [
+              {
+                "kind": "discovery",
+                "egg": 1,
+                "id": 0
+              },
+              {
+                "kind": "tool",
+                "id": 5,
+                "level": 0
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "acquisitionGraph": [
+    {
+      "id": "BASE",
+      "all": [],
+      "any": []
+    },
+    {
+      "id": "K1",
+      "all": [
+        "BASE"
+      ],
+      "any": []
+    },
+    {
+      "id": "K2",
+      "all": [
+        "BASE"
+      ],
+      "any": []
+    },
+    {
+      "id": "K3",
+      "all": [
+        "BASE"
+      ],
+      "any": []
+    },
+    {
+      "id": "K4",
+      "all": [
+        "BASE"
+      ],
+      "any": []
+    },
+    {
+      "id": "DUCK",
+      "all": [
+        "BASE"
+      ],
+      "any": []
+    },
+    {
+      "id": "OLD-SUPPLY",
+      "all": [
+        "BASE"
+      ],
+      "any": []
+    },
+    {
+      "id": "V",
+      "all": [
+        "BASE"
+      ],
+      "any": []
+    },
+    {
+      "id": "R",
+      "all": [
+        "BASE",
+        "K2"
+      ],
+      "any": []
+    },
+    {
+      "id": "T",
+      "all": [
+        "BASE",
+        "K2"
+      ],
+      "any": []
+    },
+    {
+      "id": "GUIDE-B",
+      "all": [
+        "K3"
+      ],
+      "any": [
+        [
+          "V-C1",
+          "R-C1",
+          "T-C1"
+        ]
+      ]
+    },
+    {
+      "id": "B",
+      "all": [
+        "GUIDE-B"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-S1",
+      "all": [
+        "V",
+        "K1",
+        "OLD-SUPPLY"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-S2",
+      "all": [
+        "V",
+        "K2",
+        "OLD-SUPPLY"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-N1",
+      "all": [
+        "V"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-N2",
+      "all": [
+        "V",
+        "MAT-76"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-E1",
+      "all": [
+        "V"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-E2",
+      "all": [
+        "V"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-S1",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-S2",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-N1",
+      "all": [
+        "R"
+      ],
+      "any": [
+        [
+          "MAT-77",
+          "MAT-78"
+        ]
+      ]
+    },
+    {
+      "id": "R-N2",
+      "all": [
+        "R"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-E1",
+      "all": [
+        "R",
+        "MAT-77"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-E2",
+      "all": [
+        "R"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-S1",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-S2",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-N1",
+      "all": [
+        "T",
+        "MAT-79"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-N2",
+      "all": [
+        "T",
+        "MAT-80"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-E1",
+      "all": [
+        "T",
+        "MAT-79"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-E2",
+      "all": [
+        "T",
+        "MAT-80"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-S1",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-S2",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-N1",
+      "all": [
+        "B",
+        "MAT-81"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-N2",
+      "all": [
+        "B"
+      ],
+      "any": [
+        [
+          "MAT-81",
+          "MAT-82"
+        ]
+      ]
+    },
+    {
+      "id": "B-E1",
+      "all": [
+        "B",
+        "MAT-81"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-E2",
+      "all": [
+        "B",
+        "MAT-82"
+      ],
+      "any": []
+    },
+    {
+      "id": "MAT-75",
+      "all": [
+        "V-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "MAT-76",
+      "all": [
+        "V-S2"
+      ],
+      "any": []
+    },
+    {
+      "id": "MAT-77",
+      "all": [
+        "R-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "MAT-78",
+      "all": [
+        "R-S2"
+      ],
+      "any": []
+    },
+    {
+      "id": "MAT-79",
+      "all": [
+        "T-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "MAT-80",
+      "all": [
+        "T-S2"
+      ],
+      "any": []
+    },
+    {
+      "id": "MAT-81",
+      "all": [
+        "B-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "MAT-82",
+      "all": [
+        "B-S2"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-C1",
+      "all": [
+        "V",
+        "K1",
+        "OLD-SUPPLY",
+        "MAT-75"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-C2",
+      "all": [
+        "V",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-76"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-C3",
+      "all": [
+        "V",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-75"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-C4",
+      "all": [
+        "V",
+        "K4",
+        "OLD-SUPPLY",
+        "MAT-76"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-C5",
+      "all": [
+        "V",
+        "K4",
+        "OLD-SUPPLY",
+        "V-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-C6",
+      "all": [
+        "V",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-76",
+        "V-N2"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-D1",
+      "all": [
+        "V",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-75"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-D2",
+      "all": [
+        "V",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-76"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-D3",
+      "all": [
+        "V",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-75"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-D4",
+      "all": [
+        "V",
+        "K4",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-76"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-D5",
+      "all": [
+        "V",
+        "K3",
+        "OLD-SUPPLY",
+        "DUCK",
+        "V-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "V-D6",
+      "all": [
+        "V",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-76",
+        "V-N2"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-C1",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-77"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-C2",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-78"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-C3",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-77"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-C4",
+      "all": [
+        "R",
+        "K3",
+        "OLD-SUPPLY",
+        "MAT-78"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-C5",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "R-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-C6",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-77",
+        "R-N1"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-D1",
+      "all": [
+        "R",
+        "K4",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-77"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-D2",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-78"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-D3",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-77"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-D4",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-78"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-D5",
+      "all": [
+        "R",
+        "K4",
+        "OLD-SUPPLY",
+        "DUCK",
+        "R-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "R-D6",
+      "all": [
+        "R",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-78",
+        "R-N1"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-C1",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-79"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-C2",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-80"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-C3",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-79"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-C4",
+      "all": [
+        "T",
+        "K4",
+        "OLD-SUPPLY",
+        "MAT-80"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-C5",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "T-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-C6",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "MAT-79",
+        "T-N1"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-D1",
+      "all": [
+        "T",
+        "K4",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-79"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-D2",
+      "all": [
+        "T",
+        "K4",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-80"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-D3",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-79"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-D4",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-80"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-D5",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "T-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "T-D6",
+      "all": [
+        "T",
+        "K2",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-80",
+        "T-N2"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-C1",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "MAT-81"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-C2",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "MAT-82"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-C3",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "MAT-81"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-C4",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "MAT-82"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-C5",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "B-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-C6",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "MAT-81",
+        "B-N1"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-D1",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-81"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-D2",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-82"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-D3",
+      "all": [
+        "B",
+        "K4",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-81"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-D4",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-82"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-D5",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "DUCK",
+        "B-S1"
+      ],
+      "any": []
+    },
+    {
+      "id": "B-D6",
+      "all": [
+        "B",
+        "K3",
+        "OLD-SUPPLY",
+        "DUCK",
+        "MAT-81",
+        "B-N2"
+      ],
+      "any": []
+    },
+    {
+      "id": "PJ-2",
+      "all": [
+        "R-S1",
+        "R-S2",
+        "R-C1",
+        "R-C2",
+        "R-C3",
+        "R-D2",
+        "DUCK"
+      ],
+      "any": []
+    },
+    {
+      "id": "ALT-V",
+      "all": [
+        "V-E2",
+        "OLD-SUPPLY",
+        "MAT-76"
+      ],
+      "any": []
+    },
+    {
+      "id": "ALT-R",
+      "all": [
+        "PJ-2",
+        "OLD-SUPPLY",
+        "MAT-77"
+      ],
+      "any": []
+    },
+    {
+      "id": "ALT-T",
+      "all": [
+        "T-E1",
+        "OLD-SUPPLY",
+        "MAT-79"
+      ],
+      "any": []
+    },
+    {
+      "id": "ALT-B",
+      "all": [
+        "B-E1",
+        "OLD-SUPPLY",
+        "MAT-81"
+      ],
+      "any": []
+    }
+  ],
+  "economy": [
+    {
+      "id": "V-C1",
+      "baseSaleCP": 14,
+      "ingredientCP": 15,
+      "cookCP": 90,
+      "oldMeanSaleCP": 4.3,
+      "protectedBatchGrossMargin": 31.9,
+      "failedDiscoveryBatchGrossMargin": 22.2,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-C2",
+      "baseSaleCP": 23,
+      "ingredientCP": 40,
+      "cookCP": 30,
+      "oldMeanSaleCP": 9.875,
+      "protectedBatchGrossMargin": 204.13,
+      "failedDiscoveryBatchGrossMargin": 191,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-C3",
+      "baseSaleCP": 22,
+      "ingredientCP": 35,
+      "cookCP": 120,
+      "oldMeanSaleCP": 7.4286,
+      "protectedBatchGrossMargin": 61.86,
+      "failedDiscoveryBatchGrossMargin": 47.29,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-C4",
+      "baseSaleCP": 28,
+      "ingredientCP": 45,
+      "cookCP": 45,
+      "oldMeanSaleCP": 7,
+      "protectedBatchGrossMargin": 123,
+      "failedDiscoveryBatchGrossMargin": 102,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-C5",
+      "baseSaleCP": 26,
+      "ingredientCP": 90,
+      "cookCP": 30,
+      "oldMeanSaleCP": 9.875,
+      "protectedBatchGrossMargin": 157.13,
+      "failedDiscoveryBatchGrossMargin": 141,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-C6",
+      "baseSaleCP": 12,
+      "ingredientCP": 25,
+      "cookCP": 0,
+      "oldMeanSaleCP": 3.3333,
+      "protectedBatchGrossMargin": 87.67,
+      "failedDiscoveryBatchGrossMargin": 79,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-D1",
+      "baseSaleCP": 18,
+      "ingredientCP": 30,
+      "cookCP": 90,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 14,
+      "failedDiscoveryBatchGrossMargin": 0,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-D2",
+      "baseSaleCP": 23,
+      "ingredientCP": 45,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 34,
+      "failedDiscoveryBatchGrossMargin": 15,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-D3",
+      "baseSaleCP": 23,
+      "ingredientCP": 35,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 44,
+      "failedDiscoveryBatchGrossMargin": 25,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-D4",
+      "baseSaleCP": 30,
+      "ingredientCP": 95,
+      "cookCP": 15,
+      "oldMeanSaleCP": 11,
+      "protectedBatchGrossMargin": 197,
+      "failedDiscoveryBatchGrossMargin": 178,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-D5",
+      "baseSaleCP": 24,
+      "ingredientCP": 50,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 30,
+      "failedDiscoveryBatchGrossMargin": 10,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "V-D6",
+      "baseSaleCP": 12,
+      "ingredientCP": 45,
+      "cookCP": 0,
+      "oldMeanSaleCP": 3,
+      "protectedBatchGrossMargin": 60,
+      "failedDiscoveryBatchGrossMargin": 51,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-C1",
+      "baseSaleCP": 25,
+      "ingredientCP": 50,
+      "cookCP": 90,
+      "oldMeanSaleCP": 4.3,
+      "protectedBatchGrossMargin": 7.9,
+      "failedDiscoveryBatchGrossMargin": -12.8,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-C2",
+      "baseSaleCP": 24,
+      "ingredientCP": 40,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4.4,
+      "protectedBatchGrossMargin": 49.2,
+      "failedDiscoveryBatchGrossMargin": 29.6,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-C3",
+      "baseSaleCP": 26,
+      "ingredientCP": 40,
+      "cookCP": 30,
+      "oldMeanSaleCP": 9.875,
+      "protectedBatchGrossMargin": 207.13,
+      "failedDiscoveryBatchGrossMargin": 191,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-C4",
+      "baseSaleCP": 25,
+      "ingredientCP": 45,
+      "cookCP": 120,
+      "oldMeanSaleCP": 8.2,
+      "protectedBatchGrossMargin": 72.6,
+      "failedDiscoveryBatchGrossMargin": 55.8,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-C5",
+      "baseSaleCP": 24,
+      "ingredientCP": 35,
+      "cookCP": 90,
+      "oldMeanSaleCP": 4.3,
+      "protectedBatchGrossMargin": 21.9,
+      "failedDiscoveryBatchGrossMargin": 2.2,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-C6",
+      "baseSaleCP": 14,
+      "ingredientCP": 25,
+      "cookCP": 0,
+      "oldMeanSaleCP": 3.3333,
+      "protectedBatchGrossMargin": 89.67,
+      "failedDiscoveryBatchGrossMargin": 79,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-D1",
+      "baseSaleCP": 26,
+      "ingredientCP": 30,
+      "cookCP": 75,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 37,
+      "failedDiscoveryBatchGrossMargin": 15,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-D2",
+      "baseSaleCP": 22,
+      "ingredientCP": 30,
+      "cookCP": 15,
+      "oldMeanSaleCP": 12.8462,
+      "protectedBatchGrossMargin": 296.46,
+      "failedDiscoveryBatchGrossMargin": 287.31,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-D3",
+      "baseSaleCP": 25,
+      "ingredientCP": 45,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 36,
+      "failedDiscoveryBatchGrossMargin": 15,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-D4",
+      "baseSaleCP": 23,
+      "ingredientCP": 35,
+      "cookCP": 90,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 14,
+      "failedDiscoveryBatchGrossMargin": -5,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-D5",
+      "baseSaleCP": 42,
+      "ingredientCP": 75,
+      "cookCP": 120,
+      "oldMeanSaleCP": 6,
+      "protectedBatchGrossMargin": 9,
+      "failedDiscoveryBatchGrossMargin": -27,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "R-D6",
+      "baseSaleCP": 14,
+      "ingredientCP": 30,
+      "cookCP": 0,
+      "oldMeanSaleCP": 3.6923,
+      "protectedBatchGrossMargin": 92.92,
+      "failedDiscoveryBatchGrossMargin": 82.62,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-C1",
+      "baseSaleCP": 18,
+      "ingredientCP": 25,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4.4,
+      "protectedBatchGrossMargin": 58.2,
+      "failedDiscoveryBatchGrossMargin": 44.6,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-C2",
+      "baseSaleCP": 25,
+      "ingredientCP": 50,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4.4,
+      "protectedBatchGrossMargin": 40.2,
+      "failedDiscoveryBatchGrossMargin": 19.6,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-C3",
+      "baseSaleCP": 24,
+      "ingredientCP": 45,
+      "cookCP": 30,
+      "oldMeanSaleCP": 9.875,
+      "protectedBatchGrossMargin": 200.13,
+      "failedDiscoveryBatchGrossMargin": 186,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-C4",
+      "baseSaleCP": 30,
+      "ingredientCP": 100,
+      "cookCP": 15,
+      "oldMeanSaleCP": 11,
+      "protectedBatchGrossMargin": 192,
+      "failedDiscoveryBatchGrossMargin": 173,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-C5",
+      "baseSaleCP": 25,
+      "ingredientCP": 50,
+      "cookCP": 120,
+      "oldMeanSaleCP": 7.4286,
+      "protectedBatchGrossMargin": 49.86,
+      "failedDiscoveryBatchGrossMargin": 32.29,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-C6",
+      "baseSaleCP": 15,
+      "ingredientCP": 30,
+      "cookCP": 0,
+      "oldMeanSaleCP": 3.3333,
+      "protectedBatchGrossMargin": 85.67,
+      "failedDiscoveryBatchGrossMargin": 74,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-D1",
+      "baseSaleCP": 30,
+      "ingredientCP": 85,
+      "cookCP": 75,
+      "oldMeanSaleCP": 8.3333,
+      "protectedBatchGrossMargin": 85.67,
+      "failedDiscoveryBatchGrossMargin": 64,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-D2",
+      "baseSaleCP": 27,
+      "ingredientCP": 40,
+      "cookCP": 75,
+      "oldMeanSaleCP": 4.5,
+      "protectedBatchGrossMargin": 39.5,
+      "failedDiscoveryBatchGrossMargin": 17,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-D3",
+      "baseSaleCP": 25,
+      "ingredientCP": 50,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 31,
+      "failedDiscoveryBatchGrossMargin": 10,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-D4",
+      "baseSaleCP": 27,
+      "ingredientCP": 45,
+      "cookCP": 30,
+      "oldMeanSaleCP": 8,
+      "protectedBatchGrossMargin": 160,
+      "failedDiscoveryBatchGrossMargin": 141,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-D5",
+      "baseSaleCP": 25,
+      "ingredientCP": 45,
+      "cookCP": 15,
+      "oldMeanSaleCP": 11,
+      "protectedBatchGrossMargin": 242,
+      "failedDiscoveryBatchGrossMargin": 228,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "T-D6",
+      "baseSaleCP": 15,
+      "ingredientCP": 30,
+      "cookCP": 0,
+      "oldMeanSaleCP": 3,
+      "protectedBatchGrossMargin": 78,
+      "failedDiscoveryBatchGrossMargin": 66,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-C1",
+      "baseSaleCP": 28,
+      "ingredientCP": 40,
+      "cookCP": 30,
+      "oldMeanSaleCP": 10,
+      "protectedBatchGrossMargin": 212,
+      "failedDiscoveryBatchGrossMargin": 194,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-C2",
+      "baseSaleCP": 25,
+      "ingredientCP": 40,
+      "cookCP": 90,
+      "oldMeanSaleCP": 4.3,
+      "protectedBatchGrossMargin": 17.9,
+      "failedDiscoveryBatchGrossMargin": -2.8,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-C3",
+      "baseSaleCP": 29,
+      "ingredientCP": 65,
+      "cookCP": 30,
+      "oldMeanSaleCP": 9.875,
+      "protectedBatchGrossMargin": 185.13,
+      "failedDiscoveryBatchGrossMargin": 166,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-C4",
+      "baseSaleCP": 26,
+      "ingredientCP": 40,
+      "cookCP": 120,
+      "oldMeanSaleCP": 7.4286,
+      "protectedBatchGrossMargin": 60.86,
+      "failedDiscoveryBatchGrossMargin": 42.29,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-C5",
+      "baseSaleCP": 27,
+      "ingredientCP": 50,
+      "cookCP": 90,
+      "oldMeanSaleCP": 4.3,
+      "protectedBatchGrossMargin": 9.9,
+      "failedDiscoveryBatchGrossMargin": -12.8,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-C6",
+      "baseSaleCP": 16,
+      "ingredientCP": 25,
+      "cookCP": 0,
+      "oldMeanSaleCP": 3.3333,
+      "protectedBatchGrossMargin": 91.67,
+      "failedDiscoveryBatchGrossMargin": 79,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-D1",
+      "baseSaleCP": 25,
+      "ingredientCP": 30,
+      "cookCP": 15,
+      "oldMeanSaleCP": 11,
+      "protectedBatchGrossMargin": 257,
+      "failedDiscoveryBatchGrossMargin": 243,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-D2",
+      "baseSaleCP": 26,
+      "ingredientCP": 45,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 37,
+      "failedDiscoveryBatchGrossMargin": 15,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-D3",
+      "baseSaleCP": 31,
+      "ingredientCP": 60,
+      "cookCP": 60,
+      "oldMeanSaleCP": 4,
+      "protectedBatchGrossMargin": 27,
+      "failedDiscoveryBatchGrossMargin": 0,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-D4",
+      "baseSaleCP": 25,
+      "ingredientCP": 40,
+      "cookCP": 15,
+      "oldMeanSaleCP": 11,
+      "protectedBatchGrossMargin": 247,
+      "failedDiscoveryBatchGrossMargin": 233,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-D5",
+      "baseSaleCP": 26,
+      "ingredientCP": 30,
+      "cookCP": 30,
+      "oldMeanSaleCP": 8,
+      "protectedBatchGrossMargin": 174,
+      "failedDiscoveryBatchGrossMargin": 156,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    },
+    {
+      "id": "B-D6",
+      "baseSaleCP": 16,
+      "ingredientCP": 35,
+      "cookCP": 0,
+      "oldMeanSaleCP": 3.6923,
+      "protectedBatchGrossMargin": 89.92,
+      "failedDiscoveryBatchGrossMargin": 77.62,
+      "scope": "无技能/无经营加价/原料全购/无维护分摊/无变化；初次失败批24旧，复刻批1新+23旧；不能宣称净收益或14天成长通过"
+    }
+  ],
+  "sourceHashes": {
+    "web/data.js": "1595b413bd3056f138276f95fb1258d87d8ea4025c0c87bf2f614fe65885209e",
+    "web/content-pack.js": "1989c553668eea93dd9fe2669a956798183d16f542b703801f739d75a37efc75",
+    "web/integration-data.js": "c490a6ec362d55bcbb755b7bfac0e8a696a7d57321c12f993bdd5908bf567598",
+    "web/recipes.js": "66766bfc5efb19d2b8bae6974291921aa7f8f660ff1ed960903cf00a361adfba",
+    "web/recipe-catalog-data.js": "5c5edfe96146796803c3dd75ae97cf9cf40b70a331a145854df0a77354348409",
+    "web/ingredient-unlocks.js": "dbbd38c4b4d06531e8bcf0c6acdbc917d62b26effc108c199993229ca607b4ce",
+    "web/seasonal-pack.js": "08354a180b38f9ec8b236292423518595c7909ca080f3b5d2c39762b2634e772",
+    "web/trade-data.js": "e1bde0687f2bd687d01113dc3ab95d31c2f1e4e79af5d30ffa237d4740cea600",
+    "web/engine.js": "d1bc7f3c0a736a3e952dd8c3e3651b7dc7ad01f68fa8d67ee8fdb7e1a162cf12",
+    "web/shrine.js": "b20454cc66034319e85affbcffefb2de32cba67a104a1d778574cb173612fb68",
+    "docs/gameplay-expansion-design.md": "f5c866159d4658d26658ecc7ea1015a6b33f8bad83c4dbc0259496d59aa9abf3",
+    "docs/ui-information-architecture.md": "3244eb2b6a8e464173e23002a106cbf43fda18bf1e22e418f7864ee0041496ea"
+  }
+}

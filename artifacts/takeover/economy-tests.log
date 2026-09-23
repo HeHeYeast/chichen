@@ -1,0 +1,21 @@
+✔ absence planning protects the earliest egg, not just batch completion (0.697ms)
+✔ runner rejects atomically, records exact failure and does not swallow it (5.6715ms)
+✔ timeline income is independent of the next voluntary transaction (16.9308ms)
+✔ initial stock is explicitly valued rather than mistaken for newly earned wealth (4.3141ms)
+✔ declared matrix is 4 starting states × 4 cadences × 4 real skill policies (7.4681ms)
+✔ short mature none trajectory conserves CP, uses monotonic validated commands, and learns only its declared branch (641.9118ms)
+✔ short mature CUL trajectory conserves CP, uses monotonic validated commands, and learns only its declared branch (618.6588ms)
+✔ short mature HOME trajectory conserves CP, uses monotonic validated commands, and learns only its declared branch (625.1781ms)
+✔ short mature TRADE trajectory conserves CP, uses monotonic validated commands, and learns only its declared branch (605.4932ms)
+✔ planner delivers goods into staged projects instead of checking only already-ready stages (417.26ms)
+✔ all 48 authored recipes charge full first-failure inputs and guarantee the fourth fully collected batch (5304.9264ms)
+✔ same actual batch is exhausted once in every revenue channel and credits are recorded (233.8389ms)
+✔ HOME paired timing actually learns and enables its available slow-cooking skill (154.9949ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8695.5545

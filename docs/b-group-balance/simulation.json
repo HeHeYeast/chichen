@@ -1,0 +1,1370 @@
+{
+  "seed": 20260920,
+  "trials": 100000,
+  "hashes": {
+    "web/engine.js": "d3f7a57aa705e1070c7efbece24bb27cb018b1c74849da42c4d8193505db5e66",
+    "web/data.js": "1595b413bd3056f138276f95fb1258d87d8ea4025c0c87bf2f614fe65885209e",
+    "web/recipes.js": "4d8a0a6eb3a0f1c0cf57952b48f8ef036728e98e1a8c1d61f19face5b24b7f04",
+    "web/content-pack.js": "b614348549db15a00334ba31bec5141be7a850f8174c6594ea2fd7cfaf3c80ff",
+    "web/seasonal-pack.js": "74828ea35e5755c30cf56733df8460627104f48d0ced6dd5cf839e25ddc5b2cd",
+    "web/ingredient-unlocks.js": "dbbd38c4b4d06531e8bcf0c6acdbc917d62b26effc108c199993229ca607b4ce",
+    "web/legacy-activities.js": "ee45f9e3537683a9646ddc6980da09c61e80bd31fd6b899d1451c3b2faca99ef",
+    "web/shrine.js": "b20454cc66034319e85affbcffefb2de32cba67a104a1d778574cb173612fb68",
+    "web/recipe-book.js": "e3d9a36fce51c912a4870609a805e65df7f6cc9619fc72439cd31eaec9b4b118",
+    "web/recipe-catalog-data.js": "1d8aef85ed8ec6be9c7846a1a2b7cb9d19358b4de5f1ac9606fd6ff4cdb6858f",
+    "web/holiday-calendar.js": "6ac063c2447de0a7d838e6322204594c0fc8c56454a2b2f6a98d2691e74f08f3",
+    "web/farm.js": "6b869f413db106ef16e23832a8ab306072d081da379531087ae0e22a9eb05176",
+    "web/collection-ui.js": "b7620d08601f5fae969ede1c8ebdcff300cfce6e9644e6737268753212123658",
+    "web/save-store.js": "060f92cfdf07f1a3afb7c95940e3893150a0be90afa6683fc904e8e34d5a2ad8",
+    "docs/worldbuilding-and-expansion-brief.md": "1cd2a637ab67a42586ece0eabfff4aa52a07a9bcf1fd3029ac917d3bd62c7517"
+  },
+  "assumptions": {
+    "signs": "每签均安全收录；已有收藏集合0..k-1，上次签为k-1；misses初始0；不将未收取等同收录",
+    "economics": "每情景20000批，真实引擎，正常收取为标称结束后完成动画；材料按商店原价；无委托和节日额外收入",
+    "exploration": "材料替代购买价值，非直接CP；所有列出材料已解锁；只计算一队无缝出发上界"
+  },
+  "signs": [
+    {
+      "mode": "uniform",
+      "collected": 0,
+      "initialLast": null,
+      "next": {
+        "mean": 1,
+        "p50": 1,
+        "p90": 1,
+        "p95": 1,
+        "p99": 1,
+        "observedMax": 1
+      },
+      "remainingCompletion": {
+        "mean": 49.8009,
+        "p50": 46,
+        "p90": 73,
+        "p95": 83,
+        "p99": 106,
+        "observedMax": 211
+      }
+    },
+    {
+      "mode": "uniform",
+      "collected": 5,
+      "initialLast": 4,
+      "next": {
+        "mean": 1.4969,
+        "p50": 1,
+        "p90": 3,
+        "p95": 3,
+        "p99": 5,
+        "observedMax": 12
+      },
+      "remainingCompletion": {
+        "mean": 43.8696,
+        "p50": 40,
+        "p90": 67,
+        "p95": 77,
+        "p99": 101,
+        "observedMax": 180
+      }
+    },
+    {
+      "mode": "uniform",
+      "collected": 10,
+      "initialLast": 9,
+      "next": {
+        "mean": 2.9838,
+        "p50": 2,
+        "p90": 6,
+        "p95": 8,
+        "p99": 12,
+        "observedMax": 35
+      },
+      "remainingCompletion": {
+        "mean": 34.141,
+        "p50": 31,
+        "p90": 57,
+        "p95": 67,
+        "p99": 90,
+        "observedMax": 208
+      }
+    },
+    {
+      "mode": "uniform",
+      "collected": 14,
+      "initialLast": 13,
+      "next": {
+        "mean": 14.9894,
+        "p50": 11,
+        "p90": 34,
+        "p95": 44,
+        "p99": 68,
+        "observedMax": 175
+      },
+      "remainingCompletion": {
+        "mean": 14.9894,
+        "p50": 11,
+        "p90": 34,
+        "p95": 44,
+        "p99": 68,
+        "observedMax": 175
+      }
+    },
+    {
+      "mode": "weighted",
+      "collected": 0,
+      "initialLast": null,
+      "next": {
+        "mean": 1,
+        "p50": 1,
+        "p90": 1,
+        "p95": 1,
+        "p99": 1,
+        "observedMax": 1
+      },
+      "remainingCompletion": {
+        "mean": 32.4152,
+        "p50": 31,
+        "p90": 45,
+        "p95": 50,
+        "p99": 62,
+        "observedMax": 106
+      }
+    },
+    {
+      "mode": "weighted",
+      "collected": 5,
+      "initialLast": 4,
+      "next": {
+        "mean": 1.2495,
+        "p50": 1,
+        "p90": 2,
+        "p95": 2,
+        "p99": 3,
+        "observedMax": 8
+      },
+      "remainingCompletion": {
+        "mean": 26.9185,
+        "p50": 25,
+        "p90": 39,
+        "p95": 44,
+        "p99": 56,
+        "observedMax": 112
+      }
+    },
+    {
+      "mode": "weighted",
+      "collected": 10,
+      "initialLast": 9,
+      "next": {
+        "mean": 1.997,
+        "p50": 1,
+        "p90": 4,
+        "p95": 5,
+        "p99": 7,
+        "observedMax": 17
+      },
+      "remainingCompletion": {
+        "mean": 19.6405,
+        "p50": 18,
+        "p90": 31,
+        "p95": 37,
+        "p99": 49,
+        "observedMax": 107
+      }
+    },
+    {
+      "mode": "weighted",
+      "collected": 14,
+      "initialLast": 13,
+      "next": {
+        "mean": 7.9734,
+        "p50": 6,
+        "p90": 18,
+        "p95": 23,
+        "p99": 34,
+        "observedMax": 88
+      },
+      "remainingCompletion": {
+        "mean": 7.9734,
+        "p50": 6,
+        "p90": 18,
+        "p95": 23,
+        "p99": 34,
+        "observedMax": 88
+      }
+    },
+    {
+      "mode": "pity",
+      "collected": 0,
+      "initialLast": null,
+      "next": {
+        "mean": 1,
+        "p50": 1,
+        "p90": 1,
+        "p95": 1,
+        "p99": 1,
+        "observedMax": 1
+      },
+      "remainingCompletion": {
+        "mean": 26.4507,
+        "p50": 26,
+        "p90": 32,
+        "p95": 34,
+        "p99": 37,
+        "observedMax": 46
+      }
+    },
+    {
+      "mode": "pity",
+      "collected": 5,
+      "initialLast": 4,
+      "next": {
+        "mean": 1.2008,
+        "p50": 1,
+        "p90": 2,
+        "p95": 2,
+        "p99": 3,
+        "observedMax": 6
+      },
+      "remainingCompletion": {
+        "mean": 21.1781,
+        "p50": 21,
+        "p90": 27,
+        "p95": 28,
+        "p99": 31,
+        "observedMax": 41
+      }
+    },
+    {
+      "mode": "pity",
+      "collected": 10,
+      "initialLast": 9,
+      "next": {
+        "mean": 1.8599,
+        "p50": 1,
+        "p90": 4,
+        "p95": 4,
+        "p99": 6,
+        "observedMax": 7
+      },
+      "remainingCompletion": {
+        "mean": 14.2256,
+        "p50": 14,
+        "p90": 19,
+        "p95": 21,
+        "p99": 23,
+        "observedMax": 32
+      }
+    },
+    {
+      "mode": "pity",
+      "collected": 14,
+      "initialLast": 13,
+      "next": {
+        "mean": 4.4377,
+        "p50": 4,
+        "p90": 7,
+        "p95": 7,
+        "p99": 7,
+        "observedMax": 7
+      },
+      "remainingCompletion": {
+        "mean": 4.4377,
+        "p50": 4,
+        "p90": 7,
+        "p95": 7,
+        "p99": 7,
+        "observedMax": 7
+      }
+    }
+  ],
+  "finalSignExact": {
+    "expected": 4.438301105909492,
+    "attempts": [
+      {
+        "n": 1,
+        "newProbability": 0.13333333333333333,
+        "cumulative": 0.1333333333333333
+      },
+      {
+        "n": 2,
+        "newProbability": 0.13333333333333333,
+        "cumulative": 0.24888888888888883
+      },
+      {
+        "n": 3,
+        "newProbability": 0.13333333333333333,
+        "cumulative": 0.3490370370370369
+      },
+      {
+        "n": 4,
+        "newProbability": 0.23529411764705882,
+        "cumulative": 0.5022047930283224
+      },
+      {
+        "n": 5,
+        "newProbability": 0.23529411764705882,
+        "cumulative": 0.6193330770216583
+      },
+      {
+        "n": 6,
+        "newProbability": 0.23529411764705882,
+        "cumulative": 0.7089017647812681
+      },
+      {
+        "n": 7,
+        "newProbability": 1,
+        "cumulative": 1
+      }
+    ]
+  },
+  "econ": [
+    {
+      "name": "起步保温灯无料",
+      "toolId": 0,
+      "level": 1,
+      "minutes": 120,
+      "earliest": 10,
+      "meanAllOpen": 117.4628,
+      "sale": 72,
+      "collectCP": 24,
+      "cook": 0,
+      "material": 0,
+      "net": 96,
+      "net12HourReturn": 96,
+      "purchaseRebateMax": 0
+    },
+    {
+      "name": "起步保温灯食盐土",
+      "toolId": 0,
+      "level": 1,
+      "minutes": 120,
+      "earliest": 10,
+      "meanAllOpen": 117.4628,
+      "sale": 80.0081,
+      "collectCP": 24,
+      "cook": 0,
+      "material": 5,
+      "net": 99.0081,
+      "net12HourReturn": 99.0081,
+      "purchaseRebateMax": 0.5
+    },
+    {
+      "name": "起步平底锅无料",
+      "toolId": 1,
+      "level": 1,
+      "minutes": 15,
+      "earliest": 1.25,
+      "meanAllOpen": 14.68,
+      "sale": 103.2107,
+      "collectCP": 24,
+      "cook": 90,
+      "material": 0,
+      "net": 37.2107,
+      "net12HourReturn": -42,
+      "purchaseRebateMax": 0
+    },
+    {
+      "name": "起步平底锅照烧酱",
+      "toolId": 1,
+      "level": 1,
+      "minutes": 15,
+      "earliest": 1.25,
+      "meanAllOpen": 14.68,
+      "sale": 121.7302,
+      "collectCP": 24,
+      "cook": 90,
+      "material": 5,
+      "net": 50.7301,
+      "net12HourReturn": -47,
+      "purchaseRebateMax": 0.5
+    },
+    {
+      "name": "水煮锅乌龙茶",
+      "toolId": 2,
+      "level": 1,
+      "minutes": 60,
+      "earliest": 5,
+      "meanAllOpen": 58.7021,
+      "sale": 120.2761,
+      "collectCP": 24,
+      "cook": 60,
+      "material": 10,
+      "net": 74.2761,
+      "net12HourReturn": -22,
+      "purchaseRebateMax": 1
+    },
+    {
+      "name": "中期烤箱面粉",
+      "toolId": 4,
+      "level": 2,
+      "minutes": 200,
+      "earliest": 16.6667,
+      "meanAllOpen": 195.6968,
+      "sale": 236.9795,
+      "collectCP": 24,
+      "cook": 30,
+      "material": 20,
+      "net": 210.9795,
+      "net12HourReturn": 4.7753,
+      "purchaseRebateMax": 2
+    },
+    {
+      "name": "中期蒸笼面粉糯米",
+      "toolId": 8,
+      "level": 1,
+      "minutes": 45,
+      "earliest": 3.75,
+      "meanAllOpen": 44.0178,
+      "sale": 213.9246,
+      "collectCP": 24,
+      "cook": 120,
+      "material": 45,
+      "net": 72.9246,
+      "net12HourReturn": -110.3689,
+      "purchaseRebateMax": 4.5
+    },
+    {
+      "name": "后期炖锅白酒配方",
+      "toolId": 5,
+      "level": 3,
+      "minutes": 240,
+      "earliest": 20,
+      "meanAllOpen": 234.8391,
+      "sale": 425.227,
+      "collectCP": 24,
+      "cook": 15,
+      "material": 80,
+      "net": 354.227,
+      "net12HourReturn": -37.8873,
+      "purchaseRebateMax": 8
+    },
+    {
+      "name": "后期鸭奶茶",
+      "toolId": 6,
+      "level": 3,
+      "minutes": 8,
+      "earliest": 0.6667,
+      "meanAllOpen": 7.8287,
+      "sale": 199.7356,
+      "collectCP": 24,
+      "cook": 75,
+      "material": 60,
+      "net": 88.7356,
+      "net12HourReturn": -63,
+      "purchaseRebateMax": 6
+    },
+    {
+      "name": "后期三层蒸笼豆沙白糖面粉",
+      "toolId": 8,
+      "level": 3,
+      "minutes": 30,
+      "earliest": 2.5,
+      "meanAllOpen": 29.3563,
+      "sale": 232.531,
+      "collectCP": 24,
+      "cook": 120,
+      "material": 65,
+      "net": 71.5309,
+      "net12HourReturn": -127.981,
+      "purchaseRebateMax": 6.5
+    }
+  ],
+  "time": [
+    {
+      "tool": "保温灯",
+      "level": 1,
+      "base": 120,
+      "rank1": 115.2,
+      "rank3": 108,
+      "rank5": 96,
+      "specialist": 90,
+      "baseFresh": 240,
+      "maxFresh": 330
+    },
+    {
+      "tool": "保温灯",
+      "level": 2,
+      "base": 100,
+      "rank1": 96,
+      "rank3": 90,
+      "rank5": 80,
+      "specialist": 75,
+      "baseFresh": 200,
+      "maxFresh": 290
+    },
+    {
+      "tool": "保温灯",
+      "level": 3,
+      "base": 80,
+      "rank1": 76.8,
+      "rank3": 72,
+      "rank5": 64,
+      "specialist": 60,
+      "baseFresh": 160,
+      "maxFresh": 250
+    },
+    {
+      "tool": "平底锅",
+      "level": 1,
+      "base": 15,
+      "rank1": 14.4,
+      "rank3": 13.5,
+      "rank5": 12,
+      "specialist": 11.25,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "平底锅",
+      "level": 2,
+      "base": 13,
+      "rank1": 12.48,
+      "rank3": 11.7,
+      "rank5": 10.4,
+      "specialist": 9.75,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "平底锅",
+      "level": 3,
+      "base": 11,
+      "rank1": 10.56,
+      "rank3": 9.9,
+      "rank5": 8.8,
+      "specialist": 8.25,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "水煮锅",
+      "level": 1,
+      "base": 60,
+      "rank1": 57.6,
+      "rank3": 54,
+      "rank5": 48,
+      "specialist": 45,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "水煮锅",
+      "level": 2,
+      "base": 50,
+      "rank1": 48,
+      "rank3": 45,
+      "rank5": 40,
+      "specialist": 37.5,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "水煮锅",
+      "level": 3,
+      "base": 40,
+      "rank1": 38.4,
+      "rank3": 36,
+      "rank5": 32,
+      "specialist": 30,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "油炸锅",
+      "level": 1,
+      "base": 30,
+      "rank1": 28.8,
+      "rank3": 27,
+      "rank5": 24,
+      "specialist": 22.5,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "油炸锅",
+      "level": 2,
+      "base": 25,
+      "rank1": 24,
+      "rank3": 22.5,
+      "rank5": 20,
+      "specialist": 18.75,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "油炸锅",
+      "level": 3,
+      "base": 20,
+      "rank1": 19.2,
+      "rank3": 18,
+      "rank5": 16,
+      "specialist": 15,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "烤箱",
+      "level": 1,
+      "base": 240,
+      "rank1": 230.4,
+      "rank3": 216,
+      "rank5": 192,
+      "specialist": 180,
+      "baseFresh": 480,
+      "maxFresh": 570
+    },
+    {
+      "tool": "烤箱",
+      "level": 2,
+      "base": 200,
+      "rank1": 192,
+      "rank3": 180,
+      "rank5": 160,
+      "specialist": 150,
+      "baseFresh": 400,
+      "maxFresh": 490
+    },
+    {
+      "tool": "烤箱",
+      "level": 3,
+      "base": 160,
+      "rank1": 153.6,
+      "rank3": 144,
+      "rank5": 128,
+      "specialist": 120,
+      "baseFresh": 320,
+      "maxFresh": 410
+    },
+    {
+      "tool": "炖锅",
+      "level": 1,
+      "base": 360,
+      "rank1": 345.6,
+      "rank3": 324,
+      "rank5": 288,
+      "specialist": 270,
+      "baseFresh": 720,
+      "maxFresh": 810
+    },
+    {
+      "tool": "炖锅",
+      "level": 2,
+      "base": 300,
+      "rank1": 288,
+      "rank3": 270,
+      "rank5": 240,
+      "specialist": 225,
+      "baseFresh": 600,
+      "maxFresh": 690
+    },
+    {
+      "tool": "炖锅",
+      "level": 3,
+      "base": 240,
+      "rank1": 230.4,
+      "rank3": 216,
+      "rank5": 192,
+      "specialist": 180,
+      "baseFresh": 480,
+      "maxFresh": 570
+    },
+    {
+      "tool": "烧水壶",
+      "level": 1,
+      "base": 10,
+      "rank1": 9.6,
+      "rank3": 9,
+      "rank5": 8,
+      "specialist": 7.5,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "烧水壶",
+      "level": 2,
+      "base": 9,
+      "rank1": 8.64,
+      "rank3": 8.1,
+      "rank5": 7.2,
+      "specialist": 6.75,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "烧水壶",
+      "level": 3,
+      "base": 8,
+      "rank1": 7.68,
+      "rank3": 7.2,
+      "rank5": 6.4,
+      "specialist": 6,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "面包机",
+      "level": 1,
+      "base": 180,
+      "rank1": 172.8,
+      "rank3": 162,
+      "rank5": 144,
+      "specialist": 135,
+      "baseFresh": 360,
+      "maxFresh": 450
+    },
+    {
+      "tool": "面包机",
+      "level": 2,
+      "base": 150,
+      "rank1": 144,
+      "rank3": 135,
+      "rank5": 120,
+      "specialist": 112.5,
+      "baseFresh": 300,
+      "maxFresh": 390
+    },
+    {
+      "tool": "面包机",
+      "level": 3,
+      "base": 120,
+      "rank1": 115.2,
+      "rank3": 108,
+      "rank5": 96,
+      "specialist": 90,
+      "baseFresh": 240,
+      "maxFresh": 330
+    },
+    {
+      "tool": "竹蒸笼",
+      "level": 1,
+      "base": 45,
+      "rank1": 43.2,
+      "rank3": 40.5,
+      "rank5": 36,
+      "specialist": 33.75,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "竹蒸笼",
+      "level": 2,
+      "base": 38,
+      "rank1": 36.48,
+      "rank3": 34.2,
+      "rank5": 30.4,
+      "specialist": 28.5,
+      "baseFresh": 120,
+      "maxFresh": 210
+    },
+    {
+      "tool": "竹蒸笼",
+      "level": 3,
+      "base": 30,
+      "rank1": 28.8,
+      "rank3": 27,
+      "rank5": 24,
+      "specialist": 22.5,
+      "baseFresh": 120,
+      "maxFresh": 210
+    }
+  ],
+  "stages": [
+    {
+      "name": "第一批",
+      "d": 1,
+      "k": 1,
+      "h": 24,
+      "points": 2
+    },
+    {
+      "name": "早期探索",
+      "d": 8,
+      "k": 1,
+      "h": 120,
+      "points": 5
+    },
+    {
+      "name": "前期",
+      "d": 12,
+      "k": 1,
+      "h": 500,
+      "points": 8
+    },
+    {
+      "name": "中期",
+      "d": 40,
+      "k": 2,
+      "h": 2000,
+      "points": 18
+    },
+    {
+      "name": "第一专精",
+      "d": 80,
+      "k": 3,
+      "h": 5000,
+      "points": 30
+    },
+    {
+      "name": "高收藏",
+      "d": 120,
+      "k": 4,
+      "h": 5000,
+      "points": 40
+    },
+    {
+      "name": "近全收集",
+      "d": 160,
+      "k": 4,
+      "h": 5000,
+      "points": 48
+    },
+    {
+      "name": "全收集",
+      "d": 193,
+      "k": 4,
+      "h": 5000,
+      "points": 54
+    }
+  ],
+  "expeditions": [
+    {
+      "build": "单只普通匹配",
+      "route": "yard",
+      "G": 4,
+      "F": 2,
+      "A": 1,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 1,
+      "p": 0.19,
+      "q": 0.17,
+      "meanItems": 1.19,
+      "replacementCP": 5.95,
+      "per24h": 71.4
+    },
+    {
+      "build": "三只均衡不匹配",
+      "route": "yard",
+      "G": 9,
+      "F": 9,
+      "A": 0,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 1,
+      "p": 0.275,
+      "q": 0.28,
+      "meanItems": 1.275,
+      "replacementCP": 6.375,
+      "per24h": 76.5
+    },
+    {
+      "build": "三只采集匹配",
+      "route": "yard",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 1,
+      "p": 0.47,
+      "q": 0.31,
+      "meanItems": 1.47,
+      "replacementCP": 7.35,
+      "per24h": 88.2
+    },
+    {
+      "build": "三只发现匹配",
+      "route": "yard",
+      "G": 6,
+      "F": 12,
+      "A": 3,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 1,
+      "p": 0.32,
+      "q": 0.43,
+      "meanItems": 1.32,
+      "replacementCP": 6.6,
+      "per24h": 79.2
+    },
+    {
+      "build": "采集满手艺专精",
+      "route": "yard",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 1,
+      "p": 0.59,
+      "q": 0.37,
+      "meanItems": 1.59,
+      "replacementCP": 7.95,
+      "per24h": 95.4
+    },
+    {
+      "build": "发现满手艺专精",
+      "route": "yard",
+      "G": 6,
+      "F": 12,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 1,
+      "p": 0.44,
+      "q": 0.49,
+      "meanItems": 1.44,
+      "replacementCP": 7.2,
+      "per24h": 86.4
+    },
+    {
+      "build": "采集专精选最贵基础材料",
+      "route": "yard",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 1,
+      "p": 0.59,
+      "q": 0.37,
+      "meanItems": 1.59,
+      "replacementCP": 7.95,
+      "per24h": 95.4
+    },
+    {
+      "build": "单只普通匹配",
+      "route": "water",
+      "G": 4,
+      "F": 2,
+      "A": 1,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 2,
+      "p": 0.19,
+      "q": 0.17,
+      "meanItems": 2.19,
+      "replacementCP": 25.55,
+      "per24h": 102.2
+    },
+    {
+      "build": "三只均衡不匹配",
+      "route": "water",
+      "G": 9,
+      "F": 9,
+      "A": 0,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 2,
+      "p": 0.275,
+      "q": 0.28,
+      "meanItems": 2.275,
+      "replacementCP": 26.5417,
+      "per24h": 106.1667
+    },
+    {
+      "build": "三只采集匹配",
+      "route": "water",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 2,
+      "p": 0.47,
+      "q": 0.31,
+      "meanItems": 2.47,
+      "replacementCP": 28.8167,
+      "per24h": 115.2667
+    },
+    {
+      "build": "三只发现匹配",
+      "route": "water",
+      "G": 6,
+      "F": 12,
+      "A": 3,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 2,
+      "p": 0.32,
+      "q": 0.43,
+      "meanItems": 2.32,
+      "replacementCP": 27.0667,
+      "per24h": 108.2667
+    },
+    {
+      "build": "采集满手艺专精",
+      "route": "water",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 2,
+      "p": 0.59,
+      "q": 0.37,
+      "meanItems": 2.59,
+      "replacementCP": 30.2167,
+      "per24h": 120.8667
+    },
+    {
+      "build": "发现满手艺专精",
+      "route": "water",
+      "G": 6,
+      "F": 12,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 2,
+      "p": 0.44,
+      "q": 0.49,
+      "meanItems": 2.44,
+      "replacementCP": 28.4667,
+      "per24h": 113.8667
+    },
+    {
+      "build": "采集专精选最贵基础材料",
+      "route": "water",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 2,
+      "p": 0.59,
+      "q": 0.37,
+      "meanItems": 2.59,
+      "replacementCP": 36.8833,
+      "per24h": 147.5333
+    },
+    {
+      "build": "单只普通匹配",
+      "route": "wood",
+      "G": 4,
+      "F": 2,
+      "A": 1,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 3,
+      "p": 0.19,
+      "q": 0.17,
+      "meanItems": 3.19,
+      "replacementCP": 63.8,
+      "per24h": 153.12
+    },
+    {
+      "build": "三只均衡不匹配",
+      "route": "wood",
+      "G": 9,
+      "F": 9,
+      "A": 0,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 3,
+      "p": 0.275,
+      "q": 0.28,
+      "meanItems": 3.275,
+      "replacementCP": 65.5,
+      "per24h": 157.2
+    },
+    {
+      "build": "三只采集匹配",
+      "route": "wood",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 3,
+      "p": 0.47,
+      "q": 0.31,
+      "meanItems": 3.47,
+      "replacementCP": 69.4,
+      "per24h": 166.56
+    },
+    {
+      "build": "三只发现匹配",
+      "route": "wood",
+      "G": 6,
+      "F": 12,
+      "A": 3,
+      "rank": 0,
+      "clueRank": 0,
+      "master": false,
+      "base": 3,
+      "p": 0.32,
+      "q": 0.43,
+      "meanItems": 3.32,
+      "replacementCP": 66.4,
+      "per24h": 159.36
+    },
+    {
+      "build": "采集满手艺专精",
+      "route": "wood",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 3,
+      "p": 0.59,
+      "q": 0.37,
+      "meanItems": 3.59,
+      "replacementCP": 71.8,
+      "per24h": 172.32
+    },
+    {
+      "build": "发现满手艺专精",
+      "route": "wood",
+      "G": 6,
+      "F": 12,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 3,
+      "p": 0.44,
+      "q": 0.49,
+      "meanItems": 3.44,
+      "replacementCP": 68.8,
+      "per24h": 165.12
+    },
+    {
+      "build": "采集专精选最贵基础材料",
+      "route": "wood",
+      "G": 12,
+      "F": 6,
+      "A": 3,
+      "rank": 3,
+      "clueRank": 2,
+      "master": true,
+      "base": 3,
+      "p": 0.59,
+      "q": 0.37,
+      "meanItems": 3.59,
+      "replacementCP": 91.8,
+      "per24h": 220.32
+    }
+  ],
+  "attainable": [
+    {
+      "route": "yard",
+      "bestMaterial": {
+        "route": "yard",
+        "G": 12,
+        "F": 6,
+        "A": 3,
+        "rank": 3,
+        "clueRank": 2,
+        "master": true,
+        "base": 1,
+        "p": 0.59,
+        "q": 0.37,
+        "meanItems": 1.59,
+        "replacementCP": 7.95,
+        "per24h": 95.4,
+        "team": [
+          "0:0",
+          "0:12",
+          "0:13"
+        ]
+      },
+      "bestClue": {
+        "route": "yard",
+        "G": 6,
+        "F": 12,
+        "A": 3,
+        "rank": 3,
+        "clueRank": 2,
+        "master": true,
+        "base": 1,
+        "p": 0.44,
+        "q": 0.49,
+        "meanItems": 1.44,
+        "replacementCP": 7.2,
+        "per24h": 86.4,
+        "team": [
+          "0:2",
+          "0:34",
+          "0:35"
+        ]
+      }
+    },
+    {
+      "route": "water",
+      "bestMaterial": {
+        "route": "water",
+        "G": 12,
+        "F": 6,
+        "A": 3,
+        "rank": 3,
+        "clueRank": 2,
+        "master": true,
+        "base": 2,
+        "p": 0.59,
+        "q": 0.37,
+        "meanItems": 2.59,
+        "replacementCP": 30.2167,
+        "per24h": 120.8667,
+        "team": [
+          "0:28",
+          "0:41",
+          "0:58"
+        ]
+      },
+      "bestClue": {
+        "route": "water",
+        "G": 6,
+        "F": 12,
+        "A": 3,
+        "rank": 3,
+        "clueRank": 2,
+        "master": true,
+        "base": 2,
+        "p": 0.44,
+        "q": 0.49,
+        "meanItems": 2.44,
+        "replacementCP": 28.4667,
+        "per24h": 113.8667,
+        "team": [
+          "1:2",
+          "1:19",
+          "1:20"
+        ]
+      }
+    },
+    {
+      "route": "wood",
+      "bestMaterial": {
+        "route": "wood",
+        "G": 12,
+        "F": 6,
+        "A": 3,
+        "rank": 3,
+        "clueRank": 2,
+        "master": true,
+        "base": 3,
+        "p": 0.59,
+        "q": 0.37,
+        "meanItems": 3.59,
+        "replacementCP": 71.8,
+        "per24h": 172.32,
+        "team": [
+          "0:17",
+          "0:23",
+          "0:47"
+        ]
+      },
+      "bestClue": {
+        "route": "wood",
+        "G": 6,
+        "F": 12,
+        "A": 3,
+        "rank": 3,
+        "clueRank": 2,
+        "master": true,
+        "base": 3,
+        "p": 0.44,
+        "q": 0.49,
+        "meanItems": 3.44,
+        "replacementCP": 68.8,
+        "per24h": 165.12,
+        "team": [
+          "0:10",
+          "0:36",
+          "0:38"
+        ]
+      }
+    }
+  ],
+  "batchTimeFactor": 0.9783932059756053,
+  "throughput": [
+    {
+      "reduction": 0,
+      "cycleMinutes": 7.877145647804842,
+      "expectedCyclesPer24h": 182.80733458334504,
+      "netCPWithoutBusiness": 16221.518518653873,
+      "netCPWithRebate": 17318.362526153942
+    },
+    {
+      "reduction": 0.2,
+      "cycleMinutes": 6.311716518243874,
+      "expectedCyclesPer24h": 228.14712857234835,
+      "netCPWithoutBusiness": 20244.772342144475,
+      "netCPWithRebate": 21613.655113578567
+    },
+    {
+      "reduction": 0.25,
+      "cycleMinutes": 5.920359235853632,
+      "expectedCyclesPer24h": 243.22848371757163,
+      "netCPWithoutBusiness": 21583.02543976895,
+      "netCPWithRebate": 23042.396342074382
+    }
+  ],
+  "inventoryCases": [
+    {
+      "total": 1,
+      "reserved": 1,
+      "home": 0,
+      "sellAll": 0,
+      "keepOne": 0
+    },
+    {
+      "total": 3,
+      "reserved": 1,
+      "home": 2,
+      "sellAll": 2,
+      "keepOne": 1
+    },
+    {
+      "total": 3,
+      "reserved": 0,
+      "home": 3,
+      "sellAll": 3,
+      "keepOne": 2
+    },
+    {
+      "total": 1,
+      "reserved": 0,
+      "home": 1,
+      "sellAll": 1,
+      "keepOne": 0
+    },
+    {
+      "total": 0,
+      "reserved": 0,
+      "home": 0,
+      "sellAll": 0,
+      "keepOne": 0
+    }
+  ],
+  "assertions": {
+    "species": 193,
+    "totalPoints": 54,
+    "allNodesCost": 80,
+    "baseNodesCost": 60,
+    "masteryActiveMax": 1,
+    "minCookMinutes": 6,
+    "maxExpeditionBonus": 0.6,
+    "maxClueChance": 0.55,
+    "maxCleanHours": 72
+  }
+}

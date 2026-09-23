@@ -1,0 +1,581 @@
+{
+  "seed": 20260920,
+  "hashes": {
+    "web/engine.js": "d3f7a57aa705e1070c7efbece24bb27cb018b1c74849da42c4d8193505db5e66",
+    "web/data.js": "1595b413bd3056f138276f95fb1258d87d8ea4025c0c87bf2f614fe65885209e",
+    "web/recipes.js": "4d8a0a6eb3a0f1c0cf57952b48f8ef036728e98e1a8c1d61f19face5b24b7f04",
+    "web/content-pack.js": "b614348549db15a00334ba31bec5141be7a850f8174c6594ea2fd7cfaf3c80ff",
+    "web/seasonal-pack.js": "74828ea35e5755c30cf56733df8460627104f48d0ced6dd5cf839e25ddc5b2cd",
+    "web/ingredient-unlocks.js": "dbbd38c4b4d06531e8bcf0c6acdbc917d62b26effc108c199993229ca607b4ce",
+    "web/legacy-activities.js": "ee45f9e3537683a9646ddc6980da09c61e80bd31fd6b899d1451c3b2faca99ef",
+    "web/shrine.js": "b20454cc66034319e85affbcffefb2de32cba67a104a1d778574cb173612fb68",
+    "web/recipe-book.js": "e3d9a36fce51c912a4870609a805e65df7f6cc9619fc72439cd31eaec9b4b118",
+    "web/recipe-catalog-data.js": "1d8aef85ed8ec6be9c7846a1a2b7cb9d19358b4de5f1ac9606fd6ff4cdb6858f",
+    "web/holiday-calendar.js": "6ac063c2447de0a7d838e6322204594c0fc8c56454a2b2f6a98d2691e74f08f3",
+    "web/farm.js": "6b869f413db106ef16e23832a8ab306072d081da379531087ae0e22a9eb05176",
+    "web/collection-ui.js": "b7620d08601f5fae969ede1c8ebdcff300cfce6e9644e6737268753212123658",
+    "web/save-store.js": "060f92cfdf07f1a3afb7c95940e3893150a0be90afa6683fc904e8e34d5a2ad8",
+    "docs/worldbuilding-and-expansion-brief.md": "1cd2a637ab67a42586ece0eabfff4aa52a07a9bcf1fd3029ac917d3bd62c7517"
+  },
+  "counts": [
+    128,
+    65
+  ],
+  "tools": [
+    {
+      "id": 0,
+      "name": "保温灯",
+      "minutes": [
+        120,
+        100,
+        80
+      ],
+      "buy": [
+        0,
+        1000,
+        2000
+      ],
+      "cook": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1,
+      "name": "平底锅",
+      "minutes": [
+        15,
+        13,
+        11
+      ],
+      "buy": [
+        500,
+        1500,
+        2500
+      ],
+      "cook": [
+        90,
+        90,
+        90
+      ]
+    },
+    {
+      "id": 2,
+      "name": "水煮锅",
+      "minutes": [
+        60,
+        50,
+        40
+      ],
+      "buy": [
+        1000,
+        3000,
+        5000
+      ],
+      "cook": [
+        60,
+        60,
+        60
+      ]
+    },
+    {
+      "id": 3,
+      "name": "油炸锅",
+      "minutes": [
+        30,
+        25,
+        20
+      ],
+      "buy": [
+        1500,
+        4500,
+        7500
+      ],
+      "cook": [
+        120,
+        120,
+        120
+      ]
+    },
+    {
+      "id": 4,
+      "name": "烤箱",
+      "minutes": [
+        240,
+        200,
+        160
+      ],
+      "buy": [
+        2000,
+        6000,
+        10000
+      ],
+      "cook": [
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "id": 5,
+      "name": "炖锅",
+      "minutes": [
+        360,
+        300,
+        240
+      ],
+      "buy": [
+        3000,
+        9000,
+        15000
+      ],
+      "cook": [
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "id": 6,
+      "name": "烧水壶",
+      "minutes": [
+        10,
+        9,
+        8
+      ],
+      "buy": [
+        2500,
+        7500,
+        12500
+      ],
+      "cook": [
+        75,
+        75,
+        75
+      ]
+    },
+    {
+      "id": 7,
+      "name": "面包机",
+      "minutes": [
+        180,
+        150,
+        120
+      ],
+      "buy": [
+        5000,
+        15000,
+        25000
+      ],
+      "cook": [
+        45,
+        45,
+        45
+      ]
+    },
+    {
+      "id": 8,
+      "name": "竹蒸笼",
+      "minutes": [
+        45,
+        38,
+        30
+      ],
+      "buy": [
+        3000,
+        6000,
+        12000
+      ],
+      "cook": [
+        120,
+        120,
+        120
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "id": 0,
+      "name": "食盐土",
+      "price": 5
+    },
+    {
+      "id": 1,
+      "name": "柠檬",
+      "price": 5
+    },
+    {
+      "id": 2,
+      "name": "照烧酱",
+      "price": 5
+    },
+    {
+      "id": 3,
+      "name": "乌龙茶叶",
+      "price": 10
+    },
+    {
+      "id": 4,
+      "name": "印度咖喱",
+      "price": 15
+    },
+    {
+      "id": 5,
+      "name": "辣椒粉",
+      "price": 15
+    },
+    {
+      "id": 6,
+      "name": "醋酱油",
+      "price": 20
+    },
+    {
+      "id": 7,
+      "name": "美乃滋",
+      "price": 20
+    },
+    {
+      "id": 8,
+      "name": "香草叶",
+      "price": 20
+    },
+    {
+      "id": 9,
+      "name": "面粉",
+      "price": 20
+    },
+    {
+      "id": 10,
+      "name": "墨西哥薄饼",
+      "price": 25
+    },
+    {
+      "id": 11,
+      "name": "河水",
+      "price": 10
+    },
+    {
+      "id": 12,
+      "name": "料理酒",
+      "price": 20
+    },
+    {
+      "id": 13,
+      "name": "人参",
+      "price": 25
+    },
+    {
+      "id": 14,
+      "name": "酱油",
+      "price": 20
+    },
+    {
+      "id": 15,
+      "name": "雪晶",
+      "price": 30
+    },
+    {
+      "id": 16,
+      "name": "糯米",
+      "price": 25
+    },
+    {
+      "id": 17,
+      "name": "巧克力砖",
+      "price": 20
+    },
+    {
+      "id": 18,
+      "name": "防腐剂",
+      "price": 5
+    },
+    {
+      "id": 19,
+      "name": "辣椒",
+      "price": 20
+    },
+    {
+      "id": 20,
+      "name": "罗勒",
+      "price": 25
+    },
+    {
+      "id": 21,
+      "name": "蕃茄",
+      "price": 25
+    },
+    {
+      "id": 22,
+      "name": "洋葱",
+      "price": 20
+    },
+    {
+      "id": 23,
+      "name": "大蒜",
+      "price": 20
+    },
+    {
+      "id": 24,
+      "name": "奶油",
+      "price": 25
+    },
+    {
+      "id": 25,
+      "name": "薯粉",
+      "price": 30
+    },
+    {
+      "id": 26,
+      "name": "木炭",
+      "price": 30
+    },
+    {
+      "id": 27,
+      "name": "盐",
+      "price": 15
+    },
+    {
+      "id": 28,
+      "name": "黑麻油",
+      "price": 25
+    },
+    {
+      "id": 29,
+      "name": "生姜",
+      "price": 15
+    },
+    {
+      "id": 30,
+      "name": "蕃茄酱",
+      "price": 15
+    },
+    {
+      "id": 31,
+      "name": "白米饭",
+      "price": 25
+    },
+    {
+      "id": 32,
+      "name": "天妇罗酱汁",
+      "price": 15
+    },
+    {
+      "id": 33,
+      "name": "蜂蜜",
+      "price": 30
+    },
+    {
+      "id": 34,
+      "name": "红酒",
+      "price": 35
+    },
+    {
+      "id": 35,
+      "name": "香菇菌种包",
+      "price": 5
+    },
+    {
+      "id": 36,
+      "name": "防晒乳液",
+      "price": 10
+    },
+    {
+      "id": 37,
+      "name": "白砂糖",
+      "price": 15
+    },
+    {
+      "id": 38,
+      "name": "醋",
+      "price": 30
+    },
+    {
+      "id": 39,
+      "name": "芝麻酱",
+      "price": 35
+    },
+    {
+      "id": 40,
+      "name": "小黄瓜",
+      "price": 25
+    },
+    {
+      "id": 41,
+      "name": "黑胡椒",
+      "price": 25
+    },
+    {
+      "id": 42,
+      "name": "优格",
+      "price": 35
+    },
+    {
+      "id": 43,
+      "name": "白酒",
+      "price": 35
+    },
+    {
+      "id": 44,
+      "name": "柳橙",
+      "price": 5
+    },
+    {
+      "id": 45,
+      "name": "面包粉",
+      "price": 10
+    },
+    {
+      "id": 46,
+      "name": "青葱",
+      "price": 10
+    },
+    {
+      "id": 47,
+      "name": "香菜",
+      "price": 15
+    },
+    {
+      "id": 48,
+      "name": "冬粉",
+      "price": 20
+    },
+    {
+      "id": 49,
+      "name": "白豆",
+      "price": 20
+    },
+    {
+      "id": 50,
+      "name": "樱桃",
+      "price": 30
+    },
+    {
+      "id": 51,
+      "name": "日式醤油露",
+      "price": 20
+    },
+    {
+      "id": 52,
+      "name": "荞麦面",
+      "price": 25
+    },
+    {
+      "id": 53,
+      "name": "青花椒",
+      "price": 35
+    },
+    {
+      "id": 54,
+      "name": "薄饼皮",
+      "price": 30
+    },
+    {
+      "id": 55,
+      "name": "甜面酱",
+      "price": 20
+    },
+    {
+      "id": 56,
+      "name": "咖啡豆",
+      "price": 40
+    },
+    {
+      "id": 57,
+      "name": "牛乳",
+      "price": 45
+    },
+    {
+      "id": 58,
+      "name": "焦糖浆",
+      "price": 40
+    },
+    {
+      "id": 59,
+      "name": "冰块",
+      "price": 5
+    },
+    {
+      "id": 60,
+      "name": "炼乳",
+      "price": 35
+    },
+    {
+      "id": 61,
+      "name": "鲜奶油",
+      "price": 30
+    },
+    {
+      "id": 62,
+      "name": "爱尔兰威士忌",
+      "price": 50
+    },
+    {
+      "id": 63,
+      "name": "红茶叶",
+      "price": 15
+    },
+    {
+      "id": 64,
+      "name": "绿茶叶",
+      "price": 15
+    },
+    {
+      "id": 65,
+      "name": "菊花",
+      "price": 30
+    },
+    {
+      "id": 66,
+      "name": "冰糖",
+      "price": 25
+    },
+    {
+      "id": 67,
+      "name": "泰式红茶叶",
+      "price": 20
+    },
+    {
+      "id": 68,
+      "name": "御神签",
+      "price": 0
+    },
+    {
+      "id": 69,
+      "name": "火苗",
+      "price": 0
+    },
+    {
+      "id": 70,
+      "name": "木绵",
+      "price": 0
+    },
+    {
+      "id": 71,
+      "name": "红豆",
+      "price": 30
+    },
+    {
+      "id": 72,
+      "name": "黑芝麻",
+      "price": 55
+    },
+    {
+      "id": 73,
+      "name": "明太子",
+      "price": 50
+    },
+    {
+      "id": 74,
+      "name": "海苔",
+      "price": 35
+    }
+  ],
+  "holidaySpecies": 28,
+  "upgradeCosts": [
+    10000,
+    20000,
+    30000
+  ],
+  "allCookwareBuy": 163500
+}

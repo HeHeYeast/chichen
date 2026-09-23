@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-09-21T15:01:12.763Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "skill-art",
+      "passed": true
+    },
+    {
+      "name": "integration",
+      "passed": true
+    },
+    {
+      "name": "tool-strip",
+      "passed": true
+    },
+    {
+      "name": "recipe-book",
+      "passed": true
+    },
+    {
+      "name": "save-ui",
+      "passed": true
+    },
+    {
+      "name": "resume",
+      "passed": true
+    },
+    {
+      "name": "kitchen-care",
+      "passed": true
+    }
+  ],
+  "nativeDeviceTest": false
+}

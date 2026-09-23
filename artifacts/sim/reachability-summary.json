@@ -1,0 +1,109 @@
+{
+  "checkedAt": "2026-09-23T14:31:22.357Z",
+  "passed": true,
+  "seedCount": 8,
+  "initialConditions": "funded legacy193 reachability fixture, 2,000,000 CP, all equipment; not a pacing forecast",
+  "commandContract": "each action runs execute + advanceWorld, failed transactions restore prior state; harvest transitions run at actual increasing timestamps",
+  "speciesPerRun": 48,
+  "cardsPerRun": 24,
+  "maxBatchesPerSpecies": 4,
+  "maxAttemptsPerCard": 4,
+  "runs": [
+    {
+      "seed": 1,
+      "trips": 161,
+      "batches": 141,
+      "identify": 8,
+      "purchases": 265,
+      "repairs": 220,
+      "plainBatches": 29,
+      "virtualDays": 59.1,
+      "cpSpent": 16873,
+      "sha256": "09427e8972e53d741c09ac4dcaa386c5f06c952b73852df0b881324ecc2095c0"
+    },
+    {
+      "seed": 2,
+      "trips": 162,
+      "batches": 137,
+      "identify": 8,
+      "purchases": 250,
+      "repairs": 225,
+      "plainBatches": 30,
+      "virtualDays": 61.3,
+      "cpSpent": 16230,
+      "sha256": "ce4516c9fd1b03eb580ba96c3147ffee9f78d849c862bb8e78c889cfd4421c0d"
+    },
+    {
+      "seed": 3,
+      "trips": 163,
+      "batches": 149,
+      "identify": 8,
+      "purchases": 278,
+      "repairs": 223,
+      "plainBatches": 31,
+      "virtualDays": 60.8,
+      "cpSpent": 18065,
+      "sha256": "28e165abf9fb85126aa36a5b5d1d0da919eb0b87c3c6ebeb764e70c1299d7ac2"
+    },
+    {
+      "seed": 4,
+      "trips": 159,
+      "batches": 128,
+      "identify": 8,
+      "purchases": 237,
+      "repairs": 213,
+      "plainBatches": 30,
+      "virtualDays": 58.4,
+      "cpSpent": 16416,
+      "sha256": "7b9595c203ee0b01cadb08f90b57eab4c3665931ac018501b7fc044a4626e2ff"
+    },
+    {
+      "seed": 5,
+      "trips": 157,
+      "batches": 118,
+      "identify": 8,
+      "purchases": 220,
+      "repairs": 206,
+      "plainBatches": 33,
+      "virtualDays": 57.8,
+      "cpSpent": 16162,
+      "sha256": "ae01d9954ecd4ddb0b6671fa03b6427b495686ed9d2af9b5a6aee8ef79422c91"
+    },
+    {
+      "seed": 6,
+      "trips": 164,
+      "batches": 139,
+      "identify": 8,
+      "purchases": 262,
+      "repairs": 225,
+      "plainBatches": 33,
+      "virtualDays": 61.4,
+      "cpSpent": 17219,
+      "sha256": "b5da7b1e6f7e9aea86075167514cab825aef4f7154b513c87ce39e2f93e8a2df"
+    },
+    {
+      "seed": 7,
+      "trips": 157,
+      "batches": 126,
+      "identify": 8,
+      "purchases": 238,
+      "repairs": 208,
+      "plainBatches": 32,
+      "virtualDays": 58.1,
+      "cpSpent": 16144,
+      "sha256": "8c742d18a61be2ee71498a74fcf24f1df2d6e9e305860dbefdd8b7457b730312"
+    },
+    {
+      "seed": 8,
+      "trips": 158,
+      "batches": 116,
+      "identify": 8,
+      "purchases": 226,
+      "repairs": 204,
+      "plainBatches": 29,
+      "virtualDays": 57.5,
+      "cpSpent": 15570,
+      "sha256": "e241e19c8327c3f342b5ce3fc159db25c34939f3effcf822079a3760aaa97cc5"
+    }
+  ]
+}

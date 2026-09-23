@@ -1,0 +1,345 @@
+[
+  {
+    "name": "valid\/regional\/first-regional-departure",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/first-specimen-full-bag",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/identify-expands-to36",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/claim-regional-basket",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/free-method-trip-1",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/free-method-return-1",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/free-method-trip-2",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/free-method-return-2",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/free-method-trip-3",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/free-method-return-3",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/prepare-C129",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regional\/batch3-C129",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/sampling-depart",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/sampling-return",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/identify-76",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/prepare-ALT-V",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/batch3-ALT-V",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/abandon-ALT-batch-start-steamer-C3",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/river-depart",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/river-return",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/valley\/identify-river",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/business\/open-24-with-credit",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/business\/two-windows-sold-12",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/business\/sold-out-report",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/orders\/milestone",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/orders\/accept-O01",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/orders\/reserve-six",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/orders\/deliver-first-six",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/orders\/complete-Q-loss",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/bay\/guide-depart",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/bay\/guide-return",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/bay\/cargo-depart",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/bay\/cargo-return",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regulars\/mn1-open",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regulars\/mn1-visitor",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/regulars\/read-RG1-1",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/projects\/pj1-a",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/projects\/pj1-b",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/projects\/pj1-c-pay-200",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/projects\/preset-0",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/projects\/pj2-a-pay-100",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "valid\/projects\/pj2-b-deliver-4",
+    "webAccepted": true,
+    "webError": null,
+    "nativeAccepted": true
+  },
+  {
+    "name": "business-missing-roles",
+    "webAccepted": false,
+    "webError": "存档中的 营业 当前单.roles 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 字段集合 [menuId, roles, stock, initialStock, snapshot, prices, rewards, creditReserve, useRewards, tendency, capacity, id, rulesVersion, startAt, hardEndAt, processedWindow, roleCursor, soldByKey, roleSales, fullSoldByKey, fullRoleSales, baseCP, markupCP, themeCP, bonusCP, totalSold, windowReports, recordedValid, recordedComplete, bonusSettled, pendingCloseAt, visitorCandidates, visitorEvents]"
+  },
+  {
+    "name": "business-negative-price",
+    "webAccepted": false,
+    "webError": "存档中的 营业 基础价 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 整数范围"
+  },
+  {
+    "name": "business-forged-window-income",
+    "webAccepted": false,
+    "webError": "存档中的 营业 窗口金额守恒 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 窗口金额守恒"
+  },
+  {
+    "name": "business-forged-role-cursor",
+    "webAccepted": false,
+    "webError": "存档中的 营业 角色游标 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 整数范围"
+  },
+  {
+    "name": "facts-invalid-material-and-negative",
+    "webAccepted": false,
+    "webError": "存档中的 事实 材料批数 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 事实计数身份"
+  },
+  {
+    "name": "facts-invalid-order-counter",
+    "webAccepted": false,
+    "webError": "存档中的 事实 模板数量 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 事实计数身份"
+  },
+  {
+    "name": "facts-invalid-predicate",
+    "webAccepted": false,
+    "webError": "存档中的 事实 复合条件身份 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 复合事实身份"
+  },
+  {
+    "name": "order-forged-variant",
+    "webAccepted": false,
+    "webError": "存档中的 营业 采购冻结条款 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 采购变体"
+  },
+  {
+    "name": "order-forged-allowed",
+    "webAccepted": false,
+    "webError": "存档中的 营业 需求组冻结 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 需求组冻结"
+  },
+  {
+    "name": "order-negative-paidCP",
+    "webAccepted": false,
+    "webError": "存档中的 营业 已付货款 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: 整数范围"
+  },
+  {
+    "name": "order-invalid-template-progress",
+    "webAccepted": false,
+    "webError": "存档中的 营业 模板进度身份 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 经营存档无效: orders身份"
+  },
+  {
+    "name": "project-fractional-payment",
+    "webAccepted": false,
+    "webError": "存档中的 项目付款 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 存档数值无效: PJ-1-C"
+  },
+  {
+    "name": "project-invalid-pinned-choice",
+    "webAccepted": false,
+    "webError": "存档中的 项目选定品种 数据无效，原存档未修改。",
+    "nativeAccepted": false,
+    "nativeError": "java.io.IOException: 项目选定品种无效"
+  }
+]

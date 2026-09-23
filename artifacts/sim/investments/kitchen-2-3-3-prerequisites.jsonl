@@ -1,0 +1,12 @@
+{"seq":1,"at":1798992000000,"type":"prerequisite-tool","id":1,"level":0,"cpBefore":100000,"cpAfter":99500,"delta":-500,"farm":{},"materials":{},"rngSeed":3}
+{"seq":2,"at":1798992000000,"type":"prerequisite-tool","id":2,"level":0,"cpBefore":99500,"cpAfter":98500,"delta":-1000,"farm":{},"materials":{},"rngSeed":3}
+{"seq":3,"at":1798992000000,"type":"prerequisite-tool","id":3,"level":0,"cpBefore":98500,"cpAfter":97000,"delta":-1500,"farm":{},"materials":{},"rngSeed":3}
+{"seq":4,"at":1798992000000,"type":"prerequisite-tool","id":4,"level":0,"cpBefore":97000,"cpAfter":95000,"delta":-2000,"farm":{},"materials":{},"rngSeed":3}
+{"seq":5,"at":1798992000000,"type":"prerequisite-tool","id":5,"level":0,"cpBefore":95000,"cpAfter":92000,"delta":-3000,"farm":{},"materials":{},"rngSeed":3}
+{"seq":6,"at":1798992000000,"type":"prerequisite-kitchen","from":1,"to":2,"cpBefore":92000,"cpAfter":82000,"delta":-10000,"farm":{},"materials":{},"rngSeed":3}
+{"seq":7,"at":1798992000000,"type":"prerequisite-tool","id":0,"level":1,"cpBefore":82000,"cpAfter":81000,"delta":-1000,"farm":{},"materials":{},"rngSeed":3}
+{"seq":8,"at":1798992000000,"type":"prerequisite-tool","id":1,"level":1,"cpBefore":81000,"cpAfter":79500,"delta":-1500,"farm":{},"materials":{},"rngSeed":3}
+{"seq":9,"at":1798992000000,"type":"prerequisite-tool","id":2,"level":1,"cpBefore":79500,"cpAfter":76500,"delta":-3000,"farm":{},"materials":{},"rngSeed":3}
+{"seq":10,"at":1798992000000,"type":"prerequisite-tool","id":3,"level":1,"cpBefore":76500,"cpAfter":72000,"delta":-4500,"farm":{},"materials":{},"rngSeed":3}
+{"seq":11,"at":1798992000000,"type":"prerequisite-tool","id":4,"level":1,"cpBefore":72000,"cpAfter":66000,"delta":-6000,"farm":{},"materials":{},"rngSeed":3}
+{"seq":12,"at":1798992000000,"type":"prerequisite-tool","id":5,"level":1,"cpBefore":66000,"cpAfter":57000,"delta":-9000,"farm":{},"materials":{},"rngSeed":3}

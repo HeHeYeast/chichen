@@ -1,0 +1,26 @@
+--- 20260921/web/collection-ui.css
++++ current/web/collection-ui.css
+@@ -96,3 +96,23 @@
+ .species-sell strong { font-variant-numeric: tabular-nums; }
+ @media (prefers-reduced-motion: no-preference) { .species-portrait { animation: species-appear 160ms ease-out; } }
+ @keyframes species-appear { from { transform: scale(.93); } to { transform: scale(1); } }
++
++/* One paper book, four sections; inner categories use a select, not another rail. */
++.book-screen,.species-book-screen{display:flex;flex-direction:column;overflow:hidden;background:#fff7da;color:#694b30;font-size:14px}
++.book-navigation{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;flex:none;margin:0 0 8px;border-bottom:2px solid #ae8c52}
++.book-navigation button{min-width:0;min-height:44px;padding:6px 2px;border:1px solid #b29868;border-bottom:0;border-radius:8px 8px 0 0;background:#eee8d1;color:#6b6248;font:inherit;font-size:14px}
++.book-navigation button[aria-pressed=true]{background:#f4cf76;color:#603d23;font-weight:700;box-shadow:inset 0 3px #ffebad}
++.book-reader{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:3px 5px 14px}
++.book-screen button,.species-book-screen button,.book-screen select,.book-screen input,.collection-screen input{font:inherit;min-height:44px}
++.book-screen :focus-visible,.book-navigation :focus-visible,.book-search :focus-visible,.species-book-screen :focus-visible{outline:3px solid #567447;outline-offset:2px}
++.book-intro{border-bottom:1px dashed #cdb887;padding:10px 3px 12px}.book-intro h3{font-size:22px;line-height:1.4;margin:7px 0;color:#6d4629}.book-intro p,.book-intro small{font-size:14px;color:#786747;margin:4px 0}
++.book-section{padding:10px 0;border-bottom:1px dashed #ddcda6}.book-section h4{font-size:16px;margin:3px 0 9px}.book-section p,.book-muted{font-size:14px;line-height:1.7;color:#746349}
++.book-path{display:flex;flex-direction:column;align-items:flex-start;gap:6px;box-sizing:border-box;width:100%;margin:7px 0;padding:10px 12px;text-align:left;background:#fffcf0;border:1px solid #ccb982;border-radius:5px 12px 12px 5px;color:#6c4f31;line-height:1.6;white-space:normal}
++.book-path strong{font-size:16px}.book-path span{font-size:14px;color:#73694d}
++.book-recent{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.book-recent button{display:flex;flex-direction:column;align-items:center;min-width:0;background:#fcf5db;border:1px dashed #c3ae75;border-radius:8px;padding:8px 3px;font-size:14px}.book-recent .sprite-art,.book-recent img{width:54px;height:54px}.book-recent small{font-size:14px;color:#776c54}
++.book-filters{display:flex;gap:10px;flex-wrap:wrap}.book-filters label{display:flex;flex:1;flex-direction:column;gap:5px;min-width:100px}.book-filters select,.books-category select{max-width:100%;padding:6px;background:#fffcf0;color:#674d31;border:1px solid #b8a06b;border-radius:6px}
++.book-material{padding:12px;margin:12px 0;border:1px solid #ccb989;border-left:4px solid #8da270;border-radius:4px 12px 12px 4px;background:#fffdf1}.book-material h3{font-size:18px;margin:6px 0}.book-material p{font-size:14px;line-height:1.7}.book-material small{font-size:14px;color:#776949}.book-material button{width:100%;white-space:normal}
++.book-search{display:flex;flex:none;gap:6px;align-items:end;margin:6px 0}.book-search label{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px;font-size:14px}.book-search input{box-sizing:border-box;width:100%;min-width:0;border:1px solid #bda473;border-radius:5px;padding:6px 8px;background:#fffdf2;color:#62482d}.book-search button{min-height:44px;padding:6px 10px;font-size:14px}
++.collection-screen .collection-progress{flex-wrap:wrap;font-size:14px}.collection-screen .collection-progress strong{font-size:16px}.collection-screen .collection-progress button,.collection-screen .collection-tabs button{min-height:44px;font-size:14px}
++.collection-screen .collection-book{grid-template-rows:none;grid-auto-rows:minmax(128px,auto);min-height:0;overflow-y:auto;flex:1}.collection-screen .collection-stamp{grid-template-rows:18px 50px minmax(34px,auto) 20px;padding:5px 2px}.collection-screen .collection-code,.collection-screen .collection-stock{font-size:14px;line-height:18px}.collection-screen .collection-name{font-size:14px;line-height:17px}.collection-screen .collection-pager{flex:none;font-size:14px}.collection-screen .collection-pager button{min-height:44px;height:44px;flex-basis:44px;width:44px}
++.species-book-screen .species-sheet{flex:1;min-height:0;overflow-y:auto}.species-book-screen .species-story{font-size:14px;line-height:1.8}.species-book-screen .species-topline,.species-book-screen .species-seal{font-size:14px}.species-book-screen .species-footer{flex:none}.species-book-screen summary{min-height:44px;cursor:pointer;line-height:44px}.species-book-screen .species-back{font-size:14px}.species-book-screen .species-footer button{min-height:44px;height:auto;font-size:14px;white-space:normal}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.4.6",
+  "versionCode": 13,
+  "file": "chick-kitchen-1.4.6.apk",
+  "sha256": "68d36da9b9b15f010ca2c14e3386d87fe1b54cb763ef1fed1e360d82223c5619",
+  "bytes": 51364382,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-19T09:00:29.5395747Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "f79f6e7977679a23b705cc165491131657686e24a5efac6fd196148d140c5bc9",
+  "runtimeFiles": 590,
+  "notes": "修正游戏仍在后台时再次打开的行为：返回离开前的界面并保留未确认操作，不再强制跳到封面。首次启动、退出后重开或进程重建仍停留封面；通知入口继续直达厨房，系统设置及导入导出返回保留当前操作。包含1.4.5的厨具统一外观与脏污进度、提前打扫。沿用原应用标识、签名和版本2存档。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

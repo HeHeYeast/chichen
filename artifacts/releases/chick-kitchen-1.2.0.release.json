@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.2.0",
+  "versionCode": 4,
+  "file": "chick-kitchen-1.2.0.apk",
+  "sha256": "4537c5b93881d8d55abb9dad94c7f47059ee68dcd4ec1cba71b711cecb0032d4",
+  "bytes": 46496205,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-14T01:31:32.6827560Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "b7e72a25f96f7599b10a31f22cb379672fd7523bc7e10c9165c03237155d8819",
+  "runtimeFiles": 577,
+  "notes": "新增神社御神签互动、15种签鸡收藏册和8项永久收藏回礼；礼物可直接准备下一批配方，保留正在孵化的伙伴。优化材料选择、设置滚动、返回层级、开火确认及保存失败回退。保留Magic8底部适配，沿用原签名覆盖更新与已有存档。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

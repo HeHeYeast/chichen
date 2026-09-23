@@ -1,0 +1,2 @@
+const {chromium}=await import('file:///'+process.env.APPDATA.replaceAll('\\','/')+'/npm/node_modules/gsd-pi/node_modules/playwright-core/index.mjs');const b=await chromium.connectOverCDP('http://127.0.0.1:9223');const p=b.contexts()[0].pages()[0];
+console.log(await p.evaluate(()=>{const s=JSON.parse(ChickNative.loadSave());return {keys:Object.keys(s),status:s.status,rawType:typeof s.raw,other:Object.fromEntries(Object.entries(s).filter(([k])=>k!=='raw'))}}));await b.close();

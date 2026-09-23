@@ -1,0 +1,84 @@
+{
+  "checkedAt": "2026-09-22T16:10:49.164Z",
+  "scope": "Independent docs design prototype only; no game regression, native device test or user acceptance",
+  "checks": [
+    {
+      "viewport": "320×568",
+      "routes": 38,
+      "checks": "horizontal fit, shell bounds, footer/nav separation, 44px button height"
+    },
+    {
+      "viewport": "375×667",
+      "routes": 38,
+      "checks": "horizontal fit, shell bounds, footer/nav separation, 44px button height"
+    },
+    {
+      "viewport": "390×844",
+      "routes": 38,
+      "checks": "horizontal fit, shell bounds, footer/nav separation, 44px button height"
+    },
+    {
+      "viewport": "430×932",
+      "routes": 38,
+      "checks": "horizontal fit, shell bounds, footer/nav separation, 44px button height"
+    },
+    {
+      "viewport": "844×390",
+      "routes": 38,
+      "checks": "horizontal fit, shell bounds, footer/nav separation, 44px button height"
+    },
+    {
+      "viewport": "1280×900",
+      "routes": 38,
+      "checks": "horizontal fit, shell bounds, footer/nav separation, 44px button height"
+    },
+    "A: leave stock and immediate sale branch",
+    "A: batch to business draft and submit",
+    "B: 95 CP business receipt, repeated view gives no second payout",
+    "C: depart, return, identify, prepare recipe, cook and simulated real collection",
+    "D: new species → theme → recorded milestone result",
+    "Full bag still allows specimen identification",
+    "Empty inventory routes to preparation",
+    "Simulated save failure preserves funds and draft",
+    "Partial order delivery displays progress and does not pay twice",
+    "Project payment → permanent result → display",
+    "Keyboard dialog Enter/Escape and focus restoration",
+    "Prototype leaves localStorage and sessionStorage empty",
+    "320px larger body text sample: no horizontal overflow; not OS font or screen-reader certification",
+    "Design board at 320px and desktop, all embedded screenshots loaded"
+  ],
+  "screenshots": [
+    "proposed-kitchen-320.png",
+    "proposed-business-320.png",
+    "proposed-bill-320.png",
+    "proposed-orders-320.png",
+    "proposed-journey-320.png",
+    "proposed-returned-320.png",
+    "proposed-region-320.png",
+    "proposed-theme-320.png",
+    "proposed-project-320.png",
+    "proposed-business-desktop.png",
+    "proposed-journey-desktop.png",
+    "proposed-reward-390.png",
+    "proposed-business-large-text-320.png",
+    "design-board-desktop.png"
+  ],
+  "errors": [],
+  "failures": [],
+  "passed": true,
+  "documentationLinks": {
+    "checked": 136,
+    "missing": []
+  },
+  "sourceAudit": {
+    "roots": [
+      "web",
+      "assets",
+      "android/app/src"
+    ],
+    "sha256ComparedFileCount": 661,
+    "changed": [],
+    "removed": [],
+    "note": "Compared with the hashes captured before design artifact creation during this task."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.4.5",
+  "versionCode": 12,
+  "file": "chick-kitchen-1.4.5.apk",
+  "sha256": "14c29d8dc23e73fee7fcc4e8f2a0ebdd2b96c0d1fa92a8a1de2e37f7fbe3e368",
+  "bytes": 51364430,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-19T07:41:16.1976252Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "d81578e4c6c7fc9f0f7a0de102f9bb039e4d1e0a9b3ea7d5d96e826191ae63e6",
+  "runtimeFiles": 590,
+  "notes": "统一八类厨具的三级重绘外观，厨房、商店、成长册和配方共用素材，并保持比例与等级差异。新增常驻脏污进度、距离变脏时间与提前打扫：费用按脏污百分比计算，干净时无需付费；满24小时变脏，四阶段完全脏污费用仍为100/150/200/250 CP。清洁保留当前批次，校验余额和确认金额，保存失败回退。沿用原签名和版本2存档。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

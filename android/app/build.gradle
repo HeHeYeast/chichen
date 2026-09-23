@@ -1,0 +1,59 @@
+import groovy.json.JsonSlurper
+
+plugins { id 'com.android.application' }
+
+def releaseConfig = new JsonSlurper().parse(rootProject.file('release.json'))
+def signingReady = System.getenv('CHICK_SIGNING_FILE') != null
+
+android {
+    namespace 'com.jibao.kitchen'
+    compileSdk 35
+    buildToolsVersion '35.0.0'
+    buildFeatures { buildConfig true }
+
+    defaultConfig {
+        applicationId 'com.jibao.kitchen'
+        minSdk 26
+        targetSdk 35
+        versionCode releaseConfig.versionCode as Integer
+        versionName releaseConfig.versionName
+    }
+
+    signingConfigs {
+        if (signingReady) {
+            release {
+                storeFile file(System.getenv('CHICK_SIGNING_FILE'))
+                storePassword System.getenv('CHICK_SIGNING_STOREPASS')
+                keyAlias System.getenv('CHICK_SIGNING_ALIAS')
+                keyPassword System.getenv('CHICK_SIGNING_KEYPASS')
+                enableV1Signing false
+                enableV2Signing true
+                enableV3Signing true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+            if (signingReady) signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    sourceSets.main.assets.srcDirs = [rootProject.file('generated-assets')]
+    androidResources { noCompress += ['mp3', 'woff2'] }
+}
+
+tasks.register('verifyReleaseIdentity') {
+    doLast {
+        if (releaseConfig.applicationId != 'com.jibao.kitchen') throw new GradleException('The application identity must remain com.jibao.kitchen.')
+        if (!signingReady) throw new GradleException('Use tools/build-android.ps1 to build with the permanent release signing identity.')
+        if (!rootProject.file('generated-assets/web/index.html').exists()) throw new GradleException('Packaged game assets are missing. Run tools/build-android.ps1.')
+    }
+}
+tasks.configureEach { task ->
+    if (task.name == 'preReleaseBuild') task.dependsOn 'verifyReleaseIdentity'
+}

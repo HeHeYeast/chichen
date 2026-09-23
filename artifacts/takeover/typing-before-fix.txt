@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-09-23T14:52:39.566Z",
+  "passed": false,
+  "checks": [
+    "真实厨房收24→单页三去向→出售2仅到账6CP、预留2不交付、备货3只为草稿"
+  ],
+  "errors": [
+    "Failed to set the 'innerHTML' property on 'Element': The node to be removed is no longer a child of this node. Perhaps it was moved in a 'blur' event handler?"
+  ],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

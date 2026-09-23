@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-09-23T06:06:31.994Z",
+  "passed": true,
+  "checks": [
+    "真实时钟（未加速）：开张后离开页面；1小时回访未成交、CP不变；2小时3分回访第1窗恰好卖出6只并一次入账（+19CP），刷新不重复结算"
+  ],
+  "timeline": [
+    {
+      "at": "2026-09-23T04:03:29.029Z",
+      "text": "opened MN1 with 12 at 2026-09-23T04:03:29.009Z"
+    },
+    {
+      "at": "2026-09-23T04:03:29.077Z",
+      "text": "page closed (app left in background)"
+    },
+    {
+      "at": "2026-09-23T05:03:30.159Z",
+      "text": "1h return: no sale yet, CP unchanged"
+    },
+    {
+      "at": "2026-09-23T06:06:30.856Z",
+      "text": "2h03m return: window 1 settled once (6 sold, +19 CP)"
+    }
+  ],
+  "errors": [],
+  "acceleratedClock": false,
+  "realDeviceTest": false,
+  "note": "Desktop Chromium headless with the real device clock; not an Android device."
+}

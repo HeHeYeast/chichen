@@ -1,0 +1,10 @@
+// Isolated QA signing identity. Never references .signing or the release identity.
+gradle.beforeProject { project ->
+    project.plugins.withId('com.android.application') {
+        def debug = project.android.signingConfigs.debug
+        debug.storeFile = new File(project.rootProject.projectDir, '../artifacts/takeover/debug-only.keystore')
+        debug.storePassword = 'android'
+        debug.keyAlias = 'androiddebugkey'
+        debug.keyPassword = 'android'
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "checkedAt":  "2026-09-23T15:08:19.6508438Z",
+    "passed":  false,
+    "expectedCount":  9,
+    "completedCount":  9,
+    "checks":  [
+                   {
+                       "name":  "Runtime content generated outputs",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Native content generated outputs",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Runtime asset availability",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Game and interface tests",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Chinese font coverage",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Native save persistence",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Native hatch notifications",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Backup and update simulations",
+                       "exitCode":  0,
+                       "passed":  true
+                   },
+                   {
+                       "name":  "Browser UI regression",
+                       "exitCode":  1,
+                       "passed":  false
+                   }
+               ]
+}

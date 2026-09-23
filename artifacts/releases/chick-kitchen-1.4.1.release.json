@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.4.1",
+  "versionCode": 8,
+  "file": "chick-kitchen-1.4.1.apk",
+  "sha256": "e70fb652750080b512f7f827328de6888492b8aa19635e8e0c9363d73001993c",
+  "bytes": 48387397,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-14T15:08:29.7695144Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "a975b105b78a35fbb06017caef63fdaf43d8fe4e3411d8428808b44a3193d082",
+  "runtimeFiles": 587,
+  "notes": "修复旧节日伙伴在平日保温灯误出：按离线年度日历限制新开火批次，提前7天预告，配方与委托显示日期；保留已有伙伴、图鉴、资格与当前批次。孵化倒计时和通知统一按实际最后一枚蛋计算，新增预计提醒时间、独立的一分钟后台测试及荣耀后台帮助。同签名覆盖更新保留存档。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

@@ -1,0 +1,7 @@
+{
+  "applicationId": "com.jibao.kitchen",
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "keyAlias": "jibao-release",
+  "createdAt": "2026-09-13T15:52:56.9598110Z",
+  "note": "Public certificate identity only. Keep this file in source control; private material belongs in .signing."
+}

@@ -1,0 +1,14 @@
+package com.google.ads.mediation.admob;
+
+import com.google.ads.mediation.MediationServerParameters;
+
+/* loaded from: D:\gxy_code\game\chicken_duck_test\classes.dex */
+public final class AdMobServerParameters extends MediationServerParameters {
+
+    @MediationServerParameters.Parameter(name = "pubid")
+    public String adUnitId;
+
+    @MediationServerParameters.Parameter(name = "mad_hac", required = false)
+    public String allowHouseAds = null;
+    public int tagForChildDirectedTreatment = -1;
+}

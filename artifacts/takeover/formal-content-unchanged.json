@@ -1,0 +1,24 @@
+{
+  "checkedFiles": 17,
+  "unchanged": true,
+  "sourceHash": "f5a0b0683380ee8b62afc09652f9d6f71d658f688c5324d41a3bc6923095f490",
+  "files": {
+    "docs/content-expansion-assets.md": "be277177452156237ea8ce7aca4927351030a4944f9226af7b5b259ca84eb3da",
+    "docs/content-pack/art-manifest.json": "66c482ab174ba9f3f32eb1624a435cbe1c962003e9b6280d0cdc88b24ce8dd7e",
+    "docs/content-pack/art.md": "d12ff0801c141eb818957ab7cb3e9a67f389f573b7dca96710d3180ac4f8dfee",
+    "docs/content-pack/audit.json": "fd40009c06bfb175d62991cdcba7569279aec771056d2fad304fe91d2e92c0c9",
+    "docs/content-pack/audit.md": "b4f0b455c16881c556fc24d71b7be78c4e377e59b7f4ec8154831c2e4b160f05",
+    "docs/content-pack/baseline.json": "248f7796b2079b2e93f680e5ca34d189653142d41b0afa7eeda66baedb0b03e8",
+    "docs/content-pack/business.md": "b4493b0bb8cdca53ae697243268497b93b1aa6eae92a5e01f2757e620713f7af",
+    "docs/content-pack/collections.md": "17873f70eb19df2479ec98aec1b8eb1b923822d777a0f2e0502fcd453904e530",
+    "docs/content-pack/content.json": "41b7a4d0e09442bd0282259ac458bfa83fecb3ed1fb50073af1dfee5bc0f544f",
+    "docs/content-pack/materials-discoveries.md": "c0246e48d5d26a95e4e9d5ec754e879207952244084f25eca76bdbede322c1c9",
+    "docs/content-pack/relation-graph.json": "025dd5c233ffd5f78a7cea16acbb5e87e35dddbea71011e6435a6f7e007cf076",
+    "docs/content-pack/relations.csv": "e04f93878395f3584bca9afc74e988e7daa25add8b55f7ba835863ca0396a752",
+    "docs/content-pack/species.md": "92618d8eadb01986a4080488d376a2818bed8042bf4d250529c13f128577e182",
+    "docs/engineering-implementation-plan.md": "7a46020e0e92833e2f4b4efb5bf3701073b222f5bf954f269297a30fba8272c9",
+    "docs/engineering-integration-design.md": "65467cf14a850d7dd0189539d24819bfacf456cadb714bc07f1ab53914a6d9e4",
+    "docs/gameplay-expansion-design.md": "f5c866159d4658d26658ecc7ea1015a6b33f8bad83c4dbc0259496d59aa9abf3",
+    "docs/ui-information-architecture.md": "3244eb2b6a8e464173e23002a106cbf43fda18bf1e22e418f7864ee0041496ea"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-09-23T04:27:43.524Z",
+  "passed": true,
+  "checks": [
+    "正式谷地页面120/5资格、旧队员选择、切地点/关注仍首标本，满包自动记卡且试做料留篮",
+    "免费辨认不增实体材料、容量30→36，首次篮中75领取一次",
+    "3趟真实完整出发/归队操作免费补全方法，未实收仍显示C129未知剪影",
+    "正式准备与平底锅开火产生Batch3，刷新冻结票据保留，24只实收结锅并记录地区材料用途",
+    "完整合法购买/试做在4批内实收C129，售空仍保留图鉴与方法，再开批安排1+23复刻"
+  ],
+  "screens": [
+    "departure-390",
+    "unknown-record",
+    "record-320",
+    "record-430",
+    "record-1280",
+    "returned-full-bag",
+    "identified-method-direction",
+    "full-method-free",
+    "regional-first-batch",
+    "after-first-trial",
+    "C129-collected"
+  ],
+  "errors": [],
+  "isolatedProfile": true,
+  "acceleratedClock": true,
+  "realDeviceTest": false
+}

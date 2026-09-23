@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>鸡宝厨房 · 返工前后实机对照</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #473f32; background: #edf0e9; font: 14px/1.75 'Microsoft YaHei', 'PingFang SC', sans-serif; }
+    main { width: min(700px, calc(100% - 24px)); margin: 0 auto; padding: 25px 0 30px; }
+    header { margin-bottom: 21px; }
+    .eyebrow { margin: 0 0 5px; color: #786c58; font-size: 12px; letter-spacing: 1px; }
+    h1 { margin: 0 0 9px; font-size: 24px; line-height: 1.4; }
+    p { margin: 7px 0; }
+    .note { color: #746956; font-size: 12px; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 12px 0; font-size: 12px; }
+    a { color: #56704c; text-underline-offset: 3px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    button { min-height: 35px; padding: 7px 13px; color: inherit; background: #f9faf4; border: 1px solid #bfc5b4; border-radius: 5px; font: inherit; font-size: 12px; cursor: pointer; }
+    button:hover { background: #fff0c2; }
+    button[aria-pressed="true"] { background: #ffe29a; border-color: #a38440; font-weight: 700; }
+    button:disabled { opacity: .5; cursor: default; }
+    button:focus-visible, a:focus-visible { outline: 2px solid #247553; outline-offset: 2px; }
+    .comparison { display: grid; grid-template-columns: 320px 320px; justify-content: center; gap: 28px; align-items: start; }
+    figure { width: 320px; margin: 0; }
+    figcaption { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 9px; font-size: 16px; font-weight: 700; }
+    figcaption span { color: #786c58; font-size: 11px; font-weight: 400; }
+    iframe { display: block; width: 320px; height: 568px; border: 0; background: #dfebd9; box-shadow: 0 3px 15px #473f321a; }
+    .frame-footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; }
+    .frame-status { color: #746956; font-size: 11px; font-variant-numeric: tabular-nums; }
+    #message { min-height: 20px; margin: 10px 0 0; color: #786c58; font-size: 12px; }
+    @media (max-width: 700px) { main { max-width: 420px; } .comparison { grid-template-columns: 320px; gap: 26px; } h1 { font-size: 22px; } }
+    @media (max-width: 343px) { main { width: 320px; } header { padding: 0 10px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">厨房样板 / 同尺寸对照</p>
+      <h1>返工前与当前样板</h1>
+      <p>两边都是可操作的游戏，均以 320 × 568 显示。可以分别点击、滑动，比较排布、文字与动作。</p>
+      <p class="note">配方结果可能受随机性影响，两边的品种、朝向与位置不保证一致。这里使用各自的测试存档，不修改正常游戏进度；当前样板仍待验收。</p>
+      <nav aria-label="对照入口">
+        <a href="/review">返回样板试玩</a>
+        <a href="/web/art-board.html">查看美术规范板</a>
+        <a href="/web/baseline-20260908/index.html?review=1" target="_blank" rel="noopener">单独打开返工前画面 ↗</a>
+      </nav>
+      <div class="controls" aria-label="同时切换场景">
+        <button data-scene="ready" disabled>重新显示满鸡</button>
+        <button data-scene="eggs" disabled>显示满蛋</button>
+      </div>
+      <p id="message" role="status">等待两边游戏载入…</p>
+    </header>
+    <div class="comparison">
+      <figure>
+        <figcaption>左 · 返工前<span>320 × 568</span></figcaption>
+        <iframe id="before" src="/web/baseline-20260908/index.html?review=1" title="左侧：返工前游戏" width="320" height="568" allow="autoplay"></iframe>
+        <div class="frame-footer"><span id="before-status" class="frame-status">正在载入…</span><button data-capture="before" disabled>保存返工前画面</button></div>
+      </figure>
+      <figure>
+        <figcaption>右 · 当前样板<span>320 × 568</span></figcaption>
+        <iframe id="after" src="/?review=1" title="右侧：当前厨房样板" width="320" height="568" allow="autoplay"></iframe>
+        <div class="frame-footer"><span id="after-status" class="frame-status">正在载入…</span><button data-capture="after" disabled>保存当前画面</button></div>
+      </figure>
+    </div>
+    <p class="note" style="margin-top:20px">保存按钮直接导出对应游戏画布的 PNG，保留画布原有分辨率；不包含画布外的对照说明或弹窗。</p>
+  </main>
+  <script type="module">
+    const entries = [
+      { id: 'before', frame: document.querySelector('#before'), ready: false },
+      { id: 'after', frame: document.querySelector('#after'), ready: false }
+    ];
+    const sceneButtons = [...document.querySelectorAll('[data-scene]')];
+    const captureButtons = [...document.querySelectorAll('[data-capture]')];
+    const message = document.querySelector('#message');
+    let initialized = false;
+
+    function showScene(scene) {
+      if (!initialized) return;
+      sceneButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scene === scene)));
+      entries.forEach(entry => entry.frame.contentWindow.postMessage({ type: 'chick-review', command: 'scene', value: scene }, location.origin));
+      message.textContent = scene === 'ready' ? '两边已切换为满鸡场景，可以分别滑动收取。' : '两边已切换为满蛋场景，按原速孵化。';
+    }
+
+    sceneButtons.forEach(button => button.addEventListener('click', () => showScene(button.dataset.scene)));
+    captureButtons.forEach(button => button.addEventListener('click', () => {
+      if (!initialized) return;
+      const entry = entries.find(entry => entry.id === button.dataset.capture);
+      try {
+        const canvas = entry.frame.contentDocument.querySelector('#scene');
+        if (!canvas?.width || !canvas?.height) throw new Error('画布尚未就绪');
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = `chick-kitchen-${entry.id === 'before' ? 'before' : 'current'}-${Date.now()}.png`;
+        document.body.append(link);
+        link.click();
+        link.remove();
+        message.textContent = `${entry.id === 'before' ? '返工前' : '当前样板'}画布已提交下载（${canvas.width} × ${canvas.height}）。`;
+      } catch {
+        message.textContent = '暂时无法保存画布，请等待该侧游戏载入后重试。';
+      }
+    }));
+
+    window.addEventListener('message', event => {
+      if (event.origin !== location.origin || event.data?.type !== 'chick-status' || event.data.loaded === false) return;
+      const entry = entries.find(entry => event.source === entry.frame.contentWindow);
+      if (!entry) return;
+      entry.ready = true;
+      const data = event.data;
+      document.querySelector('#' + entry.id + '-status').textContent = `${data.cp} CP · 可收 ${data.ready} / ${data.eggs}`;
+      if (!initialized && entries.every(item => item.ready)) {
+        initialized = true;
+        [...sceneButtons, ...captureButtons].forEach(button => { button.disabled = false; });
+        showScene('ready');
+      }
+    });
+  </script>
+</body>
+</html>

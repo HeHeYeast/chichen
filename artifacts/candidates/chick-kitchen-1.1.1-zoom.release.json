@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.1.1",
+  "versionCode": 3,
+  "file": "chick-kitchen-1.1.1.apk",
+  "sha256": "b3e6e2ccb59a2cc6b471905a68afc5a87e27a6cda795a40e7fbde1c7fbbddccf",
+  "bytes": 46478124,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-09-14T00:30:53.9300483Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "89f342e063df227bd48addd282b454ce63c650b57da4bb1704ddc5e445913f21",
+  "runtimeFiles": 574,
+  "notes": "补齐75种调料目录、厨具三级预览、鸭蛋离线购买、永久委托与特别赠品、时空旅行和图鉴线索；适配Magic8等长屏。沿用原签名覆盖更新，保留游玩记录。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

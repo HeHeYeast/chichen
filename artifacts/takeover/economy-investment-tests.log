@@ -1,0 +1,18 @@
+✔ kitchen entry equipment is actually purchased before either paired arm starts (32.2659ms)
+✔ failed equipment / capital prerequisites are atomic and duck price is exactly 2500 (36.9915ms)
+✔ kitchen-1-2: same starting assets, one explicit investment, conserved benchmark cash (729.6379ms)
+✔ kitchen-2-3: same starting assets, one explicit investment, conserved benchmark cash (792.2889ms)
+✔ duck: same starting assets, one explicit investment, conserved benchmark cash (672.3249ms)
+✔ frying-upgrade-1-2: same starting assets, one explicit investment, conserved benchmark cash (721.8934ms)
+✔ frying-purchase: same starting assets, one explicit investment, conserved benchmark cash (363.2268ms)
+✔ kitchen buys slots/capacity without magically speeding the same old cookware (1430.4625ms)
+✔ representative cookware upgrade reduces minutes and fits more batches in the same budget (714.3656ms)
+✔ duck purchase unlocks duck recipes; its 2500 CP cost is not charged for every batch (639.3506ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6193.985

@@ -1,0 +1,29 @@
+/* 收藏册 shares the paper book of the encyclopedia: tabs, cards, stamps. */
+.books-screen{display:flex;flex-direction:column;overflow:hidden;color:#5d4630;font-size:14px}
+.books-screen button,.books-screen select{font:inherit;min-height:44px}
+.books-screen :focus-visible{outline:3px solid #497657;outline-offset:2px}
+.books-tabs{display:flex;gap:5px;flex:none;margin-bottom:8px;overflow-x:auto}
+.books-tabs button{flex:1 0 auto;padding:4px 8px;border:1.5px solid #a59062;border-radius:8px;background:#ebeac9;color:#546344;font-size:13px}
+.books-tabs button[aria-pressed=true]{background:#dbe7be;border-color:#778b55;font-weight:bold}
+.books-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:0 3px 12px}
+.books-card{display:flex;flex-direction:column;align-items:flex-start;gap:5px;width:100%;margin:0 0 8px;padding:10px 12px;text-align:left;border:1px solid #d9c595;border-radius:9px;background:#fffbed;color:inherit}
+.books-card strong{font-size:16px;color:#744928}.books-card small{font-size:12px;color:#7d6a4f;line-height:1.5}
+.books-row{display:flex;flex-wrap:wrap;gap:4px}
+.books-badge{display:inline-block;padding:2px 7px;border:1px solid #cdb886;border-radius:12px;background:#f5edcf;font-size:12px;color:#7d6a4f}
+.books-badge.is-done{background:#e3edc5;border-color:#8ea16a;color:#4f6b3c;font-weight:bold}
+.books-head{margin:2px 0 8px}.books-head h3{margin:4px 0;font-size:19px;color:#744928}.books-head p{line-height:1.7;margin:4px 0}
+.books-eyebrow{font-size:12px;color:#967750;letter-spacing:.08em}
+.books-stages{list-style:none;padding:0;margin:6px 0;display:flex;flex-direction:column;gap:6px}.books-stages li{font-size:13px;line-height:1.6}
+.books-note{font-size:12px;color:#7d6a4f;line-height:1.6}
+.books-next{font-size:13px;color:#5f7a45;margin-top:10px}
+.books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px}
+.books-species{display:flex;flex-direction:column;align-items:center;font-size:11px;text-align:center}.books-species .sprite-art,.books-species img{width:44px;height:44px}
+.books-slot{display:flex;flex-direction:column;gap:3px;margin:6px 0;font-size:13px}
+.books-mementos{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.books-memento{position:relative;padding:8px 10px 26px;border:1px solid #d9c595;border-radius:9px;background:#fffbed}.books-memento strong{display:block;font-size:14px}.books-memento small{font-size:12px;color:#7d6a4f}
+.books-memento.is-missing{opacity:.7;border-style:dashed}
+.books-memento-art{position:absolute;right:8px;bottom:6px;font-size:10px;color:#a38d63}
+.books-papers{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}.books-papers li{padding:6px 8px;border-bottom:1px dashed #dcc795}.books-papers small{display:block;color:#7d6a4f;font-size:12px}
+.books-footer{display:flex;gap:7px;flex:none;padding-top:6px}.books-footer button{flex:1;border:1.5px solid #a9824d;border-radius:9px;background:#fff2c9}
+.books-category{display:flex;align-items:center;gap:12px;flex:none;margin:0 0 10px;font-size:14px}.books-category select{flex:1;min-width:0;min-height:44px;font-size:14px}
+.books-screen .books-note,.books-screen .books-stages li,.books-screen .books-card small,.books-screen .books-papers small{font-size:14px;line-height:1.7}

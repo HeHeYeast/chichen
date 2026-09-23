@@ -1,0 +1,82 @@
+Game and interface tests : passed
+✔ upgrade requirements expose each missing cookware level and distinguish insufficient CP (0.3552ms)
+✔ reading or dismissing duck purchase details never mutates progress (0.1544ms)
+✔ missing ingredients, levels, kitchen slots, campaign and sign identity cannot silently prepare (2.1256ms)
+✔ read-only recipe previews expose concrete gates; missing materials and duck access cannot spend or prepare (2.0289ms)
+✔ missing gift and missing cookware cannot replace next-batch choices (0.9207ms)
+Chinese font coverage : passed
+  "missing_codepoints": [],
+Native save persistence : passed
+SaveRepository: 40 behavioral assertions passed (AOSP JSON + real files; JVM AtomicFile adapter).
+Native hatch notifications : passed
+HatchScheduler: 60 behavioral assertions passed (JVM platform fakes; not device validation).
+Release preflight passed: all four required checks succeeded.
+Offline game packaged: 587 source files, 46.3 MiB. Runtime SHA-256: a975b105b78a35fbb06017caef63fdaf43d8fe4e3411d8428808b44a3193d082
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.9/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:clean
+> Task :app:preBuild UP-TO-DATE
+> Task :app:verifyReleaseIdentity
+> Task :app:preReleaseBuild
+> Task :app:generateReleaseBuildConfig
+> Task :app:checkReleaseAarMetadata
+> Task :app:generateReleaseResValues
+> Task :app:javaPreCompileRelease
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
+> Task :app:parseReleaseLocalResources
+> Task :app:mergeReleaseResources
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :app:extractProguardFiles
+> Task :app:mergeReleaseJniLibFolders
+> Task :app:mergeReleaseNativeLibs NO-SOURCE
+> Task :app:stripReleaseDebugSymbols NO-SOURCE
+> Task :app:extractReleaseNativeSymbolTables NO-SOURCE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:checkReleaseDuplicateClasses
+> Task :app:desugarReleaseFileDependencies
+> Task :app:mergeReleaseStartupProfile UP-TO-DATE
+> Task :app:mergeReleaseArtProfile UP-TO-DATE
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeExtDexRelease
+> Task :app:mergeReleaseAssets
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:processReleaseJavaRes NO-SOURCE
+> Task :app:collectReleaseDependencies
+> Task :app:mergeReleaseJavaResource
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :app:processReleaseManifestForPackage
+> Task :app:processReleaseResources
+
+> Task :app:compileReleaseJavaWithJavac
+ע: D:\gxy_code\game\chicken_duck_test\android\app\src\main\java\com\jibao\kitchen\MainActivity.javaʹ�û򸲸����ѹ�ʱ�� API��
+ע: �й���ϸ��Ϣ, ��ʹ�� -Xlint:deprecation ���±��롣
+
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:dexBuilderRelease
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :app:optimizeReleaseResources
+> Task :app:compressReleaseAssets
+> Task :app:mergeDexRelease
+> Task :app:compileReleaseArtProfile
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:assembleRelease
+
+BUILD SUCCESSFUL in 23s
+46 actionable tasks: 44 executed, 2 up-to-date
+Release ready: D:\gxy_code\game\chicken_duck_test\artifacts\releases\chick-kitchen-1.4.1.apk
+APK SHA-256: e70fb652750080b512f7f827328de6888492b8aa19635e8e0c9363d73001993c
+Permanent signing certificate SHA-256: 525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862
