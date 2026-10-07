@@ -12,7 +12,7 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
+        "G": 10,
         "F": 2,
         "environment": "yard",
         "traits": [
@@ -75,8 +75,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -119,7 +119,7 @@
       "tags": [],
       "exploration": {
         "G": 2,
-        "F": 4,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -165,8 +165,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 7,
+        "F": 7,
         "environment": "yard",
         "traits": [
           "portable"
@@ -233,8 +233,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 7,
+        "F": 7,
         "environment": "yard",
         "traits": [
           "portable"
@@ -292,7 +292,7 @@
       "tags": [],
       "exploration": {
         "G": 3,
-        "F": 3,
+        "F": 11,
         "environment": "yard",
         "traits": []
       },
@@ -340,7 +340,7 @@
         "fruit"
       ],
       "exploration": {
-        "G": 3,
+        "G": 13,
         "F": 3,
         "environment": "yard",
         "traits": [
@@ -401,7 +401,7 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
+        "G": 14,
         "F": 3,
         "environment": "yard",
         "traits": []
@@ -460,7 +460,7 @@
       ],
       "exploration": {
         "G": 3,
-        "F": 3,
+        "F": 11,
         "environment": "yard",
         "traits": [
           "portable"
@@ -528,8 +528,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 4,
+        "F": 13,
         "environment": "yard",
         "traits": []
       },
@@ -585,8 +585,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 3,
+        "F": 14,
         "environment": "wood",
         "traits": [
           "tea"
@@ -656,8 +656,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 13,
         "environment": "yard",
         "traits": []
       },
@@ -717,8 +717,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 14,
+        "F": 3,
         "environment": "yard",
         "traits": [
           "portable"
@@ -787,8 +787,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 15,
+        "F": 3,
         "environment": "yard",
         "traits": []
       },
@@ -843,8 +843,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 13,
+        "F": 4,
         "environment": "yard",
         "traits": []
       },
@@ -899,8 +899,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 15,
+        "F": 4,
         "environment": "yard",
         "traits": []
       },
@@ -956,8 +956,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 13,
+        "F": 4,
         "environment": "yard",
         "traits": []
       },
@@ -1023,8 +1023,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 11,
+        "F": 8,
         "environment": "wood",
         "traits": [
           "leaf"
@@ -1091,8 +1091,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 17,
+        "F": 4,
         "environment": "yard",
         "traits": [
           "grain"
@@ -1162,8 +1162,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 16,
+        "F": 4,
         "environment": "yard",
         "traits": [
           "portable"
@@ -1229,8 +1229,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 15,
+        "F": 9,
         "environment": "water",
         "traits": [
           "leaf"
@@ -1281,8 +1281,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 15,
+        "F": 4,
         "environment": "yard",
         "traits": []
       },
@@ -1346,8 +1346,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 4,
         "environment": "yard",
         "traits": []
       },
@@ -1405,8 +1405,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 18,
+        "F": 5,
         "environment": "wood",
         "traits": []
       },
@@ -1464,8 +1464,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 16,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -1520,8 +1520,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 11,
+        "F": 11,
         "environment": "yard",
         "traits": []
       },
@@ -1565,8 +1565,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 4,
+        "F": 18,
         "environment": "yard",
         "traits": []
       },
@@ -1611,8 +1611,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -1652,7 +1652,7 @@
       "key": "0:28",
       "name": "年糕鸡",
       "egg": 0,
-      "description": "糯米形成的软白身体从方方的底部鼓起来，像一块刚冒出脑袋的年糕。站久了便松松地往旁边歪一点，发现有人靠近，又努力把头抬高。它有新年食物的趣味，现有做法并不限定新年。",
+      "description": "糯米形成的软白身体从方方的底部鼓起来，像一块刚冒出脑袋的年糕。站久了便松松地往旁边歪一点，发现有人靠近，又努力把头抬高。它有新年食物的趣味，不过一年到头都能做。",
       "signature": "烘焙",
       "edible": true,
       "tags": [
@@ -1663,8 +1663,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 18,
+        "F": 5,
         "environment": "water",
         "traits": [
           "grain"
@@ -1726,8 +1726,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 10,
+        "F": 10,
         "environment": "yard",
         "traits": []
       },
@@ -1777,8 +1777,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -1822,7 +1822,7 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
+        "G": 14,
         "F": 3,
         "environment": "yard",
         "traits": []
@@ -1869,8 +1869,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 6,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -1915,8 +1915,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 19,
+        "F": 7,
         "environment": "yard",
         "traits": []
       },
@@ -1958,8 +1958,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -2001,8 +2001,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 7,
+        "F": 13,
         "environment": "yard",
         "traits": []
       },
@@ -2048,8 +2048,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 4,
+        "F": 17,
         "environment": "wood",
         "traits": [
           "leaf"
@@ -2109,8 +2109,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 19,
         "environment": "yard",
         "traits": []
       },
@@ -2170,8 +2170,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 4,
+        "F": 18,
         "environment": "wood",
         "traits": [
           "leaf"
@@ -2234,8 +2234,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 12,
+        "F": 12,
         "environment": "yard",
         "traits": []
       },
@@ -2295,8 +2295,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 4,
         "environment": "yard",
         "traits": [
           "portable"
@@ -2359,8 +2359,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "water",
         "traits": [
           "salt"
@@ -2423,8 +2423,8 @@
         "ginger"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": []
       },
@@ -2485,8 +2485,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 19,
         "environment": "yard",
         "traits": [
           "grain",
@@ -2552,8 +2552,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -2614,8 +2614,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": []
       },
@@ -2672,8 +2672,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -2729,8 +2729,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 17,
+        "F": 4,
         "environment": "wood",
         "traits": []
       },
@@ -2776,8 +2776,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "leaf",
@@ -2824,8 +2824,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 19,
         "environment": "yard",
         "traits": []
       },
@@ -2868,8 +2868,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 14,
+        "F": 14,
         "environment": "yard",
         "traits": []
       },
@@ -2913,8 +2913,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 6,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -2958,8 +2958,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 7,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -3003,8 +3003,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 6,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -3046,8 +3046,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -3092,8 +3092,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 12,
+        "F": 12,
         "environment": "yard",
         "traits": []
       },
@@ -3151,8 +3151,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -3216,8 +3216,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -3279,8 +3279,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -3341,8 +3341,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -3401,8 +3401,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "leaf",
@@ -3449,8 +3449,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 19,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -3493,8 +3493,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -3539,8 +3539,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "leaf",
@@ -3587,8 +3587,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 16,
+        "F": 8,
         "environment": "yard",
         "traits": []
       },
@@ -3631,8 +3631,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 12,
+        "F": 12,
         "environment": "yard",
         "traits": []
       },
@@ -3675,8 +3675,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 13,
+        "F": 13,
         "environment": "yard",
         "traits": []
       },
@@ -3719,8 +3719,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -3763,8 +3763,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 6,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -3808,8 +3808,8 @@
         "fresh"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 6,
+        "F": 6,
         "environment": "yard",
         "traits": []
       },
@@ -3860,7 +3860,7 @@
       "tags": [],
       "exploration": {
         "G": 2,
-        "F": 4,
+        "F": 9,
         "environment": "yard",
         "traits": []
       },
@@ -3904,8 +3904,8 @@
         "roast"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 8,
+        "F": 10,
         "environment": "yard",
         "traits": []
       },
@@ -3951,8 +3951,8 @@
         "roast"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 8,
+        "F": 11,
         "environment": "yard",
         "traits": []
       },
@@ -3998,8 +3998,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 9,
+        "F": 13,
         "environment": "yard",
         "traits": []
       },
@@ -4047,8 +4047,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 18,
+        "F": 4,
         "environment": "yard",
         "traits": []
       },
@@ -4096,8 +4096,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 17,
+        "F": 4,
         "environment": "yard",
         "traits": []
       },
@@ -4146,8 +4146,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 17,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -4196,8 +4196,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 10,
+        "F": 15,
         "environment": "yard",
         "traits": []
       },
@@ -4244,8 +4244,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -4288,8 +4288,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "wood",
         "traits": []
       },
@@ -4332,8 +4332,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 13,
+        "F": 13,
         "environment": "yard",
         "traits": []
       },
@@ -4376,8 +4376,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 16,
+        "F": 6,
         "environment": "yard",
         "traits": []
       },
@@ -4423,8 +4423,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -4473,8 +4473,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 20,
+        "F": 5,
         "environment": "wood",
         "traits": [
           "leaf"
@@ -4520,8 +4520,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 6,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -4566,8 +4566,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 18,
+        "F": 6,
         "environment": "wood",
         "traits": [
           "leaf"
@@ -4613,8 +4613,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "floral"
@@ -4659,8 +4659,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 6,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -4703,8 +4703,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 4,
+        "F": 16,
         "environment": "yard",
         "traits": []
       },
@@ -4747,8 +4747,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 6,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -4792,8 +4792,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 19,
         "environment": "yard",
         "traits": []
       },
@@ -4837,8 +4837,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 4,
+        "F": 16,
         "environment": "yard",
         "traits": []
       },
@@ -4882,8 +4882,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 4,
+        "F": 15,
         "environment": "yard",
         "traits": [
           "floral"
@@ -4929,8 +4929,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 4,
+        "F": 14,
         "environment": "yard",
         "traits": []
       },
@@ -4977,7 +4977,7 @@
       ],
       "exploration": {
         "G": 3,
-        "F": 3,
+        "F": 15,
         "environment": "yard",
         "traits": [
           "leaf"
@@ -5024,7 +5024,7 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
+        "G": 11,
         "F": 3,
         "environment": "yard",
         "traits": []
@@ -5069,8 +5069,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 1,
         "environment": "yard",
         "traits": []
       },
@@ -5115,7 +5115,7 @@
       "tags": [],
       "exploration": {
         "G": 3,
-        "F": 3,
+        "F": 14,
         "environment": "yard",
         "traits": []
       },
@@ -5161,8 +5161,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 4,
+        "F": 11,
         "environment": "yard",
         "traits": [
           "leaf"
@@ -5209,8 +5209,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 8,
+        "F": 8,
         "environment": "yard",
         "traits": []
       },
@@ -5254,7 +5254,7 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
+        "G": 11,
         "F": 3,
         "environment": "yard",
         "traits": []
@@ -5299,7 +5299,7 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
+        "G": 9,
         "F": 3,
         "environment": "yard",
         "traits": []
@@ -5344,8 +5344,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 9,
+        "F": 2,
         "environment": "yard",
         "traits": []
       },
@@ -5384,13 +5384,13 @@
       "key": "0:103",
       "name": "晕眩鸡",
       "egg": 0,
-      "description": "对应“转运签”的特殊签鸡，深色身体上绕着黄色圈纹，两只眼睛也像打起了旋。它刚站定，还会轻轻转一下头，确认地面终于不跟着转了。图鉴记的是“晕眩鸡”，签面名称则是“转运签”，两者说的是不同的部分。",
+      "description": "对应“转运签”的特殊签鸡，深色身体上绕着黄色圈纹，两只眼睛也像打起了旋。它刚站定，还会轻轻转一下头，确认地面终于不跟着转了。图鉴里叫它“晕眩鸡”，签面上写的则是“转运签”。",
       "signature": null,
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -5434,8 +5434,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 6,
+        "F": 20,
         "environment": "yard",
         "traits": []
       },
@@ -5477,8 +5477,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 4,
+        "F": 17,
         "environment": "yard",
         "traits": []
       },
@@ -5521,8 +5521,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 8,
+        "F": 13,
         "environment": "yard",
         "traits": []
       },
@@ -5566,8 +5566,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 18,
         "environment": "yard",
         "traits": []
       },
@@ -5611,8 +5611,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 20,
+        "F": 7,
         "environment": "yard",
         "traits": []
       },
@@ -5660,8 +5660,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 15,
+        "F": 3,
         "environment": "yard",
         "traits": [
           "grain"
@@ -5716,13 +5716,13 @@
       "key": "0:110",
       "name": "烤焦吐司鸡",
       "egg": 0,
-      "description": "吐司没有及时收取时可能留下的深色变化，边沿比原来更焦，脸也显得有些发愣。它低头看一眼肚皮，轻轻抖一下，像还没习惯这身过深的烤色。",
+      "description": "面包没有及时收取时可能留下的深色变化，边沿比原来更焦，脸也显得有些发愣。它低头看一眼肚皮，轻轻抖一下，像还没习惯这身过深的烤色。",
       "signature": null,
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 3,
+        "F": 7,
         "environment": "yard",
         "traits": []
       },
@@ -5770,8 +5770,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 19,
+        "F": 4,
         "environment": "yard",
         "traits": [
           "grain"
@@ -5836,8 +5836,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": [
           "grain"
@@ -5903,8 +5903,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -5961,7 +5961,7 @@
       "key": "0:114",
       "name": "小笼包鸡",
       "egg": 0,
-      "description": "把热乎乎的汤汁藏在肚子里，走路时总怕晃出来。它的身体像一只收好口的小笼包，浅色面皮在头顶拢成细细的褶，里面裹着鲜香的汤汁。圆鼓鼓的肚子稍一晃动，就让它赶紧放慢脚步。遇到小坎要先停一停，再小心挪过去，唯独挤回同类身边时会忘记谨慎。",
+      "description": "把热乎乎的汤汁藏在肚子里，走路时总怕晃出来。它的身体像一只收好口的小笼包，浅色面皮在头顶拢成细细的褶，馅香从褶口隐约透出来。圆鼓鼓的肚子稍一晃动，就让它赶紧放慢脚步。遇到小坎要先停一停，再小心挪过去，唯独挤回同类身边时会忘记谨慎。",
       "signature": "蒸点",
       "edible": true,
       "tags": [
@@ -5972,8 +5972,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 14,
+        "F": 3,
         "environment": "yard",
         "traits": [
           "grain",
@@ -6043,8 +6043,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 17,
+        "F": 4,
         "environment": "yard",
         "traits": [
           "grain",
@@ -6116,8 +6116,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 14,
+        "F": 5,
         "environment": "water",
         "traits": [
           "leaf",
@@ -6190,8 +6190,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 18,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -6255,8 +6255,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 19,
+        "F": 4,
         "environment": "yard",
         "traits": [
           "portable"
@@ -6324,8 +6324,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 4,
         "environment": "yard",
         "traits": []
       },
@@ -6389,8 +6389,8 @@
         "fruit"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 18,
+        "F": 6,
         "environment": "water",
         "traits": [
           "fruit"
@@ -6462,8 +6462,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 6,
+        "F": 17,
         "environment": "wood",
         "traits": [
           "portable"
@@ -6519,7 +6519,7 @@
       "key": "0:122",
       "name": "柠檬冰沙鸡",
       "egg": 0,
-      "description": "头顶柠檬小太阳，却总想找个凉快的角落。细碎冰沙堆成浅黄色身体，底部像坐在蓝色小碗里，酸香清清亮亮。它爱把翅膀搭在碗边，看见热闹再探出脸，像只打算从阴凉处看一会儿。",
+      "description": "头顶柠檬小太阳，却总想找个凉快的角落。细碎冰沙堆成浅黄色身体，底部像坐在蓝色小碗里，酸香清清亮亮。它爱把翅膀搭在碗边，看见热闹再探出脸，像是只打算从阴凉处看一会儿。",
       "signature": "茶饮",
       "edible": true,
       "tags": [
@@ -6528,8 +6528,8 @@
         "fruit"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 18,
+        "F": 5,
         "environment": "water",
         "traits": [
           "fruit"
@@ -6590,8 +6590,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 15,
+        "F": 9,
         "environment": "yard",
         "traits": []
       },
@@ -6643,7 +6643,7 @@
       "key": "0:124",
       "name": "芝麻月饼鸡",
       "egg": 0,
-      "description": "圆圆的花边像一轮小月亮，最爱大家坐在一起吃晚饭。金黄饼皮上压着花纹，芝麻带来浓浓的烘香。它喜欢把正面朝着热闹的一侧，挤在同类中间时，一圈花边恰好互相轻轻碰着。",
+      "description": "圆圆的花边像一轮小月亮，最爱大家坐在一起吃晚饭。金黄饼皮上压着花纹，芝麻带来浓浓的烘香。它喜欢把正面朝着热闹的一侧，挤在同类中间时，一圈圈花边恰好轻轻碰在一起。",
       "signature": "烘焙",
       "edible": true,
       "tags": [
@@ -6653,8 +6653,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -6717,8 +6717,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 13,
+        "F": 8,
         "environment": "yard",
         "traits": [
           "portable"
@@ -6780,8 +6780,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 9,
+        "F": 13,
         "environment": "yard",
         "traits": []
       },
@@ -6836,8 +6836,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "yard",
         "traits": []
       },
@@ -6898,7 +6898,7 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
+        "G": 10,
         "F": 2,
         "environment": "water",
         "traits": [
@@ -6961,8 +6961,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -7005,7 +7005,7 @@
       "tags": [],
       "exploration": {
         "G": 2,
-        "F": 4,
+        "F": 7,
         "environment": "water",
         "traits": []
       },
@@ -7051,8 +7051,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 7,
+        "F": 7,
         "environment": "water",
         "traits": [
           "portable"
@@ -7115,8 +7115,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 11,
+        "F": 3,
         "environment": "water",
         "traits": [
           "salt"
@@ -7166,7 +7166,7 @@
         "fruit"
       ],
       "exploration": {
-        "G": 3,
+        "G": 13,
         "F": 3,
         "environment": "water",
         "traits": [
@@ -7228,7 +7228,7 @@
         "savory"
       ],
       "exploration": {
-        "G": 3,
+        "G": 9,
         "F": 3,
         "environment": "water",
         "traits": [
@@ -7299,8 +7299,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 14,
+        "F": 4,
         "environment": "water",
         "traits": [
           "salt"
@@ -7367,8 +7367,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 13,
+        "F": 3,
         "environment": "water",
         "traits": [
           "portable"
@@ -7439,8 +7439,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 16,
+        "F": 4,
         "environment": "water",
         "traits": [
           "portable"
@@ -7503,8 +7503,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 16,
+        "F": 4,
         "environment": "water",
         "traits": []
       },
@@ -7569,8 +7569,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 4,
+        "F": 17,
         "environment": "wood",
         "traits": []
       },
@@ -7628,8 +7628,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 15,
+        "F": 3,
         "environment": "water",
         "traits": []
       },
@@ -7693,8 +7693,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 16,
+        "F": 4,
         "environment": "water",
         "traits": [
           "salt"
@@ -7751,8 +7751,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 14,
+        "F": 9,
         "environment": "water",
         "traits": []
       },
@@ -7796,8 +7796,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 20,
         "environment": "water",
         "traits": []
       },
@@ -7841,8 +7841,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 11,
+        "F": 7,
         "environment": "water",
         "traits": []
       },
@@ -7888,8 +7888,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 14,
+        "F": 9,
         "environment": "water",
         "traits": []
       },
@@ -7931,8 +7931,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 15,
+        "F": 9,
         "environment": "water",
         "traits": []
       },
@@ -7974,8 +7974,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "water",
         "traits": []
       },
@@ -8017,8 +8017,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 16,
         "environment": "water",
         "traits": []
       },
@@ -8064,8 +8064,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 7,
+        "F": 16,
         "environment": "water",
         "traits": [
           "leaf"
@@ -8125,8 +8125,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 6,
+        "F": 17,
         "environment": "wood",
         "traits": []
       },
@@ -8187,8 +8187,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 19,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -8249,8 +8249,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 18,
+        "F": 5,
         "environment": "water",
         "traits": [
           "salt"
@@ -8313,8 +8313,8 @@
         "savory"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -8370,8 +8370,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 15,
+        "F": 10,
         "environment": "water",
         "traits": []
       },
@@ -8415,8 +8415,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 18,
+        "F": 12,
         "environment": "water",
         "traits": []
       },
@@ -8454,13 +8454,13 @@
       "key": "1:28",
       "name": "黑天鹅",
       "egg": 1,
-      "description": "深黑羽毛衬着鲜红的嘴，冠饰和舒展翼羽让它看起来格外庄重。这一形态在现有调理中与特殊焦化有关，名字与姿态却有自己的观赏趣味。它总先慢慢侧身，再把身后的羽尖一并收好。",
+      "description": "深黑羽毛衬着鲜红的嘴，冠饰和舒展翼羽让它看起来格外庄重。这一形态与特殊的焦化变化有关，名字与姿态却自有观赏趣味。它总先慢慢侧身，再把身后的羽尖一并收好。",
       "signature": null,
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 10,
+        "F": 20,
         "environment": "water",
         "traits": []
       },
@@ -8502,8 +8502,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 6,
+        "F": 20,
         "environment": "water",
         "traits": []
       },
@@ -8548,8 +8548,8 @@
         "fruit"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 7,
+        "F": 19,
         "environment": "water",
         "traits": [
           "fruit"
@@ -8602,8 +8602,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 17,
+        "F": 6,
         "environment": "water",
         "traits": []
       },
@@ -8664,8 +8664,8 @@
         "ginger"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": []
       },
@@ -8727,8 +8727,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -8794,8 +8794,8 @@
         "ginger"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 6,
+        "F": 20,
         "environment": "wood",
         "traits": []
       },
@@ -8854,8 +8854,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 7,
+        "F": 18,
         "environment": "water",
         "traits": [
           "leaf",
@@ -8902,8 +8902,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "water",
         "traits": []
       },
@@ -8947,7 +8947,7 @@
         "fresh"
       ],
       "exploration": {
-        "G": 3,
+        "G": 9,
         "F": 3,
         "environment": "water",
         "traits": []
@@ -8999,7 +8999,7 @@
       "tags": [],
       "exploration": {
         "G": 2,
-        "F": 4,
+        "F": 8,
         "environment": "water",
         "traits": []
       },
@@ -9044,8 +9044,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 3,
+        "F": 14,
         "environment": "wood",
         "traits": [
           "tea"
@@ -9105,8 +9105,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 3,
+        "F": 15,
         "environment": "wood",
         "traits": [
           "tea"
@@ -9173,8 +9173,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 3,
+        "F": 15,
         "environment": "wood",
         "traits": [
           "tea"
@@ -9240,8 +9240,8 @@
         "fruit"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 4,
+        "F": 17,
         "environment": "wood",
         "traits": [
           "tea",
@@ -9306,8 +9306,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 4,
+        "F": 18,
         "environment": "wood",
         "traits": [
           "tea"
@@ -9368,8 +9368,8 @@
         "floral"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 4,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "floral"
@@ -9434,8 +9434,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 11,
+        "F": 11,
         "environment": "water",
         "traits": []
       },
@@ -9493,8 +9493,8 @@
         "ginger"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "tea"
@@ -9555,8 +9555,8 @@
         "fruit"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 8,
+        "F": 17,
         "environment": "water",
         "traits": [
           "fruit"
@@ -9603,8 +9603,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 7,
+        "F": 18,
         "environment": "wood",
         "traits": [
           "leaf"
@@ -9650,8 +9650,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 13,
+        "F": 13,
         "environment": "water",
         "traits": []
       },
@@ -9694,8 +9694,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": []
       },
@@ -9741,8 +9741,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 20,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -9791,8 +9791,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 14,
+        "F": 3,
         "environment": "water",
         "traits": [
           "grain",
@@ -9853,8 +9853,8 @@
       "edible": false,
       "tags": [],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 3,
+        "F": 7,
         "environment": "water",
         "traits": []
       },
@@ -9902,8 +9902,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "water",
         "traits": [
           "grain",
@@ -9969,8 +9969,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "water",
         "traits": []
       },
@@ -10037,8 +10037,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 7,
+        "F": 19,
         "environment": "wood",
         "traits": []
       },
@@ -10107,8 +10107,8 @@
         "leaf"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 4,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "tea",
@@ -10180,8 +10180,8 @@
         "floral"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "floral"
@@ -10249,8 +10249,8 @@
         "fruit"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 18,
+        "F": 5,
         "environment": "water",
         "traits": [
           "fruit"
@@ -10311,8 +10311,8 @@
         "sweet"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 9,
+        "F": 15,
         "environment": "water",
         "traits": []
       },
@@ -10374,8 +10374,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 5,
         "environment": "water",
         "traits": [
           "grain"
@@ -10444,8 +10444,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 4,
-        "F": 2,
+        "G": 20,
+        "F": 4,
         "environment": "wood",
         "traits": [
           "grain"
@@ -10516,8 +10516,8 @@
         "ginger"
       ],
       "exploration": {
-        "G": 2,
-        "F": 4,
+        "G": 5,
+        "F": 20,
         "environment": "wood",
         "traits": [
           "tea"
@@ -10582,8 +10582,8 @@
         "grain"
       ],
       "exploration": {
-        "G": 3,
-        "F": 3,
+        "G": 5,
+        "F": 18,
         "environment": "water",
         "traits": [
           "grain"

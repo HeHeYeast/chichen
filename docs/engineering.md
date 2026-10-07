@@ -87,7 +87,7 @@ schema 3兼容v1/v2，旧批次结果和截止时刻保留；旧技能只退点�
 
 失败不会把上次 APK 当成新版本复制。已发布版本不可覆盖；下一次发布应同时增加 `android/release.json` 中的 `versionCode` 和 `versionName`，并填写实际更新说明。
 
-正式构建与 `-CandidateOnly` 都强制先运行 `tools/verify-release.ps1`：runtime生成物、Native生成物、资源声明、Node规则测试、中文字体、原生存档、原生通知、Python更新/备份模拟、浏览器UI九项门禁（浏览器固定22套，含旧七套、Work A–L、图鉴/收成与兼容回滚）。任何失败都停止签名编译和发布。UI检查自行启动并关闭独立本地服务；需已有Playwright和浏览器，可用环境变量 `CHICK_PLAYWRIGHT_PACKAGE` 指定包路径、`CHICK_QA_CHROME` 指定浏览器。当前机器自动发现已有GSD附带的Playwright。`-PrepareOnly` 仅整理资源；结果记录于 `android/build/release-verification.json` 和 `.log`。打包后逐文件校验APK、清单及源码字节一致。
+正式构建与 `-CandidateOnly` 都强制先运行 `tools/verify-release.ps1`：runtime生成物、Native生成物、资源声明、Node规则测试、中文字体、原生存档、原生通知、Python更新/备份模拟、浏览器UI九项门禁（当前浏览器 28 套，包括旧七套、Work A–L、图鉴/收成与兼容回滚、厨房/农场/发布布局、离线触屏及旧/新内核缩放行为回归）。任何失败都停止签名编译和发布。UI检查自行启动并关闭独立本地服务；需已有Playwright和浏览器，可用环境变量 `CHICK_PLAYWRIGHT_PACKAGE` 指定包路径、`CHICK_QA_CHROME` 指定浏览器。当前机器自动发现已有GSD附带的Playwright。离线触屏回归前自动重打包，直接服务 `android/generated-assets`，不从源码补找缺失图片。`-PrepareOnly` 仅整理资源；结果记录于 `android/build/release-verification.json` 和 `.log`。打包后逐文件校验APK、清单及源码字节一致。
 
 ## 保持存档与更新身份
 

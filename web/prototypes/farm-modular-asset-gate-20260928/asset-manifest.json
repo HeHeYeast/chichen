@@ -1,0 +1,256 @@
+{
+  "tree-pine": {
+    "file": "assets/tree-pine.svg",
+    "width": 120,
+    "height": 120,
+    "frame": [
+      0,
+      0,
+      120,
+      120
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "tree-round": {
+    "file": "assets/tree-round.svg",
+    "width": 120,
+    "height": 120,
+    "frame": [
+      0,
+      0,
+      120,
+      120
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "bush-low": {
+    "file": "assets/bush-low.svg",
+    "width": 120,
+    "height": 74,
+    "frame": [
+      0,
+      0,
+      120,
+      74
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "bush-tall": {
+    "file": "assets/bush-tall.svg",
+    "width": 120,
+    "height": 120,
+    "frame": [
+      0,
+      0,
+      120,
+      120
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "rock-wide": {
+    "file": "assets/rock-wide.svg",
+    "width": 120,
+    "height": 96,
+    "frame": [
+      0,
+      0,
+      120,
+      96
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "rock-tall": {
+    "file": "assets/rock-tall.svg",
+    "width": 120,
+    "height": 120,
+    "frame": [
+      0,
+      0,
+      120,
+      120
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "fence-front": {
+    "file": "assets/fence-front.svg",
+    "width": 120,
+    "height": 120,
+    "frame": [
+      0,
+      0,
+      120,
+      120
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "fence-return": {
+    "file": "assets/fence-return.svg",
+    "width": 104,
+    "height": 120,
+    "frame": [
+      0,
+      0,
+      104,
+      120
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "bench": {
+    "file": "assets/bench.svg",
+    "width": 120,
+    "height": 100,
+    "frame": [
+      0,
+      0,
+      120,
+      100
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "basin": {
+    "file": "assets/basin.svg",
+    "width": 120,
+    "height": 100,
+    "frame": [
+      0,
+      0,
+      120,
+      100
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "campfire": {
+    "file": "assets/campfire.svg",
+    "width": 120,
+    "height": 120,
+    "frame": [
+      0,
+      0,
+      120,
+      120
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "edge-path": {
+    "file": "assets/edge-path.svg",
+    "width": 120,
+    "height": 50,
+    "frame": [
+      0,
+      0,
+      120,
+      50
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "edge-grass": {
+    "file": "assets/edge-grass.svg",
+    "width": 120,
+    "height": 50,
+    "frame": [
+      0,
+      0,
+      120,
+      50
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "edge-stone": {
+    "file": "assets/edge-stone.svg",
+    "width": 120,
+    "height": 50,
+    "frame": [
+      0,
+      0,
+      120,
+      50
+    ],
+    "kind": "environment",
+    "source": "code-native SVG; transparent outside shapes"
+  },
+  "house": {
+    "file": "assets/house.png",
+    "width": 1315,
+    "height": 1197,
+    "frame": [
+      33,
+      51,
+      1251,
+      1044
+    ],
+    "kind": "building",
+    "source": "image_gen independent object",
+    "alphaZeroRatio": 0.4034,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  "shop": {
+    "file": "assets/shop.png",
+    "width": 1374,
+    "height": 1145,
+    "frame": [
+      74,
+      96,
+      1231,
+      947
+    ],
+    "kind": "building",
+    "source": "image_gen independent object",
+    "alphaZeroRatio": 0.4935,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  "shrine": {
+    "file": "assets/shrine.png",
+    "width": 1254,
+    "height": 1254,
+    "frame": [
+      148,
+      158,
+      983,
+      966
+    ],
+    "kind": "building",
+    "source": "image_gen independent object",
+    "alphaZeroRatio": 0.5807,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  "display": {
+    "file": "assets/display.png",
+    "width": 1510,
+    "height": 1041,
+    "frame": [
+      96,
+      154,
+      1321,
+      766
+    ],
+    "kind": "building",
+    "source": "image_gen independent object",
+    "alphaZeroRatio": 0.5386,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  }
+}

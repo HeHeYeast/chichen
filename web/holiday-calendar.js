@@ -19,6 +19,15 @@ export const HOLIDAYS=Object.freeze([
   {id:'plum',title:'赏梅季',rule:'每年 1月1日—2月底',dates:[1,1,3,0],keys:['0:86']},
   {id:'spring-festival',title:'春节',rule:'每年 农历正月初一至初七',lunar:[1,1,7],keys:['0:87','1:51']},
 ].map(h=>Object.freeze({...h,keys:Object.freeze(h.keys)})));
+// Published lunar holiday dates (China, month-day). ICU's Chinese calendar is only an
+// approximation: when the new moon falls within minutes of Beijing midnight it can be a
+// day off (e.g. Spring Festival 2027 and 2030), and phones ship different ICU versions.
+// Years outside this table fall back to Intl.
+const LUNAR_DATES=Object.freeze({
+  'spring-festival':{2025:[1,29],2026:[2,17],2027:[2,6],2028:[1,26],2029:[2,13],2030:[2,3],2031:[1,23],2032:[2,11],2033:[1,31],2034:[2,19],2035:[2,8],2036:[1,28],2037:[2,15],2038:[2,4],2039:[1,24],2040:[2,12]},
+  qixi:{2025:[8,29],2026:[8,19],2027:[8,8],2028:[8,26],2029:[8,16],2030:[8,5],2031:[8,24],2032:[8,12],2033:[8,1],2034:[8,20],2035:[8,10],2036:[8,28],2037:[8,17],2038:[8,7],2039:[8,26],2040:[8,14]},
+  'mid-autumn':{2025:[10,6],2026:[9,25],2027:[9,15],2028:[10,3],2029:[9,22],2030:[9,12],2031:[10,1],2032:[9,19],2033:[9,8],2034:[9,27],2035:[9,16],2036:[10,4],2037:[9,24],2038:[9,13],2039:[10,2],2040:[9,20]},
+});
 const byKey=new Map(HOLIDAYS.flatMap(h=>h.keys.map(key=>[key,h]))),cache=new Map();
 let lunarFormatter,lunarZone;
 const local=(year,month,day)=>new Date(year,month-1,day);
@@ -28,6 +37,7 @@ function annualWindow(h,year){
   let start,end;
   if(h.dates){const [m,d,em,ed]=h.dates;start=local(year,m,d);end=local(year,em,ed+1);}
   else if(h.weekday){const [month,weekday,n]=h.weekday,first=local(year,month,1);start=local(year,month,1+(weekday-first.getDay()+7)%7+7*(n-1));end=new Date(start);end.setDate(end.getDate()+1);}
+  else if(LUNAR_DATES[h.id]?.[year]){const [m,d]=LUNAR_DATES[h.id][year];start=local(year,m,d);end=new Date(start);end.setDate(end.getDate()+h.lunar[2]);}
   else{
     if(!lunarFormatter||lunarZone!==zone){lunarFormatter=new Intl.DateTimeFormat('en-u-ca-chinese',{month:'numeric',day:'numeric',timeZone:zone});lunarZone=zone;}
     if(lunarFormatter.resolvedOptions().calendar==='chinese'){
@@ -64,5 +74,5 @@ export function recipeStateAt(state,now=Date.now()){
 }
 export function holidayNotice(state,now=Date.now()){
   const h=holidayCalendar(now).find(h=>(h.active||h.preview)&&h.keys.some(key=>state.events?.[flag(key)]===true&&!(state.total?.[key]>0||state.farm?.[key]>0)));
-  return h?{key:`holiday:${h.id}:${h.start}`,message:`${h.title}${h.active?'已开放':`将在 ${h.days} 天后开放`}（${h.dateRange}）。活动伙伴只在开放日期内开火才有机会遇见，详见寻宝日历。`}:null;
+  return h?{key:`holiday:${h.id}:${h.start}`,message:h.active?`${h.title}开始啦`:h.days===1?`明天就是${h.title}`:`再过 ${h.days} 天就是${h.title}`}:null;
 }

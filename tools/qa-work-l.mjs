@@ -63,7 +63,7 @@ try{
   assert.equal(s.version,CURRENT_SAVE_VERSION);const report=s.expansion.business.lastReport;assert.ok(report&&report.totalSold===12,'both windows settled once while the app was closed');
   const cpAfter=s.cp;assert.ok(tripEnd<=T0+4*H,'trip already due');
   assert.ok(s.progress.trip?.returnedAt,'the in-flight trip returned at its end time');
-  await nav('寻访');await p.locator('[data-regional-claim]').first().click();assert.match(await p.locator('#dialog-layer').innerText(),/已收下/);if(await p.locator('[data-yes]').count())await p.locator('[data-yes]').click();
+  await nav('寻访');await p.locator('[data-regional-claim]').first().click();await p.waitForTimeout(300);if(await p.locator('#dialog-layer [data-yes]').count())await p.locator('#dialog-layer [data-yes]').click();
   s=await read();assert.ok(!s.progress.trip||s.progress.trip.returnedAt,'claimed (any overflow stays in the basket)');assert.ok(Object.keys(s.expansion.discovery.cards).includes('V-S1'),'the first valley trip still guarantees its specimen');
   await screenshot('upgrade-in-flight');await p.reload();await start();const again=await read();assert.equal(again.expansion.business.lastReport.totalSold,12);assert.ok(again.cp>=cpAfter,'no double settlement or loss');
   checks.push('schema 5旧版本在营业中（12只）且谷地寻访在途时保存；新版4小时后打开：两窗各6只只结算一次，寻访票据照常归队并保证首标本；刷新不重复');

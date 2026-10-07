@@ -1,0 +1,2069 @@
+{
+ "source": "GPT work, artifacts/art-inbox/gpt-work jobs b1-b4; alpha-preserving cut, no resize",
+ "assets": [
+  {
+   "id": "paper-main",
+   "path": "/web/art/golden-ui/paper-main.png",
+   "sheet": "artifacts/art-inbox/b1/b1-1.png",
+   "crop": [
+    87,
+    131,
+    418,
+    551
+   ],
+   "size": [
+    343,
+    432
+   ],
+   "sha256": "07582d3c7ca19be8311f1f985b0ee50f84182a2c489582349d11f0e0cd1d6367"
+  },
+  {
+   "id": "paper-torn",
+   "path": "/web/art/golden-ui/paper-torn.png",
+   "sheet": "artifacts/art-inbox/b1/b1-1.png",
+   "crop": [
+    602,
+    131,
+    934,
+    546
+   ],
+   "size": [
+    344,
+    427
+   ],
+   "sha256": "a5ab1e61a1e05b38bc66209f4e97e7c03ab4a010214a6bfa1d38534800541efa"
+  },
+  {
+   "id": "inset-board",
+   "path": "/web/art/golden-ui/inset-board.png",
+   "sheet": "artifacts/art-inbox/b1/b1-1.png",
+   "crop": [
+    1060,
+    289,
+    1504,
+    431
+   ],
+   "size": [
+    456,
+    154
+   ],
+   "sha256": "244600b6867211229938ab295b27c8f6ada6431695f3df307c02af7ba84745e2"
+  },
+  {
+   "id": "sticky-note",
+   "path": "/web/art/golden-ui/sticky-note.png",
+   "sheet": "artifacts/art-inbox/b1/b1-1.png",
+   "crop": [
+    98,
+    685,
+    409,
+    873
+   ],
+   "size": [
+    323,
+    200
+   ],
+   "sha256": "adea37d686900aaf3c572f95558a208cceff637092dc9ecbf76d302c8f6bd03e"
+  },
+  {
+   "id": "strip-label",
+   "path": "/web/art/golden-ui/strip-label.png",
+   "sheet": "artifacts/art-inbox/b1/b1-1.png",
+   "crop": [
+    533,
+    725,
+    1003,
+    846
+   ],
+   "size": [
+    482,
+    133
+   ],
+   "sha256": "4e602b5265a472a8343a3a153f879021e5d4c872b0abcbc793435c758f8376ed"
+  },
+  {
+   "id": "drawer-lip",
+   "path": "/web/art/golden-ui/drawer-lip.png",
+   "sheet": "artifacts/art-inbox/b1/b1-1.png",
+   "crop": [
+    1052,
+    744,
+    1509,
+    840
+   ],
+   "size": [
+    469,
+    108
+   ],
+   "sha256": "aeb8c4b4a7a8fb4872ae956725d838b527914dcc69bb379ffff4e7448fd376cd"
+  },
+  {
+   "id": "hanging-sign",
+   "path": "/web/art/golden-ui/hanging-sign.png",
+   "sheet": "artifacts/art-inbox/b1/b1-2.png",
+   "crop": [
+    45,
+    140,
+    717,
+    328
+   ],
+   "size": [
+    684,
+    200
+   ],
+   "sha256": "0f2da43d6678cee93c20240a8a2fbc83983e0e277c5cbbfa548ca04dfce915e4"
+  },
+  {
+   "id": "ribbon-green",
+   "path": "/web/art/golden-ui/ribbon-green.png",
+   "sheet": "artifacts/art-inbox/b1/b1-2.png",
+   "crop": [
+    806,
+    188,
+    1496,
+    333
+   ],
+   "size": [
+    702,
+    157
+   ],
+   "sha256": "ecb9aa7cca373fecd0acf5bdd504655d7aaf6dc7c14f4004b43c43b49fa2b7d8"
+  },
+  {
+   "id": "ribbon-yellow",
+   "path": "/web/art/golden-ui/ribbon-yellow.png",
+   "sheet": "artifacts/art-inbox/b1/b1-2.png",
+   "crop": [
+    44,
+    471,
+    727,
+    609
+   ],
+   "size": [
+    695,
+    150
+   ],
+   "sha256": "4ca598f34ae9912a218a7f85459823b28dfce0e76fffe5bdde8371f6ffd2de92"
+  },
+  {
+   "id": "ribbon-red",
+   "path": "/web/art/golden-ui/ribbon-red.png",
+   "sheet": "artifacts/art-inbox/b1/b1-2.png",
+   "crop": [
+    809,
+    471,
+    1494,
+    609
+   ],
+   "size": [
+    697,
+    150
+   ],
+   "sha256": "b30bd7f228498bb882e31af5f0bc50122ee6c88b58112185b5ed65d90f83b100"
+  },
+  {
+   "id": "section-tag",
+   "path": "/web/art/golden-ui/section-tag.png",
+   "sheet": "artifacts/art-inbox/b1/b1-2.png",
+   "crop": [
+    106,
+    747,
+    657,
+    885
+   ],
+   "size": [
+    563,
+    150
+   ],
+   "sha256": "f6e7819ab21894b7d61c42d535ce6bc5e675193af4039260a7f04e0fb943abb1"
+  },
+  {
+   "id": "bunting",
+   "path": "/web/art/golden-ui/bunting.png",
+   "sheet": "artifacts/art-inbox/b1/b1-2.png",
+   "crop": [
+    811,
+    725,
+    1492,
+    885
+   ],
+   "size": [
+    693,
+    172
+   ],
+   "sha256": "1a72d80d58020c23b339a52a9ff6c5b95728bb2702a012d37ed7cb38dd5f4c47"
+  },
+  {
+   "id": "btn-close",
+   "path": "/web/art/golden-ui/btn-close.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    105,
+    136,
+    300,
+    338
+   ],
+   "size": [
+    207,
+    214
+   ],
+   "sha256": "19590f3cff1e491b4faaea4cb765fac1a57101b8c92e549e093e0f17863b2106"
+  },
+  {
+   "id": "btn-back",
+   "path": "/web/art/golden-ui/btn-back.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    413,
+    136,
+    609,
+    338
+   ],
+   "size": [
+    208,
+    214
+   ],
+   "sha256": "944b3d4212301c4b7c645c604d82473fbc796b6756986bdf802615a7d72664ca"
+  },
+  {
+   "id": "btn-minus",
+   "path": "/web/art/golden-ui/btn-minus.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    722,
+    136,
+    918,
+    338
+   ],
+   "size": [
+    208,
+    214
+   ],
+   "sha256": "09a4636b314fa3a38066e10db813a2ea2ceaeae316171e849b479adeb3fc3c42"
+  },
+  {
+   "id": "btn-plus",
+   "path": "/web/art/golden-ui/btn-plus.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    103,
+    434,
+    298,
+    635
+   ],
+   "size": [
+    207,
+    213
+   ],
+   "sha256": "5e19d858a206026cb20cbb5caf83c774578d03b615cd91986efaad6fda3a1c51"
+  },
+  {
+   "id": "coin-quick",
+   "path": "/web/art/golden-ui/coin-quick.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    411,
+    434,
+    608,
+    635
+   ],
+   "size": [
+    209,
+    213
+   ],
+   "sha256": "258a9de8a3aba73400b41dd243e6b88079f283107c17d3bc999deb89bb968e72"
+  },
+  {
+   "id": "coin-quick-on",
+   "path": "/web/art/golden-ui/coin-quick-on.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    722,
+    433,
+    921,
+    635
+   ],
+   "size": [
+    211,
+    214
+   ],
+   "sha256": "dcd06e06fffefc9868ea9e987b42e7c6420784e9a5c874370b0c88cef361db8d"
+  },
+  {
+   "id": "coin-quick-off",
+   "path": "/web/art/golden-ui/coin-quick-off.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    101,
+    725,
+    297,
+    922
+   ],
+   "size": [
+    208,
+    209
+   ],
+   "sha256": "1be9c7bedf5e42043d5a4ddf10b059728f4649e91f824f4fc5a9ba53ab77f750"
+  },
+  {
+   "id": "chip-plain",
+   "path": "/web/art/golden-ui/chip-plain.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    385,
+    772,
+    638,
+    881
+   ],
+   "size": [
+    265,
+    121
+   ],
+   "sha256": "3c6790beaf9eba9f766ada9a2d66db03920fed1774e2c195d3969883af46a6da"
+  },
+  {
+   "id": "chip-hot",
+   "path": "/web/art/golden-ui/chip-hot.png",
+   "sheet": "artifacts/art-inbox/b1/b1-3.png",
+   "crop": [
+    694,
+    771,
+    947,
+    881
+   ],
+   "size": [
+    265,
+    122
+   ],
+   "sha256": "9c71047ed44743cc8ee7608a67b1bbd29b7d15757b9a2ebd9a79bd12e19e5f78"
+  },
+  {
+   "id": "bar-track",
+   "path": "/web/art/golden-ui/bar-track.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    52,
+    289,
+    743,
+    368
+   ],
+   "size": [
+    703,
+    91
+   ],
+   "sha256": "060c084647142287ac5fe580f0e52bf0b90d771679368f94cf11f430002bf36d"
+  },
+  {
+   "id": "bar-green",
+   "path": "/web/art/golden-ui/bar-green.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    61,
+    426,
+    732,
+    482
+   ],
+   "size": [
+    683,
+    68
+   ],
+   "sha256": "95ebb7b5fdb1a8465ed6e5a17cddc3ae72173987c952b9c64ee1e59402e80afa"
+  },
+  {
+   "id": "bar-yellow",
+   "path": "/web/art/golden-ui/bar-yellow.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    61,
+    553,
+    731,
+    609
+   ],
+   "size": [
+    682,
+    68
+   ],
+   "sha256": "3933d3b7d871b69ac113216fbde410b9f4a874fbc34f6bdec3f4120b933576ae"
+  },
+  {
+   "id": "bar-red",
+   "path": "/web/art/golden-ui/bar-red.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    61,
+    675,
+    731,
+    731
+   ],
+   "size": [
+    682,
+    68
+   ],
+   "sha256": "47aceb59decb3bd06fae42febd0ff989eb5865cdc03269356c3d2edd3d9240ed"
+  },
+  {
+   "id": "bead",
+   "path": "/web/art/golden-ui/bead.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    838,
+    310,
+    971,
+    454
+   ],
+   "size": [
+    145,
+    156
+   ],
+   "sha256": "cc073f1bfe8a569b8bcf9169683094c1e33adf5a07631b4a4a6321e9eafb5ef8"
+  },
+  {
+   "id": "cell",
+   "path": "/web/art/golden-ui/cell.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    1040,
+    283,
+    1232,
+    478
+   ],
+   "size": [
+    204,
+    207
+   ],
+   "sha256": "b0ba67f5bb9c76251ad754a9bd2d1344332ef530438f4de9fce7c2ae47ca339e"
+  },
+  {
+   "id": "cell-on",
+   "path": "/web/art/golden-ui/cell-on.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    1293,
+    282,
+    1485,
+    478
+   ],
+   "size": [
+    204,
+    208
+   ],
+   "sha256": "8a4763fceceed10258d043d3f96957ed84301e64688a164f7a80aaadcdd76969"
+  },
+  {
+   "id": "cell-missing",
+   "path": "/web/art/golden-ui/cell-missing.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    810,
+    532,
+    997,
+    723
+   ],
+   "size": [
+    199,
+    203
+   ],
+   "sha256": "45aa8e98f0e994ab62d8a5d8163dbde56eb0f85ab4af69b3ab32e8336a339f67"
+  },
+  {
+   "id": "cell-locked",
+   "path": "/web/art/golden-ui/cell-locked.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    1040,
+    531,
+    1232,
+    724
+   ],
+   "size": [
+    204,
+    205
+   ],
+   "sha256": "274c318258f97bb893ac6181864c8971c05e870da0db2070e27c84b92077fa0e"
+  },
+  {
+   "id": "cell-new",
+   "path": "/web/art/golden-ui/cell-new.png",
+   "sheet": "artifacts/art-inbox/b1/b1-4-v2.png",
+   "crop": [
+    1293,
+    514,
+    1487,
+    723
+   ],
+   "size": [
+    206,
+    221
+   ],
+   "sha256": "92df27ee9443171f2868c2cf3b1e270f2cc527ce5e806ae7990d935d8018f31e"
+  },
+  {
+   "id": "divider-leaf",
+   "path": "/web/art/golden-ui/divider-leaf.png",
+   "sheet": "artifacts/art-inbox/b1/b1-5.png",
+   "crop": [
+    25,
+    151,
+    739,
+    219
+   ],
+   "size": [
+    726,
+    80
+   ],
+   "sha256": "f9de533a55bfd3f1e1f6f3536eefc8f7872c3265b880e4f7bda4c6ef90012388"
+  },
+  {
+   "id": "divider-dots",
+   "path": "/web/art/golden-ui/divider-dots.png",
+   "sheet": "artifacts/art-inbox/b1/b1-5.png",
+   "crop": [
+    835,
+    157,
+    1475,
+    219
+   ],
+   "size": [
+    652,
+    74
+   ],
+   "sha256": "d49f4f82908660e7a3603234327c497fd94f8be1131efb383a3221131b802390"
+  },
+  {
+   "id": "arrow",
+   "path": "/web/art/golden-ui/arrow.png",
+   "sheet": "artifacts/art-inbox/b1/b1-5.png",
+   "crop": [
+    244,
+    425,
+    526,
+    581
+   ],
+   "size": [
+    294,
+    168
+   ],
+   "sha256": "0c4d338a57bdc4edab3d3aa7b2acd1d2acb44a25a01bde847a2f7f722f1bda4a"
+  },
+  {
+   "id": "leaf-corner-l",
+   "path": "/web/art/golden-ui/leaf-corner-l.png",
+   "sheet": "artifacts/art-inbox/b1/b1-5.png",
+   "crop": [
+    902,
+    423,
+    1054,
+    573
+   ],
+   "size": [
+    164,
+    162
+   ],
+   "sha256": "2c4b0c1467a77476e71ed8694b13a93624b11eee146eb5fd6f8a5db32f960d03"
+  },
+  {
+   "id": "leaf-corner-r",
+   "path": "/web/art/golden-ui/leaf-corner-r.png",
+   "sheet": "artifacts/art-inbox/b1/b1-5.png",
+   "crop": [
+    1252,
+    423,
+    1405,
+    572
+   ],
+   "size": [
+    165,
+    161
+   ],
+   "sha256": "ca809a9e2559da7cb1b0155cb797c211eb408e569a331fe7a895d485a42c5fbe"
+  },
+  {
+   "id": "sparkles",
+   "path": "/web/art/golden-ui/sparkles.png",
+   "sheet": "artifacts/art-inbox/b1/b1-5.png",
+   "crop": [
+    157,
+    753,
+    617,
+    896
+   ],
+   "size": [
+    472,
+    155
+   ],
+   "sha256": "ed0ef54b47abf5a18fd80cc490cce4ff90c48cbfda9bbb44f91786f3e1188356"
+  },
+  {
+   "id": "stamp-ring",
+   "path": "/web/art/golden-ui/stamp-ring.png",
+   "sheet": "artifacts/art-inbox/b1/b1-5.png",
+   "crop": [
+    1034,
+    717,
+    1270,
+    955
+   ],
+   "size": [
+    248,
+    250
+   ],
+   "sha256": "221cfcc679c8aa46224d8807114cc3ad62716e0373ffd3f55163b23129b7445e"
+  },
+  {
+   "id": "ic-hourglass",
+   "path": "/web/art/golden-ui/ic-hourglass.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    87,
+    71,
+    215,
+    257
+   ],
+   "size": [
+    140,
+    198
+   ],
+   "sha256": "8cb4e2d1d0816a7c271e855813712e802e0bde383384aa82f27b6a3bc7c95555"
+  },
+  {
+   "id": "ic-flame",
+   "path": "/web/art/golden-ui/ic-flame.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    317,
+    80,
+    469,
+    255
+   ],
+   "size": [
+    164,
+    187
+   ],
+   "sha256": "6b0d7aa6a78a6cfd091afe0315f069de0e43eea1fe5a2a85226195af08d90e12"
+  },
+  {
+   "id": "ic-pot",
+   "path": "/web/art/golden-ui/ic-pot.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    534,
+    101,
+    736,
+    255
+   ],
+   "size": [
+    214,
+    166
+   ],
+   "sha256": "d71aa8bd2c54a59945b6ee4457697edbbaa97b727a1f4b0638f6d6fbf5b87754"
+  },
+  {
+   "id": "ic-egg",
+   "path": "/web/art/golden-ui/ic-egg.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    815,
+    91,
+    947,
+    254
+   ],
+   "size": [
+    144,
+    175
+   ],
+   "sha256": "d9b0eb3a0740c895dcc086e7d8f68475ccba1c964a6d3838b21a3dfefdae82d0"
+  },
+  {
+   "id": "ic-duck-egg",
+   "path": "/web/art/golden-ui/ic-duck-egg.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    79,
+    324,
+    220,
+    495
+   ],
+   "size": [
+    153,
+    183
+   ],
+   "sha256": "21aa4716387896bdb0bc3f31d64c9eb3b4334771e619923021fb3636f2e305c8"
+  },
+  {
+   "id": "ic-jar",
+   "path": "/web/art/golden-ui/ic-jar.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    327,
+    305,
+    463,
+    500
+   ],
+   "size": [
+    148,
+    207
+   ],
+   "sha256": "db9eeb9b9cc8a6b5d0e673b9daa6c7c02018e86e9157196ef7b9e00f0c33c211"
+  },
+  {
+   "id": "ic-broom",
+   "path": "/web/art/golden-ui/ic-broom.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    544,
+    306,
+    728,
+    502
+   ],
+   "size": [
+    196,
+    208
+   ],
+   "sha256": "6ecf02fca240cdd3908fc1bf48c55b11721218c48a7cb487a31516bb15835d63"
+  },
+  {
+   "id": "ic-germ",
+   "path": "/web/art/golden-ui/ic-germ.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    800,
+    326,
+    968,
+    498
+   ],
+   "size": [
+    180,
+    184
+   ],
+   "sha256": "63c13b772fdea9d5fe03a203edf2a33db0660f807e5c12a4b083b2d5b622a55e"
+  },
+  {
+   "id": "ic-fresh",
+   "path": "/web/art/golden-ui/ic-fresh.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    65,
+    553,
+    232,
+    724
+   ],
+   "size": [
+    179,
+    183
+   ],
+   "sha256": "61bd6f0e350c56eeba970f15fc6307ed61f99add7e0793171cfb7e05fdcc649b"
+  },
+  {
+   "id": "ic-upgrade",
+   "path": "/web/art/golden-ui/ic-upgrade.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    308,
+    549,
+    481,
+    728
+   ],
+   "size": [
+    185,
+    191
+   ],
+   "sha256": "42c4f36c5fe43196896e7bef50e4ab3e4af9901098b6b489a1d7ace10d2be5fa"
+  },
+  {
+   "id": "ic-hammer",
+   "path": "/web/art/golden-ui/ic-hammer.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    561,
+    546,
+    728,
+    724
+   ],
+   "size": [
+    179,
+    190
+   ],
+   "sha256": "6b71203813625274887c87df3713ec85ea0caff197820fee22afe1c107554b65"
+  },
+  {
+   "id": "ic-fence",
+   "path": "/web/art/golden-ui/ic-fence.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    787,
+    573,
+    985,
+    718
+   ],
+   "size": [
+    210,
+    157
+   ],
+   "sha256": "466c9c43b8e08ebcd20a63c72931673731df00a1143d9e613c69a1e9f3557836"
+  },
+  {
+   "id": "ic-house",
+   "path": "/web/art/golden-ui/ic-house.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    51,
+    784,
+    237,
+    947
+   ],
+   "size": [
+    198,
+    175
+   ],
+   "sha256": "6a01cd6ac7701f8e26cc0c68b7096aeb55a9555f7d4fbc437545b8e18215e184"
+  },
+  {
+   "id": "ic-star",
+   "path": "/web/art/golden-ui/ic-star.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    310,
+    785,
+    477,
+    947
+   ],
+   "size": [
+    179,
+    174
+   ],
+   "sha256": "a2141b25b57a5cd07222846e77e366d8f3031f5683347a2ef897dbeee6d01b7c"
+  },
+  {
+   "id": "ic-heart",
+   "path": "/web/art/golden-ui/ic-heart.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    554,
+    801,
+    717,
+    945
+   ],
+   "size": [
+    175,
+    156
+   ],
+   "sha256": "35b29f2d2b144669256d5030fda9cbd2667560c13e6920c68ff597d0bbf4968e"
+  },
+  {
+   "id": "ic-check",
+   "path": "/web/art/golden-ui/ic-check.png",
+   "sheet": "artifacts/art-inbox/b2/b2-1.png",
+   "crop": [
+    804,
+    785,
+    960,
+    947
+   ],
+   "size": [
+    168,
+    174
+   ],
+   "sha256": "a999f266aaf41404cc083470c55cc7637a046ec65481c3751a9951eb7e10e84f"
+  },
+  {
+   "id": "ic-chick",
+   "path": "/web/art/golden-ui/ic-chick.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    73,
+    92,
+    243,
+    267
+   ],
+   "size": [
+    182,
+    187
+   ],
+   "sha256": "5907512658c2263ecb9d63f696569ab45773e1a06eeff6ce457dd964719df561"
+  },
+  {
+   "id": "ic-basket",
+   "path": "/web/art/golden-ui/ic-basket.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    297,
+    124,
+    500,
+    258
+   ],
+   "size": [
+    215,
+    146
+   ],
+   "sha256": "0abdd267bdc6f0a6fcc033c8ac1342125659cedea76a76f3663a985f9b651a5e"
+  },
+  {
+   "id": "ic-bill",
+   "path": "/web/art/golden-ui/ic-bill.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    551,
+    94,
+    711,
+    264
+   ],
+   "size": [
+    172,
+    182
+   ],
+   "sha256": "4a6523cd19f8d5068048228fab7ec0ea7e2dda7f79376d24a746e65e32ab4a05"
+  },
+  {
+   "id": "ic-bell",
+   "path": "/web/art/golden-ui/ic-bell.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    773,
+    105,
+    952,
+    266
+   ],
+   "size": [
+    191,
+    173
+   ],
+   "sha256": "1178c52d36080ef426c83f49943da062d823db2d8996b45adfcd2f7773abc5af"
+  },
+  {
+   "id": "ic-gift",
+   "path": "/web/art/golden-ui/ic-gift.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    64,
+    312,
+    252,
+    502
+   ],
+   "size": [
+    200,
+    202
+   ],
+   "sha256": "78c9f60d9698271cf205dd8a5cb8d8f0934194d632857a9cd0699705688e9fca"
+  },
+  {
+   "id": "ic-calendar",
+   "path": "/web/art/golden-ui/ic-calendar.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    300,
+    310,
+    494,
+    495
+   ],
+   "size": [
+    206,
+    197
+   ],
+   "sha256": "cb6f3b4ce0cae1304213ba7ede2ef4a46331e90cb07e099e486affe04af62e33"
+  },
+  {
+   "id": "ic-book",
+   "path": "/web/art/golden-ui/ic-book.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    528,
+    341,
+    738,
+    488
+   ],
+   "size": [
+    222,
+    159
+   ],
+   "sha256": "3edeb64439d2e80c486bdc19ae58f8bbf1ed694bb1e0d6b59067f7358661a220"
+  },
+  {
+   "id": "ic-map",
+   "path": "/web/art/golden-ui/ic-map.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    776,
+    328,
+    963,
+    491
+   ],
+   "size": [
+    199,
+    175
+   ],
+   "sha256": "8e6e11c483fef3460ce04b240bc73f597c532bf5fa3cf2589cf9d92666c28a63"
+  },
+  {
+   "id": "ic-leaf",
+   "path": "/web/art/golden-ui/ic-leaf.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    87,
+    553,
+    234,
+    713
+   ],
+   "size": [
+    159,
+    172
+   ],
+   "sha256": "30105d1b329e759e07d7f69b4eab49b2c04ccfef5262a87bb2de858c78c2122d"
+  },
+  {
+   "id": "ic-chest",
+   "path": "/web/art/golden-ui/ic-chest.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    304,
+    557,
+    490,
+    711
+   ],
+   "size": [
+    198,
+    166
+   ],
+   "sha256": "dbaa22a96c38dec560f977a4831ff4c5209579707a2e100471ddce667e579365"
+  },
+  {
+   "id": "ic-filter",
+   "path": "/web/art/golden-ui/ic-filter.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    546,
+    543,
+    725,
+    711
+   ],
+   "size": [
+    191,
+    180
+   ],
+   "sha256": "6d2cd59545145a609c82aa2344b115e1ceff96deb09835c5522001c72c277aff"
+  },
+  {
+   "id": "ic-sort",
+   "path": "/web/art/golden-ui/ic-sort.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    769,
+    559,
+    968,
+    704
+   ],
+   "size": [
+    211,
+    157
+   ],
+   "sha256": "da9ab6117131e32e8e76b690cff683357ba3255fea6a9080dc36fe2f31fd320d"
+  },
+  {
+   "id": "ic-tag",
+   "path": "/web/art/golden-ui/ic-tag.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    69,
+    779,
+    263,
+    943
+   ],
+   "size": [
+    206,
+    176
+   ],
+   "sha256": "f785558cd1446718497a9a295ccb2cb3511881cb1d617467d892b82ce053c424"
+  },
+  {
+   "id": "ic-refresh",
+   "path": "/web/art/golden-ui/ic-refresh.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    319,
+    764,
+    482,
+    937
+   ],
+   "size": [
+    175,
+    185
+   ],
+   "sha256": "6b71e937b152d721d1f32fe3db8193399e1de908f70e81b9dad12cf444250a0b"
+  },
+  {
+   "id": "ic-alarm",
+   "path": "/web/art/golden-ui/ic-alarm.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    541,
+    754,
+    721,
+    940
+   ],
+   "size": [
+    192,
+    198
+   ],
+   "sha256": "98c229f3fedbb1f51c6ee310fd401de8e143e6d67483bbcdd1763c1d7b266b2f"
+  },
+  {
+   "id": "ic-cross",
+   "path": "/web/art/golden-ui/ic-cross.png",
+   "sheet": "artifacts/art-inbox/b2/b2-2-v2.png",
+   "crop": [
+    788,
+    768,
+    949,
+    936
+   ],
+   "size": [
+    173,
+    180
+   ],
+   "sha256": "1bb6cb6d59885e8b30ea04354e4564477d4ef84ffaf373136d05a82e4c3a60eb"
+  },
+  {
+   "id": "clean-set",
+   "path": "/web/art/golden-ui/clean-set.png",
+   "sheet": "artifacts/art-inbox/b3/b3-1.png",
+   "crop": [
+    103,
+    82,
+    439,
+    457
+   ],
+   "size": [
+    348,
+    387
+   ],
+   "sha256": "a78aa538518684f8d2a5d0d02b63805c6c514ad70b29ec60e07b17a7679feb91"
+  },
+  {
+   "id": "counter-clean",
+   "path": "/web/art/golden-ui/counter-clean.png",
+   "sheet": "artifacts/art-inbox/b3/b3-1.png",
+   "crop": [
+    607,
+    123,
+    930,
+    442
+   ],
+   "size": [
+    335,
+    331
+   ],
+   "sha256": "86ef257b9509c44bbab0a53582aad4d44c84ae4d4bd873323a4d6b04655dc4de"
+  },
+  {
+   "id": "counter-dusty",
+   "path": "/web/art/golden-ui/counter-dusty.png",
+   "sheet": "artifacts/art-inbox/b3/b3-1.png",
+   "crop": [
+    1095,
+    123,
+    1429,
+    442
+   ],
+   "size": [
+    346,
+    331
+   ],
+   "sha256": "238facf4e19d92efac0d1eb4c60619b220aac1edb281168ae74c53b9d1980a15"
+  },
+  {
+   "id": "counter-dirty",
+   "path": "/web/art/golden-ui/counter-dirty.png",
+   "sheet": "artifacts/art-inbox/b3/b3-1.png",
+   "crop": [
+    104,
+    582,
+    441,
+    902
+   ],
+   "size": [
+    349,
+    332
+   ],
+   "sha256": "26cd5580627534453306766d320ccc2ac52dafbf2dc49c7cbf441a2a19058326"
+  },
+  {
+   "id": "fence-broken",
+   "path": "/web/art/golden-ui/fence-broken.png",
+   "sheet": "artifacts/art-inbox/b3/b3-1.png",
+   "crop": [
+    570,
+    634,
+    963,
+    880
+   ],
+   "size": [
+    405,
+    258
+   ],
+   "sha256": "d7b57f28cf3d2dee5cb4728fc7b1db036e623c2eb0c59960bb192878a6bc9a5d"
+  },
+  {
+   "id": "fence-fixed",
+   "path": "/web/art/golden-ui/fence-fixed.png",
+   "sheet": "artifacts/art-inbox/b3/b3-1.png",
+   "crop": [
+    1067,
+    627,
+    1459,
+    861
+   ],
+   "size": [
+    404,
+    246
+   ],
+   "sha256": "43f9e12049e767a5fe7503a9d2bc15429bad2a71e081f4426b4ac2f9b2a64305"
+  },
+  {
+   "id": "confetti",
+   "path": "/web/art/golden-ui/confetti.png",
+   "sheet": "artifacts/art-inbox/b3/b3-2-v2.png",
+   "crop": [
+    86,
+    142,
+    464,
+    457
+   ],
+   "size": [
+    390,
+    327
+   ],
+   "sha256": "bfc4984dd383ce74a3aacad3c42ea9ab14669b827277332c45680ba6a1dfdc6b"
+  },
+  {
+   "id": "basket-empty",
+   "path": "/web/art/golden-ui/basket-empty.png",
+   "sheet": "artifacts/art-inbox/b3/b3-2-v2.png",
+   "crop": [
+    578,
+    227,
+    958,
+    438
+   ],
+   "size": [
+    392,
+    223
+   ],
+   "sha256": "80ba9fb41d9a1e3e7805e6d4b4be0babb0c450cabf3a68348797be756b5faeab"
+  },
+  {
+   "id": "steam",
+   "path": "/web/art/golden-ui/steam.png",
+   "sheet": "artifacts/art-inbox/b3/b3-2-v2.png",
+   "crop": [
+    1100,
+    141,
+    1465,
+    464
+   ],
+   "size": [
+    377,
+    335
+   ],
+   "sha256": "a3c2414c7afe7e287ec6339a0db26e9b4d1ab988b840c517e30e1aab5db16a03"
+  },
+  {
+   "id": "crate-empty",
+   "path": "/web/art/golden-ui/crate-empty.png",
+   "sheet": "artifacts/art-inbox/b3/b3-2-v2.png",
+   "crop": [
+    91,
+    610,
+    457,
+    897
+   ],
+   "size": [
+    378,
+    299
+   ],
+   "sha256": "2e841ae8894220bc6258be5b30dde3639f23772648f94fc84b69a6f8dd120bcf"
+  },
+  {
+   "id": "blueprint",
+   "path": "/web/art/golden-ui/blueprint.png",
+   "sheet": "artifacts/art-inbox/b3/b3-2-v2.png",
+   "crop": [
+    579,
+    598,
+    962,
+    895
+   ],
+   "size": [
+    395,
+    309
+   ],
+   "sha256": "e70bbe2f71b327c4e7dda41de3b6a77b7af80c5e35093128faec5de5c4e258f8"
+  },
+  {
+   "id": "coin-pile",
+   "path": "/web/art/golden-ui/coin-pile.png",
+   "sheet": "artifacts/art-inbox/b3/b3-2-v2.png",
+   "crop": [
+    1161,
+    609,
+    1425,
+    875
+   ],
+   "size": [
+    276,
+    278
+   ],
+   "sha256": "b4013a1e62a3587c32f151001e814ff0aac839e67082c784ff28485ba4cbdd53"
+  },
+  {
+   "id": "skill-CUL-1",
+   "path": "/web/art/golden-ui/skill-CUL-1.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    58,
+    101,
+    248,
+    278
+   ],
+   "size": [
+    202,
+    189
+   ],
+   "sha256": "e3b028f141881591fa71e311af4960f4cebbcfff58cd7ef851114cf61e390289"
+  },
+  {
+   "id": "skill-CUL-2",
+   "path": "/web/art/golden-ui/skill-CUL-2.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    304,
+    117,
+    506,
+    280
+   ],
+   "size": [
+    214,
+    175
+   ],
+   "sha256": "06002ab30bff5cb9c975c1c78ffa08aafc1ef578490ad1bb8f45900a07696f7e"
+  },
+  {
+   "id": "skill-CUL-3",
+   "path": "/web/art/golden-ui/skill-CUL-3.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    562,
+    99,
+    706,
+    284
+   ],
+   "size": [
+    156,
+    197
+   ],
+   "sha256": "5739f3dfe6857e7d6b53911c04a15a9f9daecada6c1ec882f80856344cfe4955"
+  },
+  {
+   "id": "skill-CUL-4",
+   "path": "/web/art/golden-ui/skill-CUL-4.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    779,
+    116,
+    979,
+    281
+   ],
+   "size": [
+    212,
+    177
+   ],
+   "sha256": "618f5ac81de2b6a4b47eb0d83b8302c91ce1eff98fa6a48fa5a4cd9eeb9a0e43"
+  },
+  {
+   "id": "skill-CUL-5",
+   "path": "/web/art/golden-ui/skill-CUL-5.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    56,
+    332,
+    253,
+    511
+   ],
+   "size": [
+    209,
+    191
+   ],
+   "sha256": "c6db31882de04278e518aabb4c084faf97cd8dcc00eaaeda88128ba90ce2cc96"
+  },
+  {
+   "id": "skill-CUL-S",
+   "path": "/web/art/golden-ui/skill-CUL-S.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    304,
+    322,
+    477,
+    513
+   ],
+   "size": [
+    185,
+    203
+   ],
+   "sha256": "4c27d83aa798a9c5411e3a324ab942fabc951bceb2fe3561d4212743357b861c"
+  },
+  {
+   "id": "skill-HOME-1",
+   "path": "/web/art/golden-ui/skill-HOME-1.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    533,
+    319,
+    729,
+    513
+   ],
+   "size": [
+    208,
+    206
+   ],
+   "sha256": "49378899d6bef884b829ae3bc059c1788109a1fe0abf25ef5f239af2cc35a68e"
+  },
+  {
+   "id": "skill-HOME-2",
+   "path": "/web/art/golden-ui/skill-HOME-2.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    783,
+    366,
+    976,
+    517
+   ],
+   "size": [
+    205,
+    163
+   ],
+   "sha256": "815af1f21b12839f2b80c891484607801348a0e9a276854b9a24b270cda9e828"
+  },
+  {
+   "id": "skill-HOME-3",
+   "path": "/web/art/golden-ui/skill-HOME-3.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    60,
+    554,
+    227,
+    743
+   ],
+   "size": [
+    179,
+    201
+   ],
+   "sha256": "c9a5d5313c0b5bb3014e786191f3e9d21babcb9fe4443e8bca848c7157c8eee5"
+  },
+  {
+   "id": "skill-HOME-4",
+   "path": "/web/art/golden-ui/skill-HOME-4.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    273,
+    603,
+    502,
+    731
+   ],
+   "size": [
+    241,
+    140
+   ],
+   "sha256": "d5f52e2549be6028c07d1a3996ff8f53452f152635062f88f713e8f6f31942e4"
+  },
+  {
+   "id": "skill-HOME-5",
+   "path": "/web/art/golden-ui/skill-HOME-5.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    545,
+    551,
+    710,
+    742
+   ],
+   "size": [
+    177,
+    203
+   ],
+   "sha256": "1c0c2e114084a06ca94e96bd0915aa490d4804311ba11a78e1c6501619c4ca8b"
+  },
+  {
+   "id": "skill-HOME-S",
+   "path": "/web/art/golden-ui/skill-HOME-S.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    778,
+    570,
+    980,
+    737
+   ],
+   "size": [
+    214,
+    179
+   ],
+   "sha256": "930a31328a687c7f087bb4fd3db68d0e971486b3efcbcca2ef3278ed1134baa8"
+  },
+  {
+   "id": "branch-cul",
+   "path": "/web/art/golden-ui/branch-cul.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    43,
+    776,
+    232,
+    965
+   ],
+   "size": [
+    201,
+    201
+   ],
+   "sha256": "1dd0c3348feffaa4a46c51449b7188bd59a96fd0b4d444b9ef66338beb91f143"
+  },
+  {
+   "id": "branch-home",
+   "path": "/web/art/golden-ui/branch-home.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    295,
+    775,
+    485,
+    965
+   ],
+   "size": [
+    202,
+    202
+   ],
+   "sha256": "abfa258f4eac6a3505d9487ddae727f55a37fec5be50b4325139559cee98b5bc"
+  },
+  {
+   "id": "branch-trade",
+   "path": "/web/art/golden-ui/branch-trade.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    539,
+    775,
+    730,
+    965
+   ],
+   "size": [
+    203,
+    202
+   ],
+   "sha256": "d55cbae8f588d6d0aac0ad6020f906e897b134226eb8711dd3f55d2002b2dd96"
+  },
+  {
+   "id": "branch-obs",
+   "path": "/web/art/golden-ui/branch-obs.png",
+   "sheet": "artifacts/art-inbox/b4/b4-1.png",
+   "crop": [
+    789,
+    775,
+    978,
+    965
+   ],
+   "size": [
+    201,
+    202
+   ],
+   "sha256": "7d0ac604dcd498b0bab57bb8421793cee265319ebafcd01f1aef65502d49c739"
+  },
+  {
+   "id": "skill-TRADE-1",
+   "path": "/web/art/golden-ui/skill-TRADE-1.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    57,
+    62,
+    211,
+    273
+   ],
+   "size": [
+    166,
+    223
+   ],
+   "sha256": "c7fa9e40d9bd48143bef3f565b1f47325f55869302742b2c2e982d61976c0c10"
+  },
+  {
+   "id": "skill-TRADE-2",
+   "path": "/web/art/golden-ui/skill-TRADE-2.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    294,
+    88,
+    484,
+    278
+   ],
+   "size": [
+    202,
+    202
+   ],
+   "sha256": "4d74dd43f21161ca12d143ba68812f69123443ec71c0b2151c40914b72da6b4c"
+  },
+  {
+   "id": "skill-TRADE-3",
+   "path": "/web/art/golden-ui/skill-TRADE-3.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    540,
+    110,
+    734,
+    273
+   ],
+   "size": [
+    206,
+    175
+   ],
+   "sha256": "5cc8955a9b3a0f1fd28633da634582106c05e21668ee34f4ce5b716627aca8ad"
+  },
+  {
+   "id": "skill-TRADE-4",
+   "path": "/web/art/golden-ui/skill-TRADE-4.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    788,
+    112,
+    997,
+    267
+   ],
+   "size": [
+    221,
+    167
+   ],
+   "sha256": "d02ad77b3910c61835b509bbcb6fa4ed4f054facb33a67904dd7785f3c8db62b"
+  },
+  {
+   "id": "skill-TRADE-5",
+   "path": "/web/art/golden-ui/skill-TRADE-5.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    34,
+    349,
+    236,
+    520
+   ],
+   "size": [
+    214,
+    183
+   ],
+   "sha256": "bf9ada25fbf60dce07e88df3399e4692ef03e5bc399dc7e3fe79be7bfe917e18"
+  },
+  {
+   "id": "skill-TRADE-S",
+   "path": "/web/art/golden-ui/skill-TRADE-S.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    296,
+    318,
+    482,
+    520
+   ],
+   "size": [
+    198,
+    214
+   ],
+   "sha256": "98a76f50a50c9c86ed4197fccb27cd22c0d97e77c55aad1b68f8fa94dac5add2"
+  },
+  {
+   "id": "skill-OBS-1",
+   "path": "/web/art/golden-ui/skill-OBS-1.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    544,
+    338,
+    725,
+    521
+   ],
+   "size": [
+    193,
+    195
+   ],
+   "sha256": "019ce222d1867386d205f1a527bd83e73f9b3cb6e12ad0d98a8bc29a55e42334"
+  },
+  {
+   "id": "skill-OBS-2",
+   "path": "/web/art/golden-ui/skill-OBS-2.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    822,
+    351,
+    984,
+    521
+   ],
+   "size": [
+    174,
+    182
+   ],
+   "sha256": "12144c56e7b8e270f6e854253403214501d43b0b18d7c3618c0d6aaaef9465a8"
+  },
+  {
+   "id": "skill-OBS-3",
+   "path": "/web/art/golden-ui/skill-OBS-3.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    53,
+    575,
+    220,
+    752
+   ],
+   "size": [
+    179,
+    189
+   ],
+   "sha256": "c415e05d2fed70d3572cd33b4e2a5e3ed7210cec5c820573f4ddaf52a8ff8288"
+  },
+  {
+   "id": "skill-OBS-4",
+   "path": "/web/art/golden-ui/skill-OBS-4.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    286,
+    601,
+    497,
+    748
+   ],
+   "size": [
+    223,
+    159
+   ],
+   "sha256": "824f5e3a6543794a9c9094d29bb1c8d8b7fc1afeb69f439278236cb48ebdb532"
+  },
+  {
+   "id": "skill-OBS-5",
+   "path": "/web/art/golden-ui/skill-OBS-5.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    541,
+    597,
+    737,
+    742
+   ],
+   "size": [
+    208,
+    157
+   ],
+   "sha256": "b39a1227ef23858c5eb254d6dccf63bd61fa31bff29cfcb20211702c4533b457"
+  },
+  {
+   "id": "skill-OBS-S",
+   "path": "/web/art/golden-ui/skill-OBS-S.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    780,
+    569,
+    1000,
+    753
+   ],
+   "size": [
+    232,
+    196
+   ],
+   "sha256": "2983727729d921dfcd55a2f51f1167e3391cd4000e806d4588c5d7791e1f7c90"
+  },
+  {
+   "id": "skill-TRIP-1",
+   "path": "/web/art/golden-ui/skill-TRIP-1.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    33,
+    821,
+    235,
+    981
+   ],
+   "size": [
+    214,
+    172
+   ],
+   "sha256": "2fc3d18a08b6cbc4cd10e0327dc707deacc7e0fa91a5e0c3f24042f0d5855413"
+  },
+  {
+   "id": "skill-TRIP-2",
+   "path": "/web/art/golden-ui/skill-TRIP-2.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    292,
+    799,
+    484,
+    999
+   ],
+   "size": [
+    204,
+    212
+   ],
+   "sha256": "d303c0cb280ee373d71136152d2d8126db6ecf722dd422d92554323ff37372c4"
+  },
+  {
+   "id": "skill-TRIP-3",
+   "path": "/web/art/golden-ui/skill-TRIP-3.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    527,
+    845,
+    758,
+    949
+   ],
+   "size": [
+    243,
+    116
+   ],
+   "sha256": "71840e7536c6c41915b4da6c3a9343a3504876a7487ad9c375c4610769202e4e"
+  },
+  {
+   "id": "skill-TRIP-4",
+   "path": "/web/art/golden-ui/skill-TRIP-4.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    833,
+    807,
+    972,
+    998
+   ],
+   "size": [
+    151,
+    203
+   ],
+   "sha256": "0911c16b6a168238d25af9d521b19714b475b71fd98465a322a95ad4246e8781"
+  },
+  {
+   "id": "skill-TRIP-5",
+   "path": "/web/art/golden-ui/skill-TRIP-5.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    44,
+    1036,
+    244,
+    1235
+   ],
+   "size": [
+    212,
+    211
+   ],
+   "sha256": "46eadf99723ab3f876bcf02d3256bc4bd280b6252560ef1c404aacc6c517bb51"
+  },
+  {
+   "id": "skill-TRIP-S",
+   "path": "/web/art/golden-ui/skill-TRIP-S.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    286,
+    1055,
+    489,
+    1230
+   ],
+   "size": [
+    215,
+    187
+   ],
+   "sha256": "30a0900f9d285fd7b31b56f9dbc026ca8d604ce0d542692bc77e6e239106daff"
+  },
+  {
+   "id": "branch-trip",
+   "path": "/web/art/golden-ui/branch-trip.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    545,
+    1045,
+    732,
+    1235
+   ],
+   "size": [
+    199,
+    202
+   ],
+   "sha256": "b936e9239dd69322a3cfd6549be9bc7e6657c0e474f8588911d6646c045422dc"
+  },
+  {
+   "id": "skill-point",
+   "path": "/web/art/golden-ui/skill-point.png",
+   "sheet": "artifacts/art-inbox/b4/b4-2.png",
+   "crop": [
+    808,
+    1053,
+    974,
+    1231
+   ],
+   "size": [
+    178,
+    190
+   ],
+   "sha256": "33fbc7c50d3bc3fd35627c97f9d7e3823df2544ebb12a8beb823bcb21242657a"
+  },
+  {
+   "id": "set-music",
+   "path": "/web/art/golden-ui/set-music.png",
+   "sheet": "artifacts/art-inbox/b4/b4-3-v2.png",
+   "crop": [
+    93,
+    172,
+    308,
+    339
+   ],
+   "size": [
+    227,
+    179
+   ],
+   "sha256": "8bb149504c823ebc17d6fef35693ad36f5eb8cd8dcd825b2f8ee7de949b02713"
+  },
+  {
+   "id": "set-sound",
+   "path": "/web/art/golden-ui/set-sound.png",
+   "sheet": "artifacts/art-inbox/b4/b4-3-v2.png",
+   "crop": [
+    408,
+    165,
+    641,
+    344
+   ],
+   "size": [
+    245,
+    191
+   ],
+   "sha256": "3755e664bf106cfb66f6df0aff2b3a80fefc9abe38ae5a5c61efc1a9e99b87b4"
+  },
+  {
+   "id": "set-hatch",
+   "path": "/web/art/golden-ui/set-hatch.png",
+   "sheet": "artifacts/art-inbox/b4/b4-3-v2.png",
+   "crop": [
+    745,
+    128,
+    953,
+    359
+   ],
+   "size": [
+    220,
+    243
+   ],
+   "sha256": "54549876b210e4294d18ea2a541daf64ee10f955ba5aec49984ccc607ad5ab4e"
+  },
+  {
+   "id": "set-keep",
+   "path": "/web/art/golden-ui/set-keep.png",
+   "sheet": "artifacts/art-inbox/b4/b4-3-v2.png",
+   "crop": [
+    70,
+    467,
+    314,
+    667
+   ],
+   "size": [
+    256,
+    212
+   ],
+   "sha256": "8ae707c315df388db2a5e6c744b890d5b4039e46fc01738f40e9fc36099f191e"
+  },
+  {
+   "id": "set-notify",
+   "path": "/web/art/golden-ui/set-notify.png",
+   "sheet": "artifacts/art-inbox/b4/b4-3-v2.png",
+   "crop": [
+    450,
+    425,
+    617,
+    671
+   ],
+   "size": [
+    179,
+    258
+   ],
+   "sha256": "e8c74483a2615e323d511a29ba92ef39fda072eb4267d5213147a1ad380f5201"
+  },
+  {
+   "id": "set-background",
+   "path": "/web/art/golden-ui/set-background.png",
+   "sheet": "artifacts/art-inbox/b4/b4-3-v2.png",
+   "crop": [
+    735,
+    422,
+    950,
+    675
+   ],
+   "size": [
+    227,
+    265
+   ],
+   "sha256": "55d85edac229c7539c03a8b73c062fab6d34951a3a56544ce742a87f3ee15fc9"
+  },
+  {
+   "id": "dots-tile",
+   "path": "/web/art/golden-ui/dots-tile.png",
+   "sheet": "web/art/golden-ui/divider-dots.png",
+   "crop": [
+    39,
+    22,
+    87,
+    50
+   ],
+   "size": [
+    48,
+    28
+   ],
+   "sha256": "2a3ca086fffe25f4ccb20306580955018ba1eea46aa4c7666b77cb2526175365"
+  },
+  {
+   "id": "avatar-lv1",
+   "path": "/web/art/golden-ui/avatar-lv1.png",
+   "sheet": "artifacts/ui-design-20261002/art-batches/refs/kitchen-chick-avatar.png + web/art/golden-ui/strip-label.png (placeholder)",
+   "crop": [
+    38,
+    22,
+    215,
+    180
+   ],
+   "size": [
+    189,
+    166
+   ],
+   "sha256": "ebd4c1361b5808ed0c5c8b84392685f5db8aa36b0d60d2c4d5dd2ef9d4202125"
+  },
+  {
+   "id": "avatar-lv2",
+   "path": "/web/art/golden-ui/avatar-lv2.png",
+   "sheet": "artifacts/ui-design-20261002/art-batches/refs/kitchen-chick-avatar.png + web/art/golden-ui/strip-label.png (placeholder)",
+   "crop": [
+    38,
+    22,
+    215,
+    180
+   ],
+   "size": [
+    189,
+    166
+   ],
+   "sha256": "ebd4c1361b5808ed0c5c8b84392685f5db8aa36b0d60d2c4d5dd2ef9d4202125"
+  },
+  {
+   "id": "avatar-lv3",
+   "path": "/web/art/golden-ui/avatar-lv3.png",
+   "sheet": "artifacts/ui-design-20261002/art-batches/refs/kitchen-chick-avatar.png + web/art/golden-ui/strip-label.png (placeholder)",
+   "crop": [
+    38,
+    22,
+    215,
+    180
+   ],
+   "size": [
+    189,
+    166
+   ],
+   "sha256": "ebd4c1361b5808ed0c5c8b84392685f5db8aa36b0d60d2c4d5dd2ef9d4202125"
+  },
+  {
+   "id": "avatar-lv4",
+   "path": "/web/art/golden-ui/avatar-lv4.png",
+   "sheet": "artifacts/ui-design-20261002/art-batches/refs/kitchen-chick-avatar.png + web/art/golden-ui/strip-label.png (placeholder)",
+   "crop": [
+    38,
+    22,
+    215,
+    180
+   ],
+   "size": [
+    189,
+    166
+   ],
+   "sha256": "ebd4c1361b5808ed0c5c8b84392685f5db8aa36b0d60d2c4d5dd2ef9d4202125"
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "checks": 1593,
+  "checks": 1599,
   "failed": [],
   "scope": "作者内容静态审计；非运行时实现、迁移、真人、最终美术或完整经济验证。",
   "materialCoverage": [
@@ -3458,15 +3458,15 @@
   ],
   "sourceHashes": {
     "web/data.js": "1595b413bd3056f138276f95fb1258d87d8ea4025c0c87bf2f614fe65885209e",
-    "web/content-pack.js": "1989c553668eea93dd9fe2669a956798183d16f542b703801f739d75a37efc75",
-    "web/integration-data.js": "c490a6ec362d55bcbb755b7bfac0e8a696a7d57321c12f993bdd5908bf567598",
+    "web/content-pack.js": "c163fc085f32652d36483114d8c83334acfd30db4c4d765ffede50e25b69be67",
+    "web/integration-data.js": "543b4c3f7577dd86ffd76847e6258075de1a326bbf8b95be0532157d732784d9",
     "web/recipes.js": "66766bfc5efb19d2b8bae6974291921aa7f8f660ff1ed960903cf00a361adfba",
     "web/recipe-catalog-data.js": "5c5edfe96146796803c3dd75ae97cf9cf40b70a331a145854df0a77354348409",
-    "web/ingredient-unlocks.js": "dbbd38c4b4d06531e8bcf0c6acdbc917d62b26effc108c199993229ca607b4ce",
-    "web/seasonal-pack.js": "08354a180b38f9ec8b236292423518595c7909ca080f3b5d2c39762b2634e772",
+    "web/ingredient-unlocks.js": "a7ef9edbb44600846000e501bdff8683e250d6299b458ee5f7fb13bcf0a4714b",
+    "web/seasonal-pack.js": "0bb865f4a75f0313c19cb0c318957791c6c48626c83ab8e21a867d9501f98fdd",
     "web/trade-data.js": "e1bde0687f2bd687d01113dc3ab95d31c2f1e4e79af5d30ffa237d4740cea600",
-    "web/engine.js": "d1bc7f3c0a736a3e952dd8c3e3651b7dc7ad01f68fa8d67ee8fdb7e1a162cf12",
-    "web/shrine.js": "b20454cc66034319e85affbcffefb2de32cba67a104a1d778574cb173612fb68",
+    "web/engine.js": "035c2f978657bd9652d9d60dddae50467adf76916fb0d7994d2ae8afbb5864cd",
+    "web/shrine.js": "b99e0a3d209b65b157d2c53d5ac004653e40650aa932378ed6ab57065de0c40a",
     "docs/gameplay-expansion-design.md": "f5c866159d4658d26658ecc7ea1015a6b33f8bad83c4dbc0259496d59aa9abf3",
     "docs/ui-information-architecture.md": "3244eb2b6a8e464173e23002a106cbf43fda18bf1e22e418f7864ee0041496ea"
   }

@@ -1,6 +1,6 @@
-/* A paper information shell in CSS pixels; the 320-coordinate scene alone zooms. */
+/* A paper information shell in CSS pixels; only the 320-coordinate scene scales. */
 #game { inset:0; margin:auto; width:min(100%,560px); height:100%; display:grid; grid-template-rows:minmax(0,1fr) auto; overflow:hidden; background:#e6eddb; touch-action:pan-y; }
-#scene-stage { grid-area:1/1; position:relative; width:320px; align-self:center; justify-self:center; overflow:hidden; touch-action:none; }
+#scene-stage { grid-area:1/1; position:relative; width:320px; align-self:center; justify-self:center; transform-origin:center; overflow:hidden; touch-action:none; }
 #scene-stage canvas,#scene-stage #controls { left:0; top:0; }
 #main-nav { grid-area:2/1; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); z-index:3; min-height:60px; padding-bottom:env(safe-area-inset-bottom,0px); border-top:2px solid #8ca879; background:#edf0d8; }
 #main-nav button { position:relative; min-height:60px; min-width:0; padding:8px 0; border:0; border-radius:0; background:transparent; color:#65513b; font-size:1rem; }
@@ -47,14 +47,15 @@
 #game.is-wide #desk { display:block; grid-area:1/3; position:relative; inset:auto; width:auto; height:auto; min-height:0; }
 #game.is-wide .desk { padding:14px; }
 #game.is-wide .desk p,#game.is-wide .desk strong { font-size:.875rem; }
-.game-toast { top:8px; left:12px; right:12px; z-index:5; font-size:.875rem; }
-#game.is-wide .game-toast { left:132px; right:304px; }
+/* Status toasts sit just above the bottom bar so they never cover CP, titles or settings. */
+.game-toast { top:auto; bottom:calc(74px + env(safe-area-inset-bottom,0px)); left:10px; right:10px; z-index:5; padding:7px 10px; font-size:.8125rem; line-height:1.45; pointer-events:none; }
+#game.is-wide .game-toast { top:8px; bottom:auto; left:132px; right:304px; }
 /* The scene and its siblings must share one explicit grid cell. */
 #scene-stage { min-height:0; z-index:0; }
 #main-nav button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; padding:4px 0; font-size:.8125rem; }
 #main-nav button>.sprite-art,#main-nav button>.interface-icon { width:28px; height:28px; flex:none; }
 #main-nav .nav-result { position:absolute; top:7px; right:18%; }
-#quick-actions { grid-area:1/1; align-self:start; justify-self:end; position:relative; z-index:1; margin:calc(var(--scene-top,0px) + 76px) calc(var(--scene-inset,0px) + 5px) 0 0; display:flex; flex-direction:column; gap:6px; }
+#quick-actions { grid-area:1/1; align-self:start; justify-self:end; position:relative; z-index:1; margin:calc(var(--scene-top,0px) + var(--quick-offset,76px)) var(--quick-inset,5px) 0 0; display:flex; flex-direction:column; gap:6px; }
 #quick-actions[hidden] { display:none; }
 #quick-actions button { width:46px; min-height:48px; padding:3px; display:flex; flex-direction:column; align-items:center; gap:1px; background:#fff5d9f5; border:1px solid #9f7547; border-radius:10px; box-shadow:0 2px #b98f58; font-size:12px; }
 #quick-actions :is(.sprite-art,.interface-icon) { width:24px; height:24px; }
@@ -62,12 +63,14 @@
 #quick-actions button:hover,#main-nav button:hover { background-color:#ffe5a0; }
 .panel-symbol { display:inline-flex; width:30px; height:30px; vertical-align:middle; margin-right:8px; }
 .panel-symbol>svg { width:100%; height:100%; }
-.route-illustration { width:100%; height:64px; display:block; border:1px solid #c6b68a; border-radius:10px; margin-bottom:10px; }
 .business-welcome-art { display:flex; justify-content:center; align-items:end; gap:8px; width:180px; margin:8px auto; padding:12px; border-bottom:5px solid #d5ac71; border-radius:50%; background:#f4e9c9; }
 .business-welcome-art>.sprite-art { width:76px; height:76px; }
 .business-welcome-art>img { width:60px; height:60px; object-fit:contain; }
 /* Intrinsic rows prevent fixed 128px tracks from overlapping 144px cards. */
 #panels .collection-book { grid-auto-rows:max-content; align-content:start; gap:8px; }
+#panels .collection-screen { display:block; overflow-y:auto; }
+#panels .collection-screen .collection-book { overflow:visible; margin-top:8px; }
+#panels .collection-screen footer { padding-bottom:4px; }
 #panels .collection-stamp { grid-template-rows:auto 56px auto auto; min-height:156px; gap:4px; padding:7px 4px; align-content:start; }
 #panels .collection-name { display:block; -webkit-line-clamp:unset; overflow:visible; min-height:2.8em; font-size:.875rem; line-height:1.4; }
 #panels .collection-stock { height:auto; line-height:1.5; font-size:.75rem; overflow-wrap:anywhere; }
@@ -75,14 +78,10 @@
 #panels .collection-stamp:hover { border-color:#8d7044; background:#fff1bf; }
 #panels .collection-blank { display:none; }
 #panels .book-recent button { overflow-wrap:anywhere; }
-/* Short windows scroll the sheet as a whole; fixed headings must not squeeze
-   its main content down to zero pixels. All nested controls remain reachable. */
+/* The book scrolls as one sheet, including its filters, so large text never
+   leaves a tiny strip for cards. Other pages retain their fixed action row. */
 @media (max-height:540px) {
-  #panels>.panel { overflow-y:auto; display:block; }
-  #panels>.panel>.scroll,#panels>.panel>.book-reader { overflow:visible; max-height:none; }
-  #panels .collection-book { display:grid; }
-  #panels footer { position:static; }
-  #quick-actions { margin-top:calc(var(--scene-top,0px) + 8px); }
+  #panels .regional-region-list { grid-template-columns:repeat(4,minmax(0,1fr)); }
 }
 @media (max-width:360px) { #panels .collection-book { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (prefers-reduced-motion:reduce) { #panels>.panel { animation:none; } }

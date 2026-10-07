@@ -1,0 +1,16 @@
+{
+  "verified_at": "2026-09-28T02:22:06.472263+08:00",
+  "reports": 9,
+  "cases": 29,
+  "fields_per_case": 12,
+  "completed_image_events": 80,
+  "original_prompts_verified": 80,
+  "source_pngs_verified": 80,
+  "events_with_exact_project_png_copies": 59,
+  "local_links_checked": 494,
+  "cited_external_files_hashed": 57,
+  "runtime_files_checked": 812,
+  "runtime_changed": [],
+  "errors": [],
+  "scope": "Static forensic document and source verification only. Historical UI QA not re-run. No ImageGen or Computer Use called in this task."
+}

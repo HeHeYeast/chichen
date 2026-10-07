@@ -10,7 +10,7 @@ const descriptions=Object.fromEntries([...read('docs/species-descriptions.md').m
 const clues=Object.fromEntries([...read('docs/species-discovery-audit.md').matchAll(/^\| ([01]:\d+) \| .*? \| (?:保留|修订) \| (.*?) \| .*? \|$/gm)].map(([,key,text])=>[key,text]));
 const abilities=JSON.parse(read('docs/b-group-balance/exploration-species.json'));
 if(Object.keys(descriptions).length!==193||Object.keys(clues).length!==193||abilities.length!==193)throw Error('内容覆盖不完整');
-for(const a of abilities)if(a.gather+a.discover!==6||!descriptions[a.key])throw Error('能力无效 '+a.key);
+for(const a of abilities)if(![a.gather,a.discover].every(v=>Number.isInteger(v)&&v>=1&&v<=20)||!descriptions[a.key])throw Error('能力无效 '+a.key);
 const config=JSON.parse(read('docs/b-group-balance/design-config.json'));
 delete config.status;
 const story=read('docs/worldbuilding-kitchen-story.md');

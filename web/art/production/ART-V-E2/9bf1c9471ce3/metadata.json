@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "processingVersion": 1,
+  "kind": "cards",
+  "identityKey": null,
+  "sourceSize": [
+    1672,
+    940
+  ],
+  "sourceBounds": [
+    344,
+    200,
+    1329,
+    822
+  ],
+  "components": [
+    {
+      "area": 401167,
+      "bbox": [
+        344,
+        200,
+        1329,
+        822
+      ]
+    }
+  ],
+  "sourceLayersUnavailable": true,
+  "variants": {
+    "discovery-vignette": {
+      "path": "/web/art/production/ART-V-E2/9bf1c9471ce3/discovery-vignette.png",
+      "width": 480,
+      "height": 270,
+      "sha256": "17053ac0840e1901b579c2520d17585986e17541334b5a462c1aaed268b703c8",
+      "visibleBounds": [
+        78,
+        32,
+        403,
+        237
+      ],
+      "centroid": [
+        0.5121427110047273,
+        0.5454120010142108
+      ],
+      "scale": 0.3299035369774919,
+      "translation": [
+        -35.486816720257224,
+        -33.980707395498385
+      ],
+      "bounds": [
+        78,
+        32,
+        325,
+        205
+      ],
+      "groundAnchor": [
+        0.5,
+        0.8777777777777778
+      ],
+      "available": true
+    }
+  },
+  "source": {
+    "sourceHash": "a900158209d53eb1ea21163461dfae73155f349a9c845b7b7f6f437695cb2810",
+    "provider": "native-imagegen"
+  }
+}

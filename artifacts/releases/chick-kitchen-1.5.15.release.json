@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.15",
+    "versionCode":  31,
+    "file":  "chick-kitchen-1.5.15.apk",
+    "sha256":  "ebe314e42659427256a3d56b1373099a34f3b7824d5130492265238e220e59a0",
+    "bytes":  107288397,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-06T01:04:15.2473306Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "5df225166b771d09191e5c384f4ba5523d03144950b44212cd480412a12cbaaf",
+    "runtimeFiles":  1469,
+    "notes":  "下一锅推荐重做：多赚按每小时比较并可选「多久回来」，不再只推荐炖锅；新伙伴按能出几种新品种排序，线索够了才推荐，并支持按线索试配；多个调味组合也参与比较；没有推荐时会告诉你每口锅还有几种没发现。商店「其他」页蛋盆改为一个大蛋，农场左上角换成真正的鸡宝。包含 1.5.13 的留在家数量、同种多只寻访和 1～20 数值。保留存档和签名，可直接覆盖更新。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

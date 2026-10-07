@@ -9,10 +9,11 @@ const CARD_TYPE={specimen:'标本',lore:'见闻',event:'事件'};
 // Display only: authored text keeps content IDs; show names, keeping unfound
 // cards and materials masked (the rule itself never reads this text).
 export function readableRequirement(s,text){
-  return String(text??'').replace(/(?<![A-Za-z0-9-])(MN\d|O\d\d|PJ-\d|M\d\d|ALT-[VRTB]|[VRTB]-[SNE]\d)(?![0-9])|(?<![\d.])(7[5-9]|8[0-2])(?![\d只种])/g,(all,id,material)=>{
+  return String(text??'').replace(/(?<![A-Za-z0-9-])(MN\d|O\d\d|PJ-\d|M\d\d|ALT-[VRTB]|[VRTB]-[SNE]\d|RG\d(?!-)|GUIDE-B)(?![0-9])|(?<![\d.])(7[5-9]|8[0-2])(?![\d只种])/g,(all,id,material)=>{
     if(material){const m=REGIONAL.materials.find(x=>x.id===Number(material));const known=Object.hasOwn(s.expansion?.discovery?.identified??{},material)||Object.hasOwn(s.expansion?.discovery?.cards??{},m.specimen);return known?(CONTENT_TEXT[m.stableId]?.name??all):`${REGION_NAME[m.region]}新材料`;}
     if(/^[VRTB]-/.test(id)){const card=REGIONAL.cards.find(c=>c.id===id);const owned=Object.hasOwn(s.expansion?.discovery?.cards??{},id);return owned?`「${CONTENT_TEXT[id]?.title??id}」`:`${REGION_NAME[card.region]}${CARD_TYPE[card.type]}${"一二"[Number(id.at(-1))-1]}`;}
     if(id.startsWith('ALT-')){const alt=REGIONAL.alternatives.find(x=>x.id===id),seen=alt.ingredients.filter(n=>n>=75).every(n=>Object.hasOwn(s.expansion?.discovery?.identified??{},String(n)));return seen&&CONTENT_TEXT[id]?.name?`「${CONTENT_TEXT[id].name}」`:`${REGION_NAME[alt.region]}的地方做法`;}
+    if(id==='GUIDE-B')return '沿湾路标';
     return CONTENT_TEXT[id]?.name?`「${CONTENT_TEXT[id].name}」`:all;
   });
 }

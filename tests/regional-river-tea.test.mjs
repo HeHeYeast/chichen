@@ -70,10 +70,10 @@ test('old-material species open with each region\'s first specimen; ornamentals 
 test('R-S1 water and T-N2 floral chances add their bonus once, never per member',()=>{
   const water=[regionalCompanion('1:0'),regionalCompanion('1:5'),regionalCompanion('1:7')];
   const F=water.reduce((n,c)=>n+c.F,0);
-  assert.equal(regionalCardChance(regionalCard('R-S1'),water),Math.min(60,25+2*F+5)/100);
-  assert.equal(regionalCardChance(regionalCard('R-S1'),[regionalCompanion('0:0')]),(25+2*regionalCompanion('0:0').F)/100);
+  assert.equal(regionalCardChance(regionalCard('R-S1'),water),Math.min(60,25+2*F/3+5)/100);
+  assert.equal(regionalCardChance(regionalCard('R-S1'),[regionalCompanion('0:0')]),(25+2*regionalCompanion('0:0').F/3)/100);
   const floral=REGIONAL.species.map(s=>s.key).concat(Object.keys(E.freshState(NOW).farm)).find(k=>resolveSpecies(k)?.traits?.includes('floral'))??'0:48';
-  const team=[regionalCompanion(floral)];if(team[0].traits.includes('floral'))assert.equal(regionalCardChance(regionalCard('T-N2'),[...team,...team]),(25+2*2*team[0].F+5)/100);
+  const team=[regionalCompanion(floral)];if(team[0].traits.includes('floral'))assert.equal(regionalCardChance(regionalCard('T-N2'),[...team,...team]),(25+2*(2*team[0].F)/3+5)/100);
 });
 
 test('ALT-T maps roasted leaf to oolong (3), keeps butter (27) and draws exactly the old tea-egg pool',()=>{

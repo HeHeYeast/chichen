@@ -16,7 +16,7 @@ test('strict validator accepts deferred sold-out before timeline release',()=>{c
 test('strict validator accepts genuine structured regional trip facts',()=>{const s=fixture();reduceFacts(s,[{kind:'tripComplete',tripId:'trip-1',region:'V',placeId:'V-1',focus:'discover',cardId:'V-E1',members:[{key:'0:0',gather:3,discover:3,environment:'yard',traits:['grain']}]}]);assert.equal(check(s),true);});
 for(const [name,mutate]of Object.entries({
  'unknown top field':s=>s.expansion.business.extra=true,
- 'future business version':s=>s.expansion.business.active.rulesVersion=2,
+ 'future business version':s=>s.expansion.business.active.rulesVersion=3,
  'unknown session id':s=>s.expansion.business.active.id='bad',
  'capacity':s=>s.expansion.business.active.capacity=72,
  'stock conservation':s=>s.expansion.business.active.stock['0:0']++,

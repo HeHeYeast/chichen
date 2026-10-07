@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-09-28T16:17:36.715Z",
+  "assets": 18,
+  "buildingAssets": 4,
+  "vectorEnvironmentAssets": 14,
+  "checks": [
+    {
+      "test": "a",
+      "characters": 3,
+      "buildings": 2,
+      "individualSprites": 31,
+      "footDepthSorted": true,
+      "noFullSceneImage": true
+    },
+    {
+      "test": "b",
+      "characters": 2,
+      "buildings": 2,
+      "individualSprites": 34,
+      "footDepthSorted": true,
+      "noFullSceneImage": true
+    }
+  ],
+  "alphaVerified": true,
+  "buildingLayerToggle": true,
+  "anchorToggle": true,
+  "errors": [],
+  "failedRequests": [],
+  "scope": "Local static modular tests only; no Runtime or zoom/pan integration."
+}

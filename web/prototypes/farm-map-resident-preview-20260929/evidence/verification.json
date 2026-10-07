@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-29T12:27:47.034Z",
+  "mapDimensions": [
+    1536,
+    1024
+  ],
+  "sourceHash": "ad5be8454d5011abae15b61e44fc05dab5fa71f792813c16553e0f7eee6b2e7c",
+  "sourceUnmodified": true,
+  "residents": 8,
+  "dimensions": [
+    {
+      "place": "农舍门前",
+      "width": 19.390625,
+      "height": 19
+    },
+    {
+      "place": "补给门前",
+      "width": 21.71875,
+      "height": 20
+    },
+    {
+      "place": "中央草地西侧",
+      "width": 19.390625,
+      "height": 19
+    },
+    {
+      "place": "中央草地下侧",
+      "width": 21.71875,
+      "height": 20
+    },
+    {
+      "place": "中央草地东侧",
+      "width": 17.6875,
+      "height": 18
+    },
+    {
+      "place": "中央路边",
+      "width": 19.390625,
+      "height": 19
+    },
+    {
+      "place": "陈列附近",
+      "width": 17.6875,
+      "height": 18
+    },
+    {
+      "place": "神社附近",
+      "width": 21.71875,
+      "height": 20
+    }
+  ],
+  "layerToggle": true,
+  "panBothAxes": true,
+  "imageGenCalls": 0,
+  "errors": []
+}

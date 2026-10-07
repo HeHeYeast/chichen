@@ -14,6 +14,13 @@ const source={content:load('content'),baseline:load('baseline'),art:load('art-ma
 const compile=(mutate=()=>{})=>{const data=structuredClone(source);mutate(data);return compileRuntimeContent(data.content,data.baseline,data.art);};
 const result=compile();
 
+test('runtime source hash tracks compile inputs, not validator reports',()=>{
+  const manifest=JSON.parse(fs.readFileSync(new URL('../web/runtime-content.manifest.json',import.meta.url),'utf8'));
+  for(const name of ['content.json','baseline.json','art-manifest.json'])assert.ok(manifest.sources[`docs/content-pack/${name}`]);
+  for(const name of ['audit.json','audit.md','relation-graph.json','species.md'])assert.equal(manifest.sources[`docs/content-pack/${name}`],undefined);
+  assert.equal(manifest.sourceHash,sha256(JSON.stringify(manifest.sources)));
+});
+
 test('runtime compiler freezes all 193 identities and appends exactly 48 / 152 chicken / 89 duck',()=>{
   assert.equal(LEGACY193.characters[0].length,128);assert.equal(LEGACY193.characters[1].length,65);
   const keys=[...LEGACY193.characters.flatMap((rows,egg)=>rows.map(s=>`${egg}:${s.id}`)),...result.runtime.species.map(s=>s.key)];
@@ -105,9 +112,10 @@ test('business data preserves 8 menus / 12 orders / 16 stages / 4 project costs 
   assert.throws(()=>compile(d=>d.content.projects[0].stages[2].costCP=201),/Project cost changed/);
 });
 
-test('art manifest records all 112 required sets and never borrows a legacy image for a new species',()=>{
-  assert.equal(Object.keys(RUNTIME_ASSETS).length,112);
-  for(const s of result.runtime.species){const art=RUNTIME_ASSETS[s.assetId];assert.equal(art.productionStatus,'final-art-pending');assert.equal(art.safeArea.insetPercent,12);assert.equal(art.variants.full.width,512);assert.equal(art.variants.portrait.width,256);for(const v of Object.values(art.variants)){assert.match(v.path,/^\/web\/art\/regional\//);assert.equal(v.available,false);}}
+test('base art manifest remains complete; runtime resolves approved art without borrowing old identities',()=>{
+  assert.equal(Object.keys(result.assets).length,112);
+  for(const id of Object.keys(result.assets))assert.ok(RUNTIME_ASSETS[id]);
+  for(const s of result.runtime.species){const base=result.assets[s.assetId],art=RUNTIME_ASSETS[s.assetId];assert.equal(base.productionStatus,'final-art-pending');assert.equal(base.safeArea.insetPercent,12);assert.equal(art.safeArea.insetPercent,art.variants.full.available?10:12);assert.equal(art.variants.full.width,512);assert.equal(art.variants.portrait.width,256);for(const v of Object.values(art.variants)){if(v.available){assert.match(v.path,/^\/web\/art\/production\//);assert.ok(['art-approved','FINAL'].includes(art.productionStatus));assert.equal(art.identityKey,s.key);}else{assert.match(v.path,/^\/web\/art\/regional\//);assert.equal(art.productionStatus,'final-art-pending');}}}
 });
 
 test('source compiler and checked-in generated runtime are equivalent and immutable',()=>{

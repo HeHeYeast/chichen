@@ -8,15 +8,18 @@ import {mkdir,writeFile} from 'node:fs/promises';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const require=createRequire(import.meta.url);
 export const DEFAULT_UI_CHECKS=Object.freeze(['skill-art','integration','tool-strip','recipe-book','save-ui','resume','kitchen-care']);
+// popup-swipe: popups close when dragged up or off to the side (runs with the release set, not the daily seven)
+export const SWIPE_UI_CHECKS=Object.freeze(['popup-swipe']);
 export const EXPANSION_UI_CHECKS=Object.freeze([...Array.from({length:12},(_,i)=>'work-'+String.fromCharCode(97+i)),'book-navigation','takeover-ui','compatible-rollback']);
+export const FINAL_UI_CHECKS=Object.freeze(['kitchen-golden','farm-ui-v1','release-final','ui-fit','packaged-mobile','legacy-zoom']);
 export function selectUIChecks({release=false,only=null}={}){
-  const all=[...DEFAULT_UI_CHECKS,...EXPANSION_UI_CHECKS];
+  const all=[...DEFAULT_UI_CHECKS,...EXPANSION_UI_CHECKS,...SWIPE_UI_CHECKS,...FINAL_UI_CHECKS];
   if(release)return all;
   if(only){if(!all.includes(only))throw Error(`Unknown CHICK_QA_ONLY: ${only}; choose ${all.join(', ')}`);return [only];}
   return [...DEFAULT_UI_CHECKS];
 }
 export function uiCheckArguments(name,{packagePath,base,chrome,output}){
-  if(!DEFAULT_UI_CHECKS.includes(name)&&!EXPANSION_UI_CHECKS.includes(name))throw Error('Unknown UI check '+name);
+  if(!DEFAULT_UI_CHECKS.includes(name)&&!EXPANSION_UI_CHECKS.includes(name)&&!SWIPE_UI_CHECKS.includes(name)&&!FINAL_UI_CHECKS.includes(name))throw Error('Unknown UI check '+name);
   const legacy={
     'skill-art':['tools/qa-skill-art.mjs',packagePath,base,chrome,join(output,'skill-art')],
     integration:['tools/qa-round2.mjs',packagePath,base,chrome,join(output,'integration')],
@@ -25,9 +28,10 @@ export function uiCheckArguments(name,{packagePath,base,chrome,output}){
     'save-ui':['tools/qa-save-ui.mjs',packagePath,base,join(output,'save-ui')],
     resume:['tools/qa-resume-v146.mjs',packagePath,base,chrome,join(output,'resume')],
     'kitchen-care':['tools/qa-kitchen-care-v145.mjs',packagePath,base,chrome,join(output,'kitchen-care')],
+    'popup-swipe':['tools/qa-popup-swipe.mjs',packagePath,base,chrome],
   };
   if(legacy[name])return legacy[name];
-  if(EXPANSION_UI_CHECKS.includes(name))return [`tools/qa-${name}.mjs`,packagePath];
+  if(EXPANSION_UI_CHECKS.includes(name)||FINAL_UI_CHECKS.includes(name))return [`tools/qa-${name}.mjs`,packagePath];
   throw Error('Unknown UI check '+name);
 }
 export function uiVerificationReport({required,checks,release=false,error=null}){
@@ -45,6 +49,15 @@ export async function verifyUI({argv=process.argv.slice(2),env=process.env}={}){
     let packagePath;for(const candidate of candidates){try{packagePath=require.resolve(candidate);break;}catch{}}
     if(!packagePath)throw Error('Install Playwright or set CHICK_PLAYWRIGHT_PACKAGE to an existing package. UI release checks cannot be skipped.');
     const {chromium}=require(packagePath),chrome=env.CHICK_QA_CHROME??chromium.executablePath();
+    if(required.includes('packaged-mobile')){
+      const result=await new Promise((done,fail)=>{
+        const child=spawn(process.execPath,['android/package-runtime.mjs'],{cwd:root,stdio:['ignore','pipe','pipe'],windowsHide:true,env});
+        let log='';child.stdout.on('data',b=>log+=b);child.stderr.on('data',b=>log+=b);
+        child.once('error',fail);child.once('exit',code=>done({code,log}));
+      });
+      await writeFile(join(output,'packaging.log'),result.log);
+      if(result.code!==0)throw Error('Offline runtime packaging failed: '+result.log);
+    }
     // Legacy suites share this isolated server; A–L own independent servers and
     // profiles. Explicit environment forwarding also covers self-hosted suites.
     server=spawn(process.execPath,['server.mjs','0'],{cwd:root,stdio:['ignore','pipe','pipe'],windowsHide:true,env});

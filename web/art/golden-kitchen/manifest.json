@@ -1,0 +1,655 @@
+{
+  "version": 1,
+  "goldenReferences": [
+    "reference/kitchen/e3f95393-29a3-4149-a3b7-35048cbea3cc.png",
+    "reference/kitchen/adeda638-1b40-4555-8cc4-9129c9eeff3d.png",
+    "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+    "reference/kitchen/2649036c-79ba-4d26-b459-826f46a39386.png"
+  ],
+  "coordinateSystem": [
+    390,
+    844
+  ],
+  "rasterScale": 3,
+  "extracted": [
+    {
+      "id": "lv1-header",
+      "path": "/web/art/golden-kitchen/lv1-header.png",
+      "source": "reference/kitchen/e3f95393-29a3-4149-a3b7-35048cbea3cc.png",
+      "referenceBounds": [
+        0,
+        0,
+        390,
+        96
+      ],
+      "size": [
+        1170,
+        288
+      ],
+      "method": "reference chrome; dynamic text removed",
+      "sha256": "bdfe36756f20d691bb3c6565a1648c6c55bc37ad2e55e7e4ee938439ea2b1d3a"
+    },
+    {
+      "id": "lv1-status-surround",
+      "path": "/web/art/golden-kitchen/lv1-status-surround.png",
+      "source": "reference/kitchen/e3f95393-29a3-4149-a3b7-35048cbea3cc.png",
+      "referenceBounds": [
+        0,
+        96,
+        390,
+        148
+      ],
+      "size": [
+        1170,
+        156
+      ],
+      "method": "architecture around empty status frame",
+      "sha256": "e7f47a63e37101b106be2f9df48a979d568d0ebe333aa6a61f2bc65d40e15926"
+    },
+    {
+      "id": "lv1-wall",
+      "path": "/web/art/golden-kitchen/lv1-wall.png",
+      "source": "reference/kitchen/e3f95393-29a3-4149-a3b7-35048cbea3cc.png",
+      "referenceBounds": [
+        0,
+        148,
+        390,
+        244
+      ],
+      "size": [
+        1170,
+        288
+      ],
+      "method": "measured crop",
+      "sha256": "c6b8eba74ff567adc511e6b7ee1e618363a96d1075e3e54c487595b97b6a4ced"
+    },
+    {
+      "id": "lv1-support",
+      "path": "/web/art/golden-kitchen/lv1-support.png",
+      "source": "reference/kitchen/e3f95393-29a3-4149-a3b7-35048cbea3cc.png",
+      "referenceBounds": [
+        0,
+        244,
+        390,
+        380
+      ],
+      "size": [
+        1170,
+        408
+      ],
+      "method": "measured support and local decoration; hidden liner reconstructed from exposed material",
+      "sha256": "98956c9eee80cb27cf1cc5d51cf3d2e9f2bf8eb59ed03e8e5811e0686a6939bf"
+    },
+    {
+      "id": "lv1-front",
+      "path": "/web/art/golden-kitchen/lv1-front.png",
+      "source": "reference/kitchen/e3f95393-29a3-4149-a3b7-35048cbea3cc.png",
+      "referenceBounds": [
+        0,
+        380,
+        390,
+        431
+      ],
+      "size": [
+        1170,
+        153
+      ],
+      "method": "foreground lip and base; original source pixels",
+      "sha256": "8540235e1bf545f8a0208d96f518eca698bac6696862efdc05e24d7f089d0509"
+    },
+    {
+      "id": "lv1-counter",
+      "path": "/web/art/golden-kitchen/lv1-counter.png",
+      "source": "reference/kitchen/e3f95393-29a3-4149-a3b7-35048cbea3cc.png",
+      "referenceBounds": [
+        0,
+        429,
+        390,
+        462
+      ],
+      "size": [
+        1170,
+        99
+      ],
+      "method": "dynamic timer erased",
+      "sha256": "a6110a62db5bafc1362915e96291de1e85e0aa634f3fcefc7dd023274c84fa0c"
+    },
+    {
+      "id": "lv2-header",
+      "path": "/web/art/golden-kitchen/lv2-header.png",
+      "source": "reference/kitchen/adeda638-1b40-4555-8cc4-9129c9eeff3d.png",
+      "referenceBounds": [
+        0,
+        0,
+        390,
+        104
+      ],
+      "size": [
+        1170,
+        312
+      ],
+      "method": "reference chrome; dynamic text removed",
+      "sha256": "54746b314a59279bbeb7cdc26a5815d9a4941691ebf0237787d49ece3f99ad1e"
+    },
+    {
+      "id": "lv2-status-surround",
+      "path": "/web/art/golden-kitchen/lv2-status-surround.png",
+      "source": "reference/kitchen/adeda638-1b40-4555-8cc4-9129c9eeff3d.png",
+      "referenceBounds": [
+        0,
+        104,
+        390,
+        157
+      ],
+      "size": [
+        1170,
+        159
+      ],
+      "method": "architecture around empty status frame",
+      "sha256": "dbcba1d89e62eae903b4b5a65d4d7fc25ddff3c2ba21da30536e33505157ad48"
+    },
+    {
+      "id": "lv2-wall",
+      "path": "/web/art/golden-kitchen/lv2-wall.png",
+      "source": "reference/kitchen/adeda638-1b40-4555-8cc4-9129c9eeff3d.png",
+      "referenceBounds": [
+        0,
+        157,
+        390,
+        244
+      ],
+      "size": [
+        1170,
+        261
+      ],
+      "method": "measured crop",
+      "sha256": "473f17cf2257b481171a2a3c2f82df2244882689c58d862f20236e7cf2755345"
+    },
+    {
+      "id": "lv2-support",
+      "path": "/web/art/golden-kitchen/lv2-support.png",
+      "source": "reference/kitchen/adeda638-1b40-4555-8cc4-9129c9eeff3d.png",
+      "referenceBounds": [
+        0,
+        244,
+        390,
+        368
+      ],
+      "size": [
+        1170,
+        372
+      ],
+      "method": "measured support and local decoration; hidden liner reconstructed from exposed material",
+      "sha256": "3a60cc590f96cd081ae8a842b64f4753396b11c6523d9b0aa2af9e0734d0c249"
+    },
+    {
+      "id": "lv2-front",
+      "path": "/web/art/golden-kitchen/lv2-front.png",
+      "source": "reference/kitchen/adeda638-1b40-4555-8cc4-9129c9eeff3d.png",
+      "referenceBounds": [
+        0,
+        368,
+        390,
+        431
+      ],
+      "size": [
+        1170,
+        189
+      ],
+      "method": "foreground lip and base; original source pixels",
+      "sha256": "c402220c7401519635a0b40fa626790ee889cfdeb05c8cc6c0ca632fef087dbe"
+    },
+    {
+      "id": "lv2-counter",
+      "path": "/web/art/golden-kitchen/lv2-counter.png",
+      "source": "reference/kitchen/adeda638-1b40-4555-8cc4-9129c9eeff3d.png",
+      "referenceBounds": [
+        0,
+        429,
+        390,
+        462
+      ],
+      "size": [
+        1170,
+        99
+      ],
+      "method": "dynamic timer erased",
+      "sha256": "0c5d4ad8b25ace4f6864736acf0122d60deaa236dd32a3dbeff8d7612b311cf6"
+    },
+    {
+      "id": "lv3-header",
+      "path": "/web/art/golden-kitchen/lv3-header.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        0,
+        0,
+        390,
+        104
+      ],
+      "size": [
+        1170,
+        312
+      ],
+      "method": "reference chrome; dynamic text removed",
+      "sha256": "20909eb38ea8180533e8664f8e083fa7fc856e3878b3701fffaf464aa314bf22"
+    },
+    {
+      "id": "lv3-status-surround",
+      "path": "/web/art/golden-kitchen/lv3-status-surround.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        0,
+        104,
+        390,
+        157
+      ],
+      "size": [
+        1170,
+        159
+      ],
+      "method": "architecture around empty status frame",
+      "sha256": "d49ee1680f44f9c5b28b8c55008763f31a1e2c8d5a830c57e348397d3f2e0ff0"
+    },
+    {
+      "id": "lv3-wall",
+      "path": "/web/art/golden-kitchen/lv3-wall.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        0,
+        157,
+        390,
+        244
+      ],
+      "size": [
+        1170,
+        261
+      ],
+      "method": "measured crop",
+      "sha256": "2a7179df1d4fe37bc45faff823bb93753a4732f3b9c4869470aecc657f3629d3"
+    },
+    {
+      "id": "lv3-support",
+      "path": "/web/art/golden-kitchen/lv3-support.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        0,
+        244,
+        390,
+        373
+      ],
+      "size": [
+        1170,
+        387
+      ],
+      "method": "measured support and local decoration; hidden liner reconstructed from exposed material",
+      "sha256": "1fa710b07f15db1719d2fe70562b2ef1f8b3759b47203f81a3a92c0bba083440"
+    },
+    {
+      "id": "lv3-front",
+      "path": "/web/art/golden-kitchen/lv3-front.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        0,
+        373,
+        390,
+        431
+      ],
+      "size": [
+        1170,
+        174
+      ],
+      "method": "foreground lip and base; original source pixels",
+      "sha256": "857392155441554269219234d6cfda290a03718a1ef187f6aac49da3b569a14c"
+    },
+    {
+      "id": "lv3-counter",
+      "path": "/web/art/golden-kitchen/lv3-counter.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        0,
+        429,
+        390,
+        462
+      ],
+      "size": [
+        1170,
+        99
+      ],
+      "method": "dynamic timer erased",
+      "sha256": "f7992deddd86246032410a644ee894b9eba33e357d096714b3f2a7973a36553b"
+    },
+    {
+      "id": "lv4-header",
+      "path": "/web/art/golden-kitchen/lv4-header.png",
+      "source": "reference/kitchen/2649036c-79ba-4d26-b459-826f46a39386.png",
+      "referenceBounds": [
+        0,
+        0,
+        390,
+        104
+      ],
+      "size": [
+        1170,
+        312
+      ],
+      "method": "reference chrome; dynamic text removed",
+      "sha256": "987b1556e58ff71b41ea41509f56bd8c499e347ca53366c95c024cd188ec8492"
+    },
+    {
+      "id": "lv4-status-surround",
+      "path": "/web/art/golden-kitchen/lv4-status-surround.png",
+      "source": "reference/kitchen/2649036c-79ba-4d26-b459-826f46a39386.png",
+      "referenceBounds": [
+        0,
+        104,
+        390,
+        157
+      ],
+      "size": [
+        1170,
+        159
+      ],
+      "method": "architecture around empty status frame",
+      "sha256": "cac8eb169cb75b5af18ed2b17504aa4ca7569073e88929de5fafd278b8ff98bd"
+    },
+    {
+      "id": "lv4-wall",
+      "path": "/web/art/golden-kitchen/lv4-wall.png",
+      "source": "reference/kitchen/2649036c-79ba-4d26-b459-826f46a39386.png",
+      "referenceBounds": [
+        0,
+        157,
+        390,
+        244
+      ],
+      "size": [
+        1170,
+        261
+      ],
+      "method": "measured crop",
+      "sha256": "83febb5cda91c87689732866ba184eae0113261a3c53df8c4b5125e169c7d6cb"
+    },
+    {
+      "id": "lv4-support",
+      "path": "/web/art/golden-kitchen/lv4-support.png",
+      "source": "reference/kitchen/2649036c-79ba-4d26-b459-826f46a39386.png",
+      "referenceBounds": [
+        0,
+        244,
+        390,
+        381
+      ],
+      "size": [
+        1170,
+        411
+      ],
+      "method": "measured support and local decoration; hidden liner reconstructed from exposed material",
+      "sha256": "b7bc9d45be873b5d8e6a29b721665734e2ce191f905f32ae80006fef02692ec6"
+    },
+    {
+      "id": "lv4-front",
+      "path": "/web/art/golden-kitchen/lv4-front.png",
+      "source": "reference/kitchen/2649036c-79ba-4d26-b459-826f46a39386.png",
+      "referenceBounds": [
+        0,
+        381,
+        390,
+        431
+      ],
+      "size": [
+        1170,
+        150
+      ],
+      "method": "foreground lip and base; original source pixels",
+      "sha256": "7fb9d84be29b1e478c7f48885cf022eaf2c20e3e0025d7bd71ce7b67dd323539"
+    },
+    {
+      "id": "lv4-counter",
+      "path": "/web/art/golden-kitchen/lv4-counter.png",
+      "source": "reference/kitchen/2649036c-79ba-4d26-b459-826f46a39386.png",
+      "referenceBounds": [
+        0,
+        429,
+        390,
+        462
+      ],
+      "size": [
+        1170,
+        99
+      ],
+      "method": "dynamic timer erased",
+      "sha256": "c6a7e5be6183c4ad057ffb98eda70cee0480f2ce5a3ff107eefe717067d528cf"
+    },
+    {
+      "id": "preparation-frame",
+      "path": "/web/art/golden-kitchen/preparation-frame.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        0,
+        508,
+        390,
+        757
+      ],
+      "size": [
+        1170,
+        747
+      ],
+      "method": "empty shared panel; all dynamic contents removed",
+      "sha256": "ff2d1fc3a5cc33514becf3a89ae8490405bcbcb1b3cf5149895fe9d4f8f53e69"
+    },
+    {
+      "id": "plaque",
+      "path": "/web/art/golden-kitchen/plaque.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        111,
+        511,
+        279,
+        541
+      ],
+      "size": [
+        504,
+        90
+      ],
+      "method": "blank reference wood nameplate",
+      "sha256": "9f39fdd229f086fc00d54bcce33ef67bd46744d547a41d7ee396e49d5706bf6a"
+    },
+    {
+      "id": "timber",
+      "path": "/web/art/golden-kitchen/timber.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        0,
+        460,
+        390,
+        467
+      ],
+      "size": [
+        1170,
+        21
+      ],
+      "method": "measured crop",
+      "sha256": "1eea493b2a1e7e8e2aed2aa377725481503715c744f19f37c0d3a929602ff537"
+    },
+    {
+      "id": "tool-0",
+      "path": "/web/art/golden-kitchen/tool-0.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        43,
+        619,
+        84,
+        670
+      ],
+      "size": [
+        123,
+        153
+      ],
+      "method": "closed ink contour cutout",
+      "sha256": "45eff23ea49135f1a833052b69a00ac3437818379702bffb9f26032fb7b17714"
+    },
+    {
+      "id": "tool-1",
+      "path": "/web/art/golden-kitchen/tool-1.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        123,
+        619,
+        181,
+        666
+      ],
+      "size": [
+        174,
+        141
+      ],
+      "method": "closed ink contour cutout",
+      "sha256": "8afeecf554c09ca2f6c2bce0387f3f0f877290b7b9234423f758215dd4e914a8"
+    },
+    {
+      "id": "tool-2",
+      "path": "/web/art/golden-kitchen/tool-2.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        207,
+        621,
+        271,
+        669
+      ],
+      "size": [
+        192,
+        144
+      ],
+      "method": "closed ink contour cutout",
+      "sha256": "4c19177ce3491b647554e59683910b2a286bd038d700758a7b75c77aa34857db"
+    },
+    {
+      "id": "tool-3",
+      "path": "/web/art/golden-kitchen/tool-3.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        303,
+        618,
+        356,
+        670
+      ],
+      "size": [
+        159,
+        156
+      ],
+      "method": "closed ink contour cutout",
+      "sha256": "eb21cf9ec5a21cc9aef4f94fe240c5a6d0433e6d9fcffc4f2d929e22b538003b"
+    },
+    {
+      "id": "lemon",
+      "path": "/web/art/golden-kitchen/lemon.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        57,
+        550,
+        104,
+        586
+      ],
+      "size": [
+        141,
+        108
+      ],
+      "method": "closed ink contour cutout",
+      "sha256": "b9496bc2b754ff938f5897a8c5cbf7b407fb2936f2164fc0a765da5d0c36802e"
+    },
+    {
+      "id": "clock",
+      "path": "/web/art/golden-kitchen/clock.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        55,
+        431,
+        83,
+        459
+      ],
+      "size": [
+        84,
+        84
+      ],
+      "method": "closed ink contour cutout",
+      "sha256": "9ada9d6f8a98b0e596c3b6ac52bd9a85429175bb24a71923202c07f378468363"
+    },
+    {
+      "id": "egg",
+      "path": "/web/art/golden-kitchen/egg.png",
+      "source": "reference/kitchen/73ca53da-de65-4525-8d76-5a24a7d41076.png",
+      "referenceBounds": [
+        74,
+        337,
+        116,
+        374
+      ],
+      "size": [
+        126,
+        111
+      ],
+      "method": "interior flood fill bounded by original ink; dilated to retain contour",
+      "sha256": "2b7e93d5c896c8fdf650bc0a5ae477a60583591257bdfd8a65c9b73bb4aef415"
+    },
+    {
+      "id": "lv1-front-lip",
+      "path": "/web/art/golden-kitchen/lv1-front-lip.png",
+      "source": "/web/art/golden-kitchen/lv1-front.png",
+      "referenceBounds": [
+        0,
+        380,
+        390,
+        431
+      ],
+      "size": [
+        1170,
+        153
+      ],
+      "method": "egg occluder cut from lv1-front by tools/build-kitchen-egg-lips.py; wavy feathered straw-bundle edge; pixels unchanged, alpha only",
+      "sha256": "a6fb0ea5746b6122608a7ef348705146b9d09584105c48eec24996ea07b04a89"
+    },
+    {
+      "id": "lv2-front-lip",
+      "path": "/web/art/golden-kitchen/lv2-front-lip.png",
+      "source": "/web/art/golden-kitchen/lv2-front.png",
+      "referenceBounds": [
+        0,
+        368,
+        390,
+        431
+      ],
+      "size": [
+        1170,
+        189
+      ],
+      "method": "egg occluder cut from lv2-front by tools/build-kitchen-egg-lips.py; transparent above the rail top outline; pixels unchanged, alpha only",
+      "sha256": "4c2aa1ff6ff486879eeed6b6fa24cbc14ebb2e7ee5aa915e9316d4ed5a2c9820"
+    }
+  ],
+  "reused": [
+    "web/art/icons-v4-alpha.png",
+    "web/art/cookware-a-v15.png",
+    "web/art/cookware-b-v15.png",
+    "web/catalog.js character and ingredient resolution",
+    "web/fonts/chick-ui.woff2"
+  ],
+  "new": [
+    "empty liner restoration using reference texture",
+    "kitchen-golden renderer and per-level hit mapping"
+  ],
+  "dynamic": [
+    "CP",
+    "level",
+    "current cookware",
+    "ingredients",
+    "cleanliness",
+    "countdown",
+    "24 eggs/characters",
+    "selection",
+    "locked state",
+    "pagination",
+    "navigation",
+    "egg species switch",
+    "harvest allocation"
+  ],
+  "generation": "none"
+}

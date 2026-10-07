@@ -1,0 +1,4269 @@
+{
+  "version": 1,
+  "workflow": "Mockup > semantic sheet > connected alpha segmentation > cleanup > bounds normalization > runtime",
+  "assets": [
+    {
+      "id": "node-V",
+      "path": "/web/art/golden-journey/node-V.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J01-landmarks.png",
+      "sourceCell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceBounds": [
+        42,
+        97,
+        483,
+        432
+      ],
+      "size": [
+        457,
+        351
+      ],
+      "visualBounds": [
+        8,
+        8,
+        441,
+        335
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        228.5,
+        322.9
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "cc5f1238044ddc595e9a2a567c6124dae64fcf042c15e4358ef55d5999592a1f"
+    },
+    {
+      "id": "node-R",
+      "path": "/web/art/golden-journey/node-R.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J01-landmarks.png",
+      "sourceCell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceBounds": [
+        526,
+        164,
+        997,
+        443
+      ],
+      "size": [
+        487,
+        295
+      ],
+      "visualBounds": [
+        8,
+        8,
+        471,
+        279
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        243.5,
+        270.26
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "2a85bd63c38d0564261b44eeed9e22025c8b0098fae6e1d0f895340e342b1901"
+    },
+    {
+      "id": "node-T",
+      "path": "/web/art/golden-journey/node-T.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J01-landmarks.png",
+      "sourceCell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceBounds": [
+        1051,
+        138,
+        1498,
+        447
+      ],
+      "size": [
+        463,
+        325
+      ],
+      "visualBounds": [
+        8,
+        8,
+        447,
+        309
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        231.5,
+        298.46
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "19758785f4c5fd1c414f85fa48e69f90681c50512e0b36ee34ec1520758474b8"
+    },
+    {
+      "id": "node-B",
+      "path": "/web/art/golden-journey/node-B.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J01-landmarks.png",
+      "sourceCell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceBounds": [
+        34,
+        627,
+        480,
+        938
+      ],
+      "size": [
+        462,
+        327
+      ],
+      "visualBounds": [
+        8,
+        8,
+        446,
+        311
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        231.0,
+        300.34
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "dc42580c75f10988b0cc3b4e02349826d7049068d145c7a3e19b8883d0691515"
+    },
+    {
+      "id": "place-V-0",
+      "path": "/web/art/golden-journey/place-V-0.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J01-landmarks.png",
+      "sourceCell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "sourceBounds": [
+        542,
+        612,
+        994,
+        915
+      ],
+      "size": [
+        468,
+        319
+      ],
+      "visualBounds": [
+        8,
+        8,
+        452,
+        303
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        234.0,
+        292.82
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "c28fc263f050a5bf72939c138aa1dda3349d67f4cb67785269cf74e3aa56a518"
+    },
+    {
+      "id": "place-V-1",
+      "path": "/web/art/golden-journey/place-V-1.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J01-landmarks.png",
+      "sourceCell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "sourceBounds": [
+        1054,
+        566,
+        1497,
+        916
+      ],
+      "size": [
+        459,
+        366
+      ],
+      "visualBounds": [
+        8,
+        8,
+        443,
+        350
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        229.5,
+        337.0
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "63f40170ffc57a04b4fb79004ad8e32296ba9ad2624d9680c29774d21d8ed727"
+    },
+    {
+      "id": "place-R-0",
+      "path": "/web/art/golden-journey/place-R-0.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J02-places.png",
+      "sourceCell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "sourceBounds": [
+        50,
+        201,
+        488,
+        449
+      ],
+      "size": [
+        454,
+        264
+      ],
+      "visualBounds": [
+        8,
+        8,
+        438,
+        248
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        227.0,
+        241.11999999999998
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "f2c42e637619c2b67b1e0cf91cfd20cdf71672faa4d7f58e231b362058c4b891"
+    },
+    {
+      "id": "place-R-1",
+      "path": "/web/art/golden-journey/place-R-1.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J02-places.png",
+      "sourceCell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "sourceBounds": [
+        558,
+        108,
+        985,
+        452
+      ],
+      "size": [
+        443,
+        360
+      ],
+      "visualBounds": [
+        8,
+        8,
+        427,
+        344
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        221.5,
+        331.35999999999996
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "54599bcf31411df3a6203af5be6e33fb26babfcec134e1a7c46f04312bcab39c"
+    },
+    {
+      "id": "place-T-0",
+      "path": "/web/art/golden-journey/place-T-0.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J02-places.png",
+      "sourceCell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "sourceBounds": [
+        1040,
+        106,
+        1490,
+        456
+      ],
+      "size": [
+        466,
+        366
+      ],
+      "visualBounds": [
+        8,
+        8,
+        450,
+        350
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        233.0,
+        337.0
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "46d327fb8480c309d9ab4881fe3600994386ac356145410cfee5402aac79e2a9"
+    },
+    {
+      "id": "place-T-1",
+      "path": "/web/art/golden-journey/place-T-1.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J02-places.png",
+      "sourceCell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "sourceBounds": [
+        38,
+        568,
+        492,
+        920
+      ],
+      "size": [
+        470,
+        368
+      ],
+      "visualBounds": [
+        8,
+        8,
+        454,
+        352
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        235.0,
+        338.88
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "f36ec8dec969b5d1018eb8a21f5701c667f7be84267569d5779a8d61dd0cd8ce"
+    },
+    {
+      "id": "place-B-0",
+      "path": "/web/art/golden-journey/place-B-0.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J02-places.png",
+      "sourceCell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "sourceBounds": [
+        533,
+        609,
+        987,
+        914
+      ],
+      "size": [
+        470,
+        321
+      ],
+      "visualBounds": [
+        8,
+        8,
+        454,
+        305
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        235.0,
+        294.7
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "8b9e18a8fdefdce0f4e6934c0cb8afad02a47713370c5936498bb5bdbd5ada11"
+    },
+    {
+      "id": "place-B-1",
+      "path": "/web/art/golden-journey/place-B-1.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J02-places.png",
+      "sourceCell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "sourceBounds": [
+        1046,
+        615,
+        1501,
+        919
+      ],
+      "size": [
+        471,
+        320
+      ],
+      "visualBounds": [
+        8,
+        8,
+        455,
+        304
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        235.5,
+        293.76
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "b0d62c55027a79acde7a2ad1a0a15a4206334bb8a86b94a13046c9f878661d17"
+    },
+    {
+      "id": "flag",
+      "path": "/web/art/golden-journey/flag.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        0,
+        0,
+        314,
+        314
+      ],
+      "sourceBounds": [
+        79,
+        73,
+        257,
+        290
+      ],
+      "size": [
+        194,
+        233
+      ],
+      "visualBounds": [
+        8,
+        8,
+        178,
+        217
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        97.0,
+        211.98
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "8824f5fadba46fa4c669858343aa421e5829cffef3299f8656c892a0b4c37c76"
+    },
+    {
+      "id": "backpack",
+      "path": "/web/art/golden-journey/backpack.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        314,
+        0,
+        627,
+        314
+      ],
+      "sourceBounds": [
+        352,
+        59,
+        583,
+        303
+      ],
+      "size": [
+        247,
+        260
+      ],
+      "visualBounds": [
+        8,
+        8,
+        231,
+        244
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        123.5,
+        237.35999999999999
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "4a2b31f5185ac961aad9bdb3a3cff71bf5de4154c5e96da44cfa3fabd01e5a01"
+    },
+    {
+      "id": "mat",
+      "path": "/web/art/golden-journey/mat.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        627,
+        0,
+        940,
+        314
+      ],
+      "sourceBounds": [
+        644,
+        150,
+        930,
+        279
+      ],
+      "size": [
+        302,
+        145
+      ],
+      "visualBounds": [
+        8,
+        8,
+        286,
+        129
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        151.0,
+        129.26
+      ],
+      "anchorKind": "ground-center",
+      "runtimeVisualHeight": 125,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "d66045230e0b737072559443abb033df35ca27dcfba69b91c23d599f74536051"
+    },
+    {
+      "id": "button",
+      "path": "/web/art/golden-journey/button.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        940,
+        0,
+        1254,
+        314
+      ],
+      "sourceBounds": [
+        953,
+        135,
+        1223,
+        258
+      ],
+      "size": [
+        286,
+        139
+      ],
+      "visualBounds": [
+        8,
+        8,
+        270,
+        123
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        143.0,
+        69.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "ce9ed9e90887eebc444eb408b2afd348ce7a6ab3c387d96c704008b248870d3a"
+    },
+    {
+      "id": "pouch",
+      "path": "/web/art/golden-journey/pouch.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        0,
+        314,
+        314,
+        627
+      ],
+      "sourceBounds": [
+        55,
+        379,
+        280,
+        622
+      ],
+      "size": [
+        241,
+        259
+      ],
+      "visualBounds": [
+        8,
+        8,
+        225,
+        243
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        120.5,
+        129.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "5d5791c25d4ae30463824a3573c2bfedb4b6dffbefd85aa744e95697d73f4d29"
+    },
+    {
+      "id": "magnifier",
+      "path": "/web/art/golden-journey/magnifier.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        314,
+        314,
+        627,
+        627
+      ],
+      "sourceBounds": [
+        353,
+        390,
+        571,
+        602
+      ],
+      "size": [
+        234,
+        228
+      ],
+      "visualBounds": [
+        8,
+        8,
+        218,
+        212
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        117.0,
+        114.0
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "4a81e3b21dd4bd099eabf130d0673a7bc0e4a79fffac758a2c24be30fd070f28"
+    },
+    {
+      "id": "note",
+      "path": "/web/art/golden-journey/note.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        627,
+        314,
+        940,
+        627
+      ],
+      "sourceBounds": [
+        660,
+        396,
+        895,
+        613
+      ],
+      "size": [
+        251,
+        233
+      ],
+      "visualBounds": [
+        8,
+        8,
+        235,
+        217
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        125.5,
+        116.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "5c36432be8ead10ed1a9ecba3b72ae2acfbc1e8b2f9f84c6dd0d87b3a4c6999a"
+    },
+    {
+      "id": "envelope",
+      "path": "/web/art/golden-journey/envelope.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        940,
+        314,
+        1254,
+        627
+      ],
+      "sourceBounds": [
+        960,
+        372,
+        1209,
+        614
+      ],
+      "size": [
+        265,
+        258
+      ],
+      "visualBounds": [
+        8,
+        8,
+        249,
+        242
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        132.5,
+        129.0
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "f065b86fa47e1f7944d201a09505482286436b9bfab051d059fb7dea4f42a85e"
+    },
+    {
+      "id": "lock",
+      "path": "/web/art/golden-journey/lock.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        0,
+        627,
+        314,
+        940
+      ],
+      "sourceBounds": [
+        81,
+        687,
+        249,
+        909
+      ],
+      "size": [
+        184,
+        238
+      ],
+      "visualBounds": [
+        8,
+        8,
+        168,
+        222
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        92.0,
+        119.0
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "0d0930575b3976ac7616e41b68aadc32ced90cc6f606dc2bcdb5a1d065f507e6"
+    },
+    {
+      "id": "footprints",
+      "path": "/web/art/golden-journey/footprints.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        314,
+        627,
+        627,
+        940
+      ],
+      "sourceBounds": [
+        392,
+        707,
+        580,
+        887
+      ],
+      "size": [
+        204,
+        196
+      ],
+      "visualBounds": [
+        8,
+        8,
+        188,
+        180
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        102.0,
+        98.0
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 2,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "20e2ffd4fa9c3537c4cb39cf99d9e9f89320d78f395ea815144bbc8ec2f27a18"
+    },
+    {
+      "id": "ribbon",
+      "path": "/web/art/golden-journey/ribbon.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        627,
+        627,
+        940,
+        940
+      ],
+      "sourceBounds": [
+        636,
+        726,
+        938,
+        871
+      ],
+      "size": [
+        318,
+        161
+      ],
+      "visualBounds": [
+        8,
+        8,
+        302,
+        145
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        159.0,
+        80.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "5937458bf4b24adfcc98d76243f9b81034794a72ad911c590b13fb13c65dd5ed"
+    },
+    {
+      "id": "unknown",
+      "path": "/web/art/golden-journey/unknown.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        940,
+        627,
+        1254,
+        940
+      ],
+      "sourceBounds": [
+        982,
+        662,
+        1204,
+        926
+      ],
+      "size": [
+        238,
+        280
+      ],
+      "visualBounds": [
+        8,
+        8,
+        222,
+        264
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        119.0,
+        140.0
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "1a0d1c67a9785fa0a980acd239501c29a9d9b49ffaf5ed3a209ce54bac38ae20"
+    },
+    {
+      "id": "map-icon",
+      "path": "/web/art/golden-journey/map-icon.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        0,
+        940,
+        314,
+        1254
+      ],
+      "sourceBounds": [
+        42,
+        962,
+        307,
+        1197
+      ],
+      "size": [
+        281,
+        251
+      ],
+      "visualBounds": [
+        8,
+        8,
+        265,
+        235
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        140.5,
+        125.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "34717d0d47c8e427d7f1962d5a7be681305d0d60a2a5e3ac494424ec220d8dc5"
+    },
+    {
+      "id": "environment-yard",
+      "path": "/web/art/golden-journey/environment-yard.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        314,
+        940,
+        627,
+        1254
+      ],
+      "sourceBounds": [
+        390,
+        971,
+        566,
+        1186
+      ],
+      "size": [
+        192,
+        231
+      ],
+      "visualBounds": [
+        8,
+        8,
+        176,
+        215
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        96.0,
+        115.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "2d0e7550911978e50baa482ec7e2fad6ec1bcf258d7b8dd507ec757704259890"
+    },
+    {
+      "id": "environment-water",
+      "path": "/web/art/golden-journey/environment-water.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        627,
+        940,
+        940,
+        1254
+      ],
+      "sourceBounds": [
+        648,
+        1016,
+        922,
+        1165
+      ],
+      "size": [
+        290,
+        165
+      ],
+      "visualBounds": [
+        8,
+        8,
+        274,
+        149
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        145.0,
+        82.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 3,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "393038ee847e53fa1c661ce8e09d7bbe1cee19b226a977020ee849ea784ecfe5"
+    },
+    {
+      "id": "environment-wood",
+      "path": "/web/art/golden-journey/environment-wood.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J03-travel.png",
+      "sourceCell": [
+        940,
+        940,
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        985,
+        960,
+        1195,
+        1197
+      ],
+      "size": [
+        226,
+        253
+      ],
+      "visualBounds": [
+        8,
+        8,
+        210,
+        237
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        113.0,
+        126.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "1623ac082d68360f446f0ff5c18fce9974f1a63d6954e0b584e5cdee1c8a9eb3"
+    },
+    {
+      "id": "material-75",
+      "path": "/web/art/golden-journey/material-75.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J04-materials.png",
+      "sourceCell": [
+        0,
+        0,
+        384,
+        512
+      ],
+      "sourceBounds": [
+        32,
+        104,
+        369,
+        485
+      ],
+      "size": [
+        353,
+        397
+      ],
+      "visualBounds": [
+        8,
+        8,
+        337,
+        381
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        176.5,
+        198.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "548ee396166d084c3aa1c694adcc775eb98fca143fe0b53af35f2e615c86dc71"
+    },
+    {
+      "id": "material-76",
+      "path": "/web/art/golden-journey/material-76.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J04-materials.png",
+      "sourceCell": [
+        384,
+        0,
+        768,
+        512
+      ],
+      "sourceBounds": [
+        460,
+        142,
+        732,
+        469
+      ],
+      "size": [
+        288,
+        343
+      ],
+      "visualBounds": [
+        8,
+        8,
+        272,
+        327
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        144.0,
+        171.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 3,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "28c3d53f7caf0a27cbab219e44c22431fd103d113e97a58e5247a153856a3915"
+    },
+    {
+      "id": "material-77",
+      "path": "/web/art/golden-journey/material-77.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J04-materials.png",
+      "sourceCell": [
+        768,
+        0,
+        1152,
+        512
+      ],
+      "sourceBounds": [
+        788,
+        143,
+        1129,
+        470
+      ],
+      "size": [
+        357,
+        343
+      ],
+      "visualBounds": [
+        8,
+        8,
+        341,
+        327
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        178.5,
+        171.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "2eba47bfd85474677c8f2a1b8aecda0bc904dad2879904debd84a8e011fd9089"
+    },
+    {
+      "id": "material-78",
+      "path": "/web/art/golden-journey/material-78.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J04-materials.png",
+      "sourceCell": [
+        1152,
+        0,
+        1536,
+        512
+      ],
+      "sourceBounds": [
+        1216,
+        117,
+        1510,
+        483
+      ],
+      "size": [
+        310,
+        382
+      ],
+      "visualBounds": [
+        8,
+        8,
+        294,
+        366
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        155.0,
+        191.0
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "fbbc5293bc747edfd3261de3bdc6b5caf1cb38bac058210b04cb3d5fa7ff9319"
+    },
+    {
+      "id": "material-79",
+      "path": "/web/art/golden-journey/material-79.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J04-materials.png",
+      "sourceCell": [
+        0,
+        512,
+        384,
+        1024
+      ],
+      "sourceBounds": [
+        29,
+        641,
+        386,
+        890
+      ],
+      "size": [
+        373,
+        265
+      ],
+      "visualBounds": [
+        8,
+        8,
+        357,
+        249
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        186.5,
+        132.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "606c0584c2e00080e6adb920ffbb99de7abf98b582b3b5cb798bc3f1c8f85338"
+    },
+    {
+      "id": "material-80",
+      "path": "/web/art/golden-journey/material-80.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J04-materials.png",
+      "sourceCell": [
+        384,
+        512,
+        768,
+        1024
+      ],
+      "sourceBounds": [
+        447,
+        602,
+        736,
+        892
+      ],
+      "size": [
+        305,
+        306
+      ],
+      "visualBounds": [
+        8,
+        8,
+        289,
+        290
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        152.5,
+        153.0
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "f522317932b014bfe62c4e07439df95296720a89e1af0ac787e5ca48716b0ee9"
+    },
+    {
+      "id": "material-81",
+      "path": "/web/art/golden-journey/material-81.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J04-materials.png",
+      "sourceCell": [
+        768,
+        512,
+        1152,
+        1024
+      ],
+      "sourceBounds": [
+        799,
+        614,
+        1121,
+        891
+      ],
+      "size": [
+        338,
+        293
+      ],
+      "visualBounds": [
+        8,
+        8,
+        322,
+        277
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        169.0,
+        146.5
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "0735987a9a4c00e35bcefc795a25ed183073feef7dc2d95b3d4581b2a3750e0b"
+    },
+    {
+      "id": "material-82",
+      "path": "/web/art/golden-journey/material-82.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J04-materials.png",
+      "sourceCell": [
+        1152,
+        512,
+        1536,
+        1024
+      ],
+      "sourceBounds": [
+        1218,
+        551,
+        1511,
+        951
+      ],
+      "size": [
+        309,
+        416
+      ],
+      "visualBounds": [
+        8,
+        8,
+        293,
+        400
+      ],
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "anchor": [
+        154.5,
+        208.0
+      ],
+      "anchorKind": "center",
+      "runtimeVisualHeight": 48,
+      "components": 1,
+      "removedStrayPixels": 0,
+      "transparent": true,
+      "sha256": "3c4310610d21ec440e8ccb1733b16b2f1f919cb4315a26045e0fac30c65208a6"
+    },
+    {
+      "id": "world-terrain",
+      "path": "/web/art/golden-journey/world-terrain.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J05-terrain.png",
+      "size": [
+        1132,
+        1390
+      ],
+      "visualBounds": [
+        0,
+        0,
+        1132,
+        1390
+      ],
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "anchor": [
+        566.0,
+        695.0
+      ],
+      "anchorKind": "center",
+      "transparent": false,
+      "contains": "only static geography, no nodes, characters, text, routes, states or controls",
+      "sha256": "c90bdfc4a144354b1a08f2503bc3d55f998cc662f51d38a3e25c5a729e0fe9af"
+    },
+    {
+      "id": "precision-timer-capsule",
+      "path": "/web/art/golden-journey/precision-timer-capsule.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J12-timer.png",
+      "sourceCell": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "sourceBounds": [
+        63,
+        293,
+        1189,
+        559
+      ],
+      "size": [
+        1142,
+        282
+      ],
+      "visualBounds": [
+        8,
+        8,
+        1126,
+        266
+      ],
+      "anchor": [
+        571.0,
+        141.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "b55682853c02b6ae9a37508d3035f95518923c84bc6b5c330494cb063782a1f4",
+      "transparent": true
+    },
+    {
+      "id": "precision-timer-clock",
+      "path": "/web/art/golden-journey/precision-timer-clock.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J12-timer.png",
+      "sourceCell": [
+        0,
+        1,
+        1,
+        2
+      ],
+      "sourceBounds": [
+        472,
+        780,
+        775,
+        1078
+      ],
+      "size": [
+        319,
+        314
+      ],
+      "visualBounds": [
+        8,
+        8,
+        303,
+        298
+      ],
+      "anchor": [
+        159.5,
+        157.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "2432244c9674c54fa423c4499f84b99975e7c6baecb4f1bcc75708eea5916f2f",
+      "transparent": true
+    },
+    {
+      "id": "precision-ribbon",
+      "path": "/web/art/golden-journey/precision-ribbon.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        0,
+        0,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        14,
+        146,
+        362,
+        268
+      ],
+      "size": [
+        364,
+        138
+      ],
+      "visualBounds": [
+        8,
+        8,
+        348,
+        122
+      ],
+      "anchor": [
+        182.0,
+        69.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "caa0f13f837dfdf6c8f54d521fed80c4fd40171e315d5df38a891be24fbfd253",
+      "transparent": true
+    },
+    {
+      "id": "precision-botanical-left",
+      "path": "/web/art/golden-journey/precision-botanical-left.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        1,
+        0,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        390,
+        60,
+        603,
+        317
+      ],
+      "size": [
+        229,
+        273
+      ],
+      "visualBounds": [
+        8,
+        8,
+        213,
+        257
+      ],
+      "anchor": [
+        114.5,
+        136.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "4b7df91ae7425a91a0ad0514bdcedabf8d4adae21550ddf90f82308bd98afd9c",
+      "transparent": true
+    },
+    {
+      "id": "precision-botanical-right",
+      "path": "/web/art/golden-journey/precision-botanical-right.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        2,
+        0,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        673,
+        57,
+        887,
+        316
+      ],
+      "size": [
+        230,
+        275
+      ],
+      "visualBounds": [
+        8,
+        8,
+        214,
+        259
+      ],
+      "anchor": [
+        115.0,
+        137.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "4496c302b87145edc852cc199414cb2a43be6ae40a60ebfb290bbc79f15bf828",
+      "transparent": true
+    },
+    {
+      "id": "precision-sparkles",
+      "path": "/web/art/golden-journey/precision-sparkles.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        3,
+        0,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        971,
+        99,
+        1204,
+        296
+      ],
+      "size": [
+        249,
+        213
+      ],
+      "visualBounds": [
+        8,
+        8,
+        233,
+        197
+      ],
+      "anchor": [
+        124.5,
+        106.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 8,
+      "sha256": "78355bcc5dfb8d9b0ec1d3a8cd0e3016108fd17106cb121ad8b4d07f18cc5b56",
+      "transparent": true
+    },
+    {
+      "id": "precision-brush",
+      "path": "/web/art/golden-journey/precision-brush.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        0,
+        1,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        22,
+        455,
+        338,
+        541
+      ],
+      "size": [
+        332,
+        102
+      ],
+      "visualBounds": [
+        8,
+        8,
+        316,
+        86
+      ],
+      "anchor": [
+        166.0,
+        51.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "00a7ff6de44a2e480136c15b5e517f943e50fceca562071d3903af4687bef9ea",
+      "transparent": true
+    },
+    {
+      "id": "precision-reward-slot",
+      "path": "/web/art/golden-journey/precision-reward-slot.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        1,
+        1,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        400,
+        416,
+        562,
+        580
+      ],
+      "size": [
+        178,
+        180
+      ],
+      "visualBounds": [
+        8,
+        8,
+        162,
+        164
+      ],
+      "anchor": [
+        89.0,
+        90.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "7ce280195a20a6a2a932f12f46ba7a3eee44f71950cb8fe783783a22c941fb29",
+      "transparent": true
+    },
+    {
+      "id": "precision-nameplate",
+      "path": "/web/art/golden-journey/precision-nameplate.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        2,
+        1,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        653,
+        455,
+        910,
+        550
+      ],
+      "size": [
+        273,
+        111
+      ],
+      "visualBounds": [
+        8,
+        8,
+        257,
+        95
+      ],
+      "anchor": [
+        136.5,
+        55.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "f75619197652d914f435fe3176b05dba8fbe93a1dd9b8a4615ca2e34e7e44fbf",
+      "transparent": true
+    },
+    {
+      "id": "precision-button",
+      "path": "/web/art/golden-journey/precision-button.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        3,
+        1,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        949,
+        458,
+        1240,
+        548
+      ],
+      "size": [
+        307,
+        106
+      ],
+      "visualBounds": [
+        8,
+        8,
+        291,
+        90
+      ],
+      "anchor": [
+        153.5,
+        53.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "125db2a315aa08c3f59f19b3819c61a6a88414e5332702cc4be6192cd7aa17ff",
+      "transparent": true
+    },
+    {
+      "id": "precision-envelope-back",
+      "path": "/web/art/golden-journey/precision-envelope-back.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        0,
+        2,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        31,
+        673,
+        302,
+        879
+      ],
+      "size": [
+        287,
+        222
+      ],
+      "visualBounds": [
+        8,
+        8,
+        271,
+        206
+      ],
+      "anchor": [
+        143.5,
+        111.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "0251e7ed4fe4fcf277340ac0870cd4f0d8eb451e80e8fa310201760a4a47a344",
+      "transparent": true
+    },
+    {
+      "id": "precision-envelope-front",
+      "path": "/web/art/golden-journey/precision-envelope-front.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        1,
+        2,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        349,
+        745,
+        609,
+        886
+      ],
+      "size": [
+        276,
+        157
+      ],
+      "visualBounds": [
+        8,
+        8,
+        260,
+        141
+      ],
+      "anchor": [
+        138.0,
+        78.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "b2cdffcdde613e5768a6c705f95907f90c915fe2d06c6623cceaed2ed6bc6454",
+      "transparent": true
+    },
+    {
+      "id": "precision-celebration",
+      "path": "/web/art/golden-journey/precision-celebration.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        2,
+        2,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        645,
+        724,
+        969,
+        896
+      ],
+      "size": [
+        340,
+        188
+      ],
+      "visualBounds": [
+        8,
+        8,
+        324,
+        172
+      ],
+      "anchor": [
+        170.0,
+        94.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 7,
+      "sha256": "4004df8361849ac2609e72816871f9f016394834d4eba0d991bbe547423287a0",
+      "transparent": true
+    },
+    {
+      "id": "precision-record-note",
+      "path": "/web/art/golden-journey/precision-record-note.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        3,
+        2,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        1029,
+        716,
+        1203,
+        884
+      ],
+      "size": [
+        190,
+        184
+      ],
+      "visualBounds": [
+        8,
+        8,
+        174,
+        168
+      ],
+      "anchor": [
+        95.0,
+        92.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "dc6eb01f75ab371eb68f4e8ef43d1fa7156497972b3623270ab85233781db554",
+      "transparent": true
+    },
+    {
+      "id": "precision-tree-round",
+      "path": "/web/art/golden-journey/precision-tree-round.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        0,
+        3,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        71,
+        963,
+        269,
+        1204
+      ],
+      "size": [
+        214,
+        257
+      ],
+      "visualBounds": [
+        8,
+        8,
+        198,
+        241
+      ],
+      "anchor": [
+        107.0,
+        128.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "ece827b6a3fbf5a7e97f7ea0520a4674a3c92fe49144efffa33755f3a0167332",
+      "transparent": true
+    },
+    {
+      "id": "precision-tree-tall",
+      "path": "/web/art/golden-journey/precision-tree-tall.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        1,
+        3,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        417,
+        972,
+        531,
+        1189
+      ],
+      "size": [
+        130,
+        233
+      ],
+      "visualBounds": [
+        8,
+        8,
+        114,
+        217
+      ],
+      "anchor": [
+        65.0,
+        116.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "82a48d1828d784681fa6b9a73b819061866f9129564f07cf811f8c616e34ac01",
+      "transparent": true
+    },
+    {
+      "id": "precision-grass-rock",
+      "path": "/web/art/golden-journey/precision-grass-rock.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        2,
+        3,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        670,
+        1026,
+        894,
+        1184
+      ],
+      "size": [
+        240,
+        174
+      ],
+      "visualBounds": [
+        8,
+        8,
+        224,
+        158
+      ],
+      "anchor": [
+        120.0,
+        87.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "f854c1a3926a1d71bc189e75fabf532795e33faacab197c254f4c611c3a1e1e9",
+      "transparent": true
+    },
+    {
+      "id": "precision-clock",
+      "path": "/web/art/golden-journey/precision-clock.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J06-precision-ui.png",
+      "sourceCell": [
+        3,
+        3,
+        4,
+        4
+      ],
+      "sourceBounds": [
+        1013,
+        1003,
+        1182,
+        1174
+      ],
+      "size": [
+        185,
+        187
+      ],
+      "visualBounds": [
+        8,
+        8,
+        169,
+        171
+      ],
+      "anchor": [
+        92.5,
+        93.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "657a93b24b92369827bff109ba771d685d0b3f16c1ce3b5fd7b8fa9c724f6400",
+      "transparent": true
+    },
+    {
+      "id": "precision-node-V",
+      "path": "/web/art/golden-journey/precision-node-V.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        0,
+        0,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        83,
+        73,
+        395,
+        359
+      ],
+      "size": [
+        328,
+        302
+      ],
+      "visualBounds": [
+        8,
+        8,
+        312,
+        286
+      ],
+      "anchor": [
+        164.0,
+        151.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "d7134786999d9349425bf105c949f1a215dd3d248faf07eb05d8c40d28fa7a98",
+      "transparent": true
+    },
+    {
+      "id": "precision-node-T",
+      "path": "/web/art/golden-journey/precision-node-T.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        1,
+        0,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        544,
+        57,
+        992,
+        372
+      ],
+      "size": [
+        464,
+        331
+      ],
+      "visualBounds": [
+        8,
+        8,
+        448,
+        315
+      ],
+      "anchor": [
+        232.0,
+        165.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "ca2c468edcc12ea4982f7d05996af7e799130c77efd4007560415d43b809b38b",
+      "transparent": true
+    },
+    {
+      "id": "precision-node-R",
+      "path": "/web/art/golden-journey/precision-node-R.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        2,
+        0,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        1021,
+        133,
+        1506,
+        351
+      ],
+      "size": [
+        501,
+        234
+      ],
+      "visualBounds": [
+        8,
+        8,
+        485,
+        218
+      ],
+      "anchor": [
+        250.5,
+        117.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "5588e8f5b71f008a5ec0a2b89021d3683fab6ca0d4205f46efe9751c807ac9f7",
+      "transparent": true
+    },
+    {
+      "id": "precision-node-B",
+      "path": "/web/art/golden-journey/precision-node-B.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        0,
+        1,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        53,
+        467,
+        490,
+        724
+      ],
+      "size": [
+        453,
+        273
+      ],
+      "visualBounds": [
+        8,
+        8,
+        437,
+        257
+      ],
+      "anchor": [
+        226.5,
+        136.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "1f10de1cd701407afe6a5cfc01703d3357e3b666548af1fe87b91405c92d9778",
+      "transparent": true
+    },
+    {
+      "id": "precision-place-V-0",
+      "path": "/web/art/golden-journey/precision-place-V-0.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        1,
+        1,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        567,
+        443,
+        1023,
+        722
+      ],
+      "size": [
+        472,
+        295
+      ],
+      "visualBounds": [
+        8,
+        8,
+        456,
+        279
+      ],
+      "anchor": [
+        236.0,
+        147.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "c7c843bbbb313102ca30be315ddd031e094478e3225cb532370c097139ef5ff1",
+      "transparent": true
+    },
+    {
+      "id": "precision-place-V-1",
+      "path": "/web/art/golden-journey/precision-place-V-1.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        2,
+        1,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        1128,
+        415,
+        1473,
+        721
+      ],
+      "size": [
+        361,
+        322
+      ],
+      "visualBounds": [
+        8,
+        8,
+        345,
+        306
+      ],
+      "anchor": [
+        180.5,
+        161.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "cfe4a270d0bc52416be197d82a70925b2c8806ec355cbec322ff442c15c36af8",
+      "transparent": true
+    },
+    {
+      "id": "precision-hill",
+      "path": "/web/art/golden-journey/precision-hill.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        0,
+        2,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        40,
+        780,
+        532,
+        963
+      ],
+      "size": [
+        508,
+        199
+      ],
+      "visualBounds": [
+        8,
+        8,
+        492,
+        183
+      ],
+      "anchor": [
+        254.0,
+        99.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "13223c6a37a19ef1650726bb52a2a74f8319abe2426cff0a93311ab777036ca9",
+      "transparent": true
+    },
+    {
+      "id": "precision-ground",
+      "path": "/web/art/golden-journey/precision-ground.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        1,
+        2,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        589,
+        783,
+        1105,
+        975
+      ],
+      "size": [
+        532,
+        208
+      ],
+      "visualBounds": [
+        8,
+        8,
+        516,
+        192
+      ],
+      "anchor": [
+        266.0,
+        104.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "d0e0f7c67eaecb3b82c0e5d00f2eddfef60a5d287f5055cae8bdeb99af2ff0ae",
+      "transparent": true
+    },
+    {
+      "id": "precision-grass-stones",
+      "path": "/web/art/golden-journey/precision-grass-stones.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J07-precision-landscape.png",
+      "sourceCell": [
+        2,
+        2,
+        3,
+        3
+      ],
+      "sourceBounds": [
+        1167,
+        765,
+        1476,
+        960
+      ],
+      "size": [
+        325,
+        211
+      ],
+      "visualBounds": [
+        8,
+        8,
+        309,
+        195
+      ],
+      "anchor": [
+        162.5,
+        105.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 6,
+      "sha256": "90de9c0cb26be61bb1134e7c5cca5d164427d6bb7b4c6653050118a061ec0816",
+      "transparent": true
+    },
+    {
+      "id": "precision-exact-ribbon",
+      "path": "/web/art/golden-journey/precision-exact-ribbon.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J10-ui-extracted.png",
+      "sourceCell": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "sourceBounds": [
+        70,
+        182,
+        781,
+        384
+      ],
+      "size": [
+        727,
+        218
+      ],
+      "visualBounds": [
+        8,
+        8,
+        711,
+        202
+      ],
+      "anchor": [
+        363.5,
+        109.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "7e41e114250217a872f8a2c86601720d9aad3f1b521a4a8b42e6e0ababe134d9",
+      "transparent": true
+    },
+    {
+      "id": "precision-exact-button",
+      "path": "/web/art/golden-journey/precision-exact-button.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J10-ui-extracted.png",
+      "sourceCell": [
+        1,
+        0,
+        2,
+        2
+      ],
+      "sourceBounds": [
+        909,
+        203,
+        1615,
+        355
+      ],
+      "size": [
+        722,
+        168
+      ],
+      "visualBounds": [
+        8,
+        8,
+        706,
+        152
+      ],
+      "anchor": [
+        361.0,
+        84.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "a67b96b9c3f4a821af1b09007f594f7a9fcde22e186e89ee5b0749db19592f5f",
+      "transparent": true
+    },
+    {
+      "id": "precision-exact-nameplate",
+      "path": "/web/art/golden-journey/precision-exact-nameplate.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J10-ui-extracted.png",
+      "sourceCell": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "sourceBounds": [
+        238,
+        634,
+        602,
+        764
+      ],
+      "size": [
+        380,
+        146
+      ],
+      "visualBounds": [
+        8,
+        8,
+        364,
+        130
+      ],
+      "anchor": [
+        190.0,
+        73.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "a9e3d0f3c6b4d0736cadeac38e42ad4f9834b21ae9aea50dbadda073b5312883",
+      "transparent": true
+    },
+    {
+      "id": "precision-exact-brush",
+      "path": "/web/art/golden-journey/precision-exact-brush.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J10-ui-extracted.png",
+      "sourceCell": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "sourceBounds": [
+        938,
+        632,
+        1553,
+        770
+      ],
+      "size": [
+        631,
+        154
+      ],
+      "visualBounds": [
+        8,
+        8,
+        615,
+        138
+      ],
+      "anchor": [
+        315.5,
+        77.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "e36f5c14afc7712b536616abc538d9ce60b0367c8cc6071fd474b8ff9c7a4d37",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-map-hills",
+      "path": "/web/art/golden-journey/precision-ref-map-hills.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J11-reference-environment.png",
+      "sourceCell": [
+        0,
+        0,
+        5,
+        1
+      ],
+      "sourceBounds": [
+        15,
+        119,
+        385,
+        271
+      ],
+      "size": [
+        386,
+        168
+      ],
+      "visualBounds": [
+        8,
+        8,
+        370,
+        152
+      ],
+      "anchor": [
+        193.0,
+        84.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 5,
+      "sha256": "d1103ee458999d0b46d5d441933f4537007986ff932d55126645403f3dccc7c2",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-map-ground",
+      "path": "/web/art/golden-journey/precision-ref-map-ground.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J11-reference-environment.png",
+      "sourceCell": [
+        1,
+        0,
+        5,
+        1
+      ],
+      "sourceBounds": [
+        415,
+        60,
+        785,
+        354
+      ],
+      "size": [
+        386,
+        310
+      ],
+      "visualBounds": [
+        8,
+        8,
+        370,
+        294
+      ],
+      "anchor": [
+        193.0,
+        155.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 12,
+      "sha256": "2291b3c6cfc09ac5d7dcf551660e8ffbc3ff9eb23c06383956fb0181912c4021",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-map-river",
+      "path": "/web/art/golden-journey/precision-ref-map-river.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J11-reference-environment.png",
+      "sourceCell": [
+        2,
+        0,
+        5,
+        1
+      ],
+      "sourceBounds": [
+        815,
+        96,
+        1185,
+        304
+      ],
+      "size": [
+        386,
+        224
+      ],
+      "visualBounds": [
+        8,
+        8,
+        370,
+        208
+      ],
+      "anchor": [
+        193.0,
+        112.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 7,
+      "sha256": "7e80dafb66f793a1e0304041ca4106a782ad3ce3038164203e7b433fd18627e9",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-place-environment",
+      "path": "/web/art/golden-journey/precision-ref-place-environment.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J11-reference-environment.png",
+      "sourceCell": [
+        3,
+        0,
+        5,
+        1
+      ],
+      "sourceBounds": [
+        1215,
+        119,
+        1585,
+        281
+      ],
+      "size": [
+        386,
+        178
+      ],
+      "visualBounds": [
+        8,
+        8,
+        370,
+        162
+      ],
+      "anchor": [
+        193.0,
+        89.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 4,
+      "sha256": "f9509e167f6ffe6a7afc6261a21f4b119a73d76d033a566560380ffc795d669c",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-hero-ground",
+      "path": "/web/art/golden-journey/precision-ref-hero-ground.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J11-reference-environment.png",
+      "sourceCell": [
+        4,
+        0,
+        5,
+        1
+      ],
+      "sourceBounds": [
+        1615,
+        150,
+        1985,
+        250
+      ],
+      "size": [
+        386,
+        116
+      ],
+      "visualBounds": [
+        8,
+        8,
+        370,
+        100
+      ],
+      "anchor": [
+        193.0,
+        58.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 9,
+      "sha256": "743d107dca6d302baabdea3411acbbb4cb376b9b4fd466c28f9e71e0e1b9a2fd",
+      "transparent": true
+    },
+    {
+      "id": "precision-river",
+      "path": "/web/art/golden-journey/precision-river.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J08-river.png",
+      "sourceCell": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "sourceBounds": [
+        0,
+        137,
+        1774,
+        756
+      ],
+      "size": [
+        1790,
+        635
+      ],
+      "visualBounds": [
+        8,
+        8,
+        1774,
+        619
+      ],
+      "anchor": [
+        895.0,
+        317.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "f26768230948d41fa0cdd88f4974255b4d9cf012bb5069f783b40e41161268cc",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-node-V",
+      "path": "/web/art/golden-journey/precision-ref-node-V.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        0,
+        0,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        137,
+        149,
+        263,
+        253
+      ],
+      "size": [
+        142,
+        120
+      ],
+      "visualBounds": [
+        8,
+        8,
+        126,
+        104
+      ],
+      "anchor": [
+        71.0,
+        60.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "eb4bcb569c178c81e65a4b15e05941a220bbec24890ef62964ec57773384ff1b",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-node-T",
+      "path": "/web/art/golden-journey/precision-ref-node-T.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        1,
+        0,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        505,
+        141,
+        695,
+        262
+      ],
+      "size": [
+        206,
+        137
+      ],
+      "visualBounds": [
+        8,
+        8,
+        190,
+        121
+      ],
+      "anchor": [
+        103.0,
+        68.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 3,
+      "sha256": "90852367cc3127288252b42f5df71ebe57b5b24773ba4e3c605a6bb1205362da",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-node-R",
+      "path": "/web/art/golden-journey/precision-ref-node-R.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        2,
+        0,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        882,
+        153,
+        1118,
+        247
+      ],
+      "size": [
+        252,
+        110
+      ],
+      "visualBounds": [
+        8,
+        8,
+        236,
+        94
+      ],
+      "anchor": [
+        126.0,
+        55.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "3bc5bfba694b6dcb5e0f66dbe18937312b3d4a6085a4687d18e7c8b1815aa610",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-node-B",
+      "path": "/web/art/golden-journey/precision-ref-node-B.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        3,
+        0,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1299,
+        143,
+        1501,
+        256
+      ],
+      "size": [
+        218,
+        129
+      ],
+      "visualBounds": [
+        8,
+        8,
+        202,
+        113
+      ],
+      "anchor": [
+        109.0,
+        64.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "3347031c3f0c11eadfaab282b740d257000f580283a7614d84b226ac5d5f8a58",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-place-V-0",
+      "path": "/web/art/golden-journey/precision-ref-place-V-0.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        4,
+        0,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1699,
+        145,
+        1902,
+        258
+      ],
+      "size": [
+        219,
+        129
+      ],
+      "visualBounds": [
+        8,
+        8,
+        203,
+        113
+      ],
+      "anchor": [
+        109.5,
+        64.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "422eab6a8d3c1f5be29d5c7a2bfa20e3d662b2250beb60b2bdf07390084c256a",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-place-V-1",
+      "path": "/web/art/golden-journey/precision-ref-place-V-1.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        0,
+        1,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        115,
+        531,
+        275,
+        669
+      ],
+      "size": [
+        176,
+        154
+      ],
+      "visualBounds": [
+        8,
+        8,
+        160,
+        138
+      ],
+      "anchor": [
+        88.0,
+        77.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "b7206ea0b001246e49442fbc8994856d5170c9263f67d72c40757fde59d13c26",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-tree-round",
+      "path": "/web/art/golden-journey/precision-ref-tree-round.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        1,
+        1,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        561,
+        544,
+        639,
+        655
+      ],
+      "size": [
+        94,
+        127
+      ],
+      "visualBounds": [
+        8,
+        8,
+        78,
+        111
+      ],
+      "anchor": [
+        47.0,
+        63.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "5e52f240f08a606b6b64820d40c9fe296a91d012e712f2a6ca1ee6a369c72a3d",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-tree-tall",
+      "path": "/web/art/golden-journey/precision-ref-tree-tall.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        2,
+        1,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        974,
+        560,
+        1027,
+        640
+      ],
+      "size": [
+        69,
+        96
+      ],
+      "visualBounds": [
+        8,
+        8,
+        53,
+        80
+      ],
+      "anchor": [
+        34.5,
+        48.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "6a64912d5cd9c0679f069cb90d485563ef1115617d0313d0dec0188c7c74c563",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-grass-rock",
+      "path": "/web/art/golden-journey/precision-ref-grass-rock.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        3,
+        1,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1361,
+        561,
+        1454,
+        638
+      ],
+      "size": [
+        109,
+        93
+      ],
+      "visualBounds": [
+        8,
+        8,
+        93,
+        77
+      ],
+      "anchor": [
+        54.5,
+        46.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 2,
+      "sha256": "de28a6813c46ee80f1c9065b0cd6060ce974dc2503d62b6f14e7b2688e6cab08",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-botanical-left",
+      "path": "/web/art/golden-journey/precision-ref-botanical-left.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        4,
+        1,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1754,
+        499,
+        1845,
+        697
+      ],
+      "size": [
+        107,
+        214
+      ],
+      "visualBounds": [
+        8,
+        8,
+        91,
+        198
+      ],
+      "anchor": [
+        53.5,
+        107.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "1df620245148139690a6f333d500a93be6bc6be8f9452fb1e76232c4a83c59b5",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-botanical-right",
+      "path": "/web/art/golden-journey/precision-ref-botanical-right.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        0,
+        2,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        157,
+        896,
+        243,
+        1092
+      ],
+      "size": [
+        102,
+        212
+      ],
+      "visualBounds": [
+        8,
+        8,
+        86,
+        196
+      ],
+      "anchor": [
+        51.0,
+        106.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 3,
+      "sha256": "a7e8af1dd30a88898003ced0b8c50b7215c52fd427ad999715b3ec7f7af8ec4b",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-celebrate-left",
+      "path": "/web/art/golden-journey/precision-ref-celebrate-left.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        1,
+        2,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        577,
+        976,
+        622,
+        1024
+      ],
+      "size": [
+        61,
+        64
+      ],
+      "visualBounds": [
+        8,
+        8,
+        45,
+        48
+      ],
+      "anchor": [
+        30.5,
+        32.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 2,
+      "sha256": "3c00b6effab3a1dc5ebd56204a85cc426390f8e3e7eab736ed173b946c81b2ac",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-celebrate-right",
+      "path": "/web/art/golden-journey/precision-ref-celebrate-right.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        2,
+        2,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        984,
+        977,
+        1023,
+        1021
+      ],
+      "size": [
+        55,
+        60
+      ],
+      "visualBounds": [
+        8,
+        8,
+        39,
+        44
+      ],
+      "anchor": [
+        27.5,
+        30.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 2,
+      "sha256": "22d07985c7dedbe0979f2140521def04317bc220c9a455f2102e48b46072ffa8",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-rock",
+      "path": "/web/art/golden-journey/precision-ref-rock.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        3,
+        2,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1380,
+        985,
+        1420,
+        1015
+      ],
+      "size": [
+        56,
+        46
+      ],
+      "visualBounds": [
+        8,
+        8,
+        40,
+        30
+      ],
+      "anchor": [
+        28.0,
+        23.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "3bc32a784376eb38ceedea05d98bb52c6fecda29a61c3511336681d1985a6289",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-tree-left",
+      "path": "/web/art/golden-journey/precision-ref-tree-left.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        4,
+        2,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1778,
+        962,
+        1821,
+        1038
+      ],
+      "size": [
+        59,
+        92
+      ],
+      "visualBounds": [
+        8,
+        8,
+        43,
+        76
+      ],
+      "anchor": [
+        29.5,
+        46.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 2,
+      "sha256": "845c7f2e749a382661791078c0612178db467d14ee56daa0a5458109cbafea82",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-character-0-0",
+      "path": "/web/art/golden-journey/precision-ref-character-0-0.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        0,
+        3,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        149,
+        1356,
+        252,
+        1443
+      ],
+      "size": [
+        119,
+        103
+      ],
+      "visualBounds": [
+        8,
+        8,
+        103,
+        87
+      ],
+      "anchor": [
+        59.5,
+        51.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "846ce3e904da46343c3cef51f14330789142fccd18effc1823bf8c9795463775",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-character-0-3",
+      "path": "/web/art/golden-journey/precision-ref-character-0-3.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        1,
+        3,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        531,
+        1340,
+        661,
+        1458
+      ],
+      "size": [
+        146,
+        134
+      ],
+      "visualBounds": [
+        8,
+        8,
+        130,
+        118
+      ],
+      "anchor": [
+        73.0,
+        67.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "0b84705aece34b498562e0550ab5701b781128727be710488e6b4b372fa3ab83",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-character-1-0",
+      "path": "/web/art/golden-journey/precision-ref-character-1-0.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        2,
+        3,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        949,
+        1360,
+        1041,
+        1449
+      ],
+      "size": [
+        108,
+        105
+      ],
+      "visualBounds": [
+        8,
+        8,
+        92,
+        89
+      ],
+      "anchor": [
+        54.0,
+        52.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "f279f6f536eb59f6d857ccab77359667deaec5055b8105a625e98da8082144a0",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-sparkle",
+      "path": "/web/art/golden-journey/precision-ref-sparkle.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        3,
+        3,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1383,
+        1384,
+        1414,
+        1426
+      ],
+      "size": [
+        47,
+        58
+      ],
+      "visualBounds": [
+        8,
+        8,
+        31,
+        42
+      ],
+      "anchor": [
+        23.5,
+        29.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 2,
+      "sha256": "83bf60fe71af9cc798f170b0da497914b00f04b341e9c7bc30abc8d86d066946",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-record-note",
+      "path": "/web/art/golden-journey/precision-ref-record-note.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        4,
+        3,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1779,
+        1379,
+        1820,
+        1420
+      ],
+      "size": [
+        57,
+        57
+      ],
+      "visualBounds": [
+        8,
+        8,
+        41,
+        41
+      ],
+      "anchor": [
+        28.5,
+        28.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "69468efc5979bc6a5a711a3c7eda15909196ce2cfdc2887014016f68b72ec46e",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-action-note",
+      "path": "/web/art/golden-journey/precision-ref-action-note.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        0,
+        4,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        155,
+        1756,
+        245,
+        1842
+      ],
+      "size": [
+        106,
+        102
+      ],
+      "visualBounds": [
+        8,
+        8,
+        90,
+        86
+      ],
+      "anchor": [
+        53.0,
+        51.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "8c712557e562adbaac9a3ba9bf880350615b44394d6463dcaa3f62327d9767ad",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-action-magnifier",
+      "path": "/web/art/golden-journey/precision-ref-action-magnifier.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        1,
+        4,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        551,
+        1759,
+        648,
+        1839
+      ],
+      "size": [
+        113,
+        96
+      ],
+      "visualBounds": [
+        8,
+        8,
+        97,
+        80
+      ],
+      "anchor": [
+        56.5,
+        48.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "d12f6ef5ddaf4a64b4197e248f12de6f6a7cba40466ce17af4c6fa19e4a86e7b",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-action-pouch",
+      "path": "/web/art/golden-journey/precision-ref-action-pouch.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        2,
+        4,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        953,
+        1751,
+        1047,
+        1845
+      ],
+      "size": [
+        110,
+        110
+      ],
+      "visualBounds": [
+        8,
+        8,
+        94,
+        94
+      ],
+      "anchor": [
+        55.0,
+        55.0
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "0b67d1ac1460f3c8d853780dfec3f8015efe83b92f80aec577a0f680dfbc6532",
+      "transparent": true
+    },
+    {
+      "id": "precision-ref-map-icon",
+      "path": "/web/art/golden-journey/precision-ref-map-icon.png",
+      "source": "docs/journey-visual-20260925/asset-sheets/J09-reference-components.png",
+      "sourceCell": [
+        3,
+        4,
+        5,
+        5
+      ],
+      "sourceBounds": [
+        1380,
+        1776,
+        1420,
+        1823
+      ],
+      "size": [
+        56,
+        63
+      ],
+      "visualBounds": [
+        8,
+        8,
+        40,
+        47
+      ],
+      "anchor": [
+        28.0,
+        31.5
+      ],
+      "anchorKind": "center",
+      "padding": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "alphaCoreThreshold": 128,
+      "alphaEdgeThreshold": 16,
+      "components": 1,
+      "sha256": "e36def23dc80750ac0674b6646eb0369b308835de4f1d95dd219e4b771ba6cf6",
+      "transparent": true
+    }
+  ],
+  "precisionWorkflow": "Reference > J06/J07/J08 sheets > alpha connected components > remove low-alpha generation halo and stray components > optical bounds > 8px padding > manifest > Runtime",
+  "wrappers": [
+    {
+      "path": "/web/art/golden-journey/precision-exact-button-frame.svg",
+      "asset": "precision-exact-button",
+      "viewBox": [
+        8,
+        8,
+        706,
+        152
+      ],
+      "embeddedRaster": true,
+      "sha256": "812f118443b687ecf03eb2cf95639ee6d3ec01667fad7b53b53d8696f35f3f87"
+    },
+    {
+      "path": "/web/art/golden-journey/precision-exact-nameplate-frame.svg",
+      "asset": "precision-exact-nameplate",
+      "viewBox": [
+        8,
+        8,
+        364,
+        130
+      ],
+      "embeddedRaster": true,
+      "sha256": "c0145a29dfbc612e22b682d32e62df15aa094be8c2c9de5f07ceac951aa1133c"
+    },
+    {
+      "path": "/web/art/golden-journey/precision-exact-ribbon-frame.svg",
+      "asset": "precision-exact-ribbon",
+      "viewBox": [
+        8,
+        8,
+        711,
+        202
+      ],
+      "embeddedRaster": true,
+      "sha256": "208eb920f4789ce2e1d2e2a568f29c95e87f1614e1bb3ad9ada76a9b7cc4754e"
+    },
+    {
+      "path": "/web/art/golden-journey/precision-exact-brush-frame.svg",
+      "asset": "precision-exact-brush",
+      "viewBox": [
+        8,
+        8,
+        615,
+        138
+      ],
+      "embeddedRaster": true,
+      "sha256": "720a12ad2cd955b74ac05891600eb30303d80c43ce16bd8afdc33651a3401a0e"
+    },
+    {
+      "path": "/web/art/golden-journey/precision-timer-capsule-frame.svg",
+      "asset": "precision-timer-capsule",
+      "viewBox": [
+        8,
+        8,
+        1126,
+        266
+      ],
+      "embeddedRaster": true,
+      "sha256": "c74ea67699671bac5a937d27e98686f2564f6a2e79e5aadd569de73a552ef7e2"
+    }
+  ]
+}

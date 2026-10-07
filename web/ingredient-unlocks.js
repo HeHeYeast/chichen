@@ -83,18 +83,31 @@ export function ingredientUnlockInfo(state,id) {
   const rule=INGREDIENT_UNLOCK_RULES[id];
   if(!Number.isInteger(id)||!rule)throw Error('调味料不存在。');
   if(rule.special) {
-    const description='活动礼物获得，不使用 CP 购买。';
+    const description='完成委托获得，不用 CP 购买。';
     return {id,available:false,special:true,requirements:[description],description,reason:description,requirementGroups:[]};
   }
   const total=Object.values(state.total??{}).reduce((sum,count)=>sum+count,0);
   const requirementGroups=rule.alternatives.map(group=>{
-    const conditions=group.map(requirement=>requirementInfo(state,requirement,total));
+    const conditions=group.map(requirement=>({...requirement,...requirementInfo(state,requirement,total)}));
     return {description:conditions.length?conditions.map(item=>item.description).join('，并且'):'开始游戏即可购买',met:conditions.every(item=>item.met),conditions};
   });
   const requirements=requirementGroups.map(group=>group.description);
   const available=requirementGroups.some(group=>group.met);
   const description=requirements.length>1?`满足任一条件：${requirements.join('；或')}`:requirements[0];
   return {id,available,special:false,requirements,description,reason:available?'':description,requirementGroups};
+}
+
+// The seasonings a cookware itself opens for sale (配套调味料): every rule alternative that is this cookware at some level,
+// alone or with duck eggs. Public shop data, not a recipe: {id, level, duck}, by level then id.
+export function cookwareSeasonings(toolId){
+  const out=[];
+  for(const rule of INGREDIENT_UNLOCK_RULES)for(const group of rule.alternatives){
+    const tool=group.find(c=>c.kind==='tool'&&c.id===toolId),rest=group.filter(c=>c!==tool);
+    if(!tool||rest.some(c=>!(c.kind==='discovery'&&c.egg===1&&c.id===0)))continue;
+    const duck=rest.length>0,seen=out.find(x=>x.id===rule.id);
+    if(!seen)out.push({id:rule.id,level:tool.level,duck});else if(tool.level<seen.level||tool.level===seen.level&&!duck){seen.level=tool.level;seen.duck=duck;}
+  }
+  return out.sort((a,b)=>a.level-b.level||a.duck-b.duck||a.id-b.id);
 }
 
 export function availableIngredientIds(state) {

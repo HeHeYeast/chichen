@@ -59,3 +59,23 @@ __pycache__/
 Thumbs.db
 *.swp
 *.tmp
+
+# Real-phone visual captures and local inspection helpers.
+/artifacts/visual-polish/device/
+
+# imagegen skill: private env variants and any error dumps that could echo request bodies.
+.env.forge
+/artifacts/imagegen/errors/
+
+# Local release smoke devices, downloaded system images and save snapshots.
+/artifacts/rc-20260930/emulator.avd/
+/artifacts/rc-20260930/android35.zip
+/artifacts/rc-20260930/*save.json
+/artifacts/rc-20260930/honor-driver/
+
+# Isolated APK payload and emulator disk used by the cross-phone audit.
+/artifacts/mobile-old-payload/
+/artifacts/mobile-native-35/
+/artifacts/mobile-final-payload/
+/artifacts/android30-audit/
+/artifacts/android35-audit/

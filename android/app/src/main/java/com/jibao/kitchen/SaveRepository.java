@@ -223,16 +223,15 @@ public final class SaveRepository {
                     JSONObject fact=facts.getJSONObject(k);integer(fact,"seq",0,m.getLong("factSeq"));
                     if(!(fact.get("tripId") instanceof String))throw new IOException("卡片同行来源无效");
                     org.json.JSONArray members=fact.getJSONArray("members");if(members.length()<1||members.length()>3)throw new IOException("卡片同行队伍无效");
-                    java.util.HashSet<String> seen=new java.util.HashSet<>();
-                    for(int i=0;i<members.length();i++){JSONObject member=members.getJSONObject(i);String key=member.getString("key");species(key,4);if(!seen.add(key))throw new IOException("卡片同行成员重复");validateCompanionFact(member,true);}
+                    for(int i=0;i<members.length();i++){JSONObject member=members.getJSONObject(i);String key=member.getString("key");species(key,4);validateCompanionFact(member,true);}
                 }
             }
         }
     }
     private static void validateCompanionFact(JSONObject fact,boolean snapshot) throws Exception {
         String gather=snapshot?"G":"gather",discover=snapshot?"F":"discover";
-        integer(fact,gather,0,6);integer(fact,discover,0,6);
-        if(fact.getInt(gather)+fact.getInt(discover)!=6||!java.util.Arrays.asList("yard","water","wood").contains(fact.get("environment")))throw new IOException("同行能力事实无效");
+        integer(fact,gather,0,20);integer(fact,discover,0,20);
+        if(!java.util.Arrays.asList("yard","water","wood").contains(fact.get("environment")))throw new IOException("同行能力事实无效");
         stringList(fact,"traits","portable|fruit|tea|leaf|grain|salt|floral",7);
     }
     private static void validateProgress(JSONObject s) throws Exception {
@@ -263,11 +262,12 @@ public final class SaveRepository {
             if(hours==0||t.getLong("endAt")-t.getLong("startedAt")!=hours*3600000L*(t.getJSONObject("snapshot").optBoolean("light",false)?0.8:1))throw new IOException("探索时间无效");
             org.json.JSONArray members=t.getJSONArray("members"),remaining=t.getJSONArray("remaining");
             if(members.length()<1||members.length()>3||remaining.length()>4)throw new IOException("探索队伍无效");
-            java.util.HashSet<String> seen=new java.util.HashSet<>();
+            java.util.HashMap<String,Integer> seen=new java.util.HashMap<>();
             for(int i=0;i<members.length();i++) {
                 String k=members.getString(i);
                 species(k,s.getInt("version"));
-                if(!seen.add(k)||status.equals("running")&&s.getJSONObject("farm").optInt(k,0)<1)throw new IOException("探索占用无效");
+                int places=seen.merge(k,1,Integer::sum);
+                if(status.equals("running")&&s.getJSONObject("farm").optInt(k,0)<places)throw new IOException("探索占用无效");
             }
             t.getJSONObject("snapshot");t.getJSONArray("clueOrder");
             if(!(t.get("clueHit") instanceof Boolean)||!(t.get("clueProcessed") instanceof Boolean))throw new IOException("探索奖励标记无效");
@@ -326,7 +326,7 @@ public final class SaveRepository {
         int totalG=0,totalF=0;
         for(int i=0;i<companions.length();i++) {
             JSONObject c=companions.getJSONObject(i);if(!members.getString(i).equals(c.get("key")))throw new IOException("同行能力身份不符");
-            integer(c,"G",0,4);integer(c,"F",0,4);if(c.getInt("G")+c.getInt("F")!=6)throw new IOException("同行能力总额无效");
+            integer(c,"G",0,20);integer(c,"F",0,20);
             if(!java.util.Arrays.asList("yard","water","wood").contains(c.get("environment")))throw new IOException("同行环境无效");stringList(c,"traits",".{1,39}",20);
             totalG+=c.getInt("G");totalF+=c.getInt("F");
         }
@@ -418,7 +418,7 @@ public final class SaveRepository {
     // reservation, S never exceeds the owned stock, and no revenue before a window.
     private static long awayCount(JSONObject trip,String key) throws Exception {
         if(trip==null||!"running".equals(trip.optString("status")))return 0;
-        long away=contains(trip.getJSONArray("members"),key)?1:0;
+        long away=0;org.json.JSONArray places=trip.getJSONArray("members");for(int i=0;i<places.length();i++)if(key.equals(places.optString(i)))away++;
         JSONObject cargo=trip.optJSONObject("cargo");
         if(cargo!=null&&!cargo.optBoolean("processed",true))away+=cargo.getJSONObject("selection").optLong(key,0);
         return away;
@@ -541,7 +541,7 @@ public final class SaveRepository {
             org.json.JSONArray members=trip.getJSONArray("members");for(int i=0;i<members.length();i++)identities.add(members.getString(i));
             JSONObject cargo=trip.optJSONObject("cargo");if(cargo!=null&&!cargo.getBoolean("processed"))for(java.util.Iterator<String> keys=cargo.getJSONObject("selection").keys();keys.hasNext();)identities.add(keys.next());
         }
-        for(String key:identities)if(farm.optLong(key,0)<awayCount(trip,key)+stall.optLong(key,0)+reserved.getOrDefault(key,0L))throw new IOException("T/R/S/Q库存占用无效");
+        for(String key:identities)if(farm.optLong(key,0)<awayCount(trip,key)+stall.optLong(key,0)+reserved.getOrDefault(key,0L))throw new IOException("伙伴库存占用无效");
     }
     private static String unwrap(File file) throws Exception {
         JSONObject envelope = new JSONObject(read(file));
@@ -551,8 +551,8 @@ public final class SaveRepository {
         if (!hash(raw).equals(envelope.getString("sha256"))) throw new IOException("存档校验失败");
         validate(raw); return raw;
     }
-    private static void writeAtomic(File target, String raw) throws Exception {
-        validate(raw);
+    /** For bytes this commit already validated (the candidate, or the previous generation load() unwrapped). */
+    private static void writeValidated(File target, String raw) throws Exception {
         JSONObject envelope = new JSONObject().put("format", "chick-kitchen-native")
                 .put("formatVersion", 1).put("sha256", hash(raw)).put("raw", raw);
         AtomicFile atomic = new AtomicFile(target); FileOutputStream out = null;
@@ -645,7 +645,7 @@ public final class SaveRepository {
         if(expectedRevision!=null&&candidate.getInt("version")<4)throw new IOException("旧存档不支持事务提交");
         if (existing.has("raw")) {
             String previous = existing.getString("raw");
-            JSONObject prior=validate(previous);
+            JSONObject prior=new JSONObject(previous); // load() already validated it in unwrap()
             if(!importing) {
                 // ACK loss is safe to retry only with the exact already-persisted candidate.
                 if(previous.equals(raw))return receipt(candidate,true);
@@ -665,19 +665,19 @@ public final class SaveRepository {
                 File source=file(context,"recovered".equals(existing.optString("status"))?"previous":"current");
                 if(!exists(rescue))preserveBytes(source,rescue);
             }
-            if (importing) writeAtomic(file(context, "before-import"), previous);
-            if (!previous.equals(raw)) writeAtomic(file(context, "previous"), previous);
+            if (importing) writeValidated(file(context, "before-import"), previous);
+            if (!previous.equals(raw)) writeValidated(file(context, "previous"), previous);
         } else if (importing && exists(file(context, "current"))) {
             // Preserve unreadable/future data byte-for-byte for manual recovery.
             preserveBytes(file(context, "current"), file(context, "before-import-unreadable"));
         } else if(!importing&&candidate.getInt("version")>=4&&!initialRevision(candidate,expectedRevision)) {
             throw new RevisionConflictException();
         }
-        writeAtomic(file(context, "current"), raw);
+        writeValidated(file(context, "current"), raw);
         return receipt(candidate,false);
     }
     public static final class RevisionConflictException extends IOException {
-        RevisionConflictException() { super("存档已更新，请重新读取后重试"); }
+        RevisionConflictException() { super("存档已在别处更新，请重新打开游戏后再试"); }
     }
     private static final class FutureSaveException extends IOException { }
 }

@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>鸡宝厨房 · 布局原型</title><link rel="stylesheet" href="./prototype.css"></head>
+<body>
+<header class="review-header"><div><span class="eyebrow">LV.2 · 同素材布局试验</span><h1>厨房，先把位置摆对。</h1></div><a id="phone-link" href="?layout=A&view=phone" target="_blank" rel="noopener">打开单屏 ↗</a></header>
+<main class="review-workspace">
+  <aside class="review-controls"><p class="section-label">选择布局</p><nav class="layout-picker" aria-label="布局方案"><button data-layout="A"><b>A</b><span>围绕蛋窝<small>蛋窝居中 · 厨具在下</small></span></button><button data-layout="B"><b>B</b><span>上备下收<small>厨具在上 · 蛋窝靠下</small></span></button><button data-layout="C"><b>C</b><span>侧边取用<small>厨具侧栏 · 主体独立</small></span></button></nav><p class="control-note">切换布局保留同一份原型状态。<br>素材、功能和蛋的位置关系相同。</p><div class="state-controls"><p class="section-label">试试不同状态</p><button data-demo="running">孵化中 · 重置</button><button data-demo="ready">可收取</button><button data-demo="empty">空窝 · 准备下一批</button><button data-demo="dirty">脏污 · 需要打扫</button></div><p class="scope-note">仅本页临时状态，不读取或写入正式存档。<br>其他页面只保留入口。</p><a class="runtime-link" href="/" target="_blank" rel="noopener">查看当前正式 Runtime ↗</a></aside>
+  <div class="phone-frame"><section id="phone" class="phone" data-layout="A" aria-label="Lv.2 木房厨房布局原型"><div id="game-content"></div><div id="sheet-layer" class="sheet-layer" hidden><div class="scrim" data-close></div><section id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title"><header><h2 id="sheet-title" tabindex="-1"></h2><button class="close" data-close aria-label="关闭">×</button></header><div id="sheet-body"></div></section></div><div id="toast" role="status" class="toast" hidden></div></section></div>
+  <aside class="layout-notes"><p class="section-label">这一套在测试什么</p><h2 id="layout-title"></h2><p id="layout-description"></p><ol id="layout-points"></ol><div class="try-note"><b>可以直接操作</b><p>点蛋、换下批厨具、选调味、打扫、开新一批。左侧可以切到可收取或空窝状态。</p><p>商店／仓库／手艺和底栏会响应点击，但不制作或迁移这些页面。</p></div><p class="asset-note">已有蛋、Lv.2 蛋窝、厨具、图标与字体。木房底板和支撑线为简单占位。</p></aside>
+</main><script type="module" src="./prototype.js"></script>
+</body></html>

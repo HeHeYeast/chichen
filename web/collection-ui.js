@@ -1,5 +1,5 @@
 import {SPECIES_DESCRIPTIONS as DESCRIPTIONS,SPECIES_ABILITIES as ABILITIES,resolveSpecies} from './content-registry.js';
-import {availableCount,reservedCount,inventoryView} from './inventory.js';
+import {availableCount,reservedCount,inventoryView,spareCount} from './inventory.js';
 import {bookNavigation,bindBookNavigation,bookPreparation,speciesUses} from './book-ui.js';
 import {storyOrders} from './story-orders.js';
 import {basketQuote,effects} from './progression.js';
@@ -11,6 +11,8 @@ import {characterAccessInfo} from './legacy-activities.js';
 import {discoveredRecipe} from './recipe-book.js';
 import {discoveryClue} from './discovery-clues.js';
 import {projectSpecies} from './visibility-model.js';
+import {unknownArt,visualImage,rarityBadge} from './visual-assets.js';
+import {kitSheet,kitCoin,kitEgg,kitButton,kitButton2,kitChip,kitChipHtml,kitLabel,kitIcon} from './ui-kit.js';
 
 const PAGE_SIZE=9;
 const escapeText=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -53,23 +55,24 @@ export function harvestEntries(state,egg=0,stockOnly=true){
 }
 
 // A batch shortcut always covers both ledgers, including rows outside the viewport.
-export function bulkSaleSelection(state,keepOne=false){
+// 「全选」 sells every kind down to the number the player locked at home (see the warehouse).
+export function bulkSaleSelection(state){
   const selection={};
   for(const egg of [0,1])for(const entry of harvestEntries(state,egg)){
-    const quantity=Math.max(0,entry.stock-(keepOne?1:0));
+    const quantity=Math.min(entry.stock,spareCount(state,entry.key));
     if(quantity)selection[entry.key]=quantity;
   }
   return selection;
 }
 
-export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panels,showPanel,confirmBox,alertBox,act,sound,characterPortrait,makeWalkers,changePage,openActivities,openDuckShop,openJournal,openRecipeBook,openObservation,openWorkshop,openBooks,openBookTab,openInventory,prepareRecipe,openUse,skillFeedback=()=>{}}){
+export function createCollectionUI({toolPortrait=()=>'',ingredientPortrait=()=>'',getState,getPage,getNow=()=>Date.now(),panels,showPanel,confirmBox,alertBox,act,sound,characterPortrait,makeWalkers,changePage,openActivities,openDuckShop,openJournal,openRecipeBook,openObservation,openWorkshop,openBooks,openBookTab,openClues,openInventory,prepareRecipe,openUse,skillFeedback=()=>{}}){
   let bookEgg=0,harvestEgg=0,knownOnly=false,stockOnly=true,selection={},keepOneSelection=false,useRewards=true;
   let refreshDetail=null;
   let search='',readyOnly=false,inventoryKey=null;
   const bookPages=[0,0],harvestScroll=[0,0],detailQuantities=new Map();
   const find=selector=>panels.querySelector(selector);
   const each=(selector,handler)=>panels.querySelectorAll(selector).forEach(handler);
-  const eggPlaceholder=()=>'<span class="collection-unknown-egg" aria-hidden="true"><span>?</span></span>';
+  const eggPlaceholder=()=>visualImage(unknownArt,'unknown');
   const portrait=entry=>entry.known?characterPortrait(entry.egg,entry.id):eggPlaceholder();
   function saleEffects(quote){
     const e=effects(getState()),events=[];
@@ -86,19 +89,27 @@ export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panel
     refreshDetail=null;
     const model=collectionPageModel(getState(),{egg:bookEgg,page:bookPages[bookEgg],knownOnly,search,readyOnly,now:getNow()});
     bookPages[bookEgg]=model.page;
-    const cards=model.entries.map(entry=>`<button type="button" class="collection-stamp ${entry.known?'is-known':'is-unknown'}" data-collection-card="${entry.id}" aria-label="${escapeText(entry.known?entry.code+' '+entry.name:'未发现品种 '+entry.code)}"><span class="collection-code">${entry.code}</span><span class="collection-picture">${portrait(entry)}</span><strong class="collection-name">${escapeText(entry.name)}</strong><span class="collection-stock">${entry.known?'在家可用 '+number(entry.stock):bookPreparation(getState(),entry.key,getNow()).knownMethod?'已知方法 · 未收录':'等待发现'}</span></button>`).join('');
-    const empty='<div class="collection-empty">'+eggPlaceholder()+'<strong>这一册还没有新伙伴</strong><p>去厨房孵化并收取，<br>就能留下第一枚收藏印记。</p><button type="button" data-collection-kitchen>去厨房</button></div>';
-    showPanel('鸡宝图鉴',`${openBookTab?bookNavigation('species'):''}${tabs('collection',bookEgg)}<form class="book-search" data-book-search-form><label>名称或编号<input type="search" data-book-search value="${escapeText(search)}" placeholder="已知名称 / C001 / D001" autocomplete="off"></label><button type="submit">查找</button></form><div class="collection-progress"><span>已收录 <strong>${model.discovered}</strong> / ${model.total}</span>${openRecipeBook?'<button class="journal-entry" data-collection-recipes>配方册 ›</button>':''}<button type="button" data-collection-filter aria-pressed="${knownOnly}">${knownOnly?'查看全部':'只看已收录'}</button><button type="button" data-collection-ready aria-pressed="${readyOnly}">${readyOnly?'取消可准备':'可准备'}</button></div><div class="collection-book scroll ${model.entries.length?'':'is-empty'}" aria-label="${bookEgg?'鸭宝':'鸡宝'}图鉴，第 ${model.page+1} 页">${model.entries.length?cards+Array.from({length:PAGE_SIZE-model.entries.length},()=>'<span class="collection-blank" aria-hidden="true"></span>').join(''):search||readyOnly?'<div class="collection-empty"><strong>没有符合条件的记录</strong><p>可以换个编号，或放宽筛选再找找。</p><button data-collection-clear>清除搜索与筛选</button></div>':empty}</div><footer class="collection-pager"><button type="button" class="cream" data-collection-prev aria-label="图鉴上一页" ${model.page===0?'disabled':''}>‹</button><span>第 <strong>${model.page+1}</strong> / ${model.pages} 页</span><button type="button" class="cream" data-collection-next aria-label="图鉴下一页" ${model.page>=model.pages-1?'disabled':''}>›</button></footer>`,'screen-panel collection-screen');
+    const cards=model.entries.map(entry=>`<button type="button" class="collection-stamp bk-sticker ${entry.known?'is-known':'is-unknown'}" data-collection-card="${entry.id}" aria-label="${escapeText(entry.known?entry.code+' '+entry.name:'未发现品种 '+entry.code)}"><span class="collection-picture bk-sticker-art">${entry.known?characterPortrait(entry.egg,entry.id):'<span class="bk-q" aria-hidden="true">?</span>'}</span><strong class="collection-name">${escapeText(entry.known?entry.name:'未发现')}</strong><span class="collection-code">${entry.code}${entry.known?`<span class="bk-stock"> · ×${number(entry.stock)}</span>`:''}</span></button>`).join('');
+    const pages=Array.from({length:model.pages},(_,i)=>i);
+    const first=i=>{const list=DATA.characters[bookEgg];const filtered=list.map(c=>speciesView(getState(),bookEgg,c.id)).filter(e=>(!knownOnly||e.known)&&(!readyOnly||bookPreparation(getState(),e.key,getNow()).ready));return filtered[i*PAGE_SIZE]?.code??'';};
+    const filter=(attr,on,label)=>`<button type="button" class="gd-btn2 mini" ${attr} aria-pressed="${on}">${label}</button>`;
+    const body=`<div class="kp-bar bk-bar" data-row><div class="kp-coins" role="group" aria-label="蛋种">${kitCoin(kitEgg(false),'data-collection-egg="0"',bookEgg===0,'鸡宝')}${kitCoin(kitEgg(true),'data-collection-egg="1"',bookEgg===1,'鸭宝')}</div><span class="bk-count" aria-label="已收录 ${model.discovered} / ${model.total}"><b>${model.discovered}</b>/ ${model.total} 种</span></div>
+      <div class="gd-row bk-filters" role="group" aria-label="显示">${filter('data-collection-all',!knownOnly&&!readyOnly,'全部')}${filter('data-collection-filter',knownOnly,'已收录')}${filter('data-collection-ready',readyOnly,'可准备')}</div>
+      <div class="collection-book bk-grid ${model.entries.length?'':'is-empty'}" aria-label="${bookEgg?'鸭宝':'鸡宝'}图鉴，第 ${model.page+1} 页">${model.entries.length?cards:readyOnly||knownOnly?`<div class="kp-empty"><span>没有符合条件的伙伴</span>${kitButton2('看全部','data-collection-clear')}</div>`:`<div class="kp-empty">${eggPlaceholder()}<span>这一册还没有新伙伴</span>${kitButton2('去厨房','data-collection-kitchen')}</div>`}</div>
+      <div class="gd-scroll-row bk-pages" role="group" aria-label="翻到哪一页" data-hscroll>${pages.map(i=>`<button type="button" class="bk-page" data-collection-page="${i}" aria-pressed="${i===model.page}">${first(i)}</button>`).join('')}</div>`;
+    const foot=`${openClues?'<button type="button" class="gd-btn2 mini bk-clues" data-collection-clues aria-label="打开线索册：还没认识的伙伴和它们的线索">线索册</button>':''}<button type="button" class="bk-turn" data-collection-prev aria-label="图鉴上一页" ${model.page===0?'disabled':''}>‹</button><span class="bk-pageno">${model.page+1} / ${model.pages}</span><button type="button" class="bk-turn" data-collection-next aria-label="图鉴下一页" ${model.page>=model.pages-1?'disabled':''}>›</button>`;
+    showPanel('鸡宝图鉴',`${openBookTab?bookNavigation('species'):''}${kitSheet(body,foot,'bk-sheet')}`,'screen-panel collection-screen',{skin:'book',icon:characterPortrait(0,0),search:openBooks?'data-collection-books':''});
     if(openBookTab)bindBookNavigation(panels,openBookTab);
-    find('[data-book-search]').oninput=e=>{search=e.target.value;};
-    find('[data-book-search-form]').onsubmit=e=>{e.preventDefault();search=find('[data-book-search]').value;bookPages.fill(0);renderCollection();};
-    find('[data-collection-ready]').onclick=()=>{readyOnly=!readyOnly;bookPages.fill(0);renderCollection();};
+    find('[data-collection-all]')?.addEventListener('click',()=>{knownOnly=false;readyOnly=false;bookPages.fill(0);renderCollection();});
+    each('[data-collection-page]',b=>b.onclick=()=>{bookPages[bookEgg]=Number(b.dataset.collectionPage);sound(3);renderCollection();});
+    find('[data-collection-ready]').onclick=()=>{readyOnly=!readyOnly;knownOnly=false;bookPages.fill(0);renderCollection();};
     const clear=find('[data-collection-clear]');if(clear)clear.onclick=()=>{search='';readyOnly=false;knownOnly=false;bookPages.fill(0);renderCollection();};
+    find('[data-collection-clues]')?.addEventListener('click',()=>openClues());
     find('[data-collection-workshop]')?.addEventListener('click',()=>openWorkshop());
     find('[data-collection-recipes]')?.addEventListener('click',()=>openRecipeBook());
     find('[data-collection-books]')?.addEventListener('click',()=>openBooks());
     each('[data-collection-egg]',button=>button.onclick=()=>{bookEgg=+button.dataset.collectionEgg;sound(3);renderCollection();});
-    find('[data-collection-filter]').onclick=()=>{knownOnly=!knownOnly;bookPages.fill(0);renderCollection();};
+    find('[data-collection-filter]').onclick=()=>{knownOnly=!knownOnly;readyOnly=false;bookPages.fill(0);renderCollection();};
     find('[data-collection-prev]').onclick=()=>{bookPages[bookEgg]=Math.max(0,bookPages[bookEgg]-1);renderCollection();};
     find('[data-collection-next]').onclick=()=>{bookPages[bookEgg]=Math.min(model.pages-1,bookPages[bookEgg]+1);renderCollection();};
     each('[data-collection-card]',button=>button.onclick=()=>{
@@ -112,7 +123,7 @@ export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panel
   function accessMarkup(egg,id,isKnown){
     const state=getState(),access=characterAccessInfo(egg,id,state,getNow());
     const duckLocked=egg===1&&!state.duck;
-    if(!isKnown)return `<div class="species-access"><strong>配方尚未解锁</strong><p>首次孵化并收取这位伙伴后，完整配方会记入图鉴。</p>${access?.activityId?'<p>也许神社的来信里，还有一些消息。</p>':''}${access?.holiday?`<p class="species-clue-calendar">${escapeText(access.holiday.title)} · ${escapeText(access.holiday.dateRange)}<br>${escapeText(access.holiday.status)}，以开火日期为准。</p>`:''}${duckLocked?'<p>需要先在商店开放鸭蛋。</p>':''}${duckLocked&&openDuckShop?'<button data-species-duck>去商店开放鸭蛋</button>':access?.activityId&&openActivities?`<button data-species-activity="${access.activityId}">去看看相关来信</button>`:''}</div>`;
+    if(!isKnown)return `<div class="species-access"><strong>配方尚未解锁</strong><p>首次孵化并收取这位伙伴后，完整配方会记入图鉴。</p>${access?.activityId?'<p>也许某封委托来信里，还有一些消息。</p>':''}${access?.holiday?`<p class="species-clue-calendar">${escapeText(access.holiday.title)} · ${escapeText(access.holiday.dateRange)}<br>${escapeText(access.holiday.status)}，以开火日期为准。</p>`:''}${duckLocked?'<p>需要先在商店开放鸭蛋。</p>':''}${duckLocked&&openDuckShop?'<button data-species-duck>去商店开放鸭蛋</button>':access?.activityId&&openActivities?`<button data-species-activity="${access.activityId}">去看看相关来信</button>`:''}</div>`;
     const seasonal=seasonalCharacter(egg,id);
     if(seasonal){const r=seasonalRecipeInfo(state,seasonal.key);return `<div class="species-access"><strong>四时食谱 · 常驻手作</strong>${escapeText(r.toolName)} Lv.${r.minLevel+1} · ${escapeText(r.ingredientNames.join(' ＋ '))}<p>先在四时食谱选好配方，再开火；全年都能获得。${duckLocked?'需先开放鸭蛋。':''}</p><button data-species-seasonal="${seasonal.key}">查看这份配方</button></div>`;}
     const hint=access?`${access.kind==='campaign'?(access.unlocked?'配方已开放。':`完成「${access.title}」后开放配方。`):access.kind==='gift'?`在「${access.title}」领取调理赠品。`:''}${access.recipeText}`:'在厨房尝试不同的厨具和调味料，孵化后记得收取。';
@@ -143,10 +154,10 @@ export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panel
     return `<div class="harvest-row" data-harvest-row="${entry.key}"><button type="button" class="harvest-portrait" data-harvest-character="${entry.id}" aria-label="查看${escapeText(entry.name)}详情">${characterPortrait(entry.egg,entry.id)}</button><div class="harvest-entry"><span class="harvest-code">${entry.code}</span><strong class="harvest-name">${escapeText(entry.name)}</strong><div class="harvest-meta"><span>售价 <b>${number(entry.price)}</b> CP</span><span>库存 <b>${number(entry.stock)}</b></span></div><div class="harvest-quantity"><button type="button" data-harvest-minus="${entry.key}" aria-label="减少${escapeText(entry.name)}卖出数量" ${qty?'':'disabled'}>−</button><output data-harvest-quantity="${entry.key}" aria-label="${escapeText(entry.name)}已选数量">${number(qty)}</output><button type="button" data-harvest-plus="${entry.key}" aria-label="增加${escapeText(entry.name)}卖出数量" ${qty<entry.stock?'':'disabled'}>+</button><button type="button" class="harvest-max" data-harvest-max="${entry.key}" aria-label="选择全部${escapeText(entry.name)}" ${entry.stock&&qty<entry.stock?'':'disabled'}>最大</button></div></div></div>`;
   }
   function updateHarvestSelection(){
-    if(keepOneSelection)for(const key of Object.keys(selection))selection[key]=Math.min(selection[key],Math.max(0,availableCount(getState(),key)-1));
+    for(const key of Object.keys(selection))selection[key]=Math.min(selection[key],spareCount(getState(),key));
     const summary=saleSelectionSummary(getState(),selection,{useRewards});selection=summary.selection;
     each('[data-harvest-row]',row=>{
-      const key=row.dataset.harvestRow,stock=availableCount(getState(),key),qty=selection[key]??0;
+      const key=row.dataset.harvestRow,stock=spareCount(getState(),key),qty=selection[key]??0;
       row.querySelector('[data-harvest-quantity]').textContent=number(qty);
       row.querySelector('[data-harvest-minus]').disabled=qty===0;
       row.querySelector('[data-harvest-plus]').disabled=qty>=stock;
@@ -158,18 +169,17 @@ export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panel
     if(quantity)quantity.textContent=number(summary.quantity);
     if(sell)sell.disabled=summary.quantity===0;
     if(clear)clear.disabled=summary.quantity===0;
-    const all=find('[data-harvest-all]'),keep=find('[data-harvest-keep-one]');
+    const all=find('[data-harvest-all]');
     if(all)all.disabled=Object.keys(bulkSaleSelection(getState())).length===0;
-    if(keep)keep.disabled=Object.keys(bulkSaleSelection(getState(),true)).length===0;
   }
-  function choose(key,value){keepOneSelection=false;selection[key]=Math.min(availableCount(getState(),key),count(value));updateHarvestSelection();}
+  function choose(key,value){keepOneSelection=false;selection[key]=Math.min(spareCount(getState(),key),count(value));updateHarvestSelection();}
 
   function renderAlbum(){
     refreshDetail=null;
     selection=saleSelectionSummary(getState(),selection,{useRewards}).selection;
     const entries=harvestEntries(getState(),harvestEgg,stockOnly).filter(e=>!inventoryKey||e.key===inventoryKey),known=harvestEntries(getState(),harvestEgg,false).length;
     const empty=`<div class="harvest-empty">${eggPlaceholder()}<strong>${known?'暂时没有可出售的伙伴':'还没有收获记录'}</strong><p>${known?'已收录的品种仍保存在图鉴中。':'在厨房孵化并收取后，<br>伙伴就会来到农场。'}</p><button type="button" data-harvest-kitchen>去厨房</button></div>`;
-    showPanel('农场收成表',`${tabs('harvest',harvestEgg)}${inventoryKey?`<div class="harvest-filter"><span>正在管理 ${escapeText(speciesView(getState(),...inventoryKey.split(':').map(Number)).name)}</span><button data-harvest-unfilter>查看全部库存</button></div>`:''}<div class="harvest-filter"><span>点头像查看档案</span><button type="button" data-harvest-filter aria-pressed="${stockOnly}">${stockOnly?'仅看有库存':'全部已发现'}</button></div><div class="harvest-bulk"><span>外出伙伴不可售 · 鸡鸭一起选</span><button type="button" data-harvest-all>全选</button><button type="button" data-harvest-keep-one>每种留一只</button><button type="button" data-harvest-orders>为采购留货</button></div><div class="harvest-list scroll" aria-label="${harvestEgg?'鸭宝':'鸡宝'}收成">${entries.length?entries.map(harvestRow).join(''):empty}</div><footer class="harvest-footer"><div class="harvest-total"><small>合计 <strong data-harvest-total>0</strong> 只（含鸡鸭）</small><span><strong data-harvest-income>0</strong> CP</span></div><p class="sale-breakdown" data-sale-breakdown></p><label class="sale-rewards"><input type="checkbox" data-use-rewards ${useRewards?'checked':''}>使用经营奖励（整筐优先，再拼盘）</label><div class="harvest-checkout"><button type="button" class="orange" data-harvest-sell>确认出售</button><button type="button" data-harvest-clear>清空选择</button></div></footer>`,'screen-panel harvest-screen');
+    showPanel('农场收成表',`${tabs('harvest',harvestEgg)}${inventoryKey?`<div class="harvest-filter"><span>正在管理 ${escapeText(speciesView(getState(),...inventoryKey.split(':').map(Number)).name)}</span><button data-harvest-unfilter>查看全部库存</button></div>`:''}<div class="harvest-filter"><span>点头像查看档案</span><button type="button" data-harvest-filter aria-pressed="${stockOnly}">${stockOnly?'仅看有库存':'全部已发现'}</button></div><div class="harvest-bulk"><span>外出伙伴不可售 · 鸡鸭一起选</span><button type="button" data-harvest-all>全选（留够锁定数）</button><button type="button" data-harvest-orders>为厨房往事留货</button></div><div class="harvest-list scroll" aria-label="${harvestEgg?'鸭宝':'鸡宝'}收成">${entries.length?entries.map(harvestRow).join(''):empty}</div><footer class="harvest-footer"><div class="harvest-total"><small>合计 <strong data-harvest-total>0</strong> 只（含鸡鸭）</small><span><strong data-harvest-income>0</strong> CP</span></div><p class="sale-breakdown" data-sale-breakdown></p><label class="sale-rewards"><input type="checkbox" data-use-rewards ${useRewards?'checked':''}>使用经营奖励（整筐优先，再拼盘）</label><div class="harvest-checkout"><button type="button" class="orange" data-harvest-sell>确认出售</button><button type="button" data-harvest-clear>清空选择</button></div></footer>`,'screen-panel harvest-screen');
     const unfilter=find('[data-harvest-unfilter]');if(unfilter)unfilter.onclick=()=>{inventoryKey=null;renderAlbum();};
     const list=find('.harvest-list');list.scrollTop=harvestScroll[harvestEgg];list.onscroll=()=>{harvestScroll[harvestEgg]=list.scrollTop;};
     each('[data-harvest-egg]',button=>button.onclick=()=>{rememberHarvestScroll();inventoryKey=null;harvestEgg=+button.dataset.harvestEgg;renderAlbum();});
@@ -180,16 +190,15 @@ export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panel
     each('[data-harvest-character]',button=>button.onclick=()=>{rememberHarvestScroll();showCharacter(harvestEgg,+button.dataset.harvestCharacter);});
     find('[data-harvest-clear]').onclick=()=>{selection={};keepOneSelection=false;updateHarvestSelection();};
     find('[data-harvest-all]').onclick=()=>{selection=bulkSaleSelection(getState());keepOneSelection=false;updateHarvestSelection();};
-    find('[data-harvest-keep-one]').onclick=()=>{selection=bulkSaleSelection(getState(),true);keepOneSelection=true;updateHarvestSelection();};
     find('[data-use-rewards]').onchange=e=>{useRewards=e.target.checked;updateHarvestSelection();};
     find('[data-harvest-orders]').onclick=()=>{selection=bulkSaleSelection(getState());for(const o of storyOrders(getState()).filter(o=>o.accepted&&!o.completed)){const c=o.choices.find(c=>c.species===o.choice);selection[c.species]=Math.max(0,(selection[c.species]??0)-(c.count-o.delivered));}keepOneSelection=false;updateHarvestSelection();};
     find('[data-harvest-sell]').onclick=()=>{
       const summary=saleSelectionSummary(getState(),selection,{useRewards});
       if(!summary.quantity){alertBox('请先选择要出售的数量。');return;}
-      const snapshot=Object.freeze({...summary.selection}),reserveOne=keepOneSelection;let settled;
+      const snapshot=Object.freeze({...summary.selection}),reserveOne=true;let settled;
       const remaining=[0,1].flatMap(egg=>harvestEntries(getState(),egg)).filter(entry=>entry.stock-(snapshot[entry.key]??0)>0).length;
-      confirmBox(`出售 ${number(summary.quantity)} 只伙伴，获得 ${number(summary.income)} CP。\n\n基础货款 ${summary.baseIncome} CP · 招牌加价 ${summary.markup} CP · 经营奖励 ${summary.bonus} CP。\n整筐${summary.baskets}次，拼盘${summary.platters}次；招牌小数余额 ${(summary.markupRemainder/100).toFixed(2)} CP。${summary.basketItems.length?'\n整筐：'+summary.basketItems.map(i=>E.label(E.char(...i.key.split(':').map(Number)))+'×'+i.count).join('、'):''}${summary.platterItems.length?'\n拼盘：'+summary.platterItems.map(ks=>ks.map(k=>E.label(E.char(...k.split(':').map(Number)))+'×3').join('、')).join('；'):''}\n外出伙伴不参与。\n出售后农场保留 ${number(remaining)} 个品种。已发现的图鉴与累计收取记录会保留。`,()=>{if(act(()=>{
-        if(reserveOne&&Object.entries(snapshot).some(([key,qty])=>availableCount(getState(),key)-qty<1))throw Error('农场库存发生变化，请重新选择数量，让每种伙伴留下一只。');
+      confirmBox(`出售 ${number(summary.quantity)} 只伙伴，获得 ${number(summary.income)} CP。\n\n基础货款 ${summary.baseIncome} CP · 招牌加价 ${summary.markup} CP · 经营奖励 ${summary.bonus} CP。\n整筐${summary.baskets}次，拼盘${summary.platters}次；招牌零头 ${(summary.markupRemainder/100).toFixed(2)} CP。${summary.basketItems.length?'\n整筐：'+summary.basketItems.map(i=>E.label(E.char(...i.key.split(':').map(Number)))+'×'+i.count).join('、'):''}${summary.platterItems.length?'\n拼盘：'+summary.platterItems.map(ks=>ks.map(k=>E.label(E.char(...k.split(':').map(Number)))+'×3').join('、')).join('；'):''}\n外出伙伴不参与。\n出售后农场保留 ${number(remaining)} 个品种。已发现的图鉴与累计收取记录会保留。`,()=>{if(act(()=>{
+        if(reserveOne&&Object.entries(snapshot).some(([key,qty])=>spareCount(getState(),key)<qty))throw Error('农场库存或锁定数量发生变化，请重新选择数量。');
         settled=basketQuote(getState(),snapshot,{useRewards});
         E.sell(getState(),snapshot,{keepOne:reserveOne,useRewards},getNow());
         for(const [key,qty]of Object.entries(snapshot))selection[key]=Math.max(0,(selection[key]??0)-qty);
@@ -200,17 +209,17 @@ export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panel
     updateHarvestSelection();
   }
 
-  function showCharacter(egg,id){
+  function showCharacter(egg,id,returnTo=null){
     const initial=speciesView(getState(),egg,id);
     if(!initial?.known){sound(13);alertBox('这个品种还没有收录。');return;}
     const origin=getPage()===4?'collection':'harvest',key=initial.key;
     if(!detailQuantities.has(key))detailQuantities.set(key,Math.min(initial.stock,selection[key]??1));
-    const back=()=>origin==='collection'?renderCollection():renderAlbum();
+    const back=()=>returnTo?returnTo():origin==='collection'?renderCollection():renderAlbum();
     function updateQuantity(value){
-      const entry=speciesView(getState(),egg,id),qty=Math.min(entry?.stock??0,count(value));detailQuantities.set(key,qty);
+      const entry=speciesView(getState(),egg,id),room=Math.min(entry?.stock??0,spareCount(getState(),key)),qty=Math.min(room,count(value));detailQuantities.set(key,qty);
       const output=find('[data-species-quantity]');if(!output)return;
-      output.textContent=number(qty);find('[data-species-minus]').disabled=qty===0;find('[data-species-plus]').disabled=qty>=entry.stock;
-      find('[data-species-max]').disabled=entry.stock===0||qty>=entry.stock;
+      output.textContent=number(qty);find('[data-species-minus]').disabled=qty===0;find('[data-species-plus]').disabled=qty>=room;
+      find('[data-species-max]').disabled=room===0||qty>=room;
       find('[data-species-sell]').disabled=qty===0;find('[data-species-value]').textContent=number(basketQuote(getState(),{[key]:qty}).income);
     }
     function draw(){
@@ -224,8 +233,15 @@ export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panel
       const story=(description?`<p class="species-story">${escapeText(description)}</p>`:'')+(recorded?`<button class="species-recipe-link" data-species-recipe="${key}"><span>${recorded.special?'出现方式':`${escapeText(recorded.toolName)} Lv.${recorded.minLevel+1}`}<small>${recorded.special?'在配方册中查看条件':escapeText(recorded.ingredientNames.join(' ＋ ')||'不放调味料')}</small></span><b>${recorded.special?'查看 ›':'配方 ›'}</b></button>`:'');
       if(origin==='collection'){
         const inv=inventoryView(getState(),key),uses=speciesUses(getState(),key),ready=bookPreparation(getState(),key,getNow()).ready;
-        const useButton=(use,i)=>`<button class="book-path" data-species-use="${i}">${escapeText(use.label)} ›</button>`;
-        showPanel('伙伴档案',`${openBookTab?bookNavigation('species'):''}<div class="species-sheet scroll"><div class="species-topline"><span>${entry.code}</span><span class="species-seal">已收录${inv.home?'':' · 在家0'}</span></div><div class="species-portrait">${characterPortrait(egg,id)}</div><h3 class="species-name">${escapeText(entry.name)}</h3>${story}<section class="book-section"><h4>伙伴现在在哪里</h4><p>自由可用 ${inv.free} · 寻访 ${inv.R} · 营业备货 ${inv.S} · 采购预留 ${inv.Q}<br>总持有 ${inv.T} · 累计收取 ${entry.total}</p><button data-species-inventory>管理这类库存</button></section><section class="book-section"><h4>这位伙伴还能做什么</h4>${uses.slice(0,2).map(useButton).join('')}${uses.length>2?`<details><summary>全部关联（${uses.length}）</summary>${uses.slice(2).map((u,i)=>useButton(u,i+2)).join('')}</details>`:''}</section></div><footer class="species-footer"><button class="species-back cream" data-species-back>‹ 返回品种</button><button class="orange" data-species-prepare>${ready?'准备下一锅':'查看缺少条件'}</button></footer>`,'screen-panel species-screen species-book-screen');
+        // The profile reads like a page of the 图鉴: big sticker, name, the recipe as pictures, where they are, where they go.
+        const recipeTile=recorded?`<button type="button" class="species-recipe-link bk-recipe" data-species-recipe="${key}">${recorded.special?'<span class="bk-recipe-note">出现方式</span>':`<span class="bk-recipe-tool">${toolPortrait(recorded.toolId,Math.max(0,recorded.minLevel))}<small>Lv.${recorded.minLevel+1}</small></span><span class="bk-recipe-plus">+</span><span class="bk-recipe-seasons">${recorded.ingredients.length?recorded.ingredients.map(id=>`<span>${ingredientPortrait(id)}</span>`).join(''):'<small>不放调味料</small>'}</span>`}<b>配方 ›</b></button>`:'';
+        const where=[['可用',inv.free],['寻访',inv.R],['营业',inv.S],['订单',inv.Q]].filter(([,n],i)=>i===0||n>0).map(([l,n])=>kitChip('',`${l} ${n}`,'mini')).join('');
+        const useButton=(use,i)=>kitButton2(use.label.split(' · ').at(-1),`data-species-use="${i}"`);
+        const body=`<div class="bk-profile-top"><span class="bk-sticker-art big">${characterPortrait(egg,id)}</span><div class="bk-profile-name"><span class="bk-code">${entry.code}</span><h3 class="species-name">${escapeText(entry.name)}</h3>${inv.home?'':kitChip('','在家 0','mini hot')}</div><span class="bk-seal" aria-label="已收录"><img src="/web/art/golden-collection/stamp-done.png" alt=""><b>已收录</b></span></div>
+          ${description?`<p class="species-story">${escapeText(description)}</p>`:''}${recipeTile}
+          ${kitLabel('现在在哪')}<div class="gd-row gd-wrap bk-where">${where}${kitChip('',`累计 ${number(entry.total)}`,'mini')}${kitButton2('去仓库','data-species-inventory')}</div>
+          ${uses.length?`${kitLabel('还能做什么')}<div class="gd-row gd-wrap bk-uses">${uses.slice(0,2).map(useButton).join('')}</div>`:''}`;
+        showPanel('伙伴档案',`${openBookTab?bookNavigation('species'):''}${kitSheet(body,`${kitButton2('返回','data-species-back')}${kitButton(ready?'准备下一锅':'看缺什么','data-species-prepare')}`,'bk-sheet species-sheet')}`,'screen-panel species-screen species-book-screen',{skin:'book',icon:characterPortrait(0,0),back:true});
         if(openBookTab)bindBookNavigation(panels,openBookTab);
         find('[data-species-back]').onclick=back;const close=find('.close');if(close)close.onclick=back;
         const recipeLink=find('[data-species-recipe]');if(recipeLink)recipeLink.onclick=()=>openRecipeBook?.({key,back:draw});
@@ -242,15 +258,15 @@ export function createCollectionUI({getState,getPage,getNow=()=>Date.now(),panel
       const close=find('.close');if(close)close.onclick=back;
       find('[data-species-minus]').onclick=()=>updateQuantity((detailQuantities.get(key)??0)-1);
       find('[data-species-plus]').onclick=()=>updateQuantity((detailQuantities.get(key)??0)+1);
-      find('[data-species-max]').onclick=()=>updateQuantity(availableCount(getState(),key));
+      find('[data-species-max]').onclick=()=>updateQuantity(spareCount(getState(),key));
       find('[data-species-sell]').onclick=()=>{
-        const current=speciesView(getState(),egg,id),quantity=Math.min(current?.stock??0,detailQuantities.get(key)??0);
+        const current=speciesView(getState(),egg,id),quantity=Math.min(current?.stock??0,spareCount(getState(),key),detailQuantities.get(key)??0);
         if(!quantity)return;
         const snapshot=Object.freeze({[key]:quantity}),income=basketQuote(getState(),{[key]:quantity}).income;let settled;
         confirmBox(`出售 ${number(quantity)} 只${current.name}，获得 ${number(income)} CP。\n\n图鉴与累计收取记录会保留。`,()=>{if(act(()=>{
           settled=basketQuote(getState(),snapshot);
-          E.sell(getState(),snapshot,{},getNow());selection=saleSelectionSummary(getState(),selection,{useRewards}).selection;
-          detailQuantities.set(key,Math.min(quantity,availableCount(getState(),key)));sound(8);makeWalkers();draw();
+          E.sell(getState(),snapshot,{keepOne:true},getNow());selection=saleSelectionSummary(getState(),selection,{useRewards}).selection;
+          detailQuantities.set(key,Math.min(quantity,spareCount(getState(),key)));sound(8);makeWalkers();draw();
         }))saleEffects(settled);});
       };
       updateQuantity(detailQuantities.get(key)??0);

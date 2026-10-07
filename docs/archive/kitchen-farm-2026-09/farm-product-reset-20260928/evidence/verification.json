@@ -1,0 +1,41 @@
+{
+  "capturedAt": "2026-09-28T15:22:51.814Z",
+  "checks": [
+    "a: all 5 destinations visible in overview",
+    "b: all 5 destinations visible in overview",
+    "a: all 5 building locations and function descriptions",
+    "a: two-axis pan",
+    "a: wheel upper bound, keyboard pan and reset",
+    "b: all 5 building locations and function descriptions",
+    "b: two-axis pan",
+    "b: wheel upper bound, keyboard pan and reset",
+    "390px: no horizontal overflow; minimum 44px control and destination targets",
+    "320px: no horizontal overflow; minimum 44px control and destination targets",
+    "touch: two-finger pinch increases zoom",
+    "current Runtime: isolated Farm screenshot, visible entries and house destination"
+  ],
+  "pageErrors": [],
+  "runtime": {
+    "fixture": "isolated fresh state, 3 base chickens, 1240 CP",
+    "entries": [
+      {
+        "id": "farm:house",
+        "label": "打开收成表"
+      },
+      {
+        "id": "farm:harvest",
+        "label": "打开收成账本"
+      },
+      {
+        "id": "farm:fortune",
+        "label": "前往神社求签"
+      },
+      {
+        "id": "farm:repair",
+        "label": "整修农场"
+      }
+    ],
+    "houseDestination": "×\n农场收成表\n鸡宝\n鸭宝\n点头像查看档案\n仅看有库存\n外出伙伴不可售 · 鸡鸭一起选\n全选\n每种留一只\n为采购留货\nC001\n鸡宝\n售价 3 CP\n库存 3\n−\n0\n+\n最大\n合计 0 只（含鸡鸭）\n0 CP\n\n货款 0 CP · 招牌 +0 · 经营 +0\n\n使用经营奖励（整筐优先，再拼盘）\n确认出售\n清空选择"
+  },
+  "scope": "Blueprint prototype only. No production files or real player save changed."
+}

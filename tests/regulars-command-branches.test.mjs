@@ -77,9 +77,11 @@ const branches={
 };
 for(const [stageId,paths]of Object.entries(branches))for(const [branch,path]of paths.entries())test(`${stageId} alternative ${branch+1}: real command producer, save, read and no repeated reward`,()=>{
  const c=fixture(stageId);assert.equal(regularInfo(c.s,c.regularId).pending,null);path(c);
- const r=c.s.expansion.regulars[c.regularId];assert.equal(r?.pendingStage?.id,stageId);assert.equal(r.pendingStage.branch,branch);
+ const r=c.s.expansion.regulars[c.regularId];
+ // 不挡进度: when the next stage is already met as well, this one is recorded as read at once and the next one waits
+ const recorded=r?.readStages.includes(stageId);assert.ok(recorded||r?.pendingStage?.id===stageId,stageId);if(!recorded)assert.equal(r.pendingStage.branch,branch);
  const reward=REGIONAL.regulars.find(r=>r.id===c.regularId).stages.find(s=>s.id===stageId).reward,entitlement=structuredClone(c.s.expansion.collections.entitlements[reward]);assert.ok(entitlement);
- const cp=c.s.cp,farm=structuredClone(c.s.farm);c.s=E.normalizeSave(c.s,c.now);const read=cmd(c,'regular:read',s=>readRegularStage(s,c.regularId));assert.equal(read.stageId,stageId);assert.equal(c.s.cp,cp);assert.deepEqual(c.s.farm,farm);
+ const cp=c.s.cp,farm=structuredClone(c.s.farm);c.s=E.normalizeSave(c.s,c.now);if(!recorded){const read=cmd(c,'regular:read',s=>readRegularStage(s,c.regularId));assert.equal(read.stageId,stageId);}assert.equal(c.s.cp,cp);assert.deepEqual(c.s.farm,farm);
  cmd(c,'idle',()=>{});assert.deepEqual(c.s.expansion.collections.entitlements[reward],entitlement);
 });
 test('first business story waits for twelve actual sales across sessions, and cannot be read at six',()=>{

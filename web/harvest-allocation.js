@@ -1,4 +1,4 @@
-import {inventoryView} from './inventory.js';
+import {inventoryView,lockedCount} from './inventory.js';
 import {resolveSpecies} from './content-registry.js';
 import {reserveForOrder} from './orders.js';
 import {basketQuote} from './progression.js';
@@ -19,7 +19,8 @@ export function planHarvestAllocation(s,{rows={},orderId=null,keepOne=true,useRe
     const amounts=['sale','business','order'].map(k=>row[k]??0);
     if(amounts.some(n=>!Number.isSafeInteger(n)||n<0))throw Error('请填写整只数量。');
     const n=amounts.reduce((a,b)=>a+b,0),v=inventoryView(s,key);
-    if(n>harvested[key]||n>v.free||keepOne&&n>Math.max(0,v.home-v.Q-1))throw Error('分配超过本锅自由库存，或没有在家留种。');
+    // Keep-one means one bird stays home, as in business/orders; a held bird is at home.
+    if(n>harvested[key]||n>v.free||keepOne&&(row.sale??0)+(row.business??0)>Math.max(0,v.home-lockedCount(s,key)))throw Error('分配数量超过本锅可用数量，或超出了锁定在家的只数（默认每种留1只）。');
     const lock=s.expansion.inventoryPolicy?.collectionLocks;
     if(n&&(Array.isArray(lock)?lock.includes(key):lock?.[key]))throw Error('先在库存中解除收藏保护，再分配这位伙伴。');
     if(row.business&&!resolveSpecies(key).edible)throw Error('观赏伙伴不放入食用菜单。');

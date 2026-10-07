@@ -3,7 +3,7 @@ import {negativeCases} from './save-negative-cases.mjs';
 // Generate native interoperability inputs through the real Web command path.
 import {readFileSync,writeFileSync} from 'node:fs';
 import {readRegularStage} from '../../web/regulars.js';
-import {completeProjectStage,deliverProject,saveMenuPreset} from '../../web/projects.js';
+import {completeProjectStage,deliverProject,saveMenuPreset,stageComplete} from '../../web/projects.js';
 import {reduceFacts} from '../../web/facts.js';
 import {farmLossAt} from '../../web/farm-clock.js';
 import {freshState,normalizeSave,buyIngredient,startBatch,advanceWorld} from '../../web/engine.js';
@@ -14,6 +14,7 @@ import {openBusiness} from '../../web/business.js';
 import {orderMilestone,acceptProposal,reserveForOrder,deliverOrderGroups} from '../../web/orders.js';
 import {departRegional,regionalTripInfo} from '../../web/regional-exploration.js';
 import {identifyMaterial,prepareRegionalRecipe,prepareLocalAlternative,pinRegionalMethod,regionalRecipeInfo} from '../../web/regional-methods.js';
+import {trackPartner} from '../../web/knowledge.js';
 import {claimTrip} from '../../web/exploration.js';
 
 const legacy=JSON.parse(readFileSync(new URL('../../tests/fixtures/save-contract.json',import.meta.url),'utf8'));
@@ -64,7 +65,8 @@ step('buy-malt',s=>{buyIngredient(s,76,2);buyIngredient(s,75,1);buyIngredient(s,
 step('prepare-ALT-V',s=>prepareLocalAlternative(s,'ALT-V'),true);
 step('batch3-ALT-V',s=>startBatch(s,4,vat),true);
 vat=v.batch.ends+60000;
-step('pin-C3',s=>{if(!s.expansion.methods.full.includes('REC-V-C3'))pinRegionalMethod(s,'REC-V-C3');});
+// 线索册 (loop batch 4): track the partner; each valley trip reads its next layer up to the complete method
+step('track-C3',s=>{if(!s.expansion.methods.full.includes('REC-V-C3'))trackPartner(s,'0:130');});
 for(let i=0;i<3&&!v.expansion.methods.full.includes('REC-V-C3');i++)voyage('method-C3',{placeId:'V:0',focus:'materials'});
 step('abandon-and-prepare-C3',s=>prepareRegionalRecipe(s,'REC-V-C3'));
 step('abandon-ALT-batch-start-steamer-C3',s=>{s.batch=null;startBatch(s,8,vat);},true);
@@ -82,6 +84,11 @@ let bat=now;const bstep=(name,reduce)=>{b=execute({state:b,now:bat,command:{type
 bstep('open-24-with-credit',s=>openBusiness(s,{stock:{'0:0':24},useRewards:true},bat));
 bat+=4*3600000+1;bstep('two-windows-sold-12',()=>{});
 bat+=20*3600000;bstep('sold-out-report',()=>{});
+// A session opened under business rules 1 (before 2026-10-07: suitable 5%, at most 2 CP a bird) finishes under them.
+b=freshState(now,778);b.farm={'0:0':25,'0:3':25};b.total=Object.fromEntries(Array.from({length:12},(_,id)=>[`0:${id}`,id===0?2000:1]));
+b.progress.orders['first-sale']={accepted:true,choice:'0:0',delivered:12,completed:true};syncProgress(b);learnSkill(b,'TRADE-2');learnSkill(b,'TRADE-3');b.progress.trade.category='家常';b=normalizeSave(b,now);bat=now;
+bstep('rules1-open-24',s=>{openBusiness(s,{stock:{'0:0':24},useRewards:true},bat);s.expansion.business.active.rulesVersion=1;});
+bat+=24*3600000+1;bstep('rules1-sold-out-report',()=>{});
 // Work E: an O01 instance with a reservation and one delivered batch, via real commands.
 const ordersFx=[];
 let q=freshState(now,31337);q.total=Object.fromEntries(['0:0','0:3','0:8','0:1','0:2','0:10','0:17','0:20','0:5'].map((k,i)=>[k,i?5:300]));
@@ -121,7 +128,9 @@ j.farm={'0:0':30,'0:3':20,'0:4':20};j.progress.orders['first-sale']={accepted:tr
 reduceFacts(j,['MN1','MN3'].map((menuId,i)=>({kind:'businessWitness',sessionId:`business-${i+1}`,menuId,soldByKey:{'0:0':6},roleSales:{},fullSoldByKey:{},fullRoleSales:{},valid:true,complete:false})));
 for(const id of ['R-S1','R-S2'])j.expansion.discovery.cards[id]=++j.meta.factSeq;for(const id of ['77','78'])j.expansion.discovery.identified[id]=++j.meta.factSeq;j=normalizeSave(j,now);
 const jstep=(name,reduce)=>{j=execute({state:j,now,command:{type:name},advance:advanceWorld,reduce}).state;projectsFx.push({name,state:structuredClone(j)});};
-jstep('pj1-a',s=>completeProjectStage(s,'PJ-1','PJ-1-A'));jstep('pj1-b',s=>completeProjectStage(s,'PJ-1','PJ-1-B'));jstep('pj1-c-pay-200',s=>completeProjectStage(s,'PJ-1','PJ-1-C'));
+// stages that cost nothing complete by themselves once met (2026-10-07), so these two may already be done
+const free=(id,stage)=>s=>{if(!stageComplete(s,id,stage))completeProjectStage(s,id,stage);};
+jstep('pj1-a',free('PJ-1','PJ-1-A'));jstep('pj1-b',free('PJ-1','PJ-1-B'));jstep('pj1-c-pay-200',s=>completeProjectStage(s,'PJ-1','PJ-1-C'));
 jstep('preset-0',s=>saveMenuPreset(s,0,{menuId:'MN1',stock:{'0:0':6,'0:3':6}}));
 jstep('pj2-a-pay-100',s=>completeProjectStage(s,'PJ-2','PJ-2-A'));jstep('pj2-b-deliver-4',s=>deliverProject(s,'PJ-2','PJ-2-B',{'0:3':4},{choice:['0:3','0:4']}));
 if(j.cp!==5000-300||j.farm['0:3']!==16)throw Error('projects fixture must pay 300 and deliver 4');

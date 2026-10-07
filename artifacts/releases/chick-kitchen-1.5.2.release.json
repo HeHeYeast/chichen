@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.2",
+    "versionCode":  18,
+    "file":  "chick-kitchen-1.5.2.apk",
+    "sha256":  "32dce06ec2d101666a04f77f0d062581e8a68a7183d42d026bfb0d2b5f6f3c90",
+    "bytes":  99235478,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-09-30T00:39:23.4749397Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "734b84b3c3e288326af814c874d9666f335308e016d919cbab094c94f30b1489",
+    "runtimeFiles":  1322,
+    "notes":  "最终验收版：接入正式厨房与农场地图，保留全部玩法入口；修复未解锁鸭蛋开火及离线过期蛋动画期间绕过保鲜判定；增加旧网页组件启动提示。强化双调味料、全配方条件、存档与25套页面回归，兼容原有存档。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

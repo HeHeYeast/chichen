@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.8",
+    "versionCode":  24,
+    "file":  "chick-kitchen-1.5.8.apk",
+    "sha256":  "ebb6bcf4543c0845a54d3bcc86473950766a012533eb580424c3d98432bb9df5",
+    "bytes":  101745725,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-04T07:57:04.0564224Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "7ccded92188a588845095862380309636ce4e890b1edb545df84cf5dbd0fed91",
+    "runtimeFiles":  1367,
+    "notes":  "收取更顺：小鸡飞进篮子后再统一保存，连点或轻划不再卡一下；音效改为预先载入，不再每次新建播放器；孵化动画不再反复存档。孵化提醒更可靠：改用安装即授予的准时闹钟，提醒改为横幅、振动并在锁屏显示；设置里新增「允许后台」，后台帮助可直接打开启动管理。另含界面细节整理。保留原有玩法和存档。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

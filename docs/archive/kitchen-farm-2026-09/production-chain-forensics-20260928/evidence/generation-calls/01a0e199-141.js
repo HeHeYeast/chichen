@@ -1,0 +1,6 @@
+const v=load("kitchenVariants");
+v.C=v.C.replace("with one existing pan displayed, '保温灯' current-tool tag and '换厨具 ›' on cart's upper rim referring to lamp; no extra cooking process, only a place to select the same existing tools.","with ONE spare orange frying pan stored on its surface, a generic '厨具' tag and '换厨具 ›' on cart rim; it is a storage/selection cart only, NOT the current operating utensil. Put the current-tool label '当前：保温灯' physically beside the golden lamp ABOVE THE EGG ALCOVE, in ALL FOUR screens. Never put '保温灯' below the spare pan. All four levels keep the same spare orange pan; do not change cookware types by house level.");
+v.C+=" CRITICAL TEXT AUDIT: in ALL FOUR screens, the three seasoning jars have exactly the label '调味', never '仓库'. Only the far-right tall larder has label '仓库'. The active nest lamp is labelled '当前：保温灯'. Cart is labelled '厨具' and '换厨具 ›', NEVER 保温灯. Other labels stay as specified. Keep 24 eggs organically scattered with random tilt and stagger, no repeated row patterns. Reduce decorative wood grain and floor texture; flatter, cleaner mobile game shading.";
+store("kitchenVariants",v);
+text(Object.keys(load("kitchenA")));
+text(Object.fromEntries(Object.entries(load("kitchenA")).filter(([k,v])=>typeof v==="string"&&!v.startsWith("data:"))));

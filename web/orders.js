@@ -8,7 +8,7 @@ import {ingredientUnlockInfo} from './ingredient-unlocks.js';
 import {regionalRecipeInfo} from './regional-methods.js';
 import {RELEASED_REGIONS} from './region-model.js';
 import {collectedTotal,discoveryCount,checkedIncome} from './progression.js';
-import {freeCount,homeCount,usableByOwner} from './inventory.js';
+import {freeCount,homeCount,usableByOwner,lockedCount} from './inventory.js';
 import {reduceFacts} from './facts.js';
 
 import {newOperationsEnabled,assertNewOperation} from './rollback-policy.js';
@@ -88,6 +88,19 @@ export function orderOptions(s,templateId,now){
   return options;
 }
 export const templateQualified=(s,templateId,now)=>orderOptions(s,templateId,now).length>0;
+// The groups one accepting option would freeze (read-only; order-delivery.js checks them before delivering in one go).
+export function optionGroups(templateId,option){
+  const def=template(templateId),variant=def?.variants.find(v=>v.id===option.variantId);if(!def||!variant)return [];
+  return expandGroups(def,variant,{region:option.region??null,chapters:option.chapters??null});
+}
+// What a proposal would ask for if it were accepted now with its first option (read-only: 下一锅 can cook for an order that
+// is still only a proposal). Null when it cannot be accepted today.
+export function proposalGroups(s,proposalId,now){
+  const p=orders(s).proposals.find(x=>x.id===proposalId);if(!p)return null;
+  const def=template(p.templateId),option=orderOptions(s,p.templateId,now)[0];if(!def||!option)return null;
+  const variant=def.variants.find(v=>v.id===option.variantId);
+  return expandGroups(def,variant,{region:option.region,chapters:option.chapters}).map(g=>({...g,selector:def.groups.find(x=>x.id===g.sourceGroupId)?.selector??null}));
+}
 
 function eligibleTemplates(s,now){
   const o=orders(s),busy=new Set([...o.proposals.map(p=>p.templateId),...o.active.map(a=>a.templateId)]);
@@ -119,10 +132,12 @@ export function skipProposal(s,proposalId){
   const [p]=o.proposals.splice(index,1);progress(s,p.templateId).skipped++;return p;
 }
 
-export function acceptProposal(s,proposalId,{variantId,region=null,chapters=null}={},now){
+// deliverNow: accepted only to be delivered in full by the same command (order-delivery.js), so it never takes an
+// active slot for longer than that transaction and the slot limit does not apply.
+export function acceptProposal(s,proposalId,{variantId,region=null,chapters=null}={},now,{deliverNow=false}={}){
   assertNewOperation('orders');
   const o=orders(s),index=o.proposals.findIndex(p=>p.id===proposalId);if(index<0)throw Error('这份采购意向已经变化');
-  if(o.active.length>=MAX_ACTIVE_ORDERS)throw Error(`最多同时进行${MAX_ACTIVE_ORDERS}单采购，先完成或取消一单`);
+  if(!deliverNow&&o.active.length>=MAX_ACTIVE_ORDERS)throw Error(`最多同时进行${MAX_ACTIVE_ORDERS}单采购，先完成或取消一单`);
   const p=o.proposals[index],def=template(p.templateId),options=orderOptions(s,def.id,now);
   const option=options.find(x=>x.variantId===(variantId??options[0]?.variantId)&&(x.region??null)===(region??x.region??null)&&JSON.stringify(x.chapters)===JSON.stringify(chapters??x.chapters));
   if(!option)throw Error('这份采购的条件已经变化，暂时不能接取');
@@ -146,7 +161,7 @@ export function reserveForOrder(s,orderId,key,quantity){
   const need=o.groups.filter(g=>g.allowed.includes(key)).reduce((n,g)=>n+remainingOf(g),0);
   if(!need)throw Error('这种伙伴不在本单需求内');
   if((o.reserved[key]??0)+quantity>need)throw Error('预留不能超过本单还需要的数量');
-  if(freeCount(s,key)<quantity)throw Error('自由库存不足，可能已用于营业、寻访或其他采购');
+  if(freeCount(s,key)<quantity)throw Error('可用伙伴不足，可能已用于营业、寻访或其他订单');
   o.reserved[key]=(o.reserved[key]??0)+quantity;o.needsRestock=false;return {...o.reserved};
 }
 export function releaseReservation(s,orderId,key,quantity=null){
@@ -166,9 +181,9 @@ export function deliverOrderGroups(s,orderId,allocations,now,{overrideKeepOne=fa
     int(a.quantity,1,99999,'交付数量无效');perKey[a.key]=(perKey[a.key]??0)+a.quantity;perGroup[g.id]=(perGroup[g.id]??0)+a.quantity;
   }
   for(const g of o.groups)if((perGroup[g.id]??0)>remainingOf(g))throw Error('交付超过该需求组还需要的数量');
-  for(const [key,n]of Object.entries(perKey))if(usableByOwner(s,key,o.id)<n)throw Error('可用数量已变化，请重新选择；营业、寻访或其他采购占用的伙伴不能交付');
+  for(const [key,n]of Object.entries(perKey))if(usableByOwner(s,key,o.id)<n)throw Error('可用数量已变化，请重新选择；营业、寻访或其他订单占用的伙伴不能交付');
   const policy=s.expansion.inventoryPolicy;
-  if(!overrideKeepOne&&policy?.keepOne!==false)for(const [key,n]of Object.entries(perKey))if(homeCount(s,key)-n<1)throw Error('默认在家留1只，确认后可以交出最后一只');
+  if(!overrideKeepOne)for(const [key,n]of Object.entries(perKey))if(homeCount(s,key)-n<lockedCount(s,key))throw Error(`已锁定在家${lockedCount(s,key)}只（默认每种留1只）；到仓库调整锁定数量后再用`);
   const remainingAfter=o.groups.reduce((n,g)=>n+remainingOf(g)-(perGroup[g.id]??0),0),distinct=new Set([...deliveredKeys(o),...Object.keys(perKey)]);
   if(distinct.size+remainingAfter<o.minimumDistinct)throw Error(`本单至少需要${o.minimumDistinct}种不同出品，请换一种交付`);
   let base=0;
@@ -181,6 +196,8 @@ export function deliverOrderGroups(s,orderId,allocations,now,{overrideKeepOne=fa
     events.push({kind:'orderDelivery',instanceId:o.id,templateId:o.templateId,variantId:o.variantId,region:o.region,groupId:g.sourceGroupId,key:a.key,quantity:a.quantity});
   }
   for(const [key,n]of Object.entries(perKey)){const own=Math.min(o.reserved[key]??0,n);if(own){o.reserved[key]-=own;if(!o.reserved[key])delete o.reserved[key];}s.farm[key]-=n;}
+  // Delivering other species can shrink what a hold is still for; release the excess.
+  for(const key of Object.keys(o.reserved)){const need=o.groups.filter(g=>g.allowed.includes(key)).reduce((sum,g)=>sum+remainingOf(g),0);if(o.reserved[key]>need)o.reserved[key]=need;if(!o.reserved[key])delete o.reserved[key];}
   o.paidCP+=base;o.deliveries++;
   for(const g of o.groups)if(perGroup[g.id])events.push({kind:'orderGroupWitness',instanceId:o.id,templateId:o.templateId,groupId:g.sourceGroupId,byKey:{...g.delivered}});
   const first=!(orders(s).templateProgress[o.templateId]?.completed>0);

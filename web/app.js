@@ -1,5 +1,9 @@
+import {installPopupSwipe} from './popup-swipe.js';
+import {createClueBookUI} from './clue-book-ui.js';
+import {KITCHEN_ART,goldenRect,goldenEggHit} from './kitchen-golden.js';
 import {resolveSpecies} from './content-registry.js';
 import {interfaceIcon} from './ui-icons.js';
+import {kitTitle,kitChip,kitChipHtml,kitButton,kitButton2,kitBar,kitBig,kitIcon,kitArrow,kitEgg,kitLabel,placeKitDialog,kitPageHead,kitBookHead} from './ui-kit.js';
 import {execute,acquireWriter} from './game-commands.js';
 import {createWorkshopUI} from './workshop-ui.js';
 import {createRegionalUI} from './regional-ui.js';
@@ -16,6 +20,7 @@ import {uiPreference,setUiPreference} from './ui-preferences.js';
 import {reconcileProgress} from './regulars.js';
 import {renderSkillFeedback} from './skill-feedback.js';
 import {cookingCandidates} from './candidate-query.js';
+import {seasoningAdvice,rankAdvice,ADVICE_LENSES} from './seasoning-advisor.js';
 import {batchModeView} from './batch-mode-view.js';
 import {observationInfo} from './knowledge.js';
 import {collectedTotal,rank,effects} from './progression.js';
@@ -27,15 +32,20 @@ import {createPlatform} from './native-platform.js';
 import * as E from './engine.js';
 import {farmDisplay,timeZone} from './farm.js';
 import {createRenderer} from './scene.js';
-import {NAV,LAYOUT as L,RECT,navRect,toolRect,duckRect,contains,MOTION,fitViewport,setViewportHeight,farmRect} from './theme.js';
+import {NAV,LAYOUT as L,RECT,navRect,toolRect,duckRect,contains,MOTION,fitViewport,setViewportHeight} from './theme.js';
 import {characterImage,toolImage} from './catalog.js';
 import {originalPortraitFrame} from './portrait-frames.js';
+import {productionCharacter} from './production-art.js';
 import {resolveSprite,spriteSVG,ASSET_FILES} from './art/manifest.js';
 import {KITCHEN_STAGES,kitchenStage,kitchenBackgroundParts} from './kitchen-stages.js';
 import {createCollectionUI} from './collection-ui.js';
 import {createRecipeBookUI} from './recipe-book-ui.js';
 import {prepareDiscoveredRecipe} from './recipe-book.js';
 import {createShopUI,ingredientPortrait} from './shop-ui.js';
+import {createNextBatchUI} from './next-batch-ui.js';
+import {createWarehouseUI} from './warehouse-ui.js';
+import {bookNavigation,bindBookNavigation} from './book-ui.js';
+import {installGameFrame} from './game-frame.js';
 import {createSettingsUI} from './settings-ui.js';
 import {createActivitiesUI} from './activities-ui.js';
 import {claimActivity} from './legacy-activities.js';
@@ -44,10 +54,14 @@ import {shrineBook,claimShrineGoal,giftRecipe,prepareGiftRecipe} from './shrine.
 import {createJournalUI} from './journal-ui.js';
 import {plannedSeasonalRecipe,claimSeasonalChapter,SEASONAL_CHARACTERS} from './seasonal-pack.js';
 import {calendarNotice} from './discovery-calendar.js';
-import {FARM_ART_FILES,FARM_ACTIONS,FARM_RECT,FARM_WORLD} from './farm-theme.js';
+import {FARM_ART_FILES,FARM_WORLD} from './farm-theme.js';
+import {createFarmMapUI} from './farm-map-ui.js';
+import {farmStock,FARM_MAP} from './farm-world.js';
+import {compactNavItem} from './bottom-nav-compact-v1.js';
+import {createSfx} from './sfx.js';
 const game=document.querySelector('#game'),canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d');
 const sceneStage=document.querySelector('#scene-stage'),mainNav=document.querySelector('#main-nav');
-const quickActions=document.createElement('nav');quickActions.id='quick-actions';quickActions.setAttribute('aria-label','厨房快捷入口');game.append(quickActions);
+const quickActions=document.createElement('nav');quickActions.id='quick-actions';quickActions.setAttribute('aria-label','厨房快捷入口');sceneStage.append(quickActions);
 const controls=document.querySelector('#controls'),panels=document.querySelector('#panels'),dialogs=document.querySelector('#dialog-layer');
 const review=new URLSearchParams(location.search).has('review');
 const storageKey=review?'chick-kitchen-review-v1':'chick-kitchen-v1';
@@ -62,6 +76,9 @@ let state=initialSave.state??E.freshState(),page=-1,loaded=false,panel='',toolSc
 let committedState=structuredClone(state);
 if(initialSave.state&&!recoveryError)E.resume(state,Math.max(Date.now(),state.clock.logicalAt));
 const images=new Map(),flights=[],feedbacks=[],walkers=[];
+// Chicks swiped this gesture: already flying on screen, committed together by flushHarvest().
+const pendingHarvest=new Set();let harvestTimer=0;
+let lastPaint=0,activeUntil=0;
 let pointer=null,keyboardPress=null,pressedId='',entryInputBlockedUntil=0;
 const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
 let reducedMotion=motionPreference.matches;
@@ -72,9 +89,9 @@ const imgPath=toolImage;
 const charPath=characterImage;
 const sourcePath=p=>'/assets/png/'+p;
 const soundNames=['start','yes','no','click','open','alert0','alert1','buy','sell','clean','fix','break','chick0','error','duck0'];
-const sounds=soundNames.map((s,i)=>new Audio(`/res/raw/se${String(i).padStart(3,'0')}_${s}.mp3`));
+const sounds=createSfx(soundNames.map((s,i)=>`/res/raw/se${String(i).padStart(3,'0')}_${s}.mp3`));
 const bgm=new Audio('/assets/music/bgm/bgm_000.mp3');bgm.loop=true;bgm.volume=.35;
-function sound(id){if(!state.sound)return;const a=sounds[id].cloneNode();a.volume=.65;a.play().catch(()=>{});}
+function sound(id){if(state.sound)sounds.play(id);}
 function music(){if(!state.music||page<0){bgm.pause();return;}const id=page===1?1:page===2?2:0;const src=`/assets/music/bgm/bgm_00${id}.mp3`;if(!bgm.src.endsWith(src))bgm.src=src;bgm.play().catch(()=>{});}
 function save(){
   if(recoveryError)return false;
@@ -90,7 +107,7 @@ function save(){
     if(['ACK_UNKNOWN','REVISION_CONFLICT','SAVE_LOCKED'].includes(error.code))recoveryError=error.message;
     const detail=error.code==='SAVE_FAILED'?error.cause?.message??error.message:error.message;
     announce('进度暂未保存。请到设置导出备份：'+detail);
-    if(firstFailure&&loaded&&!dialogs.children.length)alertBox('进度暂未保存，请保留游戏并到设置导出备份。\n'+detail);
+    if(firstFailure&&loaded&&!dialogs.children.length)alertBox('进度暂未保存，请先别关闭游戏，到设置导出备份。\n'+detail);
     return false;
   }
 }
@@ -104,7 +121,8 @@ function act(fn){
   if(!result){refreshPanel();renderControls();return false;}return true;
 }
 function refreshPanel(){
-  if(panels.querySelector('.book-screen'))bookUI.refresh();
+  if(panels.querySelector('.clue-screen'))clueBookUI.refresh();
+  else if(panels.querySelector('.book-screen'))bookUI.refresh();
   else if(panels.querySelector('.business-screen'))businessUI.refresh();
   else if(panels.querySelector('.orders-screen'))orderUI.refresh();
   else if(panels.querySelector('.books-screen'))collectionsUI.refresh();
@@ -116,6 +134,8 @@ function refreshPanel(){
   else if(panels.querySelector('.journal-screen'))journalUI.refresh();
   else if(panels.querySelector('.shrine-screen'))shrineUI.refresh();
   else if(panels.querySelector('.activities-screen'))activitiesUI.refresh();
+  else if(panels.querySelector('.next-batch-screen'))nextBatchUI.refresh();
+  else if(panels.querySelector('.warehouse-screen'))warehouseUI.refresh();
   else if(panels.querySelector('.shop-screen'))shopUI.openShop();
   else if(panels.querySelector('.settings-screen'))settingsUI.openSettings();
   else collectionUI.refresh();
@@ -137,6 +157,8 @@ function toolPortrait(id,lv){
   return sprite.frame?spriteSVG(sprite):`<img src="${path}" alt="">`;
 }
 function characterPortrait(egg,id){
+  const production=productionCharacter(egg,id,'portrait');
+  if(production)return `<img class="sprite-art" src="${production}" alt="">`;
   const path=charPath(egg,id),resolved=resolveSprite(path),sprite=resolved.frame?resolved:originalPortraitFrame(egg,id)??resolved;
   if(!sprite.frame)return `<img src="${path}" alt="">`;
   return `<svg class="sprite-art" viewBox="${sprite.frame.join(' ')}" aria-hidden="true"><image href="${sprite.file}" width="${sprite.size[0]}" height="${sprite.size[1]}"/></svg>`;
@@ -151,8 +173,9 @@ function navBadges(){
   const trip=state.progress?.trip,regulars=Object.values(state.expansion.regulars??{});
   return {5:!!businessUI.unreadReport()||regulars.some(r=>r.pendingStage),6:!!trip&&now()>=trip.endAt};
 }
-function paint(){if(page===1&&farmZone!==timeZone(now()))makeWalkers();renderer.paint(state,{page,loaded,navBadges:navBadges(),externalNavigation:true,recovery:Boolean(recoveryError),version:platform.info.version,now:now(),tick,toolScroll,toolPosition:pointer?.kind==='tools'?pointer.position:toolScroll,farmScroll,flights,feedbacks,walkers,pressedId,reducedMotion,shrineReady});}
+function paint(){if(page===1&&farmZone!==timeZone(now()))makeWalkers();renderer.paint(state,{page,loaded,navBadges:navBadges(),externalNavigation:true,externalFarm:true,recovery:Boolean(recoveryError),version:platform.info.version,now:now(),tick,toolScroll,toolPosition:pointer?.kind==='tools'?pointer.position:toolScroll,farmScroll,flights,feedbacks,walkers,pressedId,reducedMotion,shrineReady,pending:pendingHarvest});}
 function hotspot(name,rect,handler,id=name){
+  if(page===0){const mapped=id.startsWith('tool:')?goldenRect('slot:'+(Number(id.slice(5))-toolScroll),state.kitchenLevel):goldenRect(id,state.kitchenLevel);if(mapped)rect=mapped;}
   const b=document.createElement('button');b.className='hotspot';b.setAttribute('aria-label',name);b.dataset.controlId=id;
   Object.assign(b.style,{left:rect.x+'px',top:rect.y+'px',width:rect.w+'px',height:rect.h+'px'});
   b.hitRect=rect;b.activate=handler;
@@ -163,59 +186,58 @@ function hotspot(name,rect,handler,id=name){
 }
 function findControl(id){return [...controls.querySelectorAll('.hotspot')].find(b=>b.dataset.controlId===id);}
 function controlBlocked(button){return entryInputBlocked()||dialogs.children.length>0||Boolean(panel&&button.hitRect.y>=58&&button.hitRect.y<L.navY-4);}
-function updateControlFocus(){panels.inert=dialogs.children.length>0;mainNav.inert=dialogs.children.length>0;quickActions.hidden=page!==0||!!panel;quickActions.inert=dialogs.children.length>0||entryInputBlocked();for(const b of mainNav.querySelectorAll('button'))b.tabIndex=dialogs.children.length||entryInputBlocked()?-1:0;document.querySelector('#desk').inert=dialogs.children.length>0;for(const b of controls.querySelectorAll('.hotspot'))b.tabIndex=controlBlocked(b)?-1:0;}
+function updateControlFocus(){farmMap.setBlocked(!!panel||dialogs.children.length>0||entryInputBlocked());panels.inert=dialogs.children.length>0;mainNav.inert=dialogs.children.length>0;quickActions.hidden=page!==0||!!panel;quickActions.inert=dialogs.children.length>0||entryInputBlocked();for(const b of mainNav.querySelectorAll('button'))b.tabIndex=dialogs.children.length||entryInputBlocked()?-1:0;document.querySelector('#desk').inert=dialogs.children.length>0;for(const b of controls.querySelectorAll('.hotspot'))b.tabIndex=controlBlocked(b)?-1:0;}
 function startGame(){
   // The cover overlaps the bottom navigation. Consume the remainder of a
   // rapid tap sequence before those newly visible buttons can act on it.
   entryInputBlockedUntil=performance.now()+500;
   sound(0);enterKitchen();
   // The old shop tab moved into the kitchen: tell a returning player once.
-  setTimeout(()=>{if(page===0&&!uiPreference('seenSupplyMove')&&Object.keys(state.total??{}).length>1){setUiPreference('seenSupplyMove',true);toast('补给搬到厨房了，缺料时也能直接打开。',4500);}},900);
+  // This introductory hint must not replace a reward or interrupt a dialog.
+  // If the kitchen is busy, leave it unread so a later visit can show it.
+  setTimeout(()=>{if(page===0&&!panel&&!dialogs.children.length&&!game.querySelector('.game-toast:not([hidden])')&&!uiPreference('seenSupplyMove')&&Object.keys(state.total??{}).length>1){setUiPreference('seenSupplyMove',true);toast('商店搬进厨房了，缺料时点「商店」就能补货。',4500);}},900);
   setTimeout(updateControlFocus,500);
 }
 function renderControls(){
+  wake();updateFarmMap();game.dataset.page=String(page);
   const focusedId=document.activeElement?.dataset?.controlId;
   controls.replaceChildren();quickActions.replaceChildren();quickActions.hidden=page!==0||!!panel;
   if(page<0){mainNav.replaceChildren();if(loaded)hotspot(recoveryError?'恢复存档':'开始游戏',RECT.start,()=>{if(recoveryError){openRecovery();return;}startGame();},'start');return;}
   renderNavigation();
-  hotspot('设置',RECT.settings,()=>changePage(3),'settings');
-  if(page!==0)hotspot('查看厨房等级',RECT.level,()=>{changePage(0);openKitchenUpgrade();},'level');
+  if(page!==1)hotspot('设置',RECT.settings,()=>changePage(3),'settings');
+  if(page!==0&&page!==1)hotspot('查看厨房等级',RECT.level,()=>{changePage(0);openKitchenUpgrade();},'level');
   if(page===0){
     hotspot('选择调味料',RECT.ingredient,openIngredients,'ingredient');
     hotspot('厨房等级 '+(state.kitchenLevel+1),RECT.level,openKitchenUpgrade,'level');
     hotspot('打扫厨房',RECT.clean,openCleaning,'clean');
+    // The painted status strip and the empty-nest card look pressable, so they act on the current pot.
+    hotspot(batchStatusLabel(),RECT.clean,batchStatusAction,'batch');
+    if(!state.batch)hotspot('选厨具开火',RECT.clean,()=>requestCook(0),'nest-prompt');
     if(state.duck)[0,1].forEach(i=>hotspot(i?'选择鸭蛋':'选择鸡蛋',{...duckRect(i),y:duckRect(i).y+L.eggOffset},()=>act(()=>{state.egg=i;delete state.events.seasonalRecipe;sound(3);}), 'duck:'+i));
     if(state.batch?.eggs.some(e=>!e.collected))hotspot('孵化闹钟 '+(state.alarm?'开启':'关闭'),RECT.alarm,()=>toggleHatchAlarm(), 'alarm');
     for(let slot=0;slot<4;slot++){const id=toolScroll+slot;hotspot((state.toolLevels[id]>=0?'使用':'购买')+E.label(E.tool(id)),toolRect(slot),()=>{if(state.toolLevels[id]>=0)requestCook(id);else{shopUI.setTab(0);changePage(2);}},'tool:'+id);}
     for(const [id,label,icon,action] of [
       ['supply','商店','shop',()=>{shopUI.setTab(0);changePage(2);}],
-      ['inventory','仓库','inventory',openAlbum],
+      ['inventory','仓库','inventory',()=>warehouseUI.open()],
       ['workshop','手艺','workshop',()=>workshopUI.open()],
       ['help','帮助','help',()=>settingsUI.openManual()],
-    ]){const b=document.createElement('button');b.dataset.controlId=id;b.className=id+'-launch';b.setAttribute('aria-label',id==='supply'?'补给 · 小卖部':label);b.innerHTML=interfaceIcon(icon)+`<span>${label}</span>`;b.onclick=()=>{if(!entryInputBlocked()&&!dialogs.children.length)action();};quickActions.append(b);}
+    ]){const b=document.createElement('button');b.dataset.controlId=id;b.className=id+'-launch';b.setAttribute('aria-label',id==='supply'?'补给 · 小卖部':label);b.innerHTML=interfaceIcon(icon)+`<span>${label}</span>`;b.onclick=()=>{if(!entryInputBlocked()&&!dialogs.children.length)action();};const r=goldenRect(id,state.kitchenLevel);Object.assign(b.style,{left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px'});quickActions.append(b);}
     hotspot('向右滚动厨具',RECT.next,()=>{toolScroll=Math.min(TOOL_SCROLL_MAX,toolScroll+1);renderControls();},'next').disabled=toolScroll===TOOL_SCROLL_MAX;
     hotspot('向左滚动厨具',RECT.prev,()=>{toolScroll=Math.max(0,toolScroll-1);renderControls();},'prev').disabled=toolScroll===0;
-    state.batch?.eggs.forEach((e,i)=>{if(!e.collected)hotspot(e.status==='egg'?'孵化中的蛋 '+(i+1):'收取'+E.label(E.char(e.egg,e.id))+' '+(i+1),eggHitRect(e),()=>collectEgg(i),'egg:'+i);});
-    if(state.batch?.eggs.every(e=>e.collected)){const b=hotspot('安排本锅收成',{x:64,y:250+L.eggOffset,w:192,h:44},()=>harvestAllocationUI.open(),'harvest-allocation');b.textContent='本锅已收完 · 安排收成';b.classList.add('harvest-allocation-launch');}
+    state.batch?.eggs.forEach((e,i)=>{if(!e.collected&&!pendingHarvest.has(i))hotspot(e.status==='egg'?'孵化中的蛋 '+(i+1):'收取'+E.label(E.char(e.egg,e.id))+' '+(i+1),eggHitRect(e),()=>collectEgg(i),'egg:'+i);});
+    // Harvest card paused at the user's request (2026-10-02); the nest stays clear once everything is collected.
+    // if(state.batch?.eggs.every(e=>e.collected)){const b=hotspot('这锅收成',{x:64,y:250+L.eggOffset,w:192,h:44},()=>harvestAllocationUI.openCard(),'harvest-allocation');b.textContent='这锅收成';b.classList.add('harvest-allocation-launch');}
   }else if(page===1){
-    const shrine=shrineBook(state,now());shrineReady=shrine.gift.available||shrine.goals.some(goal=>goal.available);
-    for(const entrance of FARM_ACTIONS){
-      const rect={...farmRect(entrance.rect),x:entrance.rect.x-farmScroll};
-      if(rect.x+rect.w<=0||rect.x>=L.width)continue;
-      hotspot(entrance.label,rect,()=>{if(entrance.action==='harvest')openAlbum();else if(entrance.action==='shop'){shopUI.setTab(0);changePage(2);}else if(entrance.action==='activities')openActivities();else if(entrance.action==='display')collectionsUI.open({tab:'mementos'});},entrance.id);
-    }
-    hotspot('打开收成账本',{...FARM_RECT.harvest,y:FARM_RECT.harvest.y+L.extra},openAlbum,'farm:harvest');
-    hotspot('前往神社求签',{...FARM_RECT.shrine,y:FARM_RECT.shrine.y+L.extra},()=>openShrine(),'farm:fortune');
-    hotspot('整修农场',{...FARM_RECT.repair,y:FARM_RECT.repair.y+L.extra},()=>confirmBox(`农场完好度 ${E.farmHP(state,now())}%\n整修需要 ${E.repairCost(state,now())} CP。\n确认后恢复农场完好度。`,()=>act(()=>{E.repair(state,now());sound(10);announce('农场已经整修好了。');})), 'farm:repair');
+    // The map owns building hit areas and its camera, separately from the HUD.
   }
   if(pressedId&&!findControl(pressedId))pressedId='';
-  if(focusedId)findControl(focusedId)?.focus({preventScroll:true});
+  if(focusedId)(findControl(focusedId)??[...quickActions.querySelectorAll('button')].find(b=>b.dataset.controlId===focusedId))?.focus({preventScroll:true});
   updateCleaningStatus();updateControlFocus();reportStatus();
 }
 function renderNavigation(){
   const focused=document.activeElement?.dataset?.controlId,badges=navBadges();
   mainNav.replaceChildren();
-  for(const n of NAV){const b=document.createElement('button');b.dataset.controlId='nav:'+n.id;b.tabIndex=entryInputBlocked()?-1:0;b.setAttribute('aria-label',n.title);const active=page===n.id||n.id===0&&(page===2||page===3);b.setAttribute('aria-current',active?'page':'false');b.innerHTML=interfaceIcon(({0:'kitchen',1:'farm',5:'shop',6:'explore',4:'book'})[n.id])+`<span>${n.title}</span>`;
+  for(const n of NAV){const b=document.createElement('button');b.dataset.controlId='nav:'+n.id;b.tabIndex=entryInputBlocked()?-1:0;b.setAttribute('aria-label',n.title);const active=page===n.id||n.id===0&&(page===2||page===3);b.setAttribute('aria-current',active?'page':'false');b.innerHTML=!wide?compactNavItem(n):interfaceIcon(({0:'kitchen',1:'farm',5:'shop',6:'explore',4:'book'})[n.id])+`<span>${n.title}</span>`;
     if(badges[n.id]){const dot=document.createElement('span');dot.className='nav-result';dot.setAttribute('aria-label','有新结果');b.append(dot);}
     b.onclick=()=>{if(entryInputBlocked()||dialogs.children.length)return;if(n.id===5&&page!==5&&businessUI.unreadReport())tradeView={kind:'business'};changePage(n.id);};mainNav.append(b);
   }
@@ -226,7 +248,7 @@ function reportStatus(){
 }
 // 生意 remembers its last sub-page; 寻访 always opens on its trip/region page.
 let tradeView={kind:'business'},panelReturn=null;
-function showTrade(){const v=tradeView;if(v.kind==='orders')orderUI.resume();else if(v.kind==='regulars')v.id?regularUI.open(v.id):regularUI.resume();else if(v.kind==='projects')v.id?projectUI.open(v.id):projectUI.resume();else businessUI.open();}
+function showTrade(){const v=tradeView;if(v.kind==='orders')businessUI.openOrders();else if(v.kind==='regulars')v.id?regularUI.open(v.id):regularUI.resume();else if(v.kind==='projects')v.id?projectUI.open(v.id):projectUI.resume();else businessUI.open();}
 // Order → method detour: legacy species open the recipe book, regional ones their
 // region record; both come back to the same order sheet.
 function openRecipeFromOrder(key){
@@ -237,68 +259,155 @@ function openRecipeFromOrder(key){
 function openTrade(kind,id=null){tradeView={kind,id};if(page!==5)changePage(5);else showTrade();}
 function openExplore(){if(page!==6)changePage(6);else regionalUI.open();}
 function changePage(index){
+  // The kitchen's calendar note belongs to the kitchen; it never follows the player to another page.
+  if(game.querySelector('.game-toast.calendar-toast:not([hidden])'))dismissToast();
   dismissToast();if(page===2&&index!==2)shopReturnAction=null;
   if(index===page){
     if(!panel)return;
     closeDialog();closePanel();
-    if(index===2)openShop();else if(index===3)openSettings();else if(index===4)bookUI.open();else if(index===5){tradeView={kind:'business'};showTrade();}else if(index===6)regionalUI.open();
+    if(index===2)openShop();else if(index===3)openSettings();else if(index===4)bookUI.open({tab:'species'});else if(index===5){tradeView={kind:'business'};showTrade();}else if(index===6)regionalUI.open();
     return;
   }
   if(index===3)settingsReturnPage=page<0?0:page;
   if(index===2){const origin=page===3?settingsReturnPage:page;if(origin!==2)shopReturnPage=origin<0?0:origin;}
-  const fromCover=page<0;resetInput();closePanel();closeDialog();panelReturn=null;page=index;sound(3);if(fromCover)resize();
-  if(page===1){const result=commitProgress(s=>({lost:E.checkFarmLoss(s,now())}));makeWalkers();if(result?.lost)alertBox(`脱逃事件：逃走了${result.lost}只鸡！`);}
-  if(page===2)openShop();if(page===3)openSettings();if(page===4)bookUI.open();if(page===5)showTrade();if(page===6)regionalUI.open();
+  resetInput();closePanel();closeDialog();panelReturn=null;bookTab=null;page=index;sound(3);resize();
+  // Opening the farm only needs a save when the escape check would change something.
+  if(page===1){const probe=structuredClone(state),changed=E.checkFarmLoss(probe,now())>0||JSON.stringify(probe)!==JSON.stringify(state);const result=changed?commitProgress(s=>({lost:E.checkFarmLoss(s,now())})):{lost:0};makeWalkers();if(result?.lost)alertBox(`脱逃事件：逃走了${result.lost}只伙伴！`);}
+  if(page===2)openShop();if(page===3)openSettings();if(page===4)bookUI.open({tab:'species'});if(page===5)showTrade();if(page===6)regionalUI.open();
   music();renderControls();paint();updateDesk();if(page===0)setTimeout(maybeDiscoveryNotice,180);
 }
+function startCookNow(id,prepare=null){
+  const replicate=state.progress.replicate;let info=null;
+  if(act(()=>{const candidate=structuredClone(state);prepare?.(candidate);info=E.cookInfo(candidate,id,now());candidate.batch=null;E.startBatch(candidate,id,now());state=candidate;sound(1);})){
+    const events=[];
+    if(info.hot)events.push({id:'CUL-4',text:'本批总减时 '+Math.round(info.reduction*100)+'%'});
+    else if(info.reduction)events.push({id:rank(state,'CUL-S')?'CUL-S':'CUL-2',text:'本批减时 '+Math.round(info.reduction*100)+'%'});
+    if(info.calm)events.push({id:'HOME-5',text:'安心等候 · 破壳后保鲜至少8小时'});
+    if(replicate)events.push({id:'CUL-5',text:'已安排1只 · 记得及时照料'});
+    if(events.length)skillFeedback(events);
+    if(panels.querySelector('.next-batch-screen'))closePanel();
+    return true;
+  }
+  return false;
+}
+// Cook confirm: egg, cookware and seasoning as pictures; time and cost as pills; who may appear as portrait slots.
+// Rarely used care options (calm, replicate, protection) stay one tap away in a fold.
 function requestCook(id){
   try{
     const info=E.cookInfo(state,id,now()),preview=cookingCandidates(state,id,now()),remaining=state.batch?.eggs.filter(e=>!e.collected)??[];
     const signature=()=>JSON.stringify({info:E.cookInfo(state,id,now()),preview:cookingCandidates(state,id,now()),protection:state.progress.protection,egg:state.egg});
-    const quote=signature(),ingredients=preview.ingredients.map(i=>E.label(E.ingredient(i))).join('、')||'不放调味料';
-    const message=`${remaining.length?'还有 '+remaining.length+' 只未收取，重开会放弃它们。\n':''}${E.label(E.tool(id))} · ${state.egg?'鸭蛋':'鸡蛋'}\n${ingredients}\n调理 ${Math.floor(info.minutes)}分${Math.round(info.minutes%1*60)?Math.round(info.minutes%1*60)+'秒':''} · 花费 ${info.cost} CP\n每枚破壳后保鲜 ${info.freshMinutes} 分钟${id===0?'（保温灯不焦化）':''}`;
-    confirmBox(message,()=>{
+    const quote=signature(),escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const level=state.toolLevels[id],capacity=Math.min(3,state.kitchenLevel+1),picked=preview.ingredients;
+    const seconds=Math.round(info.minutes%1*60),time=`${Math.floor(info.minutes)}分${seconds?seconds+'秒':''}`;
+    const badge={possible:'',gate:'有机会',guaranteed:'已安排1只',encounter:'首次偶遇'};
+    const mode=batchModeView(state,preview.plan),fresh=effects(state).freshMinutes;
+    const seasoning=picked.length?`<span class="gd-season">${picked.map(i=>`<span class="gd-season-item" title="${escape(E.label(E.ingredient(i)))}">${ingredientPortrait(i)}</span>`).join('')}</span>`:`<span class="gd-dashes">${'<i class="gd-dash"></i>'.repeat(Math.max(1,capacity))}</span>`;
+    const candidates=preview.candidates.map(c=>{
+      const o=observationInfo(state,c.key,now()),portrait=c.known?characterPortrait(c.egg,c.id):o?.silhouette?'<span class="unknown-silhouette" aria-hidden="true">'+characterPortrait(c.egg,c.id)+'</span>':'<span class="gd-q" aria-hidden="true">?</span>';
+      const name=c.known?escape(E.label(E.char(c.egg,c.id))):c.code;
+      return `<button type="button" class="gd-slot${c.known?'':' need'}" data-preview-species="${c.key}" aria-label="${c.code} ${badge[c.status]||'可能出现'}">${portrait}<b>${name}</b>${badge[c.status]?`<small class="gd-tag">${badge[c.status]}</small>`:'<small class="sr-only">可能出现</small>'}</button>`;
+    }).join('');
+    // 照料与保护: only what this player can actually switch — painted ticks, partner pictures for 拿手复刻.
+    const tick='<img src="/web/art/golden-business/family-check.png" alt="">';
+    const toggle=(key,label,on,off=false)=>`<button type="button" class="gd-toggle" data-cook-protect="${key}" aria-pressed="${on}"${off?' disabled':''}><i>${on?tick:''}</i>${label}</button>`;
+    const options=[rank(state,'HOME-5')?toggle('calm','安心等候',!!info.calm):'',fresh?toggle('freshness',`保鲜 +${fresh}分`,!!state.progress.protection.freshness,info.calm):'',rank(state,'HOME-S')?toggle('sickness','病变保护',!!state.progress.protection.sickness):''].join('');
+    const replicas=rank(state,'CUL-5')?E.replicateOptions(state,id,now()):[];
+    const coin=(key,art,label,on)=>`<button type="button" class="gd-coinwrap${on?' on':''}" data-replicate="${key}" aria-pressed="${on}"><span class="gd-coin">${art}</span><b>${escape(label)}</b></button>`;
+    const replicate=replicas.length?`<div class="gd-label">拿手复刻 · +10 CP</div><div class="gd-coins gd-replicate" data-row>${coin('','<b>不</b>','不指定',!state.progress.replicate)}${replicas.map(c=>coin(c.key,characterPortrait(c.egg,c.id),E.label(E.char(c.egg,c.id)),state.progress.replicate===c.key)).join('')}</div>`:'';
+    // What could go wrong with this pot, as short chips worked out from this batch (not the general rules).
+    const immune=picked.includes(18),dirtyBy=E.kitchenCleanInfo(state,now()).dirty||(state.cleanCycle?.dirtyAt??Infinity)<=now()+(info.minutes??0)*60000;
+    const notes=[immune?kitChip('','防腐剂 · 不会病变','mini soft'):dirtyBy?kitChip('',rank(state,'HOME-S')&&state.progress.protection.sickness!==false?'孵化时变脏 · 病变机会减半':'孵化时变脏 · 可能病变','mini hot'):'',id>0&&!picked.includes(36)?kitChip('','收晚了会焦','mini'):'',preview.candidates.some(c=>c.key==='0:9')?kitChip('','温泉蛋鸡要 10 秒内收','mini'):''].join('');
+    const more=options||replicate||notes?`<details class="gd-more protection-options"><summary>照料与保护</summary>${notes?`<div class="gd-row gd-wrap">${notes}</div>`:''}${options?`<div class="gd-row gd-wrap">${options}</div>`:''}${replicate}</details>`:'';
+    const body=`${remaining.length?`<span class="gd-alert cook-abandon" role="alert">还有 ${remaining.length} 只没收，重开会放弃它们</span>`:''}`
+      +`<div class="gd-tiles" data-row><div class="gd-tile"><span data-visual>${kitEgg(state.egg)}</span><b>${state.egg?'鸭蛋':'鸡蛋'}</b></div><div class="gd-tile wide"><span data-visual>${toolPortrait(id,level)}</span><b>${escape(E.label(E.tool(id)))}</b></div><div class="gd-tile"><span data-visual>${seasoning}</span><b>调味 ${picked.length}/${capacity}</b></div></div>`
+      +`<div class="gd-row">${kitChip(kitIcon.clock,time)}${kitChipHtml(`${kitIcon.coin}${info.cost}`)}${info.hot?kitChip('',`趁热 −${Math.round(info.reduction*100)}%`,'soft'):''}</div>`
+      +(mode?`<section class="gd-note cook-mode" data-cook-mode="${mode.mode}"><b>${escape(mode.title)}</b>${mode.lines.map(t=>`<span>${escape(t)}</span>`).join('')}</section>`:'')
+      +kitLabel(`可能出现 · ${preview.candidates.length}`)
+      +`<div class="gd-scroll-row candidate-list">${candidates}</div>`
+      +(preview.nearby.length?`<div class="gd-row gd-wrap gd-nearby">${preview.nearby.map(c=>`<button type="button" class="gd-btn2 mini" data-preview-species="${c.key}">${c.code} · ${escape(c.action)}</button>`).join('')}</div>`:'')
+      +(rank(state,'CUL-3')&&state.progress.leftovers.length>=5?'<span class="gd-alert shortage">余料篮满了，这一锅不会返料</span>':'')
+      +more;
+    const modal=kitDialog({title:remaining.length?'重开':'开火',label:'开火确认',className:'cooking-dialog',body,no:'看推荐',noAttrs:'data-cook-advice',onNo:()=>openIngredients({tool:id}),yes:remaining.length?'重开':'开火',onYes:()=>{
       if(signature()!==quote){requestCook(id);announce('搭配或条件已变化，请核对新的摘要并再次确认。');return;}
-      const replicate=state.progress.replicate;
-      if(act(()=>{const candidate=structuredClone(state);candidate.batch=null;E.startBatch(candidate,id,now());state=candidate;sound(1);})){
-        const events=[];
-        if(info.hot)events.push({id:'CUL-4',text:'本批总减时 '+Math.round(info.reduction*100)+'%'});
-        else if(info.reduction)events.push({id:rank(state,'CUL-S')?'CUL-S':'CUL-2',text:'本批减时 '+Math.round(info.reduction*100)+'%'});
-        if(info.calm)events.push({id:'HOME-5',text:'安心等候 · 破壳后保鲜至少8小时'});
-        if(replicate)events.push({id:'CUL-5',text:'已安排1只 · 记得及时照料'});
-        if(events.length)skillFeedback(events);
-      }
-    },false,{yes:remaining.length?'放弃并重开':'开始调理',no:remaining.length?'继续照顾':'取消'});
-    const modal=dialogs.querySelector('.confirm');modal.classList.add('cooking-dialog');
-    const badge={possible:'可能出现',gate:'本批有机会出现',guaranteed:'已安排1只',encounter:'首次偶遇'};
-    const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const mode=batchModeView(state,preview.plan);
-    modal.querySelector('footer').insertAdjacentHTML('beforebegin',`<div class="cook-preview">${mode?`<section class="cook-mode" data-cook-mode="${mode.mode}"><h4>${escape(mode.title)}</h4>${mode.lines.map(t=>`<p>${escape(t)}</p>`).join('')}</section>`:''}<details class="candidate-list"><summary>查看本批候选 · ${preview.candidates.length}种（未知${preview.unknown}）</summary><p>这批可能出现这些伙伴，数量不固定。本批有机会出现：开火时先判断本批能否出现它，再分配24枚蛋；满足条件不代表每批都有。</p><div class="cook-candidates">${preview.candidates.map(c=>{
-      const o=observationInfo(state,c.key,now()),portrait=c.known?characterPortrait(c.egg,c.id):o?.silhouette?'<span class="unknown-silhouette" aria-hidden="true">'+characterPortrait(c.egg,c.id)+'</span>':'<span class="cook-card-unknown" aria-hidden="true">?</span>';
-      return `<button data-preview-species="${c.key}" aria-label="${c.code} ${badge[c.status]}">${portrait}<span>${c.known?escape(E.label(E.char(c.egg,c.id))):c.code}<small>${badge[c.status]}</small>${!c.known&&o?.full?'<small>方法已知，尚未收录</small>':''}</span></button>`;
-    }).join('')}</div></details>${preview.nearby.length?'<h4>只差一味的未知方向</h4>'+preview.nearby.map(c=>`<button data-preview-species="${c.key}">${c.code} · ${c.action}</button>`).join(''):''}${preview.blocked.length?'<details><summary>已有线索，但本次不会出现</summary>'+preview.blocked.map(c=>`<p>${c.code} · 尚缺${c.reasons.join('、')||'当前搭配条件'}</p>`).join('')+'</details>':''}<details><summary>等待与照料可能改变结果</summary>${preview.changes.map(t=>'<p>'+t+'</p>').join('')}</details><div class="cook-options"><label><input type="checkbox" data-cook-protect="calm" ${info.calm?'checked':''} ${rank(state,'HOME-5')?'':'disabled'}>安心等候 ${rank(state,'HOME-5')?'':'· 需学会夜间慢做'}</label><p>用时增加25%，破壳后至少保鲜8小时；不防止脏污病变。</p></div>${rank(state,'CUL-5')?`<details><summary>拿手复刻 · 可多付10 CP</summary><p>指定1只已收录普通候选，其余23枚照常。仍可能因脏污或超时发生变化，请及时照料。</p><select data-replicate aria-label="指定复刻伙伴"><option value="">不指定 · 不加费</option>${E.replicateOptions(state,id,now()).map(c=>`<option value="${c.key}" ${state.progress.replicate===c.key?'selected':''}>${escape(E.label(E.char(c.egg,c.id)))}</option>`).join('')}</select></details>`:''}<details class="protection-options"><summary>保鲜与病变保护</summary><label><input type="checkbox" data-cook-protect="freshness" ${state.progress.protection.freshness?'checked':''} ${info.calm?'disabled':''}>延长保鲜 · ${effects(state).freshMinutes}分钟</label><p>开启：破壳后${Math.max(info.originalMinutes*2,120)+effects(state).freshMinutes}分钟；关闭：破壳后${Math.max(info.originalMinutes*2,120)}分钟。选择只影响下一批。安心等候时至少480分钟。</p><label><input type="checkbox" data-cook-protect="sickness" ${state.progress.protection.sickness?'checked':''} ${rank(state,'HOME-S')?'':'disabled'}>持家病变保护${rank(state,'HOME-S')?'':' · 需学会安心管家'}</label><p>普通病变概率40%→20%。想尝试脏污特殊变化时，可关闭。材料固有效果仍有效。</p></details>${info.hot?'<p class="cook-summary">✓ 趁热接锅 · 本批总减时'+Math.round(info.reduction*100)+'%</p>':''}${rank(state,'CUL-3')&&state.progress.leftovers.length>=5?'<p class="shortage">余料篮已满，本批不会返料。请先收下待收余料。</p>':''}<p>已安排的伙伴仍可能因脏污或超时发生变化，请及时照料。</p></div>`);
-    modal.querySelectorAll('[data-preview-species]').forEach(b=>b.onclick=()=>{const scroll=modal.querySelector('.cook-preview').scrollTop;closeDialog();(E.char(...b.dataset.previewSpecies.split(':').map(Number))?.pack==='regional'?regionalUI.open({tab:'record'}):workshopUI.observe(b.dataset.previewSpecies,()=>{closePanel();requestCook(id);const list=dialogs.querySelector('.candidate-list');if(list)list.open=true;dialogs.querySelector('.cook-preview').scrollTop=scroll;}));});
-    modal.querySelectorAll('[data-cook-protect]').forEach(b=>b.onchange=()=>{const selected=b.checked,key=b.dataset.cookProtect;closeDialog();if(commitProgress(s=>{s.progress.protection[key]=selected;if(key==='calm'&&selected)s.progress.protection.freshness=true;return true;})){requestCook(id);if(key!=='calm')dialogs.querySelector('.protection-options')?.setAttribute('open','');}});
-    modal.querySelector('[data-replicate]')?.addEventListener('change',e=>{const key=e.target.value;closeDialog();if(commitProgress(s=>{s.progress.replicate=key||null;return true;}))requestCook(id);});
+      startCookNow(id);
+    }});
+    modal.querySelectorAll('[data-preview-species]').forEach(b=>b.onclick=()=>{const key=b.dataset.previewSpecies;closeDialog();(E.char(...key.split(':').map(Number))?.pack==='regional'?regionalUI.open({tab:'record'}):workshopUI.observe(key,()=>{closePanel();requestCook(id);dialogs.querySelector(`.candidate-list [data-preview-species="${key}"]`)?.scrollIntoView({block:'nearest',inline:'center'});}));});
+    // Opening 照料与保护 brings its chips into view inside the popup.
+    modal.querySelector('.protection-options')?.addEventListener('toggle',e=>{if(e.target.open)e.target.scrollIntoView({block:'nearest'});});
+    modal.querySelectorAll('[data-cook-protect]').forEach(b=>b.onclick=()=>{const selected=b.getAttribute('aria-pressed')!=='true',key=b.dataset.cookProtect;closeDialog();if(commitProgress(s=>{s.progress.protection[key]=selected;if(key==='calm'&&selected)s.progress.protection.freshness=true;return true;})){requestCook(id);{const more=dialogs.querySelector('.protection-options');if(more){more.setAttribute('open','');more.scrollIntoView({block:'nearest'});}}}});
+    modal.querySelectorAll('[data-replicate]').forEach(b=>b.onclick=()=>{const key=b.dataset.replicate;closeDialog();if(commitProgress(s=>{s.progress.replicate=key||null;return true;})){requestCook(id);{const more=dialogs.querySelector('.protection-options');if(more){more.setAttribute('open','');more.scrollIntoView({block:'nearest'});}}}});
   }catch(error){alertBox(error.message);}
 }
-function collectEgg(index){
-  if(dialogs.children.length||panel)return false;
-  const e=state.batch?.eggs[index];if(!e||!commitProgress(s=>E.collect(s,index,now())))return false;
-  // Rewards are committed once here; visual completion never changes the save.
-  const born=performance.now();
-  flights.push({born,e:{...e},x:e.x-30,y:e.y-30});
-  const bonus=state.batch.rules?.pickGold&&e.gold?1:0;feedbacks.push({born,x:e.x,y:e.y,amount:1+bonus});
+// A harvest tap or swipe shows every chick leaving at once and commits them as
+// one transaction when the last one lands (or any other action needs the save).
+// Rewards still come only from the committed reducer, once per chick.
+function batchStatusLabel(){
+  const eggs=state.batch?.eggs.filter(e=>!e.collected)??[];
+  return !eggs.length?'开火 · 本锅待开始':eggs.some(e=>['ready','hatching'].includes(e.status))?'收取全部孵好的伙伴':'本锅孵化中';
+}
+function batchStatusAction(){
+  const eggs=state.batch?.eggs??[],open=eggs.filter(e=>!e.collected);
+  if(!open.length){requestCook(state.batch?.tool??0);return;}
+  const ready=eggs.map((e,i)=>i).filter(i=>!eggs[i].collected&&!pendingHarvest.has(i)&&['ready','hatching'].includes(eggs[i].status));
+  if(ready.length){ready.forEach((i,k)=>queueHarvest(i,k>0));return;}
+  const left=Math.max(1,Math.round(((E.batchReadyAt(state.batch)??now())-now())/60000));
+  toast(`还要约 ${left} 分钟孵化完成`+(state.alarm?'，好了会提醒你':''),2600);
+}
+// A touch that only met unhatched eggs says how long the first one still needs.
+function eggWaitHint(touched){
+  const eggs=state.batch?.eggs??[],list=[...touched].map(i=>eggs[i]);
+  if(!list.length||list.some(e=>!e||e.collected||['ready','hatching'].includes(e.status)))return;
+  const left=Math.round((list[0].openAt-now())/60000);
+  toast(left>=1?`这颗蛋还要约 ${left} 分钟`:'快孵好了，再等一下',2200);
+}
+function queueHarvest(index,quiet=false){
+  const e=state.batch?.eggs[index];
+  if(dialogs.children.length||panel||recoveryError||!e||e.collected||pendingHarvest.has(index)||!['ready','hatching'].includes(e.status))return false;
+  const born=performance.now(),bonus=state.batch.rules?.pickGold&&e.gold?1:0;
+  pendingHarvest.add(index);
+  flights.push({born,index,e:{...e},x:e.x-30,y:e.y-30});feedbacks.push({born,index,x:e.x,y:e.y,amount:1+bonus});
+  if(!quiet)sound(1);clearTimeout(harvestTimer);harvestTimer=setTimeout(flushHarvest,MOTION.flightMs);
+  return true;
+}
+function flushHarvest(){
+  clearTimeout(harvestTimer);
+  if(!pendingHarvest.size)return true;
+  const indices=[...pendingHarvest],seen=new Set(),firsts=[];pendingHarvest.clear();
+  for(const i of indices){const e=state.batch.eggs[i],k=`${e.egg}:${e.id}`;if(!seen.has(k)&&!(state.total[k]>0||state.farm[k]>0))firsts.push(i);seen.add(k);}
+  const done=commitProgress((s,{now:at})=>{
+    // Each collect clears the previous clue; keep the newest one found in this swipe.
+    const collected=[];let clue=null;
+    for(const i of indices)if(E.collect(s,i,at)){collected.push(i);clue=s.progress?.discoveryClue??clue;}
+    if(s.progress&&clue)s.progress.discoveryClue=clue;
+    return collected.length?collected:false;
+  });
+  const kept=new Set(done||[]);
+  for(const list of [flights,feedbacks])for(let k=list.length-1;k>=0;k--)if(indices.includes(list[k].index)&&!kept.has(list[k].index))list.splice(k,1);
+  if(!done){renderControls();return false;}
+  const eggs=done.map(i=>state.batch.eggs[i]),bonus=state.batch.rules?.pickGold?eggs.filter(e=>e.gold).length:0;
   const events=[];let summary='';
-  if(bonus)events.push({id:'CUL-1',text:'额外 +1 CP'});
+  if(bonus)events.push({id:'CUL-1',text:'额外 +'+bonus+' CP'});
   if(state.progress.discoveryClue)events.push({id:'OBS-5',text:'已记下1条新线索 · 去图鉴查看'});
   if(state.batch.eggs.every(e=>e.collected)&&state.progress.lastHarvest){
-    const h=state.progress.lastHarvest;summary='本批收取24只 · 基础24 CP · 手艺额外'+h.bonus+' CP';
+    const h=state.progress.lastHarvest;summary='本批收取24只 · 基础24 CP'+(h.bonus?' · 手艺额外'+h.bonus+' CP':'');
     if(h.returned!==null)events.push({id:'CUL-3',text:'返还 '+E.label(E.ingredient(h.returned))+' ×1'});
   }
+  const finished=state.batch.eggs.every(e=>e.collected);
+  // Harvest card paused: if(finished)setTimeout(()=>{if(page===0&&!panel&&!dialogs.children.length&&!pendingHarvest.size&&state.batch?.eggs.every(e=>e.collected))harvestAllocationUI.openCard();},650);
   if(events.length)skillFeedback(events,summary,summary?5500:2600);else if(summary)toast(summary,5500);
-  sound(1);announce('收取'+E.label(E.char(e.egg,e.id))+'，获得'+(1+bonus)+' CP');renderControls();return true;
+  const discovered=firsts.filter(i=>kept.has(i)).map(i=>state.batch.eggs[i]);
+  if(discovered.length){
+    if(!events.length)toast('',5200);
+    const notice=game.querySelector('.game-toast'),e=discovered[0];
+    const intro=characterPortrait(e.egg,e.id)+`<span><strong>${discovered.length>1?discovered.length+' 位新伙伴':'新伙伴'} · 已收入图鉴</strong><span data-discovery-name></span><small>去图鉴查看画像与做法</small></span>`;
+    if(events.length)notice.insertAdjacentHTML('afterbegin','<div class="discovery-toast-title">'+intro+'</div>');
+    else{notice.classList.add('discovery-toast');notice.innerHTML=intro;}
+    notice.querySelector('[data-discovery-name]').textContent=discovered.map(e=>E.label(E.char(e.egg,e.id))).join('、');
+  }
+  announce(eggs.length===1?'收取'+E.label(E.char(eggs[0].egg,eggs[0].id))+'，获得'+(1+bonus)+' CP':'收取'+eggs.length+'只，获得'+(eggs.length+bonus)+' CP');
+  return true;
 }
+function collectEgg(index){return queueHarvest(index)&&flushHarvest();}
 function animateFlights(){
   const at=performance.now();
   for(let i=flights.length-1;i>=0;i--)if(at-flights[i].born>=MOTION.flightMs)flights.splice(i,1);
@@ -306,85 +415,97 @@ function animateFlights(){
 }
 function closePanel(){dismissToast();resetInput();panel='';panels.replaceChildren();renderControls();}
 function closeDialog(){resetInput();dialogs.replaceChildren();dialogAction=null;cleaningDialog=null;updateControlFocus();lastFocused?.focus({preventScroll:true});}
-function confirmBox(message,fn,onlyOK=false,labels={}){resetInput();lastFocused=document.activeElement;dialogs.innerHTML=`<div class="modal-shade"></div><section class="confirm paper" role="dialog" aria-modal="true" aria-label="确认"><div class="confirm-title"><span>!</span>${onlyOK?'鸡宝提醒':'确认一下'}</div><p></p><footer>${onlyOK?'':'<button class="cream" data-no></button>'}<button class="cream" data-yes></button></footer></section>`;dialogs.querySelector('p').textContent=message;dialogs.querySelector('[data-yes]').textContent=onlyOK?'好':labels.yes||'确认';const cancel=dialogs.querySelector('[data-no]');if(cancel)cancel.textContent=labels.no||'取消';dialogAction=fn;cancel?.addEventListener('click',()=>{sound(2);closeDialog();});dialogs.querySelector('[data-yes]').onclick=()=>{const action=dialogAction;closeDialog();sound(1);action?.();};updateControlFocus();dialogs.querySelector('button').focus({preventScroll:true});}
+// Every confirm and alert is a kit popup: plank title, the message on paper, wooden buttons.
+// The message stays one paragraph (line breaks kept) so callers and tests read it as a whole.
+function confirmBox(message,fn,onlyOK=false,labels={}){
+  kitDialog({title:labels.title??(onlyOK?'提醒':'确认'),label:onlyOK?'鸡宝提醒':'确认一下',className:'msg-dialog',body:'<p class="gd-msg"></p>',no:onlyOK?null:(labels.no||'取消'),yes:onlyOK?'好':(labels.yes||'确认'),onYes:fn,onNo:labels.onNo??null});
+  dialogs.querySelector('.gd-msg').textContent=message;placeKit();
+}
 function alertBox(message){confirmBox(message,null,true);}
+// Kit popup (ui-kit.js): same lifecycle as confirmBox. [data-yes] runs the action; [data-no] and the close button cancel.
+function kitSafeTop(){
+  // Popups always start below the scene's top bars, never half over them; very short screens scroll the popup body instead.
+  if(page===0){const r=findControl('clean')?.getBoundingClientRect();return r?.height?Math.round(r.bottom+4):154;}
+  if(page===1){const r=document.querySelector('.farm-hud')?.getBoundingClientRect();return r?.height?Math.round(r.bottom+4):112;}
+  return 70;
+}
+function placeKit(){const d=dialogs.querySelector('.gd');if(d)placeKitDialog(d,{safeTop:kitSafeTop(),navTop:wide?innerHeight:mainNav.getBoundingClientRect().top||innerHeight});}
+// Pictures can finish laying out after the popup opens: re-place it whenever its size changes.
+const kitResize=typeof ResizeObserver==='function'?new ResizeObserver(()=>placeKit()):null;
+// Popups can be dragged up or off to the side to close them.
+installPopupSwipe(document);
+function kitDialog({title,label=title,className='',body,yes,no='取消',noAttrs='data-no',onYes,onNo=null,yesDisabled=false,yesClass='',yesAttrs=''}){
+  resetInput();lastFocused=document.activeElement;
+  dialogs.innerHTML=`<div class="modal-shade"></div><section class="confirm gd ${className}" role="dialog" aria-modal="true" aria-label="${label}">${kitTitle(title,noAttrs==='data-no'?'data-close':'data-close data-no')}<div class="gd-body">${body}</div><footer class="gd-actions" data-row>${no?kitButton2(no,noAttrs):''}${yes?kitButton(yes,'data-yes '+yesAttrs+(yesDisabled?' disabled':''),yesClass):''}</footer></section>`;
+  dialogAction=onYes;
+  const cancel=()=>{sound(2);closeDialog();};
+  const second=dialogs.querySelector('.gd-actions .gd-btn2');if(second)second.onclick=onNo?()=>{closeDialog();sound(3);onNo();}:cancel;dialogs.querySelector('.gd-close').onclick=cancel;
+  const yesButton=dialogs.querySelector('[data-yes]');if(yesButton)yesButton.onclick=()=>{const action=dialogAction;closeDialog();sound(1);action?.();};
+  updateControlFocus();placeKit();
+  const box=dialogs.querySelector('.gd');kitResize?.disconnect();kitResize?.observe(box);box.tabIndex=-1;box.focus({preventScroll:true});
+  return dialogs.querySelector('.gd');
+}
+const STAGE_BEDS=['stage-bed-0-v6.png','stage-bed-1-v6.png','stage-bed-2-v6.png','stage-facility-3-v6.png'];
 function openCleaning(){
   const view={quote:null};
-  confirmBox('',()=>{
-    if(act(()=>E.clean(state,now(),view.quote))){sound(9);announce('厨房打扫好了，脏污进度已清零。');}
-  },false,{yes:'打扫',no:'返回'});
+  kitDialog({title:'打扫厨房',className:'cleaning-dialog',yes:'打扫',no:'先不扫',onYes:()=>{
+    if(act(()=>E.clean(state,now(),view.quote))){sound(9);announce('厨房打扫好了，清洁度回到 100%。');}
+  // The counter in three states (painted: clean, dusty, dirty); the kitchen's current one is lifted and ringed.
+  },body:`<div class="cl-states" data-row aria-hidden="true">${[['clean','干净'],['dusty','有灰'],['dirty','变脏']].map(([k,l])=>`<span class="cl-state" data-clean-step="${k}"><img src="/web/art/golden-ui/counter-${k}.png" alt=""><b>${l}</b></span>`).join('')}</div><div class="cl-now" data-row><span class="gd-big" data-clean-percent></span><div class="cl-now-side"><div class="gd-meter" data-clean-bar></div><span class="gd-chip" data-clean-time></span></div></div><span class="sr-only" data-clean-state></span><div class="gd-label gd-optional" data-clean-label>打扫要花</div><div class="gd-row" data-row data-clean-price></div>`});
   cleaningDialog=view;
-  const dialog=dialogs.querySelector('.confirm');
-  dialog.classList.add('cleaning-dialog');dialog.setAttribute('aria-label','打扫厨房');
-  dialog.querySelector('.confirm-title').textContent='照顾小厨房';
-  dialog.querySelector('p').textContent='脏污随时间累积，本周期 '+state.cleanCycle.hours+' 小时变脏；手艺延长在下次打扫后生效。提前打扫按当前脏污比例收费，打扫后从 0% 重新计时。';
-  dialog.querySelector('p').insertAdjacentHTML('beforebegin',`<div class="cleaning-status"><div class="cleaning-heading"><span>厨房脏污</span><strong data-clean-percent></strong></div><div class="cleaning-meter" role="progressbar" aria-label="厨房脏污" aria-valuemin="0" aria-valuemax="100"><span></span></div><div class="cleaning-time" data-clean-time></div></div>`);
-  dialog.querySelector('footer').insertAdjacentHTML('beforebegin','<div class="cleaning-price" data-clean-price></div>');
-  updateCleaningStatus();
+  updateCleaningStatus();placeKit();
 }
 function updateCleaningStatus(){
   if(page!==0&&!cleaningDialog)return;
   const info=E.kitchenCleanInfo(state,now()),control=findControl('clean');
-  control?.setAttribute('aria-description',`厨房脏污 ${info.percent}%，${info.canClean?'打扫需要 '+info.cost+' CP':'暂时无需打扫'}`);
+  control?.setAttribute('aria-description',`清洁度 ${100-info.percent}%，${info.canClean?'打扫需要 '+info.cost+' CP':'暂时无需打扫'}`);
   if(!cleaningDialog)return;
   cleaningDialog.quote={cost:info.cost,lastClean:state.lastClean,kitchenLevel:state.kitchenLevel};
-  const minutes=Math.ceil(info.remaining/60000),hours=Math.floor(minutes/60),rest=minutes%60;
-  dialogs.querySelector('[data-clean-percent]').textContent=info.percent+'%';
-  const meter=dialogs.querySelector('.cleaning-meter');
-  meter.setAttribute('aria-valuenow',String(info.percent));meter.dataset.dirty=String(info.dirty);
-  meter.firstElementChild.style.width=info.percent+'%';
-  dialogs.querySelector('[data-clean-time]').textContent=info.dirty?'厨房已经变脏了':`距离变脏还有 ${hours?hours+' 小时 ':''}${rest} 分钟`;
-  dialogs.querySelector('[data-clean-price]').textContent=!info.canClean?'现在很干净，暂时不用花钱':!info.affordable?`需要 ${info.cost} CP，还差 ${info.cost-state.cp} CP`:`本次 ${info.cost} CP · 完全变脏时 ${info.fullCost} CP`;
-  const yes=dialogs.querySelector('[data-yes]');
-  yes.textContent=!info.canClean?'无需打扫':info.dirty?`打扫 ${info.cost} CP`:`提前打扫 ${info.cost} CP`;
-  yes.disabled=!info.canClean||!info.affordable;
+  const minutes=Math.ceil(info.remaining/60000),hours=Math.floor(minutes/60),rest=minutes%60,clean=100-info.percent;
+  dialogs.querySelector('[data-clean-percent]').innerHTML=`${clean}<small>%</small>`;
+  dialogs.querySelector('[data-clean-state]').textContent=info.dirty?'变脏了':clean>=100?'很干净':'干净';
+  const step=info.dirty?'dirty':clean>=60?'clean':'dusty';
+  dialogs.querySelectorAll('[data-clean-step]').forEach(el=>el.classList.toggle('on',el.dataset.cleanStep===step));
+  dialogs.querySelector('[data-clean-bar]').innerHTML=kitBar(clean,'厨房清洁度');
+  dialogs.querySelector('[data-clean-time]').innerHTML=kitIcon.hourglass+(info.dirty?'已经变脏':hours?`${hours} 小时后变脏`:`${rest} 分钟后变脏`);
+  dialogs.querySelector('[data-clean-label]').hidden=!info.canClean;
+  dialogs.querySelector('[data-clean-price]').innerHTML=!info.canClean?kitChip('','现在很干净','soft'):!info.affordable?kitChipHtml(`要 ${kitIcon.coin}${info.cost}`,'soft')+kitChip('',`还差 ${info.cost-state.cp} CP`,'soft hot'):info.dirty?kitChipHtml(`${kitIcon.coin}${info.cost}`):kitChipHtml(`现在 ${kitIcon.coin}${info.cost}`,'mini')+kitChipHtml(`全脏 ${kitIcon.coin}${info.fullCost}`,'mini hot');
+  dialogs.querySelector('[data-yes]').disabled=!info.canClean||!info.affordable;
 }
 function panelSymbol(classes){const kind=classes.includes('regional')?'explore':classes.includes('business')||classes.includes('orders')?'shop':classes.includes('projects')?'workshop':classes.includes('regulars')?'farm':null;return kind?'<span class="panel-symbol">'+interfaceIcon(kind)+'</span>':'';}
-function showPanel(title,body,classes=''){dismissToast();resetInput();panel=title;sound(4);panels.innerHTML=`<section class="panel paper ${classes}" role="dialog" aria-label="${title}"><button class="close" aria-label="关闭">×</button><h2>${panelSymbol(classes)}${title}</h2>${body}</section>`;panels.querySelector('.close').onclick=()=>{if(panelReturn){const back=panelReturn;panelReturn=null;back();return;}if(page===3)changePage(settingsReturnPage);else if(page>=2)changePage(0);else closePanel();};updateControlFocus();if(!dialogs.children.length)panels.querySelector('.close').focus({preventScroll:true});}
+let bookTab=null;
+// kit: {skin, icon, help, short} turns the panel into a full-screen kit page (plank title, back and help buttons; see ui-kit-page.css).
+function showPanel(title,body,classes='',kit=null){dismissToast();resetInput();panel=title;sound(4);
+  const head=kit?.skin==='book'?kitBookHead({icon:kit.icon,help:kit.help,search:kit.search,back:kit.back,title:kit.title}):kit?kitPageHead({title:kit.short??title,icon:kit.icon,help:kit.help}):`<button class="close" aria-label="关闭">×</button><h2>${panelSymbol(classes)}${title}</h2>`;
+  panels.innerHTML=`<section class="panel paper ${classes}${kit?` kp gd kp-${kit.skin}`:''}" role="dialog" aria-label="${title}"${kit?' tabindex="-1"':''}>${head}${body}</section>`;if(bookTab&&/cookbook-screen|journal-screen/.test(classes)){(panels.querySelector('.panel>.kp-head')??panels.querySelector('.panel>h2')).insertAdjacentHTML('afterend',bookNavigation(bookTab));bindBookNavigation(panels,id=>bookUI.open({tab:id}));}panels.querySelector('.close').onclick=()=>{if(panelReturn){const back=panelReturn;panelReturn=null;back();return;}if(page===3)changePage(settingsReturnPage);else if(page>=2)changePage(0);else closePanel();};updateControlFocus();if(!dialogs.children.length)(kit?panels.querySelector('.panel'):panels.querySelector('.close')).focus({preventScroll:true});}
+// Kitchen upgrade: before → after, what it unlocks, the six cookware requirements and the price, in one kit popup.
+const UPGRADE_GAINS={2:['调味槽 1→2','厨具 Lv.2'],3:['调味槽 2→3','厨具 Lv.3','防晒乳液'],4:['烧水壶','面包机']};
 function openKitchenUpgrade(){
-  const info=E.kitchenUpgradeInfo(state),current=kitchenStage(state.kitchenLevel),target=info.maxed?current:kitchenStage(info.targetLevel-1);
-  const number=value=>value.toLocaleString('zh-CN');
-  const preview=(stage,label)=>{
-    const part=(path,[x,y,w,h])=>{const sprite=resolveSprite(path);return sprite.frame?`<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${sprite.frame.join(' ')}" preserveAspectRatio="${sprite.fit?'xMidYMid meet':'none'}"><image href="${sprite.file}" width="${sprite.size[0]}" height="${sprite.size[1]}"/></svg>`:`<image href="${path}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none"/>`;};
-    const bed=stage.bedParts?stage.bedParts.map(([suffix,...rect])=>part(stage.bed+suffix,rect)).join(''):part(stage.bed,stage.bedRect??(stage.level?[39,169,243,159]:[33,169,254,158]));
-    const room=kitchenBackgroundParts(stage).map(([suffix,...rect])=>part(stage.background+suffix,rect)).join('');
-    return `<figure><svg class="stage-thumbnail" viewBox="0 58 320 290" role="img" aria-label="${stage.title}">${room}${bed}${part(stage.vessel,[268,294,47,47])}</svg><figcaption><span>${label} Lv.${stage.level+1}</span><strong>${stage.title}</strong></figcaption></figure>`;
-  };
-  const summary=info.maxed?'厨房已满级，继续探索配方与新品种。':!info.toolsReady?'先将下方六件厨具升至要求等级。':!info.affordable?'厨具条件已齐，攒够 CP 即可升级。':'条件已齐，可以升级厨房。';
-  const requirements=info.maxed?'':`<ul class="upgrade-requirements" aria-label="厨具升级条件">${info.requirements.map(item=>`<li class="${item.met?'met':'missing'}"><span class="requirement-mark" aria-label="${item.met?'已满足':'未满足'}">${item.met?'✓':'·'}</span><span class="requirement-name">${E.label(E.tool(item.id))}</span><span class="requirement-level">${item.currentLevel?`Lv.${item.currentLevel}`:'未拥有'}<span class="requirement-divider"> / </span>Lv.${item.requiredLevel}</span></li>`).join('')}</ul>`;
-  const benefits={
-    2:['调味料槽 1 → 2 个','厨具可升 Lv.2，调理更快（另付 CP）'],
-    3:['调味料槽 2 → 3 个 · 防晒乳液可购买','厨具可升 Lv.3，调理更快（另付 CP）'],
-    4:['烧水壶可购买（另付 CP）','烧水壶达 Lv.3 后可购买面包机'],
-  };
-  const benefit=(info.maxed?['3 个调味料槽 · 烧水壶购买已开放','面包机需烧水壶达到 Lv.3']:benefits[info.targetLevel]).join('<br>');
-  const price=info.maxed?'':`<div class="upgrade-price"><span>升级 <strong>${number(info.cost)} CP</strong></span><span class="${info.affordable?'':'short'}">${info.affordable?'持有':'还差'} ${number(info.affordable?state.cp:info.cost-state.cp)} CP</span></div>`;
-  const label=info.maxed?'已达到最高等级':!info.toolsReady?'厨具条件未齐':!info.affordable?'CP 不足':`升级至 Lv.${info.targetLevel}`;
-  showPanel('厨房升级',`<div class="scroll upgrade-body"><div class="upgrade-preview ${info.maxed?'maximum':''}">${preview(current,'当前')}${info.maxed?'':'<span class="upgrade-arrow" aria-hidden="true">›</span>'+preview(target,'升级后')}</div><p class="upgrade-benefit">${benefit}</p><p class="upgrade-summary ${info.canUpgrade?'ready':''}">${summary}</p>${requirements}</div><footer class="upgrade-footer">${price}<div class="upgrade-actions"><button class="orange" data-upgrade-kitchen ${info.canUpgrade?'':'disabled'}>${label}</button>${!info.maxed&&!info.toolsReady?'<button class="upgrade-shop" data-upgrade-shop>去商店</button>':''}</div></footer>`,'kitchen-upgrade');
-  panels.querySelector('[data-upgrade-shop]')?.addEventListener('click',()=>{shopUI.setTab(0);changePage(2);});
-  panels.querySelector('[data-upgrade-kitchen]').onclick=()=>{
-    if(!E.kitchenUpgradeInfo(state).canUpgrade)return;
-    const expectedLevel=state.kitchenLevel;
-    confirmBox(`升级至厨房 Lv.${info.targetLevel}，花费 ${number(info.cost)} CP。\n\n升级后厨房会恢复干净，当前这批鸡宝会保留。`,()=>act(()=>{
-      // A stale confirmation must never buy the following level as well.
-      if(state.kitchenLevel!==expectedLevel)return;
-      E.upgradeKitchen(state,now());sound(7);closePanel();paint();
-      announce(`厨房已升级至 Lv.${state.kitchenLevel+1}，${target.title}准备好了。`);
-      alertBox(`升级成功！\n${target.title} · Lv.${state.kitchenLevel+1}\n\n厨房已打扫干净。当前这批鸡宝已保留，可以继续收取。`);
-    }));
-  };
+  const info=E.kitchenUpgradeInfo(state),number=value=>value.toLocaleString('zh-CN'),level=state.kitchenLevel;
+  const thumb=l=>`<span class="gd-thumb small"><img src="/web/art/${STAGE_BEDS[l]??STAGE_BEDS[0]}" alt=""><em>Lv.${l+1}</em></span>`;
+  if(info.maxed){
+    kitDialog({title:'厨房',label:'厨房等级',className:'upgrade-dialog',no:null,yes:'好',body:`<div class="gd-row">${thumb(level)}</div><div class="gd-row">${kitChip('','已是最高等级')}</div><div class="gd-row">${kitChip('','烧水壶','mini')}${kitChip('','面包机','mini')}</div>`});
+    return;
+  }
+  const met=info.requirements.filter(item=>item.met).length;
+  const tools=info.requirements.map(item=>`<span class="gd-tool${item.met?' done':''}" aria-label="${E.label(E.tool(item.id))} ${item.met?'已满足':`需要 Lv.${item.requiredLevel}`}">${toolPortrait(item.id,Math.max(0,(item.currentLevel||1)-1))}<b>${item.met?'<img src="/web/art/golden-business/family-check.png" alt="">':item.currentLevel?`Lv.${item.requiredLevel}`:'未拥有'}</b></span>`).join('');
+  const body=`<div class="gd-row gd-optional" data-row style="gap:8px">${thumb(level)}${kitArrow}${thumb(info.targetLevel-1)}</div><div class="gd-row gd-gains">${kitChip('',`Lv.${level+1} › Lv.${info.targetLevel}`,'mini gd-short')}${(UPGRADE_GAINS[info.targetLevel]??[]).map(g=>kitChip('',g,'mini')).join('')}</div>${kitLabel(info.toolsReady?'厨具都准备好了':`先升级厨具 ${met}/${info.requirements.length}`)}<div class="gd-tools">${tools}</div><div class="gd-row">${kitChipHtml(`${kitIcon.coin}${number(info.cost)}`)}${info.affordable?'':kitChip('',`还差 ${number(info.cost-state.cp)}`,'hot')}</div>`;
+  kitDialog({title:'升级厨房',className:'upgrade-dialog',body,no:'去商店',onNo:()=>{shopUI.setTab(0);changePage(2);},yes:'升级',yesAttrs:'data-upgrade-kitchen',yesDisabled:!info.canUpgrade,onYes:()=>{
+    // A stale popup must never buy the following level as well.
+    const expectedLevel=level;
+    if(!E.kitchenUpgradeInfo(state).canUpgrade||state.kitchenLevel!==expectedLevel)return;
+    if(!act(()=>{E.upgradeKitchen(state,now());}))return;
+    sound(7);paint();const stage=kitchenStage(state.kitchenLevel);
+    announce(`厨房已升级至 Lv.${state.kitchenLevel+1}，${stage.title}准备好了。`);
+    kitDialog({title:'升级成功',className:'upgrade-done',no:null,yes:'好',body:`<div class="gd-row">${thumb(state.kitchenLevel)}</div><div class="gd-row">${kitChip('',`Lv.${state.kitchenLevel+1} · ${stage.title}`)}</div><span class="gd-note">厨房打扫干净了，这一锅照常孵化</span>`});
+  }});
 }
-function openIngredients(){
-  let draft=[...state.selected];const max=Math.min(3,state.kitchenLevel+1);
-  const draw=()=>{
-    showPanel('调味料',`<p class="counter">已选 ${draft.length} / ${max} · 每种消耗一份</p><div class="scroll ingredients-grid">${Object.entries(state.ingredients).filter(([,n])=>n>0).map(([id,n])=>`<button class="ingredient ${draft.includes(+id)?'selected':''}" data-id="${id}" aria-pressed="${draft.includes(+id)}" aria-label="${E.label(E.ingredient(+id))}">${ingredientPortrait(+id)}<small>${n}</small><div class="ingredient-title">${E.label(E.ingredient(+id))}</div></button>`).join('')||'<p class="empty">调味料用完啦，去商店补一些吧。</p>'}</div><footer><button class="ingredient-restock" data-restock>去商店补货</button><button class="orange" data-ok>选好了</button></footer>`,'screen-panel ingredient-screen');
-    panels.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>{const id=+b.dataset.id;if(draft.includes(id))draft=draft.filter(i=>i!==id);else if(draft.length<max)draft.push(id);else{sound(13);panels.querySelector('.counter').textContent=`已选满 ${max} 种，先取消一项再换新的调味料。`;announce('调味料槽已满，先取消一项。');return;}sound(3);b.classList.toggle('selected',draft.includes(id));b.setAttribute('aria-pressed',String(draft.includes(id)));panels.querySelector('.counter').textContent=`已选 ${draft.length} / ${max} · 每种消耗一份`;});
-    panels.querySelector('[data-ok]').onclick=()=>{if(act(()=>{state.selected=draft;delete state.events.seasonalRecipe;delete state.expansion.prepareMode;}))closePanel();};
-    panels.querySelector('[data-restock]').onclick=()=>{shopUI.setTab(1);changePage(2);shopReturnAction=()=>{changePage(0);draw();};};
-  };draw();
-}
-const collectionUI=createCollectionUI({skillFeedback,getState:()=>state,getPage:()=>page,getNow:now,panels,showPanel,confirmBox,alertBox,act,sound,characterPortrait,makeWalkers,changePage,openActivities,openJournal,openRecipeBook,openDuckShop:()=>{shopUI.setTab(2);changePage(2);},openObservation:key=>workshopUI.observe(key,()=>collectionUI.renderCollection()),openWorkshop:()=>workshopUI.open(),openBooks:()=>bookUI.open({tab:'collections'}),openBookTab:tab=>bookUI.open({tab}),openInventory:key=>{changePage(1);collectionUI.openInventory(key);},prepareRecipe:key=>prepareBookRecipe(key),openUse:use=>{if(use.kind==='collection')collectionsUI.open({id:use.id});else if(use.kind==='region'){const fromBook=page===4;if(!fromBook)changePage(6);if(fromBook)panelReturn=()=>bookUI.open({tab:'species'});regionalUI.open({regionId:use.id,tab:'record',recipeId:use.recipeId});}else openTrade(use.kind==='menu'?'business':'orders');}});
-const shopUI=createShopUI({skillFeedback,getState:()=>state,panels,showPanel,confirmBox,alertBox,act,sound,toolPortrait,changePage,openActivities,openJournal,openRecipeBook,openCookware:id=>{toolScroll=toolScrollFor(id,TOOL_SCROLL_MAX);changePage(0);},openMaterialLore:id=>{const regionId=E.ingredient(id)?.region??({75:'V',76:'V',77:'R',78:'R',79:'T',80:'T',81:'B',82:'B'})[id];panelReturn=()=>shopUI.openIngredientDetails(id);regionalUI.open({regionId,tab:'record',materialId:id});},returnFromShop:()=>{if(shopReturnAction){const back=shopReturnAction;shopReturnAction=null;back();}else changePage(shopReturnPage);}});
+// The seasoning page leads with advice for one cookware: known recipes ranked by
+// expected income, open orders/projects, or new partners. Picking a set only fills
+// the draft; missing seasonings can be bought in the same step.
+function openIngredients({tool=null}={}){nextBatchUI.open({tool});}
+const collectionUI=createCollectionUI({skillFeedback,toolPortrait,ingredientPortrait,getState:()=>state,getPage:()=>page,getNow:now,panels,showPanel,confirmBox,alertBox,act,sound,characterPortrait,makeWalkers,changePage,openActivities,openJournal,openRecipeBook,openDuckShop:()=>{shopUI.setTab(2);changePage(2);},openObservation:key=>workshopUI.observe(key,()=>collectionUI.renderCollection()),openClues:()=>clueBookUI.open({back:()=>collectionUI.renderCollection()}),openWorkshop:()=>workshopUI.open(),openBooks:()=>bookUI.open({tab:'collections'}),openBookTab:tab=>bookUI.open({tab}),openInventory:key=>{changePage(1);warehouseUI.open({bird:key});},prepareRecipe:key=>prepareBookRecipe(key),openUse:use=>{if(use.kind==='collection')collectionsUI.open({id:use.id});else if(use.kind==='region'){const fromBook=page===4;if(!fromBook)changePage(6);if(fromBook)panelReturn=()=>bookUI.open({tab:'species'});regionalUI.open({regionId:use.id,tab:'record',recipeId:use.recipeId});}else openTrade(use.kind==='menu'?'business':'orders');}});
+const shopUI=createShopUI({characterPortrait,skillFeedback,notify:message=>toast(message),openKitchenUpgrade:()=>openKitchenUpgrade(),getState:()=>state,panels,showPanel,confirmBox,alertBox,act,sound,toolPortrait,changePage,openActivities,openJournal,openRecipeBook,openCookware:id=>{toolScroll=toolScrollFor(id,TOOL_SCROLL_MAX);changePage(0);},openMaterialLore:id=>{const regionId=E.ingredient(id)?.region??({75:'V',76:'V',77:'R',78:'R',79:'T',80:'T',81:'B',82:'B'})[id];panelReturn=()=>shopUI.openIngredientDetails(id);regionalUI.open({regionId,tab:'record',materialId:id});},returnFromShop:()=>{if(shopReturnAction){const back=shopReturnAction;shopReturnAction=null;back();}else changePage(shopReturnPage);}});
 const recipeBookUI=createRecipeBookUI({getState:()=>state,getNow:now,panels,showPanel,characterPortrait,toolPortrait,ingredientPortrait,
   onClose:()=>{if(page===4)collectionUI.renderCollection();else{changePage(4);}},
   onPrepare:key=>{const prepare=()=>{const r=commitProgress(s=>prepareDiscoveredRecipe(s,key,now()));if(!r){recipeBookUI.refresh();return;}toolScroll=toolScrollFor(r.toolId,TOOL_SCROLL_MAX);changePage(0);toast(`${r.name}配方已选好 · 使用${r.toolName}\n当前一批保留，开火前会再次确认。`);};if(state.selected.length)confirmBox('替换下一批的蛋种与材料。\n当前孵化继续，不会立即消耗材料或 CP。',prepare,false,{yes:'换成这份配方'});else prepare();},
@@ -393,28 +514,48 @@ const recipeBookUI=createRecipeBookUI({getState:()=>state,getNow:now,panels,show
   openKitchen:()=>{changePage(0);openKitchenUpgrade();},
   openActivities,openDuckShop:()=>supplyFromRecipe(2),openCalendar:()=>openJournal('calendar')});
 const workshopUI=createWorkshopUI({skillFeedback,getState:()=>state,getNow:now,panels,showPanel,confirmBox,alertBox,commit:commitProgress,characterPortrait,openRegional:()=>openExplore(),openBusiness:()=>openTrade('business'),businessNote:()=>state.expansion.business?.active?'营业中':businessUI.unreadReport()?'有新账单':'',goKitchen:()=>{if(page===0)closePanel();else changePage(0);},prepareTool:id=>{toolScroll=toolScrollFor(id,TOOL_SCROLL_MAX);if(page===0)closePanel();else changePage(0);}});
-const businessUI=createBusinessUI({getState:()=>state,getNow:now,commitProgress,showPanel,panels,alertBox,confirmBox,characterPortrait,openOrders:()=>openTrade('orders'),openRegulars:id=>openTrade('regulars',id),openProjects:()=>openTrade('projects'),goKitchen:()=>{if(page===0)closePanel();else changePage(0);}});
-const orderUI=createOrderUI({getState:()=>state,getNow:now,commitProgress,showPanel,panels,alertBox,confirmBox,characterPortrait,openBusiness:()=>openTrade('business'),openRegulars:()=>openTrade('regulars'),openProjects:()=>openTrade('projects'),openStory:()=>{panelReturn=()=>openTrade('orders');workshopUI.open('story');},openRecipe:key=>openRecipeFromOrder(key),goKitchen:()=>{if(page===0)closePanel();else changePage(0);}});
+const nextBatchUI=createNextBatchUI({getState:()=>state,getNow:now,showPanel,panels,closePanel,confirmBox,alertBox,act,sound,characterPortrait,ingredientPortrait,toolPortrait,startCook:startCookNow,openClueBook:(tab='focus')=>clueBookUI.open({tab,back:()=>nextBatchUI.open({keep:true})}),openJourney:regionId=>openJourneyAt(regionId),
+  getMenuId:()=>businessUI.todayMenu(),openBusiness:()=>openTrade('business'),
+  openRestock:after=>{shopUI.setTab(1);changePage(2);shopReturnAction=()=>{changePage(0);after();};}});
+const warehouseUI=createWarehouseUI({getState:()=>state,getNow:now,showPanel,panels,act,confirmBox,alertBox,sound,characterPortrait,ingredientPortrait,skillFeedback,
+  showCharacter:(egg,id)=>collectionUI.showCharacter(egg,id,()=>warehouseUI.open()),afterSale:()=>{if(page===1)makeWalkers();},openLedger:()=>{panelReturn=()=>warehouseUI.open();collectionUI.renderAlbum();},
+  openShopFor:id=>{const origin=page;shopUI.setTab(1);changePage(2);if(id!==null)shopUI.openIngredientDetails(id);shopReturnAction=()=>{changePage(origin);warehouseUI.open({tab:'mats'});};}});
+function cookFor(key,{menu}={}){if(page!==0)changePage(0);else closePanel();nextBatchUI.open({preset:{key,menu}});}
+// 生意主页 (batch 3): a menu slot or an order's 「去做」 opens 下一锅 with that goal; 订单情报 leads to the 线索册 or the map.
+function openNextBatchGoal(goal){if(page!==0)changePage(0);else closePanel();nextBatchUI.open({goal});}
+const businessUI=createBusinessUI({getState:()=>state,getNow:now,commitProgress,showPanel,panels,alertBox,confirmBox,kitDialog,characterPortrait,openSettings:()=>changePage(3),cookFor,openClue:key=>{const [egg,id]=key.split(':').map(Number);showCharacter(egg,id);},openOrders:()=>openTrade('orders'),openRegulars:id=>openTrade('regulars',id),openProjects:id=>openTrade('projects',id),goKitchen:()=>{if(page===0)closePanel();else changePage(0);},
+  openGoal:openNextBatchGoal,openClueBook:key=>clueBookUI.open({focusKey:key,back:()=>openTrade('business')}),openJourney:regionId=>openJourneyAt(regionId),
+  openStory:()=>{panelReturn=()=>openTrade('business');workshopUI.open('story',{back:()=>openTrade('business')});}});
+const orderUI=createOrderUI({getState:()=>state,getNow:now,commitProgress,showPanel,panels,alertBox,confirmBox,characterPortrait,openBusiness:()=>openTrade('business'),openRegulars:()=>openTrade('regulars'),openProjects:()=>openTrade('projects'),openStory:()=>{panelReturn=()=>openTrade('orders');workshopUI.open('story',{back:()=>openTrade('orders')});},openRecipe:key=>openRecipeFromOrder(key),goKitchen:()=>{if(page===0)closePanel();else changePage(0);}});
 const regularUI=createRegularUI({getState:()=>state,commitProgress,showPanel,panels,openBusiness:()=>openTrade('business'),openOrders:()=>openTrade('orders'),openProjects:()=>openTrade('projects')});
 const projectUI=createProjectUI({getState:()=>state,commitProgress,showPanel,panels,alertBox,confirmBox,characterPortrait,openBusiness:()=>openTrade('business'),openOrders:()=>openTrade('orders'),openRegulars:()=>openTrade('regulars')});
-const collectionsUI=createCollectionsUI({getState:()=>state,commitProgress,showPanel,panels,alertBox,characterPortrait,openBookTab:tab=>bookUI.open({tab}),openJournal,openShrine,goBack:()=>{if(page===4)bookUI.open({tab:'overview'});else closePanel();}});
+const collectionsUI=createCollectionsUI({showSpecies:(egg,id,back)=>collectionUI.showCharacter(egg,id,back),getState:()=>state,commitProgress,showPanel,panels,alertBox,characterPortrait,openBookTab:tab=>bookUI.open({tab}),openJournal,openShrine,goBack:()=>{if(page===4)bookUI.open();else closePanel();}});
+const clueBookUI=createClueBookUI({getState:()=>state,getNow:now,panels,showPanel,characterPortrait,toolPortrait,ingredientPortrait,commit:commitProgress,confirmBox,alertBox,openObservation:(key,back)=>workshopUI.observe(key,back),openSpecies:()=>collectionUI.renderCollection(),openBookTab:tab=>bookUI.open({tab}),
+  openNextBatch:()=>{if(page!==0)changePage(0);else closePanel();nextBatchUI.open();},
+  openRecipe:recipe=>{if(page!==0)changePage(0);else closePanel();nextBatchUI.open({recipe});},
+  openGuess:guess=>{if(page!==0)changePage(0);else closePanel();nextBatchUI.open({guess});},
+  openSkill:id=>workshopUI.open('skills',{skill:id,back:()=>clueBookUI.open({keep:true})}),
+  openJourney:(regionId,key)=>openJourneyAt(regionId,key)});
+// 寻访 map with one region selected (from 下一锅's track bar or a 线索册 「去寻访」), optionally for one partner.
+function openJourneyAt(regionId,forKey=null){if(page!==6)changePage(6);regionalUI.open({regionId,forKey,map:true});}
 const bookUI=createBookUI({getState:()=>state,getNow:now,panels,showPanel,openSpecies:()=>collectionUI.renderCollection(),openCollections:options=>collectionsUI.open(options),openRegion:options=>{panelReturn=()=>bookUI.open({tab:'lore'});regionalUI.open(options);},openRecipeBook,openJournal,openActivities,characterPortrait,showSpecies:(egg,id)=>collectionUI.showCharacter(egg,id),openTarget:pin=>{if(pin.kind==='collection')collectionsUI.open({id:pin.id});else if(pin.kind==='recipe')regionalUI.open({tab:'record'});else openTrade(pin.kind==='regular'?'regulars':'projects',pin.id);}});
 function supplyFromRecipe(tab,detail=()=>{}){const origin=page;shopUI.setTab(tab);changePage(2);shopReturnAction=()=>{changePage(origin);recipeBookUI.resume();};detail();}
 function supplyFromJournal(tab,detail=()=>{}){const origin=page;shopUI.setTab(tab);changePage(2);shopReturnAction=()=>{changePage(origin);journalUI.resume();};detail();}
 function prepareBookRecipe(key){const r=commitProgress(s=>prepareDiscoveredRecipe(s,key,now()));if(!r)return;toolScroll=toolScrollFor(r.toolId,TOOL_SCROLL_MAX);changePage(0);toast('下一锅配方已准备，当前锅仍保留。确认开火才扣材料和 CP。');}
-const harvestAllocationUI=createHarvestAllocationUI({getState:()=>state,getNow:now,showPanel,panels,commitProgress,confirmBox,closePanel,openBusinessDraft:stock=>{businessUI.prepareDraft(stock);tradeView={kind:'business'};if(page!==5)changePage(5);businessUI.open('prepare');}});
-const regionalUI=createRegionalUI({getState:()=>state,getNow:now,commitProgress,showPanel,panels,alertBox,confirmBox,characterPortrait,openLegacyTrip:()=>{panelReturn=()=>regionalUI.open();workshopUI.open('trip');},goKitchen:id=>{if(Number.isInteger(id))toolScroll=toolScrollFor(id,TOOL_SCROLL_MAX);if(page===0)closePanel();else changePage(0);}});
-function openRecipeBook(options={}){if(!options.back&&page!==4)changePage(4);recipeBookUI.open(options);}
+const harvestAllocationUI=createHarvestAllocationUI({getState:()=>state,getNow:now,showPanel,panels,commitProgress,confirmBox,closePanel,characterPortrait,openNextBatch:()=>nextBatchUI.open(),openBusinessDraft:stock=>{businessUI.prepareDraft(stock);tradeView={kind:'business'};if(page!==5)changePage(5);businessUI.open('prepare');}});
+const regionalUI=createRegionalUI({getState:()=>state,getNow:now,commitProgress,showPanel,panels,alertBox,confirmBox,kitDialog,characterPortrait,skillFeedback,openClueBook:(key,back)=>clueBookUI.open({focusKey:key,back:back??(()=>regionalUI.open({map:true}))}),goKitchen:id=>{if(Number.isInteger(id))toolScroll=toolScrollFor(id,TOOL_SCROLL_MAX);if(page===0)closePanel();else changePage(0);}});
+function openRecipeBook(options={}){if(!options.back&&page!==4)changePage(4);bookTab=options.fromBook?'recipes':null;recipeBookUI.open(options);}
 const activitiesUI=createActivitiesUI({getState:()=>state,getNow:now,panels,showPanel,confirmBox,alertBox,commitClaim:commitActivity,sound,characterPortrait,ingredientPortrait,openShrine,prepareGift:prepareGiftFromUI,onClose:()=>{if(page===2)openShop();else if(page===4)collectionUI.renderCollection();else closePanel();},openKitchen:()=>{if(page===0)closePanel();else changePage(0);}});
-const shrineUI=createShrineUI({getState:()=>state,getNow:now,panels,showPanel,sound,characterPortrait,openJournal,
+let shrineFromFarm=false;
+const shrineUI=createShrineUI({getState:()=>state,getNow:now,panels,showPanel,sound,characterPortrait,ingredientPortrait,openJournal,
   commitDraw:()=>commitActivity('shrine-gift'),commitReward:id=>commitProgress(candidate=>claimShrineGoal(candidate,id)),prepareGift:prepareGiftFromUI,
-  onClose:()=>activitiesUI.open(),openLetters:()=>activitiesUI.detail('shrine'),openGifts:()=>activitiesUI.detail('yokai'),openTravel:()=>activitiesUI.detail('time-travel'),
-  openRecipes:()=>openRecipeBook({tool:8}),openDuckShop:()=>{shopUI.setTab(2);changePage(2);},openObservation:key=>workshopUI.observe(key,()=>collectionUI.renderCollection()),openWorkshop:()=>workshopUI.open(),openBooks:()=>bookUI.open({tab:'collections'}),openBookTab:tab=>bookUI.open({tab}),openInventory:key=>{changePage(1);collectionUI.openInventory(key);},prepareRecipe:key=>prepareBookRecipe(key),openUse:use=>{if(use.kind==='collection')collectionsUI.open({id:use.id});else if(use.kind==='region'){const fromBook=page===4;if(!fromBook)changePage(6);if(fromBook)panelReturn=()=>bookUI.open({tab:'species'});regionalUI.open({regionId:use.id,tab:'record',recipeId:use.recipeId});}else openTrade(use.kind==='menu'?'business':'orders');}});
+  getBackLabel:()=>shrineFromFarm?'‹ 返回营地':'‹ 返回',onClose:()=>closePanel(),openActivityTab:tab=>activitiesUI.open({tab}),openLetters:()=>activitiesUI.detail('shrine'),openGifts:()=>activitiesUI.detail('yokai'),openTravel:()=>activitiesUI.detail('time-travel'),
+  openRecipes:()=>openRecipeBook({tool:8}),openDuckShop:()=>{shopUI.setTab(2);changePage(2);},openObservation:key=>workshopUI.observe(key,()=>collectionUI.renderCollection()),openWorkshop:()=>workshopUI.open(),openBooks:()=>bookUI.open({tab:'collections'}),openBookTab:tab=>bookUI.open({tab}),openInventory:key=>{changePage(1);warehouseUI.open({bird:key});},prepareRecipe:key=>prepareBookRecipe(key),openUse:use=>{if(use.kind==='collection')collectionsUI.open({id:use.id});else if(use.kind==='region'){const fromBook=page===4;if(!fromBook)changePage(6);if(fromBook)panelReturn=()=>bookUI.open({tab:'species'});regionalUI.open({regionId:use.id,tab:'record',recipeId:use.recipeId});}else openTrade(use.kind==='menu'?'business':'orders');}});
 const settingsUI=createSettingsUI({getState:()=>state,panels,showPanel,alertBox,save,music,sound,characterPortrait,toolPortrait,changePage,platform,toggleHatchAlarm,exportProgress,importProgress,openJournal,openWorkshop:()=>workshopUI.open(),getSaveError:()=>lastSaveError,returnFromSettings:()=>changePage(settingsReturnPage),returnToTitle:()=>{page=-1;closePanel();resize();music();renderControls();paint();}});
 function openActivities(target){activitiesUI.open(target);}
 let journalReturn=()=>closePanel();
 const journalNotices=new Set();
-const journalUI=createJournalUI({getState:()=>state,getNow:now,panels,showPanel,characterPortrait,ingredientPortrait,openRecipeBook,
+const journalUI=createJournalUI({getState:()=>state,getNow:now,panels,showPanel,characterPortrait,ingredientPortrait,toolPortrait,fromBook:()=>bookTab==='calendar',openRecipeBook,
   preparePhoenix:()=>{const prepare=()=>{if(!act(()=>{state.egg=0;state.selected=[];delete state.events.seasonalRecipe;}))return;
     toolScroll=0;if(page===0)closePanel();else changePage(0);toast('已选鸡蛋 · 使用 Lv.3 保温灯\n以开火时间判断凤凰时段，稀有伙伴不保证每批出现。',6500);};
     if(state.selected.length)confirmBox('下一批改用鸡蛋和保温灯，不放调味料。\n只调整选择，当前批次保留。',prepare,false,{yes:'选好保温灯'});else prepare();},
@@ -425,7 +566,8 @@ const journalUI=createJournalUI({getState:()=>state,getNow:now,panels,showPanel,
   openIngredients:ids=>supplyFromJournal(1,()=>shopUI.openIngredientDetails(ids[0])),
   openDuckShop:()=>supplyFromJournal(2),onClose:()=>journalReturn(),
 });
-function openJournal(tab='calendar',key){
+function openJournal(tab='calendar',key,fromBook=false){
+  bookTab=fromBook?'calendar':null;
   if(panels.querySelector('.shrine-screen'))journalReturn=()=>openShrine();
   else if(page===4)journalReturn=()=>collectionUI.renderCollection();
   else if(page===2)journalReturn=()=>openShop();
@@ -437,11 +579,35 @@ function maybeDiscoveryNotice(){
   if(page!==0||panel||dialogs.children.length||game.querySelector('.game-toast:not([hidden])'))return;
   const notice=calendarNotice(state,now());if(!notice||journalNotices.has(notice.key))return;
   journalNotices.add(notice.key);toast(notice.message,9000);
+  // A calendar note: icon, one line, tap to open 图鉴 · 日历.
+  const element=game.querySelector('.game-toast');element.classList.add('calendar-toast');element.setAttribute('role','button');element.tabIndex=0;
+  element.innerHTML=`${interfaceIcon('calendar')}<span>${element.textContent}</span><b aria-hidden="true">›</b>`;
+  element.onclick=()=>{dismissToast();changePage(4);bookUI.open({tab:'calendar'});};
 }
-function openShrine(tab='draw'){shrineUI.open(tab);}
+function openShrine(tab='draw'){shrineFromFarm=page===1;shrineUI.open(tab);}
+
+function repairFarm(){
+  const hp=E.farmHP(state,now());if(hp>=100){alertBox('围栏完好，暂时不需要整修。');return;}
+  const cost=E.repairCost(state,now()),short=Math.max(0,cost-state.cp);
+  kitDialog({title:'修复围栏',className:'repair-dialog',yes:'修好',no:'先不修',yesDisabled:short>0,onYes:()=>act(()=>{E.repair(state,now());sound(10);announce('农场已经整修好了。');}),
+    body:`<div class="rp-fences" data-row><span class="rp-fence"><img src="/web/art/golden-ui/fence-broken.png" alt="">${kitBig(hp,'%')}</span>${kitArrow}<span class="rp-fence is-fixed"><img src="/web/art/golden-ui/fence-fixed.png" alt="">${kitBig(100,'%')}</span></div>${kitBar(hp,'农场完好度')}<div class="gd-row">${kitChipHtml(`${kitIcon.coin}${cost}`)}${short?kitChip('',`还差 ${short} CP`,'hot'):''}</div>`});
+}
+const farmMap=createFarmMapUI({stage:game,onPlace:id=>{consumeReleaseClick=true;openFarmPlace(id);},onRepair:repairFarm,onSettings:()=>changePage(3),onKitchen:()=>changePage(0),onLevel:()=>{changePage(0);openKitchenUpgrade();},avatar:()=>characterPortrait(0,0)});
+function updateFarmMap(){
+  if(page===1){const shrine=shrineBook(state,now());shrineReady=shrine.gift.available||shrine.goals.some(g=>g.available);}
+  farmMap.update(state,{visible:page===1,hp:E.farmHP(state,now()),shrineReady});
+}
+function openFarmPlace(id){
+  if(id==='house')warehouseUI.open();
+  else if(id==='market')openTrade('business');
+  else if(id==='shrine')openShrine();
+  else if(id==='display')collectionsUI.open({tab:'mementos',id:null});
+  else if(id==='dock')openExplore();
+}
 function commitActivity(id){return commitProgress(candidate=>claimActivity(candidate,id,now()));}
 function commitProgress(mutate){
   if(recoveryError)return null;
+  if(pendingHarvest.size)flushHarvest();
   const previous=state;
   try{
     const outcome=execute({state,store:review?null:saveStore,command:{type:'gameplay',selected:state.selected,egg:state.egg},now:Math.floor(now()),advance:E.advanceWorld,reduce:mutate});
@@ -458,14 +624,14 @@ let toastTimer;
 function dismissToast(){clearTimeout(toastTimer);const element=game.querySelector('.game-toast');if(element)element.hidden=true;}
 function toast(message,duration=4200){
   let element=game.querySelector('.game-toast');if(!element){element=document.createElement('div');element.className='game-toast';element.setAttribute('role','status');game.append(element);}
-  clearTimeout(toastTimer);element.className='game-toast';element.textContent=message;element.hidden=false;toastTimer=setTimeout(()=>{element.hidden=true;},duration);
+  clearTimeout(toastTimer);element.className='game-toast';element.removeAttribute('tabindex');element.setAttribute('role','status');element.onclick=null;element.textContent=message;element.hidden=false;toastTimer=setTimeout(()=>{element.hidden=true;},duration);
 }
 function skillFeedback(events,summary='',duration=4200){
   // A receipt belongs to its existing dialog; never place a second overlay over it.
   const modal=dialogs.querySelector('.confirm');
   if(modal){
     const receipt=modal.querySelector('.skill-receipt')??document.createElement('div');receipt.className='skill-receipt';
-    renderSkillFeedback(receipt,events,summary);modal.querySelector('footer').before(receipt);return;
+    renderSkillFeedback(receipt,events,summary);const body=modal.querySelector('.gd-body');if(body)body.append(receipt);else modal.querySelector('footer').before(receipt);placeKit();return;
   }
   toast('',duration);const element=game.querySelector('.game-toast');element.classList.add('skill-toast');if(panel)element.classList.add('is-panel-toast');renderSkillFeedback(element,events,summary);
 }
@@ -498,6 +664,9 @@ async function toggleHatchAlarm(){
     sound(3);renderControls();
     if(page===3)openSettings();
     else announce(state.alarm?'已开启孵化提醒。':'已关闭孵化提醒。');
+    // Vendor battery savers drop alarms of optimised apps, so offer the exemption once per switch-on.
+    if(state.alarm&&platform.info.android&&platform.notificationStatus().backgroundAllowed===false)
+      confirmBox('手机省电可能让孵化提醒晚到或收不到。允许鸡宝厨房在后台运行，孵化完成时才能准时提醒你。',()=>platform.requestBackgroundRun(),false,{title:'让提醒更准时',yes:'去允许',no:'以后再说'});
   }catch(error){alertBox('提醒设置失败：'+error.message);}
 }
 async function exportProgress(){
@@ -559,12 +728,20 @@ function enterKitchen(){
 function resumeGameplay(){
   advanceClock();if(recoveryError)return;
   const result=commitProgress(s=>{E.resume(s,now());return {lost:page===1?E.checkFarmLoss(s,now()):0};});
-  if(result){renderControls();paint();if(result.lost){collectionUI.refresh();alertBox(`脱逃事件：逃走了${result.lost}只鸡！`);}}
+  if(result){renderControls();paint();if(result.lost){collectionUI.refresh();alertBox(`脱逃事件：逃走了${result.lost}只伙伴！`);}}
   music();
 }
 function entryInputBlocked(){return performance.now()<entryInputBlockedUntil;}
 function gamePoint(ev){const r=canvas.getBoundingClientRect();return {x:(ev.clientX-r.left)/r.width*L.width,y:(ev.clientY-r.top)/r.height*L.height};}
-function eggHitRect(e){return {x:e.x-19,y:e.y-13+(L.eggOffset||0),w:38,h:42};}
+// The browser's own hit test is the ground truth for what the finger is on. If a
+// WebView ever disagrees with gamePoint's geometry again, buttons still work and
+// the settings device check can report the offset.
+function hotspotUnder(ev){return document.elementFromPoint(ev.clientX,ev.clientY)?.closest('.hotspot')?.dataset.controlId;}
+const touchDiag=window.__chickDiag?.touch??{aligned:0,offset:0,rescued:0};
+function eggHitRect(e){return goldenEggHit(state.kitchenLevel,state.batch.eggs.indexOf(e));}
+// Nest eggs overlap: test each egg's oval rather than its box, so the visible
+// part of an egg behind another is still reachable.
+function insideEgg(r,x,y){return ((x-r.x-r.w/2)/(r.w/2))**2+((y-r.y-r.h/2)/(r.h/2))**2<=1;}
 function resetInput(){
   const pointerId=pointer?.id,movedTools=pointer?.kind==='tools'&&pointer.drag;
   if(movedTools)toolScroll=settleToolDrag(pointer);
@@ -576,18 +753,18 @@ function cancelInput(){
   // The farm keeps its last scrolled position when a gesture is interrupted.
   // Clear capture before rebuilding so lostpointercapture cannot cancel twice.
   const movedFarm=pointer?.kind==='farm'&&pointer.drag;
-  resetInput();
+  resetInput();flushHarvest();
   if(movedFarm)renderControls();
 }
 function hitEggs(x,y,visited){
-  if(!contains(RECT.eggArea,x,y))return;
+  if(!contains(goldenRect('eggArea',state.kitchenLevel),x,y))return;
   const list=state.batch?.eggs??[];
   for(let i=list.length-1;i>=0;i--){
     const e=list[i];
-    if(e.collected||visited.has(i)||!contains(eggHitRect(e),x,y))continue;
+    if(e.collected||pendingHarvest.has(i)||visited.has(i)||!insideEgg(eggHitRect(e),x,y))continue;
     // Keep the same front-to-back hit order as the visible sprites. A held
     // pointer must move before it can reach a chick behind this one.
-    visited.add(i);collectEgg(i);break;
+    visited.add(i);queueHarvest(i);break;
   }
 }
 // A touch released on a kitchen control may synthesize a click after a new
@@ -601,13 +778,14 @@ controls.addEventListener('pointerdown',ev=>{
   const p=gamePoint(ev),button=ev.target.closest('.hotspot');
   if(button&&(button.disabled||controlBlocked(button)))return;
   const id=button?.dataset.controlId;
-  if(page===0&&!panel&&p.y>=L.toolY&&p.y<=L.toolY+L.toolHeight&&(!button||id.startsWith('tool:'))){
+  if(button&&!id.startsWith('egg:'))touchDiag[contains(button.hitRect,p.x,p.y)?'aligned':'offset']++;
+  if(page===0&&!panel&&p.y>=goldenRect('slot:0').y&&p.y<=goldenRect('slot:0').y+goldenRect('slot:0').h&&(!button||id.startsWith('tool:'))){
     pointer={id:ev.pointerId,kind:'tools',controlId:id,rect:button?.hitRect,page,...beginToolDrag(p,toolScroll)};
     pressedId=id??'';button?.focus({preventScroll:true});
   }else if(button&&!id.startsWith('egg:')){
     pointer={id:ev.pointerId,kind:'button',controlId:id,rect:button.hitRect,page};
     pressedId=id;button.focus({preventScroll:true});
-  }else if(page===0&&!panel&&contains(RECT.eggArea,p.x,p.y)){
+  }else if(page===0&&!panel&&contains(goldenRect('eggArea',state.kitchenLevel),p.x,p.y)){
     pointer={id:ev.pointerId,kind:'harvest',last:p,visited:new Set(),page};
   }else if(page===1&&!panel&&p.y>220&&p.y<L.navY-36){
     pointer={id:ev.pointerId,kind:'farm',last:p,start:p,drag:false,page};
@@ -619,7 +797,7 @@ window.addEventListener('pointermove',ev=>{
   if(!pointer||pointer.id!==ev.pointerId)return;
   const p=gamePoint(ev);ev.preventDefault();
   if(pointer.kind==='tools'){
-    moveToolDrag(pointer,p,L.toolWidth+L.toolGap,TOOL_SCROLL_MAX);
+    moveToolDrag(pointer,p,88*320/390,TOOL_SCROLL_MAX);
     pressedId=!pointer.drag&&!pointer.cancelled&&pointer.rect&&contains(pointer.rect,p.x,p.y)?pointer.controlId:'';
   }else if(pointer.kind==='button')pressedId=contains(pointer.rect,p.x,p.y)?pointer.controlId:'';
   else if(pointer.kind==='harvest'){
@@ -637,9 +815,14 @@ window.addEventListener('pointermove',ev=>{
 window.addEventListener('pointerup',ev=>{
   if(!pointer||pointer.id!==ev.pointerId)return;
   const gesture=pointer,p=gamePoint(ev);
-  if(gesture.kind==='tools')moveToolDrag(gesture,p,L.toolWidth+L.toolGap,TOOL_SCROLL_MAX);
+  if(gesture.kind==='tools')moveToolDrag(gesture,p,88*320/390,TOOL_SCROLL_MAX);
+  // A released harvest commits when its last chick lands (queueHarvest's timer),
+  // so the synchronous save never freezes the flight on its first frame.
   resetInput();
-  if((gesture.kind==='button'||(gesture.kind==='tools'&&!gesture.drag&&!gesture.cancelled))&&gesture.rect&&gesture.page===page&&contains(gesture.rect,p.x,p.y)){
+  if(gesture.kind==='harvest')eggWaitHint(gesture.visited);
+  const released=(gesture.kind==='button'||(gesture.kind==='tools'&&!gesture.drag&&!gesture.cancelled))&&gesture.rect&&gesture.page===page;
+  const onTarget=released&&(contains(gesture.rect,p.x,p.y)||(hotspotUnder(ev)===gesture.controlId&&++touchDiag.rescued));
+  if(onTarget){
     const button=findControl(gesture.controlId);
     if(button&&!button.disabled&&!controlBlocked(button)){consumeReleaseClick=true;button.activate();}
   }else if(gesture.kind==='farm'&&gesture.drag)renderControls();
@@ -663,14 +846,19 @@ window.addEventListener('keyup',ev=>{
 });
 controls.addEventListener('focusout',()=>{if(keyboardPress){keyboardPress=null;pressedId='';}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){resetInput();if(dialogs.children.length)closeDialog();else if(panel)panels.querySelector('.close')?.click();}if(e.key==='Tab'&&dialogs.children.length){const b=[...dialogs.querySelectorAll('button')],first=b[0],last=b.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
-let pixelRatio=window.devicePixelRatio||1;
+// Kitchen art is authored at 3x; a 3.5x phone screen would only add pixels to repaint.
+const deviceRatio=()=>Math.min(3,window.devicePixelRatio||1);
+let pixelRatio=deviceRatio();
 // Information pages use physical CSS pixels. Only the unchanged scene scales.
 let wide=false;
 function resize(){
-  cancelInput();pixelRatio=window.devicePixelRatio||1;
+  cancelInput();pixelRatio=deviceRatio();
   const baseFont=parseFloat(getComputedStyle(document.documentElement).fontSize)||16;
-  wide=newOperationsEnabled('ui')&&innerWidth>=Math.max(1024,64*baseFont)&&innerHeight>=650&&page>=0;
-  game.classList.toggle('is-wide',wide);game.classList.toggle('is-cover',page<0);
+  wide=newOperationsEnabled('ui')&&innerWidth>=Math.max(1024,64*baseFont)&&innerHeight>=650&&page>=0&&page!==1;
+  // One bottom bar on every page (Farm UI V1's reusable five-item bar); the wide
+  // desktop layout keeps its side column, and the cover has no bar at all.
+  game.classList.toggle('is-farm',page===1);mainNav.dataset.variant=page>=0&&!wide?'bottom-nav-compact-v1':'';
+  game.classList.toggle('is-wide',wide);game.classList.toggle('is-cover',page<0);game.classList.toggle('is-golden-kitchen',page===0);
   const areaWidth=wide?Math.min(560,innerWidth-420):Math.min(560,innerWidth);
   const areaHeight=game.clientHeight-(page<0?0:wide?24:mainNav.getBoundingClientRect().height);
   // The scene no longer contains a bottom bar. Add back its 66 logical pixels
@@ -680,12 +868,18 @@ function resize(){
   game.style.setProperty('--game-height',logicalHeight+'px');game.style.setProperty('--extra-height',L.extra+'px');
   const visibleHeight=page<0?logicalHeight:L.navY-4,scale=Math.min(areaWidth/320,areaHeight/visibleHeight);
   const width=Math.max(1,Math.round(320*scale*pixelRatio)),height=Math.max(1,Math.round(logicalHeight*scale*pixelRatio));
-  sceneStage.style.zoom=scale;sceneStage.style.height=visibleHeight+'px';
-  quickActions.style.setProperty('--scene-top',Math.max(0,(areaHeight-visibleHeight*scale)/2)+(wide?12:0)+'px');
-  quickActions.style.setProperty('--scene-inset',Math.max(0,(areaWidth-320*scale)/2)+'px');
+  // Pre-128 WebViews omit CSS zoom from getBoundingClientRect(), while pointer
+  // coordinates are visual pixels. A transform keeps paint and hit testing in
+  // the same coordinate space on both old and current Android kernels.
+  sceneStage.style.transform=`scale(${scale})`;sceneStage.style.height=visibleHeight+'px';
+  const sideSpace=Math.max(0,(areaWidth-320*scale)/2);
+  quickActions.style.setProperty('--scene-top',Math.max(0,(areaHeight-visibleHeight*scale)/2)+'px');
+  quickActions.style.setProperty('--quick-offset',62*scale+'px');
+  quickActions.style.setProperty('--quick-inset',(sideSpace>60?sideSpace-58:sideSpace+5)+'px');
   if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
-  if(loaded)renderControls();updateDesk();
+  if(loaded)renderControls();updateDesk();placeKit();
 }
+installGameFrame(game);
 const desk=document.querySelector('#desk');
 function updateDesk(){if(!wide||!loaded||page<0||!state?.expansion){desk.replaceChildren();return;}renderDesk(desk,state,now(),{page,summary:panels.querySelector('.business-prep-summary,.business-next-window,.business-receipt-lines,.orders-summary,.regional-preview')?.textContent??'',openTrade,openExplore,openBooks:id=>{if(page!==4)changePage(4);collectionsUI.open({id});},goKitchen:()=>{if(page===0)closePanel();else changePage(0);}});}
 window.addEventListener('resize',resize);resize();
@@ -857,7 +1051,7 @@ window.addEventListener('message',event=>{if(!review||event.origin!==location.or
     save();renderControls();
   }
 });
-const primary=[...FARM_ART_FILES.map(p=>p.slice(1)),...ASSET_FILES.map(p=>p.slice(1)),
+const primary=[...KITCHEN_ART.map(p=>p.slice(1)),FARM_MAP.slice(1),...FARM_ART_FILES.map(p=>p.slice(1)),...ASSET_FILES.map(p=>p.slice(1)),
   ...KITCHEN_STAGES.flatMap(stage=>[stage.background,stage.bed,stage.vessel,stage.dirty]).filter(path=>typeof path==='string').map(path=>resolveSprite(path).file.slice(1)),
   ...DATA.images.filter(p=>/\/Egg\//.test(p)||/\/Tool1\/tool_1_\d+_0_0\.png$/.test(p)||/alarm_|kitchen_fix_0_0|farm_fix_0_0/.test(p)),
   ...Array.from({length:20},(_,i)=>charPath(0,i).slice(1))];
@@ -869,21 +1063,39 @@ if(state&&!recoveryError&&state.expansion?.collections){const probe=structuredCl
 loaded=true;renderControls();paint();
 if(recoveryError)openRecovery();else{save();if(nativeKitchenPending)changePage(0);if(initialSave.notice)alertBox(initialSave.notice);}
 platform.bridge?.ready();
+function eggAnimationOnly(a,b){
+  const facts=s=>JSON.stringify({...s,batch:s.batch&&{...s.batch,eggs:s.batch.eggs.map(({status,animationAt,...e})=>({...e,opened:status!=='egg'}))}});
+  return facts(a)===facts(b);
+}
 function advanceClock(){const real=Date.now();virtualNow+=(real-previousReal)*speed;previousReal=real;}
 setInterval(()=>{advanceClock();tick++;if(recoveryError)return;
   const previous=state,candidate=structuredClone(state),before=JSON.stringify(candidate),wasDirty=candidate.dirty;
   const world=E.advanceWorld(candidate,now()),events=E.updateBatch(candidate,now()),becameDirty=!wasDirty&&candidate.dirty;
   let alarmed=false;
   if(candidate.alarm&&E.batchReadyAt(candidate.batch)!==null&&!candidate.batch.alarmed&&now()>=E.batchReadyAt(candidate.batch)){candidate.batch.alarmed=true;alarmed=true;}
-  // Logical clock checkpoints once per minute; state transitions save immediately.
+  // Logical clock checkpoints once per minute; state transitions save immediately,
+  // except an egg's crack→hatch→ready animation: its species is fixed when it cracks
+  // and the rest follows from time, so it rides along with the next save instead of
+  // freezing the phone for a synchronous write twice more per egg.
   const logicalAt=candidate.progress.logicalAt;candidate.progress.logicalAt=previous.progress.logicalAt;
-  if(JSON.stringify(candidate)!==before||world.returned||(tick%600===0&&logicalAt!==previous.progress.logicalAt)){
+  const checkpoint=tick%600===0&&logicalAt!==previous.progress.logicalAt;
+  if(JSON.stringify(candidate)!==before||world.returned||checkpoint){
+    const quiet=!world.returned&&!checkpoint&&eggAnimationOnly(previous,candidate);
     candidate.progress.logicalAt=logicalAt;state=candidate;
-    if(!save())state=previous;
+    if(!quiet&&!save())state=previous;
     else{if(page===0)[...new Set(events)].forEach(s=>sound(s==='break'?11:s==='duck'?14:12));if(alarmed){sound(5);announce('这一批鸡宝已经孵化，请及时收取。');}if(becameDirty)announce('厨房有些脏了，可以打扫。');if(world.returned){makeWalkers();refreshPanel();toast('寻访伙伴已归队，奖励在篮中等你。');}renderControls();}
   }
   if(!state.progress.tutorialSeen&&collectedTotal(state)>=24&&!panel&&!dialogs.children.length){if(commitProgress(s=>{s.progress.tutorialSeen=true;return true;}))toast('手艺开放了！点击厨房的「手艺」查看，完成第一批已获得2点。',8000);}
-  if(tick%600===0){maybeDiscoveryNotice();journalUI.updateTime();}animateFlights();for(const w of walkers){w.turn+=Math.floor(Math.random()*2);if(w.turn>=30){w.turn=0;w.dir=Math.random()<.5?-1:1;}}if(tick%10===0){updateDesk();updateCleaningStatus();workshopUI.updateTime();regionalUI.refresh();businessUI.refresh();reportStatus();}
+  if(tick%600===0){maybeDiscoveryNotice();journalUI.updateTime();}animateFlights();for(const w of walkers){w.turn+=Math.floor(Math.random()*2);if(w.turn>=30){w.turn=0;w.dir=Math.random()<.5?-1:1;}}if(tick%10===0){if(page===1)updateFarmMap();updateDesk();updateCleaningStatus();workshopUI.updateTime();regionalUI.refresh();businessUI.refresh();reportStatus();}
 },100);
 
-function renderFrame(){if(pixelRatio!==(window.devicePixelRatio||1))resize();paint();requestAnimationFrame(renderFrame);}
+// Repaint every frame only while something moves (cover, farm walkers, flights,
+// a held pointer, or just after input/state changes); an idle scene repaints four
+// times a second, which keeps countdowns current without burning the main thread.
+function wake(){activeUntil=performance.now()+1500;}
+for(const type of ['pointerdown','keydown','wheel'])window.addEventListener(type,wake,{capture:true,passive:true});
+function renderFrame(at=performance.now()){
+  if(pixelRatio!==deviceRatio())resize();
+  if(page<0||page===1||pointer||pressedId||flights.length||feedbacks.length||at<activeUntil||at-lastPaint>=250){paint();lastPaint=at;}
+  requestAnimationFrame(renderFrame);
+}

@@ -52,7 +52,7 @@ test('second specimen, lore and event cards follow compiled gates and teams, not
   assert.deepEqual(at,['V-N2'],'grain event needs a grain companion');
   const team=regionalTripInfo(s,{regionId:'V',placeId:'V:1',focus:'lore',members:['0:18']},NOW);
   assert.deepEqual(team.candidates.map(c=>c.cardId).sort(),['V-E2','V-N2']);
-  assert.equal(team.candidates.find(c=>c.cardId==='V-E2').chance,(25+2*team.companions[0].F+5)/100,'trait bonus applies once');
+  assert.equal(team.candidates.find(c=>c.cardId==='V-E2').chance,(25+2*team.companions[0].F/3+5)/100,'trait bonus applies once');
   const leaf=regionalTripInfo(s,{regionId:'V',placeId:'V:0',focus:'lore',members:['0:17']},NOW);
   assert.deepEqual(leaf.candidates.map(c=>c.cardId),['V-N1'],'leaf without a yard companion does not qualify for V-E1');
   const pair=regionalTripInfo(s,{regionId:'V',placeId:'V:0',focus:'lore',members:['0:17','0:0']},NOW);

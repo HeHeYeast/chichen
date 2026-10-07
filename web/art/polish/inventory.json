@@ -1,0 +1,879 @@
+{
+  "version": 1,
+  "generatedBy": "tools/build-polish-art.mjs",
+  "assets": [
+    {
+      "category": "materials",
+      "id": "material-75",
+      "path": "/web/art/polish/materials/material-75.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "materials",
+      "id": "material-76",
+      "path": "/web/art/polish/materials/material-76.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "materials",
+      "id": "material-77",
+      "path": "/web/art/polish/materials/material-77.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "materials",
+      "id": "material-78",
+      "path": "/web/art/polish/materials/material-78.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "materials",
+      "id": "material-79",
+      "path": "/web/art/polish/materials/material-79.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "materials",
+      "id": "material-80",
+      "path": "/web/art/polish/materials/material-80.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "materials",
+      "id": "material-81",
+      "path": "/web/art/polish/materials/material-81.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "materials",
+      "id": "material-82",
+      "path": "/web/art/polish/materials/material-82.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-C1",
+      "path": "/web/art/polish/species/species-V-C1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-C2",
+      "path": "/web/art/polish/species/species-V-C2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-C3",
+      "path": "/web/art/polish/species/species-V-C3.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-C4",
+      "path": "/web/art/polish/species/species-V-C4.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-C5",
+      "path": "/web/art/polish/species/species-V-C5.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-C6",
+      "path": "/web/art/polish/species/species-V-C6.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-D1",
+      "path": "/web/art/polish/species/species-V-D1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-D2",
+      "path": "/web/art/polish/species/species-V-D2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-D3",
+      "path": "/web/art/polish/species/species-V-D3.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-D4",
+      "path": "/web/art/polish/species/species-V-D4.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-D5",
+      "path": "/web/art/polish/species/species-V-D5.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-V-D6",
+      "path": "/web/art/polish/species/species-V-D6.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-C1",
+      "path": "/web/art/polish/species/species-R-C1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-C2",
+      "path": "/web/art/polish/species/species-R-C2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-C3",
+      "path": "/web/art/polish/species/species-R-C3.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-C4",
+      "path": "/web/art/polish/species/species-R-C4.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-C5",
+      "path": "/web/art/polish/species/species-R-C5.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-C6",
+      "path": "/web/art/polish/species/species-R-C6.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-D1",
+      "path": "/web/art/polish/species/species-R-D1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-D2",
+      "path": "/web/art/polish/species/species-R-D2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-D3",
+      "path": "/web/art/polish/species/species-R-D3.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-D4",
+      "path": "/web/art/polish/species/species-R-D4.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-D5",
+      "path": "/web/art/polish/species/species-R-D5.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-R-D6",
+      "path": "/web/art/polish/species/species-R-D6.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-C1",
+      "path": "/web/art/polish/species/species-T-C1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-C2",
+      "path": "/web/art/polish/species/species-T-C2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-C3",
+      "path": "/web/art/polish/species/species-T-C3.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-C4",
+      "path": "/web/art/polish/species/species-T-C4.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-C5",
+      "path": "/web/art/polish/species/species-T-C5.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-C6",
+      "path": "/web/art/polish/species/species-T-C6.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-D1",
+      "path": "/web/art/polish/species/species-T-D1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-D2",
+      "path": "/web/art/polish/species/species-T-D2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-D3",
+      "path": "/web/art/polish/species/species-T-D3.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-D4",
+      "path": "/web/art/polish/species/species-T-D4.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-D5",
+      "path": "/web/art/polish/species/species-T-D5.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-T-D6",
+      "path": "/web/art/polish/species/species-T-D6.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-C1",
+      "path": "/web/art/polish/species/species-B-C1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-C2",
+      "path": "/web/art/polish/species/species-B-C2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-C3",
+      "path": "/web/art/polish/species/species-B-C3.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-C4",
+      "path": "/web/art/polish/species/species-B-C4.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-C5",
+      "path": "/web/art/polish/species/species-B-C5.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-C6",
+      "path": "/web/art/polish/species/species-B-C6.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-D1",
+      "path": "/web/art/polish/species/species-B-D1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-D2",
+      "path": "/web/art/polish/species/species-B-D2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-D3",
+      "path": "/web/art/polish/species/species-B-D3.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-D4",
+      "path": "/web/art/polish/species/species-B-D4.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-D5",
+      "path": "/web/art/polish/species/species-B-D5.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "species",
+      "id": "species-B-D6",
+      "path": "/web/art/polish/species/species-B-D6.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-V-S1",
+      "path": "/web/art/polish/discoveries/discovery-V-S1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-V-S2",
+      "path": "/web/art/polish/discoveries/discovery-V-S2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-V-N1",
+      "path": "/web/art/polish/discoveries/discovery-V-N1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-V-N2",
+      "path": "/web/art/polish/discoveries/discovery-V-N2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-V-E1",
+      "path": "/web/art/polish/discoveries/discovery-V-E1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-V-E2",
+      "path": "/web/art/polish/discoveries/discovery-V-E2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-R-S1",
+      "path": "/web/art/polish/discoveries/discovery-R-S1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-R-S2",
+      "path": "/web/art/polish/discoveries/discovery-R-S2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-R-N1",
+      "path": "/web/art/polish/discoveries/discovery-R-N1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-R-N2",
+      "path": "/web/art/polish/discoveries/discovery-R-N2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-R-E1",
+      "path": "/web/art/polish/discoveries/discovery-R-E1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-R-E2",
+      "path": "/web/art/polish/discoveries/discovery-R-E2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-T-S1",
+      "path": "/web/art/polish/discoveries/discovery-T-S1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-T-S2",
+      "path": "/web/art/polish/discoveries/discovery-T-S2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-T-N1",
+      "path": "/web/art/polish/discoveries/discovery-T-N1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-T-N2",
+      "path": "/web/art/polish/discoveries/discovery-T-N2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-T-E1",
+      "path": "/web/art/polish/discoveries/discovery-T-E1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-T-E2",
+      "path": "/web/art/polish/discoveries/discovery-T-E2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-B-S1",
+      "path": "/web/art/polish/discoveries/discovery-B-S1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-B-S2",
+      "path": "/web/art/polish/discoveries/discovery-B-S2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-B-N1",
+      "path": "/web/art/polish/discoveries/discovery-B-N1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-B-N2",
+      "path": "/web/art/polish/discoveries/discovery-B-N2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-B-E1",
+      "path": "/web/art/polish/discoveries/discovery-B-E1.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "discoveries",
+      "id": "discovery-B-E2",
+      "path": "/web/art/polish/discoveries/discovery-B-E2.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M01",
+      "path": "/web/art/polish/mementos/memento-M01.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M02",
+      "path": "/web/art/polish/mementos/memento-M02.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M03",
+      "path": "/web/art/polish/mementos/memento-M03.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M04",
+      "path": "/web/art/polish/mementos/memento-M04.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M05",
+      "path": "/web/art/polish/mementos/memento-M05.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M06",
+      "path": "/web/art/polish/mementos/memento-M06.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M07",
+      "path": "/web/art/polish/mementos/memento-M07.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M08",
+      "path": "/web/art/polish/mementos/memento-M08.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M09",
+      "path": "/web/art/polish/mementos/memento-M09.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M10",
+      "path": "/web/art/polish/mementos/memento-M10.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M11",
+      "path": "/web/art/polish/mementos/memento-M11.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "mementos",
+      "id": "memento-M12",
+      "path": "/web/art/polish/mementos/memento-M12.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "regions",
+      "id": "region-V",
+      "path": "/web/art/polish/regions/region-V.svg",
+      "width": 400,
+      "height": 160,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "regions",
+      "id": "region-R",
+      "path": "/web/art/polish/regions/region-R.svg",
+      "width": 400,
+      "height": 160,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "regions",
+      "id": "region-T",
+      "path": "/web/art/polish/regions/region-T.svg",
+      "width": 400,
+      "height": 160,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "regions",
+      "id": "region-B",
+      "path": "/web/art/polish/regions/region-B.svg",
+      "width": 400,
+      "height": 160,
+      "status": "vector-placeholder",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    },
+    {
+      "category": "ui",
+      "id": "unknown",
+      "path": "/web/art/polish/ui/unknown.svg",
+      "width": 128,
+      "height": 128,
+      "status": "vector-icon",
+      "source": "Original code-drawn SVG; tools/build-polish-art.mjs"
+    }
+  ]
+}

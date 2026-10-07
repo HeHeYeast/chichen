@@ -1,5 +1,5 @@
 import {REGIONAL,resolveSpecies,SPECIES_TRADE} from './content-registry.js';
-import {BUSINESS_WINDOW_MS,BUSINESS_DURATION_MS,BUSINESS_RULES_VERSION,businessCapacity,businessBonusQuote} from './business.js';
+import {BUSINESS_WINDOW_MS,BUSINESS_DURATION_MS,BUSINESS_RULE_VERSIONS,businessCapacity,businessBonusQuote,themeCapCP} from './business.js';
 import {menuFit,menuSalesWitness} from './menu-model.js';
 import {inventoryView} from './inventory.js';
 import {RULES} from './integration-data.js';
@@ -20,10 +20,12 @@ export function validateBusinessState(s,fail){
   const b=obj(s.expansion.business,'状态',['sequence','active','lastReport','visitorProgress','visitorSequence','themeRemainder']);
   int(b.sequence,'序号');int(b.visitorProgress,'来客余量',0,11);int(b.visitorSequence,'来客序号');int(b.themeRemainder,'主题余数',0,99);
   validateOrdersState(s,error);
-  for(const order of s.expansion.orders.active)for(const key of Object.keys(order.reserved)){try{inventoryView(s,key);}catch{error('T/R/S/Q守恒');}}
-  const policy=obj(s.expansion.inventoryPolicy,'库存偏好',['keepOne','collectionLocks','optionalOrderReservations']);bool(policy.keepOne,'每种留一');list(policy.collectionLocks,'收藏锁',241);if(new Set(policy.collectionLocks).size!==policy.collectionLocks.length||policy.collectionLocks.some(k=>!resolveSpecies(k)))error('收藏锁身份');if(Object.keys(obj(policy.optionalOrderReservations,'自选预留')).length)error('采购预留尚未开放');
+  for(const order of s.expansion.orders.active)for(const key of Object.keys(order.reserved)){try{inventoryView(s,key);}catch{error('订单预留与库存不符');}}
+  const policy=obj(s.expansion.inventoryPolicy,'库存偏好',['keepOne','collectionLocks','optionalOrderReservations',...(s.expansion.inventoryPolicy&&Object.hasOwn(s.expansion.inventoryPolicy,'locks')?['locks']:[])]);bool(policy.keepOne,'每种留一');
+  // Optional per-kind lock counts (how many stay at home); a missing entry means the default of one.
+  if(Object.hasOwn(policy,'locks'))countMap(policy.locks,'数量锁',key=>/^[01]:\d+$/.test(key)&&!!resolveSpecies(key),99999);list(policy.collectionLocks,'收藏锁',241);if(new Set(policy.collectionLocks).size!==policy.collectionLocks.length||policy.collectionLocks.some(k=>!resolveSpecies(k)))error('收藏锁身份');if(Object.keys(obj(policy.optionalOrderReservations,'自选预留')).length)error('采购预留尚未开放');
 
-  function windows(rows,initial,{menuId,snapshot,roles,prices,roleCursor}={}){
+  function windows(rows,initial,{menuId,snapshot,roles,prices,roleCursor,rulesVersion}={}){
     list(rows,'窗口',12);const totals={soldByKey:{},roleSales:{},fullSoldByKey:{},fullRoleSales:{},baseCP:0,markupCP:0,themeCP:0},remaining={...initial};let cursor=0;
     for(const [i,w]of rows.entries()){
       obj(w,'窗口',['index','at','tier','entries','baseCP','markupCP','themeCP']);int(w.index,'窗口序号',1,12);if(w.index!==i+1)error('窗口顺序');int(w.at,'窗口时间');
@@ -38,7 +40,9 @@ export function validateBusinessState(s,fail){
         }else if(entry.roleId!=='ordinary'&&!REGIONAL.menus.find(m=>m.id===menuId)?.roles.some(r=>r.id===entry.roleId&&r.allowed.includes(entry.key)))error('角色身份');
         for(const field of ['baseCP','markupCP','themeCP']){int(entry[field],'成交金额',0,100000);money[field]+=entry[field];}
         if(prices&&(entry.baseCP!==prices[entry.key].baseCP||entry.markupCP>Math.ceil(prices[entry.key].baseCP*prices[entry.key].markupPercent/100)))error('成交冻结价格');
-        if(entry.themeCP>2||w.tier==='ordinary'&&entry.themeCP!==0)error('主题单只上限');
+        // Rules 1: at most 2 CP, nothing when ordinary. Rules 2: a quarter of the price at most, and only a shop that opened
+        // complete pays (its first window's tier), in every window.
+        if(entry.themeCP>themeCapCP(rulesVersion,entry.baseCP)||(rulesVersion===1?w.tier==='ordinary':rows[0].tier!=='complete')&&entry.themeCP!==0)error('主题单只上限');
         remaining[entry.key]--;totals.soldByKey[entry.key]=(totals.soldByKey[entry.key]??0)+1;totals.roleSales[entry.roleId]=(totals.roleSales[entry.roleId]??0)+1;
         if(w.tier==='complete'){totals.fullSoldByKey[entry.key]=(totals.fullSoldByKey[entry.key]??0)+1;totals.fullRoleSales[entry.roleId]=(totals.fullRoleSales[entry.roleId]??0)+1;}
       }
@@ -47,7 +51,7 @@ export function validateBusinessState(s,fail){
     if(roleCursor!==undefined&&cursor!==roleCursor)error('角色游标');return {...totals,remaining};
   }
   function core(row,isActive){
-    const m=REGIONAL.menus.find(m=>m.id===row.menuId);if(!m)error('菜单身份');if(row.rulesVersion!==BUSINESS_RULES_VERSION)error('规则版本');
+    const m=REGIONAL.menus.find(m=>m.id===row.menuId);if(!m)error('菜单身份');if(!BUSINESS_RULE_VERSIONS.includes(row.rulesVersion))error('规则版本');
     const match=/^business-([1-9]\d*)$/.exec(row.id);if(!match||!Number.isSafeInteger(Number(match[1]))||Number(match[1])>b.sequence)error('营业身份');
     int(row.startAt,'开始时间');int(row.totalSold,'成交总数',0,72);int(row.visitorEvents,'来客次数',0,6);
     for(const field of ['baseCP','markupCP','themeCP','bonusCP'])int(row[field],field,0,10000000);
@@ -74,12 +78,12 @@ export function validateBusinessState(s,fail){
     if(![[12,8],[18,12]].some(pair=>pair[0]===a.rewards.basketBonus&&pair[1]===a.rewards.platterBonus))error('奖励专精快照');
     equal([...a.rewards.platterEligible].sort(),keys.filter(k=>SPECIES_TRADE[k]?.platter).sort(),'拼盘白名单快照');
     if(a.bonusCP!==0)error('未收摊不能预付奖励');bool(a.recordedValid,'有效菜单');bool(a.recordedComplete,'完整菜单');list(a.visitorCandidates,'来客候选',4);if(new Set(a.visitorCandidates).size!==a.visitorCandidates.length||a.visitorCandidates.some(id=>!REGIONAL.regulars.some(r=>r.id===id)))error('来客身份');
-    const calculated=windows(a.windowReports,a.initialStock,{menuId:a.menuId,snapshot:a.snapshot,roles:a.roles,prices:a.prices,roleCursor:a.roleCursor});
+    const calculated=windows(a.windowReports,a.initialStock,{menuId:a.menuId,snapshot:a.snapshot,roles:a.roles,prices:a.prices,roleCursor:a.roleCursor,rulesVersion:a.rulesVersion});
     for(const [i,w]of a.windowReports.entries())if(w.at!==a.startAt+(i+1)*BUSINESS_WINDOW_MS)error('窗口时间边界');
     for(const field of ['soldByKey','roleSales','fullSoldByKey','fullRoleSales']){countMap(a[field],field,k=>field.includes('Role')||field==='roleSales'?roleIds.has(k):keys.includes(k),72);mapEqual(a[field],calculated[field],`${field}守恒`);}
     for(const field of ['baseCP','markupCP','themeCP'])if(a[field]!==calculated[field])error('营业金额守恒');
-    mapEqual(a.stock,calculated.remaining,'T/S成交守恒');
-    for(const key of keys){try{inventoryView(s,key);}catch{error('T/R/S/Q守恒');}}
+    mapEqual(a.stock,calculated.remaining,'营业余货与成交不符');
+    for(const key of keys){try{inventoryView(s,key);}catch{error('营业备货与库存不符');}}
     const witness=menuSalesWitness(a.menuId,a.soldByKey,a.roleSales,a.fullSoldByKey,a.fullRoleSales);if(a.recordedValid!==witness.valid||a.recordedComplete!==witness.complete)error('菜单成交见证');
     if(a.pendingCloseAt!==null){int(a.pendingCloseAt,'待收摊时间',a.startAt,a.hardEndAt);if(sum(a.stock)===0){if(a.pendingCloseAt!==a.startAt+a.processedWindow*BUSINESS_WINDOW_MS)error('售罄时间');}else if(a.processedWindow!==12||a.pendingCloseAt!==a.hardEndAt)error('到期收摊');}
     else if(!sum(a.stock)||a.processedWindow===12)error('缺少待收摊标记');
@@ -91,7 +95,7 @@ export function validateBusinessState(s,fail){
     for(const key of ['creditsUsed','creditsReleased','baskets','platters'])int(r[key],key,0,6);if(r.creditsUsed!==r.baskets+r.platters)error('奖励次数守恒');
     if(r.creditsUsed+r.creditsReleased>6||r.baskets*24+r.platters*12>r.totalSold||![r.baskets*12+r.platters*8,r.baskets*18+r.platters*12].includes(r.bonusCP))error('奖励出品或金额');
     int(r.income,'账单收入');if(r.income!==r.baseCP+r.markupCP+r.themeCP+r.bonusCP)error('账单收入守恒');bool(r.validMenu,'账单菜单');bool(r.completeMenu,'账单完整菜单');
-    stockMap(r.remainingStock,'账单余货',{keys:Object.keys(r.initialStock)});const calculated=windows(r.windowReports,r.initialStock,{menuId:r.menuId});
+    stockMap(r.remainingStock,'账单余货',{keys:Object.keys(r.initialStock)});const calculated=windows(r.windowReports,r.initialStock,{menuId:r.menuId,rulesVersion:r.rulesVersion});
     mapEqual(r.soldByKey,calculated.soldByKey,'账单销量');mapEqual(r.remainingStock,calculated.remaining,'账单余货守恒');
     for(const field of ['baseCP','markupCP','themeCP'])if(r[field]!==calculated[field])error('账单金额');
     for(const [i,w]of r.windowReports.entries())if(w.at!==r.startAt+(i+1)*BUSINESS_WINDOW_MS||w.at>r.closedAt)error('账单窗口时间');
@@ -117,7 +121,7 @@ export function validateFactsState(s,fail){
   obj(f.menuWitnesses,'菜单见证');for(const [id,v]of Object.entries(f.menuWitnesses)){if(!REGIONAL.menus.some(m=>m.id===id))error('菜单身份');witness(v,'菜单见证',['count','completeCount','firstSeq','lastSeq','lastSessionId','completeLastSessionId']);int(v.count,'接待次数',1);int(v.completeCount,'完整次数',0,v.count);if(!/^business-[1-9]\d*$/.test(v.lastSessionId)||v.completeLastSessionId!==null&&!/^business-[1-9]\d*$/.test(v.completeLastSessionId))error('菜单来源');}
   obj(f.tripWitnesses,'寻访见证');for(const [id,v]of Object.entries(f.tripWitnesses)){if(!regions.includes(id))error('寻访地区');witness(v,'寻访见证',['count','firstSeq','lastSeq']);int(v.count,'完整寻访次数',1);}
   obj(f.eventWitnesses,'卡见证');for(const [id,v]of Object.entries(f.eventWitnesses)){if(!REGIONAL.cards.some(c=>c.id===id))error('卡身份');witness(v,'卡见证',['firstSeq','lastSeq','count','tripId']);int(v.count,'卡次数',1);if(!/^trip-[1-9]\d*$/.test(v.tripId))error('卡来源');}
-  obj(f.companionFirst,'首次同行');for(const [key,v]of Object.entries(f.companionFirst)){if(!species(key))error('同行身份');obj(v,'同行快照',['seq','tripId','region','gather','discover','environment','traits']);seq(v.seq,'同行序号');if(!/^trip-[1-9]\d*$/.test(v.tripId)||!regions.includes(v.region)||!['yard','water','wood'].includes(v.environment))error('同行来源');int(v.gather,'G',0,6);int(v.discover,'F',0,6);if(v.gather+v.discover!==6||!Array.isArray(v.traits)||new Set(v.traits).size!==v.traits.length||v.traits.some(x=>!['leaf','grain','portable','tea','floral','fruit','salt'].includes(x)))error('同行特征');}
+  obj(f.companionFirst,'首次同行');for(const [key,v]of Object.entries(f.companionFirst)){if(!species(key))error('同行身份');obj(v,'同行快照',['seq','tripId','region','gather','discover','environment','traits']);seq(v.seq,'同行序号');if(!/^trip-[1-9]\d*$/.test(v.tripId)||!regions.includes(v.region)||!['yard','water','wood'].includes(v.environment))error('同行来源');int(v.gather,'采集',0,20);int(v.discover,'发现',0,20);if(!Array.isArray(v.traits)||new Set(v.traits).size!==v.traits.length||v.traits.some(x=>!['leaf','grain','portable','tea','floral','fruit','salt'].includes(x)))error('同行特征');}
   const predicates=new Set(['RG2-3:business','RG3-1:order','RG3-2:regionalBatch','RG3-3:business','SP-ALL:practice','SP-LEAF:practice','SP-SHAPE:practice','SP-TABLE:practice','COL-8:practice.trip','B-E1:cargoExchange','O04:display',
     ...REGIONAL.menus.flatMap(m=>[`${m.id}:validService`,`${m.id}:completeService`]),...REGIONAL.orders.map(o=>`${o.id}:complete`),...regions.map(r=>`O06:${r}:complete`),
     ...REGIONAL.collections.filter(c=>c.kind==='theme').map(c=>`${c.id}:practice.trip`),...regions.flatMap(r=>[`COL-${r}:practice.trip`,`COL-${r}:practice.business`,`COL-${r}:practice.order`])]);

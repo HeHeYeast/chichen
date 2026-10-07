@@ -58,10 +58,12 @@ export function negativeCases(f){
   add('facts-trip-count',window,s=>s.expansion.facts.tripWitnesses.V={count:0,firstSeq:1,lastSeq:1});
   add('facts-event-source',window,s=>s.expansion.facts.eventWitnesses['V-S1']={count:1,firstSeq:1,lastSeq:1,tripId:'bad'});
   add('facts-companion-invalid-traits',window,s=>s.expansion.facts.companionFirst['0:0']={seq:1,tripId:'trip-1',region:'V',gather:3,discover:3,environment:'yard',traits:['fake']});
-  add('facts-companion-invalid-sum',window,s=>s.expansion.facts.companionFirst['0:0']={seq:1,tripId:'trip-1',region:'V',gather:4,discover:4,environment:'yard',traits:[]});
+  add('facts-companion-out-of-range',window,s=>s.expansion.facts.companionFirst['0:0']={seq:1,tripId:'trip-1',region:'V',gather:21,discover:4,environment:'yard',traits:[]});
+  add('policy-lock-negative',active,s=>s.expansion.inventoryPolicy.locks={'0:0':-1});
+  add('policy-lock-unknown-kind',active,s=>s.expansion.inventoryPolicy.locks={'9:9':1});
   add('facts-predicate-empty-source',window,s=>s.expansion.facts.predicateWitnesses['MN1:validService']={firstSeq:1,lastSeq:1,sourceId:''});
   const r=s=>s.expansion.business.lastReport;
-  for(const [field,value]of Object.entries({id:'business-999',rulesVersion:2,menuId:'invalid',closedAt:0,totalSold:73,bonusSettled:'true',validMenu:'true',creditsReleased:7,baskets:6,platters:6,visitorEvents:7}))add('report-'+field,report,s=>r(s)[field]=value);
+  for(const [field,value]of Object.entries({id:'business-999',rulesVersion:3,menuId:'invalid',closedAt:0,totalSold:73,bonusSettled:'true',validMenu:'true',creditsReleased:7,baskets:6,platters:6,visitorEvents:7}))add('report-'+field,report,s=>r(s)[field]=value);
   add('report-forged-window',report,s=>r(s).windowReports[0].baseCP++);
   add('report-invented-sold-key',report,s=>r(s).soldByKey['0:151']=1);
   add('report-inconsistent-remaining',report,s=>r(s).remainingStock['0:0']=1);

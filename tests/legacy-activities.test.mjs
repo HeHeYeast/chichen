@@ -146,6 +146,16 @@ test('time travel exchanges exactly one stocked chick, keeps its lifetime discov
   state.total['0:0']+=24;claimActivity(state,'time-travel',NOW+DAY);assert.equal(state.farm['0:104'],2);
 });
 
+test('time travel visits are exchanges and never count toward the next gift 24-collection progress',()=>{
+  const state=giftReady();claimActivity(state,'shrine-gift',NOW);state.ingredients[68]=0;
+  claimActivity(state,'time-travel',NOW);
+  const progress=()=>info(state,'shrine-gift',NOW+DAY).conditions.find(c=>c.kind==='new-collections').current;
+  assert.equal(progress(),0);
+  state.total['0:0']+=24;assert.equal(progress(),24);assert.equal(info(state,'shrine-gift',NOW+DAY).available,true);
+  // Claims saved before the snapshot existed keep their earlier count.
+  delete state.events.legacyActivityClaims['shrine-gift'].travels;assert.equal(progress(),25);
+});
+
 test('time travel validates stock and target count limits before consuming a chick',()=>{
   for(const mutate of [state=>state.farm['0:0']=0,state=>state.farm['0:104']=99999,state=>state.total['0:104']=99999]){
     const state=progressed();mutate(state);unchangedOnFailure(state,()=>claimActivity(state,'time-travel',NOW));

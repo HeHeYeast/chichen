@@ -155,8 +155,8 @@ public final class SaveRepositoryTest {
         check(failsSave(c,bad.toString(),false),"schema-3 reservation cannot exceed inventory");
         bad=new JSONObject(safe);bad.getJSONObject("progress").getJSONObject("trade").put("credits",7);
         check(failsSave(c,bad.toString(),false),"schema-3 excessive basket credits rejected");
-        bad=new JSONObject(safe);bad.getJSONObject("progress").getJSONObject("trip").getJSONArray("members").put("0:0");
-        check(failsSave(c,bad.toString(),false),"schema-3 duplicate members rejected");
+        bad=new JSONObject(safe);bad.getJSONObject("farm").put("0:0",1);bad.getJSONObject("progress").getJSONObject("trip").getJSONArray("members").put("0:0");
+        check(failsSave(c,bad.toString(),false),"schema-3 team places beyond the partners at home rejected");
         bad=new JSONObject(safe);bad.getJSONObject("progress").getJSONObject("trip").put("clueProcessed",true);
         check(failsSave(c,bad.toString(),false),"schema-3 premature reward rejected");
         check(SaveRepository.load(c).getString("raw").equals(safe),"failed schema-3 writes preserve current bytes");
@@ -348,7 +348,9 @@ public final class SaveRepositoryTest {
         bad=new JSONObject(openSession.toString());bad.getJSONObject("expansion").getJSONObject("business").getJSONObject("active").getJSONObject("initialStock").put("0:1",1);bad.getJSONObject("expansion").getJSONObject("business").getJSONObject("active").getJSONObject("stock").put("0:1",1);
         check(failsSave(context(),bad.toString(),true),"inedible species can never be business stock");
         JSONObject closed=businessCases.getJSONObject(2).getJSONObject("state");
-        check(closed.getJSONObject("expansion").getJSONObject("business").isNull("active")&&closed.getJSONObject("expansion").getJSONObject("business").getJSONObject("lastReport").getInt("income")==95,"fixture sold out for the audited 95 CP");
+        check(closed.getJSONObject("expansion").getJSONObject("business").isNull("active")&&closed.getJSONObject("expansion").getJSONObject("business").getJSONObject("lastReport").getInt("income")==92,"fixture sold out for 92 CP (rules 2: 鸡宝 alone is no complete menu, so no menu bonus)");
+        JSONObject legacy=businessCases.getJSONObject(4).getJSONObject("state");
+        check(legacy.getJSONObject("expansion").getJSONObject("business").getJSONObject("lastReport").getInt("rulesVersion")==1&&legacy.getJSONObject("expansion").getJSONObject("business").getJSONObject("lastReport").getInt("income")==95,"a rules 1 session still settles the audited 95 CP");
         bad=new JSONObject(closed.toString());bad.getJSONObject("expansion").getJSONObject("business").getJSONObject("lastReport").put("income",96);
         check(failsSave(context(),bad.toString(),true),"receipt income equals its itemized parts");
         bad=new JSONObject(closed.toString());bad.getJSONObject("expansion").put("business",JSONObject.NULL);

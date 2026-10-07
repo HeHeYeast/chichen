@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.12",
+    "versionCode":  28,
+    "file":  "chick-kitchen-1.5.12.apk",
+    "sha256":  "9bcd1211fda5b084e2223dc7fa504e49f1a9916be7b5b4401945de1c61883afd",
+    "bytes":  107279577,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-04T17:26:07.5037673Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "dc7919f3244fe9e9a582949a290433ef5298b7086ada888c76927fff8ab44cea",
+    "runtimeFiles":  1469,
+    "notes":  "让不同手机更稳：游戏字号不再随系统字体大小放大，避免文字挤出边框、盖住按钮；厨房按钮按手指实际按到的位置响应；网页组件意外崩溃时自动重开游戏而不是白屏；太旧的网页组件会显示更新提示而不是空白。设置新增「设备检测」，可一键复制结果反馈问题。保留 1.5.11 的触屏修复、存档和签名，可直接覆盖更新。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

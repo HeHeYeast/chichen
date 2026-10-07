@@ -6,7 +6,11 @@ import {availableIngredientIds,ingredientUnlockInfo} from './ingredient-unlocks.
 import {REGIONAL_RELEASE,regionInfo,regionalMaterial,hasRegionalCard,materialIdentified,nextRegionalFact,alternativeUnlocked} from './region-model.js';
 import {assertNewOperation} from './rollback-policy.js';
 
-const fullMethod=(s,r)=>s.expansion.methods.full.includes(r.id)||speciesDiscovered(s,r.egg,Number(r.key.split(':')[1]));
+// A direction reveals the cookware and first ingredient, so for a one-ingredient
+// recipe (the valley and tea-slope entry dishes) it already is the whole method.
+const fullMethod=(s,r)=>s.expansion.methods.full.includes(r.id)||speciesDiscovered(s,r.egg,Number(r.key.split(':')[1]))||r.ingredients.length===1&&s.expansion.methods.directions.includes(r.id);
+// 线索册 (loop batch 4): the complete method is a regional partner's fifth clue layer.
+export const regionalFullMethod=(s,recipeId)=>{const r=resolveRecipeId(recipeId);return !!r&&r.mode==='regional-trial'&&fullMethod(s,r);};
 // Old ingredients keep the one shared supply definition (validated equal to the
 // author's oldSupply at build time); a regional identity never bypasses it.
 const oldSupplyMet=(s,id)=>ingredientUnlockInfo(s,id).available;
@@ -23,7 +27,7 @@ export function regionalRecipeInfo(s,recipeId,{entry=false}={}){
   for(const supply of recipe.oldSupply)if(!oldSupplyMet(s,supply.id))missing.push(`${materialById[supply.id]?.title_zh_CN??'旧材料'}供货尚未开放。`);
   if(!entry){
     for(const id of species.unlock.identifiedMaterials)if(!materialIdentified(s,id))missing.push(`先辨认${materialById[id]?.title_zh_CN??id}。`);
-    if(species.unlock.firstSpecimenForOldOnly&&!s.expansion.regions.introSpecimenDone.includes(species.region))missing.push('先找到本地区的首标本。');
+    if(species.unlock.firstSpecimenForOldOnly&&!s.expansion.regions.introSpecimenDone.includes(species.region))missing.push('先带回本地区的入门标本。');
     if(species.unlock.card&&!hasRegionalCard(s,species.unlock.card))missing.push(`先登记发现 ${species.unlock.card}。`);
     if(!fullMethod(s,recipe))missing.push('先补全这份地方做法。');
   }
@@ -71,13 +75,22 @@ export function refreshRegionalDirections(s,regionId){
 export function pinRegionalMethod(s,recipeId){
   const {species}=regionalRecipeInfo(s,recipeId,{entry:true});
   assertNewOperation('region',species.region);
-  if(!executableUnknown(s,recipeId))throw Error('请选择已有方向且当前可做的未知地方做法。');
+  if(!executableUnknown(s,recipeId))throw Error('这份做法现在还做不了，先满足下方条件再设为目标。');
   const progress=s.expansion.methods.freeProgress[species.region]??={count:0,targetId:null};
   progress.targetId=recipeId;
   return {recipeId,count:progress.count};
 }
 
+// Loop batch 4: the old 「免费方法」 (pin one method, three trips write it down) became the 线索册 investigation — a trip in the
+// partner's own region reads its next layer, up to the complete method (knowledge.js nextClueLayer, learnRegionalMethod).
+// New trips freeze an empty method ticket; a trip that left before keeps its ticket and settles it as before
+// (settleRegionalMethod), and the counts already walked become clue layers (convertFreeProgress).
 export function regionalMethodPlan(s,regionId){
+  const progress=s.expansion.methods.freeProgress[regionId]??{count:0,targetId:null};
+  return {eligibleIds:[],targetId:null,countBefore:progress.count};
+}
+// The old plan, kept for reference: no new trip uses it.
+export function legacyRegionalMethodPlan(s,regionId){
   const progress=s.expansion.methods.freeProgress[regionId]??{count:0,targetId:null};
   const eligibleIds=REGIONAL.recipes.filter(r=>REGIONAL_RELEASE.methods.includes(r.id)&&resolveSpecies(r.key).region===regionId&&executableUnknown(s,r.id)).map(r=>r.id);
   const targetId=eligibleIds.includes(progress.targetId)?progress.targetId:null;
@@ -99,13 +112,41 @@ export function settleRegionalMethod(s,regionId,ticket){
   return recipeId;
 }
 
+// A trip in the partner's own region read its complete method (its fifth 线索册 layer): written down for good, as 研读
+// does, without the CP. Moves an old free-method pin on the same way.
+export function learnRegionalMethod(s,recipeId){
+  const r=resolveRecipeId(recipeId);if(!r||r.mode!=='regional-trial')throw Error('没有找到这份地方做法。');
+  if(fullMethod(s,r))return false;
+  s.expansion.methods.full.push(recipeId);nextRegionalFact(s);
+  const region=resolveSpecies(r.key).region,progress=s.expansion.methods.freeProgress[region];
+  if(progress?.targetId===recipeId)progress.targetId=REGIONAL.recipes.find(x=>REGIONAL_RELEASE.methods.includes(x.id)&&resolveSpecies(x.key).region===region&&executableUnknown(s,x.id))?.id??null;
+  return true;
+}
+// The trips an old save had already walked towards its pinned method (freeProgress count 1–2) turn into that partner's
+// clue layers, as many as were walked but never the complete method itself (the next trip there reads it, as the old third
+// trip would have). Waits while a trip that left with an old method ticket is still out. Returns the facts it added.
+// layers(s,key): the partner's trip layers still to read, in order (knowledge.js), passed in to keep this module free of it.
+export function convertFreeProgress(s,layers){
+  const t=s.progress?.trip,added=[];
+  if(t?.regional?.method?.targetId&&!t.regional.processed&&['running','returned'].includes(t.status))return added;
+  for(const [region,progress] of Object.entries(s.expansion?.methods?.freeProgress??{})){
+    if(!progress.count||!progress.targetId)continue;
+    const r=resolveRecipeId(progress.targetId);
+    if(r&&!fullMethod(s,r))for(const fact of layers(s,r.key).filter(x=>x.level<5).slice(0,progress.count).map(x=>x.fact))if(!s.progress.knowledge.facts.includes(fact)){s.progress.knowledge.facts.push(fact);added.push(fact);}
+    progress.count=0;
+  }
+  return added;
+}
 export function studyRegionalMethod(s,recipeId,now){
   const info=regionalMethodInfo(s,recipeId);
   if(info.full)return {recipeId,cost:0};
   assertNewOperation('region',info.species.region);
-  if(!info.canStudy)throw Error('先取得可做方向并学习观察分支的配方研读。');
+  if(!info.canStudy)throw Error('先学会手艺「配方研读」，并满足这份做法的条件。');
   if(s.cp<info.studyCost)throw Error(`CP还差${info.studyCost-s.cp}；也可继续寻访免费补全。`);
   s.cp-=info.studyCost;s.expansion.methods.full.push(recipeId);nextRegionalFact(s);
+  // Studying the pinned method moves the free-completion pin on, as a free completion does.
+  const progress=s.expansion.methods.freeProgress[info.species.region];
+  if(progress?.targetId===recipeId)progress.targetId=REGIONAL.recipes.find(r=>REGIONAL_RELEASE.methods.includes(r.id)&&resolveSpecies(r.key).region===info.species.region&&executableUnknown(s,r.id))?.id??null;
   return {recipeId,cost:info.studyCost};
 }
 

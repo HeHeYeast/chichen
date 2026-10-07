@@ -4,7 +4,7 @@ import {SEASONAL_CHARACTERS,seasonalRecipeInfo,prepareSeasonalRecipe} from './se
 import {characterAccessInfo} from './legacy-activities.js';
 import {holidayForCharacter} from './holiday-calendar.js';
 import {cookingTiming,batchSignature} from './progression.js';
-import {speciesKey,speciesDiscovered} from './species-state.js';
+import {speciesKey,speciesDiscovered,collectedTotal} from './species-state.js';
 import {REGIONAL} from './content-registry.js';
 import {regionalRecipeInfo,prepareRegionalRecipe} from './regional-methods.js';
 
@@ -14,7 +14,10 @@ const rows=[...ORIGINAL_RECIPE_CATALOG,
   ...SEASONAL_CHARACTERS.map(c=>({egg:c.egg,id:c.id,toolId:c.toolId,minLevel:c.minLevel,minKitchen:1,ingredients:[...c.ingredients],kind:'seasonal',description:c.description})),
 ].map(r=>Object.freeze({...r,key:speciesKey(r.egg,r.id),ingredients:Object.freeze(r.ingredients)}));
 const byKey=new Map(rows.map(r=>[r.key,r]));
-const regionalRows=REGIONAL.recipes.filter(r=>r.mode==='regional-trial').map(r=>({runtimeId:r.id,kind:'regional',key:r.key,egg:r.egg,id:Number(r.key.split(':')[1]),toolId:r.toolId,minLevel:r.toolLevel,minKitchen:r.kitchenLevel,ingredients:r.ingredients.map(m=>m.id)}));
+const regionalRows=REGIONAL.recipes.filter(r=>r.mode==='regional-trial').map(r=>Object.freeze({runtimeId:r.id,kind:'regional',key:r.key,egg:r.egg,id:Number(r.key.split(':')[1]),toolId:r.toolId,minLevel:r.toolLevel,minKitchen:r.kitchenLevel,ingredients:Object.freeze(r.ingredients.map(m=>m.id))}));
+// The 48 regional partners' recipes as catalogue rows (one each). They stay out of RECIPE_CATALOG, whose rows the ordinary
+// cooking pool and the recommenders read; the 线索册 adds them through regional-clues.js (loop batch 4).
+export const REGIONAL_RECIPE_ROWS=Object.freeze(regionalRows);
 export const recipePaths=key=>rows.filter(r=>r.key===key);
 export const recipeId=r=>[r.key,r.kind,r.toolId,r.minLevel,r.ingredients.join('-'),r.campaign??'',r.time??''].join('/');
 export const RECIPE_CATALOG=Object.freeze(rows);
@@ -26,7 +29,9 @@ export function discoveredRecipe(s,key,now=Date.now()){
   const r=byKey.get(key)??regionalRows.find(r=>r.key===key);if(!r||!recipeDiscovered(s,r.egg,r.id))return null;
   return recipePathInfo(s,r,now);
 }
-export function recipePathInfo(s,r,now=Date.now()){
+// gates: false leaves a regional recipe's own steps (its region, specimen, 辨认, complete method) out of the conditions,
+// for the 线索册, which shows them as the partner's next step instead.
+export function recipePathInfo(s,r,now=Date.now(),{gates=true}={}){
   const key=r.key;
   const c=DATA.characters[r.egg].find(c=>c.id===r.id),access=characterAccessInfo(r.egg,r.id,s,now);
   const conditions=[];
@@ -37,15 +42,15 @@ export function recipePathInfo(s,r,now=Date.now()){
   if(r.campaign)condition(s.events?.[r.campaign]===true,`完成「${access?.title??'对应神社来信'}」`);
   const holiday=holidayForCharacter(r.egg,r.id,now);
   if(holiday)conditions.push({met:holiday.active,kind:'calendar',label:`${holiday.title}期间开火 · ${holiday.dateRange}（${holiday.status}）`});
-  if(r.collectionTotal){const [egg,n]=r.collectionTotal,total=Object.entries(s.total??{}).filter(([key])=>key.startsWith(egg+':')).reduce((sum,[,value])=>sum+value,0);condition(total>=n,`累计收取${egg?'鸭宝':'鸡宝'} ${n} 只（${total} / ${n}）`);}
+  if(r.collectionTotal){const [egg,n]=r.collectionTotal,total=collectedTotal(s,egg);condition(total>=n,`累计收取${egg?'鸭宝':'鸡宝'} ${n} 只（${total} / ${n}）`);}
   if(r.time){const hour=new Date(now).getHours(),day=hour>=10&&hour<=12;condition(r.time==='day-phoenix'?day:!day,r.time==='day-phoenix'?'开火时段 10:00–12:59':'开火时段 00:00–09:59 或 13:00–23:59');}
   if(r.kind==='sign')condition(s.events?.gift_tool_2_68_character_id===r.id,'神社抽到对应的签礼');
   if(r.kind==='seasonal')for(const check of seasonalRecipeInfo(s,key).conditions)if(!conditions.some(c=>c.label===check.label))conditions.push(check);
-  if(r.kind==='regional')for(const label of regionalRecipeInfo(s,r.runtimeId).missing)condition(false,label);
+  if(r.kind==='regional'&&gates)for(const label of regionalRecipeInfo(s,r.runtimeId).missing)condition(false,label);
   const missing=r.ingredients.filter(id=>!(s.ingredients?.[id]>0));
   const special=r.kind==='change',tool=r.toolId>=0?DATA.tools[1][r.toolId]:null;
   const level=tool?Math.max(r.minLevel,s.toolLevels[r.toolId]??0):0;
-  const note=r.note??(r.kind==='regional'?'地区做法每批安排1只已收录目标，其余23枚来自原料理；请保持清洁并及时收取。':r.kind==='seasonal'?'从本册选定配方后开火，每批安排 1 只；其余结果沿用原料理。':r.kind==='dim-sum'?(r.ingredients.length?'搭配成功，每批至少安排 1 只；请保持清洁并及时收取。':'不放调味料时只调理小笼包鸡；请保持清洁并及时收取。'):'这批可能出现这些伙伴，数量不固定；符合条件也不保证每批获得。');
+  const note=r.note??(r.kind==='regional'?'地区做法每批安排1只已收录目标，其余23枚来自原配方；请保持清洁并及时收取。':r.kind==='seasonal'?'从本册选定配方后开火，每批安排 1 只；其余结果沿用原配方。':r.kind==='dim-sum'?(r.ingredients.length?'搭配成功，每批至少安排 1 只；请保持清洁并及时收取。':'不放调味料时只会孵出小笼包鸡；请保持清洁并及时收取。'):'随机出现，数量不固定；符合条件也不保证每批都有。');
   return {...r,name:c.title_zh_CN,toolName:tool?.title_zh_CN??'特殊变化',ingredientNames:r.ingredients.map(id=>DATA.tools[2][id].title_zh_CN),
     conditions,missing,special,note,activityId:access?.activityId,originalMinutes:tool?.[`lv_${level}_min`],minutes:tool?cookingTiming(s,tool[`lv_${level}_min`],{signature:batchSignature(r.egg,r.toolId,r.ingredients),now}).minutes:undefined,cost:tool?.[`lv_${level}_cook_cp`],
     ready:!special&&!missing.length&&conditions.every(c=>c.met)};

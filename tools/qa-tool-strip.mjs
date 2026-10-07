@@ -51,7 +51,7 @@ try{
     // Keyboard remains usable after drag and focus reconstruction.
     await p.locator('[data-control-id="next"]').focus();await p.keyboard.press('Enter');assert.deepEqual(await visibleIds(p),[1,2,3,4]);
     await p.getByRole('button',{name:'图鉴',exact:true}).click();
-    await p.locator('[data-book-tab="species"]').click();await p.locator('[data-collection-recipes]').click();
+    await p.locator('[data-book-tab="recipes"]').click();
     await p.locator('[data-cookbook-tool="8"]').click();
     await p.locator('[data-cookbook-recipe="0:114"]').click();
     await p.locator('[data-cookbook-prepare]').click();

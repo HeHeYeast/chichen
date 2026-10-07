@@ -9,7 +9,7 @@ import {RECIPE_CATALOG,recipePathInfo} from './recipe-book.js';
 import {rank} from './progression.js';
 import {speciesCode,ingredientName} from './knowledge.js';
 export function cookingCandidates(s,toolId,now=Date.now()){
-  if(s.expansion?.prepareMode){const {plan,candidates:raw}=regionalPreview(s,toolId,now);const candidates=raw.map(c=>({...c,egg:Number(c.key.split(':')[0]),id:Number(c.key.split(':')[1]),code:speciesCode(c.key),known:speciesDiscovered(s,...c.key.split(':').map(Number))}));return {ingredients:plan.materials,candidates,known:candidates.filter(c=>c.known).length,unknown:candidates.filter(c=>!c.known).length,nearby:[],blocked:[],changes:[plan.mode==='local-alternative'?'地方替代做法沿用原配方的候选与概率，不额外安排目标；地区新材料只替换原配料参与旧候选。':'地区做法成功时安排1只目标，其余23只来自原料理；请保持清洁并及时收取。'],mode:plan.mode,plan};}
+  if(s.expansion?.prepareMode){const {plan,candidates:raw}=regionalPreview(s,toolId,now);const candidates=raw.map(c=>({...c,egg:Number(c.key.split(':')[0]),id:Number(c.key.split(':')[1]),code:speciesCode(c.key),known:speciesDiscovered(s,...c.key.split(':').map(Number))}));return {ingredients:plan.materials,candidates,known:candidates.filter(c=>c.known).length,unknown:candidates.filter(c=>!c.known).length,nearby:[],blocked:[],changes:[plan.mode==='local-alternative'?'地方替代做法沿用原配方的候选与概率，不额外安排目标；地区新材料只替换原配料，候选不变。':'地区做法成功时安排1只目标，其余23只来自原配方；请保持清洁并及时收取。'],mode:plan.mode,plan};}
   const ingredients=cookingIngredients(s),entries=new Map();
   const add=(egg,id,status,guaranteed=0)=>{const key=egg+':'+id;entries.set(key,{key,egg,id,code:speciesCode(key),status,guaranteed,known:speciesDiscovered(s,egg,id)});};
   if(toolId===8){
@@ -36,5 +36,5 @@ export function cookingCandidates(s,toolId,now=Date.now()){
   }
   nearby.sort((a,b)=>Number(a.key.split(':')[1])-Number(b.key.split(':')[1]));
   const candidates=[...entries.values()];
-  return {ingredients,candidates,known:candidates.filter(c=>c.known).length,unknown:candidates.filter(c=>!c.known).length,nearby:nearby.filter((c,i,a)=>a.findIndex(x=>x.key===c.key)===i).slice(0,3),blocked:blocked.filter((c,i,a)=>a.findIndex(x=>x.key===c.key)===i),changes:['破壳时脏污可能病变；防腐剂及原有免疫有效。','保温灯不焦化；其他厨具超过本批保鲜时刻可能变化。','温泉蛋鸡在破壳10秒后才处理会变为水煮蛋鸡，保鲜不延长此窗口。']};
+  return {ingredients,candidates,known:candidates.filter(c=>c.known).length,unknown:candidates.filter(c=>!c.known).length,nearby:nearby.filter((c,i,a)=>a.findIndex(x=>x.key===c.key)===i).slice(0,3),blocked:blocked.filter((c,i,a)=>a.findIndex(x=>x.key===c.key)===i),changes:['破壳时脏污可能病变；防腐剂及原有免疫有效。','保温灯不焦化；其他厨具超过本批保鲜时刻可能变化。','温泉蛋鸡破壳时若不在游戏中，超过10秒才回来会变成水煮蛋鸡；保鲜不延长这10秒。']};
 }

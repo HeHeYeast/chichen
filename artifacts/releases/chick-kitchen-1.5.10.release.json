@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.5.10",
+  "versionCode": 26,
+  "file": "chick-kitchen-1.5.10.apk",
+  "sha256": "7df7e11d6c5936303000074e822b2c19e337d7389fb80121d3fdb5a8fa776ba1",
+  "bytes": 107276741,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-10-04T14:10:05.5242015Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "c260cf3a0e32473263cd87ed7e3aefa858c6c5cc89fa6b17a6ddb17636f9ae40",
+  "runtimeFiles": 1468,
+  "notes": "补齐离线安装包遗漏的界面、手艺和设置贴图；补齐系统网页组件兼容性检查，避免进入游戏后绘图、弹窗或按钮失效。发布检查新增直接读取打包资源的手机触屏回归。保留应用身份、原签名和现有存档，可直接覆盖更新。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

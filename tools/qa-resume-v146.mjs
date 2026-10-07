@@ -56,7 +56,7 @@ try{
   checks.push('模拟进程重建后停留开始界面，点击后回厨房');
   await p.getByRole('button',{name:'厨房',exact:true}).click();await p.getByRole('button',{name:'补给 · 小卖部',exact:true}).click();await event(p,'kitchen');await event(p,'resume',{keepPage:true});await kitchen(p);
   await event(p,'back');await p.locator('[data-yes]').waitFor();await event(p,'pause');await event(p,'resume');
-  assert.match(await p.locator('.confirm > p').innerText(),/离开小厨房/);assert.equal(await p.evaluate(()=>window.__launchMock.closes),0);await p.locator('[data-no]').click();await kitchen(p);
+  assert.match(await p.locator('.confirm .gd-msg').innerText(),/离开小厨房/);assert.equal(await p.evaluate(()=>window.__launchMock.closes),0);await p.locator('[data-no]').click();await kitchen(p);
   const tool=await p.locator('[data-control-id="tool:0"]').boundingBox();await p.mouse.move(tool.x+tool.width/2,tool.y+tool.height/2);await p.mouse.down();await event(p,'pause');await event(p,'resume');await p.mouse.up();await kitchen(p);
   checks.push('通知入口仍直达厨房；恢复保留退出确认但不会自动退出，中断触摸不误触厨具');
 
@@ -84,8 +84,8 @@ try{
   await p.locator('[data-control-id="clean"]').click();const cleaningCP=(await state()).cp;
   await event(p,'pause');await event(p,'resume');await p.getByRole('dialog',{name:'打扫厨房',exact:true}).waitFor();
   assert.equal((await state()).cp,cleaningCP);await p.locator('[data-no]').click();
-  await p.locator('[data-control-id="tool:0"]').click();const cookText=await p.locator('.confirm > p').innerText();
-  await event(p,'pause');await event(p,'resume');assert.equal(await p.locator('.confirm > p').innerText(),cookText);assert.equal((await state()).cp,cleaningCP);await p.locator('[data-no]').click();
+  await p.locator('[data-control-id="tool:0"]').click();const cookText=await p.locator('.cooking-dialog .gd-body').innerText();
+  await event(p,'pause');await event(p,'resume');assert.equal(await p.locator('.cooking-dialog .gd-body').innerText(),cookText);assert.equal((await state()).cp,cleaningCP);await p.locator('[data-no]').click();
   checks.push('打扫和开火确认在后台恢复后保留，未确认不扣款或重开批次');
   await p.getByRole('button',{name:'厨房',exact:true}).click();await p.getByRole('button',{name:'补给 · 小卖部',exact:true}).click();await p.locator('[data-shop-tool-details="1"]').click();
   await event(p,'pause');await event(p,'resume');await p.getByRole('dialog',{name:'平底锅成长册',exact:true}).waitFor();

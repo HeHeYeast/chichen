@@ -1,7 +1,7 @@
 // Original, generated data stays unchanged. New releases append stable IDs here.
 import { DATA } from './data.js';
 import {SEASONAL_CHARACTERS} from './seasonal-pack.js';
-import {speciesDiscovered} from './species-state.js';
+import {speciesDiscovered,discoveryCount} from './species-state.js';
 
 const ART = '/web/art/expansion-dim-sum.png';
 const characters = [
@@ -44,23 +44,14 @@ export const GAME_DATA = {
 export const TOOL_COUNT = GAME_DATA.tools[1].length;
 export const TOOL_SCROLL_MAX = Math.max(0,TOOL_COUNT-4);
 
-export function discoveredSpeciesCount(state) {
-  return GAME_DATA.characters.reduce((sum,list,egg)=>sum+list.filter(c=>speciesDiscovered(state,egg,c.id)).length,0);
-}
-
 export function expansionUnlockInfo(state) {
   const ownedLevel=state.toolLevels?.[8]??-1,nextLevel=ownedLevel+1,maxed=nextLevel>=levels.length;
-  const target=maxed?null:levels[nextLevel],discovered=discoveredSpeciesCount(state);
+  const target=maxed?null:levels[nextLevel],discovered=discoveryCount(state);
   const kitchenMet=!!target&&state.kitchenLevel>=target.kitchenLevel;
   const discoveriesMet=ownedLevel>=0||discovered>=EXPANSION.requiredDiscoveries;
   const available=!maxed&&kitchenMet&&discoveriesMet;
   const reason=maxed?'这一件已升至最高等级':!kitchenMet?`厨房 Lv.${target.kitchenLevel+1} 后开放`:!discoveriesMet?`已发现 ${discovered} / ${EXPANSION.requiredDiscoveries} 种伙伴` : '';
   return {ownedLevel,nextLevel,maxed,target,discovered,kitchenMet,discoveriesMet,available,reason};
-}
-
-export function expansionIngredients(state) {
-  const level=state.toolLevels?.[8]??-1;
-  return levels.filter(entry=>entry.level<=level).flatMap(entry=>entry.ingredients);
 }
 
 export function expansionRecipeHints(state) {

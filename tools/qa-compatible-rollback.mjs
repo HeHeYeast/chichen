@@ -14,6 +14,7 @@ import {departRegional} from '../web/regional-exploration.js';
 import {prepareRegionalRecipe} from '../web/regional-methods.js';
 import {openBusiness} from '../web/business.js';
 import {policyOverlay,PAUSED_POLICY} from './build-compatible-rollback.mjs';
+import {setStock,stockOf} from './qa-business-stock.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url)),require=createRequire(import.meta.url);
 const candidates=[process.argv[2],process.env.CHICK_PLAYWRIGHT_PACKAGE,'playwright','playwright-core',process.env.APPDATA&&join(process.env.APPDATA,'npm/node_modules/gsd-pi/node_modules/playwright-core')].filter(Boolean);
@@ -40,7 +41,7 @@ const nav=label=>p.getByRole('button',{name:label,exact:true}).click();
 const shot=async name=>{await p.screenshot({path:resolve(output,name+'.png')});screens.push(name);};
 const jump=at=>p.evaluate(({at,now})=>{window.rollbackOffset=at-now;sessionStorage.setItem('rollback-clock',String(window.rollbackOffset));},{at,now});
 const start=async()=>{await nav('开始游戏');await p.locator('.workshop-launch').waitFor();await p.waitForTimeout(700);};
-const business=async()=>{await nav('生意');await p.locator('[data-trade-view="business"]').first().click();await p.locator('.business-screen').waitFor();};
+const business=async()=>{await nav('生意');await p.locator('.business-screen').waitFor();};
 try{
   const base=await new Promise((done,fail)=>{const timer=setTimeout(()=>fail(Error('Server start timeout')),10000);server.once('error',fail);server.stdout.on('data',chunk=>{const m=String(chunk).match(/http:\/\/127\.0\.0\.1:\d+/);if(m){clearTimeout(timer);done(m[0]);}});});
   browser=await chromium.launch({headless:true,...(process.env.CHICK_QA_CHROME?{executablePath:process.env.CHICK_QA_CHROME}:{})});
@@ -56,26 +57,26 @@ try{
   const manual=await contextFor(source);
   for(const label of ['厨房','农场','生意','寻访','图鉴']){
     await nav(label);const button=p.getByRole('button',{name:label,exact:true});assert.ok(await button.isVisible());
-    if(label==='生意')await p.locator('[data-trade-view]').first().waitFor();
+    if(label==='生意')await p.locator('.business-screen .bh-today').first().waitFor();
     if(label==='寻访')await p.locator('.regional-screen').waitFor();
     if(label==='图鉴')await p.locator('[data-book-tab]').first().waitFor();
   }
   await shot('five-entrances');checks.push('关闭七域与四地区后，桌面退回单列，厨房/农场/生意/寻访/图鉴仍可达');
 
-  await business();const beforeClose=await read();await p.locator('[data-business-close]').click();await p.locator('[data-yes]').click();await p.locator('.business-receipt-head').waitFor();
+  await business();const beforeClose=await read();await p.locator('#panels .bh-today .gd-btn[data-business-sheet="ledger"]').click();await p.locator('[data-business-close]').click();await p.locator('[data-yes]').click();await p.locator('.business-receipt-head').waitFor();
   let saved=await read();assert.equal(saved.expansion.business.active,null);assert.equal(saved.expansion.business.lastReport.reason,'manual');assert.equal(saved.expansion.business.lastReport.totalSold,0);assert.equal(saved.cp,beforeClose.cp);assert.equal(saved.farm['0:3'],beforeClose.farm['0:3']);await shot('manual-close');
-  await p.locator('[data-business-again]').click();await p.locator('[data-business-quantity="0:3"]').fill('6');await p.locator('[data-business-quantity="0:3"]').press('Tab');
-  assert.ok(await p.locator('[data-business-open]').isDisabled());assert.match(await p.locator('.business-screen').innerText(),/营业暂时暂停/);
+  await p.locator('[data-business-again]').click();await p.locator('[data-business-sheet="stock"]').first().click();if(await p.locator('[data-business-clear]').count())await p.locator('[data-business-clear]').click();await setStock(p,'0:3',6);
+  assert.equal(await p.locator('[data-business-open]').count(),0);assert.match(await p.locator('.business-screen').innerText(),/营业暂时暂停/);await p.locator('[data-business-sheet-close]').click();
   assert.equal((await read()).cp,beforeClose.cp);checks.push('已有营业可由正式入口立即收摊，未售库存保留；新营业备货后仍被拒绝且不扣CP');
 
   await nav('厨房');await jump(E.batchReadyAt(source.batch)+1000);await p.waitForTimeout(3800);
   for(let i=0;i<24;i++)await p.locator(`[data-control-id="egg:${i}"]`).press('Enter');
   saved=await read();assert.equal(saved.batch.eggs.filter(e=>e.collected).length,24);assert.ok(Object.values(saved.farm).reduce((a,b)=>a+b,0)>=Object.values(source.farm).reduce((a,b)=>a+b,0)+24);await shot('frozen-batch-collected');checks.push('已保存地区锅保留原票据，正式厨房逐只收齐24枚，关闭地区新操作不阻止收获');
 
-  await jump(source.progress.trip.endAt+1000);await nav('寻访');await p.locator('[data-regional-claim]').waitFor();
+  await jump(source.progress.trip.endAt+1000);await nav('寻访');/* the trip back home is a card on the map (2026-10-07) */await p.locator('[data-regional-claim]').waitFor();
   const returned=await read(),basket=returned.progress.trip.remaining.length,materialsBefore=Object.values(returned.ingredients).reduce((a,b)=>a+b,0);
-  await p.locator('[data-regional-claim]').click();await p.locator('[data-yes]').click();saved=await read();assert.equal(saved.progress.trip.status,'settled');assert.equal(Object.values(saved.ingredients).reduce((a,b)=>a+b,0),materialsBefore+basket);
-  await p.locator('[data-regional-last]').click();assert.ok(await p.locator('[data-regional-depart]').isDisabled());assert.match(await p.locator('.regional-screen').innerText(),/暂时暂停/);await shot('returned-trip-new-trip-paused');
+  await p.locator('[data-regional-claim]').click();await p.waitForTimeout(300);if(await p.locator('#dialog-layer [data-yes]').count())await p.locator('#dialog-layer [data-yes]').click();saved=await read();assert.equal(saved.progress.trip.status,'settled');assert.equal(Object.values(saved.ingredients).reduce((a,b)=>a+b,0),materialsBefore+basket);
+  await p.locator('[data-journey-enter]').click();await p.locator('[data-regional-last]').click();assert.ok(await p.locator('[data-regional-depart]').isDisabled());assert.match(await p.locator('.regional-screen').innerText(),/暂时暂停/);await shot('returned-trip-new-trip-paused');
   const settledCP=saved.cp,settledFarm=structuredClone(saved.farm),settledIngredients=structuredClone(saved.ingredients);await p.reload();await start();await nav('寻访');saved=await read();assert.equal(saved.cp,settledCP);assert.deepEqual(saved.farm,settledFarm);assert.deepEqual(saved.ingredients,settledIngredients);assert.equal(saved.progress.trip.status,'settled');
   E.normalizeSave(saved,source.progress.trip.endAt+5000);checks.push('已有寻访自动归队并从正式篮子入口领取；新行程禁用，刷新不重复CP/材料/伙伴，正式默认构建可读取结清存档');
 
@@ -91,7 +92,7 @@ try{
 
   const auto=await contextFor(source);await jump(now+24*3600000+1000);await p.goto('about:blank');await p.goto(base+'/');await start();await business();await p.locator('.business-receipt-head').waitFor();
   saved=await read();const report=structuredClone(saved.expansion.business.lastReport);assert.equal(saved.expansion.business.active,null);assert.equal(report.totalSold,12);assert.equal(saved.cp,source.cp+report.income);assert.equal(saved.farm['0:3'],source.farm['0:3']-12);const autoCP=saved.cp,autoFarm=structuredClone(saved.farm);
-  await shot('offline-auto-close');await p.locator('[data-business-tab="report"]').click();await p.reload();await start();await business();saved=await read();assert.deepEqual(saved.expansion.business.lastReport,report);assert.equal(saved.cp,autoCP);assert.deepEqual(saved.farm,autoFarm);E.normalizeSave(saved,now+24*3600000+10000);
+  await shot('offline-auto-close');await p.reload();await start();await business();saved=await read();assert.deepEqual(saved.expansion.business.lastReport,report);assert.equal(saved.cp,autoCP);assert.deepEqual(saved.farm,autoFarm);E.normalizeSave(saved,now+24*3600000+10000);
   checks.push('已有营业离线跨24h仍自动售罄12只并结清一次；反复看账单与重启不重复收入，结清后schema6仍可读取');await auto.close();
   assert.ok(servedOverlays>=2);assert.equal(await readFile(policyPath,'utf8'),policySource,'production policy was never modified');assert.deepEqual(errors,[]);passed=true;
 }catch(error){if(p&&!p.isClosed()){await writeFile(resolve(output,'failure.txt'),await p.locator('body').innerText());await shot('failure');}throw error;}

@@ -1,0 +1,1162 @@
+{
+  "capturedAt": "2026-09-27T16:36:36.956Z",
+  "viewport": "390x844",
+  "source": "current /web/index.html; isolated localStorage",
+  "kitchenControls": [
+    {
+      "id": "settings",
+      "label": "设置",
+      "disabled": false,
+      "rect": {
+        "x": 333,
+        "y": 9,
+        "w": 54,
+        "h": 54
+      }
+    },
+    {
+      "id": "ingredient",
+      "label": "选择调味料",
+      "disabled": false,
+      "rect": {
+        "x": 10,
+        "y": 133,
+        "w": 46,
+        "h": 56
+      }
+    },
+    {
+      "id": "level",
+      "label": "厨房等级 1",
+      "disabled": false,
+      "rect": {
+        "x": 11,
+        "y": 11,
+        "w": 52,
+        "h": 52
+      }
+    },
+    {
+      "id": "clean",
+      "label": "打扫厨房",
+      "disabled": false,
+      "rect": {
+        "x": 254,
+        "y": 134,
+        "w": 76,
+        "h": 44
+      }
+    },
+    {
+      "id": "alarm",
+      "label": "孵化闹钟 关闭",
+      "disabled": false,
+      "rect": {
+        "x": 12,
+        "y": 568,
+        "w": 41,
+        "h": 38
+      }
+    },
+    {
+      "id": "tool:0",
+      "label": "使用保温灯",
+      "disabled": false,
+      "rect": {
+        "x": 12,
+        "y": 620,
+        "w": 84,
+        "h": 100
+      }
+    },
+    {
+      "id": "tool:1",
+      "label": "购买平底锅",
+      "disabled": false,
+      "rect": {
+        "x": 106,
+        "y": 620,
+        "w": 84,
+        "h": 100
+      }
+    },
+    {
+      "id": "tool:2",
+      "label": "购买水煮锅",
+      "disabled": false,
+      "rect": {
+        "x": 200,
+        "y": 620,
+        "w": 84,
+        "h": 100
+      }
+    },
+    {
+      "id": "tool:3",
+      "label": "购买油炸锅",
+      "disabled": false,
+      "rect": {
+        "x": 294,
+        "y": 620,
+        "w": 84,
+        "h": 100
+      }
+    },
+    {
+      "id": "next",
+      "label": "向右滚动厨具",
+      "disabled": false,
+      "rect": {
+        "x": 329,
+        "y": 729,
+        "w": 51,
+        "h": 30
+      }
+    },
+    {
+      "id": "prev",
+      "label": "向左滚动厨具",
+      "disabled": true,
+      "rect": {
+        "x": 10,
+        "y": 729,
+        "w": 51,
+        "h": 30
+      }
+    },
+    {
+      "id": "egg:0",
+      "label": "孵化中的蛋 1",
+      "disabled": false,
+      "rect": {
+        "x": 74,
+        "y": 315,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:1",
+      "label": "孵化中的蛋 2",
+      "disabled": false,
+      "rect": {
+        "x": 112,
+        "y": 315,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:2",
+      "label": "孵化中的蛋 3",
+      "disabled": false,
+      "rect": {
+        "x": 150,
+        "y": 315,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:3",
+      "label": "孵化中的蛋 4",
+      "disabled": false,
+      "rect": {
+        "x": 188,
+        "y": 315,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:4",
+      "label": "孵化中的蛋 5",
+      "disabled": false,
+      "rect": {
+        "x": 225,
+        "y": 315,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:5",
+      "label": "孵化中的蛋 6",
+      "disabled": false,
+      "rect": {
+        "x": 263,
+        "y": 315,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:6",
+      "label": "孵化中的蛋 7",
+      "disabled": false,
+      "rect": {
+        "x": 74,
+        "y": 347,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:7",
+      "label": "孵化中的蛋 8",
+      "disabled": false,
+      "rect": {
+        "x": 112,
+        "y": 347,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:8",
+      "label": "孵化中的蛋 9",
+      "disabled": false,
+      "rect": {
+        "x": 150,
+        "y": 347,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:9",
+      "label": "孵化中的蛋 10",
+      "disabled": false,
+      "rect": {
+        "x": 188,
+        "y": 347,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:10",
+      "label": "孵化中的蛋 11",
+      "disabled": false,
+      "rect": {
+        "x": 225,
+        "y": 347,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:11",
+      "label": "孵化中的蛋 12",
+      "disabled": false,
+      "rect": {
+        "x": 263,
+        "y": 347,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:12",
+      "label": "孵化中的蛋 13",
+      "disabled": false,
+      "rect": {
+        "x": 74,
+        "y": 378,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:13",
+      "label": "孵化中的蛋 14",
+      "disabled": false,
+      "rect": {
+        "x": 112,
+        "y": 378,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:14",
+      "label": "孵化中的蛋 15",
+      "disabled": false,
+      "rect": {
+        "x": 150,
+        "y": 378,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:15",
+      "label": "孵化中的蛋 16",
+      "disabled": false,
+      "rect": {
+        "x": 188,
+        "y": 378,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:16",
+      "label": "孵化中的蛋 17",
+      "disabled": false,
+      "rect": {
+        "x": 225,
+        "y": 378,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:17",
+      "label": "孵化中的蛋 18",
+      "disabled": false,
+      "rect": {
+        "x": 263,
+        "y": 378,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:18",
+      "label": "孵化中的蛋 19",
+      "disabled": false,
+      "rect": {
+        "x": 74,
+        "y": 410,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:19",
+      "label": "孵化中的蛋 20",
+      "disabled": false,
+      "rect": {
+        "x": 112,
+        "y": 410,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:20",
+      "label": "孵化中的蛋 21",
+      "disabled": false,
+      "rect": {
+        "x": 150,
+        "y": 410,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:21",
+      "label": "孵化中的蛋 22",
+      "disabled": false,
+      "rect": {
+        "x": 188,
+        "y": 410,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:22",
+      "label": "孵化中的蛋 23",
+      "disabled": false,
+      "rect": {
+        "x": 225,
+        "y": 410,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "egg:23",
+      "label": "孵化中的蛋 24",
+      "disabled": false,
+      "rect": {
+        "x": 263,
+        "y": 410,
+        "w": 46,
+        "h": 51
+      }
+    },
+    {
+      "id": "nav:0",
+      "label": "厨房",
+      "disabled": false,
+      "rect": {
+        "x": 0,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:1",
+      "label": "农场",
+      "disabled": false,
+      "rect": {
+        "x": 78,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:5",
+      "label": "生意",
+      "disabled": false,
+      "rect": {
+        "x": 156,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:6",
+      "label": "寻访",
+      "disabled": false,
+      "rect": {
+        "x": 234,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:4",
+      "label": "图鉴",
+      "disabled": false,
+      "rect": {
+        "x": 312,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "supply",
+      "label": "补给 · 小卖部",
+      "disabled": false,
+      "rect": {
+        "x": 339,
+        "y": 76,
+        "w": 46,
+        "h": 50
+      }
+    },
+    {
+      "id": "inventory",
+      "label": "仓库",
+      "disabled": false,
+      "rect": {
+        "x": 339,
+        "y": 131,
+        "w": 46,
+        "h": 50
+      }
+    },
+    {
+      "id": "workshop",
+      "label": "手艺",
+      "disabled": false,
+      "rect": {
+        "x": 339,
+        "y": 187,
+        "w": 46,
+        "h": 50
+      }
+    },
+    {
+      "id": "help",
+      "label": "帮助",
+      "disabled": false,
+      "rect": {
+        "x": 339,
+        "y": 243,
+        "w": 46,
+        "h": 50
+      }
+    }
+  ],
+  "farmLeftControls": [
+    {
+      "id": "settings",
+      "label": "设置",
+      "disabled": false,
+      "rect": {
+        "x": 333,
+        "y": 9,
+        "w": 54,
+        "h": 54
+      }
+    },
+    {
+      "id": "level",
+      "label": "查看厨房等级",
+      "disabled": false,
+      "rect": {
+        "x": 11,
+        "y": 11,
+        "w": 52,
+        "h": 52
+      }
+    },
+    {
+      "id": "farm:house",
+      "label": "打开收成表",
+      "disabled": false,
+      "rect": {
+        "x": 22,
+        "y": 91,
+        "w": 177,
+        "h": 208
+      }
+    },
+    {
+      "id": "farm:stall",
+      "label": "前往补给商店",
+      "disabled": false,
+      "rect": {
+        "x": 261,
+        "y": 161,
+        "w": 130,
+        "h": 128
+      }
+    },
+    {
+      "id": "farm:harvest",
+      "label": "打开收成账本",
+      "disabled": false,
+      "rect": {
+        "x": 256,
+        "y": 710,
+        "w": 122,
+        "h": 44
+      }
+    },
+    {
+      "id": "farm:fortune",
+      "label": "前往神社求签",
+      "disabled": false,
+      "rect": {
+        "x": 145,
+        "y": 708,
+        "w": 100,
+        "h": 44
+      }
+    },
+    {
+      "id": "farm:repair",
+      "label": "整修农场",
+      "disabled": false,
+      "rect": {
+        "x": 12,
+        "y": 710,
+        "w": 122,
+        "h": 44
+      }
+    },
+    {
+      "id": "nav:0",
+      "label": "厨房",
+      "disabled": false,
+      "rect": {
+        "x": 0,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:1",
+      "label": "农场",
+      "disabled": false,
+      "rect": {
+        "x": 78,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:5",
+      "label": "生意",
+      "disabled": false,
+      "rect": {
+        "x": 156,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:6",
+      "label": "寻访",
+      "disabled": false,
+      "rect": {
+        "x": 234,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:4",
+      "label": "图鉴",
+      "disabled": false,
+      "rect": {
+        "x": 312,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    }
+  ],
+  "farmMiddleControls": [
+    {
+      "id": "settings",
+      "label": "设置",
+      "disabled": false,
+      "rect": {
+        "x": 333,
+        "y": 9,
+        "w": 54,
+        "h": 54
+      }
+    },
+    {
+      "id": "level",
+      "label": "查看厨房等级",
+      "disabled": false,
+      "rect": {
+        "x": 11,
+        "y": 11,
+        "w": 52,
+        "h": 52
+      }
+    },
+    {
+      "id": "farm:stall",
+      "label": "前往补给商店",
+      "disabled": false,
+      "rect": {
+        "x": 1,
+        "y": 161,
+        "w": 130,
+        "h": 128
+      }
+    },
+    {
+      "id": "farm:display",
+      "label": "打开纪念物陈列架",
+      "disabled": false,
+      "rect": {
+        "x": 313,
+        "y": 199,
+        "w": 102,
+        "h": 100
+      }
+    },
+    {
+      "id": "farm:harvest",
+      "label": "打开收成账本",
+      "disabled": false,
+      "rect": {
+        "x": 256,
+        "y": 710,
+        "w": 122,
+        "h": 44
+      }
+    },
+    {
+      "id": "farm:fortune",
+      "label": "前往神社求签",
+      "disabled": false,
+      "rect": {
+        "x": 145,
+        "y": 708,
+        "w": 100,
+        "h": 44
+      }
+    },
+    {
+      "id": "farm:repair",
+      "label": "整修农场",
+      "disabled": false,
+      "rect": {
+        "x": 12,
+        "y": 710,
+        "w": 122,
+        "h": 44
+      }
+    },
+    {
+      "id": "nav:0",
+      "label": "厨房",
+      "disabled": false,
+      "rect": {
+        "x": 0,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:1",
+      "label": "农场",
+      "disabled": false,
+      "rect": {
+        "x": 78,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:5",
+      "label": "生意",
+      "disabled": false,
+      "rect": {
+        "x": 156,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:6",
+      "label": "寻访",
+      "disabled": false,
+      "rect": {
+        "x": 234,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:4",
+      "label": "图鉴",
+      "disabled": false,
+      "rect": {
+        "x": 312,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    }
+  ],
+  "farmRightControls": [
+    {
+      "id": "settings",
+      "label": "设置",
+      "disabled": false,
+      "rect": {
+        "x": 333,
+        "y": 9,
+        "w": 54,
+        "h": 54
+      }
+    },
+    {
+      "id": "level",
+      "label": "查看厨房等级",
+      "disabled": false,
+      "rect": {
+        "x": 11,
+        "y": 11,
+        "w": 52,
+        "h": 52
+      }
+    },
+    {
+      "id": "farm:shrine",
+      "label": "打开神社委托簿",
+      "disabled": false,
+      "rect": {
+        "x": 118,
+        "y": 161,
+        "w": 82,
+        "h": 137
+      }
+    },
+    {
+      "id": "farm:display",
+      "label": "打开纪念物陈列架",
+      "disabled": false,
+      "rect": {
+        "x": -49,
+        "y": 199,
+        "w": 102,
+        "h": 100
+      }
+    },
+    {
+      "id": "farm:harvest",
+      "label": "打开收成账本",
+      "disabled": false,
+      "rect": {
+        "x": 256,
+        "y": 710,
+        "w": 122,
+        "h": 44
+      }
+    },
+    {
+      "id": "farm:fortune",
+      "label": "前往神社求签",
+      "disabled": false,
+      "rect": {
+        "x": 145,
+        "y": 708,
+        "w": 100,
+        "h": 44
+      }
+    },
+    {
+      "id": "farm:repair",
+      "label": "整修农场",
+      "disabled": false,
+      "rect": {
+        "x": 12,
+        "y": 710,
+        "w": 122,
+        "h": 44
+      }
+    },
+    {
+      "id": "nav:0",
+      "label": "厨房",
+      "disabled": false,
+      "rect": {
+        "x": 0,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:1",
+      "label": "农场",
+      "disabled": false,
+      "rect": {
+        "x": 78,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:5",
+      "label": "生意",
+      "disabled": false,
+      "rect": {
+        "x": 156,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:6",
+      "label": "寻访",
+      "disabled": false,
+      "rect": {
+        "x": 234,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    },
+    {
+      "id": "nav:4",
+      "label": "图鉴",
+      "disabled": false,
+      "rect": {
+        "x": 312,
+        "y": 766,
+        "w": 78,
+        "h": 78
+      }
+    }
+  ],
+  "inspected": [
+    {
+      "id": "ingredient",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [
+        "调味料"
+      ],
+      "panelText": "×调味料已选 0 / 1 · 每种消耗一份1食盐土去商店补货选好了 ",
+      "page": [
+        "厨房"
+      ],
+      "controls": [
+        "×",
+        "1食盐土",
+        "去商店补货",
+        "选好了"
+      ]
+    },
+    {
+      "id": "level",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [
+        "厨房升级"
+      ],
+      "panelText": "×厨房升级当前 Lv.1破旧茅草房屋›升级后 Lv.2略微整齐木板房屋调味料槽 1 → 2 个厨具可升 Lv.2，调理更快（另付 CP）先将下方六件厨具升至要求等级。✓保温灯Lv.1 / Lv.1·平底锅未拥有 / Lv.1·水煮锅未拥有 / Lv.1·油炸锅未拥有 / Lv.1·烤箱未拥有 / Lv.1·炖锅未拥有 / Lv.1升级 10,000 CP还差 8,760 CP厨具条件未齐去商店 ",
+      "page": [
+        "厨房"
+      ],
+      "controls": [
+        "×",
+        "厨具条件未齐",
+        "去商店"
+      ]
+    },
+    {
+      "id": "clean",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [
+        "照顾小厨房"
+      ],
+      "panelText": " 照顾小厨房厨房脏污0%距离变脏还有 36 小时 0 分钟脏污随时间累积，本周期 36 小时变脏；手艺延长在下次打扫后生效。提前打扫按当前脏污比例收费，打扫后从 0% 重新计时。现在很干净，暂时不用花钱返回无需打扫",
+      "page": [
+        "厨房"
+      ],
+      "controls": [
+        "返回",
+        "无需打扫"
+      ]
+    },
+    {
+      "id": "tool:0",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [
+        "!确认一下"
+      ],
+      "panelText": " !确认一下还有 24 只未收取，重开会放弃它们。 保温灯 · 鸡蛋 不放调味料 调理 120分 · 花费 0 CP 每枚破壳后保鲜 240 分钟（保温灯不焦化）查看本批候选 · 1种（未知0）这批可能出现这些伙伴，数量不固定。本批有机会出现：开火时先判断本批能否出现它，再分配24枚蛋；满足条件不代表每批都有。鸡宝可能出现等待与照料可能改变结果破壳时脏污可能病变；防腐剂及原有免疫有效。保温灯不焦化；其他厨具超过本批保鲜时刻可能变化。温泉蛋鸡在破壳10秒后才处理会变为水煮蛋鸡，保鲜不延长此窗口。安心等候 · 需学会夜间慢做用时增加25%，破壳后至少保鲜8小时；不防止脏污病变。保鲜与病变保护延长保鲜 · 0分钟开启：破壳后240分钟；关闭：破壳后240分钟。选择只影响下一批。安心等候时至少480分钟。持家病变保护 ",
+      "page": [
+        "厨房"
+      ],
+      "controls": [
+        "鸡宝可能出现",
+        "继续照顾",
+        "放弃并重开"
+      ]
+    },
+    {
+      "id": "supply",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [
+        "鸡宝小卖部"
+      ],
+      "panelText": "[Audit records the destination only; collection content omitted.]",
+      "page": [
+        "厨房"
+      ],
+      "controls": []
+    },
+    {
+      "id": "inventory",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [
+        "农场收成表"
+      ],
+      "panelText": "×农场收成表鸡宝鸭宝点头像查看档案仅看有库存外出伙伴不可售 · 鸡鸭一起选全选每种留一只为采购留货C001鸡宝售价 3 CP库存 3−0+最大合计 0 只（含鸡鸭）0 CP货款 0 CP · 招牌 +0 · 经营 +0使用经营奖励（整筐优先，再拼盘）确认出售清空选择 ",
+      "page": [
+        "厨房"
+      ],
+      "controls": [
+        "×",
+        "鸡宝",
+        "鸭宝",
+        "仅看有库存",
+        "全选",
+        "每种留一只",
+        "为采购留货",
+        "",
+        "−",
+        "+",
+        "最大",
+        "确认出售",
+        "清空选择"
+      ]
+    },
+    {
+      "id": "workshop",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [
+        "厨房手艺"
+      ],
+      "panelText": "[Audit records the destination only; collection content omitted.]",
+      "page": [
+        "厨房"
+      ],
+      "controls": []
+    },
+    {
+      "id": "help",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [
+        "鸡宝照顾手册"
+      ],
+      "panelText": "[Audit records the destination only; collection content omitted.]",
+      "page": [
+        "厨房"
+      ],
+      "controls": []
+    },
+    {
+      "id": "alarm",
+      "scene": "kitchen",
+      "visible": true,
+      "heading": [],
+      "panelText": " ",
+      "page": [
+        "厨房"
+      ],
+      "controls": []
+    },
+    {
+      "id": "farm:house",
+      "scene": "farm",
+      "visible": true,
+      "heading": [
+        "农场收成表"
+      ],
+      "panelText": "×农场收成表鸡宝鸭宝点头像查看档案仅看有库存外出伙伴不可售 · 鸡鸭一起选全选每种留一只为采购留货C001鸡宝售价 3 CP库存 3−0+最大合计 0 只（含鸡鸭）0 CP货款 0 CP · 招牌 +0 · 经营 +0使用经营奖励（整筐优先，再拼盘）确认出售清空选择 ",
+      "page": [
+        "农场"
+      ],
+      "controls": [
+        "×",
+        "鸡宝",
+        "鸭宝",
+        "仅看有库存",
+        "全选",
+        "每种留一只",
+        "为采购留货",
+        "",
+        "−",
+        "+",
+        "最大",
+        "确认出售",
+        "清空选择"
+      ]
+    },
+    {
+      "id": "farm:stall",
+      "scene": "farm",
+      "visible": true,
+      "heading": [
+        "鸡宝小卖部"
+      ],
+      "panelText": "[Audit records the destination only; collection content omitted.]",
+      "page": [
+        "厨房"
+      ],
+      "controls": []
+    },
+    {
+      "id": "farm:harvest",
+      "scene": "farm",
+      "visible": true,
+      "heading": [
+        "农场收成表"
+      ],
+      "panelText": "×农场收成表鸡宝鸭宝点头像查看档案仅看有库存外出伙伴不可售 · 鸡鸭一起选全选每种留一只为采购留货C001鸡宝售价 3 CP库存 3−0+最大合计 0 只（含鸡鸭）0 CP货款 0 CP · 招牌 +0 · 经营 +0使用经营奖励（整筐优先，再拼盘）确认出售清空选择 ",
+      "page": [
+        "农场"
+      ],
+      "controls": [
+        "×",
+        "鸡宝",
+        "鸭宝",
+        "仅看有库存",
+        "全选",
+        "每种留一只",
+        "为采购留货",
+        "",
+        "−",
+        "+",
+        "最大",
+        "确认出售",
+        "清空选择"
+      ]
+    },
+    {
+      "id": "farm:fortune",
+      "scene": "farm",
+      "visible": true,
+      "heading": [
+        "神社御神签"
+      ],
+      "panelText": "[Audit records the destination only; collection content omitted.]",
+      "page": [
+        "农场"
+      ],
+      "controls": []
+    },
+    {
+      "id": "farm:repair",
+      "scene": "farm",
+      "visible": true,
+      "heading": [
+        "!确认一下"
+      ],
+      "panelText": " !确认一下农场完好度 100% 整修需要 0 CP。 确认后恢复农场完好度。取消确认",
+      "page": [
+        "农场"
+      ],
+      "controls": [
+        "取消",
+        "确认"
+      ]
+    },
+    {
+      "id": "farm:shrine",
+      "scene": "farm",
+      "visible": true,
+      "heading": [
+        "神社委托簿"
+      ],
+      "panelText": "[Audit records the destination only; collection content omitted.]",
+      "page": [
+        "农场"
+      ],
+      "controls": []
+    },
+    {
+      "id": "farm:display",
+      "scene": "farm",
+      "visible": true,
+      "heading": [
+        "收藏册"
+      ],
+      "panelText": "[Audit records the destination only; collection content omitted.]",
+      "page": [
+        "农场"
+      ],
+      "controls": []
+    }
+  ]
+}

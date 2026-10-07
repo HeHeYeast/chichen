@@ -3,6 +3,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createSaveStore,parseBackup,makeBackup} from '../web/save-store.js';
 import {freshState,startBatch,updateBatch,collect} from '../web/engine.js';
+import {execute} from '../web/game-commands.js';
 const NOW=1789290000000,KEY='player';
 function setup(entries={}){
   const data=new Map(Object.entries(entries));let fail='';
@@ -89,4 +90,19 @@ test('native errors stay locked and native write failure is not treated as succe
   const store=createSaveStore({native,now:()=>NOW});assert.equal(store.load().state,null);
   reply={status:'ok',raw:raw(800)};const state=store.load().state;assert.equal(state.cp,800);
   state.cp++;failWrite=true;assert.throws(()=>store.write(state),/write failed/);
+});
+test('a native transaction reads the durable save once and still refuses an outside change',()=>{
+  let durable=null,loads=0,commits=0;
+  const native={
+    loadSave:()=>{loads++;return JSON.stringify(durable===null?{status:'empty'}:{status:'ok',raw:durable});},
+    commitGame:(next,revision)=>{commits++;if(durable!==null&&JSON.parse(durable).meta.revision!==revision)return JSON.stringify({ok:false,code:'REVISION_CONFLICT',message:'conflict'});durable=next;return JSON.stringify({ok:true,committed:true});},
+  };
+  const store=createSaveStore({native,now:()=>NOW});let state=store.load().state;
+  for(let i=1;i<=3;i++){
+    loads=0;state=execute({state,store,command:{type:'test'},now:NOW+i,reduce:s=>{s.cp+=1;return true;}}).state;
+    assert.equal(loads,1,'one durable read per transaction (was three)');assert.equal(JSON.parse(durable).cp,state.cp);
+  }
+  const outside=JSON.parse(durable);outside.cp+=50;durable=JSON.stringify(outside);
+  assert.throws(()=>execute({state,store,command:{type:'test'},now:NOW+9,reduce:s=>{s.cp+=1;return true;}}),{code:'REVISION_CONFLICT'});
+  assert.equal(commits,3,'a changed durable save is never overwritten');assert.equal(JSON.parse(durable).cp,outside.cp);
 });

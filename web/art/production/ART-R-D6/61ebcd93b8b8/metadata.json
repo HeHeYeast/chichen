@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "processingVersion": 1,
+  "kind": "species",
+  "identityKey": "1:76",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceBounds": [
+    267,
+    402,
+    971,
+    1038
+  ],
+  "components": [
+    {
+      "area": 303753,
+      "bbox": [
+        267,
+        402,
+        971,
+        1038
+      ]
+    }
+  ],
+  "sourceLayersUnavailable": true,
+  "variants": {
+    "full": {
+      "path": "/web/art/production/ART-R-D6/61ebcd93b8b8/full.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "e7a4891fb84ef75c6f793983052c9766b80d5f8c91e229043a176a0d4dbda6fe",
+      "visibleBounds": [
+        51,
+        101,
+        461,
+        471
+      ],
+      "centroid": [
+        0.5211579803399004,
+        0.5849527507944339
+      ],
+      "scale": 0.5818181818181819,
+      "translation": [
+        -104.34545454545457,
+        -132.89090909090913
+      ],
+      "bounds": [
+        51,
+        101,
+        410,
+        370
+      ],
+      "groundAnchor": [
+        0.5,
+        0.919921875
+      ],
+      "available": true
+    },
+    "portrait": {
+      "path": "/web/art/production/ART-R-D6/61ebcd93b8b8/portrait.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "03d757696068f3e1537c07e983407fef0c33de121651572f92d4a741886b1e75",
+      "visibleBounds": [
+        30,
+        40,
+        225,
+        216
+      ],
+      "centroid": [
+        0.5171438320607072,
+        0.5240399744882346
+      ],
+      "scale": 0.27636363636363637,
+      "translation": [
+        -43.789090909090916,
+        -71.09818181818181
+      ],
+      "bounds": [
+        30,
+        40,
+        195,
+        176
+      ],
+      "groundAnchor": [
+        0.5,
+        0.84375
+      ],
+      "available": true
+    },
+    "silhouette": {
+      "path": "/web/art/production/ART-R-D6/61ebcd93b8b8/silhouette.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "d4aa2c43b77c0e411aca98f99bb5cbc5630f8be9a87c2db3194f30d10072e8b1",
+      "visibleBounds": [
+        30,
+        40,
+        225,
+        216
+      ],
+      "centroid": [
+        0.5171438320607072,
+        0.5240399744882346
+      ],
+      "scale": 0.27636363636363637,
+      "translation": [
+        -43.789090909090916,
+        -71.09818181818181
+      ],
+      "bounds": [
+        30,
+        40,
+        195,
+        176
+      ],
+      "groundAnchor": [
+        0.5,
+        0.84375
+      ],
+      "available": true
+    }
+  },
+  "source": {
+    "sourceHash": "9b509977dbe9f6546e4794c9c9492e40054611164f3dd6b73f448691ca3f60d0",
+    "provider": "native-imagegen"
+  }
+}

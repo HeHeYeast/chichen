@@ -4,7 +4,7 @@ import * as E from '../web/engine.js';
 import {earnedSources} from '../web/progression.js';
 import {departRegional} from '../web/regional-exploration.js';
 import {claimTrip} from '../web/exploration.js';
-import {identifyMaterial,prepareRegionalRecipe} from '../web/regional-methods.js';
+import {identifyMaterial,prepareRegionalRecipe,regionalRecipeInfo} from '../web/regional-methods.js';
 import {makeBackup,parseBackup} from '../web/save-store.js';
 
 const NOW=1800000000000,RECIPE='REC-V-C1',KEY='0:128';
@@ -21,7 +21,8 @@ function readyState(){
     E.advanceWorld(s,at,()=>.99);claimTrip(s,s.progress.trip.id,{},at,()=>.99);
     if(i===0)identifyMaterial(s,75);
   }
-  assert.ok(s.expansion.methods.full.includes(RECIPE));
+  // A one-ingredient entry dish is fully known once identification reveals its direction.
+  assert.ok(regionalRecipeInfo(s,RECIPE).met);
   return E.normalizeSave(s,at);
 }
 function start(s,random=()=>.9,at=s.batch?.ends+4000||s.progress.trip.endAt){

@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "processingVersion": 1,
+  "kind": "materials",
+  "identityKey": null,
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceBounds": [
+    128,
+    181,
+    1134,
+    1102
+  ],
+  "components": [
+    {
+      "area": 520522,
+      "bbox": [
+        128,
+        181,
+        1134,
+        1102
+      ]
+    }
+  ],
+  "sourceLayersUnavailable": true,
+  "variants": {
+    "ingredient-icon": {
+      "path": "/web/art/production/ART-MAT-77/0bf94ba5fbae/ingredient-icon.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "4680db00ecd8f4c3f5aad29f9775f661043f850b703ba3b8652cdf62d985dae1",
+      "visibleBounds": [
+        16,
+        20,
+        113,
+        109
+      ],
+      "centroid": [
+        0.44886230837290586,
+        0.5747606176876454
+      ],
+      "scale": 0.09669980119284294,
+      "translation": [
+        3.622425447316104,
+        2.497335984095429
+      ],
+      "bounds": [
+        16,
+        20,
+        97,
+        89
+      ],
+      "groundAnchor": [
+        0.5,
+        0.8515625
+      ],
+      "available": true
+    },
+    "specimen-cutout": {
+      "path": "/web/art/production/ART-MAT-77/0bf94ba5fbae/specimen-cutout.png",
+      "width": 256,
+      "height": 192,
+      "sha256": "c7c0103f65cd0941353e1cc3db5f5c85ec28f1385e6c563b3456a73f0014b93c",
+      "visibleBounds": [
+        48,
+        23,
+        207,
+        169
+      ],
+      "centroid": [
+        0.4541943772603567,
+        0.5791627133795936
+      ],
+      "scale": 0.15843648208469058,
+      "translation": [
+        27.720130293159606,
+        -5.677003257328995
+      ],
+      "bounds": [
+        48,
+        23,
+        159,
+        146
+      ],
+      "groundAnchor": [
+        0.5,
+        0.8802083333333334
+      ],
+      "available": true
+    },
+    "shop-bundle": {
+      "path": "/web/art/production/ART-MAT-77/0bf94ba5fbae/shop-bundle.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "b21e68629efbe23f5f77cd23b2cdb76e2ef4ca69b816f86cdfe168bd64719c62",
+      "visibleBounds": [
+        30,
+        39,
+        225,
+        217
+      ],
+      "centroid": [
+        0.444711834059248,
+        0.572808503233789
+      ],
+      "scale": 0.19339960238568588,
+      "translation": [
+        5.244850894632208,
+        3.9946719681908576
+      ],
+      "bounds": [
+        30,
+        39,
+        195,
+        178
+      ],
+      "groundAnchor": [
+        0.5,
+        0.84765625
+      ],
+      "available": true
+    }
+  },
+  "source": {
+    "sourceHash": "819b3a80667577a6d7dd7066f637034d9e52cee4899d3c3eb4e20f0f1cff587f",
+    "provider": "native-imagegen"
+  }
+}

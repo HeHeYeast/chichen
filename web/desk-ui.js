@@ -6,6 +6,7 @@ import {regularInfo} from './regulars.js';
 import {projectInfo} from './projects.js';
 import {collectionProgress} from './collection-progress.js';
 import {CONTENT_TEXT} from './content-registry.js';
+import {interfaceIcon} from './ui-icons.js';
 
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const remaining=ms=>{const mins=Math.max(0,Math.ceil(ms/60000));return mins>=60?`${Math.floor(mins/60)}小时${mins%60}分`:`${mins}分钟`;};
@@ -29,11 +30,11 @@ export function renderDesk(root,s,now,{openTrade,openExplore,openBooks,goKitchen
   const focus=document.activeElement?.dataset?.desk;
   root.innerHTML=`<section class="desk paper" aria-label="今日小厨房"><h2>今日小厨房</h2>
     ${page<=1?'':'<p class="desk-note">'+esc(summary||({5:m.business,6:m.explore,4:'永久收录与库存分开，卖光仍然收录。'})[page]||'核对当前页面的条件与安排。')+'</p>'}
-    ${page<=1?`<button data-desk="kitchen"><span>厨房</span><strong>${esc(m.pot)}</strong></button>
-    <button data-desk="trade"><span>生意</span><strong>${esc(m.business)}</strong></button>
-    <button data-desk="explore"><span>寻访</span><strong>${esc(m.explore)}</strong></button>`:''}
+    ${page<=1?`<button data-desk="kitchen">${interfaceIcon('kitchen')}<span>厨房</span><strong>${esc(m.pot)}</strong></button>
+    <button data-desk="trade">${interfaceIcon('shop')}<span>生意</span><strong>${esc(m.business)}</strong></button>
+    <button data-desk="explore">${interfaceIcon('explore')}<span>寻访</span><strong>${esc(m.explore)}</strong></button>`:''}
     <div class="desk-target"><span>置顶目标</span>${m.target?`<button data-desk="target"><strong>${esc(m.target.label)} · ${esc(m.target.name)}</strong><small>${esc(m.target.detail)}</small></button>`:'<p>在收藏、常客或项目页可以置顶一个想继续的目标（只占一个位置）。</p>'}</div>
-    <p class="desk-note">确认操作在左侧正文中进行；这张便签只汇总当前安排。</p></section>`;
+    <div class="desk-flourish" aria-hidden="true">${interfaceIcon('kitchen')}<span>一锅一味，慢慢收集</span></div></section>`;
   root.querySelector('[data-desk="kitchen"]')?.addEventListener('click',goKitchen);
   root.querySelector('[data-desk="trade"]')?.addEventListener('click',()=>openTrade('business'));
   root.querySelector('[data-desk="explore"]')?.addEventListener('click',openExplore);

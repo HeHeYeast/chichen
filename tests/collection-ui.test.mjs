@@ -8,12 +8,14 @@ const NOW=1800000000000;
 test('bulk sale includes both species ledgers, skips zero stock and retains one of every owned variety',()=>{
   const s=E.freshState(NOW);s.farm={'0:0':6,'0:4':1,'0:117':3,'1:0':4,'1:64':1,'0:3':0};s.total={...s.farm,'0:3':2};
   E.startBatch(s,0,NOW,()=>.5);const before=structuredClone(s);
-  assert.deepEqual(bulkSaleSelection(s),{'0:0':6,'0:4':1,'0:117':3,'1:0':4,'1:64':1});
-  const kept=bulkSaleSelection(s,true);assert.deepEqual(kept,{'0:0':5,'0:117':2,'1:0':3});assert.deepEqual(s,before);
+  // 「全选」 sells down to the locked number, one per kind unless the player changed it
+  const kept=bulkSaleSelection(s);assert.deepEqual(kept,{'0:0':5,'0:117':2,'1:0':3});assert.deepEqual(s,before);
+  const custom=structuredClone(s);custom.expansion.inventoryPolicy.locks={'0:4':0,'0:0':3};
+  assert.deepEqual(bulkSaleSelection(custom),{'0:0':3,'0:4':1,'0:117':2,'1:0':3});
   const amount=saleSelectionSummary(s,kept);E.sell(s,amount.selection);
   assert.equal(s.cp,before.cp+amount.income);assert.deepEqual(s.total,before.total);assert.deepEqual(s.batch,before.batch);
-  assert.deepEqual(s.farm,{'0:0':1,'0:4':1,'0:117':1,'1:0':1,'1:64':1,'0:3':0});assert.deepEqual(bulkSaleSelection(s,true),{});
-  E.sell(s,bulkSaleSelection(s));assert.ok(Object.values(s.farm).every(n=>n===0));assert.deepEqual(s.total,before.total);
+  assert.deepEqual(s.farm,{'0:0':1,'0:4':1,'0:117':1,'1:0':1,'1:64':1,'0:3':0});assert.deepEqual(bulkSaleSelection(s),{});
+  s.expansion.inventoryPolicy.keepOne=false;E.sell(s,bulkSaleSelection(s));assert.ok(Object.values(s.farm).every(n=>n===0));assert.deepEqual(s.total,before.total);
   assert.deepEqual(bulkSaleSelection(s),{});
 });
 

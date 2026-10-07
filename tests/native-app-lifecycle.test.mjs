@@ -16,7 +16,7 @@ const NOW=1800000000000;
 function harness(){
   const events=new Map(),calls={saved:0,music:0,paused:0,resumed:0,settings:0,close:0,permissions:0,alerts:[],announcements:[],changed:[]};
   const context={
-    structuredClone,execute,review:false,committedState:null,saveStore:{write(candidate){calls.saved++;if(!context.saveWorks)throw Error('磁盘空间不足');}},window:{addEventListener:(type,fn)=>events.set(type,fn)},
+    structuredClone,execute,review:false,committedState:null,pendingHarvest:new Set(),flushHarvest(){},saveStore:{write(candidate){calls.saved++;if(!context.saveWorks)throw Error('磁盘空间不足');}},window:{addEventListener:(type,fn)=>events.set(type,fn)},
     state:E.freshState(NOW),E,page:0,panel:'',loaded:true,recoveryError:'',lastSaveError:'磁盘空间不足',nativeKitchenPending:false,
     initialSave:{},time:NOW,saveWorks:true,permission:true,notifications:true,
     dialogs:{children:[]},panels:{querySelector:()=>({click(){context.panel='';}})},

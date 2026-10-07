@@ -1,0 +1,133 @@
+/* Shop family: independent painted surfaces; original characters and global nav. */
+.family-art{display:block;object-fit:contain;pointer-events:none}
+.family-character{display:block;width:100%;height:100%;object-fit:contain;overflow:visible}
+.family-basket{display:block;position:relative;width:100%;height:100%;isolation:isolate}
+.family-vessel-base{position:absolute;left:0;bottom:0;width:100%;height:56%;object-fit:fill}
+.family-basket>.family-character{position:absolute;left:14%;width:72%;bottom:22%;height:78%;filter:drop-shadow(0 2px 1px #79553320)}
+.family-vessel-front{position:absolute;left:1%;bottom:2%;width:98%;height:39%;object-fit:fill}
+.family-stamp{display:inline-grid;place-items:center;position:relative;width:105px;height:43px;flex:none;color:#6b8050;font-size:16px;font-weight:850;transform:rotate(-4deg)}
+.family-stamp>.family-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.family-stamp>span{position:relative}.family-stamp.is-active{color:#a76724;transform:rotate(2deg)}.family-stamp.is-idle{color:#9d907c}
+.family-avatar{width:63px;height:63px;flex:none;position:relative;display:block}
+.family-avatar>.family-art:first-child{position:absolute;inset:0;width:100%;height:100%}
+.family-avatar>.family-character,.family-avatar>.family-unknown{position:absolute;left:17%;bottom:13%;width:66%;height:70%}
+.family-guest-head{display:flex;align-items:center;gap:13px}.family-guest-head .family-avatar{width:72px;height:72px}
+.shop-regulars .bs-sub-paper{padding-top:20px}
+#panels .shop-regulars .regulars-card{min-height:126px;padding:22px 0;gap:12px}
+#panels .shop-regulars .regulars-card-text strong{font-size:19px;line-height:1.4}
+.shop-regulars .regulars-read-count{font-size:13px;font-weight:700;color:#947e5b}
+.shop-regulars .has-unread .regulars-read-count{color:#b8761d}
+.guest-next{color:#a68b60;font-size:29px;font-weight:500}
+.shop-regulars .regulars-now{margin-top:25px}.shop-regulars .regulars-story{font-size:18px;line-height:2;padding:12px 0;color:#604a33}
+.shop-regulars .regulars-next{font-size:13px;margin-top:22px;color:#968166}
+.shop-orders .orders-card{display:flow-root;position:relative;min-height:165px;padding-top:10px}
+.order-examples{float:left;width:93px;margin:9px 14px 12px 0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.order-examples>span{display:flex;flex-direction:column;align-items:center;width:100%}
+.order-examples .family-basket{height:83px;width:90px}
+.order-examples>span:nth-child(n+2){display:none}
+.order-examples small{font-size:11px;color:#927b58;text-align:center;line-height:1.4;margin-top:3px}
+.order-examples>.family-art{width:72px;height:85px}
+#panels .shop-orders .orders-card h3{font-size:21px;margin-top:7px}
+.shop-orders .orders-groups{font-size:15px;margin:9px 0}
+.shop-orders .orders-card .orders-note{clear:both;font-size:12px;margin:11px 0}
+.shop-orders .orders-actions{justify-content:flex-start;margin-top:8px;clear:both}
+.shop-orders .orders-actions .orange{min-width:109px}
+.order-request{font-size:12px;color:#a48c6c}.order-request[open]{clear:both}.order-request p{font-size:13px}
+.shop-orders .orders-heading{margin-top:0;font-size:22px}
+.shop-orders .orders-card .orders-variant{clear:both;display:block;font-size:13px}
+.shop-orders .orders-variant select{max-width:100%;min-height:40px}
+.shop-orders .orders-art{width:54px;height:60px}
+/* Keep the basket alongside the request/action, as in the approved clipboard. */
+.shop-orders .orders-card{display:grid;grid-template-columns:88px minmax(0,1fr);column-gap:12px;row-gap:4px}
+.shop-orders .orders-card>.order-examples,.shop-orders .orders-card>[data-proposal-art]{grid-column:1;grid-row:1/4;align-self:center}
+.shop-orders .orders-card .order-examples{float:none;width:88px;margin:0}
+.shop-orders .orders-card>header{grid-column:2;grid-row:1}
+.shop-orders .orders-card>.orders-groups{grid-column:2;grid-row:2;margin:3px 0}
+.shop-orders .orders-card>.orders-actions{grid-column:2;grid-row:3;margin:0;gap:3px;flex-wrap:wrap}
+#panels .shop-orders .orders-actions button{flex:0 1 auto;min-width:44px;padding:7px 4px;font-size:12px}
+#panels .shop-orders .orders-actions .orange{min-width:84px;font-size:16px;padding:7px 12px}
+.shop-orders .orders-card>.orders-note{grid-column:1/-1;grid-row:5;margin:6px 0;font-size:11px;line-height:1.6}
+.shop-orders .orders-card>.order-request{grid-column:1/-1;grid-row:6}
+.shop-orders .orders-card>.orders-variant{grid-column:1/-1;grid-row:3;margin:5px 0}
+.shop-orders .orders-card.is-proposal:has(.orders-variant)>.orders-actions{grid-row:4;grid-column:1/-1}
+.shop-orders .orders-card.is-proposal>[data-proposal-art]{grid-row:1/3}
+.shop-orders .orders-card>.orders-note{margin-top:8px;margin-bottom:0}
+.shop-orders .orders-card>small{grid-column:1/-1;grid-row:7}
+.shop-orders .orders-card>[data-order-display]{grid-column:2;grid-row:3}
+.shop-subpage .family-empty{text-align:center;padding:36px 4px;color:#94816b;line-height:1.8}
+.family-empty>.family-art{height:94px;width:100%;margin-bottom:24px}
+#panels>.shop-projects,#panels>.shop-ledger{background:#fff9e4}
+.shop-projects .projects-scroll,.shop-ledger .business-scroll{padding:0 10px 12px;flex:1;min-height:0;overflow:auto;scrollbar-width:thin}
+.shop-projects .bs-sub-paper{border-image-source:url('/web/art/golden-business/family-project-board.png');border-image-slice:80 44 44 fill;border-width:35px 15px 16px;padding:14px 17px 25px;min-height:100%}
+.shop-projects .projects-head{text-align:center;margin-bottom:22px}
+#panels .shop-projects .projects-head h3{font-size:26px;line-height:1.4;margin:6px 0 12px;font-weight:900}
+.shop-projects .projects-head .projects-note{font-size:12px;line-height:1.65}
+.project-feature{text-align:center}.project-feature-art{width:100%;height:124px;margin:16px auto 12px}
+.project-feature p{margin:20px 0 12px}.project-feature>.orange{width:185px}
+.project-other-heading{text-align:center;margin:32px 0 14px;color:#8e795d;font-size:15px}
+#panels .shop-projects .projects-card{width:100%;display:flex;align-items:center;gap:12px;padding:12px 4px;min-height:84px;border:0;border-radius:0;box-shadow:none;background:url('/web/art/golden-business/v2-divider.png') bottom/100% 2px no-repeat;text-align:left;color:#634930}
+.projects-card>.family-art{width:42px;height:50px}.projects-card>span{flex:1;display:flex;flex-direction:column;gap:8px}.projects-card strong{font-size:17px}.projects-card small{font-size:12px}.projects-card>b{font-size:24px;color:#a59174}
+.shop-projects .projects-stages{gap:18px}
+.shop-projects .projects-stage{background:none;border:0;border-radius:0;padding:0 0 15px;opacity:1;background:url('/web/art/golden-business/v2-divider.png') bottom/100% 2px no-repeat}
+.shop-projects .projects-stage.is-current{order:-1}
+.shop-projects .projects-stage>header{display:flex;justify-content:center;margin-bottom:15px}
+.projects-stage>details>summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;min-height:52px;font-size:13px;color:#99856c}
+.projects-stage>details>summary .family-stamp{width:98px;height:39px;font-size:14px}
+.project-stage-art{height:95px;width:100%;margin:8px 0 16px}
+.project-delivery-slots{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;margin:18px 0}
+.project-delivery-slots>div{width:108px;text-align:center;display:flex;align-items:center;flex-direction:column;gap:5px}
+.project-delivery-slots .family-basket{width:108px;height:105px}.project-delivery-slots>.family-art,.project-delivery-slots>div>.family-art{width:70px;height:90px}.project-delivery-slots strong{font-size:14px}.project-delivery-slots small{font-size:13px;color:#a07e48}
+.shop-projects .projects-checks{line-height:1.7;margin:14px 0;padding:0;font-size:14px}
+.shop-projects .projects-checks li{padding:4px 0;display:flex;align-items:center;gap:8px}.projects-checks .family-art{width:18px;height:20px;flex:none}
+.shop-projects .projects-delivery{font-size:13px;line-height:1.7;color:#927348}
+.project-funds{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin:22px 0;background:url('/web/art/golden-business/family-label.png') center/100% 100% no-repeat;padding:10px 8px}
+.project-funds .family-art{width:27px;height:27px}.project-funds strong{font-size:21px}.project-funds small{font-size:12px}
+.shop-projects .projects-actions{justify-content:center;gap:8px}
+.shop-projects .projects-actions button{flex:0 1 auto;max-width:230px;padding:10px 18px;min-height:54px}
+#panels .shop-projects .projects-actions button,#panels .shop-projects .project-feature button,#panels .shop-projects .projects-portraits>button{min-height:49px;box-shadow:none;border:0;background:none;border-radius:0;color:#8f7554;font-weight:750}
+#panels .shop-projects .projects-actions .orange,#panels .shop-projects .project-feature .orange,#panels .shop-ledger footer .orange{background:url('/web/art/golden-business/v2-action.png') center/100% 100% no-repeat;color:#684322;font-size:17px;font-weight:850;padding:10px 16px}
+#panels .shop-subpage button:disabled{opacity:.42;cursor:default}
+.shop-projects .projects-locked,.shop-projects .projects-portraits{border:0;border-radius:0;background:none;padding:8px 0}
+.shop-projects .projects-pick{background:none;border-radius:0;padding:12px 0;border-bottom:0}.shop-projects .projects-art{width:49px;height:55px}
+.shop-projects .projects-stepper{gap:3px}.shop-projects .projects-stepper button{background:url('/web/art/golden-business/v2-nameplate.png') center/100% 100% no-repeat;border:0;border-radius:0;width:35px;min-height:44px}
+.shop-projects .projects-portrait{border:0;box-shadow:none;background:none}.shop-projects .projects-portrait.is-on{background:url('/web/art/golden-business/family-label.png') center/100% 100% no-repeat}
+.shop-subpage footer{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}.shop-subpage footer button{flex:0 1 auto}
+.shop-ledger .bs-sub-paper{border-image-source:url('/web/art/golden-business/family-receipt.png');border-image-slice:108 25 45 fill;border-width:44px 9px 19px;padding:13px 17px 24px;min-height:100%}
+.shop-ledger .family-receipt-head{text-align:center;margin:0 0 22px;padding:0;border:0;background:none}
+.shop-ledger .family-receipt-head h3{font-size:28px;font-weight:900;margin:7px 0 14px}
+.shop-ledger .family-receipt-head p{display:inline-block;background:url('/web/art/golden-business/v2-summary.png') center/100% 100% no-repeat;margin:0;padding:7px 24px;font-size:18px;font-weight:800}
+.receipt-sold{display:flex;align-items:flex-start;justify-content:center;gap:15px;flex-wrap:wrap;margin:10px 0 25px;padding-bottom:24px;background:url('/web/art/golden-business/v2-divider.png') bottom/100% 2px no-repeat}
+.receipt-sold>div{width:82px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:5px}.receipt-sold .family-basket{height:82px;width:82px}.receipt-sold strong{font-size:15px;line-height:1.4}.receipt-sold span{font-size:17px;font-weight:800}
+.shop-ledger .business-receipt-lines{margin:0;padding:0;background:none;border:0}
+.shop-ledger .business-receipt-lines>div{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:18px;gap:10px;border:0}
+.shop-ledger .business-receipt-lines dd{font-weight:850;margin:0;white-space:nowrap}.shop-ledger .business-receipt-lines dd small{font-size:12px}
+.shop-ledger .business-receipt-lines .business-receipt-total{background:url('/web/art/golden-business/v2-divider.png') top/100% 2px no-repeat;margin-top:15px;padding-top:22px;border-radius:0}
+.shop-ledger .business-receipt-total dt{font-size:21px;font-weight:850;color:#634026}.shop-ledger .business-receipt-total dd{display:flex;align-items:center;gap:6px;font-size:27px;color:#634026}.business-receipt-total .family-art{width:30px;height:30px}
+.receipt-status{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:22px 0 16px}.receipt-status small{font-size:12px;color:#9c8868}
+.receipt-result{font-size:14px;color:#7c8357;background:url('/web/art/golden-business/family-label.png') center/100% 100% no-repeat;padding:9px 12px}
+.receipt-next{font-size:13px;color:#9b825a}.receipt-visitors{margin:23px 0 8px}.receipt-visitors h4{font-size:15px;color:#8a7658}
+#panels .shop-ledger footer .orange{flex:0 1 auto;max-width:210px;min-width:160px;min-height:54px;box-shadow:none}
+.shop-ledger .family-receipt-head{margin-bottom:15px}.shop-ledger .receipt-sold{margin-bottom:16px;padding-bottom:18px}.shop-ledger .business-receipt-lines>div{padding:8px 0;font-weight:750}.shop-ledger .receipt-status{margin-top:15px}
+.shop-projects .projects-scroll,.shop-ledger .business-scroll{padding-top:18px}
+.shop-projects .bs-sub-paper{border-image-slice:40 40 40 fill;border-width:14px;padding-top:19px}
+.shop-ledger .bs-sub-paper{border-image-slice:20 20 40 fill;border-width:8px 8px 16px;padding-top:24px}
+.family-fastener{position:absolute;width:30px;height:40px;object-fit:contain;top:-28px;left:calc(50% - 15px);pointer-events:none}
+.shop-ledger .family-fastener{width:55px;height:43px;top:-30px;left:calc(50% - 27.5px)}
+#panels .shop-projects .projects-actions .orange{min-width:180px;min-height:54px}
+.shop-ledger .family-receipt-head .business-eyebrow{display:none}
+.shop-ledger .family-receipt-head h3{font-size:26px;margin:0 0 9px}
+.shop-ledger .family-receipt-head p{font-size:16px;padding:5px 22px}
+.shop-ledger .family-receipt-head{margin-bottom:9px}
+.shop-ledger .receipt-sold{margin:6px 0 12px;padding-bottom:14px}
+.shop-ledger .receipt-sold .family-basket{height:72px}.shop-ledger .receipt-sold strong{font-size:14px}
+.shop-ledger .business-receipt-lines>div{padding:7px 0}
+.shop-ledger .business-receipt-lines .business-receipt-total{margin-top:10px;padding-top:15px}
+.shop-ledger .receipt-status{margin:12px 0 8px}.shop-ledger .receipt-result{margin:6px 0;font-size:12px;padding:6px 10px}
+.shop-ledger .receipt-visitors{margin:12px 0 8px}.shop-ledger .receipt-visitors h4{margin:5px 0;font-size:13px}
+#panels .shop-ledger .receipt-visitors button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;box-shadow:none;padding:8px 0;color:#6b4f32}
+.receipt-visitors .family-art{width:39px;height:39px}.receipt-visitors small{display:block;margin-top:6px;color:#a07838}.shop-ledger .business-footer{margin:0}
+@media(min-width:700px){.shop-subpage>.scroll{width:100%;max-width:660px;align-self:center}.shop-subpage .bs-sub-header,.shop-subpage .trade-nav{max-width:660px;width:100%;align-self:center}.shop-subpage .bs-sub-paper{min-height:100%}}
+@media(min-width:700px){.shop-subpage .trade-nav{width:calc(100% - 32px)}}
+#panels .shop-ledger .receipt-orders{background:none;border:0;box-shadow:none;color:#95743f;padding:6px 0;min-height:44px;text-align:left;font-size:13px}
+@media(max-width:360px){.shop-projects .bs-sub-paper,.shop-ledger .bs-sub-paper{padding-left:9px;padding-right:9px}.family-avatar{width:53px;height:53px}#panels .shop-regulars .regulars-card-text strong{font-size:17px}.order-examples{width:78px;margin-right:10px}.order-examples .family-basket{width:76px;height:77px}.shop-orders .orders-card .orders-note{font-size:11px}.receipt-sold{gap:8px}.receipt-sold>div{width:70px}.receipt-sold .family-basket{width:70px;height:74px}.shop-ledger .business-receipt-lines>div{font-size:16px}.shop-ledger .business-receipt-total dd{font-size:23px}.project-delivery-slots{gap:8px}.project-delivery-slots>div{width:100px}}
+@media(prefers-reduced-motion:no-preference){#panels .shop-subpage button:active:not(:disabled){transform:scale(.96)}}

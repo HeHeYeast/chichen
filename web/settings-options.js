@@ -1,6 +1,20 @@
-export function settingsOptions({state:s,icon,platform}){
+// Settings content for the kit page: switch rows under painted section labels, then a grid of
+// painted shortcut tiles (no line icons), then one short save note.
+const ART='/web/art/';
+const TILE_ART={
+  workshop:'chef',journal:ART+'golden-ui/ic-calendar.png',guides:ART+'golden-journey/flag.png',manual:'book',
+  save:ART+'golden-journey/note.png',export:ART+'golden-journey/envelope.png',import:ART+'golden-journey/backpack.png',
+  device:ART+'golden-ui/ic-check.png',
+};
+// Each switch row starts with its painted picture (GPT work set b4-3).
+const ROW_ART={keepOne:'set-keep',music:'set-music',sound:'set-sound',alarm:'set-hatch',permission:'set-notify','background-help':'set-background'};
+export function settingsOptions({state:s,platform,sprite}){
   const status=platform.notificationStatus(),android=platform.info.android;
-  const toggle=(id,label,hint,on,glyph=id)=>`<div class="settings-switch-row"><span class="settings-symbol">${icon(glyph)}</span><div><strong>${label}</strong><small>${hint}</small></div><button class="game-switch ${on?'on':''}" role="switch" aria-checked="${on}" aria-label="${label}" data-toggle="${id}"><span>${on?'开':'关'}</span><i></i></button></div>`;
-  const action=(id,label,hint,glyph='save')=>`<button data-${id}>${icon(glyph)}<span>${label}<small>${hint}</small></span><b>›</b></button>`;
-  return `<div class="scroll settings-content"><div class="sound-console"><p class="settings-caption">声音与提醒</p>${toggle('music','背景音乐','厨房、农场与商店的旋律',s.music)}${toggle('sound','游戏音效','按钮、破壳与收取的声音',s.sound)}${toggle('alarm','孵化完成提醒',android?'整批破壳后，提醒回来收取':'游戏打开时播放提示音',s.alarm,'bell')}<p class="notification-status" data-notification-status></p>${android?`<div class="notification-actions"><button data-permission>系统通知设置</button>${!status.exactAllowed?'<button data-exact>开启准时提醒</button>':''}<button data-test-notice ${status.notificationsEnabled?'':'disabled'}>测试通知</button><button data-test-delayed ${status.notificationsEnabled?'':'disabled'}>1 分钟后台测试</button><button data-background-help>后台提醒帮助</button></div>`:''}</div><div class="settings-actions">${action('journal','寻宝日历与收集手记','时段预告 · 四时收集','book')}${action('manual','游戏说明','厨房、农场与买卖','book')}${action('save','保存进度',android?'保存在此手机 · 覆盖更新保留':'保存在当前浏览器')}${action('export','导出备份','换手机或卸载前，请先备份')}${action('import','导入备份','从电脑、旧版本或另一台手机恢复')}</div><p class="save-note">${android?'覆盖安装更新会保留进度。卸载会删除应用内存档；请先把备份导出到文件夹，重装后导入。':'游戏会自动保存在当前浏览器与网址。localhost、127.0.0.1、不同端口和手机应用各有独立进度；评审入口使用演示档。看不到原进度时，请回到原入口或导入旧备份。清除浏览数据前请先导出备份。'}</p><p class="settings-version">鸡宝厨房 · ${android?'Android':'浏览器'} ${platform.info.version}</p></div>`;
+  const toggle=(id,label,on)=>`<div class="settings-switch-row" data-row><i class="settings-row-art" aria-hidden="true"><img src="${ART}golden-ui/${ROW_ART[id]}.png" alt=""></i><strong>${label}</strong><button class="game-switch ${on?'on':''}" role="switch" aria-checked="${on}" aria-label="${label}" data-toggle="${id}"><span>${on?'开':'关'}</span><i></i></button></div>`;
+  const art=key=>{const src=TILE_ART[key];return src==='chef'||src==='book'?sprite(src):`<img src="${src}" alt="">`;};
+  const tile=(attr,key,label)=>`<button type="button" class="settings-tile" data-${attr}><span class="settings-tile-art" data-visual>${art(key)}</span><b>${label}</b></button>`;
+  return `<div class="gd-label">声音与提醒</div>${toggle('music','背景音乐',s.music)}${toggle('sound','游戏音效',s.sound)}${toggle('alarm','孵化完成提醒',s.alarm)}
+    <p class="notification-status" data-notification-status></p>${android?`<div class="notification-actions">${[['permission','系统通知'],...(!status.exactAllowed?[['exact','准时提醒']]:[]),...(status.backgroundAllowed===false?[['background','允许后台']]:[]),['test-notice','测试通知',!status.notificationsEnabled],['test-delayed','1 分钟测试',!status.notificationsEnabled],['background-help','后台帮助']].map(([id,label,off])=>`<button type="button" class="gd-btn2${ROW_ART[id]?' has-art':''}" data-${id}${off?' disabled':''}>${ROW_ART[id]?`<img src="${ART}golden-ui/${ROW_ART[id]}.png" alt="">`:''}${label}</button>`).join('')}</div>`:''}
+    <div class="gd-label">更多</div><div class="settings-tiles">${tile('settings-workshop','workshop','手艺')}${tile('journal','journal','日历')}${tile('replay-guides','guides','重看指引')}${tile('manual','manual','游戏说明')}${tile('save','save','保存')}${tile('export','export','导出备份')}${tile('import','import','导入备份')}${tile('device-check','device','设备检测')}</div>
+    <p class="save-note">${android?'覆盖更新会保留进度；卸载前请先导出备份':'进度保存在这个浏览器；换浏览器或清数据前请先导出备份'}</p><p class="settings-version">鸡宝厨房 · ${android?'Android':'浏览器'} ${platform.info.version}</p>`;
 }

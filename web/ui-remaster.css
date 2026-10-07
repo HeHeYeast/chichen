@@ -1,0 +1,167 @@
+/* Work 2 notebook proposal. Independent layout and existing objects only. */
+#panels .workshop-screen:has(.skill-ledger) .workshop-body{background:repeating-linear-gradient(0deg,transparent 0 27px,#bcaa7920 28px 29px);padding:4px 8px 16px;border-left:3px double #c8ac79}
+#panels .skill-ledger{background:#f5e6b9;border:0;border-radius:3px 16px 16px 3px;padding:12px;box-shadow:0 3px 0 #c9b387;margin-bottom:12px}
+#panels .skill-ledger strong{font-size:32px;color:#6c783d}
+#panels .branch-tabs{gap:4px;margin:12px 0 6px}
+#panels .branch-tabs button{border:0;border-bottom:3px solid transparent;background:transparent;box-shadow:none;padding:4px 1px;min-width:0}
+#panels .branch-tabs button[aria-pressed=true]{background:#ecdcaa;border-bottom-color:#a77542;border-radius:10px 10px 0 0}
+#panels .branch-tabs svg{width:34px;height:34px}
+.remaster-skill-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px;padding:12px 3px}
+#panels .remaster-skill-board .skill-node{position:relative;min-width:0;margin:0;padding:10px 7px 8px;border:1px solid #c6b486;border-radius:5px 16px 9px 14px;background:#fff9df;box-shadow:1px 3px 0 #d6c49b}
+#panels .remaster-skill-board .skill-node::before{content:'';position:absolute;top:-5px;left:calc(50% - 20px);width:40px;height:10px;background:#d4ddadcc;transform:rotate(-4deg);pointer-events:none}
+#panels .remaster-skill-board .skill-node:nth-child(even)::before{transform:rotate(4deg);background:#efd096bb}
+#panels .remaster-skill-board .skill-detail-link{display:flex;flex-direction:column;text-align:center;gap:4px;width:100%;min-height:126px}
+#panels .remaster-skill-board .skill-emblem{width:62px;height:62px;flex-basis:62px}
+#panels .remaster-skill-board .skill-emblem svg{width:62px;height:62px}
+#panels .remaster-skill-board .skill-state{font-size:12px;display:block;color:#716147}
+#panels .remaster-skill-board strong{display:block;font-size:16px}
+#panels .remaster-skill-board .skill-cost{position:absolute;top:9px;right:9px;font-size:16px;color:#7d6344}
+#panels .remaster-skill-board .skill-node>p{font-size:12px;line-height:1.6;min-height:3.2em;text-align:center;margin:6px 0}
+#panels .remaster-skill-board .skill-card-bottom{justify-content:center;min-height:44px}
+#panels .remaster-skill-board .skill-card-bottom small{display:none}
+#panels .remaster-skill-board .skill-card-bottom button{min-height:44px;width:100%}
+#panels .remaster-skill-board .is-learned{background:#edf0d7;border-color:#8f9f64}
+#panels .remaster-skill-board .is-selected{outline:2px solid #ba813f;outline-offset:1px}
+#panels .remaster-skill-board .is-locked{background:#f2ebd8;opacity:1}
+#panels .remaster-skill-board .is-locked .skill-emblem{opacity:.6}
+#panels .skill-effects{gap:4px;margin:6px 0}
+#panels .skill-effects span{font-size:12px}
+#panels .skill-detail-hero{padding:18px;background:#eee9c9;border-radius:4px 18px 18px 4px;border-left:5px solid #9caa76}
+#panels .skill-detail-hero svg{width:80px;height:80px}
+#panels .book-screen:has(.remaster-index) .book-reader{background:repeating-linear-gradient(0deg,transparent 0 31px,#bda77814 32px 33px);padding:10px 8px;border-left:3px double #cbb88b}
+#panels .remaster-index .book-intro{min-height:134px;border:0;border-radius:4px 28px 8px 4px;background:#ede6c6!important;box-shadow:0 3px #d6c49b;padding-left:14px!important}
+#panels .remaster-index .book-intro h3{font-size:24px!important}
+.remaster-index-doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0 10px}
+#panels .remaster-index-doors button{min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:138px;border:1px solid #b4a57b;border-radius:3px 14px 14px 3px;border-left:5px solid #94a578;background:#fff7d9;box-shadow:2px 3px #d6c49b;padding:10px 3px}
+#panels .remaster-index-doors button:nth-child(2){border-left-color:#c98d59;transform:rotate(2deg)}
+#panels .remaster-index-doors button:nth-child(3){border-left-color:#91aaa1;transform:rotate(-2deg)}
+.remaster-index-doors svg,.remaster-index-doors img{width:60px;height:60px;object-fit:contain}
+.remaster-index-doors strong{font-size:15px}.remaster-index-doors small{font-size:12px;color:#826d4a}
+#panels .remaster-index .book-section{padding:14px 4px!important}.remaster-index .book-section h4{margin:2px 0 8px;font-size:16px}
+.remaster-directory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px;padding:14px 4px}
+#panels .remaster-directory .books-card{min-width:0;margin:0;display:flex!important;flex-direction:column;text-align:center;align-items:center;gap:9px;padding:12px 8px!important;border-left:5px solid #a5b385!important;border-radius:4px 18px 18px 4px!important;background:#fff8df!important;box-shadow:2px 4px #d9c8a0}
+.remaster-cover-object{display:grid;place-items:center;width:100%;height:104px;background:radial-gradient(ellipse,#e4e8cb 20%,transparent 70%)}
+.remaster-cover-object img,.remaster-cover-object svg{width:100%;height:100%;object-fit:contain}
+#panels .remaster-directory strong{font-size:16px;line-height:1.5}
+.remaster-cover-stamps{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.remaster-cover-stamps span{border:1px dashed #b1a184;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-size:13px;color:#8c805d}
+.remaster-cover-stamps .is-done{background:#e0e9c8;border:2px solid #829360;color:#52633a;transform:rotate(-8deg)}
+#panels .remaster-directory small{font-size:12px;line-height:1.6;color:#7b6a4c}
+.remaster-collection-page{padding:8px 7px;border-left:3px double #c7b58c}
+.remaster-collection-hero{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px dashed #b9aa7d}
+.remaster-collection-hero .remaster-cover-object{width:100px;height:106px;flex:0 0 100px}
+.remaster-collection-hero h3{font-size:21px;line-height:1.5;margin:4px 0}
+.remaster-achievements{display:flex;gap:10px;flex-wrap:wrap;padding:16px 0}
+.remaster-achievements>span{display:flex;align-items:center;gap:5px;font-size:12px;background:#f0e7cc;padding:8px;border:1px dashed #b9aa7d;border-radius:50% 12px 12px 50%}
+.remaster-achievements>span.is-done{background:#e4ebd2;color:#536a3d;border-color:#8c9e68}
+.remaster-achievements b{font-size:22px}
+.remaster-conditions{border-block:1px dashed #c4b48e;margin:14px 0;padding:5px 0}
+.remaster-conditions summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:#70583b}
+#panels .remaster-collection-page .books-grid{gap:12px;padding-top:10px}
+#panels .remaster-collection-page .books-species{background:transparent;border:0;box-shadow:none}
+#panels .remaster-collection-page .books-species img,#panels .remaster-collection-page .books-species svg{width:76px;height:76px;object-fit:contain}
+@media(max-width:350px){.remaster-index-doors{gap:6px}.remaster-index-doors svg{width:48px;height:48px}.remaster-directory{gap:14px 8px}.remaster-collection-hero .remaster-cover-object{width:76px;flex-basis:76px}}
+#panels .remaster-skill-board .skill-node{padding:10px 7px 8px!important;margin:0!important;border-radius:5px 16px 9px 14px!important}
+#panels .remaster-skill-board .skill-node>p{padding:0;font-size:12px!important;min-height:3.2em;margin:5px 0!important}
+#panels .remaster-skill-board .skill-detail-link{min-height:118px}
+#panels .remaster-directory{grid-auto-rows:max-content;align-content:start}
+#panels .remaster-directory .books-card{height:auto;min-height:234px}
+#panels .remaster-collection-page .books-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* POLISH: scoped to audited legacy/utility surfaces; mature scenes are untouched. */
+#panels .cookbook-list{display:grid;grid-auto-rows:max-content;align-content:start;overflow-y:auto}
+#panels .cookbook-list .cookbook-card{height:auto;min-height:180px;flex-shrink:0;overflow:visible;padding:10px 7px}
+#panels .cookbook-card-art{height:76px;min-height:76px;flex-shrink:0}
+#panels .cookbook-card-art img,#panels .cookbook-card-art svg{width:84px;height:76px;object-fit:contain}
+#panels .cookbook-card strong{font-size:15px;line-height:1.5}
+#panels .cookbook-card small{line-height:1.5}
+#panels .ingredient-screen .ingredient{position:relative;border:1px solid #bba879;border-radius:12px;background:#faf2d7;padding:10px 5px;min-height:132px}
+#panels .ingredient-screen .ingredient.selected{border:2px solid #758749;background:#e9edcd;box-shadow:inset 0 0 0 2px #fff9df}
+#panels .ingredient-screen .ingredient.selected:after{content:'✓';position:absolute;bottom:5px;right:6px;color:#536a38;font-weight:bold}
+#panels .ingredient-screen .empty{grid-column:1/-1;max-width:260px;text-align:center;line-height:1.8;margin:40px auto;padding:28px 20px;border-block:1px dashed #c9b785}
+#panels .harvest-list{padding-top:10px}
+#panels .harvest-row{padding:12px 8px;border-bottom:1px dashed #cbb886;border-radius:10px;margin-bottom:6px;gap:12px}
+#panels .harvest-row.is-selected{background:#edf0d5;box-shadow:inset 4px 0 #8a9c61}
+#panels .harvest-portrait{width:62px;min-width:62px;height:72px;padding:2px;border:0;background:transparent}
+#panels .harvest-portrait img,#panels .harvest-portrait svg{width:58px;height:68px;object-fit:contain}
+#panels .harvest-name{font-size:16px;line-height:1.6}
+#panels .harvest-meta{font-size:12px;line-height:1.8}
+#panels .harvest-meta b{font-size:15px;color:#615036}
+#panels .harvest-quantity button{min-width:44px;min-height:44px}
+#panels .harvest-footer{background:#f2e9c9;padding:10px;border-radius:12px 12px 3px 3px;border-top:2px solid #c5b081}
+#panels .species-inventory{border-block:1px dashed #c8b58d;padding:12px 0;margin:14px 0}
+#panels .species-sheet p{line-height:1.8}
+#panels .species-sheet button{min-height:44px}
+#panels .species-quantity button{min-width:44px}
+#panels .collection-progress button[aria-pressed=true],#panels .shop-ingredient-filters button[aria-pressed=true],#panels .journal-chapters button[aria-pressed=true]{background:#e3e9c8;border:2px solid #859654;box-shadow:inset 0 -3px #b3c28e;color:#465832;font-weight:bold}
+#panels .shop-empty{padding:40px 14px;text-align:center;border:1px dashed #c9b482;background:#fff5d2;line-height:1.8}
+#panels .shop-empty:before{content:'⌕';display:block;font-size:42px;color:#9a8259;margin-bottom:10px}
+#panels .shop-ingredient-hero{padding:18px 12px;gap:18px;background:#f0eccf;border-radius:4px 18px 18px 4px;margin-bottom:12px}
+#panels .shop-ingredient-hero>span{width:84px;height:84px;flex:0 0 84px}
+#panels .shop-ingredient-hero img,#panels .shop-ingredient-hero svg{width:84px;height:84px;object-fit:contain}
+#panels .shop-condition-list li{padding:10px 4px;border-bottom:1px dashed #d2bf95;line-height:1.7}
+#panels .shop-detail-note{line-height:1.8}
+#panels .order-card{border-radius:3px 12px 3px 12px;box-shadow:2px 4px #d5c69d;border-left:4px solid #c6aa74}
+#panels .order-history{border-bottom:1px dashed #bcab83;padding:6px 0}
+#panels .order-history summary{min-height:44px;line-height:1.6;padding:10px 4px;color:#697a49}
+#panels .route-tabs button{display:flex;flex-direction:column;align-items:center;font-size:13px;gap:5px;min-width:0}
+.legacy-route-object{display:block;width:72px;height:50px;object-fit:contain}
+#panels .trip-preferences{border-block:1px dashed #c6b58c;padding:4px;margin-top:10px}
+#panels .trip-preferences summary{min-height:44px;padding:12px 0;font-size:14px;cursor:pointer}
+#panels .trip-landscape{background:#ececcf url('/web/art/golden-journey/environment-yard.png') center top/auto 130px no-repeat;padding-top:135px;border:1px solid #b8b184}
+#panels .trip-landscape.water{background-image:url('/web/art/golden-journey/environment-water.png')}
+#panels .trip-landscape.wood{background-image:url('/web/art/golden-journey/environment-wood.png')}
+#panels .trip-landscape:before,#panels .trip-landscape:after{display:none}
+#panels .member-list>button{padding:12px;gap:14px;border-bottom:2px solid #cab68b}
+#panels .member-list>button[aria-pressed=true]{background:#e4ebd0;outline:2px solid #889a61}
+#panels .observation-hero{background:#ebe8cc;border-radius:4px 22px 4px 22px;border-bottom:3px solid #c8b688;padding:18px 10px}
+#panels .observation-clue{margin:14px 0;border-left:3px solid #95a572;background:#f4f0da}
+#panels .observed-path{border-radius:3px 12px 12px 3px;line-height:1.8}
+#panels .material-portrait{width:84px;height:88px}
+#panels .material-portrait .polish-art{width:80px;height:80px}
+#panels .material-steps{clear:both;display:flex;flex-wrap:wrap;gap:5px;padding:10px 0}
+#panels .material-steps span{font-size:12px;padding:5px 7px;border:1px dashed #b6ab87;border-radius:5px;color:#7a7157}
+#panels .material-steps .is-done{border:1px solid #8da16c;background:#e5edcf;color:#4e6538}
+#panels .book-section>.polish-landscape{width:100%;height:156px;object-fit:contain;background:radial-gradient(ellipse,#e5e9d0,transparent 70%)}
+#panels .lore-portal>svg{width:80px;height:80px;display:block;margin:12px auto}
+#panels .lore-portal{text-align:center}
+.memento-display-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0}
+#panels .books-slot{min-width:0;text-align:center;font-size:12px;background:#eee5c8;padding:8px 4px;border-radius:6px;border-bottom:5px solid #baa071}
+#panels .books-slot select{width:100%;min-width:0;font-size:12px;padding:3px}
+.memento-slot-art{display:block;height:70px}
+#panels .memento-slot-art img{width:100%;height:70px;object-fit:contain}
+#panels .books-memento{display:flex;flex-direction:column;align-items:center;padding:12px 8px;gap:6px;text-align:center;background:#fff9e3}
+#panels .books-memento .polish-memento{order:-1;width:100%;height:100px;object-fit:contain}
+#panels .books-papers{padding:0;list-style:none}
+#panels .books-papers>li{position:relative;padding:12px 10px 12px 34px;border-bottom:1px dashed #b9a77c;margin:0;line-height:1.7}
+#panels .books-papers>li:before{content:'✓';position:absolute;left:4px;top:12px;color:#758653;border:1px solid #a3b078;border-radius:50%;width:22px;height:22px;text-align:center}
+#panels .books-papers>.books-note:before{content:'?';color:#9c8c66}
+#panels .allocation-row{padding:16px 10px;background:#faf4de;border-left:4px solid #a7b485;border-radius:4px 12px 12px 4px;margin:12px 0}
+#panels .allocation-row>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#panels .allocation-row label{display:flex;flex-direction:column;align-items:stretch;gap:8px;font-size:12px}
+#panels .allocation-row input{width:100%;min-width:0;text-align:center}
+#panels [data-allocation-result]{padding:12px;background:#e6ebd0;border-radius:8px}
+#panels .journal-reminder{margin-bottom:0}
+#panels .journal-reminder-help{border-bottom:1px dashed #bfad80;margin:0 0 14px;padding:0 6px}
+#panels .journal-reminder-help summary{min-height:44px;padding:12px 0;font-size:13px}
+#panels .guide-step p{line-height:1.9}
+@media(max-width:350px){#panels .harvest-row{gap:6px;padding-inline:3px}#panels .harvest-portrait{width:48px;min-width:48px}#panels .harvest-portrait img,#panels .harvest-portrait svg{width:46px}#panels .harvest-quantity{gap:3px}.memento-display-slots{gap:4px}}
+/* A sticky branch strip must never cover a scrolled skill on short screens. */
+#panels .workshop-screen .branch-tabs{position:static}
+#panels .remaster-collection-page .books-grid>.books-note{grid-column:1/-1;padding:20px 6px;text-align:center}
+@media(max-height:700px){
+ #panels .workshop-screen:has(.skill-ledger) .skill-ledger{padding:6px 10px;margin-bottom:5px}
+ #panels .workshop-screen:has(.skill-ledger) .skill-ledger strong{font-size:25px}
+ #panels .workshop-screen:has(.skill-ledger) .branch-tabs{margin:5px 0;padding:2px 0}
+ #panels .workshop-screen:has(.skill-ledger) .branch-tabs svg{width:26px;height:26px}
+ #panels .workshop-screen:has(.skill-ledger) .skill-effects{display:none}
+ #panels .workshop-screen:has(.skill-ledger) .skill-branch-progress{margin-bottom:2px}
+ #panels .remaster-skill-board{gap:12px 8px;padding:9px 1px}
+ #panels .remaster-skill-board .skill-detail-link{min-height:91px}
+ #panels .remaster-skill-board .skill-emblem,#panels .remaster-skill-board .skill-emblem svg{width:42px;height:42px;flex-basis:42px}
+ #panels .remaster-skill-board .skill-node>p{display:none}
+ #panels .remaster-skill-board .skill-node{padding:8px 5px 5px!important}
+ #panels .remaster-skill-board .skill-cost{font-size:12px;top:7px;right:6px}
+ #panels .remaster-collection-hero{gap:8px;padding:8px 0}
+ #panels .remaster-collection-hero h3{font-size:18px}
+ #panels .remaster-collection-hero .remaster-cover-object{height:76px;width:76px;flex-basis:76px}
+}

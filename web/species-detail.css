@@ -1,0 +1,10 @@
+/* Species detail spacing shared by the collection pages. */
+.species-story { margin:8px 2px; color:#a48d63; text-align:center; font-size:10px; line-height:16px; }
+.species-recipe { padding:7px 3px; margin:5px 0; border-bottom:1px dashed #cfb680; color:#7f955b; text-align:center; font-size:9px; line-height:14px; }
+.species-screen > .species-quantity { flex-shrink:0; padding:5px; margin-top:3px; border-top:1px solid #e4ce9e; }
+.species-expanded .species-portrait { width:86px; height:86px; margin:2px auto 4px; }
+.species-expanded .species-portrait img,.species-expanded .species-portrait .sprite-art { width:77px; height:77px; }
+.species-expanded .species-name { margin:3px 0 6px; font-size:15px; line-height:20px; }
+.species-expanded .species-story { margin:4px 2px; font-size:9px; line-height:14px; }
+.species-expanded .species-recipe { margin:3px 0; padding:4px 3px; line-height:13px; }
+.species-expanded .species-note { margin:4px 0; line-height:14px; }

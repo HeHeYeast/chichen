@@ -1,0 +1,67 @@
+/* Independent shop materials; no collection-paper, tape, stamps or sticker filter. */
+#panels>.golden-business{--bs-ink:#5d4026;--bs-display:'Golden Display','Chicken UI',sans-serif;inset:0;width:auto;height:100%;max-height:100%;padding:0;border:0;border-radius:0;box-shadow:none;background:#fff9e4;color:var(--bs-ink);overflow:hidden;animation:none}
+#panels>.golden-business>.close,#panels>.golden-business>h2{display:none}
+.bs-art{display:block;object-fit:contain;pointer-events:none;user-select:none}
+#panels .golden-business button{font-family:var(--bs-display);font-size:20px;font-weight:400;min-height:44px;line-height:1.3;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:inherit;touch-action:manipulation;transition:transform 120ms ease,filter 120ms ease}
+#panels .golden-business button:active:not(:disabled){transform:scale(.97)}
+#panels .golden-business button:focus-visible{outline:2px solid #698557;outline-offset:3px;border-radius:8px}
+#panels .golden-business button:disabled{opacity:.55}
+.golden-business .bs-header{position:relative;height:58px;flex:none;display:flex;align-items:center;justify-content:center;padding-left:12px}
+.golden-business .bs-header h1{margin:0;display:flex;align-items:center;gap:6px;font-family:var(--bs-display);font-size:35px;font-weight:400;line-height:1;-webkit-text-stroke:.35px currentColor}
+.bs-header h1>svg{width:39px;height:42px}
+.bs-wallet{position:absolute;left:12px;top:12px;width:100px;height:34px;display:flex;align-items:center;gap:3px;font-size:18px;font-weight:800}
+.bs-wallet-base{position:absolute;inset:-3px 0;width:100%;height:40px;object-fit:fill}
+.bs-wallet .bs-coin{position:relative;width:30px;height:30px;flex:none}
+.bs-wallet strong{position:relative;font-size:17px;max-width:66px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.bs-main-scroll{flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin}
+.bs-main{max-width:440px;min-height:640px;margin:auto;padding:0 15px 15px;position:relative}
+.bs-shop-header{height:91px;position:relative;text-align:center;z-index:2}
+#panels .golden-business .bs-shop-header h3{margin:0;height:40px;font-family:var(--bs-display);font-size:29px;font-weight:400;line-height:1.3;letter-spacing:1px;-webkit-text-stroke:.25px currentColor}
+#panels .golden-business .bs-status{position:relative;width:111px;height:51px;min-height:51px;vertical-align:top}
+.bs-status img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.bs-status span{position:absolute;left:12%;right:12%;bottom:8px;color:#fff8dd;font-size:22px;line-height:1;-webkit-text-stroke:.2px currentColor}
+#panels .golden-business .bs-menu{position:absolute;right:-5px;top:22px;width:73px;height:89px;min-height:89px;transform:rotate(3deg)}
+.bs-menu img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.bs-menu>span{position:absolute;left:5px;right:5px;top:23px;font-size:19px}.bs-menu i{position:absolute;left:24px;top:45px;line-height:11px;font-style:normal;font-size:24px;color:#b99a70}
+.bs-counter{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:165px;gap:0 7px;align-content:center;min-height:310px}
+#panels .golden-business .bs-vessel{position:relative;isolation:isolate;display:block;width:100%;height:165px;min-height:165px;overflow:visible}
+.bs-vessel .bs-vessel-base{position:absolute;left:0;bottom:0;width:100%;height:99px;object-fit:fill;z-index:0}
+.bs-vessel .bs-vessel-front{position:absolute;left:2%;bottom:4px;width:96%;height:74px;object-fit:fill;z-index:2}
+.bs-vessel .bs-character{position:absolute;bottom:43px;left:12%;width:76%;height:121px;display:grid;place-items:end center;z-index:1;filter:drop-shadow(0 2px 1.5px #76512c30)}
+.bs-character>svg,.bs-character>img{display:block;width:100%;height:100%;object-fit:contain;overflow:visible}
+.bs-vessel .bs-nameplate{position:absolute;bottom:18px;left:20%;width:61%;height:34px;z-index:3;display:flex;align-items:center;justify-content:center;gap:2px;font-family:var(--bs-display);font-size:20px;line-height:1.15;white-space:nowrap;color:#67462b}
+.bs-nameplate.long-name{font-size:15px}.bs-nameplate>.bs-quantity{white-space:nowrap;font-family:'Chicken UI',sans-serif;font-size:17px;font-weight:750}.bs-summary b{font-family:'Chicken UI',sans-serif;font-size:20px;font-weight:750}
+#panels .golden-business .bs-vessel.is-wide{grid-column:1/-1;width:220px;justify-self:center;height:145px;min-height:145px;align-self:end}
+.bs-vessel.is-wide .bs-character{left:22%;width:56%;height:116px;bottom:38px}
+.bs-vessel.tray .bs-vessel-base{height:82px}.bs-vessel.tray .bs-vessel-front{height:57px;bottom:5px}
+.bs-vessel.tray .bs-nameplate{width:46%;left:27%;bottom:11px;font-size:19px}
+.bs-counter.few:has(.bs-vessel:nth-child(3)){grid-template-rows:165px 145px}
+.bs-counter.empty-counter{align-content:center}
+.bs-empty-mark{position:absolute;bottom:71px;left:0;right:0;font-family:'Chicken UI',sans-serif;font-size:40px;color:#99845c;line-height:1}
+.bs-ledge{height:19px;margin:-7px -15px 0;position:relative;z-index:0;pointer-events:none}.bs-ledge img{width:100%;height:100%;object-fit:fill}
+.bs-summary{width:220px;height:38px;position:relative;margin:3px auto 8px;display:flex;justify-content:center;align-items:center;font-family:var(--bs-display);font-size:20px;white-space:nowrap}.bs-summary img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;opacity:.75}.bs-summary span{position:relative}
+.bs-props{height:97px;display:flex;justify-content:space-around;gap:18px;margin-top:6px}
+#panels .golden-business .bs-prop{width:90px;height:96px;position:relative;display:flex;align-items:center;flex-direction:column;gap:0;font-size:22px}
+.bs-prop>.bs-art{width:71px;height:68px}.bs-prop>.bs-guest-chick{position:absolute;width:26px;height:26px;top:20px;left:31px;transform:rotate(5deg)}.bs-guest-chick>svg{width:100%;height:100%}
+.bs-actions{position:relative;display:flex;align-items:center;justify-content:center;min-height:79px;gap:0;margin-top:5px}
+#panels .golden-business .bs-main-action{position:relative;width:210px;height:63px;min-height:63px;font-size:28px;-webkit-text-stroke:.2px currentColor}
+.bs-main-action img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.bs-main-action span{position:relative;top:-1px}
+#panels .golden-business .bs-secondary{position:absolute;left:calc(50% + 114px);font-size:17px;white-space:nowrap;color:#978368;min-width:44px}
+.golden-business .bs-dialog{width:min(94vw,480px);max-height:86vh;max-height:86dvh;padding:16px;border:1px solid #b9a37c;border-radius:14px;background:#fff9e8;color:#5d4026;box-shadow:0 8px 28px #59442d40;overflow:hidden}
+.bs-dialog[open]{display:flex;flex-direction:column}.bs-dialog::backdrop{background:#493b2e66}
+.bs-dialog>header{display:flex;align-items:center;justify-content:space-between;flex:none;gap:10px}.bs-dialog>header h3{font-family:var(--bs-display);font-size:23px;font-weight:400;margin:0}
+#panels .golden-business .bs-dialog [data-business-sheet-close]{min-width:44px;width:44px;height:44px;background:#eee5c9;border-radius:50%;font-family:'Chicken UI',sans-serif;font-size:26px}
+.bs-dialog .business-scroll{min-height:0;overflow-y:auto;padding:8px 0;flex:1}
+#panels .golden-business .bs-dialog button{font-family:'Chicken UI',sans-serif;font-size:14px;font-weight:650;padding:5px 8px;border-radius:8px;background:#f1e6ca}
+#panels .golden-business .bs-dialog button[aria-pressed=true]{background:#dfebcc;color:#47623a}
+.bs-dialog p,.bs-dialog li{font-family:'Chicken UI',sans-serif;line-height:1.7}.bs-dialog ul{padding-left:21px}
+.bs-dialog .business-menu-sheet{background:none;padding:6px 0;box-shadow:none;border:0}.bs-dialog .business-menu-sheet h3{font-family:var(--bs-display);font-weight:400}
+.bs-dialog .business-preferences,.bs-dialog .business-note,.bs-dialog .business-prep-hint{font-family:'Chicken UI',sans-serif}
+@media(max-width:360px){.bs-wallet{left:6px;width:87px}.bs-wallet strong{font-size:14px}.golden-business .bs-header h1{font-size:30px}.bs-header h1>svg{width:32px}.bs-main{padding-left:10px;padding-right:10px}.bs-vessel .bs-nameplate{font-size:16px}.bs-nameplate.long-name{font-size:13px}.bs-vessel .bs-character{height:115px}.bs-ledge{margin-left:-10px;margin-right:-10px}#panels .golden-business .bs-menu{width:61px;height:82px;right:-2px}.bs-menu>span{font-size:17px}#panels .golden-business .bs-shop-header h3{font-size:26px}#panels .golden-business .bs-main-action{width:195px}#panels .golden-business .bs-secondary{left:calc(50% + 100px);font-size:15px}.bs-props{gap:8px}}
+@media(prefers-reduced-motion:reduce){#panels .golden-business button{transition:none}#panels .golden-business button:active:not(:disabled){transform:none}}
+
+/* Long names use two readable lines on the same painted plate, never overflow. */
+.bs-vessel .bs-nameplate.long-name{flex-direction:column;font-size:14px;line-height:1.05;gap:0;white-space:nowrap;width:86%;left:7%;height:39px;bottom:12px;background:url('/web/art/golden-business/summary-label.png') center/100% 100% no-repeat}
+.bs-nameplate.long-name .bs-quantity{font-size:14px;line-height:1.05}
+
+.bs-vessel.tray .bs-nameplate.long-name{bottom:4px}

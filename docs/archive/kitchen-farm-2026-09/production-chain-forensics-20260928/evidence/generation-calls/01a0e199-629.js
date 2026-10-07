@@ -1,0 +1,6 @@
+// @exec: {"yield_time_ms": 120000, "max_output_tokens": 600}
+const old=load("cleaning-B"); store("cleaning-B-rejected",old);
+const path=old.result.output_hint.match(/as (C:\\.*?\.png) by default/)[1];
+const prompt=`Precise object edit. Image1 is an edit target, an existing isolated game cleaning brush; image2 is approved game asset style reference. Preserve exactly the brush silhouette, sage grip, opening, ochre wood body, bristle shapes and painted internal colors. REMOVE the brown outer glow / brown ambient haze entirely around the object. Make all pixels outside the hard illustrated dark-brown object contour fully transparent, and make the empty hole under the grip genuinely transparent wherever there is no physical part behind it. No soft halo, no floor shadow, no vignette, no drop shadow, no background, no glow of any color. Keep internal local shading and the original shape, don't add objects or redraw as photoreal. Return same single game brush with clean genuine alpha edges.`;
+const r=await tools.image_gen__imagegen({prompt,referenced_image_paths:[path,load("gateRefs")[3]],transparent_background:true});
+store("cleaning-B",{prompt:old.prompt+"\nREPAIR:\n"+prompt,result:r});text({id:"cleaning-B repair",hint:r.output_hint});

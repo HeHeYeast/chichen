@@ -1,0 +1,36 @@
+import {createRequire} from 'node:module';
+import {readFile,access} from 'node:fs/promises';
+import {dirname,resolve} from 'node:path';
+import assert from 'node:assert/strict';
+
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.APPDATA+'/npm/node_modules/gsd-pi/node_modules/playwright-core');
+const doc='docs/kitchen-farm-architecture-gate-20260928/ARCHITECTURE-GATE-BOARD.md';
+const markdown=await readFile(doc,'utf8');
+const links=[...markdown.matchAll(/\]\(([^)]+)\)/g)].map(m=>m[1]).filter(x=>!x.startsWith('http'));
+for(const link of links)await access(resolve(dirname(doc),link));
+
+const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+const page=await browser.newPage({viewport:{width:1600,height:950}});
+const errors=[];
+page.on('pageerror',error=>errors.push(String(error)));
+await page.goto('http://127.0.0.1:4173/web/prototypes/kitchen-farm-architecture-gate-20260928/index.html');
+assert.equal(await page.locator('.compare-cell .phone').count(),2);
+await page.locator('[data-set="state:ready"]').click();
+assert.equal(await page.locator('.compare-cell .phone[data-state="ready"]').count(),2);
+await page.locator('[data-set="size:320"]').click();
+assert.equal(await page.locator('.compare-cell .phone.small').count(),2);
+await page.locator('[data-set="tab:farm"]').click();
+await page.locator('.compare-cell:nth-child(2) .right-arrow').click();
+assert.equal(await page.locator('.compare-cell .phone[data-region="middle"]').count(),2);
+await page.locator('[data-set="region:right"]').click();
+assert.equal(await page.locator('.compare-cell .phone[data-region="right"]').count(),2);
+await page.locator('[data-set="health:low"]').click();
+assert.equal(await page.locator('.compare-cell .phone[data-health="low"]').count(),2);
+assert.equal(await page.locator('.compare-cell .phone .repair-nudge').count(),1);
+assert.equal(await page.locator('.compare-cell .phone .f3-repair-strip').count(),1);
+await page.locator('[data-set="region:left"]').click();
+assert.equal(await page.locator('.compare-cell .phone .repair-small').count(),1);
+assert.deepEqual(errors,[]);
+await browser.close();
+console.log(JSON.stringify({boardInteractions:'pass',documentLinks:links.length,pageErrors:errors.length}));

@@ -1,0 +1,6 @@
+{
+  "mode": "built-in image_gen",
+  "reference": "artifacts/journey-precision/region-reference.png",
+  "sheet": "J12-timer.png",
+  "prompt": "Create a production asset sheet from the attached approved game UI reference, focusing ONLY on the bottom-left timer capsule. Transparent RGBA background, no page, no UI screenshot. Two separate assets in a 1 column x 2 rows grid with generous transparent spacing: TOP: the empty wide cream parchment timer capsule with no clock and absolutely NO text or numbers; preserve its exact pale warm paper texture, thin hand-drawn tan outline, rounded corners, subtle inner warm highlight and delicate bottom shadow from the reference. Aspect ratio 4.6:1, no green. BOTTOM: the small separate circular clock icon from that same reference, warm orange rim, off-white face, dark brown short clock hands, simple no numeral dial. Faithfully match the reference's illustrated paper game aesthetic, never flat CSS/vector style, no shiny 3D. Do not include characters, labels, letters, watermark, numbers, or the surrounding interface. Arrange each isolated component centered in its own equal-height cell, use a square overall sheet. This is formal reusable runtime art; text will be rendered separately."
+}

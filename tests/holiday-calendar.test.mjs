@@ -41,7 +41,9 @@ test('actual new-batch path can produce the eligible holiday bird during its win
   }
 });
 test('annual recurrence handles weekdays, lunar dates, leap month exclusion and Gregorian leap years',()=>{
-  for(const [id,year,month,day]of [['mothers-day',2026,5,10],['mothers-day',2027,5,9],['thanksgiving',2026,11,26],['qixi',2026,8,19],['mid-autumn',2026,9,25],['spring-festival',2026,2,17]]){
+  for(const [id,year,month,day]of [['mothers-day',2026,5,10],['mothers-day',2027,5,9],['thanksgiving',2026,11,26],['qixi',2026,8,19],['mid-autumn',2026,9,25],['spring-festival',2026,2,17],
+    // New moons within minutes of Beijing midnight, where ICU's approximation is a day off.
+    ['spring-festival',2027,2,6],['spring-festival',2030,2,3]]){
     const w=holidayWindow(id,at(1,1,0,year));assert.equal(w.start,at(month,day,0,year));
   }
   const cny=holidayWindow('spring-festival',at(2,23));assert.equal(cny.active,true);assert.equal(cny.end,at(2,24,0));
@@ -65,7 +67,7 @@ test('every limited partner is gated and original ingredients, cookware, progres
 test('previews begin seven calendar days before opening and switch off with the existing discovery setting',()=>{
   const s=E.freshState(at(3,24));s.events.campaign_char_0_49=true;
   assert.equal(calendarNotice(s,at(3,24)),null);assert.match(calendarNotice(s,at(3,25)).message,/7 天/);
-  assert.match(calendarNotice(s,at(4,1)).message,/愚人节已开放/);assert.equal(calendarNotice(s,at(4,2)),null);
+  assert.match(calendarNotice(s,at(4,1)).message,/愚人节开始啦/);assert.equal(calendarNotice(s,at(4,2)),null);
   s.events.discoveryNotices=false;assert.equal(calendarNotice(s,at(3,25)),null);delete s.events.discoveryNotices;
   s.total['0:49']=1;assert.equal(calendarNotice(s,at(3,25)),null);
   const windows=holidayCalendar(at(9,18));assert.equal(windows[0].id,'chestnut');assert.ok(windows.find(h=>h.id==='mid-autumn').preview);

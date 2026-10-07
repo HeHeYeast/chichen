@@ -73,7 +73,7 @@ test('PJ-2: 100 CP after both river specimens and four river species; two kinds 
 test('deliveries use only free stock, keep one by default and never touch business S',()=>{
   const s=base();identify(s,77,78);cards(s,'R-S1','R-S2');collect(s,'0:134','1:71','0:135','0:136');completeProjectStage(s,'PJ-2','PJ-2-A');
   openBusiness(s,{menuId:'MN1',stock:{'0:3':15}},NOW);
-  assert.throws(()=>deliverProject(s,'PJ-2','PJ-2-B',{'0:3':6},{choice:['0:3','0:4']}),/自由库存不足/);
+  assert.throws(()=>deliverProject(s,'PJ-2','PJ-2-B',{'0:3':6},{choice:['0:3','0:4']}),/可用伙伴不足/);
   s.farm['0:4']=6;assert.throws(()=>deliverProject(s,'PJ-2','PJ-2-B',{'0:4':6},{choice:['0:4','0:8']}),/留1只/);
   deliverProject(s,'PJ-2','PJ-2-B',{'0:4':6},{choice:['0:4','0:8'],overrideKeepOne:true});assert.equal(s.farm['0:4'],0);check(s);
 });

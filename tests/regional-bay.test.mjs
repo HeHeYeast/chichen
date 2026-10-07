@@ -6,7 +6,8 @@ import * as E from '../web/engine.js';
 import {earnedSources} from '../web/progression.js';
 import {departRegional,regionalTripInfo,guideEligibility} from '../web/regional-exploration.js';
 import {claimTrip,recall,explorationInfo} from '../web/exploration.js';
-import {identifyMaterial,regionalRecipeInfo,regionalAlternativeInfo,pinRegionalMethod,prepareRegionalRecipe} from '../web/regional-methods.js';
+import {identifyMaterial,regionalRecipeInfo,regionalAlternativeInfo,prepareRegionalRecipe} from '../web/regional-methods.js';
+import {trackPartner} from '../web/knowledge.js';
 import {LEGACY193} from '../web/legacy-content.js';
 import {execute} from '../web/game-commands.js';
 import {regionInfo,REGIONAL_RELEASE} from '../web/region-model.js';
@@ -56,9 +57,10 @@ test('GUIDE-B identifies the actual first specimen, including an executable seco
     assert.equal(s.progress.trip.regional.intro.materialId,secondFirst?76:75);
     for(let i=0;!s.expansion.discovery.cards['V-S2']&&i<4;i++)voyage('V:1','specimen');
     command('identify',()=>identifyMaterial(s,76));
-    for(let i=0;!s.expansion.methods.full.includes('REC-V-C2')&&i<3;i++){
-      command('pin',()=>pinRegionalMethod(s,'REC-V-C2'));voyage('V:0','materials');
-    }
+    // 线索册 (batch 4): track it, and each valley trip reads its next layer up to the complete method
+    command('track',()=>trackPartner(s,'0:129'));
+    for(let i=0;!s.expansion.methods.full.includes('REC-V-C2')&&i<3;i++)voyage('V:0','materials');
+    assert.ok(s.expansion.methods.full.includes('REC-V-C2'),'three tracked trips write the method down');
     for(let i=0;!s.total['0:129']&&i<4;i++){
       command('cook',()=>{E.buyIngredient(s,76,1);E.buyIngredient(s,9,1);prepareRegionalRecipe(s,'REC-V-C2');if(E.kitchenCleanInfo(s,now).cost)E.clean(s,now);E.startBatch(s,4,now);});
       now=E.batchReadyAt(s.batch);

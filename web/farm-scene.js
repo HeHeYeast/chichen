@@ -4,6 +4,7 @@ import {characterImage} from './catalog.js';
 import {FONT,MOTION,LAYOUT as L,farmY} from './theme.js';
 import {uiIcon} from './art/manifest.js';
 import {FARM_ART,FARM_WORLD,FARM_ACTIONS,FARM_RECT} from './farm-theme.js';
+import {mementoArt} from './visual-assets.js';
 
 const INK='#553c2b';
 
@@ -49,13 +50,12 @@ export function createFarmRenderer(ctx,image){
       ctx.restore();
     }
   }
-  // Placeholder tags for displayed mementos until final memento art is delivered.
-  const MEMENTO_TINT=['#e8c98f','#c9d9a5','#e6b7a0','#b8cfd8','#e8d2a8','#d8b8a0','#c4d0e0','#e0c8d8','#d9c79b','#a9c3a0','#d7b89a','#c9d4de'];
+  // Display the same replaceable memento studies as the collection notebook.
   function displayShelf(s,scroll){
     const shown=s.expansion?.collections?.display??[],base=475-scroll;if(base+80<0||base>320)return;
     ctx.save();ctx.translate(0,farmY(150)-150);
     line([[base,176],[base+74,176]],'#8a6337',2);
-    shown.forEach((id,i)=>{const x=base+4+i*24;if(id){const n=Number(id.slice(1))-1;box(x,154,18,20,3,MEMENTO_TINT[n]??'#e8d6aa','#8a6337',1);line([[x+4,158],[x+14,158]],'#fff4d0',1);}else{ctx.setLineDash([2,2]);box(x,154,18,20,3,null,'#a88b5c',1);ctx.setLineDash([]);}});
+    shown.forEach((id,i)=>{const x=base+4+i*24;if(id){image(mementoArt(id),x-3,149,26,26);}else{ctx.setLineDash([2,2]);box(x,154,18,20,3,null,'#a88b5c',1);ctx.setLineDash([]);}});
     ctx.restore();
   }
   function walkers(list,scroll,t,reducedMotion,shadow){
@@ -113,6 +113,9 @@ export function createFarmRenderer(ctx,image){
     const hp=Math.max(0,Math.min(100,farmHP(s,v.now)));
     actionButton(FARM_RECT.repair,'farm:repair','整修 '+hp+'%',v,'repair');
     actionButton(FARM_RECT.harvest,'farm:harvest','收成表',v,'harvest');
+    const rHP=FARM_RECT.repair;
+    box(rHP.x+12,rHP.y+rHP.h-7,rHP.w-24,4,2,'#d5c39a',null);
+    if(hp>0)box(rHP.x+12,rHP.y+rHP.h-7,(rHP.w-24)*hp/100,4,2,hp<30?'#ce805e':'#839e62',null);
     text(FARM_ART[zone].label+' · 左右拖动',160,446,9,zone===30?'#fff5d4':'#55432e',700);
     const r=FARM_RECT.shrine;
     box(r.x,r.y+3,r.w,r.h-3,8,'#a47c49',INK,1.4);
@@ -134,6 +137,11 @@ export function createFarmRenderer(ctx,image){
     buildingSigns(scroll,v.pressedId);
     displayShelf(s,scroll);
     walkers(list,scroll,t,v.reducedMotion,art.shadow);
+    // Readable, quiet stock cue. The farm has partners, not invented crops.
+    const stock=Object.values(s.farm??{}).reduce((n,v)=>n+Math.max(0,Number(v)||0),0);
+    const kinds=Object.values(s.farm??{}).filter(n=>n>0).length;
+    box(10,68,139,27,12,'#fff7deeb','#b19b70',1);
+    text(`在家 ${stock} 只 · ${kinds} 种`,80,81.5,10,'#526547');
     meadowMotion(scroll,t,zone,v.reducedMotion);
     ctx.save();ctx.translate(0,farmY(245)-245);emptyField(s,list);ctx.restore();
     ctx.save();ctx.translate(0,L.extra);bottomActions(s,v,zone,scroll);ctx.restore();

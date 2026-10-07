@@ -14,9 +14,8 @@ function sourcePath(relative){
   if(!result.startsWith(root+path.sep))throw new Error(`Asset outside project: ${relative}`);
   return result;
 }
-// Final art for the 48 new species is still pending: the runtime manifest declares
-// those variants `available:false` and draws labelled concept silhouettes instead.
-// Only exactly those declared-unavailable paths are skipped; any other missing file still fails.
+// Only declared-unavailable variants may be absent. Published art must be bundled
+// from the authoritative runtime manifest; candidate images never enter the APK.
 const {RUNTIME_ASSETS}=await import(pathToFileURL(path.join(root,'web','runtime-assets.generated.js')).href);
 const pendingArt=new Set(Object.values(RUNTIME_ASSETS).flatMap(a=>Object.values(a.variants??{})).filter(v=>v.available===false).map(v=>v.path.replace(/^\//,'')));
 function add(relative){
@@ -74,10 +73,42 @@ const {ASSET_FILES,SPRITES}=await import(pathToFileURL(sourcePath('web/art/manif
 const {FARM_ART_FILES}=await import(pathToFileURL(sourcePath('web/farm-theme.js')));
 const {artworkOverrides}=await import(pathToFileURL(sourcePath('web/catalog.js')));
 for(const file of [...ASSET_FILES,...FARM_ART_FILES,...Object.values(SPRITES).map(sprite=>sprite.file),...Object.values(artworkOverrides.characters),...Object.values(artworkOverrides.tools)])add(file);
+for(const asset of Object.values(RUNTIME_ASSETS)){
+  for(const variant of Object.values(asset.variants??{}))if(variant.available)add(variant.path);
+  if(asset.metadata)add(asset.metadata);
+}
+// Region/card/memento paths are composed at runtime, so static import scanning
+// alone cannot find them. Use the explicit replacement inventory.
+const polish=JSON.parse(await readFile(sourcePath('web/art/polish/inventory.json'),'utf8'));
+for(const asset of polish.assets)add(asset.path);
+add('web/art/polish/inventory.json');
+// kitArt(), settings and skill icons compose their paths from names. A literal
+// source scan sees neither those names nor their resolved image paths. This is
+// the approved cut inventory, not a directory of candidate/source sheets.
+const uiKit=JSON.parse(await readFile(sourcePath('web/art/golden-ui/manifest.json'),'utf8'));
+for(const asset of uiKit.assets)add(asset.path);
+add('web/art/golden-ui/manifest.json');
+// Golden sample sheet sources stay in docs; only reviewed individual cuts ship.
+const golden=JSON.parse(await readFile(sourcePath('web/art/golden-collection/manifest.json'),'utf8'));
+for(const asset of golden.assets)if(asset.status==='golden-sample')add(asset.path);
+add('web/art/golden-collection/manifest.json');
+const businessGolden=JSON.parse(await readFile(sourcePath('web/art/golden-business/manifest.json'),'utf8'));
+for(const asset of businessGolden.assets)if(asset.status==='golden-sample')add(asset.path);
+add('web/art/golden-business/manifest.json');
+// Journey paths are composed from normalized semantic IDs; source sheets and
+// mockups never ship. Include only the independent manifest components.
+const journey=JSON.parse(await readFile(sourcePath('web/art/golden-journey/manifest.json'),'utf8'));
+for(const asset of journey.assets)add(asset.path);
+add('web/art/golden-journey/manifest.json');
+// Kitchen ships empty component cuts only; full references stay outside runtime.
+const kitchenGolden=JSON.parse(await readFile(sourcePath('web/art/golden-kitchen/manifest.json'),'utf8'));
+for(const asset of kitchenGolden.extracted)add(asset.path);
+add('web/art/golden-kitchen/manifest.json');
 await addTree('assets/png',new Set(['.png','.jpg','.jpeg','.webp']));
 await addTree('assets/music',new Set(['.mp3','.ogg','.wav']));
 await addTree('res/raw',new Set(['.mp3','.ogg','.wav']));
 add('web/fonts/OFL-NotoSansSC.txt');
+add('web/fonts/OFL-ZCOOLKuaiLe.txt');
 const files=[];
 for(const relative of [...allowed].sort()){
   const info=await lstat(sourcePath(relative));

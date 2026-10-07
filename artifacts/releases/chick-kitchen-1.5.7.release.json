@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.7",
+    "versionCode":  23,
+    "file":  "chick-kitchen-1.5.7.apk",
+    "sha256":  "ce474d249508a26876bb103d8d50b36a1cd4ba6454868a120bf9d62682443217",
+    "bytes":  99802741,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-02T11:20:00.1058107Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "69f233f0ae474bf139fb7c88b2220944d73db51611a98b99dff57007bbcb8389",
+    "runtimeFiles":  1332,
+    "notes":  "界面全面整理：生意页进来就按菜单摆好，菜单改成星级和伙伴格子，缺的伙伴点「做」直接去厨房；下一锅把选调料和开火合成一张卡，在所有厨具里挑推荐，缺的调料开火时一起买；收完一锅弹出收成卡；仓库合并伙伴、材料和出售，一键卖掉多余；厨房往事并入订单，日常寻访改为寻访地图的近郊，同行自动选好；图鉴改为品种、配方、收藏、日历四个书签；神社合并求签、小礼、来信和签册；每种在家留一只改为设置里的开关；去掉常驻提示文字，改用按钮呼吸和第一次进入的指引。另含调味推荐、寻访遮挡修复。保留原有玩法和存档。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

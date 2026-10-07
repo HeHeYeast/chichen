@@ -20,7 +20,8 @@ function same(s,fn){const before=structuredClone(s);assert.throws(fn);assert.dee
 test('approved machine configuration and authored content cover all 193 identities',()=>{
  const cfg=JSON.parse(readFileSync(new URL('../docs/b-group-balance/design-config.json',import.meta.url)));delete cfg.status;assert.deepEqual(RULES,cfg);
  assert.equal(Object.keys(ABILITIES).length,193);assert.equal(Object.keys(DESCRIPTIONS).length,193);assert.equal(Object.keys(AUTHORED_CLUES).length,193);assert.equal(STORY_CHAPTERS.length,3);
- for(const a of Object.values(ABILITIES))assert.equal(a.gather+a.discover,6);
+ for(const a of Object.values(ABILITIES)){assert.ok(a.gather>=1&&a.gather<=20&&a.discover>=1&&a.discover<=20);}
+ assert.ok(new Set(Object.values(ABILITIES).map(a=>a.gather+'/'+a.discover)).size>=40,'partners must differ clearly, not sit in three buckets');
 });
 test('point sources, branching prerequisites, exclusive specialization and respec persist without duplication',()=>{
  const s=full();for(const key of Object.keys(ABILITIES))s.total[key]=100;P.syncProgress(s);assert.equal(P.skillPoints(s).earned,54);
@@ -108,7 +109,7 @@ test('real UI commit restores the complete state after disk failure at every new
  const gift=structuredClone(start);claimActivity(gift,'shrine',NOW);
  const batch=structuredClone(start);E.startBatch(batch,0,NOW,()=>.5);batch.batch.eggs[0].status='ready';
  for(const [state,at,fn]of [[start,NOW,s=>P.learnSkill(s,'CUL-1')],[start,NOW,s=>acceptOrder(s,'first-sale')],[order,NOW,s=>deliverOrder(s,'first-sale',12,NOW)],[start,NOW,s=>T.depart(s,{routeId:'yard',members:['0:0']},NOW,()=>0)],[running,NOW+1,s=>T.recall(s,s.progress.trip.id,NOW+1)],[returned,returned.progress.trip.endAt,s=>T.claimTrip(s,s.progress.trip.id,{},returned.progress.trip.endAt)],[skill,NOW,s=>K.studyRecipe(s,'0:120',NOW)],[gift,NOW,s=>claimActivity(s,'shrine-gift',NOW,()=>0)],[batch,NOW,s=>E.collect(s,0)]]){
-  const before=structuredClone(state);const context={state:structuredClone(state),committedState:structuredClone(state),review:false,recoveryError:'',lastSaveError:'',execute,saveStore:{write(){throw Error('disk failure');}},structuredClone,E,now:()=>at,save:()=>false,renderControls(){},makeWalkers(){},sound(){},alertBox(){}};
+  const before=structuredClone(state);const context={pendingHarvest:new Set(),flushHarvest(){},state:structuredClone(state),committedState:structuredClone(state),review:false,recoveryError:'',lastSaveError:'',execute,saveStore:{write(){throw Error('disk failure');}},structuredClone,E,now:()=>at,save:()=>false,renderControls(){},makeWalkers(){},sound(){},alertBox(){}};
   vm.createContext(context);vm.runInContext(code,context);assert.equal(context.commitProgress(fn),null);assert.deepEqual(context.state,before);
  }
 });

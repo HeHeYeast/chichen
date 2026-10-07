@@ -1,15 +1,16 @@
 import {recipeBookModel,discoveredRecipe} from './recipe-book.js';
 import {speciesLabel} from './catalog.js';
+import {kitSheet,kitCoin,kitEgg,kitButton,kitButton2,kitChip,kitChipHtml,kitLabel,kitIcon,kitCell} from './ui-kit.js';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function createRecipeBookUI({getState,getNow,panels,showPanel,characterPortrait,toolPortrait,ingredientPortrait,onClose,onPrepare,openIngredients,openTools,openKitchen,openActivities,openDuckShop,openCalendar}){
-  let toolId=0,egg=-1,selected=null,detailReturn=null;
+  let toolId=0,egg=-1,selected=null,detailReturn=null,fromBook=false;
   const scrolls=new Map();
   const find=s=>panels.querySelector(s);
-  const remember=()=>{if(!selected&&find('.cookbook-list'))scrolls.set(`${toolId}:${egg}`,find('.cookbook-list').scrollTop);};
+  const remember=()=>{if(!selected&&find('.cookbook-screen .kp-scroll'))scrolls.set(`${toolId}:${egg}`,find('.cookbook-screen .kp-scroll').scrollTop);};
   let backLabel=null;
-  function open({tool=toolId,key=null,back=null,label=null}={}){
-    remember();toolId=tool;selected=null;detailReturn=null;backLabel=label;
+  function open({tool=toolId,key=null,back=null,label=null,fromBook:book=false}={}){
+    remember();fromBook=book&&!key;toolId=tool;selected=null;detailReturn=null;backLabel=label;
     const r=key?discoveredRecipe(getState(),key,getNow()):null;
     if(r){toolId=r.toolId;selected=key;detailReturn=back;}
     render();
@@ -18,12 +19,16 @@ export function createRecipeBookUI({getState,getNow,panels,showPanel,characterPo
     const s=getState(),model=recipeBookModel(s,{toolId,egg},getNow());
     let r=selected?discoveredRecipe(s,selected,getNow()):null;
     if(selected&&!r){selected=null;detailReturn=null;}
-    const tabs=`<div class="cookbook-tools" aria-label="按厨具查配方">${model.tools.map(t=>`<button data-cookbook-tool="${t.id}" aria-pressed="${toolId===t.id}" class="${toolId===t.id?'is-current':''}">${t.id>=0?toolPortrait(t.id,Math.max(0,s.toolLevels[t.id]??0)):'<span class="cookbook-change-icon">?</span>'}<span>${t.name}</span><small>${t.count} 份</small></button>`).join('')}</div>`;
-    const filters=`<div class="cookbook-filter"><span>已记下 ${model.total} 份</span><div>${[[-1,'全部'],[0,'鸡宝'],[1,'鸭宝']].map(([value,label])=>`<button data-cookbook-egg="${value}" aria-pressed="${egg===value}">${label}</button>`).join('')}</div></div>`;
-    const body=r?detail(r):`${tabs}${filters}<div class="cookbook-list scroll">${model.entries.length?model.entries.map(entry=>`<button class="cookbook-card" data-cookbook-recipe="${entry.key}"><span class="cookbook-code">${speciesLabel(entry.egg,entry.id)} · ${entry.egg?'鸭宝':'鸡宝'}</span><span class="cookbook-card-art">${characterPortrait(entry.egg,entry.id)}</span><strong>${esc(entry.name)}</strong><small>${entry.special?'查看出现方式':`${entry.toolName} Lv.${entry.minLevel+1}`}</small></button>`).join(''):'<div class="cookbook-empty"><span class="collection-unknown-egg">?</span><strong>这一页还没有配方</strong><p>用这件厨具发现新伙伴，<br>首次收取后，配方会记在这里。</p><small>未收录的伙伴不会提前显示配方。</small></div>'}</div>`;
+    // List: cookware coins, egg coins, then the recorded recipes as stickers. Detail: pictures first.
+    const tools=`<div class="gd-scroll-row cookbook-tools bk-tools" role="group" aria-label="按厨具查配方" data-hscroll>${model.tools.map(t=>`<button type="button" class="bk-tool" data-cookbook-tool="${t.id}" aria-pressed="${toolId===t.id}"><span class="bk-tool-art">${t.id>=0?toolPortrait(t.id,Math.max(0,s.toolLevels[t.id]??0)):'<b>?</b>'}</span><small>${t.count}</small></button>`).join('')}</div>`;
+    const eggs=`<div class="kp-bar bk-bar" data-row><div class="kp-coins" role="group" aria-label="蛋种">${kitCoin('全','data-cookbook-egg="-1"',egg===-1,'全部')}${kitCoin(kitEgg(false),'data-cookbook-egg="0"',egg===0,'鸡宝')}${kitCoin(kitEgg(true),'data-cookbook-egg="1"',egg===1,'鸭宝')}</div><span class="bk-count"><b>${model.total}</b>份配方</span></div>`;
+    const list=model.entries.length?`<div class="cookbook-list bk-grid">${model.entries.map(entry=>`<button type="button" class="cookbook-card bk-sticker is-known" data-cookbook-recipe="${entry.key}"><span class="bk-sticker-art">${characterPortrait(entry.egg,entry.id)}</span><strong class="collection-name">${esc(entry.name)}</strong><span class="collection-code">${entry.special?'特别出现':`${esc(entry.toolName)} Lv.${entry.minLevel+1}`}</span></button>`).join('')}</div>`:`<div class="kp-empty cookbook-empty"><span class="bk-q">?</span><span>这件厨具还没记下配方</span></div>`;
     const action=r?nextAction(r):null;
-    showPanel('厨房配方册',`${body}<footer class="cookbook-footer"><button data-cookbook-back>‹ ${selected?detailReturn?(backLabel??'返回档案'):'返回配方册':'返回图鉴'}</button>${r?`<button class="orange" data-cookbook-prepare ${action.disabled?'disabled':''}>${action.label}</button>`:'<span>收录一次，配方一直保留</span>'}</footer>`,'screen-panel cookbook-screen');
-    find('.close').onclick=back;find('[data-cookbook-back]').onclick=back;
+    const body=r?detail(r):`${eggs}${tools}${kitLabel(model.tools.find(t=>t.id===toolId)?.name??'')}${list}`;
+    // The back button names where it goes (an order, a profile, the list or the 图鉴).
+    const foot=r?`${kitButton2(detailReturn?(backLabel??'返回档案'):'返回配方册','data-cookbook-back')}${kitButton(action.label,'data-cookbook-prepare'+(action.disabled?' disabled':''))}`:(fromBook?'':kitButton('返回图鉴','data-cookbook-back'));
+    showPanel('厨房配方册',kitSheet(body,foot,'bk-sheet',r?'':'',{attrs:r?'':'data-list',cls:r?'':''}),'screen-panel cookbook-screen',{skin:'book',icon:characterPortrait(0,0),back:!!r||!fromBook});
+    find('.close').onclick=back;find('[data-cookbook-back]')?.addEventListener('click',back);
     panels.querySelectorAll('[data-cookbook-tool]').forEach(b=>b.onclick=()=>{remember();toolId=+b.dataset.cookbookTool;selected=null;detailReturn=null;render();});
     panels.querySelectorAll('[data-cookbook-egg]').forEach(b=>b.onclick=()=>{remember();egg=+b.dataset.cookbookEgg;render();});
     panels.querySelectorAll('[data-cookbook-recipe]').forEach(b=>b.onclick=()=>{remember();selected=b.dataset.cookbookRecipe;detailReturn=null;render();});
@@ -35,7 +40,7 @@ export function createRecipeBookUI({getState,getNow,panels,showPanel,characterPo
       else if(a.kind==='time')openCalendar();else if(a.kind==='tools')openTools(latest.toolId);else if(a.kind==='kitchen')openKitchen();
       else onPrepare(latest.key);
     });
-    if(!selected){find('.cookbook-list').scrollTop=scrolls.get(`${toolId}:${egg}`)??0;find(`[data-cookbook-tool="${toolId}"]`)?.scrollIntoView({block:'nearest',inline:'center'});}
+    if(!selected){const list=find('.kp-scroll');if(list)list.scrollTop=scrolls.get(`${toolId}:${egg}`)??0;find(`[data-cookbook-tool="${toolId}"]`)?.scrollIntoView({block:'nearest',inline:'center'});}
   }
   function nextAction(r){
     if(r.special)return {label:'特殊出现方式',disabled:true};
@@ -49,8 +54,24 @@ export function createRecipeBookUI({getState,getNow,panels,showPanel,characterPo
     if(r.missing.length)return {label:'补齐材料',kind:'ingredients'};
     return {label:'配好下一批',kind:'prepare'};
   }
+  // The recipe card: the partner on a little stage in the light, its name on a ribbon; then the method as
+  // dotted-leader rows (the cookware, each seasoning) ending in what you have, and the facts as pictures + numbers.
   function detail(r){
-    return `<div class="cookbook-detail scroll"><div class="cookbook-detail-heading"><span>${speciesLabel(r.egg,r.id)} · ${r.egg?'鸭宝':'鸡宝'}</span><b>已解锁配方</b></div><div class="cookbook-hero"><span>${characterPortrait(r.egg,r.id)}</span>${r.toolId>=0?`<span class="cookbook-detail-tool">${toolPortrait(r.toolId,r.minLevel)}</span>`:''}</div><h3>${esc(r.name)}</h3>${r.description?`<p class="cookbook-story">${esc(r.description)}</p>`:''}<div class="cookbook-method"><strong>${r.special?'出现方式':`${r.egg?'鸭蛋':'鸡蛋'} · ${esc(r.toolName)} Lv.${r.minLevel+1} 起`}</strong>${r.special?'':`<p>${getState().toolLevels[r.toolId]>=r.minLevel?'按现有厨具':'按所需等级'}：本次${Number(r.minutes.toFixed(2))}分钟（原${r.originalMinutes}分钟）· ${r.cost} CP / 批</p>`}</div>${r.special?'':`<div class="cookbook-mixture">${r.ingredients.length?r.ingredients.map((id,i)=>`<span>${ingredientPortrait(id)}<b>${esc(r.ingredientNames[i])}</b><small>持有 ${getState().ingredients[id]??0} / 1</small></span>`).join('<i>＋</i>'):'<p>不放调味料</p>'}</div>`}<ul class="cookbook-conditions">${r.conditions.map(c=>`<li class="${c.met?'is-met':''}">${c.met?'✓':'○'} ${esc(c.label)}</li>`).join('')}</ul><p class="cookbook-note">${esc(r.note)}</p>${r.special?'':'<p class="cookbook-save-note">准备只替换下一批的蛋种与材料，当前一批继续孵化。开火确认后才消耗材料和 CP。</p>'}</div>`;
+    const tick=met=>met?'<img src="/web/art/golden-business/family-check.png" alt="已达成">':'';
+    const st=getState(),ART='/web/art/golden-ui/';
+    const line=(pic,name,have,ok,cls='')=>`<span class="rb-line${cls}"><i class="rb-pic" data-visual>${pic}</i><b class="rb-what">${esc(name)}</b><i class="rb-dots" aria-hidden="true"></i><span class="rb-have${ok?' ok':' short'}">${esc(have)}</span>${ok?'<img class="rb-ok" src="/web/art/golden-business/family-check.png" alt="有">':''}</span>`;
+    const lv=r.toolId>=0?(st.toolLevels?.[r.toolId]??-1):-1;
+    const tool=r.toolId>=0?line(toolPortrait(r.toolId,r.minLevel),`${r.toolName}`,lv<0?'还没有':lv>=r.minLevel?`Lv.${r.minLevel+1} 起`:`要 Lv.${r.minLevel+1}`,lv>=r.minLevel,' is-tool'):'';
+    const mix=r.ingredients.length?r.ingredients.map((id,n)=>{const have=st.ingredients[id]??0;return line(ingredientPortrait(id),r.ingredientNames[n],have?`有 ${have}`:'缺',have>0);}).join('')
+      :`<p class="rb-line is-none"><i class="rb-pic" data-visual><img src="${ART}ic-jar.png" alt=""></i><b class="rb-what">调味料</b><i class="rb-dots" aria-hidden="true"></i><span class="rb-have ok">不放</span></p>`;
+    const fact=(icon,v,l)=>`<span class="rb-fact"><img src="${icon}" alt=""><b>${esc(v)}</b><small>${esc(l)}</small></span>`;
+    return `<div class="cookbook-detail bk-recipe-detail rb-detail"><div class="rb-stage"><span class="rb-hero">${characterPortrait(r.egg,r.id)}</span></div>
+      <div class="rb-ribbon"><span data-safe><h3 class="species-name">${esc(r.name)}</h3></span></div><small class="rb-code">${speciesLabel(r.egg,r.id)} · ${r.egg?'鸭宝':'鸡宝'}</small>
+      ${r.special?kitChip('','特别出现方式','soft'):`<section class="cookbook-method rb-card" aria-label="做法">${tool}<div class="cookbook-mixture rb-mix">${mix}</div></section>
+      <div class="rb-facts">${fact(ART+'ic-hourglass.png',`${Number(r.minutes.toFixed(2))} 分`,'用时')}${fact('/web/art/golden-business/coin.png',`${r.cost}`,'每锅 CP')}${fact(ART+(r.egg?'ic-duck-egg.png':'ic-egg.png'),r.egg?'鸭蛋':'鸡蛋','用蛋')}</div>`}
+      ${r.description?`<p class="cookbook-story species-story">${esc(r.description)}</p>`:''}
+      ${r.conditions.length?`<div class="sh-conds cookbook-conditions">${r.conditions.map((c,n)=>`<span class="sh-cond${c.met?' met':''}"><i>${tick(c.met)||n+1}</i>${esc(c.label)}</span>`).join('')}</div>`:''}
+      <p class="cookbook-note rb-note">${esc(r.note)}</p></div>`;
   }
   function back(){if(selected){if(detailReturn){const previous=detailReturn;selected=null;detailReturn=null;previous();}else{selected=null;render();}}else onClose();}
   return {open,resume:render,refresh(){if(find('.cookbook-screen'))render();},reset(){selected=null;toolId=0;egg=-1;detailReturn=null;scrolls.clear();}};

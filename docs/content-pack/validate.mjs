@@ -3,7 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {isDeepStrictEqual} from 'node:util';
 import {GAME_DATA as D,EXPANSION} from '../../web/content-pack.js';
+import {LEGACY193} from '../../web/legacy-content.js';
+import {validateLegacy} from '../../tools/build-runtime-content.mjs';
 import {originalRecipePlan} from '../../web/recipes.js';
 import {availableIngredientIds} from '../../web/ingredient-unlocks.js';
 const dir=path.dirname(fileURLToPath(import.meta.url));
@@ -12,10 +15,18 @@ const failures=[],checks=[];
 function check(name,condition,detail=''){checks.push({name,pass:!!condition,detail});if(!condition)failures.push(name+': '+detail);}
 const everyone=[...b.species.map(s=>({...s,id:s.key})),...c.species],get=id=>everyone.find(s=>s.id===id);
 const names=new Set(),keys=new Set();
-check('现行193及新总量241',D.characters.flat().length===193&&c.species.length===48&&everyone.length===241);
+check('旧193冻结数量',b.species.length===193&&LEGACY193.characters[0].length===128&&LEGACY193.characters[1].length===65);
+let legacyValidationError='';
+try{validateLegacy(b);}catch(error){legacyValidationError=error.message;}
+check('旧193基线身份与值不漂移',!legacyValidationError,legacyValidationError);
+check('运行时旧193原值不漂移',[0,1].every(egg=>isDeepStrictEqual(D.characters[egg].slice(0,LEGACY193.characters[egg].length),LEGACY193.characters[egg])));
+check('当前运行时241角色',D.characters.flat().length===241&&everyone.length===241);
+check('当前鸡152鸭89',D.characters[0].length===152&&D.characters[1].length===89);
+check('新增48角色',c.species.length===48&&c.species.every(s=>D.characters[s.egg].some(x=>x.id===Number(s.key.split(':')[1]))));
+check('旧75及当前83材料',b.ingredients.length===75&&LEGACY193.tools[2].length===75&&D.tools[2].length===83&&isDeepStrictEqual(D.tools[2].slice(0,75),LEGACY193.tools[2])&&c.materials.length===8);
 check('24鸡24鸭',c.species.filter(s=>s.egg===0).length===24&&c.species.filter(s=>s.egg===1).length===24);
 for(const r of c.regions)check(`${r.id}每区6鸡6鸭`,[0,1].every(e=>c.species.filter(s=>s.region===r.id&&s.egg===e).length===6));
-for(const s of everyone){check('唯一身份 '+s.id,!keys.has(s.key));keys.add(s.key);check('唯一名称 '+s.name,!names.has(s.name));names.add(s.name);check('G/F与特征 '+s.id,s.exploration.G+s.exploration.F===6&&[2,3,4].includes(s.exploration.G)&&s.exploration.traits.length<=2);}
+for(const s of everyone){check('唯一身份 '+s.id,!keys.has(s.key));keys.add(s.key);check('唯一名称 '+s.name,!names.has(s.name));names.add(s.name);check('G/F与特征 '+s.id,[s.exploration.G,s.exploration.F].every(v=>Number.isInteger(v)&&v>=1&&v<=20)&&s.exploration.traits.length<=2);}
 check('旧鸡鸭ID保持不变',b.species.every(s=>D.characters[s.egg].some(x=>s.key===`${s.egg}:${x.id}`&&x.title_zh_CN===s.name)));
 check('新ID连续追加',c.species.every(s=>{const [e,n]=s.key.split(':').map(Number);return e===s.egg&&(e===0?n>=128&&n<=151:n>=65&&n<=88);}));
 const exact=r=>`${r.egg??''}|${r.toolId}|${[...(r.ingredients??[])].map(i=>typeof i==='number'?i:i.id).sort((a,b)=>a-b).join(',')}`;
@@ -113,7 +124,7 @@ const report={status:failures.length?'FAIL':'PASS',checks:checks.length,failed:f
 fs.writeFileSync(path.join(dir,'audit.json'),JSON.stringify(report,null,2)+'\n');
 const name=id=>get(id)?.name??id;
 const table=(h,rs)=>'| '+h.join(' | ')+' |\n| '+h.map(()=>'---').join(' | ')+' |\n'+rs.map(r=>'| '+r.map(x=>String(x).replaceAll('|','／')).join(' | ')+' |').join('\n')+'\n';
-const auditMd=`# 内容关系审计\n\n2026-09-23；状态：**${report.status}，${checks.length}项静态检查，${failures.length}失败**。返回[内容总册](../content-expansion-assets.md)。机器细节见[audit.json](audit.json)，全关系见[relation-graph.json](relation-graph.json)。这不是游戏实现测试或最终平衡通过。\n\n## 1. 继承依据与查阅范围\n\n完整读取玩法扩展和UI架构；检查当前193名称、193正文、193能力、75材料、原配方目录、点心6种、四时16种、厨具与材料开放、神社媒介和特殊变化规则。既有点心和四时图集已作视觉对照，全部旧近似品通过名称、描述和规则逐项核查；未把未逐张看过的193张原图声称为已完成逐图美术验收。每个新品的art.contrast列出后续必须并排比对的旧近邻。基线文件摘要保存在机器报告。\n\n## 2. 48个工作名逐项审查\n\n表中保留工作名不表示原样接受外形或配方。完整差异由同一品种档案明确；已针对奶凝、茶蛋、米团、薄饼、芝麻脆片、观赏叶形等邻近组分开大轮廓和料理方式。\n\n${table(['ID','原工作名','正式名','主要区别/处置'],c.species.map(s=>[s.id,s.workName,s.name,s.art.contrast]))}\n## 3. 已发现并直接调整的问题\n\n${table(['问题','本包已采用的处理'],c.decisions.map(d=>[d.issue,d.resolution]))}\n## 4. 九项关系审计\n\n${table(['检查','结果与依据'],[
+const auditMd=`# 内容关系审计\n\n按当前作者源生成；状态：**${report.status}，${checks.length}项静态检查，${failures.length}失败**。返回[内容总册](../content-expansion-assets.md)。机器细节见[audit.json](audit.json)，全关系见[relation-graph.json](relation-graph.json)。这不是游戏实现测试或最终平衡通过。\n\n## 1. 继承依据与查阅范围\n\n完整读取玩法扩展和UI架构；检查当前193名称、193正文、193能力、75材料、原配方目录、点心6种、四时16种、厨具与材料开放、神社媒介和特殊变化规则。既有点心和四时图集已作视觉对照，全部旧近似品通过名称、描述和规则逐项核查；未把未逐张看过的193张原图声称为已完成逐图美术验收。每个新品的art.contrast列出后续必须并排比对的旧近邻。基线文件摘要保存在机器报告。\n\n## 2. 48个工作名逐项审查\n\n表中保留工作名不表示原样接受外形或配方。完整差异由同一品种档案明确；已针对奶凝、茶蛋、米团、薄饼、芝麻脆片、观赏叶形等邻近组分开大轮廓和料理方式。\n\n${table(['ID','原工作名','正式名','主要区别/处置'],c.species.map(s=>[s.id,s.workName,s.name,s.art.contrast]))}\n## 3. 已发现并直接调整的问题\n\n${table(['问题','本包已采用的处理'],c.decisions.map(d=>[d.issue,d.resolution]))}\n## 4. 九项关系审计\n\n${table(['检查','结果与依据'],[
  ['1 新品只剩图鉴价值','48/48至少两种不同系统用途。40食用品有具体菜单/采购候选和寻访；8观赏品有G/F实用、事件/同行、O04展示及地区展册，不假装可食。'],
  ['2 材料只服务单方','8/8各服务4–6种新品，均覆盖鸡鸭，均跨至少3种厨具；完整统计如下。'],
  ['3 旧品无法参与','193/193进入SP-ALL同行观察与PJ-4画像展出，每种保留G/F与适应的实际贡献。食用旧品另有明确菜单、采购与收藏；四地各有至少6个列名旧品。'],

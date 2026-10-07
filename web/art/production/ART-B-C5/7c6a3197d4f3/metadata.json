@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "processingVersion": 1,
+  "kind": "species",
+  "identityKey": "0:150",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceBounds": [
+    247,
+    446,
+    1007,
+    1096
+  ],
+  "components": [
+    {
+      "area": 326814,
+      "bbox": [
+        247,
+        446,
+        965,
+        1096
+      ]
+    },
+    {
+      "area": 1556,
+      "bbox": [
+        941,
+        977,
+        986,
+        1021
+      ]
+    },
+    {
+      "area": 1777,
+      "bbox": [
+        902,
+        1011,
+        950,
+        1059
+      ]
+    },
+    {
+      "area": 1865,
+      "bbox": [
+        958,
+        1028,
+        1007,
+        1077
+      ]
+    }
+  ],
+  "sourceLayersUnavailable": true,
+  "variants": {
+    "full": {
+      "path": "/web/art/production/ART-B-C5/7c6a3197d4f3/full.png",
+      "width": 512,
+      "height": 512,
+      "sha256": "ea672d3afe2d980564301682393c418b5f89e53374e719a1133f9351e1b08692",
+      "visibleBounds": [
+        51,
+        121,
+        461,
+        471
+      ],
+      "centroid": [
+        0.49426954602271034,
+        0.61038822946714
+      ],
+      "scale": 0.5389473684210526,
+      "translation": [
+        -82.12,
+        -119.37052631578948
+      ],
+      "bounds": [
+        51,
+        121,
+        410,
+        350
+      ],
+      "groundAnchor": [
+        0.5,
+        0.919921875
+      ],
+      "available": true
+    },
+    "portrait": {
+      "path": "/web/art/production/ART-B-C5/7c6a3197d4f3/portrait.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "7252874568cc20e2dc9f54e93034ac56515a91bc7c1bf490f9189b50f3365f9f",
+      "visibleBounds": [
+        30,
+        45,
+        225,
+        211
+      ],
+      "centroid": [
+        0.4915775487135793,
+        0.5295811784095859
+      ],
+      "scale": 0.256,
+      "translation": [
+        -33.232,
+        -69.176
+      ],
+      "bounds": [
+        30,
+        45,
+        195,
+        166
+      ],
+      "groundAnchor": [
+        0.5,
+        0.82421875
+      ],
+      "available": true
+    },
+    "silhouette": {
+      "path": "/web/art/production/ART-B-C5/7c6a3197d4f3/silhouette.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "cf731918f30f2b2d8f51613dbeaf6d915fb47c28a6d42becf4d76f95bac229c1",
+      "visibleBounds": [
+        30,
+        45,
+        225,
+        211
+      ],
+      "centroid": [
+        0.4915775487135793,
+        0.5295811784095859
+      ],
+      "scale": 0.256,
+      "translation": [
+        -33.232,
+        -69.176
+      ],
+      "bounds": [
+        30,
+        45,
+        195,
+        166
+      ],
+      "groundAnchor": [
+        0.5,
+        0.82421875
+      ],
+      "available": true
+    }
+  },
+  "source": {
+    "sourceHash": "218892dca51899733ec4ea5e6ca6800cd7254e00a95836fe5ab91224d36c9e4b",
+    "provider": "native-imagegen"
+  }
+}

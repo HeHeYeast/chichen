@@ -1,3 +1,4 @@
+import {openFarmPlace} from './qa-farm-navigation.mjs';
 // Work K playable acceptance: five fixed places at phone/landscape/desktop sizes,
 // desktop side column, cross-page returns with drafts, unknown-name scan.
 import {spawn} from 'node:child_process';
@@ -11,6 +12,7 @@ import {syncProgress} from '../web/progression.js';
 import {REGIONAL,resolveSpecies} from '../web/content-registry.js';
 import {orderMilestone,acceptProposal} from '../web/orders.js';
 import {normalizeSave} from '../web/engine.js';
+import {setSlot} from './qa-business-stock.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),require=createRequire(import.meta.url);
 const candidates=[process.argv[2],process.env.CHICK_PLAYWRIGHT_PACKAGE,'playwright','playwright-core',process.env.APPDATA&&join(process.env.APPDATA,'npm/node_modules/gsd-pi/node_modules/playwright-core')].filter(Boolean);
 let packagePath;for(const p of candidates){try{packagePath=require.resolve(p);break;}catch{}}
@@ -70,28 +72,27 @@ try{
   const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
   await context.addInitScript(({seed,now})=>{if(location.protocol==='about:')return;window.__workEOffset=Number(sessionStorage.getItem('work-e-clock')??0);Date.now=()=>now+window.__workEOffset+Math.floor(performance.now());if(!localStorage.getItem('chick-kitchen-v1'))localStorage.setItem('chick-kitchen-v1',JSON.stringify(seed));},{seed,now});
   p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(base+'/');await start();
-  await p.locator('.game-toast').waitFor({timeout:4000});assert.match(await p.locator('.game-toast').innerText(),/补给搬到厨房了/);
-  await nav('生意');await p.locator('[data-trade-view="orders"]').first().click();const order=(await read()).expansion.orders.active[0];
-  await p.locator(`[data-order-deliver="${order.id}"]`).click();await p.locator('[data-slot-plus="O01-G1|0:0"]').click();await screenshot('order-draft');
-  await nav('农场');await nav('生意');await p.locator('[data-orders-confirm]').waitFor();assert.match(await p.locator('[data-orders-confirm]').innerText(),/交付1只/);
-  checks.push('生意→订单交付页选1只后切到农场再回生意：直接回到同一交付页，草稿数量保留');
-  const recipe=p.locator('[data-order-recipe]').first();await recipe.click();await p.locator('[data-cookbook-back]').waitFor();assert.match(await p.locator('[data-cookbook-back]').innerText(),/返回订单/);await screenshot('order-to-recipe');
-  await p.locator('[data-cookbook-back]').click();await p.locator('[data-orders-confirm]').waitFor();assert.match(await p.locator('[data-orders-confirm]').innerText(),/交付1只/);
-  checks.push('交付页对缺货品种“去看做法”→配方详情显示“返回订单”→返回原交付页，选择仍在');
+  await p.locator('.game-toast').waitFor({timeout:4000});assert.match(await p.locator('.game-toast').innerText(),/商店搬进厨房了/);
+  // 2026-10-07 (batch 3): an order an older save accepted is a slip on the 生意 page; one 交付 finishes it (no delivery sheet)
+  await nav('生意');const order=(await read()).expansion.orders.active[0];
+  await p.locator(`#panels .bh-main [data-order-detail="order:${order.id}"]`).click();await p.locator('#panels .bh-sheet').waitFor();await screenshot('order-sheet');
+  await p.locator('#panels [data-business-sheet-close]').click();await nav('农场');await nav('生意');await p.locator('.business-screen .bh-orders').waitFor();
+  await p.locator(`#panels .bh-main [data-order-act="order:${order.id}"]`).click();await p.locator('#dialog-layer .order-done').waitFor();await screenshot('order-done');
+  await p.locator('#dialog-layer .gd-actions button',{hasText:'收下'}).click();assert.equal((await read()).expansion.orders.active.length,0);
+  checks.push('旧存档里已接取的订单在生意页订单板上：名称打开订单详情，切到农场再回来是生意主页，一次「交付」完成');
   await nav('寻访');await p.locator('.regional-screen').waitFor();await scan('寻访·出发');
-  await p.locator('[data-regional-legacy-routes]').click();await p.locator('.workshop-screen').waitFor();assert.match(await p.locator('.workshop-screen').innerText(),/庭院|水边|林间/);await screenshot('explore-legacy-routes');
-  await p.locator('.workshop-screen .close').click();await p.locator('.regional-screen').waitFor();
-  checks.push('寻访页常驻“原路线”入口：打开原来的三条路线，关闭后回到寻访页而不是厨房');
+  assert.equal(await p.locator('[data-regional-legacy-routes]').count(),0,'近郊 has no separate entry any more');
+  await p.locator('[data-journey-enter]').click();await p.locator('[data-regional-depart]').waitFor();await screenshot('explore-region-detail');
+  await p.locator('[data-journey-back]').click();await p.locator('.regional-screen [data-regional-go],.regional-screen [data-regional-go-route],.regional-screen .jr-card').first().waitFor();
+  checks.push('寻访只从地区地图进入：地区卡「立即寻访」，「地点与方向」是第二层，返回回到地图；不再有单独的近郊页');
   await p.locator('[data-regional-tab="record"]').click();await scan('寻访·地区与发现');
-  for(const tab of ['business','orders','regulars','projects']){await nav('生意');await p.locator(`[data-trade-view="${tab}"]`).first().click();await p.waitForTimeout(150);await scan(`生意·${tab}`);}
-  await nav('图鉴');await p.locator('[data-book-tab=collections]').click();for(const tab of ['theme','region','special','mementos','papers']){await p.locator('[data-books-category]').selectOption(tab);await scan(`图鉴·收藏册·${tab}`);}
+  for(const tab of ['home','order','regulars','projects']){await nav('生意');if(await p.locator('.shop-subpage [data-shop-back]').count())await p.locator('.shop-subpage [data-shop-back]').click();if(tab==='order'){if(await p.locator('#panels .bh-main [data-order-detail]').count())await p.locator('#panels .bh-main [data-order-detail]').first().click();}else if(tab!=='home')await p.locator(`[data-trade-view="${tab}"]`).first().click();await p.waitForTimeout(150);await scan(`生意·${tab}`);if(await p.locator('#panels .bs-dialog[open] [data-business-sheet-close]').count())await p.locator('#panels .bs-dialog[open] [data-business-sheet-close]').click();}
+  await nav('图鉴');await p.locator('[data-book-tab=collections]').click();for(const tab of ['theme','region','special','mementos','papers']){if(await p.locator('[data-gs-directory]').count()&&!await p.locator('[data-books-category]:visible').count())await p.locator('[data-gs-directory]').click();await p.locator(`[data-books-category="${tab}"]:visible`).first().click();await scan(`图鉴·收藏册·${tab}`);}
   checks.push(`未知投影扫描：寻访两页、生意四页、图鉴收藏册五页的DOM与aria中，48个未收录新品名称均未出现`);
-  await nav('农场');const shrine=p.locator('[data-control-id="farm:shrine"]');
-  for(let i=0;i<4&&!(await shrine.count());i++){const g=await p.locator('#game').boundingBox();await p.mouse.move(g.x+g.width*.85,g.y+g.height*.55);await p.mouse.down();await p.mouse.move(g.x+g.width*.15,g.y+g.height*.55,{steps:10});await p.mouse.up();await p.waitForTimeout(200);}
-  await shrine.click();await p.locator('.screen-panel').first().waitFor();await screenshot('farm-shrine');checks.push('旧神社委托簿仍从农场原位置（横向拖动农场后）进入');
+  await nav('农场');await openFarmPlace(p,'shrine');await p.locator('.shrine-screen').waitFor();await screenshot('farm-shrine');checks.push('正式农场地点菜单进入神社');
   await nav('厨房');await p.locator('[data-control-id="nav:5"]').focus();await p.keyboard.press('Enter');await p.locator('.screen-panel').first().waitFor();checks.push('键盘聚焦“生意”并回车即进入生意页');
   await p.reload();await start();assert.equal(await p.locator('.game-toast').count(),0,'the supply notice shows once');
-  checks.push('“补给搬到厨房了”只提示一次，刷新后不再出现');
+  checks.push('“商店搬进厨房了”只提示一次，刷新后不再出现');
   assert.deepEqual(errors,[]);passed=true;await context.close();
 }catch(error){if(p&&!p.isClosed()){await writeFile(resolve(output,'failure.txt'),await p.locator('body').innerText());await screenshot('failure');}throw error;}
 finally{await browser?.close();server.kill();const report={checkedAt:new Date().toISOString(),passed,checks,screens,errors,isolatedProfile:true,acceleratedClock:true,realDeviceTest:false};await writeFile(resolve(output,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}

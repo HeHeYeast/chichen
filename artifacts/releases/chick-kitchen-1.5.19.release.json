@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.19",
+    "versionCode":  35,
+    "file":  "chick-kitchen-1.5.19.apk",
+    "sha256":  "26924f8abf394fec0396b5396f1c25d5a68f5a8becf1ca750ed64be86bda6ff2",
+    "bytes":  107489841,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-07T15:55:14.1247639Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "58c90c7b2b852a6f4e875c9aa034718b337b4f1373bfef260ccbf447f870d840",
+    "runtimeFiles":  1485,
+    "notes":  "寻访、线索册、下一锅、生意连成一个循环。线索册改成单独一页：点星追踪一只伙伴，寻访时它的线索在哪个地区，地图上就标在哪里，追踪时这趟一定带回下一条；地区伙伴也在同一本线索册里，在本地区寻访能一层层读到完整做法，地区试做每锅 25%、最多 4 锅一定出。下一锅「推荐」每张卡写明为什么做这一锅（追踪、订单、今日菜单、新伙伴），晚上会给一锅放到早上也不会焦的。生意主页：今日营业 + 订单板，订单够了一次交付，部分订单带回本地区的情报；开张时凑齐菜单，菜单要的伙伴这一单每只多卖 25%。寻访中也能看别的地区。保留存档和签名，可直接覆盖更新。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

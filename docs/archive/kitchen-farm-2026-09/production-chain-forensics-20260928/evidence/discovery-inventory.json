@@ -1,0 +1,136 @@
+[
+  {
+    "root": "C:\\Users\\管啸野\\.codex",
+    "counts": {
+      ".json": 20,
+      ".sqlite": 6,
+      ".jsonl": 233,
+      ".log": 1,
+      ".md": 23,
+      ".db": 1
+    },
+    "databases": [
+      "C:\\Users\\管啸野\\.codex\\goals_1.sqlite",
+      "C:\\Users\\管啸野\\.codex\\logs_2.sqlite",
+      "C:\\Users\\管啸野\\.codex\\memories_1.sqlite",
+      "C:\\Users\\管啸野\\.codex\\queue_1.sqlite",
+      "C:\\Users\\管啸野\\.codex\\state_5.sqlite",
+      "C:\\Users\\管啸野\\.codex\\thread_history_1.sqlite",
+      "C:\\Users\\管啸野\\.codex\\sqlite\\codex-dev.db"
+    ],
+    "errors": [],
+    "exclusions": [
+      "node_modules",
+      "plugins",
+      "vendor_imports",
+      ".sandbox-secrets",
+      ".sandbox",
+      "runtimes",
+      "browser",
+      "Cache",
+      "Code Cache",
+      "GPUCache"
+    ]
+  },
+  {
+    "root": "C:\\Users\\管啸野\\AppData\\Roaming\\Codex",
+    "counts": {
+      ".json": 54,
+      ".db": 8,
+      ".log": 34
+    },
+    "databases": [
+      "C:\\Users\\管啸野\\AppData\\Roaming\\Codex\\web\\Codex\\first_party_sets.db",
+      "C:\\Users\\管啸野\\AppData\\Roaming\\Codex\\web\\Codex\\codex-browser-app\\declarative_performance_observer.db",
+      "C:\\Users\\管啸野\\AppData\\Roaming\\Codex\\web\\Codex\\codex-browser-app\\heavy_ad_intervention_opt_out.db",
+      "C:\\Users\\管啸野\\AppData\\Roaming\\Codex\\web\\Codex\\Default\\declarative_performance_observer.db",
+      "C:\\Users\\管啸野\\AppData\\Roaming\\Codex\\web\\Codex\\Default\\heavy_ad_intervention_opt_out.db",
+      "C:\\Users\\管啸野\\AppData\\Roaming\\Codex\\web\\Codex\\Default\\Partitions\\codex-browser-app\\declarative_performance_observer.db",
+      "C:\\Users\\管啸野\\AppData\\Roaming\\Codex\\web\\Codex\\Default\\Partitions\\codex-browser-app\\heavy_ad_intervention_opt_out.db",
+      "C:\\Users\\管啸野\\AppData\\Roaming\\Codex\\web\\Codex\\GPUPersistentCache\\DawnGraphiteCache\\TLVJWQT6NJWKNBUVMWJ4BCR6DK7MJALX\\cache.db"
+    ],
+    "errors": [],
+    "exclusions": [
+      "node_modules",
+      "plugins",
+      "vendor_imports",
+      ".sandbox-secrets",
+      ".sandbox",
+      "runtimes",
+      "browser",
+      "Cache",
+      "Code Cache",
+      "GPUCache"
+    ]
+  },
+  {
+    "root": "C:\\Users\\管啸野\\AppData\\Local\\Codex",
+    "counts": {
+      ".log": 82
+    },
+    "databases": [],
+    "errors": [],
+    "exclusions": [
+      "node_modules",
+      "plugins",
+      "vendor_imports",
+      ".sandbox-secrets",
+      ".sandbox",
+      "runtimes",
+      "browser",
+      "Cache",
+      "Code Cache",
+      "GPUCache"
+    ]
+  },
+  {
+    "root": "C:\\Users\\管啸野\\AppData\\Local\\Codex-Lumon",
+    "counts": {
+      ".sqlite": 6,
+      ".jsonl": 2,
+      ".json": 1,
+      ".md": 23
+    },
+    "databases": [
+      "C:\\Users\\管啸野\\AppData\\Local\\Codex-Lumon\\goals_1.sqlite",
+      "C:\\Users\\管啸野\\AppData\\Local\\Codex-Lumon\\logs_2.sqlite",
+      "C:\\Users\\管啸野\\AppData\\Local\\Codex-Lumon\\memories_1.sqlite",
+      "C:\\Users\\管啸野\\AppData\\Local\\Codex-Lumon\\queue_1.sqlite",
+      "C:\\Users\\管啸野\\AppData\\Local\\Codex-Lumon\\state_5.sqlite",
+      "C:\\Users\\管啸野\\AppData\\Local\\Codex-Lumon\\thread_history_1.sqlite"
+    ],
+    "errors": [],
+    "exclusions": [
+      "node_modules",
+      "plugins",
+      "vendor_imports",
+      ".sandbox-secrets",
+      ".sandbox",
+      "runtimes",
+      "browser",
+      "Cache",
+      "Code Cache",
+      "GPUCache"
+    ]
+  },
+  {
+    "root": "C:\\Users\\管啸野\\AppData\\Local\\OpenAI\\Codex",
+    "counts": {
+      ".json": 1
+    },
+    "databases": [],
+    "errors": [],
+    "exclusions": [
+      "node_modules",
+      "plugins",
+      "vendor_imports",
+      ".sandbox-secrets",
+      ".sandbox",
+      "runtimes",
+      "browser",
+      "Cache",
+      "Code Cache",
+      "GPUCache"
+    ]
+  }
+]

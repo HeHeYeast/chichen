@@ -28,7 +28,7 @@ export const DESCRIPTIONS = {
   "0:25": "雪晶带来的洁白形态，颈边围着暖色围巾，头上还留了一片绿叶。它喜欢立得笔直，像要把自己装成安静的雪人，可脚尖一挪，就露出了小鸡的习惯。",
   "0:26": "圣诞时节出现的鹿角形态鸡宝，围巾、铃饰和圆脸凑成一副节庆装扮。它喜欢先把角尖探出来，再慢慢转过身，仿佛每次露面都要留一点惊喜。名字沿用节日传说，并非某一只独有的身份。",
   "0:27": "红帽子、浅色胡须和小布袋都是它身上的圣诞特征。走路时布袋轻轻蹭着身体，它便把步子放小，偶尔回头看一眼，忙得好像连散步也有一份清单。",
-  "0:28": "糯米形成的软白身体从方方的底部鼓起来，像一块刚冒出脑袋的年糕。站久了便松松地往旁边歪一点，发现有人靠近，又努力把头抬高。它有新年食物的趣味，现有做法并不限定新年。",
+  "0:28": "糯米形成的软白身体从方方的底部鼓起来，像一块刚冒出脑袋的年糕。站久了便松松地往旁边歪一点，发现有人靠近，又努力把头抬高。它有新年食物的趣味，不过一年到头都能做。",
   "0:29": "深褐色身体带着巧克力的甜和微苦，圆润的边缘像刚刚凝住的小点心。它总把翅膀贴得很近，只有闻见附近同样的甜香时，才忍不住抬头找一找。",
   "0:30": "防腐剂参与调理后出现的奇异形态，浅色布带般的纹理绕住全身，只露出大大的眼睛。它并非从古墓里醒来的某个人；想看旁边的动静时，总得连整个身子一起转，布带缝里的目光却十分好奇。",
   "0:31": "浅色蓬毛包着深色的脸，是鸡宝中颇有辨识度的一种。它把头缩进毛里时只剩一小片黑色，稍有声响，又会把那张认真的脸完整地探出来。",
@@ -103,18 +103,18 @@ export const DESCRIPTIONS = {
   "0:100": "深蓝色底上开着暖色纹样，身侧的扫帚状装饰比脚高出一截。它常先看看脚边再往前走，扫帚碰到小石子，就停下来换个方向，认真得有点过头。",
   "0:101": "暗黄绿色身体上卷着细细的花纹，手边的杖状饰物使它显出稳稳当当的姿态。它低头观察地面时，装饰也跟着点一下，好像每走一步都要先问候脚下。",
   "0:102": "紫红色身体配着浅色纹路，一圈绳饰挂在身侧。它很爱低头检查绳圈有没有摆正，刚理好一边，另一边又随着转身偏过去，能让它专心忙上好一会儿。",
-  "0:103": "对应“转运签”的特殊签鸡，深色身体上绕着黄色圈纹，两只眼睛也像打起了旋。它刚站定，还会轻轻转一下头，确认地面终于不跟着转了。图鉴记的是“晕眩鸡”，签面名称则是“转运签”，两者说的是不同的部分。",
+  "0:103": "对应“转运签”的特殊签鸡，深色身体上绕着黄色圈纹，两只眼睛也像打起了旋。它刚站定，还会轻轻转一下头，确认地面终于不跟着转了。图鉴里叫它“晕眩鸡”，签面上写的则是“转运签”。",
   "0:104": "普通鸡宝经历时空旅行后变化而成的特殊品种。蓝色身体的边缘带着波纹般的轮廓，腹部还有一团深色旋涡，像把一圈圈水纹收进了身体里。刚站定时常会转上半圈，仔细看看四周；听见钟声，又会歪着脑袋等它敲完，仿佛还在适应这里的时间。",
   "0:105": "妖怪夜话相关的奇异品种，白色头骨与肋骨般的轮廓围出一张空洞洞的脸。它静着时颇有吓人的气势，一迈起小步，那副郑重模样就有点站不住了。骨架是它的形态，不需要一段生前往事。",
   "0:106": "火苗作为特殊调理媒介时出现的品种，橙红轮廓向上卷成火舌，中央却是一张有点不耐烦的小脸。它站着也爱轻轻摆动，像一小簇火正找舒服的方向；这是观赏特征，不表示能替厨房加热。",
   "0:107": "木绵参与特殊调理后形成的白色薄片状品种，身体边角像布一样弯起，脸却认认真真留在正中。它转向时先动一侧，再慢慢带过另一侧，仿佛每次转身都要把自己铺平。",
   "0:108": "红色头脸从深色羽毛里探出来，眉眼与站姿都显得不服输。它常盯着比自己高一点的地方，踮起脚努力看，站不稳了又迅速收回来，假装刚才只是活动一下。",
   "0:109": "浅色面包心被金黄边框围住，整只像一片圆角吐司。它平平地站着很有规矩，想从同类中间穿过去时，却得先把宽宽的身体侧过来。",
-  "0:110": "吐司没有及时收取时可能留下的深色变化，边沿比原来更焦，脸也显得有些发愣。它低头看一眼肚皮，轻轻抖一下，像还没习惯这身过深的烤色。",
+  "0:110": "面包没有及时收取时可能留下的深色变化，边沿比原来更焦，脸也显得有些发愣。它低头看一眼肚皮，轻轻抖一下，像还没习惯这身过深的烤色。",
   "0:111": "甜脆表层压着格纹，金黄外皮鼓得圆圆的，像一只会走路的菠萝面包。“菠萝”说的是这层常见纹样，不代表身上一定有水果夹心。它挤进同类旁边时，总先把有格纹的一面朝外。",
   "0:112": "褐色面包体里藏着红豆的甜，表面点着芝麻般的小黑点。它站着时总微微低头，像在检查自己的点纹；一被别的鸡宝碰到，又会露出一副甜甜的笑脸。",
   "0:113": "酥松的面包外层包着咖喱与洋葱的香气，轮廓比普通吐司更粗糙蓬松。它常把头缩在圆身子上，看起来很安静，靠近后却能闻见里面热闹的辛香。",
-  "0:114": "把热乎乎的汤汁藏在肚子里，走路时总怕晃出来。它的身体像一只收好口的小笼包，浅色面皮在头顶拢成细细的褶，里面裹着鲜香的汤汁。圆鼓鼓的肚子稍一晃动，就让它赶紧放慢脚步。遇到小坎要先停一停，再小心挪过去，唯独挤回同类身边时会忘记谨慎。",
+  "0:114": "把热乎乎的汤汁藏在肚子里，走路时总怕晃出来。它的身体像一只收好口的小笼包，浅色面皮在头顶拢成细细的褶，馅香从褶口隐约透出来。圆鼓鼓的肚子稍一晃动，就让它赶紧放慢脚步。遇到小坎要先停一停，再小心挪过去，唯独挤回同类身边时会忘记谨慎。",
   "0:115": "开花一样的烧麦裙摆里，藏着一颗认真做早饭的心。薄薄的金黄色外皮拢在身侧，顶端敞着口，露出饱满的馅心。它一抬翅膀，裙边也跟着舒展开，收回去时还要慢慢把褶子贴好。",
   "0:116": "裹着清香的荷叶小被子，喜欢在草地上慢慢散步。层层叶片把糯米的软糯香气包在里面，只留小脸和脚尖露在外面。它停下来会把叶边收近一点，仿佛连自己也舍不得让这股清香散开。",
   "0:117": "开心时会露出金黄的奶黄馅，连笑容都是暖乎乎的。圆圆外皮把柔滑甜馅兜在中间，微微张开的地方像一小道金色弯月。它走得慢，却总抬着脸，看上去随时准备再笑一下。",
@@ -122,9 +122,9 @@ export const DESCRIPTIONS = {
   "0:119": "顶着粉红桃尖来送祝福，最喜欢陪伙伴一起过生日。白粉渐变的外皮包着豆沙甜馅，绿色叶片从两侧托起圆身子。它想靠近一点时总先低下桃尖，再让脚慢慢跟上，像怕碰乱一份刚准备好的心意。",
   "0:120": "软软的糯米外衣里藏着樱桃，蹦起来也舍不得让果子掉下来。浅粉色圆身子上也顶着鲜亮樱桃，果酸与糯甜彼此衬着。它刚想跳高一点，就先摸摸头顶，最后还是只轻轻踮了一下脚。",
   "0:121": "把自己叠成三层松饼，每次打招呼都会晃一晃头上的黄油。金黄饼边之间透着柔软的浅色，蜂蜜沿着表面挂成亮亮的小弯。它向前探身时下面两层也得跟着倾一点，最后整摞一起慢慢站正。",
-  "0:122": "头顶柠檬小太阳，却总想找个凉快的角落。细碎冰沙堆成浅黄色身体，底部像坐在蓝色小碗里，酸香清清亮亮。它爱把翅膀搭在碗边，看见热闹再探出脸，像只打算从阴凉处看一会儿。",
+  "0:122": "头顶柠檬小太阳，却总想找个凉快的角落。细碎冰沙堆成浅黄色身体，底部像坐在蓝色小碗里，酸香清清亮亮。它爱把翅膀搭在碗边，看见热闹再探出脸，像是只打算从阴凉处看一会儿。",
   "0:123": "焦糖小帽有点滑，所以说话时只敢轻轻点头。奶黄色身体柔软饱满，深褐焦糖沿头顶垂下一圈，甜香里有一点焦香。它停步后还会晃上两下，等肚子也安静了，才敢再次低头。",
-  "0:124": "圆圆的花边像一轮小月亮，最爱大家坐在一起吃晚饭。金黄饼皮上压着花纹，芝麻带来浓浓的烘香。它喜欢把正面朝着热闹的一侧，挤在同类中间时，一圈花边恰好互相轻轻碰着。",
+  "0:124": "圆圆的花边像一轮小月亮，最爱大家坐在一起吃晚饭。金黄饼皮上压着花纹，芝麻带来浓浓的烘香。它喜欢把正面朝着热闹的一侧，挤在同类中间时，一圈圈花边恰好轻轻碰在一起。",
   "0:125": "上下两片松饼夹着满满红豆，一开心就露出甜甜的夹心。饼皮烤色柔和，豆馅沿着中间露出一圈小小颗粒。它常把身子挺得很平，好让两片松饼对齐，结果一笑又全顾不上了。",
   "0:126": "棉花糖发梢软蓬蓬的，冬天最喜欢挨着伙伴坐。深褐色身体带着可可与牛乳的香气，浅色奶油旋纹和小块棉花糖聚在头顶。它缩起翅膀时像一杯捧在手心的暖饮，连抬头都慢慢的。",
   "0:127": "糖霜小帽永远不会融化，彩糖纽扣一颗也不舍得吃。花边饼身带着酥松的烘焙香，白色糖霜铺在上面，像刚落下一层小雪。它走动时很爱低头检查彩点，数着数着就忘了原本要往哪边去。",
@@ -156,7 +156,7 @@ export const DESCRIPTIONS = {
   "1:25": "白豆的柔和豆香配着炖煮风味，头上点缀着一圈浅色豆粒般的装饰。它走两步便抬一下脸，好像很满意这些圆粒都还安安稳稳地待着。",
   "1:26": "洁白身体的轮廓简单流畅，宽嘴和圆圆小眼睛显得格外醒目。它经常安静地站在一旁，等别的鸭宝挤到眼前，才慢慢伸长一点脖子，看看究竟发生了什么。",
   "1:27": "洁白羽毛层层舒展，眼边深色纹样与头顶小冠让它很有仪态。它转身时爱把翅膀稍稍抬起，像要让每片羽毛都留好位置；脚下绊了一小步，也会迅速站得端端正正。",
-  "1:28": "深黑羽毛衬着鲜红的嘴，冠饰和舒展翼羽让它看起来格外庄重。这一形态在现有调理中与特殊焦化有关，名字与姿态却有自己的观赏趣味。它总先慢慢侧身，再把身后的羽尖一并收好。",
+  "1:28": "深黑羽毛衬着鲜红的嘴，冠饰和舒展翼羽让它看起来格外庄重。这一形态与特殊的焦化变化有关，名字与姿态却自有观赏趣味。它总先慢慢侧身，再把身后的羽尖一并收好。",
   "1:29": "脏污变化带来的昆虫形态，褐色分节外衣上伸出两根长触角。它爱从小缝边探头，身体还没挤过去，触角已经在外面晃来晃去，藏身的打算实在不太成功。",
   "1:30": "樱桃与红酒的酸甜醇香里藏着胡椒气息，造型像两颗由细梗相连的圆樱桃。两边一动便互相牵着，常常先向不同方向探头，商量似的晃一会儿，才一起挪开。",
   "1:31": "荞麦面与日式酱油露形成温厚的面食风味，青葱添上一点鲜香。长长的浅色轮廓围在脸边，像披着一束面条。它慢慢挪动时，两侧跟着摆，刚站稳便又要把嘴边那一缕拨开。",
@@ -197,7 +197,7 @@ export const DESCRIPTIONS = {
 export const AUTHORED_CLUES = {
   "0:0": "不用添什么滋味，一点暖意就能迎来最初的朋友。",
   "0:1": "角落太久没打扫，小家伙也会打起喷嚏。",
-  "0:2": "香气已经到了，若还迟迟不回来，颜色就会越来越深。",
+  "0:2": "香气已经到了，若还迟迟没人来收，颜色就会越来越深。",
   "0:3": "听见轻轻的滋滋声，表面慢慢染上金黄。",
   "0:4": "一轮小太阳卧在白云上，边缘卷起了金色的花边。",
   "0:5": "朴素的泥土里，藏着一种咸香的老手艺。",
@@ -232,7 +232,7 @@ export const AUTHORED_CLUES = {
   "0:34": "厨房变宽敞后，潮湿的旧角落也可能冒出新住客。",
   "0:35": "厨房更像样了，忘在热处的小家伙却变得黑乎乎。",
   "0:36": "热辣的滋滋声中，钻出一股浓郁的绿叶香。",
-  "0:37": "红彤彤的酸甜，在咕嘟声里慢慢变浓。",
+  "0:37": "红彤彤的酸甜，在滚水的咕嘟声里煮成浓酱。",
   "0:38": "满满的绿意里，藏着一阵有些冲鼻的香。",
   "0:39": "白白的浓香，能把热乎乎的滋味轻轻裹住。",
   "0:40": "沾着咸香的小家伙，想穿一件轻薄的脆衣。",
@@ -276,8 +276,8 @@ export const AUTHORED_CLUES = {
   "0:78": "月亮最圆的时候，有谁想从故事里蹦出来。",
   "0:79": "秋风一吹，带刺的小外套里传来甜甜的消息。",
   "0:80": "热闹的秋夜里，一盏圆脸小灯正等着出场。",
-  "0:81": "一批批鸡宝从厨房出发，暖光下也渐渐等来更宽大的羽尾。",
-  "0:82": "送走一批又一批鸡宝，再为说谢谢的节日备好烤物的香气。",
+  "0:81": "一批批收起鸡宝，暖光下也渐渐等来更宽大的羽尾。",
+  "0:82": "一批又一批地收起鸡宝，再为说谢谢的节日备好烤物的香气。",
   "0:83": "冬日的庆祝里，有位客人想把自己装点得闪闪发光。",
   "0:84": "新年的愿望里，有一位跌倒也会站起来的朋友。",
   "0:85": "新年门口的一抹常青，也想来厨房做客。",
@@ -303,7 +303,7 @@ export const AUTHORED_CLUES = {
   "0:105": "妖怪夜话的来信里，有位安静得出奇的客人也想靠近暖光。",
   "0:106": "夜话里借来的一点幽幽亮色，竟也喜欢滋滋的热闹。",
   "0:107": "夜话中的白色轻影，想顺着咕嘟声舒展开来。",
-  "0:108": "厨房一再整修，最宽敞的暖光下藏着一股不服输的劲头。",
+  "0:108": "厨房整修到最宽敞时，暖光下藏着一股不服输的劲头。",
   "0:109": "麦香在小小的暖房里，慢慢鼓起了身子。",
   "0:110": "麦香迟迟等不到人，金色外套也渐渐变深。",
   "0:111": "蓬松的麦香上，盖着一层甜甜的脆被子。",
@@ -391,968 +391,968 @@ export const AUTHORED_CLUES = {
 };
 export const ABILITIES = {
   "0:0": {
-    "gather": 4,
+    "gather": 10,
     "discover": 2,
     "environment": "yard"
   },
   "0:1": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 5,
     "environment": "yard"
   },
   "0:2": {
     "gather": 2,
-    "discover": 4,
+    "discover": 5,
     "environment": "yard"
   },
   "0:3": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 7,
+    "discover": 7,
     "environment": "yard"
   },
   "0:4": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 7,
+    "discover": 7,
     "environment": "yard"
   },
   "0:5": {
     "gather": 3,
-    "discover": 3,
+    "discover": 11,
     "environment": "yard"
   },
   "0:6": {
-    "gather": 3,
+    "gather": 13,
     "discover": 3,
     "environment": "yard"
   },
   "0:7": {
-    "gather": 3,
+    "gather": 14,
     "discover": 3,
     "environment": "yard"
   },
   "0:8": {
     "gather": 3,
-    "discover": 3,
+    "discover": 11,
     "environment": "yard"
   },
   "0:9": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 4,
+    "discover": 13,
     "environment": "yard"
   },
   "0:10": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 3,
+    "discover": 14,
     "environment": "wood"
   },
   "0:11": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 13,
     "environment": "yard"
   },
   "0:12": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 14,
+    "discover": 3,
     "environment": "yard"
   },
   "0:13": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 15,
+    "discover": 3,
     "environment": "yard"
   },
   "0:14": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 13,
+    "discover": 4,
     "environment": "yard"
   },
   "0:15": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 15,
+    "discover": 4,
     "environment": "yard"
   },
   "0:16": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 13,
+    "discover": 4,
     "environment": "yard"
   },
   "0:17": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 11,
+    "discover": 8,
     "environment": "wood"
   },
   "0:18": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 17,
+    "discover": 4,
     "environment": "yard"
   },
   "0:19": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 16,
+    "discover": 4,
     "environment": "yard"
   },
   "0:20": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 15,
+    "discover": 9,
     "environment": "water"
   },
   "0:21": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 15,
+    "discover": 4,
     "environment": "yard"
   },
   "0:22": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 4,
     "environment": "yard"
   },
   "0:23": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 18,
+    "discover": 5,
     "environment": "wood"
   },
   "0:24": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 16,
+    "discover": 5,
     "environment": "yard"
   },
   "0:25": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 11,
+    "discover": 11,
     "environment": "yard"
   },
   "0:26": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 4,
+    "discover": 18,
     "environment": "yard"
   },
   "0:27": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:28": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 18,
+    "discover": 5,
     "environment": "water"
   },
   "0:29": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 10,
+    "discover": 10,
     "environment": "yard"
   },
   "0:30": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 20,
     "environment": "yard"
   },
   "0:31": {
-    "gather": 3,
+    "gather": 14,
     "discover": 3,
     "environment": "yard"
   },
   "0:32": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 6,
+    "discover": 20,
     "environment": "yard"
   },
   "0:33": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 19,
+    "discover": 7,
     "environment": "yard"
   },
   "0:34": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "yard"
   },
   "0:35": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 7,
+    "discover": 13,
     "environment": "yard"
   },
   "0:36": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 4,
+    "discover": 17,
     "environment": "wood"
   },
   "0:37": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 19,
     "environment": "yard"
   },
   "0:38": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 4,
+    "discover": 18,
     "environment": "wood"
   },
   "0:39": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 12,
+    "discover": 12,
     "environment": "yard"
   },
   "0:40": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 4,
     "environment": "yard"
   },
   "0:41": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "water"
   },
   "0:42": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "0:43": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 19,
     "environment": "yard"
   },
   "0:44": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:45": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "0:46": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:47": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 17,
+    "discover": 4,
     "environment": "wood"
   },
   "0:48": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "0:49": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 19,
     "environment": "yard"
   },
   "0:50": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 14,
+    "discover": 14,
     "environment": "yard"
   },
   "0:51": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 6,
+    "discover": 20,
     "environment": "yard"
   },
   "0:52": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 7,
+    "discover": 20,
     "environment": "yard"
   },
   "0:53": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 6,
+    "discover": 20,
     "environment": "yard"
   },
   "0:54": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "yard"
   },
   "0:55": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 12,
+    "discover": 12,
     "environment": "yard"
   },
   "0:56": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:57": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:58": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "water"
   },
   "0:59": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:60": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "0:61": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 19,
+    "discover": 5,
     "environment": "water"
   },
   "0:62": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 20,
     "environment": "yard"
   },
   "0:63": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "0:64": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 16,
+    "discover": 8,
     "environment": "yard"
   },
   "0:65": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 12,
+    "discover": 12,
     "environment": "yard"
   },
   "0:66": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 13,
+    "discover": 13,
     "environment": "yard"
   },
   "0:67": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 20,
     "environment": "yard"
   },
   "0:68": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 6,
+    "discover": 20,
     "environment": "yard"
   },
   "0:69": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 6,
+    "discover": 6,
     "environment": "yard"
   },
   "0:70": {
     "gather": 2,
-    "discover": 4,
+    "discover": 9,
     "environment": "yard"
   },
   "0:71": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 8,
+    "discover": 10,
     "environment": "yard"
   },
   "0:72": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 8,
+    "discover": 11,
     "environment": "yard"
   },
   "0:73": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 9,
+    "discover": 13,
     "environment": "yard"
   },
   "0:74": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 18,
+    "discover": 4,
     "environment": "yard"
   },
   "0:75": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 17,
+    "discover": 4,
     "environment": "yard"
   },
   "0:76": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 17,
+    "discover": 5,
     "environment": "water"
   },
   "0:77": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 10,
+    "discover": 15,
     "environment": "yard"
   },
   "0:78": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 20,
     "environment": "yard"
   },
   "0:79": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "wood"
   },
   "0:80": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 13,
+    "discover": 13,
     "environment": "yard"
   },
   "0:81": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 16,
+    "discover": 6,
     "environment": "yard"
   },
   "0:82": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:83": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 20,
+    "discover": 5,
     "environment": "wood"
   },
   "0:84": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 6,
+    "discover": 20,
     "environment": "yard"
   },
   "0:85": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 18,
+    "discover": 6,
     "environment": "wood"
   },
   "0:86": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "0:87": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 6,
+    "discover": 20,
     "environment": "yard"
   },
   "0:88": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 4,
+    "discover": 16,
     "environment": "yard"
   },
   "0:89": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 6,
+    "discover": 20,
     "environment": "yard"
   },
   "0:90": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 19,
     "environment": "yard"
   },
   "0:91": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 4,
+    "discover": 16,
     "environment": "yard"
   },
   "0:92": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 4,
+    "discover": 15,
     "environment": "yard"
   },
   "0:93": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 4,
+    "discover": 14,
     "environment": "yard"
   },
   "0:94": {
     "gather": 3,
-    "discover": 3,
+    "discover": 15,
     "environment": "yard"
   },
   "0:95": {
-    "gather": 3,
+    "gather": 11,
     "discover": 3,
     "environment": "yard"
   },
   "0:96": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 1,
     "environment": "yard"
   },
   "0:97": {
     "gather": 3,
-    "discover": 3,
+    "discover": 14,
     "environment": "yard"
   },
   "0:98": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 4,
+    "discover": 11,
     "environment": "yard"
   },
   "0:99": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 8,
+    "discover": 8,
     "environment": "yard"
   },
   "0:100": {
-    "gather": 3,
+    "gather": 11,
     "discover": 3,
     "environment": "yard"
   },
   "0:101": {
-    "gather": 3,
+    "gather": 9,
     "discover": 3,
     "environment": "yard"
   },
   "0:102": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 9,
+    "discover": 2,
     "environment": "yard"
   },
   "0:103": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 20,
     "environment": "yard"
   },
   "0:104": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 6,
+    "discover": 20,
     "environment": "yard"
   },
   "0:105": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 4,
+    "discover": 17,
     "environment": "yard"
   },
   "0:106": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 8,
+    "discover": 13,
     "environment": "yard"
   },
   "0:107": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 18,
     "environment": "yard"
   },
   "0:108": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 20,
+    "discover": 7,
     "environment": "yard"
   },
   "0:109": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 15,
+    "discover": 3,
     "environment": "yard"
   },
   "0:110": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 3,
+    "discover": 7,
     "environment": "yard"
   },
   "0:111": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 19,
+    "discover": 4,
     "environment": "yard"
   },
   "0:112": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:113": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:114": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 14,
+    "discover": 3,
     "environment": "yard"
   },
   "0:115": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 17,
+    "discover": 4,
     "environment": "yard"
   },
   "0:116": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 14,
+    "discover": 5,
     "environment": "water"
   },
   "0:117": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 18,
+    "discover": 5,
     "environment": "yard"
   },
   "0:118": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 19,
+    "discover": 4,
     "environment": "yard"
   },
   "0:119": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 4,
     "environment": "yard"
   },
   "0:120": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 18,
+    "discover": 6,
     "environment": "water"
   },
   "0:121": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 6,
+    "discover": 17,
     "environment": "wood"
   },
   "0:122": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 18,
+    "discover": 5,
     "environment": "water"
   },
   "0:123": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 15,
+    "discover": 9,
     "environment": "yard"
   },
   "0:124": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "0:125": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 13,
+    "discover": 8,
     "environment": "yard"
   },
   "0:126": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 9,
+    "discover": 13,
     "environment": "yard"
   },
   "0:127": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "yard"
   },
   "1:0": {
-    "gather": 4,
+    "gather": 10,
     "discover": 2,
     "environment": "water"
   },
   "1:1": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 5,
     "environment": "water"
   },
   "1:2": {
     "gather": 2,
-    "discover": 4,
+    "discover": 7,
     "environment": "water"
   },
   "1:3": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 7,
+    "discover": 7,
     "environment": "water"
   },
   "1:4": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 11,
+    "discover": 3,
     "environment": "water"
   },
   "1:5": {
-    "gather": 3,
+    "gather": 13,
     "discover": 3,
     "environment": "water"
   },
   "1:6": {
-    "gather": 3,
+    "gather": 9,
     "discover": 3,
     "environment": "water"
   },
   "1:7": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 14,
+    "discover": 4,
     "environment": "water"
   },
   "1:8": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 13,
+    "discover": 3,
     "environment": "water"
   },
   "1:9": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 16,
+    "discover": 4,
     "environment": "water"
   },
   "1:10": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 16,
+    "discover": 4,
     "environment": "water"
   },
   "1:11": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 4,
+    "discover": 17,
     "environment": "wood"
   },
   "1:12": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 15,
+    "discover": 3,
     "environment": "water"
   },
   "1:13": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 16,
+    "discover": 4,
     "environment": "water"
   },
   "1:14": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 14,
+    "discover": 9,
     "environment": "water"
   },
   "1:15": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 20,
     "environment": "water"
   },
   "1:16": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 11,
+    "discover": 7,
     "environment": "water"
   },
   "1:17": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 14,
+    "discover": 9,
     "environment": "water"
   },
   "1:18": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 15,
+    "discover": 9,
     "environment": "water"
   },
   "1:19": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "water"
   },
   "1:20": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 16,
     "environment": "water"
   },
   "1:21": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 7,
+    "discover": 16,
     "environment": "water"
   },
   "1:22": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 6,
+    "discover": 17,
     "environment": "wood"
   },
   "1:23": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 19,
+    "discover": 5,
     "environment": "water"
   },
   "1:24": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 18,
+    "discover": 5,
     "environment": "water"
   },
   "1:25": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "water"
   },
   "1:26": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 15,
+    "discover": 10,
     "environment": "water"
   },
   "1:27": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 18,
+    "discover": 12,
     "environment": "water"
   },
   "1:28": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 10,
+    "discover": 20,
     "environment": "water"
   },
   "1:29": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 6,
+    "discover": 20,
     "environment": "water"
   },
   "1:30": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 7,
+    "discover": 19,
     "environment": "water"
   },
   "1:31": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 17,
+    "discover": 6,
     "environment": "water"
   },
   "1:32": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "1:33": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "water"
   },
   "1:34": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 6,
+    "discover": 20,
     "environment": "wood"
   },
   "1:35": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 7,
+    "discover": 18,
     "environment": "water"
   },
   "1:36": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "water"
   },
   "1:37": {
-    "gather": 3,
+    "gather": 9,
     "discover": 3,
     "environment": "water"
   },
   "1:38": {
     "gather": 2,
-    "discover": 4,
+    "discover": 8,
     "environment": "water"
   },
   "1:39": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 3,
+    "discover": 14,
     "environment": "wood"
   },
   "1:40": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 3,
+    "discover": 15,
     "environment": "wood"
   },
   "1:41": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 3,
+    "discover": 15,
     "environment": "wood"
   },
   "1:42": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 4,
+    "discover": 17,
     "environment": "wood"
   },
   "1:43": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 4,
+    "discover": 18,
     "environment": "wood"
   },
   "1:44": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 4,
+    "discover": 20,
     "environment": "wood"
   },
   "1:45": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 11,
+    "discover": 11,
     "environment": "water"
   },
   "1:46": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "1:47": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 8,
+    "discover": 17,
     "environment": "water"
   },
   "1:48": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 7,
+    "discover": 18,
     "environment": "wood"
   },
   "1:49": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 13,
+    "discover": 13,
     "environment": "water"
   },
   "1:50": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "1:51": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 20,
+    "discover": 5,
     "environment": "water"
   },
   "1:52": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 14,
+    "discover": 3,
     "environment": "water"
   },
   "1:53": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 3,
+    "discover": 7,
     "environment": "water"
   },
   "1:54": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "water"
   },
   "1:55": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "water"
   },
   "1:56": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 7,
+    "discover": 19,
     "environment": "wood"
   },
   "1:57": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 4,
+    "discover": 20,
     "environment": "wood"
   },
   "1:58": {
-    "gather": 2,
-    "discover": 4,
+    "gather": 5,
+    "discover": 20,
     "environment": "wood"
   },
   "1:59": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 18,
+    "discover": 5,
     "environment": "water"
   },
   "1:60": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 9,
+    "discover": 15,
     "environment": "water"
   },
   "1:61": {
-    "gather": 4,
-    "discover": 2,
+    "gather": 20,
+    "discover": 5,
     "environment": "water"
   },
   "1:62": {
-    "gather": 4,
-    "discover": 2,
-    "environment": "wood"
-  },
-  "1:63": {
-    "gather": 2,
+    "gather": 20,
     "discover": 4,
     "environment": "wood"
   },
+  "1:63": {
+    "gather": 5,
+    "discover": 20,
+    "environment": "wood"
+  },
   "1:64": {
-    "gather": 3,
-    "discover": 3,
+    "gather": 5,
+    "discover": 18,
     "environment": "water"
   }
 };
@@ -1770,7 +1770,7 @@ export const STORY_CHAPTERS = [
     "title": "找到自己的招牌：一份有茶香的采购",
     "paragraphs": [
       "老顾客是在又一次开火时来的。",
-      "站到门边，先闻了闻，才问：“这里还做茶叶蛋鸡吗？”",
+      "来客站到门边，先闻了闻，才问：“这里还做茶叶蛋鸡吗？”",
       "你看向自己的出品记录。那一页还可以添东西。",
       "“家里想备一份一起吃。”来客说，“以前从这里买过，茶香很足。你若愿意专门准备，我就按这次约好的价钱收。”",
       "这回，试一种做法有了具体的去处。",
@@ -1790,10 +1790,10 @@ export const STORY_CHAPTERS = [
     "paragraphs": [
       "掌柜来收出品时，先把空筐靠到了熟悉的位置。",
       "“今天还是这些？”",
-      "你把准备好的东西一一摆开。普通鸡宝挤成一小团，带茶香的那一批在旁边慢慢探头。出品记录翻到常用的几页，边角已经不像刚开始时那样平整。",
+      "你把准备好的东西一一摆开。这回的拿手菜装了满满一筐，普通鸡宝挤成一小团，带茶香的那一批也在旁边探头。出品记录翻到常用的几页，边角已经不像刚开始时那样平整。",
       "掌柜看过，点点头：“有人问我，旧厨房现在做什么。”",
       "你停了一下，想起最初那张写着“有人买”的记录。",
-      "“我说，日常的有，带茶香的也有。要找这一口，就认准你这里。”",
+      "“我说，日常的有，带茶香的有，拿手菜也有。要找这一口，就认准你这里。”",
       "门外的老顾客接过话：“那下回可别只说旧厨房了。”",
       "几个人抬头看向门边。招牌还是那块招牌，曾经空着的地方，现在已经有了每天开火、收拾、准备下一批的痕迹。",
       "你把出品记录放回手边，把这次的收入收好。",

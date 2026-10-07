@@ -1,0 +1,1546 @@
+[
+  {
+    "key": "0:0",
+    "name": "鸡宝",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "普通鸡宝翻找地面小物"
+  },
+  {
+    "key": "0:1",
+    "name": "病鸡宝",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "病变不另加探险惩罚"
+  },
+  {
+    "key": "0:2",
+    "name": "焦鸡宝",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "0:3",
+    "name": "香煎鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:4",
+    "name": "荷包蛋鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:5",
+    "name": "皮蛋鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:6",
+    "name": "柠檬香煎鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:7",
+    "name": "照烧鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:8",
+    "name": "水煮蛋鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:9",
+    "name": "温泉蛋鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:10",
+    "name": "茶叶蛋鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "已确认的茶香辨识方向"
+  },
+  {
+    "key": "0:11",
+    "name": "印度咖哩鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:12",
+    "name": "炸鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:13",
+    "name": "辣味炸鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:14",
+    "name": "油淋鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:15",
+    "name": "南蛮鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:16",
+    "name": "烤鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:17",
+    "name": "香草烤鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "wood",
+    "reason": "香草风味，擅长林地采集"
+  },
+  {
+    "key": "0:18",
+    "name": "丸子鸡三兄弟",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:19",
+    "name": "墨西哥卷鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:20",
+    "name": "河童",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "河水配方"
+  },
+  {
+    "key": "0:21",
+    "name": "炖鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:22",
+    "name": "醉鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:23",
+    "name": "人参鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "wood",
+    "reason": "人参根茎风味，擅长翻找"
+  },
+  {
+    "key": "0:24",
+    "name": "溏心蛋鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:25",
+    "name": "雪人鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:26",
+    "name": "鲁道夫",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:27",
+    "name": "圣诞鸡宝",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:28",
+    "name": "年糕鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "0:29",
+    "name": "巧克力鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:30",
+    "name": "木乃伊鸡宝",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:31",
+    "name": "乌骨鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:32",
+    "name": "丘比特",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:33",
+    "name": "孔雀",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:34",
+    "name": "霉菌鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "0:35",
+    "name": "木炭鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "0:36",
+    "name": "打抛鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "0:37",
+    "name": "番茄红酱鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:38",
+    "name": "罗勒青酱鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "0:39",
+    "name": "奶油白酱鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:40",
+    "name": "龙田炸鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:41",
+    "name": "炭烤鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "0:42",
+    "name": "麻油鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "0:43",
+    "name": "蛋包饭鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:44",
+    "name": "天妇罗鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:45",
+    "name": "蜜汁烤鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "0:46",
+    "name": "红酒炖鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:47",
+    "name": "菇菇鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "wood",
+    "reason": "菌种包与林地采集"
+  },
+  {
+    "key": "0:48",
+    "name": "樱花鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "樱花形态与花香"
+  },
+  {
+    "key": "0:49",
+    "name": "骗人鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:50",
+    "name": "雪鹤",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:51",
+    "name": "凤凰",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "时段感知；总能力不高于普通品种"
+  },
+  {
+    "key": "0:52",
+    "name": "火凤凰",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "时段感知；总能力不高于普通品种"
+  },
+  {
+    "key": "0:53",
+    "name": "蜘蛛鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "0:54",
+    "name": "乌鸦",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "0:55",
+    "name": "糖醋鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:56",
+    "name": "棒棒鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:57",
+    "name": "炸鸡块",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:58",
+    "name": "坦都里烤鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "0:59",
+    "name": "白酒炖鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:60",
+    "name": "康乃馨鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "康乃馨形态与花香"
+  },
+  {
+    "key": "0:61",
+    "name": "蜗牛鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "蜗牛形态偏湿润环境"
+  },
+  {
+    "key": "0:62",
+    "name": "晴天娃娃鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:63",
+    "name": "牵牛花鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "牵牛花形态与花香"
+  },
+  {
+    "key": "0:64",
+    "name": "烟火鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:65",
+    "name": "打西瓜鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:66",
+    "name": "喜鹊",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:67",
+    "name": "幽灵鸡宝",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:68",
+    "name": "蚊子鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "0:69",
+    "name": "热水鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:70",
+    "name": "水蒸气鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "0:71",
+    "name": "美式咖啡鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:72",
+    "name": "浓缩咖啡鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:73",
+    "name": "拿铁咖啡鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:74",
+    "name": "卡布奇诺鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:75",
+    "name": "焦糖玛琪朵鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:76",
+    "name": "越南咖啡鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "0:77",
+    "name": "爱尔兰咖啡鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:78",
+    "name": "玉兔鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:79",
+    "name": "栗子鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "wood",
+    "reason": "栗子形态与林地果实"
+  },
+  {
+    "key": "0:80",
+    "name": "杰克南瓜鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:81",
+    "name": "火鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:82",
+    "name": "烤火鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:83",
+    "name": "圣诞树鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "wood",
+    "reason": "树木形态"
+  },
+  {
+    "key": "0:84",
+    "name": "不倒翁鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:85",
+    "name": "门松鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "wood",
+    "reason": "松树形态"
+  },
+  {
+    "key": "0:86",
+    "name": "梅花鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "梅花形态与花香"
+  },
+  {
+    "key": "0:87",
+    "name": "爆竹鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:88",
+    "name": "巫女鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:89",
+    "name": "超大吉签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:90",
+    "name": "大吉签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:91",
+    "name": "中吉签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:92",
+    "name": "小吉签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:93",
+    "name": "吉签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:94",
+    "name": "末吉签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:95",
+    "name": "凶签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:96",
+    "name": "大凶签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:97",
+    "name": "半吉签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:98",
+    "name": "末小吉签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:99",
+    "name": "平签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:100",
+    "name": "小凶签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:101",
+    "name": "半凶签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:102",
+    "name": "末凶签鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:103",
+    "name": "晕眩鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "全15签同能力，吉凶不形成探索强弱"
+  },
+  {
+    "key": "0:104",
+    "name": "时空鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "辨认路径；不复制时空交换能力"
+  },
+  {
+    "key": "0:105",
+    "name": "髑髅鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:106",
+    "name": "鬼火鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:107",
+    "name": "一反木绵鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:108",
+    "name": "斗鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:109",
+    "name": "吐司鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:110",
+    "name": "烤焦吐司鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "0:111",
+    "name": "菠萝面包鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:112",
+    "name": "红豆面包鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:113",
+    "name": "咖喱面包鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:114",
+    "name": "小笼包鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "基础点心搬运采集"
+  },
+  {
+    "key": "0:115",
+    "name": "烧麦鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:116",
+    "name": "荷叶糯米鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "荷叶与糯米风味"
+  },
+  {
+    "key": "0:117",
+    "name": "奶黄流沙鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:118",
+    "name": "水晶饺鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:119",
+    "name": "寿桃豆沙鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:120",
+    "name": "樱桃大福鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "0:121",
+    "name": "蜂蜜松饼鸡",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "0:122",
+    "name": "柠檬冰沙鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "0:123",
+    "name": "焦糖布丁鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:124",
+    "name": "芝麻月饼鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "0:125",
+    "name": "红豆铜锣鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:126",
+    "name": "热可可鸡",
+    "gather": 3,
+    "discover": 3,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好"
+  },
+  {
+    "key": "0:127",
+    "name": "雪帽曲奇鸡",
+    "gather": 4,
+    "discover": 2,
+    "environment": "yard",
+    "reason": "鸡类基础地面偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:0",
+    "name": "鸭宝",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "普通鸭宝善于浅水寻找"
+  },
+  {
+    "key": "1:1",
+    "name": "病鸭宝",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "病变不另加探险惩罚"
+  },
+  {
+    "key": "1:2",
+    "name": "焦鸭宝",
+    "gather": 2,
+    "discover": 4,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "1:3",
+    "name": "香煎鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:4",
+    "name": "咸蛋鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "1:5",
+    "name": "橙汁香煎鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:6",
+    "name": "水煮蛋鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:7",
+    "name": "盐水鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "1:8",
+    "name": "炸鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:9",
+    "name": "可乐饼鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:10",
+    "name": "烤鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:11",
+    "name": "蜜汁叉烧鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:12",
+    "name": "炖鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:13",
+    "name": "油封鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "1:14",
+    "name": "鸭嘴兽",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "河水配方"
+  },
+  {
+    "key": "1:15",
+    "name": "丧尸鸭宝",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:16",
+    "name": "绿头鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:17",
+    "name": "鸳",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:18",
+    "name": "鸯",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:19",
+    "name": "灰尘鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "1:20",
+    "name": "红面番鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "1:21",
+    "name": "葱爆鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:22",
+    "name": "冬粉鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:23",
+    "name": "天妇罗鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:24",
+    "name": "烟熏鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "1:25",
+    "name": "白豆炖鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:26",
+    "name": "白鹅",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:27",
+    "name": "白天鹅",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:28",
+    "name": "黑天鹅",
+    "gather": 2,
+    "discover": 4,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "1:29",
+    "name": "蟑螂鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "1:30",
+    "name": "红酒樱桃鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:31",
+    "name": "南蛮鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:32",
+    "name": "香酥鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:33",
+    "name": "北京烤鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:34",
+    "name": "姜母鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:35",
+    "name": "向日葵鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:36",
+    "name": "苍蝇鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "1:37",
+    "name": "热水鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:38",
+    "name": "水蒸气鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "1:39",
+    "name": "红茶鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:40",
+    "name": "绿茶鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:41",
+    "name": "乌龙茶鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:42",
+    "name": "柠檬红茶鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:43",
+    "name": "奶茶鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:44",
+    "name": "菊花茶鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:45",
+    "name": "泰式奶茶鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "1:46",
+    "name": "印度奶茶鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:47",
+    "name": "文旦鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:48",
+    "name": "枫叶鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "wood",
+    "reason": "枫叶形态"
+  },
+  {
+    "key": "1:49",
+    "name": "忧郁鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:50",
+    "name": "姜饼鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:51",
+    "name": "舞狮鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:52",
+    "name": "法式面包鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:53",
+    "name": "烤焦法式面包鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；变化或时段线索偏发现"
+  },
+  {
+    "key": "1:54",
+    "name": "牛奶法式面包鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:55",
+    "name": "明太子法式面包鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "1:56",
+    "name": "香蒜法式面包鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:57",
+    "name": "抹茶团子鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "绿茶风味"
+  },
+  {
+    "key": "1:58",
+    "name": "花香茶冻鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:59",
+    "name": "橙橙汽水鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "实际配方含水边或湿润风味，偏采集"
+  },
+  {
+    "key": "1:60",
+    "name": "红豆冰棒鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好"
+  },
+  {
+    "key": "1:61",
+    "name": "焦糖吐司鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "water",
+    "reason": "鸭类基础浅水偏好；油炸、烘焙、慢炖或点心形态偏采集"
+  },
+  {
+    "key": "1:62",
+    "name": "烤菇饭团鸭",
+    "gather": 4,
+    "discover": 2,
+    "environment": "wood",
+    "reason": "蘑菇风味"
+  },
+  {
+    "key": "1:63",
+    "name": "姜糖茶鸭",
+    "gather": 2,
+    "discover": 4,
+    "environment": "wood",
+    "reason": "实际配方含茶、花、香草或根茎，偏辨味"
+  },
+  {
+    "key": "1:64",
+    "name": "围巾汤圆鸭",
+    "gather": 3,
+    "discover": 3,
+    "environment": "water",
+    "reason": "水煮糯米风味"
+  }
+]

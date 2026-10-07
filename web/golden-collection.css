@@ -1,0 +1,71 @@
+/* Calibrated against the approved 887x1774 mockup at a 390x780 viewport.
+   RGBA paintings provide material. Layout, text and source-alpha effects are UI. */
+#panels>.golden-book{--gs-ink:#563d28;--gs-sage:#62844f;--gs-muted:#95866c;--gs-display:'Golden Display','Chicken UI',sans-serif;inset:0;width:auto;height:100%;max-height:100%;padding:0;border:0;border-radius:0;background:#cedbbe;box-shadow:none;overflow:hidden;color:var(--gs-ink);animation:none}
+#panels>.golden-book::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.22;background:url('/web/art/golden-collection/v2-backdrop.png') -50px -35px/160px 110px repeat}
+#panels>.golden-book>.close,#panels>.golden-book>h2{display:none}
+.gs-filter-defs{position:absolute;pointer-events:none;overflow:visible}
+#panels .golden-book button{font:inherit;font-weight:650;line-height:1.3;min-height:44px;border:0;border-radius:0;box-shadow:none;background:transparent;color:inherit;padding:0;touch-action:manipulation;transition:transform 120ms ease,filter 120ms ease}
+#panels .golden-book button:active:not(:disabled){transform:scale(.97)}
+#panels .golden-book button:focus-visible{outline:2px solid #5b806b;outline-offset:3px;border-radius:8px}
+#panels .golden-book button:disabled{cursor:default;opacity:.65;background-color:transparent}
+.golden-book .gs-header{height:54px;flex:none;display:flex;align-items:center;justify-content:center;gap:7px;padding:3px 22px 3px 0;position:relative}
+.gs-title-chick{height:38px;width:38px;display:grid;place-items:center;transform:rotate(-7deg)}
+.gs-title-chick img,.gs-title-chick .sprite-art{width:100%;height:100%;object-fit:contain}
+.golden-book .gs-header h1{margin:0;font-family:var(--gs-display);font-size:36px;font-weight:400;line-height:1.15;letter-spacing:.06em;-webkit-text-stroke:.35px currentColor}
+#panels .golden-book .gs-help{position:absolute;right:11px;top:6px;width:44px;height:44px;display:grid;place-items:center;font-family:'Chicken UI',sans-serif;font-size:32px;font-weight:750;line-height:1;background:url('/web/art/golden-collection/v2-round-button.png') center/contain no-repeat;padding-bottom:3px}
+#panels .golden-book .gs-directory-toggle{right:64px;display:grid;place-items:center;padding:0 1px 2px 0}
+.gs-search-glyph{width:28px;height:28px;fill:none;stroke:#63472b;stroke-width:3;stroke-linecap:round}
+.golden-book .gs-bookmarks{height:28px;flex:none;display:flex;gap:5px;padding:0 34px;position:relative;z-index:0}
+#panels .golden-book .gs-bookmarks button{width:100px;height:48px;min-height:44px;padding:0 8px 6px;font-family:var(--gs-display);font-size:22px;font-weight:400;background:url('/web/art/golden-collection/v2-tab-idle.png') center/100% 100% no-repeat;transform:translateY(2px);color:#827259;position:relative}
+#panels .golden-book .gs-bookmarks button[aria-pressed=true]{background-image:url('/web/art/golden-collection/v2-tab-current.png');color:#4b351f;transform:none}
+#panels .golden-book .gs-bookmarks button[aria-pressed=true]::after{content:'';position:absolute;width:25px;height:4px;bottom:10px;left:38px;background:url('/web/art/golden-collection/v2-swash.png') center/100% 100% no-repeat;filter:brightness(.65)}
+.golden-book .gs-paper-scroll{flex:1;min-height:0;overflow-y:auto;padding:0 10px 10px;position:relative;z-index:1;scrollbar-width:thin}
+.golden-book .gs-paper{position:relative;isolation:isolate;min-height:602px;height:100%;display:flex;flex-direction:column;padding:20px 30px 12px 42px}
+.gs-paper>.gs-paper-material{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:fill;filter:drop-shadow(1px 2px 2px #624b2a24)}
+.gs-asset{display:block;object-fit:contain;pointer-events:none;user-select:none}
+.golden-book .gs-page-heading{height:40px;flex:none;display:flex;align-items:center;justify-content:center;gap:14px;position:relative}
+#panels .golden-book .gs-page-heading h3{position:relative;isolation:isolate;margin:0 0 0 -12px;flex:0 1 auto;min-width:0;font-family:var(--gs-display);font-size:33px;line-height:1.25;font-weight:400;white-space:nowrap;color:#553922;-webkit-text-stroke:.65px currentColor}
+.gs-page-heading h3::after{content:'';position:absolute;z-index:-1;left:-6px;right:-6px;height:7px;bottom:-6px;background:url('/web/art/golden-collection/v2-swash.png') center/100% 100% no-repeat}
+#panels .golden-book .gs-count{align-self:center;white-space:nowrap;flex:none;font-family:'Chicken UI',sans-serif;font-weight:750;font-size:17px;line-height:1.4;min-height:44px;text-align:right;padding:1px 0 0}
+.gs-count strong{font-weight:800;font-size:24px;color:#60824f;margin-right:3px}.gs-count span{color:#807058}
+#panels .golden-book .gs-pin{position:absolute;right:-24px;top:-17px;width:44px;height:82px;min-height:82px;display:block;background:transparent;box-shadow:none}
+.gs-pin img{position:absolute;inset:0;width:100%;height:100%;opacity:.78}.gs-pin span{position:absolute;top:32px;left:15px;writing-mode:vertical-rl;font-family:var(--gs-display);font-size:16px;font-weight:400;line-height:1;letter-spacing:2px;color:#53603d}
+.gs-pin.is-pinned img{opacity:1}.gs-pin.is-pinned span{font-size:14px;letter-spacing:1px;top:30px;color:#394d2e}
+.golden-book .gs-grid{flex:1;min-height:416px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(138px,1fr) minmax(138px,1fr) 124px;column-gap:36px;row-gap:8px;margin-top:18px}
+.golden-book .gs-grid:has(.gs-character:nth-child(5)){grid-template-rows:repeat(3,minmax(138px,1fr));min-height:430px}
+.golden-book .gs-paper:has(.gs-character:nth-child(5)){min-height:616px}
+#panels .golden-book .gs-character{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;min-width:0;min-height:138px;overflow:visible;background:none}
+.gs-sticker{flex:none;display:grid;place-items:end center;width:100%;height:106px;overflow:visible}
+.gs-sticker-ink{position:relative;min-height:0;min-width:0;display:block;filter:url('#gs-sticker-filter');overflow:visible;width:104px;height:104px;max-width:100%}
+.gs-sticker-ink img,.gs-sticker-ink>.sprite-art{position:absolute;inset:0;display:block;width:100%;height:100%;min-height:0;max-height:100%;object-fit:contain;overflow:visible}
+.gs-character-name{font-family:var(--gs-display);font-size:19px;font-weight:400;-webkit-text-stroke:.25px currentColor;line-height:1.2;max-width:100%;text-align:center;overflow-wrap:anywhere}
+.with-tape-left::after,.with-tape-right::after{content:'';position:absolute;top:-1px;left:4px;width:40px;height:16px;background:url('/web/art/golden-collection/v2-tape.png') center/100% 100% no-repeat;transform:rotate(-46deg);pointer-events:none;opacity:.9}
+.with-tape-right::after{top:0;left:auto;right:-4px;transform:rotate(46deg)}
+#panels .golden-book .gs-unknown{position:relative;top:-8px;align-self:center;justify-self:center;width:124px;max-width:100%;height:124px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:13px;padding-top:28px;isolation:isolate;color:#9c8b70}
+.gs-unknown img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:-1}
+.gs-unknown>span{font-family:'Chicken UI',sans-serif;font-size:50px;font-weight:850;line-height:1}.gs-unknown strong{font-family:var(--gs-display);font-size:18px;font-weight:400;line-height:1}
+.golden-book .gs-page-bottom{flex:none;height:96px;position:relative;padding-top:5px;margin-left:-16px}
+.gs-stamps{display:flex;gap:14px;align-items:center;width:calc(100% - 78px);height:58px}
+#panels .golden-book .gs-stamp{position:relative;width:94px;flex:none;height:57px;min-height:44px;transform:rotate(-12deg);color:#709b60}
+.gs-stamp>.gs-asset{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.gs-stamp>span{position:absolute;left:39%;right:10%;top:0;bottom:0;display:flex;align-items:center;justify-content:center;font-family:var(--gs-display);font-size:19px;font-weight:400;-webkit-text-stroke:.15px currentColor}
+#panels .golden-book .gs-stamp-practice{height:44px;width:80px;transform:rotate(-12deg)}
+#panels .golden-book .gs-stamp.is-pending{color:#c5b89a}
+.gs-stamp-emblem{position:absolute;left:14%;top:24%;display:grid;width:25px;height:30px;place-items:center;filter:url('#gs-ink-active')}
+.gs-stamp.is-pending .gs-stamp-emblem{filter:url('#gs-ink-inactive')}
+.gs-stamp-emblem>.sprite-art,.gs-stamp-emblem>img{position:static;width:25px;height:30px;object-fit:contain}
+#panels .golden-book .gs-memento{position:absolute;right:-25px;bottom:-4px;width:80px;height:108px;min-height:108px}
+.gs-memento>.gs-asset{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.gs-memento span{position:absolute;left:3px;right:7px;bottom:17px;font-family:var(--gs-display);font-size:15px;transform:rotate(10deg);font-weight:400}
+.gs-memento .gs-memento-chick{bottom:35px;left:23px;right:auto;width:30px;height:33px}.gs-memento-chick>.sprite-art{width:100%;height:100%}
+.golden-book .gs-pager{height:36px;display:flex;align-items:center;justify-content:center;gap:12px;padding-right:0;font-family:'Chicken UI',sans-serif;font-size:18px;font-weight:750;color:#827057}
+#panels .golden-book .gs-pager button{width:36px;height:44px;min-width:44px;font-family:var(--gs-display);font-size:33px;font-weight:400;line-height:1;background:url('/web/art/golden-collection/v2-page-button.png') center/31px 31px no-repeat;padding-bottom:3px}
+.golden-book .gs-dialog{width:min(92vw,470px);max-height:84vh;max-height:84dvh;padding:16px;border:1px solid #bcac8b;border-radius:15px;background:#fff9e5;color:#5c452f;box-shadow:0 8px 28px #4e392944;overflow:hidden}
+.gs-dialog[open]{display:flex;flex-direction:column}.gs-dialog::backdrop{background:#3f342d66}
+.gs-dialog>header{display:flex;align-items:center;gap:10px;flex:none}.gs-dialog h3{margin:0;flex:1;font-size:20px;line-height:1.4}
+#panels .gs-dialog [data-gs-close]{width:44px;min-width:44px;height:44px;background:#efe6c8;border-radius:50%;font-size:26px}
+.gs-dialog-body{padding:12px 4px 4px;overflow:auto;touch-action:pan-y}.gs-dialog-body p,.gs-dialog-body li{font-size:15px;line-height:1.7}.gs-dialog-body ul{padding-left:20px}
+.gs-directory nav{display:flex;gap:8px;flex-wrap:wrap}.gs-directory .books-category{margin-top:12px}.gs-theme-list{display:grid;gap:4px;padding:12px 0}
+#panels .gs-dialog .gs-directory button{min-height:44px;padding:8px 10px;background:#f2edda;border-radius:8px;text-align:left}
+.gs-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:8px}
+@media(max-width:360px){.golden-book .gs-paper{padding-left:21px;padding-right:21px}.golden-book .gs-grid{column-gap:20px}#panels .golden-book .gs-page-heading h3{font-size:24px}.golden-book .gs-page-heading{gap:8px}.gs-stamps{gap:9px}#panels .golden-book .gs-stamp{width:83px;height:52px}#panels .golden-book .gs-stamp-practice{width:73px;height:42px}.gs-stamp>span{font-size:17px}#panels .golden-book .gs-memento{right:-15px;width:74px;height:102px}.gs-character-name{font-size:18px}}
+@media(prefers-reduced-motion:reduce){#panels .golden-book button,#game:has(.golden-book) #main-nav button>svg{transition:none}#panels .golden-book button:active,#game:has(.golden-book) #main-nav button[aria-current=page]>svg,#game:has(.golden-book) #main-nav button:active>svg{transform:none}}

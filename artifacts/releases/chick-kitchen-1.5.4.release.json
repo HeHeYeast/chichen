@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.4",
+    "versionCode":  20,
+    "file":  "chick-kitchen-1.5.4.apk",
+    "sha256":  "db6b96c105acd5da5c9ed66aefea02c7f0c47a00061f6bec76a16e9bdd2fc753",
+    "bytes":  99771886,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-09-30T14:25:33.3695395Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "9ab56924453c68e6722cb6d3aa750af6b3cd64754ba6137a3a662cb60178fd92",
+    "runtimeFiles":  1326,
+    "notes":  "厨房蛋窝重做：改用完整原版蛋、自然交叠成一窝并由盆沿遮挡；五个页面统一底栏；提示条移到底栏上方；鸡蛋/鸭蛋切换移到下一锅准备；开火确认醒目提示放弃未收取。修复复刻吞掉四时偶遇、时空旅行计入赠品进度、采购交付被回滚、普通位主题加价、入门地方做法需补全、收藏实践可能永久错过、2027/2030春节日期等问题。保留原有玩法和存档。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

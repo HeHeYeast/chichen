@@ -1,3 +1,4 @@
+import {ABILITIES} from '../web/integration-data.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as E from '../web/engine.js';
@@ -76,12 +77,20 @@ test('round2: light expedition uses 4h48/8h and actual base units, directed mate
  T.depart(s,{routeId:'water',members:['0:0'],light:true},NOW,()=>0);const t=s.progress.trip;assert.equal(t.endAt-NOW,17280000);assert.equal(t.cpReward,6);const cp=s.cp;T.claimTrip(s,t.id,{materials:false},t.endAt);assert.equal(s.cp,cp+6);T.claimTrip(s,t.id,{},t.endAt);assert.equal(s.cp,cp+6);assert.ok(t.remaining.length);assert.deepEqual(E.normalizeSave(s,t.endAt).progress.trip,t);
 });
 test('round2: matching team improves odds exactly and empty clue pools show zero without advancing pity',()=>{
- const s=state();delete s.total['0:4'];delete s.farm['0:4'];const team=['0:0','0:3','0:8'];const a=T.explorationInfo(s,'yard',team,NOW);assert.ok(Math.abs(a.materialChance-.42)<1e-8);assert.ok(Math.abs(a.clueChance-.35)<1e-8);learn(s,'TRIP-2','TRIP-3');const b=T.explorationInfo(s,'yard',team,NOW);assert.ok(Math.abs(b.materialChance-.51)<1e-8);assert.ok(Math.abs(b.clueChance-.41)<1e-8);
+ const s=state();delete s.total['0:4'];delete s.farm['0:4'];const team=['0:0','0:3','0:8'];const a=T.explorationInfo(s,'yard',team,NOW);const G=team.reduce((n,k)=>n+ABILITIES[k].gather,0),F=team.reduce((n,k)=>n+ABILITIES[k].discover,0),A=team.filter(k=>ABILITIES[k].environment==='yard').length;assert.ok(Math.abs(a.materialChance-(.05+.025*G/3+.04*A))<1e-8);assert.ok(Math.abs(a.clueChance-(.10+.02*F/3+.03*A))<1e-8);learn(s,'TRIP-2','TRIP-3');const b=T.explorationInfo(s,'yard',team,NOW);assert.ok(Math.abs(b.materialChance-(.05+.025*G/3+.04*A+.03*A))<1e-8);assert.ok(Math.abs(b.clueChance-(.10+.02*F/3+.03*A+.02*A))<1e-8);
  for(const [egg,cs]of GAME_DATA.characters.entries())for(const c of cs)s.total[egg+':'+c.id]=100;assert.equal(T.explorationInfo(s,'yard',team,NOW).clueChance,0);
 });
 test('round2: observer records facts permanently, study stays secret, first discovery clue only once',()=>{
  const s=state();learn(s,'OBS-1','OBS-3','OBS-4','OBS-5');const info=K.observationInfo(s,'0:120',NOW);assert.equal(info.name,null);assert.equal(info.silhouette,true);assert.ok(info.details.some(d=>d.startsWith('第一味')));K.readObservation(s,'0:120',NOW);P.respecSkills(s,NOW);assert.ok(K.observationInfo(s,'0:120',NOW).details.some(d=>d.startsWith('第一味')));
- learn(s,'OBS-1','OBS-3','OBS-5');delete s.farm['0:3'];delete s.total['0:3'];delete s.farm['0:4'];delete s.total['0:4'];E.startBatch(s,1,NOW,()=>.5);s.batch.eggs[0].id=3;s.batch.eggs[0].status='ready';const before=s.progress.knowledge.facts.length;E.collect(s,0,NOW);assert.ok(s.progress.knowledge.facts.length>before);const after=s.progress.knowledge.facts.length;E.collect(s,0,NOW);assert.equal(s.progress.knowledge.facts.length,after);
+ // 举一反三 records the next layer nobody shows yet: with 风味辨识 that is a first seasoning or a flavour group, never
+ // the silhouette or cookware the skill already shows (2026-10-07); with 辨味笔记 as well there is nothing left to record.
+ learn(s,'OBS-1','OBS-2','OBS-4','OBS-5');delete s.farm['0:3'];delete s.total['0:3'];delete s.farm['0:4'];delete s.total['0:4'];E.startBatch(s,1,NOW,()=>.5);s.batch.eggs[0].id=3;s.batch.eggs[0].status='ready';const before=s.progress.knowledge.facts.length;E.collect(s,0,NOW);assert.ok(s.progress.knowledge.facts.length>before);assert.match(s.progress.knowledge.facts.at(-1),/:L[34]$/);const after=s.progress.knowledge.facts.length;E.collect(s,0,NOW);assert.equal(s.progress.knowledge.facts.length,after);
+});
+test('round2: paid replication never overwrites a first seasonal surprise in the same batch',()=>{
+ const s=state();learn(s,'CUL-2','CUL-3','CUL-5');s.ingredients={9:1,33:1};s.selected=[9,33];
+ const choices=E.replicateOptions(s,1,NOW);assert.ok(choices.length);s.progress.replicate=choices[0].key;
+ E.startBatch(s,1,NOW,()=>.1);
+ assert.equal(s.batch.eggs[0].id,121);assert.equal(s.batch.eggs[1].id,+choices[0].key.split(':')[1]);
 });
 test('round2: paid replication only accepts already collected ordinary candidates and costs exactly 10CP',()=>{
  const s=state();learn(s,'CUL-2','CUL-3','CUL-5');const choices=E.replicateOptions(s,1,NOW);assert.ok(choices.length);s.progress.replicate=choices[0].key;const cost=E.tool(1).lv_2_cook_cp,cp=s.cp;E.startBatch(s,1,NOW,()=>.5);assert.equal(s.cp,cp-cost-10);assert.equal(s.batch.eggs[0].id,+choices[0].key.split(':')[1]);

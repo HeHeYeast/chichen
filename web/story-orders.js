@@ -19,7 +19,7 @@ export function storyOrders(s){
   });
 }
 export function acceptOrder(s,id,choice=null){
-  const o=storyOrders(s).find(o=>o.id===id);if(!o?.unlocked||o.completed)throw Error('这笔采购尚不可接取');
+  const o=storyOrders(s).find(o=>o.id===id);if(!o?.unlocked||o.completed)throw Error('这笔生意还不能接');
   const selected=o.choices.find(c=>c.species===(choice??o.choice??o.choices[0].species));if(!selected?.available)throw Error('该选项需要先购买对应厨具');
   if(o.delivered>0&&selected.species!==o.choice)throw Error('已经部分交付，不能再更换出品');
   s.progress.orders[id]={accepted:true,choice:selected.species,delivered:o.delivered,completed:false};

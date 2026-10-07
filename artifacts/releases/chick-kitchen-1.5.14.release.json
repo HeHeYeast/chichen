@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.14",
+    "versionCode":  30,
+    "file":  "chick-kitchen-1.5.14.apk",
+    "sha256":  "e1feaa44d84f9a5c017a526614beaaca1cc66a97b8313d87c9047f24c7d2ba75",
+    "bytes":  107284869,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-05T09:38:47.8887631Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "9d155fdbf1d6a4214a18f6bb7e681b6c5e1971f365c0a43e40f9ac0889d5d1da",
+    "runtimeFiles":  1469,
+    "notes":  "商店「其他」页的蛋盆里改放一个大而有光泽的蛋（鸡蛋/鸭蛋一眼能分），不再飞出盆外；农场左上角和「在家」旁的图标换成真正的鸡宝。包含 1.5.13 的全部改动：每种伙伴可单独设置「留在家」数量，近郊和地区寻访可带多只同种伙伴，采集和发现范围改为 1～20。保留存档和签名，可直接覆盖更新。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

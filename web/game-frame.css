@@ -1,0 +1,321 @@
+/* Shared guidance pieces (game-frame.js) and the simplified business front.
+   Rules: no persistent hint bars; nothing may cover text; neighbouring frames keep a visible gap (>= 8px). */
+
+/* stars */
+.gf-stars{display:inline-flex;gap:1px;color:#e3a51f;font-size:18px;line-height:1;letter-spacing:0;white-space:nowrap}
+.gf-stars i{font-style:normal;color:#e7dac0}
+
+/* species slot: picture on top, count underneath (never on top of the picture) */
+#panels .gf-slot{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:2px;width:58px;min-width:58px;height:72px;min-height:72px;padding:5px 2px 3px;border-radius:13px;background:#fdf3d9;border:2px solid #e6d3a8;box-sizing:border-box;font-family:'Chicken UI',sans-serif;color:#5b3f27}
+#panels button.gf-slot{cursor:pointer}
+#panels .gf-slot>img,.gf-slot>svg,.gf-slot>.character-portrait{width:42px!important;height:42px!important;min-height:0!important;object-fit:contain;flex:none}
+#panels .gf-slot>b{display:flex;align-items:center;gap:2px;font-size:13px;font-weight:900;line-height:1.1;white-space:nowrap}
+#panels .gf-slot>b svg,#panels .gf-slot>b .gf-art{width:16px;height:16px;object-fit:contain}
+#panels .gf-slot.is-ok{background:#eef5dc;border-color:#a9c47f}
+#panels .gf-slot.is-need{border-style:dashed;border-color:#c9a046}
+#panels .gf-slot.is-need>img,.gf-slot.is-need>svg:not(.gf-pan),.gf-slot.is-need>.character-portrait{opacity:.45;filter:grayscale(.55)}
+#panels .gf-slot.is-unknown{border-style:dashed;border-color:#cbb68c}
+#panels .gf-q{display:grid;place-items:center;width:42px;height:42px;font-size:26px;font-weight:900;color:#b8a27c}
+
+/* 「?」 picture cards */
+#panels .gf-help-cards{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:10px;overflow-x:auto;padding:4px 2px 8px}
+#panels .gf-help-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 10px;border-radius:14px;background:#fffdf2;border:2px solid #e4cf9f;text-align:center;font-size:15px;font-weight:800;color:#5b3f27;line-height:1.35}
+#panels .gf-help-card .gf-art{width:46px;height:46px;object-fit:contain;display:grid;place-items:center}
+#panels .gf-art>svg{width:100%;height:100%}
+
+/* next step: gentle breathing, plus an arrow after idle */
+[data-next]{animation:gf-breathe 2.4s ease-in-out infinite}
+@keyframes gf-breathe{0%,100%{filter:drop-shadow(0 0 0 rgba(255,206,110,0))}50%{filter:drop-shadow(0 0 9px rgba(255,196,80,.95))}}
+.gf-nudge{position:absolute;z-index:60;width:34px;height:34px;pointer-events:none;animation:gf-nudge 1s ease-in-out infinite;
+  background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='M4 17 L20 5 V12 H30 V22 H20 V29 Z' fill='%23ffe08a' stroke='%238a5a2e' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.gf-nudge.to-left{transform:scaleX(-1);animation-name:gf-nudge-l}
+@keyframes gf-nudge{0%,100%{translate:0 0}50%{translate:7px 0}}
+@keyframes gf-nudge-l{0%,100%{translate:0 0}50%{translate:-7px 0}}
+
+/* first-visit pointer */
+.gf-guide{position:absolute;inset:0;z-index:70;pointer-events:none}
+.gf-ring{position:absolute;border-radius:16px;box-shadow:0 0 0 9999px rgba(40,25,10,.55);border:3px solid #fff3c4;pointer-events:none}
+.gf-tip{pointer-events:none;position:absolute;left:22px;right:22px;padding:12px 14px;border-radius:16px;background:#fff8e2;border:2px solid #b78a55;text-align:center;color:#5b3f27;font-family:'Chicken UI',sans-serif}
+.gf-tip p{margin:0;font-size:16px;font-weight:800;line-height:1.4}
+.gf-tip div{display:flex;justify-content:center;gap:14px;margin-top:10px}
+/* only the tip's own buttons take taps: a control the tip happens to cover still works and closes the pointer, as any tap
+   elsewhere does (on 320×568 a tall first card pushed the 下一锅 tip over 「自己选」) */
+.gf-tip button{pointer-events:auto;min-height:40px;padding:0 18px;border-radius:999px;border:2px solid #d8c39a;background:transparent;color:#8d7458;font:inherit;font-size:15px;font-weight:800}
+.gf-tip button.is-primary{background:#e9b26a;border-color:#9b6a33;color:#4a3015}
+@media (prefers-reduced-motion:reduce){[data-next],.gf-nudge{animation:none!important}}
+
+/* ---- business front: sign, then the menu card with a clear gap; settings beside 「?」 */
+#panels .golden-business .bs-header .game-help{right:62px}
+#panels .golden-business button.game-settings{position:absolute;right:11px;top:6px;width:44px;height:44px;min-height:44px;padding:0;border:0;border-radius:0;box-shadow:none;background:url('/web/art/golden-business/v2-help.png') center/100% 100% no-repeat;display:grid;place-items:center}
+#panels .golden-business button.game-settings svg{width:24px;height:24px;margin-top:-2px}
+#panels .golden-business .bs-shop-header.is-simple{height:auto;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:2px}
+#panels .golden-business .bs-shop-header.is-simple .bs-status{flex:none}
+#panels .golden-business .bs-menu-card{position:relative;align-self:stretch;margin:0 2px;padding:10px 70px 10px 14px;border-radius:16px;background:#fffdf2;border:2px solid #c9a26e;box-shadow:0 2px 0 #e9d6ae;text-align:left}
+#panels .golden-business .bs-menu-card-head{display:flex;align-items:center;gap:10px;min-height:32px}
+#panels .golden-business .bs-menu-card-head h3{margin:0;height:auto;padding:0;font-size:24px;line-height:1.25;text-align:left;overflow-wrap:anywhere}
+#panels .golden-business .bs-menu-slots{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+#panels .golden-business .bs-menu-card .bs-menu{position:absolute;right:10px;top:10px;width:50px;height:60px;min-height:60px;transform:none}
+#panels .golden-business .bs-menu-card .bs-menu>span{top:17px;font-size:15px}
+#panels .golden-business .bs-menu-card .bs-menu i{display:none}
+#panels .golden-business .bs-counter{margin-top:10px}
+#panels .golden-business .bs-why{display:block;margin:4px auto 6px;min-height:30px;padding:2px 14px;border-radius:999px;background:#fff3d4;border:1.5px dashed #c9a46a;color:#8a6a45;font-size:14px;font-weight:800;box-shadow:none}
+#panels .golden-business .bs-coin-inline{display:inline-block;width:18px;height:18px;vertical-align:-3px;margin:0 1px 0 2px}
+
+/* business sheets: menu grid, basket adjust, why */
+#panels .golden-business .bs-menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:2px}
+#panels .golden-business .bs-menu-grid>button{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:136px;padding:10px 6px;border-radius:16px;background:#fdf0cf;border:2px solid #e4cf9f;box-shadow:none;color:#5b3f27;font-family:'Chicken UI',sans-serif}
+#panels .golden-business .bs-menu-grid>button[aria-pressed="true"]{background:#eef5dc;border-color:#8fb262}
+#panels .golden-business .bs-menu-grid>button>strong{font-size:17px;line-height:1.2}
+#panels .golden-business .bs-menu-grid .bs-menu-mini{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+#panels .golden-business .bs-menu-grid .gf-slot{width:44px;min-width:44px;height:58px;min-height:58px;border-radius:10px;padding:3px 1px 2px}
+#panels .golden-business .bs-menu-grid .gf-slot>img,.bs-menu-grid .gf-slot>svg,.bs-menu-grid .gf-slot>.character-portrait,.bs-menu-grid .gf-q{width:32px!important;height:32px!important;font-size:18px}
+#panels .golden-business .bs-menu-grid .gf-slot>b{font-size:11px}
+#panels .golden-business .bs-menu-grid .bs-menu-income{display:flex;align-items:center;gap:3px;font-size:15px;font-weight:900}
+#panels .golden-business .bs-menu-grid .bs-menu-income img{width:17px;height:17px}
+#panels .golden-business .bs-menu-grid .bs-menu-tag{display:inline-block;margin-right:5px;vertical-align:2px;padding:1px 7px;border-radius:8px;background:#c9573a;color:#fff;font-size:12px;font-weight:900;line-height:1.4}
+#panels .golden-business .bs-menu-grid>button[aria-disabled="true"]{background:#f1e9d6;border-color:#e2d6bc;color:#a99878;justify-content:center}
+#panels .golden-business .bs-menu-grid .bs-menu-lock svg{width:30px;height:30px;opacity:.7}
+#panels .golden-business .bs-basket-sheet{display:grid;gap:12px}
+#panels .golden-business .bs-basket-head{display:flex;align-items:center;gap:12px}
+#panels .golden-business .bs-basket-head .bs-basket-face{width:80px;height:80px;flex:none;display:grid;place-items:center}
+#panels .golden-business .bs-basket-head .bs-basket-face>*{width:76px!important;height:76px!important}
+#panels .golden-business .bs-basket-head strong{display:block;font-size:22px}.bs-basket-head small{display:block;color:#8d7458;font-size:14px;font-weight:800}
+#panels .golden-business .bs-stepper{display:flex;align-items:center;justify-content:center;gap:26px}
+#panels .golden-business .bs-stepper button{width:50px;height:50px;min-height:50px;border-radius:50%;background:#f1dfb6;border:2px solid #b78a55;font-size:26px;font-weight:900;padding:0;box-shadow:none}
+#panels .golden-business .bs-stepper output{min-width:64px;text-align:center;font-size:34px;font-weight:900;font-family:'Chicken UI',sans-serif}
+#panels .golden-business .bs-swap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:10px;justify-items:center}
+#panels .golden-business .bs-swap-grid .gf-slot[aria-pressed="true"]{border-color:#8fb262;background:#eef5dc}
+#panels .golden-business .bs-swap-grid .gf-slot[disabled]{opacity:.4}
+#panels .golden-business .bs-sheet-actions{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
+#panels .golden-business .bs-sheet-actions .bs-link{background:none;border:0;box-shadow:none;color:#8d7458;text-decoration:underline;font-size:15px;min-height:44px}
+#panels .golden-business .bs-why-sheet{text-align:center;display:grid;gap:14px;font-size:16px;font-weight:800;color:#5b3f27}
+
+/* ---- 下一锅 card */
+
+/* fit the business front on one screen; nothing overlaps */
+#panels .golden-business .bs-summary img.bs-coin-inline{position:static;inset:auto;display:inline-block;width:18px;height:18px;opacity:1;vertical-align:-3px;margin:0 1px 0 4px;object-fit:contain}
+#panels .golden-business .bs-counter.few:not(:has(.bs-vessel:nth-child(3))){min-height:176px;grid-auto-rows:170px}
+#panels .golden-business .bs-menu-slots .gf-slot{height:66px;min-height:66px;padding-top:4px}
+#panels .golden-business .bs-menu-slots .gf-slot>img,#panels .golden-business .bs-menu-slots .gf-slot>svg,#panels .golden-business .bs-menu-slots .gf-slot>.character-portrait{width:38px!important;height:38px!important}
+#panels .golden-business .gf-slot{box-shadow:none;font-size:inherit}
+#panels .golden-business .gf-slot.is-need{border:2px dashed #c9a046}
+#panels .golden-business .gf-slot.is-unknown{border:2px dashed #cbb68c}
+#panels .golden-business .gf-slot.is-ok{border:2px solid #a9c47f}
+#panels .golden-business .bs-sheet-actions button.orange{min-width:150px;min-height:50px;font-size:18px}
+#panels .golden-business .bs-why-sheet .bs-sheet-actions button{min-height:46px}
+#panels .gf-help-cards{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}
+#panels .gf-help-card{font-size:13.5px;padding:10px 6px}
+#panels .gf-help-card .gf-art{width:40px;height:40px}
+/* 下一锅 fixes */
+
+#panels .golden-business .bs-summary{width:auto;min-width:200px;max-width:100%;padding:0 20px;white-space:nowrap}
+#panels .golden-business .bs-summary>span{white-space:nowrap;overflow-wrap:normal}
+#panels .golden-business .bs-why{margin:2px auto 4px}
+#panels .golden-business .bs-actions{min-height:66px;margin-top:0}
+#panels .golden-business .bs-props{margin-bottom:2px}
+#panels .golden-business .bs-menu-grid .bs-menu-mini{gap:4px;flex-wrap:nowrap}
+#panels .golden-business .bs-menu-grid .gf-slot{width:38px;min-width:38px;height:54px;min-height:54px}
+#panels .golden-business .bs-menu-grid .gf-slot>img,#panels .golden-business .bs-menu-grid .gf-slot>svg,#panels .golden-business .bs-menu-grid .gf-slot>.character-portrait,#panels .golden-business .bs-menu-grid .gf-q{width:28px!important;height:28px!important}
+#panels .golden-business .bs-sheet-actions button[data-business-basket-done],#panels .golden-business .bs-sheet-actions button[data-business-keep-off]{min-width:170px;min-height:56px;border:0;border-radius:0;box-shadow:none;background:url('/web/art/golden-business/v2-action.png') center/100% 100% no-repeat;color:#5b3f27;font-size:20px;font-weight:900}
+
+/* ---- 这锅收成: a result card over the kitchen */
+#panels .panel.harvest-card-screen{top:auto;bottom:auto;left:18px;right:18px;margin:auto;inset:0 18px;height:fit-content;max-height:86%;border-radius:22px;box-shadow:0 0 0 9999px rgba(50,32,14,.45),0 12px 28px rgba(50,32,14,.3);padding:14px 16px 16px;display:flex;flex-direction:column;align-items:stretch}
+#panels .harvest-card-screen h2{text-align:center;font-size:24px;margin:2px 0 6px}
+#panels .harvest-card-screen .hc-card{display:grid;gap:12px;justify-items:center}
+#panels .harvest-card-screen .hc-birds{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+#panels .harvest-card-screen .hc-bird{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;width:68px;padding:6px 2px 4px;border-radius:14px;background:#fdf3d9;border:2px solid #e6d3a8}
+#panels .harvest-card-screen .hc-bird>img,#panels .harvest-card-screen .hc-bird>svg{width:52px;height:52px}
+#panels .harvest-card-screen .hc-bird b{font-size:15px}
+#panels .harvest-card-screen .hc-bird em{position:absolute;top:-10px;left:50%;translate:-50% 0;padding:0 6px;border-radius:8px;background:#c9573a;color:#fff;font-style:normal;font-size:12px;font-weight:900;line-height:18px}
+#panels .harvest-card-screen .hc-total{margin:0;font-size:16px;font-weight:800;color:#6b5238}
+#panels .harvest-card-screen .hc-total b{font-size:30px;color:#5b3f27}
+#panels .harvest-card-screen .hc-done{min-width:180px;min-height:54px;font-size:21px}
+#panels .harvest-card-screen .hc-more{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px}
+#panels .harvest-card-screen .hc-more button{min-height:40px;padding:0 6px;background:none;border:0;box-shadow:none;color:#8d7458;text-decoration:underline;font-size:15px;font-weight:800}
+
+/* ---- 仓库 */
+#panels .warehouse-screen{display:flex;flex-direction:column}
+#panels .warehouse-screen>button.wh-help{position:absolute;right:60px;top:8px}
+#panels .warehouse-screen .wh-tabs{display:flex;gap:8px;padding:2px 14px 0}
+#panels .warehouse-screen .wh-tabs button{flex:1;min-height:44px;border-radius:14px 14px 6px 6px;background:#f3e3bd;border:2px solid #d8c39a;box-shadow:none;font-size:17px;font-weight:900;color:#6b5238}
+#panels .warehouse-screen .wh-tabs button[aria-selected="true"]{background:#fffdf2;border-color:#b78a55;color:#5b3f27}
+#panels .warehouse-screen .wh-scroll{flex:1;min-height:0;overflow:auto;margin:8px 14px 0;padding:10px;border-radius:14px;background:#fffdf2;border:2px solid #d8c39a}
+#panels .warehouse-screen .wh-filter{display:flex;gap:8px;margin-bottom:10px}
+#panels .warehouse-screen .wh-filter button{min-height:34px;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid #d8c39a;box-shadow:none;font-size:14px;font-weight:800;color:#6b5238}
+#panels .warehouse-screen .wh-filter button[aria-pressed="true"]{background:#eef5dc;border-color:#8fb262}
+#panels .warehouse-screen .wh-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#panels .warehouse-screen .wh-cell{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;min-height:112px;padding:8px 2px 6px;border-radius:14px;background:#fdf3d9;border:2px solid #e6d3a8;box-shadow:none;color:#5b3f27}
+#panels .warehouse-screen .wh-pic{width:52px;height:52px;display:grid;place-items:center}
+#panels .warehouse-screen .wh-pic>*{max-width:52px;max-height:52px}
+#panels .warehouse-screen .wh-name{max-width:100%;font-size:12.5px;font-weight:800;line-height:1.25;text-align:center;overflow-wrap:anywhere}
+#panels .warehouse-screen .wh-cell>b{font-size:14px;font-weight:900}
+#panels .warehouse-screen .wh-cell>small{font-size:11.5px;color:#b8442a;font-weight:800}
+#panels .warehouse-screen .wh-empty{grid-column:1/-1;text-align:center;color:#8d7458;font-weight:800;padding:24px 0}
+#panels .warehouse-screen .wh-bag{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:14px;font-weight:800;color:#6b5238}
+#panels .warehouse-screen .wh-bag i{flex:1;height:12px;border-radius:6px;background:#f0e2c0;overflow:hidden}
+#panels .warehouse-screen .wh-bag i b{display:block;height:100%;background:#e3ac58}
+#panels .warehouse-screen .wh-footer{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 14px 12px}
+#panels .warehouse-screen .wh-sell{min-width:190px;min-height:54px;font-size:20px}
+#panels .warehouse-screen .wh-link{min-height:40px;padding:0 8px;background:none;border:0;box-shadow:none;color:#8d7458;text-decoration:underline;font-size:15px;font-weight:800}
+#panels .warehouse-screen .wh-scrim{position:absolute;inset:0;background:rgba(50,32,14,.35);z-index:5}
+#panels .warehouse-screen .wh-sheet{position:absolute;left:0;right:0;bottom:0;z-index:6;max-height:78%;overflow:auto;padding:16px 18px 18px;border-radius:22px 22px 0 0;background:#fff8e2;border-top:3px solid #b78a55;display:grid;gap:12px}
+#panels .warehouse-screen .wh-sheet h3{margin:0;font-size:21px;text-align:center}
+#panels .warehouse-screen .wh-head{display:flex;align-items:center;gap:12px}
+#panels .warehouse-screen .wh-head h3{text-align:left}
+#panels .warehouse-screen .wh-head small{display:block;color:#8d7458;font-size:14px;font-weight:800}
+#panels .warehouse-screen .wh-face{width:80px;height:80px;flex:none;display:grid;place-items:center}
+#panels .warehouse-screen .wh-face>*{max-width:76px;max-height:76px}
+#panels .warehouse-screen .wh-stepper{display:flex;align-items:center;justify-content:center;gap:26px}
+#panels .warehouse-screen .wh-stepper button{width:50px;height:50px;min-height:50px;padding:0;border-radius:50%;background:#f1dfb6;border:2px solid #b78a55;box-shadow:none;font-size:26px;font-weight:900}
+#panels .warehouse-screen .wh-stepper output{min-width:64px;text-align:center;font-size:32px;font-weight:900}
+#panels .warehouse-screen .wh-actions{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap}
+#panels .warehouse-screen .wh-actions .orange{min-width:180px;min-height:52px;font-size:19px}
+#panels .warehouse-screen .wh-preview{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-height:210px;overflow:auto}
+#panels .warehouse-screen .wh-chip{display:flex;flex-direction:column;align-items:center;width:62px;padding:4px 2px;border-radius:12px;background:#fdf3d9;border:1.5px solid #e6d3a8}
+#panels .warehouse-screen .wh-chip>*:first-child{width:40px;height:40px}
+#panels .warehouse-screen .wh-chip b{font-size:13px}
+#panels .warehouse-screen .wh-total{margin:0;display:flex;justify-content:center;align-items:center;gap:6px;font-size:26px;font-weight:900}
+#panels .warehouse-screen .wh-total img{width:26px;height:26px}
+#panels .warehouse-screen .wh-note{margin:0;text-align:center;color:#8d7458;font-size:14px;font-weight:800}
+#panels .harvest-card-screen>.close{display:none}
+#panels .warehouse-screen>button.wh-help{right:66px}
+/* workshop pages: compact back on the left, 「?」 on the right */
+#panels .workshop-screen .workshop-tabs{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+#panels .workshop-screen .workshop-tabs .workshop-back{flex:none;width:auto;min-width:0;margin-right:auto;padding:0 16px;min-height:40px;border-radius:999px}
+#panels .workshop-screen .workshop-tabs [data-workshop-help]{flex:none;width:40px;min-width:40px}
+/* 厨房往事 pinned atop 订单 */
+#panels .orders-screen .orders-story{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin:0 0 14px;padding:10px 12px;border-radius:14px;background:#fff6dc;border:2px solid #c9a26e;text-align:left}
+#panels .orders-screen .orders-story .orders-eyebrow{font-size:13px;font-weight:900;color:#8d7458}
+#panels .orders-screen .orders-story-row{display:flex;align-items:center;gap:10px}
+#panels .orders-screen .orders-story-pic{width:56px;height:56px;flex:none;display:grid;place-items:center}
+#panels .orders-screen .orders-story-pic>*{max-width:56px;max-height:56px}
+#panels .orders-screen .orders-story-text{display:grid;gap:2px;min-width:0}
+#panels .orders-screen .orders-story-text strong{font-size:16px;line-height:1.3}
+#panels .orders-screen .orders-story-text small{font-size:13.5px;color:#6b5238;font-weight:800}
+#panels .orders-screen .orders-story>button{align-self:flex-end;min-height:40px;padding:0 18px;border-radius:999px;background:#e9b26a;border:2px solid #9b6a33;color:#4a3015;font-size:15px;font-weight:900;box-shadow:none;position:static;width:auto;height:auto}
+/* In the kitchen, short notices sit over the shelf decoration, never over controls. */
+#game[data-page="0"] .game-toast:not(.skill-toast):not(.discovery-toast){top:166px;bottom:auto;left:72px;right:72px;text-align:center}
+/* 按数量卖 (legacy ledger): keep its tabs apart from the filter row */
+#panels .harvest-tabs{margin-bottom:10px}
+
+/* 这锅收成 (non-blocking card over the nest) */
+#panels .harvest-card{position:absolute;left:18px;right:18px;top:162px;z-index:4;pointer-events:auto;display:grid;justify-items:center;gap:8px;padding:10px 14px 8px;border-radius:20px;background:#fff8e2;border:2.5px solid #b78a55;box-shadow:0 10px 24px rgba(50,32,14,.28);color:#5b3f27;font-family:'Chicken UI',sans-serif}
+#panels .harvest-card h3{margin:0;font-size:20px}
+#panels .harvest-card .hc-birds{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+#panels .harvest-card .hc-bird{position:relative;display:flex;flex-direction:column;align-items:center;width:62px;padding:8px 2px 3px;border-radius:12px;background:#fdf3d9;border:2px solid #e6d3a8}
+#panels .harvest-card .hc-bird>img,#panels .harvest-card .hc-bird>svg{width:44px;height:44px}
+#panels .harvest-card .hc-bird b{font-size:14px}
+#panels .harvest-card .hc-bird em{position:absolute;top:-10px;left:50%;translate:-50% 0;padding:0 6px;border-radius:8px;background:#c9573a;color:#fff;font-style:normal;font-size:12px;font-weight:900;line-height:18px}
+#panels .harvest-card .hc-total{margin:0;font-size:15px;font-weight:800;color:#6b5238}
+#panels .harvest-card .hc-total b{font-size:26px;color:#5b3f27}
+#panels .harvest-card .hc-done{min-width:170px;min-height:48px;font-size:20px}
+#panels .harvest-card .hc-more{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px}
+#panels .harvest-card .hc-more button{min-height:36px;padding:0 6px;background:none;border:0;box-shadow:none;color:#8d7458;text-decoration:underline;font-size:14.5px;font-weight:800}
+/* 4–6 kinds on the counter: three small baskets per row, name over quantity, so the front fits one screen */
+#panels .golden-business .bs-counter.many{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:124px;gap:6px 4px;min-height:0;align-content:start}
+#panels .golden-business .bs-counter.many .bs-vessel,#panels .golden-business .bs-counter.many .bs-vessel.is-wide{grid-column:auto;width:100%;height:124px;min-height:124px;justify-self:stretch;align-self:auto}
+#panels .golden-business .bs-counter.many .bs-vessel .bs-vessel-base{height:70px}
+#panels .golden-business .bs-counter.many .bs-vessel .bs-vessel-front{height:52px}
+#panels .golden-business .bs-counter.many .bs-vessel .bs-character{height:82px;bottom:34px;left:14%;width:72%}
+#panels .golden-business .bs-counter.many .bs-vessel .bs-nameplate,#panels .golden-business .bs-counter.many .bs-vessel .bs-nameplate.long-name{flex-direction:column;gap:0;width:98%;left:1%;bottom:2px;height:42px;font-size:12px;line-height:1.1;white-space:nowrap;padding-bottom:0}
+#panels .golden-business .bs-counter.many .bs-nameplate>.bs-quantity{font-size:13px}
+#panels .golden-business .bs-counter.many .bs-empty-mark{bottom:48px;font-size:30px}
+
+/* Business front: fits a 780-tall phone; short phones get one sideways shelf row. */
+@media(min-height:701px){
+  #panels .golden-business .bs-shop-header.is-simple{gap:8px}
+  #panels .golden-business .bs-counter.many{grid-auto-rows:112px}
+  #panels .golden-business .bs-counter.many .bs-vessel,#panels .golden-business .bs-counter.many .bs-vessel.is-wide{height:112px;min-height:112px}
+  #panels .golden-business .bs-counter.many .bs-vessel .bs-character{height:76px}
+  #panels .golden-business .bs-props{height:76px}
+  #panels .golden-business .bs-prop{height:74px}
+  #panels .golden-business .bs-prop>.bs-art{height:50px}
+  #panels .golden-business .bs-actions{min-height:60px}
+}
+@media(max-height:700px){
+  #panels .golden-business .bs-shop-header.is-simple{gap:6px;padding-top:0}
+  #panels .golden-business .bs-shop-header .bs-status{width:88px;height:40px;min-height:40px}
+  #panels .golden-business .bs-shop-header .bs-status span{bottom:6px;font-size:18px}
+  #panels .golden-business .bs-menu-card{padding:6px 58px 6px 12px}
+  #panels .golden-business .bs-menu-card-head{min-height:28px}
+  #panels .golden-business .bs-menu-card-head h3{font-size:20px}
+  #panels .golden-business .bs-menu-card .bs-menu{top:5px;width:42px;height:48px;min-height:48px}
+  #panels .golden-business .bs-menu-card .bs-menu>span{top:13px;font-size:13px}
+  #panels .golden-business .bs-menu-slots{gap:8px;margin-top:4px}
+  #panels .golden-business .bs-menu-slots .gf-slot{height:54px;min-height:54px;padding-top:2px}
+  #panels .golden-business .bs-menu-slots .gf-slot>img,#panels .golden-business .bs-menu-slots .gf-slot>svg,#panels .golden-business .bs-menu-slots .gf-slot>.character-portrait{width:30px!important;height:30px!important}
+  #game #panels .golden-business .bs-counter:is(.few,.many):not(.empty-counter){display:grid;grid-auto-flow:column;grid-template-columns:none;grid-template-rows:104px;grid-auto-rows:104px;grid-auto-columns:86px;gap:0 6px;min-height:0;margin-top:6px;padding:2px 2px 9px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;justify-content:safe center;align-content:start}
+  #game #panels .golden-business .bs-counter:is(.few,.many):not(.empty-counter)::-webkit-scrollbar{display:none}
+  #game #panels .golden-business .bs-counter:is(.few,.many) .bs-vessel{grid-column:auto;width:86px;height:104px;min-height:104px;justify-self:stretch;align-self:end;scroll-snap-align:start}
+  #game #panels .golden-business .bs-counter:is(.few,.many) .bs-vessel .bs-vessel-base{height:48px}
+  #game #panels .golden-business .bs-counter:is(.few,.many) .bs-vessel .bs-vessel-front{height:37px}
+  #game #panels .golden-business .bs-counter:is(.few,.many) .bs-vessel .bs-character{left:10%;width:80%;height:66px;bottom:28px}
+  #game #panels .golden-business .bs-counter:is(.few,.many) .bs-vessel .bs-nameplate{flex-direction:column;gap:0;width:100%;left:0;bottom:0;height:34px;padding:2px 2px 0;font-size:13px;line-height:1.05;white-space:nowrap}
+  #game #panels .golden-business .bs-counter:is(.few,.many) .bs-nameplate>.bs-quantity{font-size:13px;line-height:1.05}
+  #game #panels .golden-business .bs-counter:is(.few,.many) .bs-empty-mark{bottom:36px;font-size:24px}
+  #panels .golden-business .bs-ledge{height:15px}
+  #panels .golden-business .bs-summary{min-height:30px;height:30px}
+  #panels .golden-business .bs-actions{min-height:52px}
+}
+@media(max-height:640px){
+  #panels .golden-business .bs-menu-slots{display:none}
+}
+/* 收摊 sits in the action row; keep its divider attached to it. */
+#panels .golden-business .bs-secondary{position:relative;left:auto;top:auto}
+/* 寻访 map: the destination card and links keep their full height; on short screens the page scrolls instead of squeezing them. */
+#panels .journey-map .journey-body{grid-template-rows:minmax(180px,1fr) max-content max-content}
+/* 往事 card: one row (picture · title · button) so the orders list keeps its room on small phones. */
+#panels .orders-screen .orders-story{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 10px;margin:0 0 10px;padding:8px 10px}
+#panels .orders-screen .orders-story .orders-eyebrow{grid-column:1/-1;line-height:1.3}
+#panels .orders-screen .orders-story-pic{width:46px;height:46px}
+#panels .orders-screen .orders-story-pic>*{max-width:46px;max-height:46px}
+#panels .orders-screen .orders-story-text strong{font-size:15px;line-height:1.3;overflow-wrap:anywhere}
+#panels .orders-screen .orders-story>button{align-self:center;min-height:40px;padding:0 14px;white-space:nowrap}
+@media(max-height:700px){#panels .shop-orders .orders-heading{margin:0 0 4px}#panels .orders-screen .orders-story{margin-bottom:6px}}
+@media(max-width:360px){#panels .orders-screen .orders-story-text strong{font-size:14px}#panels .orders-screen .orders-story>button{padding:0 10px;font-size:14px}#panels .orders-screen .orders-story-row{gap:8px}}
+/* The harvest card owns the top of the nest; plain notices wait instead of covering its title. */
+#game:has(#panels .harvest-card) .game-toast:not(.skill-toast):not(.discovery-toast){visibility:hidden}
+/* 近郊 partner picker: the list starts right under the title, so give it its own breathing room. */
+#panels .workshop-screen .member-list{padding-top:8px}
+/* Calendar note in the kitchen: icon + one line + chevron, tap opens 图鉴 · 日历. */
+#game .game-toast.calendar-toast{display:flex;align-items:center;gap:8px;pointer-events:auto;cursor:pointer;text-align:left;padding:6px 12px 6px 8px;border-radius:14px}
+#game .game-toast.calendar-toast>.interface-icon{width:24px;height:24px;flex:none}
+#game .game-toast.calendar-toast>span{flex:1;min-width:0;font-weight:700}
+#game .game-toast.calendar-toast>b{flex:none;font-size:18px;line-height:1;color:#8a6a45}
+
+/* ---- Frames never touch (2026-10-02 audit: siblings >= 5 px apart, >= 6 px inside a bordered parent) ---- */
+/* Book bookmarks and egg tabs: separate tabs above the page instead of tabs sitting on an underline. */
+#panels .book-navigation{border-bottom:0;gap:6px;padding-bottom:4px;margin-bottom:8px}
+#panels .book-navigation button{border:1.5px solid #b89a66;border-radius:9px;background:#f1e7cb;box-shadow:0 2px #cbb78c}
+#panels .book-navigation button[aria-pressed=true]{background:#f4cf76;border-color:#a7803f}
+#panels :is(.collection-tabs,.harvest-tabs){border-bottom:0;gap:6px;padding:0 2px 4px}
+#panels :is(.collection-tabs,.harvest-tabs) button{border:1.5px solid #8e7046;border-radius:9px;box-shadow:0 2px #cbb78c}
+/* Pill groups keep a clear gap. */
+#panels .shop-screen .shop-ingredient-filters{gap:6px}
+#panels .workshop-screen .skill-effects{gap:6px}
+#panels .cookbook-filter>div{gap:6px}
+#panels .gs-directory .gs-theme-list{gap:8px}
+#panels .journal-chapters{gap:6px}
+/* Small labels sit inside their frame instead of along its edge. */
+#panels .collection-stamp .rarity-badge{margin-right:4px}
+#panels .collection-screen .collection-stamp{padding:6px 8px}
+#panels .collection-book,#panels .collection-screen .collection-book{padding:8px}
+/* Shop: the calendar banner, buy buttons and search field keep off their frames. */
+#panels .shop-screen .journal-entry{margin:6px 8px 10px}
+#panels .shop-screen .shop-product .shop-buy{margin:0 8px 8px;width:auto}
+#panels .shop-screen .shop-search{min-height:38px;padding:4px 6px 4px 10px;margin:6px 0 8px;border-radius:10px}
+#panels .shop-screen .shop-search input{height:28px;line-height:28px;font-size:13px}
+/* Settings consoles, display slots, orders footers and regulars folds. */
+#panels .settings-content .sound-console+.sound-console{margin-top:12px}
+#panels .books-slot{padding:8px}
+#game #panels .orders-footer{padding-top:10px}
+#panels .shop-subpage .regulars-fold{padding-left:8px}
+#panels .shop-subpage .regulars-now{margin-bottom:8px}
+/* Menu chooser cards: slots keep inside the card with a clear gap. */
+#panels .golden-business .bs-menu-grid>button{padding:10px 8px}
+#panels .golden-business .bs-menu-grid .bs-menu-mini{gap:5px}
+#panels .golden-business .bs-menu-grid .gf-slot{width:36px;min-width:36px}
+#panels .golden-business .bs-menu-grid .gf-slot{width:34px;min-width:34px}
+#panels .shop-screen .shop-search{min-height:42px;padding:6px 6px 6px 10px}
+#game .game-toast.calendar-toast[hidden]{display:none}
+@media(max-height:700px){#game #panels .orders-footer{padding-top:6px}#panels .orders-screen .orders-story{padding:6px 10px;gap:2px 10px}#panels .orders-screen .orders-story-pic{width:40px;height:40px}#panels .orders-screen .orders-story-pic>*{max-width:40px;max-height:40px}}

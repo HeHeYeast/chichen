@@ -11,7 +11,7 @@ import {execute} from '../web/game-commands.js';
 import {reduceFacts} from '../web/facts.js';
 import {openBusiness} from '../web/business.js';
 import {orderMilestone,acceptProposal} from '../web/orders.js';
-import {completeProjectStage,saveMenuPreset,setProjectPortraits} from '../web/projects.js';
+import {completeProjectStage,saveMenuPreset,setProjectPortraits,stageComplete} from '../web/projects.js';
 import {readRegularStage} from '../web/regulars.js';
 import {setDisplay} from '../web/collection-progress.js';
 import {departRegional} from '../web/regional-exploration.js';
@@ -27,7 +27,8 @@ function populated(){
   step(d=>reduceFacts(d,['MN1','MN3'].map((menuId,i)=>({kind:'businessWitness',sessionId:`business-${90+i}`,menuId,soldByKey:{'0:0':6},roleSales:{},fullSoldByKey:{},fullRoleSales:{},valid:true,complete:false}))));
   step(d=>{reduceFacts(d,[{kind:'orderComplete',instanceId:'order-900',templateId:'O01',variantId:'O01-A',region:null,chapters:null,groupDeliveries:[]}]);});
   step(d=>readRegularStage(d,'RG1'));
-  for(const id of ['PJ-1-A','PJ-1-B','PJ-1-C'])step(d=>completeProjectStage(d,'PJ-1',id));
+  // stages that cost nothing complete by themselves once met (batch 3); the paid one still needs 登记
+  for(const id of ['PJ-1-A','PJ-1-B','PJ-1-C'])step(d=>{if(!stageComplete(d,'PJ-1',id))completeProjectStage(d,'PJ-1',id);});
   step(d=>saveMenuPreset(d,0,{menuId:'MN1',stock:{'0:0':6,'0:3':6}}));step(d=>setProjectPortraits(d,['0:0','0:1']));
   step(d=>setDisplay(d,0,'M01'));step(d=>openBusiness(d,{menuId:'MN1',stock:{'0:0':6,'0:3':6}},NOW));
   step(d=>{orderMilestone(d,NOW,'batch');acceptProposal(d,d.expansion.orders.proposals[0].id,{},NOW);});

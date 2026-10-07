@@ -57,7 +57,9 @@ final class BusinessSaveValidator {
         JSONObject e=s.getJSONObject("expansion"),b=object(e.get("business"),"sequence","active","lastReport","visitorProgress","visitorSequence","themeRemainder");
         n(b,"sequence");n(b,"visitorSequence");n(b,"visitorProgress",0,11);n(b,"themeRemainder",0,99);
         orders(s);
-        JSONObject p=object(e.get("inventoryPolicy"),"keepOne","collectionLocks","optionalOrderReservations");bool(p.get("keepOne"));
+        JSONObject policy=(JSONObject)e.get("inventoryPolicy");boolean hasLocks=policy.has("locks");
+        JSONObject p=hasLocks?object(policy,"keepOne","collectionLocks","optionalOrderReservations","locks"):object(policy,"keepOne","collectionLocks","optionalOrderReservations");bool(p.get("keepOne"));
+        if(hasLocks){JSONObject locks=object(p.get("locks"));for(String k:keys(locks)){species(k);n(locks,k,0,99999);}}
         for(String k:strings(array(p.get("collectionLocks"),241)))species(k);
         require(object(p.get("optionalOrderReservations")).length()==0,"自选预留容器");
         if(!b.isNull("active"))active(s,b);
@@ -65,7 +67,7 @@ final class BusinessSaveValidator {
         facts(s);
     }
     private static JSONObject core(JSONObject r,JSONObject b,boolean active)throws Exception {
-        JSONObject menu=definition("menus",r.get("menuId"));n(r,"rulesVersion",1,1);identity(r.get("id"),"business",n(b,"sequence"));
+        JSONObject menu=definition("menus",r.get("menuId"));n(r,"rulesVersion",1,2);identity(r.get("id"),"business",n(b,"sequence"));
         n(r,"startAt");n(r,"totalSold",0,72);n(r,"visitorEvents",0,6);
         for(String k:new String[]{"baseCP","markupCP","themeCP","bonusCP"})n(r,k,0,10000000);
         JSONObject initial=stock(r.get("initialStock"),null,true);require(initial.length()>0&&sum(initial)<=72,"初备容量");
@@ -100,7 +102,7 @@ final class BusinessSaveValidator {
         long reserve=n(a,"creditReserve",0,6);boolean use=bool(a.get("useRewards"));require(reserve<=s.getJSONObject("progress").getJSONObject("trade").getLong("credits")&&(use||reserve==0),"经营额度");choice(a.get("tendency"),"regulars","discovery");
         require(n(a,"bonusCP")==0,"提前奖励");bool(a.get("recordedValid"));bool(a.get("recordedComplete"));
         for(String id:strings(array(a.get("visitorCandidates"),4)))definition("regulars",id);
-        WindowTotals calc=windows(rows,initial,menu,roles,snap,prices);
+        WindowTotals calc=windows(rows,initial,menu,roles,snap,prices,n(a,"rulesVersion"));
         require(calc.cursor==n(a,"roleCursor"),"角色游标");
         for(String field:new String[]{"soldByKey","roleSales","fullSoldByKey","fullRoleSales"}){
             JSONObject counts=object(a.get(field));Set<String> allowed=field.equals("roleSales")||field.equals("fullRoleSales")?roleIds:initialKeys;
@@ -125,8 +127,12 @@ final class BusinessSaveValidator {
         final JSONObject remaining,money=new JSONObject();final Map<String,JSONObject> maps=new HashMap<>();int cursor=0;
         WindowTotals(JSONObject initial)throws Exception {remaining=new JSONObject(initial.toString());for(String k:MONEY)money.put(k,0);for(String k:new String[]{"soldByKey","roleSales","fullSoldByKey","fullRoleSales"})maps.put(k,new JSONObject());}
     }
-    private static WindowTotals windows(JSONArray rows,JSONObject initial,JSONObject menu,JSONArray roles,JSONObject snapshot,JSONObject prices)throws Exception {
+    // Rules 1: a menu bird carries at most 2 CP and nothing when ordinary. Rules 2 (complete menu +25%): at most a quarter
+    // of its price rounded up, and only a shop that opened complete pays — the first window's tier — in every window
+    // (web/business.js themeCapCP and advanceBusiness).
+    private static WindowTotals windows(JSONArray rows,JSONObject initial,JSONObject menu,JSONArray roles,JSONObject snapshot,JSONObject prices,long version)throws Exception {
         WindowTotals out=new WindowTotals(initial);array(rows,12);
+        String opening=rows.length()>0?object(rows.get(0),"index","at","tier","entries","baseCP","markupCP","themeCP").getString("tier"):"ordinary";
         for(int i=0;i<rows.length();i++){
             JSONObject w=object(rows.get(i),"index","at","tier","entries","baseCP","markupCP","themeCP");require(n(w,"index",1,12)==i+1,"窗口顺序");n(w,"at");choice(w.get("tier"),"ordinary","suitable","complete");
             if(snapshot!=null)require(fit(menu,out.remaining,roles,snapshot).equals(w.getString("tier")),"窗口当时档位");
@@ -141,7 +147,8 @@ final class BusinessSaveValidator {
                 }else if(!roleId.equals("ordinary")){JSONObject def=find(menu.getJSONArray("roles"),roleId);require(def!=null&&has(def.getJSONArray("allowed"),key),"成交角色身份");}
                 for(String k:MONEY)add(money,k,n(entry,k,0,100000));
                 if(prices!=null){JSONObject p=prices.getJSONObject(key);require(n(entry,"baseCP")==n(p,"baseCP")&&n(entry,"markupCP")<=(n(p,"baseCP")*n(p,"markupPercent")+99)/100,"冻结价格");}
-                require(n(entry,"themeCP")<=2&&(!w.getString("tier").equals("ordinary")||n(entry,"themeCP")==0),"主题单只上限");
+                long theme=n(entry,"themeCP"),cap=version==1?2:(n(entry,"baseCP")*25+99)/100;boolean pays=version==1?!w.getString("tier").equals("ordinary"):opening.equals("complete");
+                require(theme<=cap&&(pays||theme==0),"主题单只上限");
                 out.remaining.put(key,n(out.remaining,key)-1);add(out.maps.get("soldByKey"),key,1);add(out.maps.get("roleSales"),roleId,1);
                 if(w.getString("tier").equals("complete")){add(out.maps.get("fullSoldByKey"),key,1);add(out.maps.get("fullRoleSales"),roleId,1);}
             }
@@ -181,7 +188,7 @@ final class BusinessSaveValidator {
         require(used==baskets+platters&&used+released<=6&&baskets*24+platters*12<=n(r,"totalSold")&&(bonus==baskets*12+platters*8||bonus==baskets*18+platters*12),"账单奖励守恒");
         require(n(r,"income")==n(r,"baseCP")+n(r,"markupCP")+n(r,"themeCP")+bonus,"账单收入守恒");
         JSONObject initial=r.getJSONObject("initialStock"),remaining=stock(r.get("remainingStock"),keys(initial),false);JSONArray rows=array(r.get("windowReports"),12);
-        WindowTotals t=windows(rows,initial,menu,null,null,null);mapEqual(r.getJSONObject("soldByKey"),t.maps.get("soldByKey"));mapEqual(remaining,t.remaining);
+        WindowTotals t=windows(rows,initial,menu,null,null,null,n(r,"rulesVersion"));mapEqual(r.getJSONObject("soldByKey"),t.maps.get("soldByKey"));mapEqual(remaining,t.remaining);
         for(String field:MONEY)require(n(r,field)==n(t.money,field),"账单金额");
         for(int i=0;i<rows.length();i++){long at=n(rows.getJSONObject(i),"at");require(at==start+(i+1)*WINDOW&&at<=close,"账单窗口时间");}
         witness(r,"validMenu","completeMenu",menu,t);
@@ -241,7 +248,7 @@ final class BusinessSaveValidator {
         JSONObject map=object(f.get("menuWitnesses"));for(String id:keys(map)){definition("menus",id);JSONObject v=object(map.get(id),"count","completeCount","firstSeq","lastSeq","lastSessionId","completeLastSessionId");sequences(v,seq);long count=n(v,"count",1,MAX);n(v,"completeCount",0,count);sourceId(v.get("lastSessionId"),"business");if(!v.isNull("completeLastSessionId"))sourceId(v.get("completeLastSessionId"),"business");}
         map=object(f.get("tripWitnesses"));for(String id:keys(map)){choice(id,"V","R","T","B");JSONObject v=object(map.get(id),"count","firstSeq","lastSeq");sequences(v,seq);n(v,"count",1,MAX);}
         map=object(f.get("eventWitnesses"));for(String id:keys(map)){definition("cards",id);JSONObject v=object(map.get(id),"count","firstSeq","lastSeq","tripId");sequences(v,seq);n(v,"count",1,MAX);sourceId(v.get("tripId"),"trip");}
-        map=object(f.get("companionFirst"));for(String key:keys(map)){species(key);JSONObject v=object(map.get(key),"seq","tripId","region","gather","discover","environment","traits");n(v,"seq",1,seq);sourceId(v.get("tripId"),"trip");choice(v.get("region"),"V","R","T","B");choice(v.get("environment"),"yard","water","wood");require(n(v,"gather",0,6)+n(v,"discover",0,6)==6,"同行特征");for(String trait:strings(array(v.get("traits"),7)))choice(trait,"leaf","grain","portable","tea","floral","fruit","salt");}
+        map=object(f.get("companionFirst"));for(String key:keys(map)){species(key);JSONObject v=object(map.get(key),"seq","tripId","region","gather","discover","environment","traits");n(v,"seq",1,seq);sourceId(v.get("tripId"),"trip");choice(v.get("region"),"V","R","T","B");choice(v.get("environment"),"yard","water","wood");n(v,"gather",0,20);n(v,"discover",0,20);for(String trait:strings(array(v.get("traits"),7)))choice(trait,"leaf","grain","portable","tea","floral","fruit","salt");}
         map=object(f.get("predicateWitnesses"));for(String id:keys(map)){require(has(DATA.getJSONArray("predicates"),id),"复合事实身份");JSONObject v=object(map.get(id),"firstSeq","lastSeq","sourceId");sequences(v,seq);String source=string(v.get("sourceId"));require(source.length()>0&&source.length()<=80,"事实来源");}
     }
     private BusinessSaveValidator(){}

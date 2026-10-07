@@ -1,0 +1,14 @@
+@font-face{font-family:'Golden Display';src:url('/web/fonts/zcool-kuaile.woff2') format('woff2');font-weight:400;font-display:swap}
+/* Approved global navigation. Never a selected rectangular tile. */
+#game #main-nav{min-height:80px;background:#edf0d9;border-top:2px solid #98ac82}
+#game #main-nav button{min-height:78px;font-family:'Golden Display','Chicken UI',sans-serif;font-size:18px;font-weight:400;color:#897960;background:transparent;box-shadow:none;border:0;isolation:isolate;transition:color 140ms}
+#game #main-nav button:is(:hover,:active,:focus,[aria-current=page]){background:transparent;box-shadow:none;border:0}
+#game #main-nav button>svg{width:34px;height:34px;transition:transform 140ms ease}
+#game #main-nav button[aria-current=page]{color:#533921;-webkit-text-stroke:.25px currentColor}
+#game #main-nav button[aria-current=page]::before{content:'';position:absolute;width:49px;height:24px;top:20px;left:50%;transform:translateX(-50%) rotate(-8deg);background:url('/web/art/golden-collection/v2-swash.png') center/100% 100% no-repeat;opacity:.65;z-index:-1}
+#game #main-nav button[aria-current=page]>svg{transform:translateY(-3px) scale(1.09)}
+#game #main-nav button:active>svg{transform:translateY(-1px) scale(1.02)}
+@media(prefers-reduced-motion:reduce){#game #main-nav button>svg{transition:none}#game #main-nav button[aria-current=page]>svg,#game #main-nav button:active>svg{transform:none}}
+
+/* Approved help entrance; the paper disc is an existing reviewed asset. */
+#panels .panel button.game-help{position:absolute;right:11px;top:6px;width:44px;height:44px;font-family:'Chicken UI',sans-serif;font-size:32px;font-weight:750;line-height:1;display:grid;place-items:center;padding-bottom:3px;background:url('/web/art/golden-collection/v2-round-button.png') center/contain no-repeat}

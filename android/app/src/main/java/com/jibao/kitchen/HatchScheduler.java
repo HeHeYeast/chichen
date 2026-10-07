@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.PowerManager;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -27,7 +28,10 @@ import java.util.Set;
 public final class HatchScheduler {
     public static final String ACTION_HATCH_READY = "com.jibao.kitchen.HATCH_READY";
     static final String ACTION_TEST_READY = "com.jibao.kitchen.TEST_REMINDER_READY";
-    public static final String CHANNEL_ID = "hatch_ready";
+    // v2 is a heads-up channel; a channel's importance cannot change after creation,
+    // so the quiet v1 channel is deleted and replaced.
+    public static final String CHANNEL_ID = "hatch_ready_v2";
+    static final String LEGACY_CHANNEL_ID = "hatch_ready";
     static final String EXTRA_TOKEN = "batchToken";
     private static final String PREFS = "hatch_reminders_v1";
     private static final String TAG = "HatchScheduler";
@@ -55,7 +59,9 @@ public final class HatchScheduler {
     public static synchronized void cancel(Context context) {
         Context app = context.getApplicationContext();
         clearAlarm(app);
-        preferences(app).edit().remove("activeToken").remove("error").commit();
+        SharedPreferences prefs = preferences(app);
+        // Every save syncs here; only touch the disk when there is something to remove.
+        if (prefs.contains("activeToken") || prefs.contains("error")) prefs.edit().remove("activeToken").remove("error").commit();
         NotificationManager manager = app.getSystemService(NotificationManager.class);
         if (manager != null) manager.cancel(NOTIFICATION_ID);
     }
@@ -71,6 +77,7 @@ public final class HatchScheduler {
         boolean channel = channelEnabled(app);
         boolean allowed = notificationsEnabled(app);
         boolean exact = exactAllowed(app);
+        boolean background = backgroundAllowed(app);
         boolean delivered = batch != null && wasDelivered(prefs, batch.token);
         boolean scheduled = enabled && batch != null && allowed && !delivered
                 && batch.token.equals(prefs.getString("scheduledToken", ""))
@@ -85,6 +92,7 @@ public final class HatchScheduler {
         else if (!prefs.getString("error", "").isEmpty()) message = "提醒暂未安排成功，重新打开游戏后会再试。";
         else if (!scheduled) message = "这批孵化提醒尚未安排，请重新打开游戏后查看。";
         else if (!exact || "inexact".equals(mode)) message = "已安排孵化提醒；受系统省电策略影响，提醒可能延迟。";
+        else if (!background) message = "已安排孵化完成提醒。手机省电可能让提醒晚到，点「允许后台」更准时。";
         else message = "已安排孵化完成提醒。";
         if (scheduled) message += "预计 " + timeText(batch.readyAt) + " 提醒（按本批实际孵化时间）。";
         JSONObject result = new JSONObject();
@@ -94,6 +102,7 @@ public final class HatchScheduler {
         put(result, "notificationsEnabled", allowed);
         put(result, "channelEnabled", channel);
         put(result, "exactAllowed", exact);
+        put(result, "backgroundAllowed", background);
         put(result, "scheduled", scheduled);
         put(result, "scheduledAt", scheduled ? batch.readyAt : 0);
         put(result, "readyAt", batch == null ? 0 : batch.readyAt);
@@ -227,12 +236,12 @@ public final class HatchScheduler {
                 .setStyle(new Notification.BigTextStyle().bigText(text))
                 .setContentIntent(content).setAutoCancel(true)
                 .setCategory(Notification.CATEGORY_REMINDER)
-                .setVisibility(Notification.VISIBILITY_PRIVATE)
+                .setVisibility(Notification.VISIBILITY_PUBLIC)
                 .setOnlyAlertOnce(true).build();
     }
 
     private static String timeText(long value) {
-        return new java.text.SimpleDateFormat("MM月dd日 HH:mm:ss", java.util.Locale.CHINA).format(new java.util.Date(value));
+        return new java.text.SimpleDateFormat("M月d日 HH:mm", java.util.Locale.CHINA).format(new java.util.Date(value));
     }
 
     // Both real reminders and the delayed test use this exact platform path.
@@ -343,12 +352,25 @@ public final class HatchScheduler {
         return manager != null && (Build.VERSION.SDK_INT < 31 || manager.canScheduleExactAlarms());
     }
 
+    /** Battery optimisation exemption; vendor ROMs also drop alarms of apps they optimise. */
+    static boolean backgroundAllowed(Context app) {
+        PowerManager power = app.getSystemService(PowerManager.class);
+        return power != null && power.isIgnoringBatteryOptimizations(app.getPackageName());
+    }
+
+    private static Context channelReady;
+    // Creating an existing channel is a no-op system call; do it once per application context, not per save.
     private static void ensureChannel(Context app) {
+        if (channelReady == app) return;
         NotificationManager manager = app.getSystemService(NotificationManager.class);
         if (manager == null) return;
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "孵化完成提醒", NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "孵化完成提醒", NotificationManager.IMPORTANCE_HIGH);
         channel.setDescription("鸡宝或鸭宝整批孵化完成后提醒一次，点击回到厨房收取。");
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+        channel.enableVibration(true);
         manager.createNotificationChannel(channel);
+        manager.deleteNotificationChannel(LEGACY_CHANNEL_ID);
+        channelReady = app;
     }
 
     private static void put(JSONObject object, String key, Object value) {

@@ -191,6 +191,7 @@ test('farm HP and tiered repair costs match original thresholds',()=>{
   const s=E.freshState(NOW);
   for(const [hp,cost] of [[100,0],[60,40],[50,60],[20,120],[0,200]]){const at=NOW+(100-hp)*2*HOUR;assert.equal(E.farmHP(s,at),hp);assert.equal(E.repairCost(s,at),cost);}
   E.repair(s,NOW+200*HOUR);assert.equal(s.cp,400);assert.equal(E.farmHP(s,NOW+200*HOUR),100);
+  const fixed=s.farmFixed;assert.equal(E.repair(s,NOW+201*HOUR),false);assert.equal(s.farmFixed,fixed);assert.equal(s.cp,400);
 });
 test('farm escape reduces current stock only and cannot repeat in same day',()=>{
   const s=E.freshState(NOW);s.farm={'0:0':100,'0:4':3};s.total={'0:0':100,'0:4':3};s.farmFixed=NOW-160*HOUR;s.farmChecked=NOW-DAY-1;

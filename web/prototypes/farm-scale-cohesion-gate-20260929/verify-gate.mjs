@@ -1,0 +1,35 @@
+import {createRequire} from 'node:module';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const require=createRequire(import.meta.url),{chromium}=require(process.env.APPDATA+'/npm/node_modules/gsd-pi/node_modules/playwright-core');
+const base='web/prototypes/farm-scale-cohesion-gate-20260929',out=base+'/evidence';await mkdir(out,{recursive:true});
+const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+try{
+ const page=await browser.newPage({viewport:{width:1200,height:1050},deviceScaleFactor:1}),errors=[],requests=[];
+ page.on('pageerror',e=>errors.push(e.message));page.on('console',e=>{if(e.type()==='error')errors.push(e.text());});page.on('response',r=>{if(r.status()>=400)requests.push({url:r.url(),status:r.status()});});
+ await page.goto('http://127.0.0.1:4173/'+base+'/index.html?capture');await page.waitForFunction(()=>window.scaleGate?.ready);await page.evaluate(()=>document.fonts.ready);await page.waitForLoadState('networkidle');
+ const world=page.locator('.world'),screen=page.locator('.screen');const rect=await screen.boundingBox();assert.equal(rect.width,390);assert.equal(rect.height,844);
+ assert.equal(await screen.locator('.building').count(),4);assert.equal(await screen.locator('.character').count(),5);
+ const objects=await world.locator('.object').evaluateAll(nodes=>nodes.map(n=>({id:n.dataset.asset??n.dataset.species,kind:n.className,width:n.getBoundingClientRect().width,height:n.getBoundingClientRect().height,footY:Number(n.dataset.footY),z:Number(getComputedStyle(n).zIndex)})));
+ assert(objects.every(o=>o.footY===o.z));
+ const characters=objects.filter(o=>o.kind.includes('character'));assert(characters.every(o=>o.height>=24&&o.height<=27));
+ const ratios=await page.evaluate(()=>({unit:window.scaleGate.scale.unit,houseWidth:document.querySelector('.world [data-asset=house]').getBoundingClientRect().width,sceneWidth:document.querySelector('.world').getBoundingClientRect().width,central:window.scaleGate.central,roads:[...document.querySelectorAll('[data-road]')].map(n=>({kind:n.dataset.road,width:Number(n.getAttribute('stroke-width'))}))}));
+ assert.equal(ratios.houseWidth/ratios.unit,6);assert.equal(ratios.sceneWidth/ratios.unit,15);
+ assert(ratios.central[2]>=8*ratios.unit&&ratios.central[3]>=8*ratios.unit);
+ assert.deepEqual(ratios.roads.map(r=>r.width),[36,30,26]);
+ const images=await world.locator('image').evaluateAll(ns=>ns.map(n=>n.getAttribute('href')));assert(!images.some(p=>/b-scene-gate|tata|scene-art|test-a|test-b/.test(p)));
+ const kit=JSON.parse(await readFile(base+'/asset-manifest.json','utf8'));for(const id of ['house','shop','shrine','display'])assert(kit[id].alphaZeroRatio>.08);
+ await page.setViewportSize({width:390,height:844});await page.evaluate(()=>document.body.dataset.export='camp');
+ await page.screenshot({path:out+'/camp-390x844.png'});
+ await page.evaluate(()=>document.body.classList.add('show-guides'));await page.screenshot({path:out+'/scale-overlay.png'});await page.evaluate(()=>document.body.classList.remove('show-guides'));
+ await page.evaluate(()=>document.body.classList.add('hide-buildings'));assert.equal(await world.locator('.building:visible').count(),0);assert.equal(await world.locator('.character:visible').count(),5);await page.screenshot({path:out+'/ground-without-buildings.png'});await page.evaluate(()=>{document.body.classList.remove('hide-buildings');delete document.body.dataset.export;});
+ await page.setViewportSize({width:1200,height:1050});
+ await page.evaluate(()=>{for(const n of document.querySelectorAll('.pending')){const img=new Image();img.src=n.dataset.src;img.alt='本轮正式测试视口';n.replaceWith(img);}});
+ await page.locator('#comparison img').evaluateAll(imgs=>Promise.all(imgs.map(im=>im.decode())));
+ await page.locator('#comparison').screenshot({path:out+'/comparison.png'});await page.locator('#ruler').screenshot({path:out+'/same-scale-assets.png'});await page.locator('.hero').screenshot({path:out+'/review.png'});
+ await page.getByRole('button',{name:'显示尺度辅助线'}).click();assert(await world.locator('.guides').isVisible());await page.getByRole('button',{name:'隐藏尺度辅助线'}).click();
+ await page.getByRole('button',{name:'隐藏建筑检查地面'}).click();assert.equal(await world.locator('.building:visible').count(),0);await page.getByRole('button',{name:'显示建筑',exact:true}).click();assert.equal(await world.locator('.building:visible').count(),4);
+ assert.equal(errors.length,0,errors.join('\n'));assert.equal(requests.length,0,JSON.stringify(requests));
+ await writeFile(out+'/verification.json',JSON.stringify({capturedAt:new Date().toISOString(),viewport:[390,844],buildings:4,characters:5,characterHeights:characters.map(c=>c.height),ratios,objects,independentImagesOnly:true,buildingAlphaVerified:true,depthByFoot:true,diagnosticControlsVerified:true,errors,failedRequests:requests,scope:'One local static viewport, no Runtime, no pan/zoom.'},null,2));
+ console.log('PASS: 390×844; 4 buildings; 5 chicks at 24–27 px; house 6U, scene width 15U, roads 36/30/26 px; independent layers; diagnostic controls; 0 browser errors.');
+}finally{await browser.close();}

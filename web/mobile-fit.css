@@ -1,0 +1,329 @@
+/* Phone fit pass: retain painted assets; size the page around usable content. */
+#game:not(.is-wide):not(.is-cover) #main-nav {
+  height:calc(64px + env(safe-area-inset-bottom,0px));min-height:64px;
+  padding:3px 4px calc(3px + env(safe-area-inset-bottom,0px));box-sizing:border-box;
+}
+#game:not(.is-wide):not(.is-cover) #main-nav button {
+  height:auto;min-height:0;padding:2px 0;gap:2px;justify-content:center;
+  font-size:13px;line-height:17px;
+}
+#game:not(.is-wide):not(.is-cover) #main-nav button>:is(svg,.farm-icon,.sprite-art,.interface-icon) {
+  width:30px;height:30px;transform:none;flex:none;
+}
+#game:not(.is-wide):not(.is-cover) #main-nav button[aria-current=page]::before {
+  inset:3px 7px;width:auto;height:auto;transform:none;border-radius:12px;
+}
+
+/* Painted labels need an inner text area, including long names and counts. */
+#panels .golden-business .bs-summary {
+  width:min(100%,270px);min-height:38px;height:auto;padding:7px 20px;
+  white-space:normal;text-align:center;font-size:16px;line-height:22px;
+}
+.bs-summary>span {min-width:0;overflow-wrap:anywhere;}
+#panels .golden-business .bs-nameplate {padding:5px 10px;box-sizing:border-box;}
+#panels .golden-business .bs-nameplate.long-name {height:48px;gap:2px;font-size:13px;line-height:16px;}
+.bs-label-name {min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center;}
+#panels .golden-business .bs-character>.bs-source-character {overflow:hidden;}
+#panels .golden-business .bs-nameplate.long-name .bs-quantity {font-size:13px;line-height:14px;}
+#panels .golden-business .bs-shop-header h3 {padding-inline:68px;font-size:23px;height:auto;min-height:32px;line-height:1.3;overflow-wrap:anywhere;}
+#panels .golden-business .bs-actions {display:flex;flex-wrap:wrap;gap:4px 10px;min-height:52px;}
+#panels .golden-business .bs-secondary {position:static;min-height:44px;white-space:normal;font-size:14px;}
+#panels .golden-business .bs-main {min-height:0;padding-bottom:12px;}
+#panels .golden-business .bs-counter.empty-counter {min-height:210px;}
+#panels .golden-business .bs-props {height:86px;margin-top:2px;}
+#panels .golden-business .bs-prop {height:84px;font-size:19px;}
+#panels .golden-business .bs-prop>.bs-art {height:58px;}
+
+/* Remove decorative vertical padding before shrinking legible text. */
+#panels .shop-subpage .bs-sub-header {height:52px;min-height:52px;}
+#panels .shop-subpage .trade-nav {height:40px;margin-bottom:0;}
+#panels .shop-subpage .bs-sub-paper {min-height:0;padding:10px 12px 12px;border-top-width:14px;border-bottom-width:10px;}
+#panels .shop-subpage .orders-heading {margin:3px 0 10px;font-size:20px;}
+#panels .shop-subpage .orders-card {min-height:0;margin-bottom:14px;padding-top:3px;padding-bottom:12px;}
+#panels .shop-subpage .orders-card h3 {font-size:18px;line-height:1.35;margin:3px 0;}
+#panels .shop-subpage .orders-empty {padding:5px 0 12px;}
+#panels .shop-subpage .orders-story {margin-top:10px;padding-top:8px;}
+#panels .shop-orders .orders-card {row-gap:2px;padding-bottom:8px;margin-bottom:10px;grid-template-columns:76px minmax(0,1fr);column-gap:8px;}
+#panels .shop-orders .orders-card h3 {font-size:18px;line-height:1.3;margin:3px 0;}
+#panels .shop-orders .orders-card .orders-note {margin:4px 0;line-height:1.4;}
+#panels .shop-orders .order-examples {width:76px;}
+#panels .shop-orders .order-examples .family-basket {width:74px;height:68px;}
+#panels .shop-orders .orders-actions button {min-height:40px;padding-block:6px;}
+#panels .shop-orders .bs-sub-paper {padding-block:6px;border-bottom-width:6px;}
+#panels .shop-orders .orders-heading {margin-bottom:6px;}
+#panels .shop-orders .orders-story {margin-top:4px;padding-top:4px;}
+#panels .shop-orders footer {margin-block:0;padding-top:0;}
+#panels .shop-ledger .family-receipt-head {margin-bottom:8px;}
+#panels .shop-ledger .family-receipt-head h3 {font-size:24px;margin:4px 0 7px;}
+#panels .shop-ledger .receipt-sold {margin:6px 0 10px;padding-bottom:10px;}
+#panels .shop-ledger .receipt-status {margin:8px 0;}
+#panels .shop-ledger .business-receipt-lines>div {padding:5px 0;font-size:16px;}
+#panels .shop-ledger .business-receipt-lines .business-receipt-total {margin-top:8px;padding-top:12px;}
+#panels .shop-subpage .regulars-card {min-height:88px;padding:10px 0;gap:10px;}
+#panels .shop-subpage .regulars-card-text {min-width:0;gap:3px;}
+#panels .shop-subpage .regulars-card-text strong {font-size:17px;overflow-wrap:anywhere;}
+#panels .shop-subpage .regulars-read-count {font-size:12px;}
+#panels .shop-subpage .family-avatar {width:52px;height:52px;}
+#panels .shop-subpage .regulars-head {margin-bottom:10px;}
+#panels .shop-subpage .regulars-now {margin-top:10px;padding-bottom:10px;}
+#panels .shop-subpage .regulars-story {font-size:16px;line-height:1.65;padding:4px 0;}
+#panels .shop-subpage .regulars-fold {padding:9px 0;}
+#panels .shop-subpage .projects-head {margin:0 0 8px;}
+#panels .shop-subpage .projects-head h3 {font-size:22px;margin:3px 0 6px;}
+#panels .shop-subpage .project-feature {display:flow-root;}
+#panels .shop-subpage .project-feature-art {float:left;width:76px;height:85px;margin:0 12px 3px 0;}
+#panels .shop-subpage .project-feature p {margin:5px 0 8px;text-align:left;line-height:1.5;}
+#panels .shop-subpage .project-feature>.orange {display:block;width:185px;margin:8px auto 0;clear:both;}
+#panels .shop-subpage .project-other-heading {margin:16px 0 4px;font-size:14px;}
+#panels .shop-subpage .projects-card {display:flex!important;flex-direction:row;align-items:center;min-height:66px;padding:8px 2px;gap:8px;}
+#panels .shop-subpage .projects-card>.family-art {width:32px;height:39px;}
+#panels .shop-subpage .projects-card strong {font-size:16px;}
+#panels .shop-subpage .projects-card>span {gap:3px;min-width:0;}
+#panels .shop-subpage .projects-stages {gap:8px;}
+#panels .shop-subpage .projects-stage {padding-bottom:10px;}
+#panels .shop-subpage .projects-stage>header {margin-bottom:7px;}
+#panels .shop-subpage .project-stage-art {height:65px;margin:5px auto 8px;}
+#panels .shop-subpage .project-delivery-slots {margin:8px 0;gap:8px;}
+#panels .shop-subpage .project-delivery-slots .family-basket {width:78px;height:76px;}
+#panels .shop-subpage .projects-checks {margin:7px 0;line-height:1.5;}
+#panels .shop-subpage .project-funds {margin:10px 0;}
+#panels .shop-subpage .projects-actions {gap:5px;}
+#panels .shop-subpage .projects-actions .orange {min-height:44px;min-width:0;font-size:16px;}
+#panels .shop-subpage .family-stamp {max-width:100%;padding:5px 12px;box-sizing:border-box;line-height:1.2;}
+
+/* Map, destination and secondary entries are separate rows, never overlays. */
+#panels .journey-map .journey-body {
+  display:grid;grid-template-rows:minmax(180px,1fr) auto auto;
+  padding:0 12px 8px;overflow:auto;gap:6px;
+}
+#panels .journey-map .journey-map-art {height:100%;min-height:0;position:relative;}
+#panels .journey-map .journey-node {top:calc(var(--y) + 9%);width:160px;}
+#panels .journey-map .journey-node>.journey-art:first-child {max-width:150px;height:clamp(52px,10vh,84px);}
+#panels .journey-map .journey-node strong {font-size:15px;height:30px;line-height:22px;min-width:100px;}
+#panels .journey-map .journey-node .journey-flag {width:26px;height:36px;right:24px;top:-3px;}
+#panels .journey-map .journey-map-destination {
+  position:relative;inset:auto;margin:0;height:auto;min-height:0;
+  padding:10px 12px 12px;border:2px solid #a7895d;border-radius:15px;
+  box-shadow:inset 0 2px #fffef2,0 3px #d9c89b;
+}
+#panels .journey-map .journey-destination-label {height:auto;min-height:32px;gap:6px;flex-wrap:wrap;}
+#panels .journey-map .journey-destination-label h2 {font-size:23px;line-height:30px;white-space:normal;}
+#panels .journey-map .journey-destination-label>small {font-size:13px!important;line-height:18px!important;}
+#panels .journey-map .journey-destination-flag {width:24px;height:30px;}
+#panels .journey-map .journey-map-destination .journey-primary {height:48px;min-height:48px;width:220px;max-width:100%;margin-top:6px;font-size:21px;}
+#panels .journey-map .journey-small-links {
+  position:static;inset:auto;margin:0;height:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;pointer-events:auto;
+}
+#panels .journey-map .journey-small-links button {min-height:40px;padding:6px 10px;font-size:14px;line-height:20px;border:1.5px solid #c3aa79;border-radius:10px;background:#f7efd8;color:#6c5437;}
+#panels .journey-header {height:54px;min-height:54px;}
+#panels .journey-header h1 {font-size:27px;}
+#panels .journey-region .journey-section-title {height:32px;font-size:21px;line-height:28px;}
+#panels .journey-region .journey-places {height:133px;min-height:133px;margin-top:6px;}
+#panels .journey-region .journey-place-environment {height:141px;width:100%;left:0;top:-6px;}
+#panels .journey-region .journey-places .journey-place-object {max-height:102px;}
+#panels .journey-region .region-V button:first-of-type .journey-place-object {top:18px;height:82px;}
+#panels .journey-region .region-V button:nth-of-type(2) .journey-place-object {top:4px;height:96px;}
+#panels .journey-region .journey-action-title {height:32px;margin:10px auto 4px;font-size:20px;}
+#panels .journey-region .journey-focus {margin-bottom:6px;}
+#panels .journey-region .journey-focus .journey-art {width:56px;height:56px;}
+#panels .journey-region .journey-focus strong {font-size:19px;line-height:24px;}
+#panels .journey-region .journey-focus small {font-size:12px!important;line-height:17px;white-space:normal;}
+#panels .journey-region .journey-target {min-height:44px;padding:5px 0;}
+#panels .journey-region .journey-target-prefix {font-size:13px;}
+#panels .journey-region .journey-target strong {font-size:14px;line-height:19px;}
+#panels .journey-region .journey-target small {font-size:12px!important;line-height:18px;}
+#panels .journey-region .journey-team-label {height:28px;margin:0;}
+#panels .journey-region .journey-team-label button {position:static;float:right;font-size:12px;min-height:28px;padding:2px 6px;}
+#panels .journey-region .journey-seat {height:65px;}
+#panels .journey-region .journey-seat>.journey-character {height:58px;}
+#panels .journey-region .journey-team>button:nth-child(2) .journey-character {height:67px;}
+#panels .journey-region .journey-team small {font-size:12px!important;}
+#panels .journey-region .journey-footer {height:auto;min-height:60px;padding:6px 14px 10px;gap:10px;}
+#panels .journey-region .journey-footer .journey-primary {height:44px;min-height:44px;font-size:20px;}
+#panels .journey-region .regional-footer-caption {font-size:15px!important;height:38px;}
+#panels .journey-return .journey-body {flex:1;min-height:0;overflow:auto;}
+#panels .journey-return .journey-return-party {margin-top:8px;height:90px;}
+#panels .journey-return .journey-found-object {margin-block:8px;}
+#panels .journey-return .journey-footer {padding-top:6px;}
+
+/* Book pages have an inset binding, substantial edges and room for shadows. */
+#panels>.book-screen {inset:10px;max-height:calc(100% - 20px);padding:12px;border:2px solid #9f7d4e;border-radius:18px;box-shadow:inset 0 0 0 3px #fff2c8,0 3px 0 #b9a47b;}
+#panels .book-screen .book-navigation {gap:6px;margin:0 2px 8px;border-bottom:0;padding-bottom:4px;}
+#panels .book-screen .book-navigation button {border:1.5px solid #b89a66;border-radius:9px;background:#f1e7cb;box-shadow:0 2px #cbb78c;}
+#panels .book-screen .book-navigation button[aria-pressed=true] {background:#f5dc97;border-color:#94753e;box-shadow:inset 0 2px #fff0bf,0 2px #ae9059;}
+#panels .book-screen .book-reader,#panels .book-screen:has(.remaster-index) .book-reader {padding:8px 10px 16px;border-left:4px solid #c8ad78;border-radius:4px;margin:0 2px;scrollbar-gutter:stable;}
+#panels .remaster-index .book-intro {min-height:120px;border:2px solid #c9b684;border-radius:10px 18px 12px 10px;box-shadow:inset 0 2px #fff8dc,0 3px #d5c498;}
+#panels .remaster-index .book-intro h3 {font-size:22px!important;}
+#panels .remaster-index-doors {gap:10px;margin:16px 0 12px;padding:2px 3px 6px;}
+#panels .remaster-index-doors button {min-height:118px;padding:8px 3px;gap:5px;border-width:2px 2px 3px 4px;transform:none!important;border-radius:7px 12px 12px 7px;}
+#panels .remaster-index-doors :is(svg,img) {width:46px;height:46px;}
+#panels .book-screen .book-path {border:1.5px solid #c5b184;border-radius:9px;padding:10px 12px;background:#fff9e8;box-shadow:0 2px #e0d1ab;margin:9px 0;}
+#panels .book-screen .book-section {padding:10px 2px!important;}
+#panels .book-screen .book-material {border-width:2px;margin:10px 2px!important;}
+
+@media(max-height:700px) {
+  #panels .golden-business .bs-shop-header {height:65px;}
+  #panels .golden-business .bs-counter {min-height:200px;grid-auto-rows:120px;}
+  #panels .golden-business .bs-counter.empty-counter {min-height:145px;}
+  #panels .golden-business .bs-counter.few:has(.bs-vessel:nth-child(3)) {grid-template-rows:100px 88px;min-height:188px;}
+  #panels .golden-business .bs-vessel,#panels .golden-business .bs-vessel.is-wide {height:100px;min-height:100px;}
+  #panels .golden-business .bs-vessel .bs-character {height:74px;}
+  #panels .golden-business .bs-vessel.is-wide {height:88px;min-height:88px;}
+  #panels .golden-business .bs-vessel.is-wide .bs-character {height:68px;}
+  #panels .golden-business .bs-props {height:62px;}
+  #panels .golden-business .bs-prop {height:60px;font-size:16px;}
+  #panels .golden-business .bs-prop>.bs-art {height:40px;}
+  #panels .golden-business .bs-main-action {height:46px;min-height:46px;font-size:20px;}
+  #panels .shop-subpage .bs-sub-paper {padding:6px 8px 10px;border-top-width:8px;}
+  #panels .shop-subpage .regulars-card {min-height:76px;padding:7px 0;}
+  #panels .shop-subpage .project-feature-art {width:58px;height:66px;}
+  #panels .shop-subpage .project-feature p {font-size:13px;line-height:1.4;}
+  #panels .shop-subpage .projects-card {min-height:58px;padding-block:5px;}
+  #panels .shop-subpage .project-other-heading {margin-top:8px;}
+  #panels .shop-subpage .projects-head h3 {font-size:20px;}
+  #panels .shop-projects .bs-sub-paper {border-top-width:0;padding-top:0;}
+  #panels .shop-projects .project-feature>.orange {min-height:40px;padding-block:6px;}
+  #panels .shop-projects .projects-note {margin-block:3px;}
+  #panels .shop-projects .projects-scroll {padding-top:0;padding-bottom:0;}
+  #panels .shop-projects .projects-card {min-height:48px;padding-block:3px;margin-bottom:2px;}
+  #panels .shop-projects .bs-sub-paper {padding-bottom:2px;border-bottom-width:2px;}
+  #panels .shop-projects .project-feature {display:grid;grid-template-columns:58px minmax(0,1fr);column-gap:8px;}
+  #panels .shop-projects .project-feature-art {grid-column:1;grid-row:1/3;margin:0;}
+  #panels .shop-projects .project-feature>.family-stamp {grid-column:2;justify-self:start;}
+  #panels .shop-projects .project-feature>p:not(.projects-note) {grid-column:2;margin:3px 0;}
+  #panels .shop-projects .project-feature>.projects-note,#panels .shop-projects .project-feature>.orange {grid-column:1/-1;}
+  #panels .journey-region .journey-body {padding-bottom:0;}
+  #panels .journey-region .journey-section-title:not(.journey-action-title) {display:none;}
+  #panels .journey-region .journey-places {height:102px;min-height:102px;margin-top:2px;}
+  #panels .journey-region .journey-place-environment {height:106px;}
+  #panels .journey-region .journey-places .journey-place-object {max-height:74px;}
+  #panels .journey-region .region-V button:first-of-type .journey-place-object {top:9px;height:65px;}
+  #panels .journey-region .region-V button:nth-of-type(2) .journey-place-object {top:0;height:76px;}
+  #panels .journey-region .journey-places strong {height:30px;font-size:16px;line-height:23px;}
+  #panels .journey-region .journey-action-title {height:26px;margin-top:4px;margin-bottom:2px;font-size:18px;}
+  #panels .journey-region .journey-focus .journey-art {width:44px;height:44px;}
+  #panels .journey-region .journey-focus strong {font-size:17px;line-height:21px;}
+  #panels .journey-region .journey-focus small {font-size:11px!important;line-height:15px;}
+  #panels .journey-region .journey-seat {height:48px;}
+  #panels .journey-region .journey-seat>.journey-character {height:44px;}
+  #panels .journey-region .journey-team>button:nth-child(2) .journey-character {height:52px;}
+  #panels .journey-region .journey-team {margin-top:0;}
+  #panels .journey-region .journey-target {min-height:38px;padding-block:2px;}
+  #panels .journey-region .journey-team strong {font-size:14px!important;}
+  #panels .journey-region .journey-team small {font-size:11px!important;}
+}
+
+/* World map: one stage scaled uniformly from the 390 x 684 reference and cropped to the
+   painted land (top 520), so terrain, route, landmarks and party never drift apart.
+   Landmarks are 0.76 of their reference size and scale with the stage (cqw). */
+#panels .journey-screen .journey-map-art {container-type:size;display:grid;place-items:center;overflow:hidden;}
+#panels .journey-screen .journey-map-stage {position:relative;width:100%;height:100%;overflow:hidden;container-type:inline-size;}
+@supports (width:1cqw) {
+  #panels .journey-screen .journey-map-stage {width:min(100cqw,100cqh*390/520);height:auto;aspect-ratio:390/520;}
+}
+.journey-map-canvas {position:absolute;left:0;top:0;width:100%;aspect-ratio:390/684;isolation:isolate;}
+.journey-map-land {
+  position:absolute;inset:0;z-index:-2;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linear-gradient(transparent,#000 4%,#000 68%,transparent 76%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent),linear-gradient(transparent,#000 4%,#000 68%,transparent 76%);
+  mask-composite:intersect;
+}
+#panels .journey-screen .journey-map-stage .journey-node {top:var(--y);width:max-content;}
+#panels .journey-screen .journey-map-stage .journey-node>.journey-art:first-child {max-width:none;}
+#panels .journey-screen .journey-map-stage .journey-node[data-regional-region=V] {--art-w:20.12cqw;--art-h:16.93cqw;}
+#panels .journey-screen .journey-map-stage .journey-node[data-regional-region=T] {--art-w:31.94cqw;--art-h:19.8cqw;}
+#panels .journey-screen .journey-map-stage .journey-node[data-regional-region=R] {--art-w:37.68cqw;--art-h:15.17cqw;}
+#panels .journey-screen .journey-map-stage .journey-node[data-regional-region=B] {--art-w:32.42cqw;--art-h:18.2cqw;}
+#panels .journey-screen .journey-map-stage .journey-node>.journey-art:first-child {width:var(--art-w);height:var(--art-h);}
+/* The travel page shares the map stage, so it also shares the map's nameplates and party. */
+#panels .journey-screen .journey-map-stage .journey-node>.journey-art:first-child {transform:none;object-position:center;}
+#panels .journey-screen .journey-map-stage .journey-node strong {position:relative;isolation:isolate;background:none;text-shadow:none;font-weight:700;box-sizing:border-box;font-size:clamp(13px,4.2cqw,16px);height:2em;line-height:1.45em;min-width:6.4em;padding:.25em .55em;}
+#panels .journey-screen .journey-map-stage .journey-node small {position:absolute;top:100%;font-size:10px;background:#fff9e4dd;}
+#panels .journey-screen .journey-map-stage .journey-travellers {position:absolute;inset:0;width:100%;height:100%;translate:none;display:block;z-index:2;pointer-events:none;}
+#panels .journey-screen .journey-map-stage .journey-travellers .journey-character {width:100%;height:100%;margin:0;transform:none;filter:none;}
+#panels .journey-screen .journey-map-stage .journey-node[data-regional-region=V] strong {translate:.78cqw 0;}
+#panels .journey-screen .journey-map-stage .journey-node[data-regional-region=R] strong {translate:9.35cqw 0;}
+#panels .journey-screen .journey-map-stage .journey-node[data-regional-region=B] strong {translate:4.68cqw 0;}
+/* The destination flag stands at the landmark's upper right, whatever the label width. */
+#panels .journey-screen .journey-map-stage .journey-node .journey-flag {width:7cqw;height:9.5cqw;left:calc(50% + var(--art-w)/2 - 5.5cqw);right:auto;top:-4cqw;}
+#panels .journey-screen .journey-map-stage .journey-map-start {left:1.5%;top:69.5%;bottom:auto;width:8.2cqw;height:9cqw;}
+/* Partners walk on the map itself: no label backdrop (an older `.journey-travellers>span` rule added one). */
+#panels .journey-screen .journey-map-stage .journey-traveller {width:13.5cqw;height:15cqw;background:none;}
+#panels .journey-screen .journey-map-stage .journey-traveller.traveller-1 {width:15cqw;height:17cqw;}
+#panels .journey-screen .journey-map-stage .journey-traveller.traveller-2 {width:11.3cqw;height:13cqw;}
+
+/* Region page: plain team count and a short "what this trip brings home" preview. */
+#panels .journey-region .journey-team-label {display:flex;align-items:center;justify-content:space-between;height:auto;min-height:28px;}
+#panels .journey-region .journey-team-label>span {visibility:visible;font-size:13px;line-height:18px;color:#6c5437;}
+#panels .journey-region .journey-team-label button {float:none;}
+.journey-preview {margin:6px 0 0;padding:5px 10px;border:1.5px solid #c9b48a;border-radius:12px;background:#fbf3df;}
+#panels .journey-preview p {margin:0;font-size:13px;line-height:18px;color:#5b4630;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#panels .journey-preview p+p {margin-top:2px;color:#6f6a45;}
+.journey-preview strong {color:#4b301b;}
+/* Partner picker: the target's team need, and partners who meet it first. */
+#panels .journey-picker-intro {margin:8px 0 10px!important;font-size:13px;line-height:19px;}
+.journey-member-grid button {position:relative;}
+.journey-fit {position:absolute;top:0;right:2px;z-index:1;padding:1px 6px;border-radius:9px;background:#e3efc9;color:#3f6227;font-size:11px;font-style:normal;line-height:16px;}
+/* Help: short headed sections instead of one block of rules. */
+#panels .journey-help-copy h3 {margin:12px 0 2px;font-size:15px;color:#4b301b;}
+#panels .journey-help-copy h3:first-child {margin-top:0;}
+/* Departure confirmation: compact enough that the summary never sits under the footer. */
+#panels .journey-confirm .journey-confirm-destination {margin-top:6px;}
+#panels .journey-confirm .journey-confirm-destination>.journey-art {height:clamp(96px,18vh,150px);width:auto;max-width:210px;margin:0 auto 8px;}
+#panels .journey-confirm .journey-confirm-team {margin:12px 0;}
+#panels .journey-confirm .journey-confirm-summary {padding:8px 10px 16px;}
+#panels .journey-confirm .journey-confirm-summary>.journey-art {width:36px;height:38px;margin:0 auto 6px;}
+/* Very short screens keep the region page scroll-free: one preview line (the
+   discovery outcome), no hints under the three actions, slightly smaller seats. */
+@media (max-height:620px) {
+  #panels .journey-region .journey-preview {margin-top:4px;padding:3px 8px;}
+  #panels .journey-region .journey-preview p:first-child {display:none;}
+  #panels .journey-region .journey-preview p+p {margin-top:0;}
+  #panels .journey-region .journey-focus small {display:none;}
+  #panels .journey-region .journey-focus .journey-art {width:38px;height:38px;}
+  #panels .journey-region .journey-seat {height:40px;}
+  #panels .journey-region .journey-seat>.journey-character {height:38px;}
+  #panels .journey-region .journey-team>button:nth-child(2) .journey-character {height:44px;}
+  #panels .journey-region .journey-team-label {min-height:22px;}
+  #panels .journey-region .journey-team-label button {min-height:22px;padding:0 6px;}
+}
+#panels .journey-map .journey-first-hint {margin:2px 0 0;font-size:13px;line-height:18px;color:#6f6a45;text-align:center;}
+
+/* Seasoning advice: compact rows above the seasoning grid. */
+#panels .ingredient-screen .seasoning-advice {margin:0 0 10px;padding:8px 10px 6px;border:1.5px solid #c9b48a;border-radius:14px;background:#fbf3df;}
+#panels .ingredient-screen .advice-head {display:flex;align-items:center;justify-content:space-between;gap:8px;}
+#panels .ingredient-screen .advice-head label {display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:#4b301b;}
+#panels .ingredient-screen .advice-head select {min-height:34px;padding:2px 6px;border:1.5px solid #b99a66;border-radius:10px;background:#fffaf0;color:#4b301b;font:inherit;font-weight:700;}
+#panels .ingredient-screen .advice-head small {font-size:12px;color:#86704f;}
+#panels .ingredient-screen .advice-lenses {display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0 6px;}
+#panels .ingredient-screen .advice-lenses button {min-height:34px;padding:2px;border:1.5px solid #c9b48a;border-radius:10px;background:#fffaf0;color:#6c5437;font-size:14px;}
+#panels .ingredient-screen .advice-lenses button[aria-selected=true] {border-color:#758749;background:#e9edcd;color:#3f5a2a;font-weight:700;}
+#panels .ingredient-screen .advice-list {list-style:none;margin:0;padding:0;}
+#panels .ingredient-screen .advice-row {display:grid;grid-template-columns:1fr auto;grid-template-areas:'set use' 'birds use' 'meta use';column-gap:8px;align-items:center;padding:6px 0;border-top:1px dashed #d9c79f;}
+#panels .ingredient-screen .advice-row:first-child {border-top:0;}
+#panels .ingredient-screen .advice-row.is-current {background:#eef1d9;border-radius:10px;padding-inline:6px;}
+#panels .ingredient-screen .advice-set {grid-area:set;display:flex;flex-wrap:wrap;gap:4px;}
+#panels .ingredient-screen .advice-chip {display:inline-flex;align-items:center;gap:2px;padding:1px 6px 1px 2px;border-radius:9px;background:#fffaf0;border:1px solid #d6c399;font-size:13px;font-weight:700;color:#4b301b;}
+#panels .ingredient-screen .advice-chip .sprite-art,#panels .ingredient-screen .advice-chip img {width:20px;height:20px;}
+#panels .ingredient-screen .advice-chip.is-missing {border-style:dashed;border-color:#c98a4a;}
+#panels .ingredient-screen .advice-chip small {margin-left:2px;color:#b0632e;font-size:11px;}
+#panels .ingredient-screen .advice-birds {grid-area:birds;font-size:12px;line-height:17px;color:#5b4630;}
+#panels .ingredient-screen .advice-meta {grid-area:meta;font-size:12px;line-height:17px;color:#6f6a45;font-weight:700;}
+#panels .ingredient-screen .advice-row button {grid-area:use;min-height:38px;max-width:112px;padding:4px 10px;font-size:13px;line-height:16px;}
+#panels .ingredient-screen .advice-empty,#panels .ingredient-screen .advice-clues {margin:4px 0;font-size:12px;line-height:18px;color:#6c5437;}
+#panels .ingredient-screen .advice-note {margin:4px 0 0;font-size:11px;line-height:15px;color:#9a8664;}
+#panels .cooking-dialog .cook-advice-link {display:block;width:100%;min-height:38px;margin:0 0 8px;border:1.5px solid #b9c78f;border-radius:10px;background:#eef1d9;color:#3f5a2a;font-size:14px;font-weight:700;}
+#panels .ingredient-screen .advice-tag {align-self:center;padding:0 6px;border-radius:8px;background:#e3efc9;color:#3f6227;font-size:11px;font-style:normal;line-height:18px;}
+
+/* Business stock sheet: one "帮我摆", a plain forecast, placement as a tag, extras folded. */
+.bs-dialog .business-autofill {display:flex;align-items:center;gap:10px;margin:10px 0 4px;}
+#panels .golden-business .bs-dialog .business-autofill button {flex:none;min-height:44px;padding:4px 18px;font-size:17px;font-weight:700;border:2px solid #5d7d3f;border-radius:14px;background:#8bbd62;color:#fffef0;box-shadow:0 3px 0 #4f6d36;}
+.bs-dialog .business-autofill small {font-size:12px;line-height:17px;color:#7a6446;}
+.bs-dialog .business-autofill-note {margin:4px 0 6px;padding:6px 10px;border-radius:10px;background:#eef1d9;color:#3f5a2a;font-size:13px;line-height:19px;}
+.bs-dialog .business-prep-summary {flex-wrap:wrap;row-gap:2px;}
+.bs-dialog .business-forecast {flex-basis:100%;font-size:13px;line-height:18px;color:#5b4630;font-weight:700;}
+.bs-dialog .business-more {margin-top:2px;}
+.bs-dialog .business-more summary {min-height:36px;display:flex;align-items:center;font-size:14px;color:#6c5437;cursor:pointer;}
+.bs-dialog .business-more[open] summary {margin-bottom:2px;}
+.bs-dialog .business-role-tag {grid-column:2/-1;justify-self:start;padding:1px 8px;border-radius:9px;background:#f1e6c8;color:#6c5437;font-size:12px;line-height:18px;}

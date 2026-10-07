@@ -1,0 +1,530 @@
+{
+  "capturedAt": "2026-09-29T00:46:07.189Z",
+  "viewport": [
+    390,
+    844
+  ],
+  "buildings": 4,
+  "characters": 5,
+  "characterHeights": [
+    25,
+    26,
+    24,
+    25,
+    27
+  ],
+  "ratios": {
+    "unit": 26,
+    "houseWidth": 156,
+    "sceneWidth": 390,
+    "central": [
+      86,
+      277,
+      220,
+      210
+    ],
+    "roads": [
+      {
+        "kind": "main",
+        "width": 36
+      },
+      {
+        "kind": "link",
+        "width": 30
+      },
+      {
+        "kind": "entry",
+        "width": 26
+      }
+    ]
+  },
+  "objects": [
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 76,
+      "height": 76,
+      "footY": 63,
+      "z": 63
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 74,
+      "height": 74,
+      "footY": 87,
+      "z": 87
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 76,
+      "height": 76,
+      "footY": 69,
+      "z": 69
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 68,
+      "height": 68,
+      "footY": 53,
+      "z": 53
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 76,
+      "height": 76,
+      "footY": 84,
+      "z": 84
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 75,
+      "height": 75,
+      "footY": 65,
+      "z": 65
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 76,
+      "height": 76,
+      "footY": 77,
+      "z": 77
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 74,
+      "height": 74,
+      "footY": 93,
+      "z": 93
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 72,
+      "height": 72,
+      "footY": 140,
+      "z": 140
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 68,
+      "height": 68,
+      "footY": 123,
+      "z": 123
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 69,
+      "height": 69,
+      "footY": 102,
+      "z": 102
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 70,
+      "height": 70,
+      "footY": 137,
+      "z": 137
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 73,
+      "height": 73,
+      "footY": 144,
+      "z": 144
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 74,
+      "height": 74,
+      "footY": 191,
+      "z": 191
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 36,
+      "height": 22.1875,
+      "footY": 148,
+      "z": 148
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 40,
+      "height": 24.65625,
+      "footY": 155,
+      "z": 155
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 67,
+      "height": 67,
+      "footY": 241,
+      "z": 241
+    },
+    {
+      "id": "bush-tall",
+      "kind": "object environment",
+      "width": 35,
+      "height": 35,
+      "footY": 277,
+      "z": 277
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 71,
+      "height": 71,
+      "footY": 300,
+      "z": 300
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 34,
+      "height": 20.953125,
+      "footY": 338,
+      "z": 338
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 39,
+      "height": 24.046875,
+      "footY": 363,
+      "z": 363
+    },
+    {
+      "id": "rock-wide",
+      "kind": "object environment",
+      "width": 26,
+      "height": 20.796875,
+      "footY": 401,
+      "z": 401
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 73,
+      "height": 73,
+      "footY": 473,
+      "z": 473
+    },
+    {
+      "id": "bush-tall",
+      "kind": "object environment",
+      "width": 32,
+      "height": 32,
+      "footY": 495,
+      "z": 495
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 74,
+      "height": 74,
+      "footY": 439,
+      "z": 439
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 33,
+      "height": 20.34375,
+      "footY": 468,
+      "z": 468
+    },
+    {
+      "id": "rock-tall",
+      "kind": "object environment",
+      "width": 27,
+      "height": 27,
+      "footY": 530,
+      "z": 530
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 70,
+      "height": 70,
+      "footY": 575,
+      "z": 575
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 74,
+      "height": 74,
+      "footY": 626,
+      "z": 626
+    },
+    {
+      "id": "bush-tall",
+      "kind": "object environment",
+      "width": 36,
+      "height": 36,
+      "footY": 634,
+      "z": 634
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 72,
+      "height": 72,
+      "footY": 673,
+      "z": 673
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 41,
+      "height": 25.28125,
+      "footY": 690,
+      "z": 690
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 74,
+      "height": 74,
+      "footY": 724,
+      "z": 724
+    },
+    {
+      "id": "tree-round",
+      "kind": "object environment",
+      "width": 76,
+      "height": 76,
+      "footY": 723,
+      "z": 723
+    },
+    {
+      "id": "tree-pine",
+      "kind": "object environment",
+      "width": 70,
+      "height": 70,
+      "footY": 727,
+      "z": 727
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 43,
+      "height": 26.515625,
+      "footY": 688,
+      "z": 688
+    },
+    {
+      "id": "fence-front",
+      "kind": "object environment",
+      "width": 47,
+      "height": 41.03125,
+      "footY": 193,
+      "z": 193
+    },
+    {
+      "id": "fence-front",
+      "kind": "object environment",
+      "width": 47,
+      "height": 41.03125,
+      "footY": 194,
+      "z": 194
+    },
+    {
+      "id": "fence-return",
+      "kind": "object environment",
+      "width": 45,
+      "height": 48.328125,
+      "footY": 533,
+      "z": 533
+    },
+    {
+      "id": "fence-front",
+      "kind": "object environment",
+      "width": 52,
+      "height": 45.390625,
+      "footY": 631,
+      "z": 631
+    },
+    {
+      "id": "fence-return",
+      "kind": "object environment",
+      "width": 45,
+      "height": 48.328125,
+      "footY": 665,
+      "z": 665
+    },
+    {
+      "id": "bench",
+      "kind": "object environment",
+      "width": 37,
+      "height": 30.828125,
+      "footY": 454,
+      "z": 454
+    },
+    {
+      "id": "basin",
+      "kind": "object environment",
+      "width": 25,
+      "height": 20.765625,
+      "footY": 444,
+      "z": 444
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 30,
+      "height": 18.5,
+      "footY": 515,
+      "z": 515
+    },
+    {
+      "id": "bush-low",
+      "kind": "object environment",
+      "width": 29,
+      "height": 17.875,
+      "footY": 576,
+      "z": 576
+    },
+    {
+      "id": "rock-wide",
+      "kind": "object environment",
+      "width": 22,
+      "height": 17.59375,
+      "footY": 581,
+      "z": 581
+    },
+    {
+      "id": "rock-wide",
+      "kind": "object environment",
+      "width": 23,
+      "height": 18.390625,
+      "footY": 677,
+      "z": 677
+    },
+    {
+      "id": "edge-stone",
+      "kind": "object environment",
+      "width": 43,
+      "height": 15.765625,
+      "footY": 240,
+      "z": 240
+    },
+    {
+      "id": "edge-stone",
+      "kind": "object environment",
+      "width": 32,
+      "height": 11.71875,
+      "footY": 263,
+      "z": 263
+    },
+    {
+      "id": "edge-stone",
+      "kind": "object environment",
+      "width": 36,
+      "height": 13.1875,
+      "footY": 593,
+      "z": 593
+    },
+    {
+      "id": "edge-stone",
+      "kind": "object environment",
+      "width": 40,
+      "height": 14.65625,
+      "footY": 593,
+      "z": 593
+    },
+    {
+      "id": "house",
+      "kind": "object building",
+      "width": 156,
+      "height": 130.171875,
+      "footY": 232,
+      "z": 232
+    },
+    {
+      "id": "shop",
+      "kind": "object building",
+      "width": 114,
+      "height": 87.6875,
+      "footY": 254,
+      "z": 254
+    },
+    {
+      "id": "shrine",
+      "kind": "object building",
+      "width": 109,
+      "height": 107.109375,
+      "footY": 586,
+      "z": 586
+    },
+    {
+      "id": "display",
+      "kind": "object building",
+      "width": 130,
+      "height": 75.375,
+      "footY": 586,
+      "z": 586
+    },
+    {
+      "id": "0:0",
+      "kind": "object character",
+      "width": 25.515625,
+      "height": 25,
+      "footY": 334,
+      "z": 334
+    },
+    {
+      "id": "0:3",
+      "kind": "object character",
+      "width": 28.234375,
+      "height": 26,
+      "footY": 380,
+      "z": 380
+    },
+    {
+      "id": "0:4",
+      "kind": "object character",
+      "width": 23.59375,
+      "height": 24,
+      "footY": 433,
+      "z": 433
+    },
+    {
+      "id": "0:0",
+      "kind": "object character",
+      "width": 25.515625,
+      "height": 25,
+      "footY": 469,
+      "z": 469
+    },
+    {
+      "id": "0:3",
+      "kind": "object character",
+      "width": 29.328125,
+      "height": 27,
+      "footY": 312,
+      "z": 312
+    }
+  ],
+  "independentImagesOnly": true,
+  "buildingAlphaVerified": true,
+  "depthByFoot": true,
+  "diagnosticControlsVerified": true,
+  "errors": [],
+  "failedRequests": [],
+  "scope": "One local static viewport, no Runtime, no pan/zoom."
+}

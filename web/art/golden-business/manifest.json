@@ -1,0 +1,1057 @@
+{
+  "version": 1,
+  "style": "jibao-business-golden",
+  "assets": [
+    {
+      "id": "business:basket-base",
+      "path": "/web/art/golden-business/basket-base.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B01-vessels.png",
+      "crop": [
+        15,
+        250,
+        620,
+        605
+      ],
+      "alphaBoundsInCrop": [
+        17,
+        16,
+        605,
+        333
+      ],
+      "size": [
+        604,
+        333
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "0003300e2393530ab96041972aee11f9b59adeeca7418c39ae57311abf056a39",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:basket-front",
+      "path": "/web/art/golden-business/basket-front.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B01-vessels.png",
+      "crop": [
+        640,
+        320,
+        1235,
+        595
+      ],
+      "alphaBoundsInCrop": [
+        19,
+        14,
+        582,
+        255
+      ],
+      "size": [
+        579,
+        257
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "e8d79469362ec92b0ad27b9ae31457a474523bc2896c506500cca18edc0a467d",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:tray-base",
+      "path": "/web/art/golden-business/tray-base.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B01-vessels.png",
+      "crop": [
+        15,
+        790,
+        625,
+        1060
+      ],
+      "alphaBoundsInCrop": [
+        15,
+        16,
+        609,
+        247
+      ],
+      "size": [
+        610,
+        247
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "6009fa22dd30a40f93e08d49a01eecbcf96670221b3ce3d29118379c48734248",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:tray-front",
+      "path": "/web/art/golden-business/tray-front.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B01-vessels.png",
+      "crop": [
+        640,
+        845,
+        1235,
+        1045
+      ],
+      "alphaBoundsInCrop": [
+        20,
+        16,
+        584,
+        177
+      ],
+      "size": [
+        580,
+        177
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "205e8dbfc39b3d62d93294ffd777aa9af6cfa205e8aeb099966b1e76b363f160",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:sign-open",
+      "path": "/web/art/golden-business/sign-open.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B02-signs.png",
+      "crop": [
+        15,
+        325,
+        450,
+        620
+      ],
+      "alphaBoundsInCrop": [
+        25,
+        20,
+        419,
+        266
+      ],
+      "size": [
+        410,
+        262
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "828d8c47cc104e006df48b4be04a3e003ef0d3affbd1828696b2a91f509edada",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:sign-prepare",
+      "path": "/web/art/golden-business/sign-prepare.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B02-signs.png",
+      "crop": [
+        480,
+        325,
+        915,
+        620
+      ],
+      "alphaBoundsInCrop": [
+        26,
+        20,
+        410,
+        265
+      ],
+      "size": [
+        400,
+        261
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "6cf5304dcb2aa21ec4f5ff05c9558561c248ae4f17cd900bd0fe600808ef7412",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:menu-easel",
+      "path": "/web/art/golden-business/menu-easel.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B02-signs.png",
+      "crop": [
+        935,
+        285,
+        1245,
+        650
+      ],
+      "alphaBoundsInCrop": [
+        15,
+        16,
+        290,
+        340
+      ],
+      "size": [
+        291,
+        340
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "7eb92ace8fdec8d9e79c993cfd83691f703113a4552eba99901e8f7c4999c2c3",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:action-plaque",
+      "path": "/web/art/golden-business/action-plaque.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B02-signs.png",
+      "crop": [
+        20,
+        805,
+        485,
+        1010
+      ],
+      "alphaBoundsInCrop": [
+        24,
+        20,
+        454,
+        183
+      ],
+      "size": [
+        446,
+        179
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "e5be0c84d547899b41904a4a25bf66767b2293fe24c5a22a212331ab0e1a0621",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:counter-plank",
+      "path": "/web/art/golden-business/counter-plank.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B02-signs.png",
+      "crop": [
+        490,
+        850,
+        950,
+        960
+      ],
+      "alphaBoundsInCrop": [
+        16,
+        18,
+        448,
+        86
+      ],
+      "size": [
+        448,
+        84
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "f435ca62b06c340c643c8f0d7a633ad5e4169e5f9aab6bcd604a1cc4c94592c0",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:summary-label",
+      "path": "/web/art/golden-business/summary-label.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B02-signs.png",
+      "crop": [
+        950,
+        815,
+        1235,
+        1000
+      ],
+      "alphaBoundsInCrop": [
+        13,
+        16,
+        260,
+        160
+      ],
+      "size": [
+        263,
+        160
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "42d4ba3ed9bc359c691b42bc0b905e3f96b23cd50bdfc31590fb04edc5ce80e6",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:orders",
+      "path": "/web/art/golden-business/orders.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B03-props.png",
+      "crop": [
+        120,
+        90,
+        610,
+        605
+      ],
+      "alphaBoundsInCrop": [
+        19,
+        16,
+        472,
+        464
+      ],
+      "size": [
+        469,
+        464
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "631d44f602e48834a7a36cee976495991e155aaea68b3492021b25b3755c4c97",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:regulars",
+      "path": "/web/art/golden-business/regulars.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B03-props.png",
+      "crop": [
+        690,
+        125,
+        1170,
+        610
+      ],
+      "alphaBoundsInCrop": [
+        19,
+        27,
+        453,
+        452
+      ],
+      "size": [
+        450,
+        441
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "4b0a003796aef562e35d4a26a77db6cc5e44e230fecef010cbe035eadc389d5f",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:projects",
+      "path": "/web/art/golden-business/projects.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B03-props.png",
+      "crop": [
+        130,
+        650,
+        630,
+        1140
+      ],
+      "alphaBoundsInCrop": [
+        25,
+        29,
+        481,
+        459
+      ],
+      "size": [
+        472,
+        446
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "81d75d6b4a1b6f460d3ccefa20b12fec6a83c2d0e52aa1d9a752fefbb373179c",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:coin",
+      "path": "/web/art/golden-business/coin.png",
+      "sheet": "docs/business-golden-20260924/asset-sheets/B03-props.png",
+      "crop": [
+        730,
+        700,
+        1170,
+        1120
+      ],
+      "alphaBoundsInCrop": [
+        20,
+        28,
+        402,
+        392
+      ],
+      "size": [
+        398,
+        380
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "e757606e2991d523318cda7c07a666a6583ab6426f24baac064f929c6ad4d76d",
+      "source": "built-in-imagegen; measured sheet cut; no UI text or characters"
+    },
+    {
+      "id": "business:v2-nameplate",
+      "path": "/web/art/golden-business/v2-nameplate.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B04-frames.png",
+      "crop": [
+        18,
+        224,
+        503,
+        414
+      ],
+      "alphaBoundsInCrop": [
+        9,
+        7,
+        476,
+        183
+      ],
+      "size": [
+        483,
+        192
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "6c0f5d5b12955825c1d7405f9da2dd84bae84ad08c7992b58202b0e0c6947775",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-summary",
+      "path": "/web/art/golden-business/v2-summary.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B04-frames.png",
+      "crop": [
+        540,
+        250,
+        1012,
+        395
+      ],
+      "alphaBoundsInCrop": [
+        9,
+        13,
+        461,
+        135
+      ],
+      "size": [
+        468,
+        138
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "cad8a25084996c80b240213d9bcd3209b95faa3a4c625dfdef2ee415db8becbd",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-wallet",
+      "path": "/web/art/golden-business/v2-wallet.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B04-frames.png",
+      "crop": [
+        50,
+        681,
+        481,
+        880
+      ],
+      "alphaBoundsInCrop": [
+        11,
+        15,
+        416,
+        191
+      ],
+      "size": [
+        421,
+        192
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "f8607f87491dd3088cec17d3bd6af23725f40c5b0ce13a5c9f7d724c3fcc6373",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-help",
+      "path": "/web/art/golden-business/v2-help.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B04-frames.png",
+      "crop": [
+        645,
+        644,
+        902,
+        905
+      ],
+      "alphaBoundsInCrop": [
+        10,
+        11,
+        243,
+        255
+      ],
+      "size": [
+        249,
+        260
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "1e7a76fcaa729e33fcd3a906d5a33b39b6220aef27607b1c63b3b75d20c23728",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-action",
+      "path": "/web/art/golden-business/v2-action.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B04-frames.png",
+      "crop": [
+        18,
+        1118,
+        503,
+        1305
+      ],
+      "alphaBoundsInCrop": [
+        14,
+        10,
+        467,
+        169
+      ],
+      "size": [
+        469,
+        175
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "6279f2c81a3baef815f92ae9bb49a0969c47046c4b43b4d36b40c95647096fb2",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-counter",
+      "path": "/web/art/golden-business/v2-counter.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B04-frames.png",
+      "crop": [
+        527,
+        1153,
+        1010,
+        1260
+      ],
+      "alphaBoundsInCrop": [
+        6,
+        11,
+        474,
+        95
+      ],
+      "size": [
+        484,
+        100
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "83844a27d67a2f24c7a613c0117e12d26e3977e587802f4463f840326316d257",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-regulars",
+      "path": "/web/art/golden-business/v2-regulars.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B05-books.png",
+      "crop": [
+        170,
+        70,
+        680,
+        530
+      ],
+      "alphaBoundsInCrop": [
+        9,
+        11,
+        499,
+        449
+      ],
+      "size": [
+        506,
+        454
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "5758748cb4db1800eddf3d53b88ca5271b24141bfd288aa6c75ade35db6bfa81",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-order-pad",
+      "path": "/web/art/golden-business/v2-order-pad.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B05-books.png",
+      "crop": [
+        910,
+        70,
+        1300,
+        590
+      ],
+      "alphaBoundsInCrop": [
+        9,
+        12,
+        376,
+        509
+      ],
+      "size": [
+        383,
+        513
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "8556f68645199bf385af3cdababf174beff24de78b6b04f0c25a94001a1e5f2d",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-guest-page",
+      "path": "/web/art/golden-business/v2-guest-page.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B05-books.png",
+      "crop": [
+        235,
+        565,
+        615,
+        950
+      ],
+      "alphaBoundsInCrop": [
+        8,
+        13,
+        367,
+        369
+      ],
+      "size": [
+        375,
+        372
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "6e9cf0e5b149e015ff82885e1c733b94af4c59f0336fedc354c8670c25ab0afe",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:v2-divider",
+      "path": "/web/art/golden-business/v2-divider.png",
+      "sheet": "docs/business-golden-20260924/revision-2/asset-sheets/B05-books.png",
+      "crop": [
+        760,
+        758,
+        1430,
+        825
+      ],
+      "alphaBoundsInCrop": [
+        11,
+        14,
+        653,
+        49
+      ],
+      "size": [
+        658,
+        51
+      ],
+      "safeInset": 8,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "dc8135ac6c2caed8f1a8491047b18328bacf9951382703ebe3a8f12b2e2531a9",
+      "source": "built-in-imagegen; alpha-preserving sheet cut; no UI text or character"
+    },
+    {
+      "id": "business:regulars-original",
+      "path": "/web/art/golden-business/regulars-original.png",
+      "sheet": "docs/art-direction-20260924-v2/mockups/01-business.png",
+      "crop": [
+        369,
+        1180,
+        534,
+        1340
+      ],
+      "size": [
+        165,
+        160
+      ],
+      "transparent": true,
+      "status": "golden-sample",
+      "source": "User-requested approved mockup icon extraction; original cover and chick retained; perimeter cream removed only",
+      "sha256": "b4b9743d29cbba3cf161a3abc1ba51747a892def33b92e1dd876d2450a3f0e57"
+    },
+    {
+      "id": "business:family-project-board",
+      "path": "/web/art/golden-business/family-project-board.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F03-surfaces-separated.png",
+      "crop": [
+        75,
+        40,
+        615,
+        580
+      ],
+      "alphaBoundsInCrop": [
+        22,
+        26,
+        513,
+        520
+      ],
+      "size": [
+        503,
+        506
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "69be32d90daf5d6f8d6b826a671f642a41e78b2f281cc90dff63a91304e423b5",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-receipt",
+      "path": "/web/art/golden-business/family-receipt.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F03-surfaces-separated.png",
+      "crop": [
+        655,
+        40,
+        1170,
+        585
+      ],
+      "alphaBoundsInCrop": [
+        22,
+        21,
+        503,
+        529
+      ],
+      "size": [
+        493,
+        520
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "08471f7710493dd644525dbd04c98d34eee3243886779930cef35d27d41bfb5d",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-label",
+      "path": "/web/art/golden-business/family-label.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F03-surfaces-separated.png",
+      "crop": [
+        75,
+        690,
+        640,
+        915
+      ],
+      "alphaBoundsInCrop": [
+        17,
+        29,
+        552,
+        205
+      ],
+      "size": [
+        547,
+        188
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "e7dd9cde130bfedd3dd75f4b75334bf18a863d93de7dd8ab4509da4ae4b31cd9",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-avatar-base",
+      "path": "/web/art/golden-business/family-avatar-base.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F03-surfaces-separated.png",
+      "crop": [
+        700,
+        580,
+        1140,
+        995
+      ],
+      "alphaBoundsInCrop": [
+        39,
+        19,
+        418,
+        400
+      ],
+      "size": [
+        391,
+        393
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "bc369efa3b5359524f9ac637cf3fc3ebdbe26e830d594cb5e38715258bc70c81",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-pin",
+      "path": "/web/art/golden-business/family-pin.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F03-surfaces-separated.png",
+      "crop": [
+        265,
+        995,
+        445,
+        1230
+      ],
+      "alphaBoundsInCrop": [
+        16,
+        15,
+        151,
+        197
+      ],
+      "size": [
+        147,
+        194
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "c8308083f004564ec04d6352b666263496b00846241121de02239f5f252c6ee9",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-clip",
+      "path": "/web/art/golden-business/family-clip.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F03-surfaces-separated.png",
+      "crop": [
+        765,
+        995,
+        1040,
+        1230
+      ],
+      "alphaBoundsInCrop": [
+        23,
+        17,
+        256,
+        191
+      ],
+      "size": [
+        245,
+        186
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "6585e06f4222def87049d10aee00015662dd5db1669d9a0916d0951897b8255e",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-stamp-done",
+      "path": "/web/art/golden-business/family-stamp-done.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F02-states.png",
+      "crop": [
+        10,
+        125,
+        505,
+        425
+      ],
+      "alphaBoundsInCrop": [
+        14,
+        16,
+        482,
+        289
+      ],
+      "size": [
+        480,
+        285
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "84fe62c1b2b32c13309b739617afe5b1892c41c2d97de3df3ccb483dd4cf5026",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-stamp-active",
+      "path": "/web/art/golden-business/family-stamp-active.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F02-states.png",
+      "crop": [
+        535,
+        125,
+        1020,
+        425
+      ],
+      "alphaBoundsInCrop": [
+        13,
+        20,
+        468,
+        291
+      ],
+      "size": [
+        467,
+        283
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "40eff0b965b13bbaf07137db42e3f6723f69f7b5173131624a1d909c3e548cad",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-stamp-idle",
+      "path": "/web/art/golden-business/family-stamp-idle.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F02-states.png",
+      "crop": [
+        1050,
+        125,
+        1535,
+        425
+      ],
+      "alphaBoundsInCrop": [
+        9,
+        18,
+        462,
+        289
+      ],
+      "size": [
+        465,
+        283
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "d37d47d7d485a56a79a2a8d162132a4228970e7a16498aa939eb7137b9a82b55",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-unknown",
+      "path": "/web/art/golden-business/family-unknown.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F02-states.png",
+      "crop": [
+        45,
+        505,
+        475,
+        940
+      ],
+      "alphaBoundsInCrop": [
+        10,
+        17,
+        412,
+        420
+      ],
+      "size": [
+        414,
+        415
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "d1ce64ede3e19d7567bcae4fa3f426eda4a93816c8cd8e8e3b490395574b33dc",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-check",
+      "path": "/web/art/golden-business/family-check.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F02-states.png",
+      "crop": [
+        600,
+        555,
+        930,
+        900
+      ],
+      "alphaBoundsInCrop": [
+        22,
+        37,
+        310,
+        314
+      ],
+      "size": [
+        300,
+        289
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "3c7f43c35fe4bc48cd0f0efe06bb791f38164e767d8c99c59149441f3b4dcb23",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    },
+    {
+      "id": "business:family-envelope",
+      "path": "/web/art/golden-business/family-envelope.png",
+      "sheet": "docs/business-family-20260925/asset-sheets/F02-states.png",
+      "crop": [
+        1040,
+        550,
+        1510,
+        910
+      ],
+      "alphaBoundsInCrop": [
+        18,
+        26,
+        450,
+        329
+      ],
+      "size": [
+        444,
+        315
+      ],
+      "safeInset": 6,
+      "transparent": true,
+      "status": "golden-sample",
+      "sha256": "7c32122f4a27f6c31c1fb73b58ef7742c3dbbcf025893453551f6e0bb2a9d694",
+      "source": "built-in imagegen, category sheet alpha-preserving cut; no characters or UI text baked in"
+    }
+  ]
+}

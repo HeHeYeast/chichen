@@ -67,6 +67,9 @@ public final class HatchSchedulerTest {
         Notification n=c.notifications.active.values().iterator().next();
         check(Boolean.TRUE.equals(n.content.intent.extras.get("goKitchen")),"notification click opens kitchen");
         check(n.title.contains("孵化完成"),"notification title is useful");
+        check(n.visibility==Notification.VISIBILITY_PUBLIC,"harmless reminder text is readable on the lock screen");
+        check(c.notifications.channels.get(HatchScheduler.CHANNEL_ID).importance==NotificationManager.IMPORTANCE_HIGH,"reminder channel shows a heads-up banner");
+        check(c.notifications.channels.get(HatchScheduler.CHANNEL_ID).vibration,"reminder vibrates");
         save(c,s);HatchScheduler.restore(c);
         check(c.notifications.notifyCalls==1,"repeated save/restore cannot duplicate delivery");
         HatchScheduler.cancel(c);save(c,s);
@@ -75,6 +78,13 @@ public final class HatchSchedulerTest {
         check(c.notifications.notifyCalls==2,"different batch may notify");
         save(c,s);check(c.notifications.notifyCalls==2,"restoring prior notified save does not duplicate");
 
+
+        c=new Context();c.notifications.channels.put(HatchScheduler.LEGACY_CHANNEL_ID,new android.app.NotificationChannel(HatchScheduler.LEGACY_CHANNEL_ID,"old",NotificationManager.IMPORTANCE_DEFAULT));
+        s=state(future);save(c,s);
+        check(!c.notifications.channels.containsKey(HatchScheduler.LEGACY_CHANNEL_ID),"quiet v1 channel is removed after upgrade");
+        check(!status(c).optBoolean("backgroundAllowed",true)&&status(c).optString("message","").contains("允许后台"),"battery-optimised status points to the background switch");
+        c.power.ignoring=true;
+        check(status(c).optBoolean("backgroundAllowed",false)&&status(c).optString("message","").equals("已安排孵化完成提醒。预计 "+new java.text.SimpleDateFormat("M月d日 HH:mm",java.util.Locale.CHINA).format(new java.util.Date(future-7000))+" 提醒（按本批实际孵化时间）。"),"exempt app gets the plain scheduled message");
         c=new Context();s=state(future);save(c,s);initial=c.alarms.pending;
         HatchScheduler.testNotification(c);
         check(c.notifications.notifyCalls==1,"test notification posts");

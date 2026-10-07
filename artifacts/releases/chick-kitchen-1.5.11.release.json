@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "applicationId": "com.jibao.kitchen",
+  "versionName": "1.5.11",
+  "versionCode": 27,
+  "file": "chick-kitchen-1.5.11.apk",
+  "sha256": "e3759382f4e1bd00acef39a815f2ab250f9b0f21e336ec40de7ad8cb5defa1e6",
+  "bytes": 107276865,
+  "certificateSha256": "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+  "builtAt": "2026-10-04T15:09:49.0351248Z",
+  "minSdk": 26,
+  "targetSdk": 35,
+  "runtimeContentHash": "7feb3d7caeca4a94f9e3d5280af95cbdcbf29f6410827720a72acf640ef4678e",
+  "runtimeFiles": 1468,
+  "notes": "修复旧版 Android 网页内核缩放后画面与触摸坐标不一致，导致鸡宝点击、滑动收取及厨房按钮失效；改用跨内核一致的场景缩放，新增旧版与新版内核真实触摸回归。保留 1.5.10 的贴图补齐、应用身份、签名和现有存档，可直接覆盖更新。",
+  "installMode": "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

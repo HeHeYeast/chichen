@@ -8,10 +8,10 @@ export function execute({state,store,commandId=`cmd-${state.meta.commandSeq+1}`,
   const hash=payloadHash(command),last=state.meta.lastCommit;
   if(last?.commandId===commandId){if(last.payloadHash!==hash)throw new CommandError('操作编号已用于另一项操作。','COMMAND_REUSE');return {state,result:last.summary,replayed:true};}
   const seq=Number(/^cmd-(\d+)$/.exec(commandId)?.[1]);
-  if(!Number.isSafeInteger(seq)||seq<=state.meta.commandSeq)throw new CommandError('这项操作已经处理，请刷新进度。','COMMAND_PROCESSED');
+  if(!Number.isSafeInteger(seq)||seq<=state.meta.commandSeq)throw new CommandError('这项操作已经处理过，请重新打开游戏。','COMMAND_PROCESSED');
   if(expectedRevision!==state.meta.revision||seq!==state.meta.commandSeq+1)throw new CommandError('进度已变化，请重新确认。','REVISION_CONFLICT');
   if(!Number.isSafeInteger(now)||now<0)throw Error('时间无效');
-  store?.assertWritable?.(expectedRevision);
+  const checked=store?.assertWritable?.(expectedRevision)??null;
   const draft=structuredClone(state),at=Math.max(now,state.clock.logicalAt);
   advance(draft,at);
   const result=reduce(draft,{now:at,random:channelRandom(draft,commandId,'command'),commandId});
@@ -23,7 +23,7 @@ export function execute({state,store,commandId=`cmd-${state.meta.commandSeq+1}`,
   const candidate=normalizeSave(draft,now);
   // Only a confirmed-unwritten failure lands here without a code; the caller keeps
   // the previous state. Ambiguous results already carry ACK_UNKNOWN from the store.
-  try{store?.write(candidate,{expectedRevision});}
+  try{store?.write(candidate,{expectedRevision,checked,normalized:true});}
   catch(error){if(error.code)throw error;throw Object.assign(new CommandError(`进度暂未保存，本次操作未生效：${error.message}`,'SAVE_FAILED'),{cause:error});}
   return {state:candidate,result,replayed:false};
 }
@@ -32,7 +32,7 @@ export function execute({state,store,commandId=`cmd-${state.meta.commandSeq+1}`,
 // If unavailable, this build is read-only; localStorage check-then-set is no lock.
 export async function acquireWriter({locks=globalThis.navigator?.locks,key,native=false,isolated=false}={}){
   if(native||isolated)return {writable:true,release(){}};
-  if(!locks?.request)return {writable:false,reason:'此浏览器不支持安全的单窗口保存，请使用支持 Web Locks 的浏览器。',release(){}};
+  if(!locks?.request)return {writable:false,reason:'此浏览器无法安全保存进度，请换用新版 Chrome、Edge 或 Safari。',release(){}};
   let release;const held=new Promise(resolve=>release=resolve);
   return new Promise(resolve=>{locks.request('chick-kitchen/writer/'+key,{mode:'exclusive',ifAvailable:true},async lock=>{
     if(!lock){resolve({writable:false,reason:'另一个窗口正在游玩。请关闭该窗口后重新打开本页。',release(){}});return;}

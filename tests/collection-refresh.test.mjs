@@ -16,6 +16,7 @@ function createHarness(stock=10) {
       textContent:'',scrollTop:0,disabled:false,dataset:{},
       classList:{toggle(){}},
       querySelector:child=>node(selector+' '+child),
+      addEventListener(event,fn){this['on'+event]=fn;},
     });
     return nodes.get(selector);
   }
@@ -52,7 +53,7 @@ function createHarness(stock=10) {
 }
 
 test('refresh after an inventory loss clamps the harvest selection and income while retaining scroll',()=>{
-  const h=createHarness(10),initialCP=h.state.cp;
+  const h=createHarness(10),initialCP=h.state.cp;h.state.expansion.inventoryPolicy.keepOne=false;
   h.ui.openAlbum();
   h.panels.querySelectorAll('[data-harvest-max]')[0].onclick();
   assert.equal(h.panels.querySelector('[data-harvest-total]').textContent,'10');
@@ -72,7 +73,7 @@ test('refresh after an inventory loss clamps the harvest selection and income wh
 });
 
 test('a detail refresh reads a replaced state object and keeps the active view and scroll',()=>{
-  const h=createHarness(10);
+  const h=createHarness(10);h.state.expansion.inventoryPolicy.keepOne=false;
   h.ui.showCharacter(0,0);
   h.panels.querySelector('[data-species-max]').onclick();
   h.panels.querySelector('.species-sheet').scrollTop=61;
@@ -126,8 +127,8 @@ test('refresh retains the collection page after inventory changes',()=>{
 test('bulk shortcuts include the other egg tab and only choose quantities until confirmation',()=>{
   const h=createHarness(4);h.state.farm['1:0']=3;h.state.total['1:0']=3;h.state.farm['0:4']=1;h.state.total['0:4']=1;
   const before=structuredClone(h.state);h.ui.openAlbum();
-  h.panels.querySelector('[data-harvest-all]').onclick();assert.equal(h.panels.querySelector('[data-harvest-total]').textContent,'8');
-  h.panels.querySelector('[data-harvest-keep-one]').onclick();assert.equal(h.panels.querySelector('[data-harvest-total]').textContent,'5');
+  h.panels.querySelector('[data-harvest-all]').onclick();assert.equal(h.panels.querySelector('[data-harvest-total]').textContent,'5');
+  assert.equal(h.panels.querySelector('[data-harvest-keep-one]'),null,'no sell-down-to-one button any more');
   assert.deepEqual(h.state,before);
   h.state.farm['0:0']=3;h.ui.refresh();assert.equal(h.panels.querySelector('[data-harvest-total]').textContent,'4');
   h.panels.querySelector('[data-harvest-clear]').onclick();assert.equal(h.panels.querySelector('[data-harvest-sell]').disabled,true);

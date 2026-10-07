@@ -1,0 +1,280 @@
+/* Game UI kit: popups and their parts, built only from painted art (see docs/ui-visual-language.md).
+   Every text that sits on art goes in a [data-safe] box placed on that art's measured text area. */
+#game :is(#panels,#dialog-layer) .gd-layer{position:absolute;inset:0;z-index:80;font-family:'Chicken UI','Golden Display',sans-serif;color:#5d4026;-webkit-font-smoothing:antialiased}
+#game :is(#panels,#dialog-layer) .gd-scrim{position:absolute;inset:0;background:rgba(58,38,20,.45)}
+#game #dialog-layer .confirm.gd,#game :is(#panels,#dialog-layer) .gd-dialog{position:absolute;left:16px;right:16px;border-style:solid;border-width:20px;border-image:url(/web/art/golden-business/family-receipt.png) 64 fill / 20px stretch;padding:34px 8px 6px;display:flex;flex-direction:column;align-items:center;gap:12px}
+/* Title board (plank-board.png 384x172; board body is the top 85.5%, its light face spans x 12-88%, y 12-74%). */
+#game :is(#panels,#dialog-layer) .gd-title{position:absolute;left:50%;top:-50px;width:176px;height:79px;transform:translateX(-50%);background:url(/web/art/ui-kit/plank-board.png) 0 0/100% 100% no-repeat}
+#game :is(#panels,#dialog-layer) .gd-title [data-safe]{position:absolute;left:12%;right:12%;top:12%;height:62%;display:flex;align-items:center;justify-content:center}
+#game :is(#panels,#dialog-layer) .gd-title b{font-family:'Golden Display';font-weight:400;font-size:25px;line-height:1;color:#fff8dd;letter-spacing:2px;margin-right:-2px;white-space:nowrap;text-shadow:0 2px 0 #7a4f27,0 0 3px #7a4f27}
+#game :is(#panels,#dialog-layer) .gd-close{position:absolute;right:-26px;top:-26px;width:40px;height:40px;background:url(/web/art/golden-collection/v2-round-button.png) center/100% 100% no-repeat;display:grid;place-items:center;font-size:23px;font-weight:900;line-height:1;color:#5d4026}
+#game :is(#panels,#dialog-layer) .gd-row{display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
+/* Pills on v2-wallet.png: the border-image edges hold the outline; the content box is the safe area. */
+#game :is(#panels,#dialog-layer) .gd-chip{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:42px;box-sizing:border-box;border-style:solid;border-width:10px 16px;border-image:url(/web/art/golden-business/v2-wallet.png) 70 96 fill / 10px 16px stretch;padding:0 2px;font-size:17px;font-weight:900;line-height:1;white-space:nowrap}
+#game :is(#panels,#dialog-layer) .gd-chip img{width:22px;height:22px;flex:none;object-fit:contain}
+#game :is(#panels,#dialog-layer) .gd-chip.hot{color:#b4492b}
+#game :is(#panels,#dialog-layer) .gd-chip.soft{font-size:15px;height:38px}
+#game :is(#panels,#dialog-layer) .gd-chip.mini{font-size:14px;height:34px;border-width:8px 14px;border-image-width:8px 14px}
+#game :is(#panels,#dialog-layer) .gd-chip:is(.soft,.mini) img{width:18px;height:18px}
+#game :is(#panels,#dialog-layer) .gd-thumb.small{width:106px;height:78px}
+#game :is(#panels,#dialog-layer) .gd-thumb.small img{padding:16px 6px 4px}
+#game :is(#panels,#dialog-layer) .gd-label{font-family:'Golden Display';font-size:18px;line-height:1.2;color:#6b4a2b;display:flex;align-items:center;gap:10px;width:100%;justify-content:center}
+#game :is(#panels,#dialog-layer) .gd-label::before,#game :is(#panels,#dialog-layer) .gd-label::after{content:'';flex:1;max-width:64px;height:6px;background:url(/web/art/golden-business/v2-divider.png) center/100% 100% no-repeat}
+#game :is(#panels,#dialog-layer) .gd-actions{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;margin-top:2px}
+/* Buttons: v2-action.png (nails at both ends; safe x 12-88%), button.png (safe x 10-90%). */
+#game :is(#panels,#dialog-layer) .gd-btn{position:relative;width:150px;height:58px;flex:none;background:url(/web/art/golden-business/v2-action.png) center/100% 100% no-repeat}
+#game :is(#panels,#dialog-layer) .gd-btn [data-safe]{position:absolute;left:12%;right:12%;top:12%;bottom:16%;padding-bottom:3px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;line-height:1;color:#5d4026}
+#game :is(#panels,#dialog-layer) .gd-btn.green{background-image:url(/web/art/golden-journey/button.png)}
+#game :is(#panels,#dialog-layer) .gd-btn.green [data-safe]{left:10%;right:10%;color:#33502a}
+#game :is(#panels,#dialog-layer) .gd-btn.off{filter:grayscale(.85) opacity(.65)}
+#game :is(#panels,#dialog-layer) .gd-btn2{display:inline-flex;align-items:center;justify-content:center;height:46px;min-width:108px;flex:none;box-sizing:border-box;border-style:solid;border-width:10px 18px;border-image:url(/web/art/golden-business/v2-wallet.png) 70 96 fill / 10px 18px stretch;padding:0 4px;font-size:17px;font-weight:900;line-height:1;color:#6b4a2b}
+/* Slots follow the approved business-front slot style. */
+#game :is(#panels,#dialog-layer) .gd-slot{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;width:64px;height:78px;box-sizing:border-box;padding:4px 2px 5px;border-radius:12px;border:2.5px solid #9fb87a;background:#eef5dc;box-shadow:0 2px 0 #c9d8ae}
+#game :is(#panels,#dialog-layer) .gd-slot svg,#game :is(#panels,#dialog-layer) .gd-slot img{width:46px;height:46px}
+#game :is(#panels,#dialog-layer) .gd-slot b{font-size:13px;font-weight:900;line-height:1.1;white-space:nowrap}
+#game :is(#panels,#dialog-layer) .gd-slot.need{border-style:dashed;border-color:#c9ad7d;background:#fbf3df;box-shadow:none;color:#a48a62}
+#game :is(#panels,#dialog-layer) .gd-slot.q{justify-content:center;font-family:'Golden Display';font-size:30px;color:#b49a74}
+/* Equal tiles: a fixed visual box and a label on one baseline. */
+#game :is(#panels,#dialog-layer) .gd-tiles{display:flex;justify-content:center;align-items:flex-start;gap:8px;width:100%}
+#game :is(#panels,#dialog-layer) .gd-tile{display:flex;flex-direction:column;align-items:center;gap:4px;width:86px}
+#game :is(#panels,#dialog-layer) .gd-tile [data-visual]{display:flex;align-items:center;justify-content:center;width:100%;height:78px}
+#game :is(#panels,#dialog-layer) .gd-tile [data-visual] img{max-width:100%;max-height:100%}
+#game :is(#panels,#dialog-layer) .gd-tile [data-visual] svg{width:100%;height:100%}
+#game :is(#panels,#dialog-layer) .gd-tile>b{font-size:15px;font-weight:900;line-height:1.2;color:#6b4a2b;white-space:nowrap}
+#game :is(#panels,#dialog-layer) .gd-tile.wide{width:110px}
+#game :is(#panels,#dialog-layer) .gd-dash{display:block;width:34px;height:34px;border-radius:50%;border:2.5px dashed #c9ad7d;background:#fbf3df}
+#game :is(#panels,#dialog-layer) .gd-dashes{display:flex;gap:8px}
+/* painted groove (bar-track) and fill (bar-green); ends keep their shape, only the straight middle stretches */
+#game :is(#panels,#dialog-layer) .gd-bar{position:relative;width:88%;height:22px;flex:none}
+#game :is(#panels,#dialog-layer) .gd-bar::before{content:'';position:absolute;inset:0;box-sizing:border-box;border-style:solid;border-width:11px;border-image:url(/web/art/golden-ui/bar-track.png) 45 fill / 11px stretch;pointer-events:none}
+#game :is(#panels,#dialog-layer) .gd-bar i{position:absolute;top:4px;bottom:4px;left:3px;min-width:14px;box-sizing:border-box;border-style:solid;border-width:7px;border-image:url(/web/art/golden-ui/bar-green.png) 34 fill / 7px stretch}
+#game :is(#panels,#dialog-layer) .gd-bar i[data-zero]{display:none}
+#game :is(#panels,#dialog-layer) .gd-bar.hot i{border-image-source:url(/web/art/golden-ui/bar-red.png)}
+#game :is(#panels,#dialog-layer) .gd-bar.warm i{border-image-source:url(/web/art/golden-ui/bar-yellow.png)}
+#game :is(#panels,#dialog-layer) .gd-big{font-family:'Chicken UI';font-weight:900;font-size:42px;line-height:1;color:#5d4026;white-space:nowrap;letter-spacing:-.5px}
+#game :is(#panels,#dialog-layer) .gd-big small{font-family:'Chicken UI';font-size:16px;font-weight:900;color:#8a6a45;margin-left:4px}
+#game :is(#panels,#dialog-layer) .gd-stat{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+#game :is(#panels,#dialog-layer) .gd-arrow{width:34px;height:26px;flex:none;object-fit:contain}
+#game :is(#panels,#dialog-layer) .gd-note{display:inline-flex;align-items:center;padding:8px 14px;background:#fbefb0;border:2px solid #d9c36c;border-radius:6px;transform:rotate(-1.2deg);font-size:15px;font-weight:900;line-height:1.2;color:#6b5a1f;box-shadow:0 2px 0 #e6d68f}
+/* picture in a painted tile frame (GPT work cell); the label hangs on its top-left corner */
+#game :is(#panels,#dialog-layer) .gd-thumb{position:relative;width:128px;height:94px;flex:none;box-sizing:border-box;border:10px solid transparent;border-image:url(/web/art/golden-ui/cell.png) 44 fill / 10px stretch;border-radius:0;overflow:hidden;background:none;box-shadow:none}
+#game :is(#panels,#dialog-layer) .gd-thumb img{width:100%;height:100%;object-fit:contain;padding:12px 0 0;box-sizing:border-box}
+#game :is(#panels,#dialog-layer) .gd-thumb.photo img{object-fit:cover;padding:0}
+#game :is(#panels,#dialog-layer) .gd-thumb em{position:absolute;left:2px;top:2px;font-style:normal;font-size:13px;font-weight:900;line-height:1.3;color:#fff8dd;background:#7a4f27;border-radius:999px;padding:0 8px}
+#game :is(#panels,#dialog-layer) .gd-tools{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;width:100%}
+#game :is(#panels,#dialog-layer) .gd-tool{display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 0 6px;border-radius:10px;border:2px solid #d8c39a;background:#fbf3df}
+#game :is(#panels,#dialog-layer) .gd-tool svg,#game :is(#panels,#dialog-layer) .gd-tool img{width:34px;height:32px}
+#game :is(#panels,#dialog-layer) .gd-tool b{font-size:12px;font-weight:900;line-height:1.1;color:#8a6a45;white-space:nowrap}
+#game :is(#panels,#dialog-layer) .gd-tool.done{border-color:#9fb87a;background:#eef5dc}
+#game :is(#panels,#dialog-layer) .gd-tool.done b{color:#4f7a3a}
+#game :is(#panels,#dialog-layer) .gd-place{width:236px;height:128px;display:flex;justify-content:center}
+#game :is(#panels,#dialog-layer) .gd-place>img{height:100%;object-fit:contain}
+/* Name plate: precision-exact-nameplate.png 380x146, safe x 8-92%, y 18-80%. */
+#game :is(#panels,#dialog-layer) .gd-plate{position:relative;width:236px;height:58px;margin-top:-14px;background:url(/web/art/golden-journey/precision-exact-nameplate.png) center/100% 100% no-repeat}
+#game :is(#panels,#dialog-layer) .gd-plate [data-safe]{position:absolute;left:8%;right:8%;top:18%;bottom:20%;display:flex;align-items:center;justify-content:center;font-family:'Golden Display';font-size:19px;line-height:1;color:#5d4026;white-space:nowrap}
+#game :is(#panels,#dialog-layer) .gd-party{display:flex;gap:8px;justify-content:center}
+#game :is(#panels,#dialog-layer) .gd-member{position:relative;width:78px;height:74px;display:flex;justify-content:center;align-items:flex-end}
+#game :is(#panels,#dialog-layer) .gd-member::before{content:'';position:absolute;left:4px;right:4px;bottom:0;height:30px;background:url(/web/art/golden-journey/mat.png) center/100% 100% no-repeat}
+#game :is(#panels,#dialog-layer) .gd-member svg,#game :is(#panels,#dialog-layer) .gd-member img{position:relative;width:58px;height:58px;margin-bottom:8px}
+#game :is(#panels,#dialog-layer) .gd-sheet{position:absolute;left:0;right:0;bottom:0;padding:20px 20px 16px;border-radius:26px 26px 0 0;border:3px solid #4f2f12;border-bottom:0;background:#fff8e6;box-shadow:0 -4px 0 #e8d0a8,inset 0 0 0 6px #fff8e6,inset 0 0 0 8px #ead8b2;display:flex;flex-direction:column;align-items:center;gap:14px}
+#game :is(#panels,#dialog-layer) .gd-head{display:flex;align-items:center;gap:14px;width:100%}
+#game :is(#panels,#dialog-layer) .gd-face{width:80px;height:80px;flex:none;display:grid;place-items:center;background:url(/web/art/golden-collection/v2-round-button.png) center/100% 100% no-repeat}
+#game :is(#panels,#dialog-layer) .gd-face svg,#game :is(#panels,#dialog-layer) .gd-face img{width:52px;height:52px;margin-top:-2px}
+#game :is(#panels,#dialog-layer) .gd-head h3{margin:0;font-family:'Golden Display';font-weight:400;font-size:26px;line-height:1.1}
+#game :is(#panels,#dialog-layer) .gd-head .gd-row{justify-content:flex-start;gap:8px;margin-top:6px}
+#game :is(#panels,#dialog-layer) .gd-qty{display:flex;align-items:center;justify-content:center;gap:18px}
+#game :is(#panels,#dialog-layer) .gd-round{display:grid;place-items:center;width:46px;height:46px;flex:none;border-radius:50%;border:2.5px solid #4f2f12;background:#f0b868;box-shadow:inset 0 -4px 0 #d09850;font-size:26px;font-weight:900;line-height:1;color:#fff8dd}
+#game :is(#panels,#dialog-layer) .gd-slider{position:relative;width:100%;height:30px;flex:none}
+#game :is(#panels,#dialog-layer) .gd-slider .gd-bar{width:100%;height:16px;position:absolute;top:7px;left:0}
+#game :is(#panels,#dialog-layer) .gd-bead{position:absolute;top:0;width:30px;height:30px;margin-left:-15px;border-radius:50%;border:2.5px solid #4f2f12;background:#f0b868;box-shadow:inset 0 -4px 0 #d09850,0 2px 0 #00000022;box-sizing:border-box}
+#game :is(#panels,#dialog-layer) .gd-coins{display:flex;justify-content:center;gap:18px}
+#game :is(#panels,#dialog-layer) .gd-coinwrap{display:flex;flex-direction:column;align-items:center;gap:4px}
+#game :is(#panels,#dialog-layer) .gd-coinwrap>b{font-size:14px;font-weight:900;line-height:1.2;color:#8a6a45}
+#game :is(#panels,#dialog-layer) .gd-coin{display:grid;place-items:center;width:58px;height:58px;box-sizing:border-box;border-radius:50%;border:2.5px solid #4f2f12;background:#f6d79a;box-shadow:inset 0 0 0 5px #f0c47a,inset 0 -5px 0 #d6a058;font-size:19px;font-weight:900;line-height:1;color:#5d4026}
+#game :is(#panels,#dialog-layer) .gd-coinwrap.on .gd-coin{box-shadow:0 0 0 4px #a0b880,inset 0 0 0 5px #f0c47a,inset 0 -5px 0 #d6a058}
+#game :is(#panels,#dialog-layer) .gd-coinwrap.on>b{color:#4f7a3a}
+
+/* Reset the global dialog/button styles for kit pieces. */
+#game #dialog-layer .confirm.gd{width:min(327px,calc(100% - 32px));left:50%;right:auto;transform:translateX(-50%);top:var(--gd-top,120px);min-height:0;max-height:none;overflow:visible;border-radius:0;background:none;box-shadow:none;animation:none;color:#5d4026;font-family:'Chicken UI','Golden Display',sans-serif;box-sizing:border-box}
+#game :is(#panels,#dialog-layer) .gd button{appearance:none;-webkit-appearance:none;font:inherit;margin:0;min-height:0;cursor:pointer;transition:transform 100ms ease-out}
+#game :is(#panels,#dialog-layer) .gd button:active:not(:disabled){transform:scale(.96)}
+#game :is(#panels,#dialog-layer) .gd .gd-btn:active:not(:disabled){transform:scale(.96)}
+#game :is(#panels,#dialog-layer) .gd button:focus-visible{outline:3px solid #567447;outline-offset:2px}
+#game :is(#panels,#dialog-layer) .gd-btn,#game :is(#panels,#dialog-layer) .gd-btn2,#game :is(#panels,#dialog-layer) .gd-close,#game :is(#panels,#dialog-layer) .gd-coinwrap,#game :is(#panels,#dialog-layer) .gd-slot{background-color:transparent;padding:0}
+#game :is(#panels,#dialog-layer) .gd-btn:disabled{filter:grayscale(.85) opacity(.65);cursor:default}
+#game :is(#panels,#dialog-layer) .gd-btn2:disabled{opacity:.55;cursor:default}
+#game :is(#panels,#dialog-layer) .gd-scroll-row{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;padding:2px 2px 4px;max-width:100%;justify-content:safe center}
+#game :is(#panels,#dialog-layer) .gd-scroll-row::-webkit-scrollbar{display:none}
+#game :is(#panels,#dialog-layer) .gd-egg.duck{filter:hue-rotate(95deg) saturate(.55) brightness(1.04)}
+#game :is(#panels,#dialog-layer) .gd-alert{display:inline-flex;align-items:center;padding:8px 14px;background:#fbe1d6;border:2px solid #d98a6a;border-radius:6px;transform:rotate(-1deg);font-size:15px;font-weight:900;line-height:1.3;color:#9a3b22;box-shadow:0 2px 0 #eab9a5;text-align:center}
+@media (prefers-reduced-motion:reduce){#game :is(#panels,#dialog-layer) .gd button{transition:none}}
+/* Popup body scrolls only when the screen is too short; the title board and close button stay outside it. */
+#game #dialog-layer .confirm.gd{max-height:var(--gd-max,none)}
+#game :is(#panels,#dialog-layer) .gd-body{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:0 2px;box-sizing:border-box}
+#game :is(#panels,#dialog-layer) .gd-body::-webkit-scrollbar{display:none}
+#game :is(#panels,#dialog-layer) .gd-actions{flex:none}
+#game :is(#panels,#dialog-layer) .gd-egg{height:56px;width:auto}
+@media (max-height:600px){#game :is(#panels,#dialog-layer) .gd .gd-optional{display:none}#game #dialog-layer .confirm.gd,#game :is(#panels,#dialog-layer) .gd-body{gap:8px}}
+#game :is(#panels,#dialog-layer) .gd-meter{display:flex;justify-content:center;width:100%}
+#game :is(#panels,#dialog-layer) .gd [hidden]{display:none!important}
+/* Kit buttons draw their own frames: no browser borders, no wrapping of the action row, and the popup itself takes focus. */
+#game :is(#panels,#dialog-layer) .gd .gd-btn,#game :is(#panels,#dialog-layer) .gd .gd-close{border:0;box-shadow:none}
+#game #dialog-layer .confirm.gd .gd-actions{flex-wrap:nowrap}
+#game :is(#panels,#dialog-layer) .gd .gd-btn2{min-width:100px}
+#game #dialog-layer .confirm.gd:focus{outline:none}
+#game #dialog-layer .confirm.gd{pointer-events:auto}
+@media (max-height:600px){#game #dialog-layer .confirm.gd,#game :is(#panels,#dialog-layer) .gd-body{gap:6px}#game :is(#panels,#dialog-layer) .gd .gd-chip{height:36px}#game :is(#panels,#dialog-layer) .gd .gd-btn{height:52px}#game :is(#panels,#dialog-layer) .gd .gd-btn2{height:42px}}
+#game :is(#panels,#dialog-layer) .gd .gd-gains{flex-wrap:wrap;gap:6px}
+#game :is(#panels,#dialog-layer) .gd [data-clean-price]{gap:12px}
+#game :is(#panels,#dialog-layer) .gd .gd-chip.mini img{width:20px;height:20px}
+/* Cook confirm parts. */
+#game :is(#panels,#dialog-layer) .gd-season{display:flex;gap:4px;align-items:center;justify-content:center}
+#game :is(#panels,#dialog-layer) .gd-season-item{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#fbf3df;border:2.5px solid #c9ad7d}
+#game :is(#panels,#dialog-layer) .gd-season-item svg,#game :is(#panels,#dialog-layer) .gd-season-item img{width:32px;height:32px}
+#game :is(#panels,#dialog-layer) .gd .gd-slot{position:relative;flex:none;border-width:2.5px;border-style:solid}
+#game :is(#panels,#dialog-layer) .gd .gd-slot.need{border-style:dashed}
+#game :is(#panels,#dialog-layer) .gd .gd-slot .gd-tag{position:absolute;top:-8px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;line-height:1.5}
+#game :is(#panels,#dialog-layer) .gd .gd-q{display:grid;place-items:center;width:46px;height:46px;font-family:'Golden Display';font-size:30px;color:#b49a74}
+#game :is(#panels,#dialog-layer) .gd .unknown-silhouette svg,#game :is(#panels,#dialog-layer) .gd .unknown-silhouette img{filter:brightness(0) opacity(.35)}
+#game :is(#panels,#dialog-layer) .gd .candidate-list{padding-top:10px;justify-content:safe center}
+#game :is(#panels,#dialog-layer) .gd .gd-wrap{flex-wrap:wrap;gap:8px}
+#game :is(#panels,#dialog-layer) .gd .gd-btn2.mini{height:38px;min-width:0;font-size:14px;border-width:8px 14px;border-image-width:8px 14px}
+#game :is(#panels,#dialog-layer) .gd .gd-note.cook-mode{display:flex;flex-direction:column;align-items:center;gap:2px;transform:rotate(-.8deg);max-width:100%;box-sizing:border-box;text-align:center}
+#game :is(#panels,#dialog-layer) .gd .gd-note.cook-mode b{font-size:15px}
+#game :is(#panels,#dialog-layer) .gd .gd-note.cook-mode span{font-size:13px;font-weight:800;line-height:1.35}
+#game :is(#panels,#dialog-layer) .gd .gd-toggle{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px 0 6px;border-radius:999px;border:2.5px solid #c9ad7d;background:#fbf3df;font-size:14px;font-weight:900;color:#8a6a45}
+#game :is(#panels,#dialog-layer) .gd .gd-toggle i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:2.5px solid #c9ad7d;background:#fff;font-style:normal;font-size:13px}
+#game :is(#panels,#dialog-layer) .gd .gd-toggle[aria-pressed="true"]{border-color:#8fb262;background:#eef5dc;color:#4f7a3a}
+#game :is(#panels,#dialog-layer) .gd .gd-toggle[aria-pressed="true"] i{border-color:#8fb262;background:#a0b880;color:#fff}
+#game :is(#panels,#dialog-layer) .gd .gd-toggle:disabled{opacity:.5}
+#game :is(#panels,#dialog-layer) .gd .gd-more{width:100%;display:flex;flex-direction:column;align-items:center;gap:8px}
+#game :is(#panels,#dialog-layer) .gd .gd-more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:999px;border:2px dashed #c9ad7d;font-size:14px;font-weight:900;color:#8a6a45}
+#game :is(#panels,#dialog-layer) .gd .gd-more>summary::-webkit-details-marker{display:none}
+#game :is(#panels,#dialog-layer) .gd .gd-more>summary::after{content:'›';font-size:18px;transform:rotate(90deg)}
+#game :is(#panels,#dialog-layer) .gd .gd-more[open]>summary::after{transform:rotate(-90deg)}
+#game :is(#panels,#dialog-layer) .gd .gd-more p{margin:0;font-size:13px;font-weight:700;line-height:1.5;color:#7a6047;text-align:center;max-width:100%}
+#game :is(#panels,#dialog-layer) .gd .gd-pick{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:900;color:#6b4a2b}
+#game :is(#panels,#dialog-layer) .gd .gd-pick select{height:34px;border-radius:10px;border:2px solid #c9ad7d;background:#fff8e6;font:inherit;font-size:14px;color:#5d4026}
+/* Rows inside the popup body keep their natural height (a scrolling row must not be squeezed and cut). */
+#game :is(#panels,#dialog-layer) .gd-body>*{flex:none}
+#game :is(#panels,#dialog-layer) .gd .candidate-list{padding-bottom:6px}
+/* Tiles share the row on narrow phones instead of overflowing it. */
+#game :is(#panels,#dialog-layer) .gd .gd-tiles{gap:6px}
+#game :is(#panels,#dialog-layer) .gd .gd-tile{flex:1 1 0;min-width:0;width:auto;max-width:96px}
+#game :is(#panels,#dialog-layer) .gd .gd-tile.wide{flex-grow:1.35;max-width:124px}
+#game :is(#panels,#dialog-layer) .gd .gd-tile [data-visual]{overflow:visible}
+#game :is(#panels,#dialog-layer) .gd .gd-dashes{flex-wrap:wrap;justify-content:center;gap:4px;max-width:100%}
+#game :is(#panels,#dialog-layer) .gd .gd-dash{width:28px;height:28px}
+#game :is(#panels,#dialog-layer) .gd .gd-season{flex-wrap:wrap;max-width:100%}
+#game :is(#panels,#dialog-layer) .gd .gd-dashes{gap:6px}
+/* Narrow phones (≤340 px): smaller planks, pills and thumbnails so every row stays inside the paper. */
+@media (max-width:340px){
+  #game #dialog-layer .confirm.gd{width:calc(100% - 24px);padding-left:4px;padding-right:4px}
+  #game :is(#panels,#dialog-layer) .gd .gd-btn{width:126px;height:48px}
+  #game :is(#panels,#dialog-layer) .gd .gd-btn [data-safe]{font-size:20px}
+  #game :is(#panels,#dialog-layer) .gd .gd-btn2{min-width:84px;height:42px;font-size:15px;border-width:9px 14px;border-image-width:9px 14px}
+  #game :is(#panels,#dialog-layer) .gd .gd-actions{gap:10px}
+  #game :is(#panels,#dialog-layer) .gd .gd-chip{font-size:15px;height:38px;border-width:9px 12px;border-image-width:9px 12px;gap:4px}
+  #game :is(#panels,#dialog-layer) .gd .gd-chip.soft,#game :is(#panels,#dialog-layer) .gd .gd-chip.mini{font-size:13px;height:34px}
+  #game :is(#panels,#dialog-layer) .gd .gd-chip img{width:20px;height:20px}
+  #game :is(#panels,#dialog-layer) .gd .gd-chip:is(.soft,.mini) img{width:16px;height:16px}
+  #game :is(#panels,#dialog-layer) .gd .gd-row{gap:8px}
+  #game :is(#panels,#dialog-layer) .gd .gd-thumb.small{width:88px;height:66px}
+  #game :is(#panels,#dialog-layer) .gd .gd-thumb{width:108px;height:80px}
+  #game :is(#panels,#dialog-layer) .gd .gd-tool b{font-size:10px}
+  #game :is(#panels,#dialog-layer) .gd .gd-tools{gap:5px}
+  #game :is(#panels,#dialog-layer) .gd .gd-big{font-size:36px}
+}
+/* Short screens: tighter tiles and thumbnails; a body that still scrolls fades at the bottom so the cut reads as "more below". */
+@media (max-height:600px){
+  #game .gd .gd-tile [data-visual]{height:60px}
+  #game :is(#panels,#dialog-layer) .gd .gd-egg{height:44px}
+  #game :is(#panels,#dialog-layer) .gd .gd-slot{height:70px}
+  #game :is(#panels,#dialog-layer) .gd .gd-slot svg,#game :is(#panels,#dialog-layer) .gd .gd-slot img{width:40px;height:40px}
+  #game :is(#panels,#dialog-layer) .gd .gd-thumb.small{height:58px}
+  #game :is(#panels,#dialog-layer) .gd .gd-thumb.small img{padding:12px 6px 3px}
+  #game :is(#panels,#dialog-layer) .gd .gd-label{font-size:15px;line-height:1}
+  #game :is(#panels,#dialog-layer) .gd .gd-tool{padding:3px 0 4px}
+  #game :is(#panels,#dialog-layer) .gd .gd-tool svg,#game :is(#panels,#dialog-layer) .gd .gd-tool img{height:26px}
+}
+#game .gd .gd-body.gd-scrolls{-webkit-mask-image:linear-gradient(#000 calc(100% - 22px),transparent);mask-image:linear-gradient(#000 calc(100% - 22px),transparent);padding-bottom:18px}
+/* Journey departure parts. */
+#game :is(#panels,#dialog-layer) .gd .gd-place{width:236px;max-width:100%;height:120px;display:flex;justify-content:center;align-items:center}
+#game :is(#panels,#dialog-layer) .gd .gd-place svg{height:100%;width:auto;max-width:100%}
+#game :is(#panels,#dialog-layer) .gd .gd-party{flex-wrap:nowrap}
+#game :is(#panels,#dialog-layer) .gd .gd-member svg{position:relative;width:58px;height:58px;margin-bottom:8px}
+@media (max-height:600px){#game :is(#panels,#dialog-layer) .gd .gd-place{height:84px}}
+#game :is(#panels,#dialog-layer) .gd .gd-member{flex:1 1 0;min-width:0;max-width:78px;width:auto}
+/* Basket sheet (inside the business sheet frame). */
+#game :is(#panels,#dialog-layer) .gd.gd-basket{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;padding:4px 2px 2px;box-sizing:border-box;color:#5d4026;font-family:'Chicken UI','Golden Display',sans-serif}
+#game :is(#panels,#dialog-layer) .gd.gd-basket .gd-big{display:inline-flex;align-items:baseline}
+#game :is(#panels,#dialog-layer) .gd .gd-coinwrap{display:flex;flex-direction:column;align-items:center;gap:4px;border:0}
+#game :is(#panels,#dialog-layer) .gd .gd-slider{display:block;width:100%;height:32px;flex:none}
+#game :is(#panels,#dialog-layer) .gd .gd-slider input{-webkit-appearance:none;appearance:none;display:block;width:100%;height:32px;margin:0;background:transparent;cursor:pointer}
+#game :is(#panels,#dialog-layer) .gd .gd-slider input::-webkit-slider-runnable-track{height:16px;border:2.5px solid #4f2f12;border-radius:999px;background:linear-gradient(90deg,#a0b880 var(--fill,0%),#e8d0a8 var(--fill,0%));box-shadow:inset 0 3px 0 #0000000f}
+#game :is(#panels,#dialog-layer) .gd .gd-slider input::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;margin-top:-10.5px;border:0;border-radius:50%;background:url(/web/art/golden-ui/bead.png) center/contain no-repeat;box-shadow:none}
+#game :is(#panels,#dialog-layer) .gd .gd-slider input::-moz-range-track{height:16px;border:2.5px solid #4f2f12;border-radius:999px;background:#e8d0a8}
+#game :is(#panels,#dialog-layer) .gd .gd-slider input::-moz-range-progress{height:16px;border-radius:999px;background:#a0b880}
+#game :is(#panels,#dialog-layer) .gd .gd-slider input::-moz-range-thumb{width:26px;height:26px;border-radius:50%;border:2.5px solid #4f2f12;background:#f0b868}
+#game :is(#panels,#dialog-layer) .gd .gd-slider input:focus-visible{outline:3px solid #567447;outline-offset:2px}
+#game :is(#panels,#dialog-layer) .gd .gd-round:disabled{opacity:.45}
+#game :is(#panels,#dialog-layer) .gd.gd-basket .bs-swap-grid{display:flex;gap:8px;width:100%}
+#game :is(#panels,#dialog-layer) .gd .gd-coinwrap{background:none;box-shadow:none;border-radius:0;padding:0;min-width:0;min-height:0}
+@media (max-height:600px){
+  #game :is(#panels,#dialog-layer) .gd.gd-basket{gap:8px;padding-top:0}
+  #game :is(#panels,#dialog-layer) .gd.gd-basket .gd-face{width:60px;height:60px}
+  #game :is(#panels,#dialog-layer) .gd.gd-basket .gd-face svg,#game :is(#panels,#dialog-layer) .gd.gd-basket .gd-face img{width:38px;height:38px}
+  #game :is(#panels,#dialog-layer) .gd.gd-basket .gd-head h3{font-size:22px}
+  #game :is(#panels,#dialog-layer) .gd.gd-basket .gd-big{font-size:34px}
+  #game :is(#panels,#dialog-layer) .gd.gd-basket .gd-round{width:40px;height:40px;font-size:22px}
+  #game :is(#panels,#dialog-layer) .gd.gd-basket .gd-coin{width:46px;height:46px;font-size:16px}
+  #game :is(#panels,#dialog-layer) .gd.gd-basket .gd-label{display:none}
+  #game :is(#panels,#dialog-layer) .gd.gd-basket .gd-btn{height:48px;width:126px}
+}
+
+/* Round wooden ± buttons (kept after the resets so nothing strips their fill). */
+#game :is(#panels,#dialog-layer) .gd .gd-round{display:grid;place-items:center;width:46px;height:46px;min-height:0;padding:0;flex:none;border-radius:50%;border:2.5px solid #4f2f12;background:#f0b868;box-shadow:inset 0 -4px 0 #d09850;font-family:'Chicken UI',sans-serif;font-size:26px;font-weight:900;line-height:1;color:#fff8dd}
+@media (max-height:600px){#game :is(#panels,#dialog-layer) .gd.gd-basket .gd-round{width:40px;height:40px;font-size:22px}}
+#game :is(#panels,#dialog-layer) .gd .gd-round{color:#5d4026}
+#game :is(#panels,#dialog-layer) .gd .gd-toggle[aria-pressed="true"] i{background:#6f9150;border-color:#6f9150}
+
+/* Longer plank labels shrink to stay on the plank face. */
+#game :is(#panels,#dialog-layer) .gd-btn.long [data-safe]{font-size:19px}
+#game :is(#panels,#dialog-layer) .gd-btn.xlong [data-safe]{font-size:16px}
+/* Plain confirm and alert messages. */
+#game #dialog-layer .msg-dialog .gd-msg{margin:0;padding:0 10px;font-size:17px;font-weight:800;line-height:1.6;text-align:center;white-space:pre-line;color:#5d4026}
+#game #dialog-layer .msg-dialog .gd-msg::first-line{font-size:19px;font-weight:900}
+#game #dialog-layer .gd .skill-receipt{width:100%;box-sizing:border-box;margin:0;border:0;border-radius:0;background:none;padding:8px 6px 0;position:relative}
+#game #dialog-layer .gd .skill-receipt::before{content:'';position:absolute;left:10%;right:10%;top:0;height:5px;background:url(/web/art/golden-business/v2-divider.png) center/100% 100% no-repeat}
+
+/* 打扫厨房 · the counter in three painted states, the current one lifted */
+#game #dialog-layer .cleaning-dialog .cl-states{display:flex;justify-content:center;align-items:center;gap:10px;width:100%}
+#game #dialog-layer .cleaning-dialog .cl-state{display:flex;flex-direction:column;align-items:center;gap:2px;width:62px;opacity:.5;filter:saturate(.6)}
+#game #dialog-layer .cleaning-dialog .cl-state img{width:100%;aspect-ratio:337/332;object-fit:contain}
+#game #dialog-layer .cleaning-dialog .cl-state b{font-size:13px;font-weight:900;line-height:1.2;color:#8a6a45}
+#game #dialog-layer .cleaning-dialog .cl-state.on{width:84px;opacity:1;filter:none}
+#game #dialog-layer .cleaning-dialog .cl-state.on img{filter:drop-shadow(0 0 3px #f0bd4f) drop-shadow(0 0 2px #f0bd4f)}
+#game #dialog-layer .cleaning-dialog .cl-state.on b{font-size:15px;color:#553922}
+#game #dialog-layer .cleaning-dialog .cl-state[data-clean-step=dirty].on b{color:#b4502f}
+#game #dialog-layer .cleaning-dialog .cl-now{display:flex;align-items:center;gap:10px;width:100%}
+#game #dialog-layer .cleaning-dialog .cl-now .gd-big{flex:none}
+#game #dialog-layer .cleaning-dialog .cl-now-side{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+#game #dialog-layer .cleaning-dialog .cl-now .gd-meter{width:100%}
+#game #dialog-layer .cleaning-dialog .cl-now .gd-bar{width:100%}
+@media (max-width:340px){#game #dialog-layer .cleaning-dialog .cl-state{width:54px}#game #dialog-layer .cleaning-dialog .cl-state.on{width:72px}}
+
+/* 修复围栏 · the fence now and repaired (painted), joined by the painted arrow */
+#game #dialog-layer .repair-dialog .rp-fences{display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
+#game #dialog-layer .repair-dialog .rp-fence{display:flex;flex-direction:column;align-items:center;gap:0;width:104px}
+#game #dialog-layer .repair-dialog .rp-fence img{width:100%;aspect-ratio:405/258;object-fit:contain}
+#game #dialog-layer .repair-dialog .rp-fence .gd-big{font-size:30px;color:#b4502f}
+#game #dialog-layer .repair-dialog .rp-fence.is-fixed .gd-big{color:#4f7a3a}
+/* short screens: the cleaning states shrink so the price row stays in view */
+@media (max-height:620px){#game #dialog-layer .cleaning-dialog .cl-state{width:46px}#game #dialog-layer .cleaning-dialog .cl-state.on{width:64px}#game #dialog-layer .cleaning-dialog .cl-states{gap:8px}#game #dialog-layer .cleaning-dialog .cl-now .gd-big{font-size:34px}#game #dialog-layer .repair-dialog .rp-fence{width:88px}}
+/* plus / minus and the quick-pick coins are painted (GPT work btn-plus, btn-minus, coin-quick); their names come from aria-label */
+#game :is(#panels,#dialog-layer) .gd .gd-round.plus,#game :is(#panels,#dialog-layer) .gd .gd-round.minus,#game :is(#panels,#dialog-layer) .gd-round.plus,#game :is(#panels,#dialog-layer) .gd-round.minus{border:0;border-radius:50%;box-shadow:none;background:url(/web/art/golden-ui/btn-plus.png) center/contain no-repeat}
+#game :is(#panels,#dialog-layer) .gd .gd-round.minus,#game :is(#panels,#dialog-layer) .gd-round.minus{background-image:url(/web/art/golden-ui/btn-minus.png)}
+#game :is(#panels,#dialog-layer) .gd-round:disabled{filter:grayscale(1) opacity(.45)}
+#game :is(#panels,#dialog-layer) .gd-coin,#game :is(#panels,#dialog-layer) .gd .gd-coin{border:0;border-radius:50%;box-shadow:none;background:url(/web/art/golden-ui/coin-quick.png) center/contain no-repeat;color:#5d4026}
+#game :is(#panels,#dialog-layer) .gd-coinwrap.on .gd-coin,#game :is(#panels,#dialog-layer) .gd .gd-coinwrap.on .gd-coin{box-shadow:none;background-image:url(/web/art/golden-ui/coin-quick-on.png)}
+#game :is(#panels,#dialog-layer) .gd-coinwrap:disabled .gd-coin{background-image:url(/web/art/golden-ui/coin-quick-off.png);color:#8a7658}

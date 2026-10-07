@@ -7,6 +7,7 @@ import {advanceWorld} from './world-clock.js';
 import {drawFortune} from './progression.js';
 import { DATA } from './data.js';
 import {holidayForCharacter} from './holiday-calendar.js';
+import {collectedTotal,discoveryCount} from './species-state.js';
 
 const campaignFlag = (egg,id) => `campaign_char_${egg}_${id}`;
 const character = (egg,id) => ({egg,id,name:DATA.characters[egg].find(c=>c.id===id).title_zh_CN});
@@ -47,8 +48,8 @@ export const activityCatalog = Object.freeze([
 const byId = new Map(activityCatalog.map(entry=>[entry.id,entry]));
 const activityForCharacter = new Map(activityCatalog.filter(entry=>entry.kind==='campaign').flatMap(entry=>entry.characters.map(c=>[`${c.egg}:${c.id}`,entry])));
 const positiveCount = value => Number.isSafeInteger(value)&&value>0?value:0;
-const totalCollected = (state,egg) => Object.entries(state.total??{}).reduce((sum,[key,value])=>sum+(egg===undefined||key.startsWith(`${egg}:`)?positiveCount(value):0),0);
-const speciesFound = state => new Set([...Object.keys(state.total??{}),...Object.keys(state.farm??{})].filter(key=>positiveCount(state.total?.[key])||positiveCount(state.farm?.[key]))).size;
+const totalCollected = collectedTotal;
+const travelCount = state => positiveCount(state.total?.['0:104']);
 const campaignComplete = (state,entry) => entry.flags.length>0&&entry.flags.every(flag=>!!state.events?.[flag]);
 const claims = state => state.events?.legacyActivityClaims??{};
 
@@ -63,7 +64,7 @@ function conditionInfo(state,requirement) {
   const {target}=requirement;
   if(requirement.kind==='total'){current=totalCollected(state);label='累计收取伙伴';}
   if(requirement.kind==='chicks'){current=totalCollected(state,0);label='累计收取鸡宝';}
-  if(requirement.kind==='species'){current=speciesFound(state);label='发现不同品种';}
+  if(requirement.kind==='species'){current=discoveryCount(state);label='发现不同品种';}
   if(requirement.kind==='tool'){current=(state.toolLevels?.[requirement.id]??-1)+1;label=`${DATA.tools[1][requirement.id].title_zh_CN}等级`;}
   if(requirement.kind==='activity'){current=campaignComplete(state,byId.get(requirement.id))?1:0;label=`完成「${byId.get(requirement.id).title}」`;}
   if(requirement.kind==='stock'){current=availableCount(state,`${requirement.egg}:${requirement.id}`);label='农场中的普通鸡宝（出发时消耗）';}
@@ -77,12 +78,15 @@ function infoFor(state,entry,now) {
   const repeatable=entry.kind==='gift'||entry.kind==='travel';
   const claimedToday=repeatable&&Number.isSafeInteger(claimed?.day)&&claimed.day>=day;
   const holidays=entry.characters.map(c=>({egg:c.egg,id:c.id,window:holidayForCharacter(c.egg,c.id,now)})).filter(c=>c.window);
-  let rewardText=entry.kind==='campaign'?`获得 ${entry.characters.length} 种伙伴的${holidays.length?'活动资格（仍需对应日期）':'原版配方'}`:entry.kind==='travel'?'普通鸡宝 × 1 → 时空鸡 × 1':`${DATA.tools[2][entry.ingredientId].title_zh_CN} × 1`;
+  let rewardText=entry.kind==='campaign'?`获得 ${entry.characters.length} 种伙伴的${holidays.length?'活动资格（仍需对应日期）':'孵化配方'}`:entry.kind==='travel'?'普通鸡宝 × 1 → 时空鸡 × 1':`${DATA.tools[2][entry.ingredientId].title_zh_CN} × 1`;
   let reason=completed?'委托已完成':conditions.find(condition=>!condition.met)?'尚未满足委托条件':'';
   let targetCharacter=null;
   if(repeatable) {
     if(claimed) {
-      const current=Math.max(0,totalCollected(state)-positiveCount(claimed.collected));
+      // Time-travel visits are exchanges, not new collections (game-design). Claims
+      // recorded before this rule have no snapshot and keep the previous count.
+      const travelsSince=Number.isSafeInteger(claimed.travels)?Math.max(0,travelCount(state)-claimed.travels):0;
+      const current=Math.max(0,totalCollected(state)-positiveCount(claimed.collected)-travelsSince);
       conditions.push({kind:'new-collections',label:'上次领取后收取伙伴',current,target:24,met:current>=24});
     }
     if(!reason&&claimedToday)reason='今天已领取，明天再来';
@@ -94,7 +98,7 @@ function infoFor(state,entry,now) {
     if(!reason&&held>0)reason='请先用完同一种赠品';
     if(!reason&&full)reason=`调味料已满 ${materialCapacity(state)} 个，请先腾出空间`;
     if(entry.ingredientId===68) {
-      rewardText+=' · 随机签意，优先寻找未收录伙伴';
+      rewardText+=' · 随机签意，未收录的更容易抽到';
     }
   }
   if(entry.kind==='travel') {
@@ -136,6 +140,7 @@ export function claimActivity(state,id,now=Date.now(),random=economicRandom(stat
     // The visit itself is not one of the 24 further collections required.
     events.legacyActivityClaims[id].collected=totalCollected(state);
   }
+  events.legacyActivityClaims[id].travels=travelCount(state);
   state.events=events;
   return {id,title:entry.title,rewardText:info.rewardText,kind:entry.kind,ingredientId:entry.ingredientId,targetCharacter:info.targetCharacter};
 }
@@ -157,12 +162,12 @@ export function characterAccessInfo(egg,id,state,now=Date.now()) {
   if(entry) {
     const qualified=!!state.events?.[campaignFlag(egg,id)],recipeText=campaignRecipe(egg,id),holiday=holidayForCharacter(egg,id,now);
     return {kind:'campaign',activityId:entry.id,title:entry.title,qualified,holiday,unlocked:qualified&&(!holiday||holiday.active),recipeText,
-      text:`${qualified?'委托资格已获得':'先完成「'+entry.title+'」'}；${holiday?`${holiday.title}期间开火：${holiday.dateRange}（${holiday.status}）。`:''}${recipeText}。按原配方概率孵化。${egg?'需先在商店购买鸭蛋。':''}`};
+      text:`${qualified?'委托资格已获得':'先完成「'+entry.title+'」'}；${holiday?`${holiday.title}期间开火：${holiday.dateRange}（${holiday.status}）。`:''}${recipeText}。按配方概率孵化。${egg?'需先在商店购买鸭蛋。':''}`};
   }
   if(egg===0&&id>=89&&id<=103) {
     return {kind:'gift',activityId:'shrine-gift',title:'神社签礼',unlocked:campaignComplete(state,byId.get('shrine')),
       recipeText:'鸡蛋 · 保温灯 · 御神签',
-      text:`完成「神社来信」后领取御神签。15种签随机，未收录倾斜并避免相邻重复；连续未新增第7次安排未收录目标签。实际收取新签鸡才重置计数。鸡蛋、保温灯加对应御神签，每批会有 1 只${DATA.characters[0][id].title_zh_CN}，请保持厨房清洁并及时收取。`};
+      text:`完成「神社来信」后领取御神签。15种签随机，未收录的更容易抽到，也不会连抽同一签；连续6签没收到新签鸡，第7签必是未收录的，收到新签鸡后重新计数。鸡蛋、保温灯加对应御神签，每批会有 1 只${DATA.characters[0][id].title_zh_CN}，请保持厨房清洁并及时收取。`};
   }
   if(egg===0&&(id===106||id===107)) {
     const flame=id===106,recipeText=`鸡蛋 · ${flame?'平底锅 · 火苗':'水煮锅 · 木绵'}`;
@@ -173,7 +178,7 @@ export function characterAccessInfo(egg,id,state,now=Date.now()) {
   if(egg===0&&(id===51||id===52)) {
     const window=id===52?'当地时间 10:00–12:59 开始调理':'当地时间 00:00–09:59 或 13:00–23:59 开始调理';
     return {kind:'time',activityId:null,title:'凤凰的时刻',unlocked:(state.toolLevels?.[0]??-1)>=2,
-      recipeText:`鸡蛋 · Lv.3 保温灯 · ${window}`,text:`${window}，使用鸡蛋和 Lv.3 保温灯。每批先有 10% 机会将这一品种加入配方池，再按原权重孵化。`};
+      recipeText:`鸡蛋 · Lv.3 保温灯 · ${window}`,text:`${window}，使用鸡蛋和 Lv.3 保温灯。每批有 10% 机会让它加入候选，再随机孵化。`};
   }
   if(egg===0&&id===104)return {kind:'travel',activityId:'time-travel',title:'时空旅行',unlocked:!!state.events?.localTimeTravelUnlocked,
     recipeText:'农场 · 时空旅行 · 普通鸡宝 × 1',text:'累计收取 500 只伙伴、发现 12 种品种后，派出农场中 1 只普通鸡宝，带回 1 只时空鸡。每天一次，再次旅行前需再收取 24 只伙伴。'};

@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "processingVersion": 1,
+  "kind": "mementos",
+  "identityKey": null,
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceBounds": [
+    203,
+    311,
+    1055,
+    996
+  ],
+  "components": [
+    {
+      "area": 278737,
+      "bbox": [
+        203,
+        311,
+        1055,
+        996
+      ]
+    }
+  ],
+  "sourceLayersUnavailable": true,
+  "variants": {
+    "display": {
+      "path": "/web/art/production/ART-M06/b82cfd6d00ff/display.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "9f39167a399d45892c393099fbf72a80936fa8e4fa88653bfa2de03086fe0c2c",
+      "visibleBounds": [
+        30,
+        50,
+        225,
+        206
+      ],
+      "centroid": [
+        0.5271261340152097,
+        0.5538246812537075
+      ],
+      "scale": 0.2283568075117371,
+      "translation": [
+        -16.356431924882628,
+        -21.018967136150238
+      ],
+      "bounds": [
+        30,
+        50,
+        195,
+        156
+      ],
+      "groundAnchor": [
+        0.5,
+        0.8046875
+      ],
+      "available": true
+    },
+    "small-icon": {
+      "path": "/web/art/production/ART-M06/b82cfd6d00ff/small-icon.png",
+      "width": 48,
+      "height": 48,
+      "sha256": "82acac7d507e4db9b32304d87f9ed54653d9353cb5e426593cd1004bf088ac2d",
+      "visibleBounds": [
+        6,
+        10,
+        42,
+        39
+      ],
+      "centroid": [
+        0.5199657337981757,
+        0.555368504279627
+      ],
+      "scale": 0.04281690140845071,
+      "translation": [
+        -2.6918309859154945,
+        -3.3160563380281705
+      ],
+      "bounds": [
+        6,
+        10,
+        36,
+        29
+      ],
+      "groundAnchor": [
+        0.5,
+        0.8125
+      ],
+      "available": true
+    }
+  },
+  "source": {
+    "sourceHash": "18b7c326203d18e289e7be16fd75684c89b0ea661fadfdeafa8f05ebf7a71d48",
+    "provider": "native-imagegen"
+  }
+}

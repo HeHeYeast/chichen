@@ -1,3 +1,4 @@
+import {openFarmSale,pickSaleAmount,closeWarehouse} from './qa-farm-navigation.mjs';
 // Real Work B interface actions. Only boot fixture/time are controlled by QA.
 import {spawn} from 'node:child_process';
 import {createRequire} from 'node:module';
@@ -20,12 +21,14 @@ const read=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('chick-kitchen-v1'
 const screenshot=async name=>{await p.locator('.regional-screen img').evaluateAll(async images=>{await Promise.all(images.map(image=>image.decode()));});await p.screenshot({path:resolve(output,name+'.png')});screens.push(name);};
 const start=async()=>{await p.getByRole('button',{name:'开始游戏',exact:true}).click();await p.locator('.workshop-launch').waitFor();await p.waitForTimeout(650);};
 const open=async()=>{await p.getByRole('button',{name:'寻访',exact:true}).click();await p.locator('.regional-screen').waitFor();};
-const record=()=>p.locator('[data-regional-tab="record"]').click();
+const record=async()=>{const onReturn=p.locator('[data-regional-record]');if(await onReturn.count())await onReturn.click();else await p.locator('[data-regional-tab="record"]').click();};
+const trip=()=>p.getByRole('button',{name:'回到寻访',exact:true}).click();
+const leaveRegional=async()=>{await p.locator('[data-journey-back]').click();await p.locator('[data-journey-back]').click();};
 const jump=async at=>{await p.evaluate(({at,base})=>{window.__workBOffset=at-base;sessionStorage.setItem('work-b-clock',String(window.__workBOffset));},{at,base:now});};
 async function fit(){await p.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));const box=await p.locator('.regional-screen').evaluate(el=>{const r=el.getBoundingClientRect(),g=document.querySelector('#game').getBoundingClientRect(),b=el.querySelector('.regional-body');return {inside:r.top>=g.top-1&&r.bottom<=g.bottom+1&&r.left>=g.left-1&&r.right<=g.right+1,overflow:b.scrollWidth-b.clientWidth};});assert.ok(box.inside,'regional sheet fits game');assert.ok(box.overflow<2,'regional paper has no horizontal overflow');}
-async function depart(){await p.locator('[data-regional-depart]').click();await p.locator('[data-yes]').click();assert.equal((await read()).progress.trip.status,'running');}
-async function finish(){const s=await read();await jump(s.progress.trip.endAt+1000);await p.locator('[data-regional-claim-notes]').waitFor();}
-async function claim(){if(await p.locator('[data-regional-claim]').count()){await p.locator('[data-regional-claim]').click();await p.locator('[data-yes]').click();}if((await read()).progress.trip.status==='returned'){await p.locator('.regional-basket details summary').click();await p.locator('[data-regional-discard]').click();await p.locator('[data-yes]').click();}assert.equal((await read()).progress.trip.status,'settled');}
+async function depart(){if(!(await p.locator('[data-regional-depart]').count()))await p.locator('[data-journey-enter]').click();await p.locator('[data-regional-depart]').click();await p.locator('[data-journey-confirm]').click();assert.equal((await read()).progress.trip.status,'running');}
+async function finish(){const s=await read();await jump(s.progress.trip.endAt+1000);await p.locator('[data-regional-claim]').waitFor();await p.locator('[data-regional-claim-notes]').waitFor({state:'attached'});}
+async function claim(){if(await p.locator('[data-regional-claim]').count()){await p.locator('[data-regional-claim]').click();await p.waitForTimeout(300);if(await p.locator('#dialog-layer [data-yes]').count())await p.locator('#dialog-layer [data-yes]').click();}if((await read()).progress.trip.status==='returned'){await p.locator('.regional-basket details summary').click();await p.locator('[data-regional-discard]').click();await p.locator('[data-yes]').click();}assert.equal((await read()).progress.trip.status,'settled');}
 try{
   const base=await new Promise((done,fail)=>{const timer=setTimeout(()=>fail(Error('server start timeout')),10000);server.once('error',fail);server.stdout.on('data',chunk=>{const m=String(chunk).match(/http:\/\/127\.0\.0\.1:\d+/);if(m){clearTimeout(timer);done(m[0]);}});});
   browser=await chromium.launch({headless:true,...(process.env.CHICK_QA_CHROME?{executablePath:process.env.CHICK_QA_CHROME}:{})});
@@ -34,19 +37,20 @@ try{
   p=await context.newPage();p.on('pageerror',error=>errors.push(error.message));await p.goto(base+'/');await start();await open();
   await fit();await screenshot('departure-390');await record();assert.ok(!(await p.locator('.regional-screen').innerHTML()).includes('荠菜煎饼鸡'));assert.match(await p.locator('.regional-screen').innerText(),/C129/);await screenshot('unknown-record');
   for(const [width,height] of [[320,568],[430,932],[1280,900]]){await p.setViewportSize({width,height});await fit();await screenshot(`record-${width}`);}
-  await p.setViewportSize({width:390,height:844});await p.locator('[data-regional-tab="trip"]').click();
+  await p.setViewportSize({width:390,height:844});await trip();
   await p.locator('[data-regional-slot="0"]').click();await p.locator('[data-regional-member="0:0"]').click();
   await p.locator('[data-regional-place="V:1"]').click();await p.locator('[data-regional-focus="materials"]').click();
-  assert.match(await p.locator('.regional-screen').innerText(),/这趟带回荠菜标本/);await depart();
+  assert.match(await p.locator('.regional-screen').innerText(),/藏在菜畦边的香气/);await depart();
   const firstTrip=(await read()).progress.trip;assert.equal(firstTrip.regional.intro.materialId,75);assert.equal(firstTrip.remaining[0],75);assert.ok(firstTrip.remaining.length<=2);
   await finish();assert.ok(Object.hasOwn((await read()).expansion.discovery.cards,'V-S1'));assert.equal((await read()).ingredients[75],undefined);await screenshot('returned-full-bag');
   checks.push('正式谷地页面120/5资格、旧队员选择、切地点/关注仍首标本，满包自动记卡且试做料留篮');
   await record();const beforeIdentify=await read();await p.locator('[data-regional-identify]').click();const identified=await read();assert.equal(identified.cp,beforeIdentify.cp);assert.deepEqual(identified.ingredients,beforeIdentify.ingredients);assert.ok(Object.hasOwn(identified.expansion.discovery.identified,'75'));assert.equal(await p.locator('[data-regional-identify]').count(),0);await screenshot('identified-method-direction');
-  await p.locator('[data-regional-tab="trip"]').click();await claim();assert.equal((await read()).ingredients[75],1);
+  await trip();await claim();assert.equal((await read()).ingredients[75],1);
   checks.push('免费辨认不增实体材料、容量30→36，首次篮中75领取一次');
-  for(let i=0;i<3;i++){await depart();await finish();await claim();const s=await read();assert.equal(s.expansion.methods.full.includes('REC-V-C1'),i===2);if(i<2)assert.equal(s.expansion.methods.freeProgress.V.count,i+1);}
-  await record();await screenshot('full-method-free');assert.match(await p.locator('.regional-screen').innerText(),/完整方法已记入册页/);assert.ok(!(await p.locator('.regional-screen').innerHTML()).includes('荠菜煎饼鸡'));
-  checks.push('3趟真实完整出发/归队操作免费补全方法，未实收仍显示C129未知剪影');
+  // A one-ingredient entry dish is complete once identified, so free completion never targets it.
+  for(let i=0;i<3;i++){await depart();await finish();await claim();assert.notEqual((await read()).expansion.methods.freeProgress.V.targetId,'REC-V-C1');}
+  await record();await screenshot('full-method-free');assert.match(await p.locator('.regional-screen').innerText(),/做法齐了/,'the one-seasoning entry dish is complete with its 方向 (线索册 words since batch 4)');assert.ok(!(await p.locator('.regional-screen').innerHTML()).includes('荠菜煎饼鸡'));
+  checks.push('辨认后入门做法即为完整方法（不占免费补全），3趟真实出发/归队后仍显示C129未知剪影');
   await p.locator('[data-regional-prepare]').click();assert.deepEqual((await read()).selected,[75]);assert.equal((await read()).expansion.prepareMode.recipeId,'REC-V-C1');
   await p.locator('[data-control-id="tool:1"]').click();await p.locator('[data-yes]').click();
   let s=await read();assert.equal(s.batch.rules.version,3);assert.equal(s.batch.plan.recipeId,'REC-V-C1');const frozen=structuredClone(s.batch.plan);await screenshot('regional-first-batch');
@@ -56,7 +60,7 @@ try{
   s=await read();assert.equal(s.batch.eggs.filter(e=>e.collected).length,24);assert.equal(s.batch.plan.finished,true);assert.equal(s.expansion.regions.materialUse[75],true);
   checks.push('正式准备与平底锅开火产生Batch3，刷新冻结票据保留，24只实收结锅并记录地区材料用途');
   await open();await record();await fit();await screenshot('after-first-trial');
-  async function buyTrialMaterial(){await p.locator('.regional-screen .close').click();await p.getByRole('button',{name:'厨房',exact:true}).click();await p.getByRole('button',{name:'补给 · 小卖部',exact:true}).click();await p.locator('[data-shop-tab="1"]').click();await p.locator('[data-shop-buy-ingredient="75"]').click();await p.locator('[data-yes]').click();assert.equal((await read()).ingredients[75],1);await p.getByRole('button',{name:'厨房',exact:true}).click();await open();await record();}
+  async function buyTrialMaterial(){await leaveRegional();await p.getByRole('button',{name:'厨房',exact:true}).click();await p.getByRole('button',{name:'补给 · 小卖部',exact:true}).click();await p.locator('[data-shop-tab="1"]').click();await p.locator('[data-shop-ingredient-details="75"]').click();await p.locator('[data-shop-buy-ingredient="75"]').click();await p.locator('[data-yes]').click();assert.equal((await read()).ingredients[75],1);await p.getByRole('button',{name:'厨房',exact:true}).click();await open();await record();}
   let trials=1;
   while(!(await read()).total['0:128']&&trials<4){
     await buyTrialMaterial();await p.locator('[data-regional-prepare]').click();await p.locator('[data-control-id="tool:1"]').click();await p.locator('[data-yes]').click();s=await read();
@@ -64,8 +68,8 @@ try{
     trials++;await open();await record();
   }
   s=await read();assert.ok(s.total['0:128']>=1,'C129 is collected within four full clean batches');assert.match(await p.locator('.regional-screen').innerText(),/荠菜煎饼鸡/);await screenshot('C129-collected');
-  await p.locator('.regional-screen .close').click();await p.getByRole('button',{name:'农场',exact:true}).click();await p.locator('[data-control-id="farm:harvest"]').click();await p.locator('[data-harvest-max="0:128"]').click();await p.locator('[data-harvest-sell]').click();await p.locator('[data-yes]').click();
-  assert.equal((await read()).farm['0:128'],0);assert.ok((await read()).total['0:128']>=1);await p.locator('.harvest-screen .close').click();await p.getByRole('button',{name:'厨房',exact:true}).click();await open();await record();
+  await leaveRegional();await p.getByRole('button',{name:'农场',exact:true}).click();await openFarmSale(p,'0:128');await pickSaleAmount(p,'max');await p.locator('[data-wh-sell-one]').click();await p.locator('[data-yes]').click();
+  assert.equal((await read()).farm['0:128'],0);assert.ok((await read()).total['0:128']>=1);await closeWarehouse(p);await p.getByRole('button',{name:'厨房',exact:true}).click();await open();await record();
   await buyTrialMaterial();await p.locator('[data-regional-prepare]').click();await p.locator('[data-control-id="tool:1"]').click();await p.locator('[data-yes]').click();s=await read();assert.equal(s.batch.plan.mode,'regional-repeat');assert.equal(s.batch.plan.targetScheduled,true);assert.equal(s.batch.plan.initialIds.filter(id=>id===128).length,1);
   checks.push(`完整合法购买/试做在${trials}批内实收C129，售空仍保留图鉴与方法，再开批安排1+23复刻`);
   assert.deepEqual(errors,[]);passed=true;await context.close();

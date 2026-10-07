@@ -15,16 +15,24 @@ export function createPlatform({window:host=globalThis.window,disabled=false}={}
     if(!bridge)return {supported:false,message:'浏览器仅在游戏打开时提醒。安装 Android 版后可在后台通知。'};
     try{return JSON.parse(bridge.notificationStatus());}catch{return {supported:true,permissionGranted:false,message:'暂时无法读取通知设置。'};}
   }
-  const info=bridge?JSON.parse(bridge.platformInfo()):{android:false,version:'1.5.0 · 241候选'};
+  const info=bridge?JSON.parse(bridge.platformInfo()):{android:false,version:'1.5.0'};
   return {
     bridge,info,notificationStatus,
     requestNotifications:()=>bridge?request('requestNotifications'):Promise.resolve(notificationStatus()),
     openNotificationSettings:()=>bridge?.openNotificationSettings(),
     openExactAlarmSettings:()=>bridge?.openExactAlarmSettings(),
     openAppSettings:()=>bridge?.openAppSettings(),
+    // Older APKs lack these; fall back to the app's own settings page.
+    requestBackgroundRun:()=>bridge?.requestBackgroundRun?bridge.requestBackgroundRun():bridge?.openAppSettings(),
+    openStartupManager:()=>bridge?.openStartupManager?bridge.openStartupManager():bridge?.openAppSettings(),
     testDelayedNotification:()=>{try{return bridge?JSON.parse(bridge.testDelayedNotification()):{ok:false,message:'请在 Android 版中测试后台通知。'};}catch{return {ok:false,message:'请先更新 Android 安装包，再测试后台提醒。'};}},
     testNotification:()=>bridge?JSON.parse(bridge.testNotification()):{ok:false,message:'请在 Android 版中测试后台通知。'},
     closeApp:()=>bridge?.closeApp(),
+    async copyText(text){
+      // Older APKs have no copyText; WebView clipboard access then decides.
+      try{if(bridge?.copyText)return bridge.copyText(text)===true;}catch{}
+      try{await host.navigator.clipboard.writeText(text);return true;}catch{return false;}
+    },
     async exportBackup(text){
       if(bridge)return request('exportSave',text);
       const url=URL.createObjectURL(new Blob([text],{type:'application/json;charset=utf-8'}));

@@ -1,4 +1,4 @@
-import {REGIONAL,CONTENT_TEXT,resolveSpecies,SPECIES_ABILITIES} from './content-registry.js';
+import {REGIONAL,CONTENT_TEXT,resolveSpecies,SPECIES_ABILITIES,ABILITY_SCALE} from './content-registry.js';
 import {collectedTotal,discoveryCount} from './progression.js';
 
 // Release gates are per region, never an alternative content definition.
@@ -32,7 +32,7 @@ export function regionInfo(s,id){
   if(discoveryCount(s)<region.discoveries)missing.push(`发现 ${discoveryCount(s)}/${region.discoveries} 种`);
   if(s.kitchenLevel<region.kitchenLevel)missing.push(`厨房 Lv.${region.kitchenLevel+1}`);
   // The bay route itself exists only after the deterministic guide (GUIDE-B).
-  if(region.route==='bay'&&!s.expansion?.regions?.guideFlags?.includes('GUIDE-B'))missing.push('先在溪岸岸边摊追寻沿湾路标');
+  if(region.route==='bay'&&!s.expansion?.regions?.guideFlags?.includes('GUIDE-B'))missing.push('在溪岸小集的岸边摊找到沿湾路标');
   return {region,name:CONTENT_TEXT[id]?.name??id,met:missing.length===0,canEnter:missing.length===0,missing,places:region.places,opened:s.expansion.regions.opened.includes(id),requirementId:region.gateRequirement};
 }
 
@@ -64,7 +64,7 @@ export function regionalCardChance(card,companions){
   const condition=cfg.bonusCondition;
   if(condition&&Object.keys(condition).some(k=>!['trait','environment'].includes(k)))throw Error('该发现卡的特征条件尚未接入。');
   const bonus=!!condition&&(!condition.trait||companions.some(c=>c.traits?.includes(condition.trait)))&&(!condition.environment||companions.some(c=>c.environment===condition.environment));
-  return Math.min(cfg.capPercent,cfg.basePercent+cfg.perTeamFPercent*companions.reduce((n,c)=>n+c.F,0)+(bonus?cfg.bonusPercent:0))/100;
+  return Math.min(cfg.capPercent,cfg.basePercent+cfg.perTeamFPercent*companions.reduce((n,c)=>n+c.F,0)/ABILITY_SCALE+(bonus?cfg.bonusPercent:0))/100;
 }
 
 export function recordRegionalTrip(s,trip,cardId=null){

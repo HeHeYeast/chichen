@@ -40,9 +40,11 @@ export function sampleBatchPlan(s,plan,now,random){
     if(targetScheduled)result[0]=Number(plan.key.split(':')[1]);
   }else if(plan.mode==='legacy'){
     seasonal=plannedSeasonalRecipe(s,plan.toolId,plan.materials);
+    let surprise=null;
     if(seasonal)result[0]=seasonal.id;
-    else{const surprise=seasonalSurprise(s,plan.toolId,plan.materials,random);if(surprise)result[0]=surprise.id;}
-    if(s.progress.replicate)result[0]=Number(s.progress.replicate.split(':')[1]);
+    else{surprise=seasonalSurprise(s,plan.toolId,plan.materials,random);if(surprise)result[0]=surprise.id;}
+    // A seasonal surprise keeps egg 0; the paid replicate target takes the next egg.
+    if(s.progress.replicate)result[surprise?1:0]=Number(s.progress.replicate.split(':')[1]);
   }
   return {result,seasonal,ticket:{version:1,mode:plan.mode,recipeId:plan.recipeId??null,targetKey:plan.key??null,targetScheduled,roll,initialIds:[...result]}};
 }

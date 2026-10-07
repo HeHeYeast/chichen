@@ -65,7 +65,8 @@ test('rollback overlay changes only the immutable build object and rejects an in
 test('all-off compatible build rejects new work but settles frozen trip, batch, business and orders then round-trips schema6',async()=>{
   const source=base();reconcileEntitlements(source);
   reduceFacts(source,[{kind:'orderComplete',templateId:'O01',instanceId:'order-900'},{kind:'businessWitness',menuId:'MN2',sessionId:'business-900',soldByKey:{'0:0':6},fullSoldByKey:{},roleSales:{},fullRoleSales:{},valid:true,complete:false}]);reconcileRegulars(source);
-  assert.equal(source.expansion.regulars.RG1.pendingStage.id,'RG1-1');
+  // 不挡进度: MN2 is already recorded, so RG1-1 is recorded as read and RG1-2 waits
+  assert.equal(source.expansion.regulars.RG1.pendingStage.id,'RG1-2');assert.deepEqual(source.expansion.regulars.RG1.readStages,['RG1-1']);
   orderMilestone(source,NOW,'test');const proposal=source.expansion.orders.proposals.find(p=>p.templateId!=='O04')??source.expansion.orders.proposals[0];
   const option=orderOptions(source,proposal.templateId,NOW)[0],order=acceptProposal(source,proposal.id,option,NOW);assert.equal(order.kind,'purchase');
   const group=order.groups[0],key=group.allowed.find(k=>(source.farm[k]??0)>=group.quantity+1);reserveForOrder(source,order.id,key,1);

@@ -63,6 +63,18 @@ test('SP-ALL footprints are the first complete companion trip per species; the s
   assert.equal(s.expansion.facts.companionFirst['0:0'].tripId,'trip-1');
 });
 
+test('card-linked practices stay reachable on a later regional trip once the card is recorded',()=>{
+  const member=(key,traits)=>({key,gather:3,discover:3,environment:'yard',traits});
+  const s=E.freshState(NOW,4);s.total={'0:0':5,'0:10':5,'1:0':5};s.expansion.discovery.cards['V-E1']=1;
+  reduceFacts(s,[{kind:'tripComplete',tripId:'trip-1',region:'V',placeId:'V-P1',cardId:'V-E1',members:[member('1:0',['portable'])]}]);
+  assert.equal(collectionProgress(s,'SP-LEAF').practice.met,false,'the first event trip had no leaf or tea companion');
+  reduceFacts(s,[{kind:'tripComplete',tripId:'trip-2',region:'V',placeId:'V-P1',cardId:null,members:[member('0:10',['tea']),member('0:0',['portable'])]}]);
+  assert.equal(collectionProgress(s,'SP-LEAF').practice.met,true);assert.equal(collectionProgress(s,'COL-1').practice.sources.trip,true);
+  const legacy=E.freshState(NOW,4);legacy.total={'0:10':5};legacy.expansion.discovery.cards['V-E1']=1;
+  reduceFacts(legacy,[{kind:'tripComplete',tripId:'trip-1',region:'V',placeId:null,cardId:null,members:[member('0:10',['tea'])]}]);
+  assert.equal(collectionProgress(legacy,'SP-LEAF').practice.met,false,'old garden routes are not the event place');
+});
+
 test('display holds up to three owned mementos; moving or clearing has no economic effect',()=>{
   const s=run(E.normalizeSave(complete193(),NOW));const cp=s.cp,farm=structuredClone(s.farm);
   setDisplay(s,0,'M01');setDisplay(s,1,'M02');setDisplay(s,2,'M03');assert.deepEqual(s.expansion.collections.display,['M01','M02','M03']);

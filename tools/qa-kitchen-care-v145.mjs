@@ -26,9 +26,10 @@ async function seeded(seed,viewport={width:375,height:850}){
 async function layout(p){
   const box=await p.locator('.cleaning-dialog').evaluate(el=>{
     const r=el.getBoundingClientRect(),game=document.querySelector('#game').getBoundingClientRect();
-    const clipped=[...el.children].filter(x=>{const b=x.getBoundingClientRect();return b.left<r.left||b.right>r.right||b.top<r.top||b.bottom>r.bottom;}).map(x=>x.className);
-    const text=el.querySelector('p');
-    return {clipped,inside:r.left>=game.left&&r.right<=game.right&&r.top>=game.top&&r.bottom<=game.bottom,overflow:el.scrollHeight>el.clientHeight+1||text.scrollHeight>text.clientHeight+1};
+    // The title board and close button overhang the paper on purpose; everything else stays inside.
+    const clipped=[...el.children].filter(x=>!x.matches('.gd-title,.gd-close')).filter(x=>{const b=x.getBoundingClientRect();return b.left<r.left||b.right>r.right||b.top<r.top||b.bottom>r.bottom;}).map(x=>x.className);
+    const text=el.querySelector('.gd-body');
+    return {clipped,inside:r.left>=game.left&&r.right<=game.right&&r.top>=game.top&&r.bottom<=game.bottom,overflow:el.scrollHeight>el.clientHeight+1||(innerHeight>=600&&text.scrollHeight>text.clientHeight+1)}; /* very short screens may scroll the popup body (it fades at the bottom) */
   });assert.deepEqual(box.clipped,[]);assert.equal(box.inside,true);assert.equal(box.overflow,false);
 }
 try{
@@ -36,8 +37,8 @@ try{
     const seed=E.freshState();seed.lastClean-=DAY/4;seed.cleanCycle.dirtyAt=seed.lastClean+DAY;const {c,p}=await seeded(seed,viewport);
     await p.screenshot({path:resolve(out,`kitchen-${viewport.width}.png`)});
     await p.locator('[data-control-id="clean"]').tap();await layout(p);
-    assert.equal(await p.getByRole('progressbar').getAttribute('aria-valuenow'),'25');
-    assert.equal(await p.locator('[data-yes]').innerText(),'提前打扫 25 CP');
+    assert.equal(await p.getByRole('progressbar').getAttribute('aria-valuenow'),'75');
+    assert.equal(await p.locator('[data-yes]').innerText(),'打扫');assert.match(await p.locator('[data-clean-price]').innerText(),/现在\s*25/);
     await p.screenshot({path:resolve(out,`cleaning-${viewport.width}.png`)});await c.close();
   }
   checks.push('320/375/430 宽及横屏：进度与付费按钮完整，弹窗内容无溢出');
@@ -47,12 +48,12 @@ try{
     await clean.tap();await p.locator('[data-no]').tap();assert.deepEqual(await read(p),before);
     await clean.tap();await p.locator('[data-yes]').tap();
     let saved=await read(p);assert.equal(saved.cp,before.cp-25);assert.equal(saved.dirty,false);assert.deepEqual(saved.batch,before.batch);
-    await clean.tap();assert.equal(await p.getByRole('progressbar').getAttribute('aria-valuenow'),'0');assert.equal(await p.locator('[data-yes]').isDisabled(),true);await p.locator('[data-no]').tap();
+    await clean.tap();assert.equal(await p.getByRole('progressbar').getAttribute('aria-valuenow'),'100');assert.equal(await p.locator('[data-yes]').isDisabled(),true);await p.locator('[data-no]').tap();
     await jump(p,DAY/2);await p.waitForTimeout(150);await clean.tap();assert.equal(await p.getByRole('progressbar').getAttribute('aria-valuenow'),'50');
     await p.locator('[data-no]').tap();await p.reload();await p.getByRole('button',{name:'开始游戏',exact:true}).tap();await p.locator('[data-control-id="nav:0"][tabindex="0"]').waitFor();
     // The injected clock restarts on reload; stored lastClean still defines the interval.
-    await jump(p,DAY);await p.waitForTimeout(250);await clean.tap();assert.equal(await p.getByRole('progressbar').getAttribute('aria-valuenow'),'100');
-    assert.equal(await p.locator('[data-yes]').innerText(),'打扫 100 CP');saved=await read(p);assert.equal(saved.dirty,true);
+    await jump(p,DAY);await p.waitForTimeout(250);await clean.tap();assert.equal(await p.getByRole('progressbar').getAttribute('aria-valuenow'),'0');
+    assert.equal(await p.locator('[data-yes]').innerText(),'打扫');assert.match(await p.locator('[data-clean-price]').innerText(),/100/);saved=await read(p);assert.equal(saved.dirty,true);
     await p.locator('[data-yes]').tap();assert.equal((await read(p)).cp,saved.cp-100);
     await p.screenshot({path:resolve(out,'cleaned.png')});await c.close();
     checks.push('取消不扣费，提前打扫扣 25 CP、保留批次，重复点击不扣费，在线进度更新，满一天仍按原价打扫');
@@ -78,10 +79,10 @@ try{
     const {c,p}=await seeded(seed);await p.getByRole('button',{name:'厨房',exact:true}).tap();await p.getByRole('button',{name:'补给 · 小卖部',exact:true}).tap();
     for(let id=0;id<9;id++){
       await p.locator(`[data-shop-tool-details="${id}"]`).tap();
-      assert.equal(await p.locator('.shop-growth-stages .sprite-art').count(),3);
-      assert.ok((await p.locator('.shop-growth-stages image').evaluateAll(els=>els.map(el=>el.getAttribute('href')))).every(path=>path.startsWith('/web/art/')));
+      assert.equal(await p.locator('.sh-compare .sh-col-art .sprite-art').count(),3);
+      assert.ok((await p.locator('.sh-compare .sh-col-art image').evaluateAll(els=>els.map(el=>el.getAttribute('href')))).every(path=>path.startsWith('/web/art/')));
       if(id===0||id===7)await p.screenshot({path:resolve(out,`growth-${id}.png`)});
-      await p.locator('[data-shop-detail-back]').tap();
+      await p.locator('.sh-drawer [data-shop-drawer-close]').tap();
     }
     await c.close();checks.push('九类厨具成长册均展示独立三级图像');
   }

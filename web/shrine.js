@@ -38,6 +38,11 @@ export function shrineGoals(state){
       reason:claimed?'回礼已收下':current<goal.target?`再收录 ${goal.target-current} 种即可领取`:!room?'CP 已达上限':'可领取回礼'};
   });
 }
+// The partners that count toward a goal, in book order (for its stamp card).
+export function goalMembers(state,kind){
+  const ids=kind==='signs'?FORTUNE_IDS.map(id=>[0,id]):kind==='ducks'?DATA.characters[1].map(c=>[1,c.id]):kind==='yokai'?[67,105,106,107].map(id=>[0,id]):kind==='dim-sum'?[114,115,116,117,118,119].map(id=>[0,id]):[[0,104]];
+  return ids.filter(([egg,id])=>found(state,egg,id));
+}
 export function claimShrineGoal(state,id){
   const goal=shrineGoals(state).find(goal=>goal.id===id);
   if(!goal)throw Error('没有找到这份收藏回礼。');

@@ -24,7 +24,7 @@ export function createSaveStore({storage,key,native=null,now=()=>Date.now(),writ
     if(!native)return storage.getItem(key);
     const result=JSON.parse(native.loadSave());
     if(result.status==='empty')return null;
-    if(!['ok','recovered'].includes(result.status))throw Error(result.message||'无法确认持久存档。');
+    if(!['ok','recovered'].includes(result.status))throw Error(result.message||'暂时无法读取存档。');
     return result.raw;
   }
   function load(){
@@ -45,21 +45,25 @@ export function createSaveStore({storage,key,native=null,now=()=>Date.now(),writ
     if(!writer.writable)throw error(writer.reason||'当前窗口为只读。','READ_ONLY');
     if(locked)throw error('存档尚未恢复，自动保存已暂停。','SAVE_LOCKED');
     const current=readRaw();
-    if(current!==observedRaw){locked=true;throw error('另一处已保存新进度，请重新读取后操作。','REVISION_CONFLICT');}
+    if(current!==observedRaw){locked=true;throw error('进度已在别处更新，请重新打开游戏后再操作。','REVISION_CONFLICT');}
     if(expectedRevision!==undefined&&lastGood&&JSON.parse(lastGood).meta.revision!==expectedRevision)throw error('进度已变化，请重新确认。','REVISION_CONFLICT');
+    return {raw:current};
   }
-  function write(state,{importing=false,expectedRevision}={}){
+  function write(state,{importing=false,expectedRevision,checked=null,normalized=false}={}){
     if(!writer.writable)throw error(writer.reason||'当前窗口为只读。','READ_ONLY');
-    if(!importing)assertWritable(expectedRevision);
-    const normalized=normalizeSave(state,now()),raw=JSON.stringify(normalized);
-    if(utf8Length(raw)>MAX_SAVE_LENGTH)throw Error('存档超过2MiB，未写入。');
-    const before=readRaw();
+    // execute() verified the durable copy earlier in this same synchronous turn;
+    // nothing can write in between, so reuse that read instead of reading twice more.
+    const fresh=!importing&&checked!==null&&checked.raw===observedRaw;
+    if(!importing&&!fresh)assertWritable(expectedRevision);
+    const raw=JSON.stringify(normalized?state:normalizeSave(state,now()));
+    if(utf8Length(raw)>MAX_SAVE_LENGTH)throw Error('存档超过 2MB，未写入。');
+    const before=fresh?checked.raw:readRaw();
     if(native){
       try{
         const result=JSON.parse(importing?native.importGame(raw):expectedRevision!==undefined&&native.commitGame?native.commitGame(raw,expectedRevision):native.saveGame(raw));
         if(!result.ok)throw Error(result.message||'应用无法保存，请保留游戏并导出备份。');
       }catch(cause){
-        let persisted;try{persisted=readRaw();}catch{locked=true;throw error('保存结果尚不能确认，已暂停后续操作。请重新读取存档。','ACK_UNKNOWN');}
+        let persisted;try{persisted=readRaw();}catch{locked=true;throw error('保存结果尚不能确认，已暂停后续操作。请重新打开游戏。','ACK_UNKNOWN');}
         if(persisted!==raw){if(persisted!==before){locked=true;throw error('保存结果发生冲突，已暂停后续操作。','ACK_UNKNOWN');}throw cause;}
       }
     }else{

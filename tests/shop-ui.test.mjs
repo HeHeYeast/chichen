@@ -58,8 +58,14 @@ function shopHarness(initial = E.freshState(NOW)) {
     openActivities(id) { activity={ingredientId:id}; },
     openRecipeBook(options) { recipeRequest=options; },
   });
+  // Buying happens in an item's drawer: open it from its shelf tile first, as a player would.
+  const OPENERS = [[/^\[data-shop-buy-tool="(\d+)"\]$/, id => `[data-shop-tool-details="${id}"]`], [/^\[data-shop-buy-ingredient="(\d+)"\]$/, id => `[data-shop-ingredient-details="${id}"]`], [/^\[data-shop-duck\]$/, () => '[data-shop-egg="1"]']];
   function click(selector) {
-    const button = screen?.querySelector(selector);
+    let button = screen?.querySelector(selector);
+    if (!button) {
+      const opener = OPENERS.find(([pattern]) => pattern.test(selector));
+      if (opener) { screen?.querySelector(opener[1](selector.match(opener[0])[1]))?.click(); button = screen?.querySelector(selector); }
+    }
     assert.ok(button, `Shop did not render ${selector}`);
     assert.equal(button.disabled, false, `${selector} is disabled`);
     button.click();
@@ -78,7 +84,8 @@ function shopHarness(initial = E.freshState(NOW)) {
     click,
     control: selector=>screen?.querySelector(selector) ?? null,
     quantity(id, step) {
-      const button = screen.querySelectorAll('[data-shop-quantity]').find(node => Number(node.dataset.shopQuantity) === id && Number(node.dataset.step) === step);
+      if (!screen.querySelector(`[data-shop-buy-ingredient="${id}"]`)) screen.querySelector(`[data-shop-ingredient-details="${id}"]`)?.click();
+      const button = screen.querySelectorAll('[data-shop-step]').find(node => Number(node.dataset.shopStep) === step);
       assert.ok(button, `No quantity control for ingredient ${id}, step ${step}`);
       assert.equal(button.disabled, false, 'Quantity control is disabled');
       button.click();
@@ -218,7 +225,7 @@ test('ingredient confirmation fails atomically when its quantity no longer fits'
   const changed = structuredClone(shop.state);
   shop.confirm();
   assert.deepEqual(shop.state, changed);
-  assert.match(shop.alerts.at(-1), /最多可持有30个/);
+  assert.match(shop.alerts.at(-1), /最多可持有30份/);
 });
 
 test('ingredient confirmation fails atomically if its balance becomes insufficient', () => {
@@ -249,7 +256,8 @@ test('ingredient confirmation rechecks availability after its prerequisite chang
 test('shop exposes all nine tools and the steamer names its real discovery requirement',()=>{
   const state=E.freshState(NOW);state.kitchenLevel=1;
   const shop=shopHarness(state);shop.open();
-  assert.match(shop.markup,/9 种厨具/);
+  assert.equal(shop.markup.match(/data-shop-tool-details="/g).length,9);
+  shop.click('[data-shop-tool-details="8"]');
   assert.match(shop.markup,/已发现 0 \/ 12 种伙伴/);
   assert.equal(shop.control('[data-shop-buy-tool="8"]').disabled,true);
   assert.equal(shop.control('[data-shop-recipes]'),null);
@@ -269,7 +277,10 @@ test('the complete ingredient cabinet can filter all 83 records without hiding l
   const s=E.freshState(NOW),all=shopIngredientCatalog(s),available=shopIngredientCatalog(s,'available'),locked=shopIngredientCatalog(s,'locked');
   assert.equal(all.length,83);assert.equal(available.length+locked.length,83);assert.ok(locked.length>0);
   assert.deepEqual(available.map(r=>r.item.id).sort((a,b)=>a-b),E.availableIngredients(s).sort((a,b)=>a-b));
-  const shop=shopHarness(s);shop.open(1);shop.click('[data-shop-filter="locked"]');assert.ok(shop.control('[data-shop-ingredient-details="68"]'));
+  // Locked seasonings stay one tap away: the 待解锁 tile shows them all.
+  const hidden=locked.find(r=>!r.special&&!(s.ingredients[r.item.id]>0)).item.id;
+  const shop=shopHarness(s);shop.open(1);assert.equal(shop.control(`[data-shop-ingredient-details="${hidden}"]`),null);
+  shop.click('[data-shop-locked-toggle]');assert.ok(shop.control(`[data-shop-ingredient-details="${hidden}"]`));assert.ok(shop.control('[data-shop-ingredient-details="68"]'));
 });
 
 test('ingredient search composes with unlock filters and returns a useful empty set',()=>{
@@ -280,9 +291,10 @@ test('ingredient search composes with unlock filters and returns a useful empty 
 });
 
 test('locked ingredient details explain the current gate and return to the chosen filter',()=>{
-  const shop=shopHarness();shop.open(1);shop.click('[data-shop-filter="locked"]');shop.ui.openIngredientDetails(50);
-  assert.match(shop.markup,/待开放|条件|开放/);assert.equal(shop.control('[data-shop-detail-ingredient]').disabled,true);
-  shop.click('[data-shop-detail-back]');assert.equal(shop.control('[data-shop-filter="locked"]').attrs['aria-pressed'],'true');
+  const shop=shopHarness();shop.open(1);shop.click('[data-shop-locked-toggle]');shop.ui.openIngredientDetails(50);
+  // a cookware-level gate offers the way there instead of a dead 待解锁 button
+  assert.match(shop.markup,/sh-unlock-need/);assert.match(shop.markup,/待解锁/);assert.ok(shop.control('[data-shop-goto-tool]'));assert.equal(shop.control('[data-shop-detail-ingredient]'),null);
+  shop.click('[data-shop-drawer-close]');assert.equal(shop.control('[data-shop-goto-tool]'),null);assert.match(shop.control('[data-shop-locked-toggle]').attrs['aria-label'],/收起/);
 });
 
 test('special ingredients lead to their activity, never to a free purchase confirmation',()=>{

@@ -1,0 +1,229 @@
+ M .gitignore
+ M README.md
+ M android/package-runtime.mjs
+ M android/release.json
+ M artifacts/regression-audit/ui-release.log
+ M docs/README.md
+ M docs/content-pack/audit.json
+ M docs/content-pack/audit.md
+ M docs/content-pack/validate.mjs
+ M docs/implementation-status.md
+ M docs/plan.md
+ M docs/ui-ux.md
+ M package.json
+ M tests/expansion-registry.test.mjs
+ M tests/runtime-content-compiler.test.mjs
+ M tools/build-runtime-content.mjs
+ M tools/qa-book-navigation.mjs
+ M tools/qa-business-component.mjs
+ M tools/qa-compatible-rollback.mjs
+ M tools/qa-takeover-ui.mjs
+ M tools/qa-work-b.mjs
+ M tools/qa-work-c.mjs
+ M tools/qa-work-d.mjs
+ M tools/qa-work-e.mjs
+ M tools/qa-work-f.mjs
+ M tools/qa-work-g.mjs
+ M tools/qa-work-h.mjs
+ M tools/qa-work-i.mjs
+ M tools/qa-work-j.mjs
+ M tools/qa-work-k.mjs
+ M tools/qa-work-l.mjs
+ M web/app.js
+ M web/book-ui.js
+ M web/business-ui.js
+ M web/catalog.js
+ M web/collection-ui.js
+ M web/collections-ui.js
+ M web/content-registry.js
+ M web/desk-ui.js
+ M web/farm-scene.js
+ M web/fonts/chick-ui.woff2
+ M web/fonts/coverage.json
+ M web/index.html
+ M web/journal-ui.js
+ M web/order-model.js
+ M web/order-ui.js
+ M web/project-ui.js
+ M web/regional-content.generated.js
+ M web/regional-text.generated.js
+ M web/regional-ui.js
+ M web/regular-ui.js
+ M web/responsive-shell.css
+ M web/runtime-assets.generated.js
+ M web/runtime-condition-coverage.generated.json
+ M web/runtime-content.manifest.json
+ M web/runtime-requirements.generated.js
+ M web/scene.js
+ M web/settings-ui.js
+ M web/shop-ui.js
+ M web/workshop-ui.js
+?? artifacts/art/
+?? artifacts/business-family/
+?? artifacts/character-design-directions-20260927/
+?? artifacts/creative-concepts-20260927/
+?? artifacts/font-source/ChillRoundM.ttf
+?? artifacts/font-source/ChillRoundM_v1.805.zip
+?? artifacts/font-source/OFL-ChillRound.txt
+?? artifacts/font-source/RHR-CN-0.990.7z
+?? artifacts/font-source/ZCOOLKuaiLe-Regular.ttf
+?? artifacts/font-source/chill-round-1805/
+?? artifacts/font-source/resource-rounded/
+?? artifacts/food-signature-test-20260927/
+?? artifacts/golden-business-r2/
+?? artifacts/golden-business-r3/
+?? artifacts/golden-business/
+?? artifacts/golden-collection-detail-fix/
+?? artifacts/golden-collection-v2/
+?? artifacts/golden-collection/
+?? artifacts/imagegen-eval-v2/
+?? artifacts/imagegen-eval/
+?? artifacts/imagegen/
+?? artifacts/internal-art/
+?? artifacts/internal-scene-first/
+?? artifacts/internal-ui-remaster/
+?? artifacts/journey-convergence/
+?? artifacts/journey-family/
+?? artifacts/journey-precision/
+?? artifacts/journey-round2/
+?? artifacts/kitchen-asset-language-gate-20260927/
+?? artifacts/kitchen-background-direction-gate-20260927/
+?? artifacts/kitchen-concept-remaster-20260927/
+?? artifacts/kitchen-layout-prototype-20260927/
+?? artifacts/kitchen-remaster-lv2-20260927/
+?? artifacts/kitchen-visual-language-lv2-20260927/
+?? artifacts/legacy-native-test-20260926/
+?? artifacts/regression-audit/book-1280x900-16.png
+?? artifacts/regression-audit/book-1280x900-24.png
+?? artifacts/regression-audit/book-1920x1080-16.png
+?? artifacts/regression-audit/book-320x568-16.png
+?? artifacts/regression-audit/book-320x568-24.png
+?? artifacts/regression-audit/book-360x640-16.png
+?? artifacts/regression-audit/book-390x844-16.png
+?? artifacts/regression-audit/book-390x844-24.png
+?? artifacts/regression-audit/book-430x932-16.png
+?? artifacts/regression-audit/book-768x1024-16.png
+?? artifacts/regression-audit/book-844x390-16.png
+?? artifacts/regression-audit/book-dpr3.png
+?? artifacts/regression-audit/browser-report.json
+?? artifacts/regression-audit/browser-run.log
+?? artifacts/regression-audit/farm-1280x900.png
+?? artifacts/regression-audit/farm-1920x1080.png
+?? artifacts/regression-audit/farm-320x568.png
+?? artifacts/regression-audit/farm-360x640.png
+?? artifacts/regression-audit/farm-390x844.png
+?? artifacts/regression-audit/farm-430x932.png
+?? artifacts/regression-audit/farm-768x1024.png
+?? artifacts/regression-audit/farm-844x390.png
+?? artifacts/regression-audit/final-evidence.json
+?? artifacts/regression-audit/font-build.txt
+?? artifacts/regression-audit/font-check.txt
+?? artifacts/regression-audit/generated-before.json
+?? artifacts/regression-audit/generated-diff.json
+?? artifacts/regression-audit/kitchen-1280x900.png
+?? artifacts/regression-audit/kitchen-1920x1080.png
+?? artifacts/regression-audit/kitchen-320x568.png
+?? artifacts/regression-audit/kitchen-360x640.png
+?? artifacts/regression-audit/kitchen-390x844.png
+?? artifacts/regression-audit/kitchen-430x932.png
+?? artifacts/regression-audit/kitchen-768x1024.png
+?? artifacts/regression-audit/kitchen-844x390.png
+?? artifacts/regression-audit/kitchen-final.png
+?? artifacts/regression-audit/node-final.txt
+?? artifacts/regression-audit/package-final.log
+?? artifacts/regression-audit/player-backup-verification.json
+?? artifacts/regression-audit/release-final.log
+?? artifacts/releases/chick-kitchen-1.5.1.release.json
+?? artifacts/releases/chick-kitchen-1.5.1.sha256
+?? artifacts/scene-first-review/
+?? artifacts/ui-remaster-showcase/
+?? artifacts/visual-polish/
+?? docs/art-direction-20260924-v2/
+?? docs/art/
+?? docs/business-family-20260925/
+?? docs/business-golden-20260924/
+?? docs/content-pack/production-concepts.json
+?? docs/current-state-audit.md
+?? docs/current-state-handoff-v2.md
+?? docs/current-state-handoff.md
+?? docs/engineering-health-report.md
+?? docs/journey-visual-20260925/
+?? docs/kitchen-farm-architecture-gate-20260928/
+?? docs/kitchen-farm-audit-20260928/
+?? docs/production-chain-forensics-20260928/
+?? docs/regression-and-ui-audit.md
+?? docs/ui/
+?? docs/visual-asset-inventory.md
+?? docs/visual-polish-report.md
+?? tests/business-family-view.test.mjs
+?? tests/production-art.test.mjs
+?? tools/analyze-legacy-style.py
+?? tools/art_pipeline.py
+?? tools/build-golden-display-font.py
+?? tools/build-journey-font.py
+?? tools/build-polish-art.mjs
+?? tools/compare-business-family.py
+?? tools/compare-business-r2.py
+?? tools/compare-business-ui.py
+?? tools/compare-golden-ui.py
+?? tools/compare-journey-composition.py
+?? tools/compare-journey-family.py
+?? tools/compare-journey-precision.py
+?? tools/compare-journey-type-review.py
+?? tools/extract-business-guestbook.py
+?? tools/extract-journey-reference.py
+?? tools/measure-golden-portraits.py
+?? tools/production-art-manifest.mjs
+?? tools/qa-business-family.mjs
+?? tools/qa-golden-business.mjs
+?? tools/qa-golden-collection.mjs
+?? tools/qa-journey-composition.mjs
+?? tools/qa-journey-family.mjs
+?? tools/qa-journey-precision-states.mjs
+?? tools/qa-journey-precision.mjs
+?? tools/qa-production-art.mjs
+?? tools/qa-regression-audit.mjs
+?? tools/qa-ui-remaster.mjs
+?? tools/qa-visual-polish.mjs
+?? tools/report-journey-precision.py
+?? tools/review-character-sheet.py
+?? tools/segment-journey-assets.py
+?? tools/segment-journey-precision.py
+?? tools/slice-business-assets.py
+?? tools/slice-business-family.py
+?? tools/slice-business-r2-assets.py
+?? tools/slice-golden-assets.py
+?? tools/tests/test_art_pipeline.py
+?? web/art/golden-business/
+?? web/art/golden-collection/
+?? web/art/golden-journey/
+?? web/art/polish/
+?? web/art/production/
+?? web/business-family-art.js
+?? web/business-family.css
+?? web/business-golden-ui.js
+?? web/business-golden.css
+?? web/business-ledger-ui.js
+?? web/business-refinement.css
+?? web/business-subpages.js
+?? web/fonts/OFL-ResourceHanRounded.txt
+?? web/fonts/OFL-ZCOOLKuaiLe.txt
+?? web/fonts/journey-font.css
+?? web/fonts/journey-rounded-bold.woff2
+?? web/fonts/journey-rounded-heavy.woff2
+?? web/fonts/journey-rounded-medium.woff2
+?? web/fonts/journey-rounded-regular.woff2
+?? web/fonts/zcool-kuaile.woff2
+?? web/game-visual-system.css
+?? web/golden-collection-ui.js
+?? web/golden-collection.css
+?? web/golden-portrait-metrics.js
+?? web/journey-art-metrics.js
+?? web/journey-art.js
+?? web/journey.css
+?? web/production-art.js
+?? web/prototypes/
+?? web/remaster-view.js
+?? web/ui-remaster.css
+?? web/visual-assets.js
+?? web/visual-polish.css

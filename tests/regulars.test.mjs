@@ -47,14 +47,23 @@ test('RG1-1: nothing without the gate; a manual O01 completion queues the story 
   assert.deepEqual(reconcileRegulars(s),[],'idempotent');
 });
 
-test('at most one unread stage; reading never pays, activates the next stage and may queue it retroactively',()=>{
-  const s=base();complete(s,'O01');service(s,'MN2');reconcileRegulars(s);
-  assert.equal(pending(s,'RG1'),'RG1-1','MN2 already recorded but RG1-2 waits for the read');
+test('at most one unread stage; reading never pays and activates the next stage',()=>{
+  const s=base();complete(s,'O01');reconcileRegulars(s);
+  assert.equal(pending(s,'RG1'),'RG1-1');
   const cp=s.cp,farm=structuredClone(s.farm);
   const result=readRegularStage(s,'RG1');assert.deepEqual(result,{stageId:'RG1-1',next:'RG1-2'});
-  assert.equal(pending(s,'RG1'),'RG1-2','permanent business records are recognised after activation');
+  assert.equal(pending(s,'RG1'),null,'RG1-2 waits for its own record');
   assert.deepEqual(s.expansion.regulars.RG1.readStages,['RG1-1']);assert.equal(s.cp,cp);assert.deepEqual(s.farm,farm);
-  assert.throws(()=>{readRegularStage(s,'RG1');readRegularStage(s,'RG1');},/暂时没有/);check(s);
+  assert.throws(()=>readRegularStage(s,'RG1'),/暂时没有/);check(s);
+});
+
+test('不挡进度 (2026-10-07): an unread story never holds the next one back; it is recorded as read and stays readable',()=>{
+  const s=base();complete(s,'O01');service(s,'MN2');reconcileRegulars(s);
+  assert.equal(pending(s,'RG1'),'RG1-2','MN2 already recorded, so RG1-1 is recorded and RG1-2 waits instead');
+  assert.deepEqual(s.expansion.regulars.RG1.readStages,['RG1-1']);
+  assert.ok(s.expansion.collections.entitlements['NOTE-RG1-1']&&s.expansion.collections.entitlements['NOTE-RG1-2'],'both notes are registered once');
+  const m=regularsModel(s).rows.find(r=>r.id==='RG1');assert.ok(m.stages[0].text,'the recorded story keeps its text for 回读');
+  assert.deepEqual(reconcileRegulars(s),[]);check(s);
 });
 
 test('a real MN1 session queues RG1-1 and the next visitor step presents it; no CP beyond sales',()=>{
@@ -113,13 +122,14 @@ test('RG4-1 opens the bay route (GUIDE-B) without a discovery card; the shore-si
   assert.equal(regularInfo(s,'RG4').gateMet,true);
   const cards=structuredClone(s.expansion.discovery.cards);complete(s,'O12');reconcileRegulars(s);
   assert.equal(pending(s,'RG4'),'RG4-1');assert.deepEqual(s.expansion.regions.guideFlags,['GUIDE-B']);assert.deepEqual(s.expansion.discovery.cards,cards,'GUIDE-B is not a 25th card');
-  assert.equal(regionInfo(s,'B').missing.includes('先在溪岸岸边摊追寻沿湾路标'),false);E.normalizeSave(s,NOW);
+  assert.equal(regionInfo(s,'B').missing.includes('在溪岸小集的岸边摊找到沿湾路标'),false);E.normalizeSave(s,NOW);
 });
 
 test('a full RG1 chain gives three notes and M09 exactly once; the graduated regular has no pending red dot',()=>{
   const s=base();for(let i=20;i<30;i++)s.total[`0:${i}`]=1;
   complete(s,'O01');complete(s,'O07');complete(s,'O03');reconcileRegulars(s);
-  for(const next of ['RG1-2','RG1-3','RG1-4']){readRegularStage(s,'RG1');assert.equal(pending(s,'RG1'),next);}
+  // every stage after an unread one is already met: the chain is recorded up to the last story, which waits
+  assert.equal(pending(s,'RG1'),'RG1-4');assert.deepEqual(s.expansion.regulars.RG1.readStages,['RG1-1','RG1-2','RG1-3']);
   assert.ok(s.expansion.collections.entitlements.M09,'two different templates (O01, O07, O03) satisfy RG1-4');
   readRegularStage(s,'RG1');assert.equal(regularInfo(s,'RG1').complete,true);assert.deepEqual(reconcileRegulars(s),[]);
   assert.deepEqual(ownedMementos(s).filter(id=>/M09|M10|M11|M12/.test(id)),['M09']);

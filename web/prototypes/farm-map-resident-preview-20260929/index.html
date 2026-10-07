@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>鸡宝厨房 · 已选地图与居民比例</title><link rel="icon" href="/assets/png/icon.png"><link rel="stylesheet" href="style.css"></head><body><main>
+<header><div><span class="eyebrow">鸡宝厨房 / 已选地图 / 居民比例预览</span><h1>鸡宝住进营地。</h1><p>采用你提供的地图，先看小比例居民放进去的效果。</p></div><div class="controls"><label><input type="checkbox" id="residents" checked> 显示鸡宝</label><button id="fit">全图</button><button id="native">原图尺度</button><button id="plus" aria-label="放大">＋</button><button id="minus" aria-label="缩小">−</button></div></header>
+<div class="viewport" id="viewport" tabindex="0" aria-label="拖动浏览地图，滚轮或按钮缩放"><div class="map-world" id="map-world"><img class="map" src="assets/map-user-approved.png" alt="用户选定的环河营地地图"><div id="residents-layer"></div></div></div>
+<div class="caption"><span>拖动浏览 · 滚轮缩放 · “显示鸡宝”可对照原图</span><span id="zoom-label"></span></div>
+<section><p><b>8 只鸡宝，原图中高 18–20 px。</b> 约为农舍门洞可见高度的一半。中央活动区 4 只，四处功能点附近各 1 只；使用现有正式角色。</p><p>地图与角色是两个独立图层。当前只看摆放和比例，鸡宝尚未接入行走行为。</p></section>
+</main><script type="module" src="app.js"></script></body></html>

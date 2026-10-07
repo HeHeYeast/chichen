@@ -27,8 +27,14 @@ const server=spawn(process.execPath,['server.mjs','0'],{cwd:root,stdio:['ignore'
 const read=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('chick-kitchen-v1')));
 const screenshot=async name=>{await p.waitForTimeout(120);await p.screenshot({path:resolve(output,name+'.png')});screens.push(name);};
 const start=async()=>{await p.getByRole('button',{name:'开始游戏',exact:true}).click();await p.locator('.workshop-launch').waitFor();await p.waitForTimeout(650);};
-const open=async()=>{if(await p.locator('.regional-screen').count())return;if(await p.locator('.screen-panel .close').count())await p.locator('.screen-panel .close').first().click();await p.getByRole('button',{name:'寻访',exact:true}).click();await p.locator('.regional-screen').waitFor();};
-const tab=async name=>{await p.locator(`[data-regional-tab="${name}"]`).click();};
+const open=async()=>{if(await p.locator('.regional-screen').count())return;await p.getByRole('button',{name:'寻访',exact:true}).click();await p.locator('.regional-screen').waitFor();};
+const tab=async name=>{
+  if(name==='record'){
+    if(await p.locator('[data-regional-record]').count())await p.locator('[data-regional-record]').click();
+    else if(await p.locator('[data-regional-tab="record"]').count())await p.locator('[data-regional-tab="record"]').first().click();
+  }else if(await p.getByRole('button',{name:'回到寻访',exact:true}).count())await p.getByRole('button',{name:'回到寻访',exact:true}).click();
+  else if(await p.locator('[data-journey-enter]').count())await p.locator('[data-journey-enter]').click();
+};
 const jump=async at=>{await p.evaluate(({at,base})=>{window.__workBOffset=at-base;sessionStorage.setItem('work-b-clock',String(window.__workBOffset));},{at,base:now});};
 async function fit(){await p.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));const box=await p.locator('.regional-screen').evaluate(el=>{const r=el.getBoundingClientRect(),g=document.querySelector('#game').getBoundingClientRect(),b=el.querySelector('.regional-body');return {inside:r.top>=g.top-1&&r.bottom<=g.bottom+1&&r.left>=g.left-1&&r.right<=g.right+1,overflow:b.scrollWidth-b.clientWidth};});assert.ok(box.inside,'regional sheet fits game');assert.ok(box.overflow<2,'regional paper has no horizontal overflow');}
 async function team(keys){
@@ -40,18 +46,18 @@ async function team(keys){
 async function trip({place,focus,members}){
   await open();await tab('trip');await p.locator(`[data-regional-place="${place}"]`).click();await p.locator(`[data-regional-focus="${focus}"]`).click();
   if(members)await team(members);
-  await p.locator('[data-regional-depart]').click();await p.locator('[data-yes]').click();
+  await p.locator('[data-regional-depart]').click();await p.locator('[data-journey-confirm]').click();
   const s=await read();assert.equal(s.progress.trip.status,'running');
-  await jump(s.progress.trip.endAt+1000);await p.locator('[data-regional-claim-notes]').waitFor();
+  await jump(s.progress.trip.endAt+1000);await p.locator('[data-regional-claim]').waitFor();await p.locator('[data-regional-claim-notes]').waitFor({state:'attached'});
   const back=await read();const result=back.progress.trip.regional.result;
-  if(await p.locator('[data-regional-claim]').count()){await p.locator('[data-regional-claim]').click();await p.locator('[data-yes]').click();}
+  if(await p.locator('[data-regional-claim]').count()){await p.locator('[data-regional-claim]').click();await p.waitForTimeout(300);if(await p.locator('#dialog-layer [data-yes]').count())await p.locator('#dialog-layer [data-yes]').click();}
   if((await read()).progress.trip.status==='returned'){await p.locator('.regional-basket details summary').click();await p.locator('[data-regional-discard]').click();await p.locator('[data-yes]').click();}
   assert.equal((await read()).progress.trip.status,'settled');
   return result;
 }
 async function until(card,options,limit){for(let i=0;i<limit;i++){const r=await trip(options);if((await read()).expansion.discovery.cards[card])return i+1;void r;}throw Error(`${card} not found within ${limit} complete trips`);}
 async function identify(id){await open();await tab('record');await p.locator(`[data-regional-identify="${id}"]`).click();assert.ok(Object.hasOwn((await read()).expansion.discovery.identified,String(id)));}
-async function buy(id,count=1){while(await p.locator('.screen-panel .close').count())await p.locator('.screen-panel .close').first().click();await p.getByRole('button',{name:'厨房',exact:true}).click();await p.getByRole('button',{name:'补给 · 小卖部',exact:true}).click();await p.locator('[data-shop-tab="1"]').click();for(let i=0;i<count;i++){await p.locator(`[data-shop-buy-ingredient="${id}"]`).click();await p.locator('[data-yes]').click();}await p.getByRole('button',{name:'厨房',exact:true}).click();}
+async function buy(id,count=1){while(await p.locator('.screen-panel .close').count())await p.locator('.screen-panel .close').first().click();await p.getByRole('button',{name:'厨房',exact:true}).click();await p.getByRole('button',{name:'补给 · 小卖部',exact:true}).click();await p.locator('[data-shop-tab="1"]').click();await p.locator(`[data-shop-ingredient-details="${id}"]`).click();for(let i=0;i<count;i++){await p.locator(`[data-shop-buy-ingredient="${id}"]`).click();await p.locator('[data-yes]').click();}await p.getByRole('button',{name:'厨房',exact:true}).click();}
 // A careful player cleans before a trial batch; dirt may otherwise turn the scheduled egg sick.
 async function tidy(){await p.locator('[data-control-id="clean"]').click();const yes=p.locator('[data-yes]');if(await yes.isEnabled())await yes.click();else await p.locator('[data-no]').click();}
 async function cook(toolId){await tidy();await p.locator(`[data-control-id="tool:${toolId}"]`).click();await p.locator('.cooking-dialog').waitFor();const text=await p.locator('.cooking-dialog').innerText();await p.locator('[data-yes]').click();return text;}
@@ -71,15 +77,16 @@ try{
   await p.getByRole('button',{name:'图鉴',exact:true}).click();await p.locator('[data-book-tab="collections"]').click();await p.locator('.books-screen').waitFor();
   const text=await p.locator('.books-screen').innerText();assert.match(text,/街坊早饭册/);assert.ok(!/荠菜煎饼鸡|麦穗冠鸡/.test(await p.locator('.books-screen').innerHTML()),'unknown new species stay unnamed');
   await screenshot('books-theme-390');
-  await p.locator('[data-books-open="COL-8"]').click();assert.match(await p.locator('.books-screen').innerText(),/章节/);await screenshot('books-col8');
-  await p.locator('[data-books-category]').selectOption('mementos');await p.locator('[data-books-slot="0"]').selectOption('M01');await p.locator('[data-books-slot="1"]').selectOption('M08');
+  await p.locator('[data-gs-directory]').click();await p.locator('[data-books-open="COL-8"]').click();assert.equal(await p.locator('[data-gs-next]').isDisabled(),true);await screenshot('books-col8');
+  // Category pills and the shelf chooser replaced the dropdowns.
+  if(await p.locator('[data-gs-directory]').count()&&!await p.locator('[data-books-category]:visible').count())await p.locator('[data-gs-directory]').click();await p.locator('[data-books-category="mementos"]:visible').first().click();await p.locator('[data-books-slot="0"]').click();await p.locator('[data-books-pick="M01"]').click();await p.locator('[data-books-slot="1"]').click();await p.locator('[data-books-pick="M08"]').click();
   s=await read();assert.deepEqual(s.expansion.collections.display,['M01','M08',null]);assert.equal(s.cp,seed.cp);await screenshot('books-mementos');
   for(const [width,height] of [[320,568],[1280,900]]){await p.setViewportSize({width,height});await screenshot(`books-mementos-${width}`);}
   await p.setViewportSize({width:390,height:844});
   await p.locator('.books-screen .close').click();await p.getByRole('button',{name:'农场',exact:true}).click();await p.waitForTimeout(400);
-  assert.equal(await p.locator('[data-control-id="farm:display"]').count()>=0,true);await screenshot('farm-shelf');
+  assert.equal(await p.locator('.farm-map-mementos img').count(),2);await screenshot('farm-shelf');
   await p.reload();await start();assert.deepEqual((await read()).expansion.collections.display,['M01','M08',null]);
-  checks.push('纪念物页选择两件陈列（农场陈列架显示概念占位），刷新保留；更换陈列不改CP或库存；12件中常客的4件显示“尚未得到”');
+  checks.push('纪念物页选择两件陈列（农场陈列架显示两件已拥有纪念物），刷新保留；更换陈列不改CP或库存；12件中常客的4件显示“尚未得到”');
   await p.getByRole('button',{name:'厨房',exact:true}).click();
   await open();await p.locator('[data-regional-region="V"]').click();
   await trip({place:'V:0',focus:'materials',members:['0:128','0:0']});

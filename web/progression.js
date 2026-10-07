@@ -2,17 +2,15 @@ import {materialCapacity,materialRoom} from './material-capacity.js';
 import {economicRandom} from './rng.js';
 import {RULES} from './integration-data.js';
 
-import {speciesDiscovered} from './species-state.js';
+import {speciesDiscovered,collectedTotal,discoveryCount} from './species-state.js';
 import {SKILLS,SKILL_BY_ID,TRADE_CATEGORIES} from './skill-data.js';
 import {SPECIES_TRADE as TRADE_SPECIES} from './content-registry.js';
 import {GAME_DATA} from './content-pack.js';
 export {SKILLS,SKILL_BY_ID,TRADE_CATEGORIES};
 export const SPECIES_SOURCE_LIMIT=240,MAX_SKILL_POINTS=64;
 export const BRANCHES={CUL:'料理',HOME:'持家',TRADE:'经营',OBS:'观察',TRIP:'寻访'};
-export const NODE_NAMES=Object.fromEntries(Object.keys(BRANCHES).map(b=>[b,SKILLS.filter(s=>s.branch===b).map(s=>s.name)]));
 export const rank=(s,id)=>s.progress?.skills?.[id]??0;
-export const collectedTotal=(s,egg)=>Object.entries(s.total??{}).reduce((n,[k,v])=>n+(egg===undefined||k.startsWith(egg+':')?v:0),0);
-export const discoveryCount=s=>new Set([...Object.keys(s.total??{}),...Object.keys(s.farm??{})].filter(k=>(s.total?.[k]??0)>0||(s.farm?.[k]??0)>0)).size;
+export {collectedTotal,discoveryCount};
 export function earnedSources(s){
  const H=collectedTotal(s),D=discoveryCount(s),sources={};
  if(H>=24)sources['harvest:24']=2;

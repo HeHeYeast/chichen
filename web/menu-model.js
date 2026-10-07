@@ -16,8 +16,8 @@ export function legacyRouteOpen(s,id){
 export function businessUnlockInfo(s){
   const first=RULES.storyOrders[0].id;
   const missing=[];
-  if(collectedTotal(s)<72)missing.push('累计收取72只');if(discoveryCount(s)<3)missing.push('发现3种伙伴');if(!s.progress.orders[first]?.completed)missing.push('完成第一笔旧采购');
-  return {met:!missing.length,missing,actionRef:missing.some(x=>x.includes('采购'))?{page:'business',tab:'orders'}:{page:'kitchen'}};
+  if(collectedTotal(s)<72)missing.push('累计收取72只');if(discoveryCount(s)<3)missing.push('发现3种伙伴');if(!s.progress.orders[first]?.completed)missing.push('完成「第一笔生意」');
+  return {met:!missing.length,missing,actionRef:missing.some(x=>x.includes('生意'))?{page:'business',tab:'orders'}:{page:'kitchen'}};
 }
 export function menuUnlockInfo(s,menuId){
   const menu=menuDefinition(menuId);if(!menu)return {met:false,missing:['菜单不存在']};

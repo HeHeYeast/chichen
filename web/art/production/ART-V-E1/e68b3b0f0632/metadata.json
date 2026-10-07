@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "processingVersion": 1,
+  "kind": "cards",
+  "identityKey": null,
+  "sourceSize": [
+    1672,
+    941
+  ],
+  "sourceBounds": [
+    276,
+    314,
+    1425,
+    694
+  ],
+  "components": [
+    {
+      "area": 117280,
+      "bbox": [
+        549,
+        314,
+        1215,
+        622
+      ]
+    },
+    {
+      "area": 9048,
+      "bbox": [
+        462,
+        324,
+        596,
+        438
+      ]
+    },
+    {
+      "area": 1,
+      "bbox": [
+        514,
+        380,
+        515,
+        381
+      ]
+    },
+    {
+      "area": 6403,
+      "bbox": [
+        1258,
+        397,
+        1366,
+        493
+      ]
+    },
+    {
+      "area": 30819,
+      "bbox": [
+        276,
+        423,
+        539,
+        609
+      ]
+    },
+    {
+      "area": 30653,
+      "bbox": [
+        1097,
+        487,
+        1381,
+        694
+      ]
+    },
+    {
+      "area": 2057,
+      "bbox": [
+        1362,
+        495,
+        1425,
+        538
+      ]
+    },
+    {
+      "area": 3145,
+      "bbox": [
+        582,
+        573,
+        664,
+        624
+      ]
+    },
+    {
+      "area": 823,
+      "bbox": [
+        665,
+        612,
+        702,
+        641
+      ]
+    }
+  ],
+  "sourceLayersUnavailable": true,
+  "variants": {
+    "discovery-vignette": {
+      "path": "/web/art/production/ART-V-E1/e68b3b0f0632/discovery-vignette.png",
+      "width": 480,
+      "height": 270,
+      "sha256": "79cca1521994443bbb1d1dcbcf6c057f6d983345676fac2865a6f0a49732b75b",
+      "visibleBounds": [
+        58,
+        74,
+        423,
+        195
+      ],
+      "centroid": [
+        0.4961824317856065,
+        0.48805098892999055
+      ],
+      "scale": 0.3174934725848564,
+      "translation": [
+        -29.628198433420366,
+        -25.6929503916449
+      ],
+      "bounds": [
+        58,
+        74,
+        365,
+        121
+      ],
+      "groundAnchor": [
+        0.5,
+        0.7222222222222222
+      ],
+      "available": true
+    }
+  },
+  "source": {
+    "sourceHash": "f723d681aeca3667bacc9d0529d2e6a018b711a4c8ce34c89993bba24c7c8945",
+    "provider": "native-imagegen"
+  }
+}

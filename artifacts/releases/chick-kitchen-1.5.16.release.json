@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.16",
+    "versionCode":  32,
+    "file":  "chick-kitchen-1.5.16.apk",
+    "sha256":  "474a43c61dc236e72e8cd7a01bb8d86ae62fe9737aeb7e43fdb3343ae3a5b5a3",
+    "bytes":  107291268,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-06T01:37:40.3503308Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "6ba9bea67d51f3dabd34cd887a57488b08a43b63dd88f3adba27e82bfa9c7e51",
+    "runtimeFiles":  1470,
+    "notes":  "弹窗可以向上或向两侧拖出去关闭；下一锅在节日期间提示限定鸡宝，「新伙伴」只算条件已满足的鸡宝。包含 1.5.15 的下一锅推荐重做（多赚按每小时、按线索试配新伙伴）、1.5.13 的留在家数量、同种多只寻访和 1～20 数值。保留存档和签名，可直接覆盖更新。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

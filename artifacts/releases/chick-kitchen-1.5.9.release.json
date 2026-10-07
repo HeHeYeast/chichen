@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.9",
+    "versionCode":  25,
+    "file":  "chick-kitchen-1.5.9.apk",
+    "sha256":  "c92dbf0cfcb78c9bf6b690f3e119540ab091fade106ef93c303dcdb1efd782ad",
+    "bytes":  101746265,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-04T09:00:13.2391056Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "6a64c6354bd8af2606f030362afac26056d5f20886bcd29172573e5851495def",
+    "runtimeFiles":  1367,
+    "notes":  "厨房顶部的本锅状态条可以点了：待开锅时直接打开开火，孵好时一键收取全部，孵化中显示还要多久；空蛋窝的「点下面的厨具开火」也能点；点还没孵好的蛋会提示还要几分钟。包含 1.5.8 的收取不卡顿、提醒横幅振动与「允许后台」。保留原有玩法和存档。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

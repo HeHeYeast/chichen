@@ -1,0 +1,56 @@
+{
+  "source": "../mockup-main.png",
+  "components": [
+    {
+      "id": "map-hills",
+      "referenceVisualBounds": [
+        19,
+        87,
+        464,
+        203
+      ],
+      "mask": "green"
+    },
+    {
+      "id": "map-ground",
+      "referenceVisualBounds": [
+        19,
+        329,
+        464,
+        387
+      ],
+      "mask": "green"
+    },
+    {
+      "id": "map-river",
+      "referenceVisualBounds": [
+        19,
+        297,
+        464,
+        261
+      ],
+      "mask": "blue"
+    },
+    {
+      "id": "place-environment",
+      "referenceVisualBounds": [
+        515,
+        165,
+        448,
+        196
+      ],
+      "mask": "green"
+    },
+    {
+      "id": "hero-ground",
+      "referenceVisualBounds": [
+        1028,
+        472,
+        399,
+        108
+      ],
+      "mask": "hero-green"
+    }
+  ],
+  "contains": "only static pale green environment and blue water; no text, controls, routes, characters"
+}

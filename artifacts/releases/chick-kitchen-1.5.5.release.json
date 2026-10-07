@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.5",
+    "versionCode":  21,
+    "file":  "chick-kitchen-1.5.5.apk",
+    "sha256":  "0b09c35b3532db6482c4838390d0d207fd25b2d6a11b32ca1c24bedd17f4339f",
+    "bytes":  99773150,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-09-30T15:49:56.5021998Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "b2bc9d6c7aceea2b3b14f46c92d58aa5df713b7daf05f13eb464864fc8351f67",
+    "runtimeFiles":  1326,
+    "notes":  "孵出的鸡宝恢复原本比例，不再被竖向拉长；寻访地图按原比例铺满画面，地点图标和树石装饰缩小，路线、地点与同行伙伴始终对齐；同行在路上页的地图不再错位。保留原有玩法和存档。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

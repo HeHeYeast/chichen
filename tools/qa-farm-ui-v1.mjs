@@ -1,0 +1,96 @@
+import {spawn} from 'node:child_process';
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {freshState} from '../web/engine.js';
+import {claimActivity} from '../web/legacy-activities.js';
+import {grantEntitlementOnce} from '../web/collection-progress.js';
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.APPDATA+'/npm/node_modules/gsd-pi/node_modules/playwright-core');
+const out='artifacts/farm-ui-runtime-20260930';await mkdir(out,{recursive:true});
+const server=spawn(process.execPath,['server.mjs','0'],{stdio:['ignore','pipe','pipe'],windowsHide:true});
+const base=await new Promise((resolve,reject)=>{server.on('error',reject);server.stdout.on('data',b=>{const m=String(b).match(/http:\/\/127\.0\.0\.1:\d+/);if(m)resolve(m[0]);});});
+const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+const errors=[],checks=[];
+const seed=freshState(Date.now());seed.cp=6000;seed.total=Object.fromEntries(Array.from({length:18},(_,id)=>['0:'+id,120]));claimActivity(seed,'shrine',seed.lastSeen);seed.farm={'0:0':5,'0:3':2,'0:4':1};seed.progress.tutorialSeen=true;seed.farmFixed-=20*3600000;grantEntitlementOnce(seed,'M01','test-fixture');
+const c=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce',hasTouch:true});
+await c.addInitScript(s=>{if(!sessionStorage.seeded){localStorage.setItem('chick-kitchen-review-v1',JSON.stringify(s));sessionStorage.seeded='yes';}},seed);
+const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
+const nav=name=>p.locator('#main-nav').getByRole('button',{name,exact:true}).click();
+const camera=()=>p.locator('.farm-map').getAttribute('data-camera').then(JSON.parse);
+const close=()=>p.locator('#panels .close').click();
+const read=()=>p.evaluate(()=>JSON.parse(localStorage.getItem('chick-kitchen-review-v1')));
+const locate=async id=>{await p.locator('[data-camera="places"]').click();await p.locator(`[data-locate="${id}"]`).click();};
+const enter=async id=>{await locate(id);await p.locator(`[data-place="${id}"]`).click();};
+try{
+  await p.goto(base+'/?review');await p.getByRole('button',{name:'开始游戏',exact:true}).click();await p.waitForTimeout(700);await nav('农场');
+  await p.locator('.farm-map:visible').waitFor();await p.waitForTimeout(350);
+  assert.equal(await p.locator('.farm-map-resident').count(),8);checks.push('eight residents from real home inventory');
+  await p.screenshot({path:out+'/farm-default-390x844.png'});
+  await enter('house');await p.locator('.warehouse-screen').waitFor();assert.ok(await p.locator('.warehouse-screen [data-wh-bird]').count()>0);await p.locator('[data-wh-tab="mats"]').click();assert.match(await p.locator('.warehouse-screen').innerText(),/材料包/);await close();checks.push('farm 仓库 opens partners and materials in one place');
+  await p.locator('[data-repair]').click();await p.locator('[data-no]').click();assert.equal((await read()).cp,6000);
+  await p.locator('[data-repair]').click();await p.locator('[data-yes]').click();assert.equal((await read()).cp,5990);assert.equal(await p.locator('[data-repair]').isDisabled(),true);checks.push('repair cancel preserves CP; confirmation deducts the quoted 10 CP');
+  await enter('house');await p.locator('.warehouse-screen [data-wh-bird="0:0"]').click();await p.locator('.wh-sheet [data-wh-set="1"]').click();
+  const saleBefore=await read();await p.locator('[data-wh-sell-one]').click();await p.locator('[data-no]').click();assert.equal((await read()).farm['0:0'],5);
+  await p.locator('[data-wh-sell-one]').click();await p.locator('[data-yes]').click();const sold=await read();assert.equal(sold.farm['0:0'],4);assert.ok(sold.cp>saleBefore.cp);assert.deepEqual(sold.total,saleBefore.total);await p.locator('.wh-scrim').click({position:{x:12,y:96}});await close();assert.equal(await p.locator('.farm-map-resident').count(),7);checks.push('market sale commits stock and CP, preserves lifetime collection; cancel is read-only');
+  await enter('market');await p.locator('.business-screen').waitFor();await nav('农场');await p.locator('.farm-map:visible').waitFor();checks.push('market opens the shop front; 农场 returns to camp');
+  await enter('shrine');await p.locator('.shrine-screen').waitFor();assert.match(await p.locator('[data-shrine-back]').innerText(),/返回营地/);await p.locator('[data-shrine-draw]').click();await p.waitForTimeout(750);assert.equal((await read()).ingredients[68],1);assert.equal(await p.locator('[data-shrine-draw]').count(),0);await p.locator('[data-shrine-back]').click();assert.equal(await p.locator('#panels>.panel').count(),0);checks.push('shrine grants one real sign and returns directly to camp');
+  await enter('display');await p.locator('.books-screen').waitFor();await p.locator('[data-books-slot="0"]').click();await p.locator('[data-books-pick="M01"]').click();assert.equal((await read()).expansion.collections.display[0],'M01');await close();assert.equal(await p.locator('.farm-map-mementos img').count(),1);checks.push('owned memento appears on the actual display shelf and is saved');
+  await enter('dock');await p.locator('.regional-screen').waitFor();await nav('农场');checks.push('dock opens journey');
+  await p.locator('[data-camera="home"]').click();const before=await camera(),r=await p.locator('.farm-map-ground').boundingBox();
+  await p.mouse.move(r.x+r.width*.5,r.y+r.height*.5);await p.mouse.down();await p.mouse.move(r.x+r.width*.5+70,r.y+r.height*.5+70,{steps:10});await p.mouse.up();
+  const after=await camera();assert.ok(after.x<before.x&&after.y<before.y);assert.equal(await p.locator('#panels>.panel').count(),0);checks.push('two-axis pan without accidental building action');
+  const navBox=await p.locator('#main-nav').boundingBox();await p.locator('[data-camera="in"]').click();assert.ok((await camera()).zoom>after.zoom);assert.deepEqual(await p.locator('#main-nav').boundingBox(),navBox);checks.push('zoom keeps screen navigation fixed');
+  await p.locator('[data-camera="home"]').click();const session=await c.newCDPSession(p),cx=r.x+r.width/2,cy=r.y+r.height/2;
+  await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:cx-30,y:cy,id:1},{x:cx+30,y:cy,id:2}]});
+  await session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:cx-55,y:cy-15,id:1},{x:cx+55,y:cy+15,id:2}]});
+  await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});assert.ok((await camera()).zoom>.7);assert.equal(await p.locator('#panels>.panel').count(),0);checks.push('real two-touch pinch zoom does not open a building');
+  await p.locator('[data-camera="places"]').click();await p.locator('[data-camera="fit"]').click();await p.screenshot({path:out+'/farm-far-390x844.png'});await p.locator('[data-camera="home"]').click();assert.equal((await camera()).zoom,.7);
+  await nav('厨房');assert.equal(await p.locator('.farm-map').isVisible(),false);await nav('农场');checks.push('farm hides on other pages and retains camera');
+  await p.reload();await p.getByRole('button',{name:'开始游戏',exact:true}).click();await p.waitForTimeout(600);await nav('农场');const restored=await read();assert.equal(restored.farm['0:0'],4);assert.equal(restored.ingredients[68],1);assert.equal(restored.expansion.collections.display[0],'M01');assert.equal(await p.locator('.farm-map-mementos img').count(),1);checks.push('sale, shrine gift and shelf survive a real page reload');
+  for(const viewport of [{width:320,height:568},{width:844,height:390},{width:1280,height:900}]){await p.setViewportSize(viewport);await p.waitForTimeout(250);await p.waitForFunction(w=>{const r=document.querySelector('.farm-map')?.getBoundingClientRect();return r&&r.right<=w+1;},viewport.width,{timeout:3000}).catch(()=>{});const b=await p.locator('.farm-map').boundingBox();assert.ok(b.x>=-1&&b.y>=-1&&b.x+b.width<=viewport.width+1&&b.y+b.height<=viewport.height+1,JSON.stringify({viewport,b}));await enter('house');const panel=await p.locator('.warehouse-screen').boundingBox();assert.ok(panel.x>=-1&&panel.x+panel.width<=viewport.width+1);await close();}
+  checks.push('320 portrait, landscape and desktop bounds');
+  await p.setViewportSize({width:390,height:844});await p.locator('[data-camera="home"]').click();await p.waitForTimeout(250);await p.screenshot({path:out+'/farm-final-390x844.png'});
+  await locate('house');const cam=await camera(),rect=await p.locator('.farm-map-ground').boundingBox(),scale=1;
+  const hx=rect.x+(rect.width/2+(480-cam.x)*cam.zoom)*scale,hy=rect.y+(rect.height/scale/2+(240-cam.y)*cam.zoom)*scale;
+  await p.mouse.move(hx,hy);await p.mouse.down();await p.mouse.move(hx+75,hy+40,{steps:8});await p.mouse.up();assert.equal(await p.locator('#panels>.panel').count(),0);
+  await locate('house');const cam2=await camera();await p.mouse.click(rect.x+(rect.width/2+(480-cam2.x)*cam2.zoom)*scale,rect.y+(rect.height/scale/2+(240-cam2.y)*cam2.zoom)*scale);await p.locator('.warehouse-screen').waitFor();await close();checks.push('building artwork is clickable; dragging from its roof does not activate it');
+  const empty=freshState(Date.now());empty.cp=1;empty.farmFixed-=20*3600000;empty.progress.tutorialSeen=true;
+  const emptyContext=await browser.newContext({viewport:{width:390,height:844}});await emptyContext.addInitScript(s=>localStorage.setItem('chick-kitchen-review-v1',JSON.stringify(s)),empty);
+  const ep=await emptyContext.newPage();ep.on('pageerror',e=>errors.push(e.message));await ep.goto(base+'/?review');await ep.getByRole('button',{name:'开始游戏',exact:true}).click();await ep.waitForTimeout(600);await ep.locator('#main-nav').getByRole('button',{name:'农场',exact:true}).click();assert.equal(await ep.locator('.farm-map-resident').count(),0);assert.match(await ep.locator('.farm-task').innerText(),/迎接第一位鸡宝/);await ep.locator('[data-repair]').click();assert.equal(await ep.locator('[data-yes]').isDisabled(),true);assert.match(await ep.locator('.confirm').innerText(),/还差/);assert.equal(await ep.evaluate(()=>JSON.parse(localStorage.getItem('chick-kitchen-review-v1')).cp),1);await ep.screenshot({path:out+'/farm-insufficient-cp.png'});await emptyContext.close();checks.push('empty saves show no invented residents; insufficient CP blocks repair without deduction');
+  // Approved-composition fixture is deliberately empty: UI must never invent residents.
+  const approved=freshState(Date.now());approved.cp=600;approved.farmFixed-=82*3600000;approved.progress.tutorialSeen=true;
+  const ac=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+  await ac.addInitScript(s=>{if(!sessionStorage.seeded){localStorage.setItem('chick-kitchen-review-v1',JSON.stringify(s));sessionStorage.seeded='yes';}},approved);
+  const ap=await ac.newPage();ap.on('pageerror',e=>errors.push(e.message));ap.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
+  await ap.goto(base+'/?review');await ap.getByRole('button',{name:'开始游戏',exact:true}).click();await ap.waitForTimeout(600);
+  const anav=name=>ap.locator('#main-nav').getByRole('button',{name,exact:true}).click();await anav('农场');await ap.evaluate(()=>document.fonts.ready);
+  await ap.waitForFunction(()=>[...document.querySelectorAll('.farm-map img,#main-nav img')].every(i=>i.complete&&i.naturalWidth));
+  assert.equal(await ap.locator('[data-coins]').innerText(),'600');assert.match(await ap.locator('[data-repair]').innerText(),/59%/);
+  const geometry=await ap.evaluate(()=>{
+    const rect=selector=>{const r=document.querySelector(selector).getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
+    return {hud:rect('.farm-hud'),map:rect('.farm-map-ground'),nav:rect('#main-nav'),house:rect('[data-place="house"]'),display:rect('[data-place="display"]'),tabs:[...document.querySelectorAll('#main-nav button')].map(b=>b.getBoundingClientRect().width)};
+  });
+  assert.equal(geometry.hud.height,100);assert.equal(geometry.map.y,97);assert.equal(geometry.nav.height,64);assert.equal(geometry.tabs.length,5);assert.ok(geometry.tabs.every(width=>width>=44&&Math.abs(width-geometry.tabs[0])<.5));assert.equal(geometry.house.width,108);assert.equal(geometry.house.height,42);
+  assert.equal(await ap.locator('#main-nav [aria-current="page"]').getAttribute('aria-label'),'农场');assert.equal(await ap.locator('.farm-map-resident').count(),0);
+  await ap.screenshot({path:out+'/farm-approved-390x844.png'});await writeFile(out+'/geometry.json',JSON.stringify(geometry,null,2));
+  checks.push('600 CP / zero residents / 59% fixture: unchanged 100px HUD and 108×42 place cards; 64px nav with five equal touch targets');
+  await ap.locator('[data-task]').click();assert.ok(await ap.locator('#game.is-golden-kitchen').isVisible());await anav('农场');
+  await ap.locator('[data-settings]').click();await ap.locator('.settings-screen').waitFor();await ap.locator('#panels .close').click();assert.ok(await ap.locator('.farm-map').isVisible());
+  await ap.locator('[data-level]').click();await ap.locator('#dialog-layer .upgrade-dialog').waitFor();await ap.locator('#dialog-layer .gd-close').click();await anav('农场');
+  await ap.locator('[data-home-stock]').click();await ap.locator('.warehouse-screen').waitFor();await ap.locator('#panels .close').click();
+  checks.push('task goes to kitchen; settings returns to farm; avatar opens real level panel; home count opens inventory');
+  await ap.locator('[data-camera="places"]').click();await ap.screenshot({path:out+'/farm-secondary-places.png'});await ap.locator('[data-fence]').click();assert.match(await ap.locator('.confirm').innerText(),/修复围栏/);await ap.screenshot({path:out+'/farm-fence-confirm.png'});await ap.locator('[data-no]').click();
+  assert.equal(await ap.locator('[data-coins]').innerText(),'600');await ap.locator('[data-camera="places"]').click();await ap.keyboard.press('Escape');assert.ok(await ap.locator('.farm-map-destinations').isHidden());
+  checks.push('secondary fence entrance opens real repair quote; cancel preserves balance; Escape closes destinations');
+  for(const name of ['厨房','生意','寻访','图鉴']){await anav(name);assert.ok(await ap.locator('.farm-map').isHidden());await anav('农场');assert.ok(await ap.locator('.farm-map').isVisible());}
+  checks.push('all five compact navigation tabs reach their existing runtime pages');
+  for(const viewport of [{width:320,height:568},{width:360,height:640},{width:430,height:932},{width:844,height:390},{width:1280,height:900}]){
+    await ap.setViewportSize(viewport);await ap.waitForTimeout(150);await ap.locator('[data-camera="home"]').click();
+    const nav=await ap.locator('#main-nav').boundingBox(),task=await ap.locator('.farm-task').boundingBox(),hud=await ap.locator('.farm-hud').boundingBox();
+    assert.ok(task.y>=hud.y+hud.height&&task.y+task.height<nav.y);assert.ok(nav.x>=0&&nav.x+nav.width<=viewport.width&&nav.y+nav.height<=viewport.height);
+    await ap.screenshot({path:`${out}/farm-${viewport.width}x${viewport.height}.png`});
+  }
+  checks.push('screenshots and HUD/task/nav separation verified at 320, 360, 430, landscape and desktop sizes');await ac.close();
+  assert.deepEqual(errors,[]);await writeFile(out+'/verification.json',JSON.stringify({checks,errors},null,2));console.log(JSON.stringify({checks,errors},null,2));
+}catch(e){await p.screenshot({path:out+'/failure.png'});console.error(errors);throw e;}finally{await browser.close();server.kill();}

@@ -7,14 +7,14 @@
 // may show any recorded species' permanent portrait (never counted as food).
 import {REGIONAL,CONTENT_TEXT,resolveSpecies,SPECIES_TRADE} from './content-registry.js';
 import {discoveryCount} from './progression.js';
-import {freeCount,homeCount} from './inventory.js';
+import {freeCount,homeCount,lockedCount} from './inventory.js';
 import {regionInfo} from './region-model.js';
 import {reduceFacts} from './facts.js';
 import {speciesDiscovered} from './species-state.js';
 import {ACTIVE_BUSINESS_MENUS} from './business.js';
 
 import {newOperationsEnabled,assertNewOperation} from './rollback-policy.js';
-export const PROJECTS_VERSION=1,MAX_PRESETS=3,MAX_PORTRAITS=12;
+export const MAX_PRESETS=3,MAX_PORTRAITS=12;
 function assertProjectSubmission(s,projectId,stageId){
   if(newOperationsEnabled('projects'))return;
   const p=s.expansion.projects?.[projectId];
@@ -60,7 +60,7 @@ export const PROJECT_RULES=Object.freeze({
   'PJ-3-A':{check:s=>[check(card(s,'T-E1'),'记录一次焙叶事件')]},
   'PJ-3-B':{check:s=>{const allowed=new Set([...REGIONAL.selectors.tea,...REGIONAL.selectors.snack]),merged={};
     for(const map of [facts(s).businessCounts,facts(s).orderCounts])for(const [k,v]of Object.entries(map??{}))merged[k]=(merged[k]??0)+v;
-    const t=topKinds(merged,allowed,3);return [check(t.kinds>=3&&t.sum>=36,`茶味或点心任选3种，营业或采购累计 ${Math.min(t.kinds>=3?t.sum:0,36)}/36 只`),check(regularAchieved(s,'RG3'),'茶坡访客任一段完成')];}},
+    const t=topKinds(merged,allowed,3);return [check(t.kinds>=3&&t.sum>=36,`茶味或点心任选3种（已有 ${Math.min(t.kinds,3)}/3 种），营业或采购累计 ${Math.min(t.sum,36)}/36 只`),check(regularAchieved(s,'RG3'),'茶坡访客任一段完成')];}},
   'PJ-3-C':{check:()=>[]},
   'PJ-4':{gate:s=>[check(regionInfo(s,'B').met,'海湾开放')]},
   'PJ-4-A':{check:s=>['V','R','T','B'].flatMap(r=>{const n=REGIONAL.species.filter(c=>c.region===r&&known(s,c.key)).length,cards=REGIONAL.cards.filter(c=>c.region===r&&['specimen','lore'].includes(c.type)&&card(s,c.id)).length;
@@ -111,8 +111,8 @@ export function deliverProject(s,projectId,stageId,selection,{choice=null,overri
     if(!allowed.has(key)||!resolveSpecies(key)?.edible)throw Error('这一阶段不收这种伙伴');
     if(!Number.isSafeInteger(n)||n<1)throw Error('交付数量无效');
     if(locked&&!locked.includes(key))throw Error('只能交付首次选定的品种');
-    if(freeCount(s,key)<n)throw Error('自由库存不足，可能已用于营业、寻访或采购');
-    if(!overrideKeepOne&&(s.expansion.inventoryPolicy?.keepOne??true)!==false&&homeCount(s,key)-n<1)throw Error('默认在家留1只，确认后可以全部交付');
+    if(freeCount(s,key)<n)throw Error('可用伙伴不足，可能已用于营业、寻访或订单预留');
+    if(!overrideKeepOne&&homeCount(s,key)-n<lockedCount(s,key))throw Error(`已锁定在家${lockedCount(s,key)}只（默认每种留1只）；到仓库调整锁定数量后再用`);
     after[key]=(after[key]??0)+n;
     if(d.kind==='choose'&&after[key]>d.quantityEach)throw Error(`每种交${d.quantityEach}只就够了`);
   }
@@ -120,7 +120,7 @@ export function deliverProject(s,projectId,stageId,selection,{choice=null,overri
     const total=sum(after),categories=new Set(Object.keys(after).map(categoryOf).filter(Boolean)).size;
     if(total>d.target)throw Error(`这一阶段一共交${d.target}只`);
     // Leave enough room to still cover the required signature categories.
-    if(d.target-total<d.minimumCategories-categories)throw Error(`至少要有${d.minimumCategories}类招牌风味，留些位置给其他风味`);
+    if(d.target-total<d.minimumCategories-categories)throw Error(`至少要有${d.minimumCategories}类菜式，留些位置给其他菜式`);
   }
   const p=ensure(s,projectId);
   if(d.kind==='choose'&&!p.pinnedChoices[stageId])p.pinnedChoices[stageId]=[...locked];
@@ -147,6 +147,19 @@ export function completeProjectStage(s,projectId,stageId){
   // PJ-2 teaches the local alternative ALT-R (a method, not a new species).
   if(projectId==='PJ-2'&&projectComplete(s,'PJ-2'))for(const alt of REGIONAL.alternatives.filter(a=>a.unlock==='PJ-2'))for(const field of ['directions','full'])if(!s.expansion.methods[field].includes(alt.id))s.expansion.methods[field].push(alt.id);
   return {stageId,paid:stage.costCP,projectComplete:projectComplete(s,projectId)};
+}
+
+// 不挡进度 (2026-10-07): a stage that costs nothing completes by itself once it is met (its delivery, if any, full);
+// stages with a CP cost still wait for the player's 登记. Runs after every command (regulars.js reconcileProgress).
+export function autoCompleteProjects(s){
+  if(!s.expansion?.projects||!newOperationsEnabled('projects'))return [];
+  const done=[];
+  for(const id of PROJECT_IDS)for(let step=0;step<3;step++){
+    const stage=projectInfo(s,id).current;
+    if(!stage||!stage.ready||stage.costCP!==0)break;
+    completeProjectStage(s,id,stage.id);done.push(stage.id);
+  }
+  return done;
 }
 
 // PJ-4 exhibition: any recorded species' permanent portrait; nothing is consumed.

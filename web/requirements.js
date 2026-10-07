@@ -50,4 +50,3 @@ export function evaluate(requirement,s,context={}){
   const met=current>=target;return {met,current,target,missing:met?[]:[r.label??r.id??r.kind],actionRef:r.actionRef??null};
 }
 
-export function projectProgress(def,instance,s){return {id:def.id,stages:(def.stages??[]).map(stage=>({id:stage.id,done:instance?.stages?.[stage.id]?.complete===true,requirement:evaluate(stage.checkRequirement??stage.requirement,s),costCP:stage.costCP??0,paid:instance?.payments?.[stage.id]??0}))};}

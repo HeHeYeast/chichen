@@ -15,6 +15,24 @@
 
 ## 按需附件
 
+2026-10-07 [账号、存档、同步与玩家反馈方案](cloud-save-design.md)：真实存档审计、国内服务比较、首次付款不超过 50 元／年成本小于 50 元的预算判断、容量测算、灾备与分阶段验收。负责人为工程与维护；当前为设计，尚未接入云服务。选型和验收完成后，将落地规则迁入工程／UI文档并收束本附件。
+
+2026-10-07 [寻访·线索册·下一锅·生意整体玩法与界面设计](loop-design-20261007.md)：审计、玩家流程、四页信息架构、游戏内样稿与实现计划，待用户确认后分批实施；取代同日的三档精简方向。
+
+2026-10-07 [本轮反馈现状与方案](round-20261007-status.md)：头像统一、线索册两栏、下一锅只推荐现在能做的与自己推测、寻访和生意的三档精简方向（等用户挑选）。执行状态仍以[当前计划](plan.md)为准。
+
+2026-09-30 [1.5.3 界面修正与安装报告](ui-fixes-1.5.3.md)：当前安装包 1.5.3/code19 的修改范围与验证；其逻辑审计基线见 [1.5.2 最终验收报告](release-acceptance-1.5.2.md)。
+
+2026-09-30 项目整理：根目录只保留运行与构建入口；原版 APK 解包残留移至 [`original-apk/`](../original-apk/README.md)，早期 pygame 原型移至 [`prototype-python/`](../prototype-python/README.md)。已被[当前计划](plan.md)取代的交接/健康报告移至 [`archive/handoffs/`](archive/handoffs/)；9月27–30日厨房/农场各轮 Gate、Forensics、外部参考研究与 K2 核验（含 [Production Pipeline](archive/kitchen-farm-2026-09/kitchen-farm-production-pipeline.md)、[参考研究](archive/kitchen-farm-2026-09/ui-art-reference-study-20260928/README.md)）移至 [`archive/kitchen-farm-2026-09/`](archive/kitchen-farm-2026-09/)。计划已写明 Kitchen/Farm 不再进入重设计，这些只作过程证据，链接已随移动更新。工具脚本分类见 [tools/README](../tools/README.md)。
+
+2026-09-25 用户反馈修订：营业七处细节、订单／常客独立子页面及窄边框，见 [最新视觉对照](business-golden-20260924/revision-2/REVIEW.md)。保留业务机制，等待视觉确认。
+
+2026-09-24 最新视觉基线：图鉴 Golden Sample 已获用户确认；已冻结全局画风、帮助、底栏与 Asset Sheet 流程。第二个样例仅完成营业主页面，等待视觉确认。见 [冻结范围／营业规范](business-golden-20260924/VISUAL-SPEC.md) 与 [Mockup／Runtime 对照](business-golden-20260924/VISUAL-CHECKLIST.md)。收藏纸张、胶带、印章和白边不作为其他系统的统一皮肤。
+
+2026-09-24 界面视觉完成度与素材缺口见 [Visual Polish 报告](visual-polish-report.md)及 [A/B/C/D/E 资产审计](visual-asset-inventory.md)。
+
+2026-09-24 当前修复与验证请先读 [Regression 与 UI 审计](regression-and-ui-audit.md)。下列扩展设计提案保留历史状态措辞；当前源码已经接入 241 种与 schema 6，不应据“尚未接入”推断运行版本。
+
 | 文件 | 用途与维护边界 |
 |---|---|
 | [工程接入与迁移设计](engineering-integration-design.md)、[后续实施计划](engineering-implementation-plan.md) | 193→241的代码考古、runtime内容、逐版本存档、事实/事务/RNG/离线/UI与测试合同；12个可玩Work及回滚边界。工程设计已完成，功能尚未实现；负责人文档为工程与维护，落地合同迁回该文档，执行状态仍在当前计划 |
@@ -28,6 +46,8 @@
 | [B组历史模型](b-group-gameplay-design.md)、[结果](b-group-balance/results.md)、[能力可读表](b-group-balance/exploration-species.md) | 历史推导与机器校验配套；能力／基础配置JSON仍为输入，旧手艺数值不代表1.5。详见工程文档 |
 | [旧主交接入口](worldbuilding-and-expansion-brief.md) | 仅为历史工具固定路径保留的导航，不维护需求／TODO副本 |
 | [版本证据索引](archive/release-history.md) | 已完成版本的继承关系与原有产物位置，替代十余份QA叙述 |
+| [旧交接与健康报告](archive/handoffs/) | 9月26–27日的交接/健康报告；状态以当前计划为准，只查当时决策依据 |
+| [厨房/农场过程证据](archive/kitchen-farm-2026-09/) | 9月27–30日各轮 Gate、Forensics、参考研究与 K2 核验；方向已收束，不再作为待办 |
 | [妙奇星球研究](archive/mqxq-research/妙奇星球玩法调研.md) | 有来源分级、截图、独有评分矩阵的冻结研究；不是本项目需求 |
 
 JSON／CSV、截图、mockup是配套数据与证据，不按文档数量机械删除。二轮mockup保留原路径，UI文档引用它们；原始资源、旧APK、真实存档、源码备份和第三方许可不在本次清理范围。
@@ -95,3 +115,16 @@ JSON／CSV、截图、mockup是配套数据与证据，不按文档数量机械�
 | `worldbuilding-kitchen-story.md` | 正式世界／三章正文 | 保留／校正状态 → [worldbuilding-kitchen-story.md](worldbuilding-kitchen-story.md) |
 
 其他目录：根README重写为入口；Android README缩为工程导航；14份web/art制作记录合并为1份provenance，保留完整提示词和裁切来源；二轮交付移出重复手艺表，保留验收证据；字体／测试适配器README、第三方工具文档／许可、原版反编译资料及真实存档不改。资产探索笔记与图像相邻保留来源身份，不作为当前要求。二轮mockup中的设计链接、3个历史辅助脚本的文档输入／链接基准同步更新，未改游戏实现。历史JSON盘点中的旧文件名作为当时证据保留，迁移去向查本表，不改写历史报告。
+
+
+## 生意视觉族收口 · 2026-09-25
+
+[五页最终Runtime与验收](business-family-20260925/REVIEW.md) · [视觉规范与Asset Sheet拆解](business-family-20260925/VISUAL-SPEC.md)。营业原样保留，订单、常客、项目与账单完成同族视觉组合；不进入寻访。
+
+## 寻访视觉族 · 2026-09-25
+
+[七步Runtime、Mockup对照与验收](journey-visual-20260925/REVIEW.md) · [规范/拆解](journey-visual-20260925/VISUAL-SPEC.md) · [素材来源与提示词](journey-visual-20260925/PROMPTS.md)。图鉴、生意已获用户确认并冻结；寻访完成本轮实现与浏览器验收，等待用户视觉确认。当前停止，不继续其他页面。
+
+## 可复用角色美术生产 · 2026-09-27
+
+[角色设计规范](art/character-design-spec.md) · [旧图鉴视觉规范](art/legacy-character-style-spec.md) · [通用Pipeline](art/character-art-pipeline.md) · [Work 1无剧透交付状态](art/work1-delivery-status.md)。具体角色设计属于content数据；内部候选、Review Sheet和Runtime截图不作为玩家交付预览。

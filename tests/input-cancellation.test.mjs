@@ -1,3 +1,4 @@
+import {goldenRect,goldenEggHit} from '../web/kitchen-golden.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -26,13 +27,15 @@ function harness(page=1){
   const window=eventTarget(),controls=eventTarget(),document=eventTarget(),captures=new Set();
   let rendered=0,activated=0,released=0,hotspot;
   const context={
-    window,controls,document,L,RECT,contains,FARM_WORLD,beginToolDrag,moveToolDrag,settleToolDrag,TOOL_SCROLL_MAX:5,toolScroll:0,
+    window,controls,document,L,RECT,contains,FARM_WORLD,goldenRect,goldenEggHit,beginToolDrag,moveToolDrag,settleToolDrag,TOOL_SCROLL_MAX:5,toolScroll:0,
     game:{...eventTarget(),getBoundingClientRect:()=>({left:0,top:0,width:320,height:568})},
     canvas:{getBoundingClientRect:()=>({left:0,top:0,width:320,height:568})},
     dialogs:{children:[]},panels:{querySelector:()=>null},
     state:{batch:null},page,panel:'',farmScroll:0,pointer:null,keyboardPress:null,pressedId:'',entryInputBlockedUntil:0,performance:{now:()=>1000},
     controlBlocked:()=>false,findControl:id=>hotspot?.dataset.controlId===id?hotspot:null,
     collectEgg(){throw Error('A farm or button cancellation must not collect a kitchen egg.');},
+    queueHarvest(){throw Error('A farm or button cancellation must not collect a kitchen egg.');},
+    pendingHarvest:new Set(),flushHarvest(){},
     renderControls(){
       rendered++;
       const rect=page===1?{...FARM_ACTIONS[0].rect,x:FARM_ACTIONS[0].rect.x-context.farmScroll}:{x:20,y:400,w:60,h:40};

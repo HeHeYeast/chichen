@@ -6,10 +6,12 @@
     "start": "node server.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:ui": "node tools/verify-ui.mjs",
+    "test:regression": "node tools/qa-regression-audit.mjs",
     "test:updates": "python -m unittest discover -s tools/tests -v",
     "backup:source": "python tools/source_snapshot.py",
     "verify:release": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/verify-release.ps1",
     "build:android": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/iterate-android.ps1",
-    "data": "python tools/build-data.py"
+    "data": "python tools/build-data.py",
+    "test:ui:sweep": "node tools/ui-sweep.mjs"
   }
 }

@@ -1,3 +1,4 @@
+import {createGoldenKitchen} from './kitchen-golden.js';
 import * as E from './engine.js';
 import {COLOR as C,LAYOUT as L,NAV,FONT,RECT,navRect,toolRect,duckRect,MOTION} from './theme.js';
 import {characterImage,toolImage} from './catalog.js';
@@ -11,6 +12,7 @@ const utensil=(id,lv=0)=>toolImage(1,id,lv);
 const eggArt=egg=>egg===0?'/web/art/egg-v4.png':root+'Egg/egg_1_0_0.png';
 
 export function createRenderer(ctx,image){
+  const goldenKitchen=createGoldenKitchen(ctx,image);
   const farmRenderer=createFarmRenderer(ctx,image);
   const titleRenderer=createTitleRenderer(ctx,image);
   function room(stage){for(const [part,x,y,w,h]of kitchenBackgroundParts(stage)){
@@ -105,6 +107,10 @@ export function createRenderer(ctx,image){
   function drawEgg(e,i,v){
     const t=performance.now(),pulse=v.reducedMotion?0:Math.sin(t/620+i*.8)*.65;
     const ready=['ready','hatching'].includes(e.status),x=e.x-30,y=e.y-30;
+    if(ready){
+      oval(e.x,e.y+25,19,6,'#ebce7670');
+      if(e.status==='ready'){const d=v.reducedMotion?0:Math.sin(t/800+i)*1.5;line([[e.x+19,e.y-6+d],[e.x+19,e.y+2+d]],'#fff2b4',1.8);line([[e.x+15,e.y-2+d],[e.x+23,e.y-2+d]],'#fff2b4',1.8);}
+    }
     oval(e.x+1,e.y+27,14,3,'#bd8b4529');
     if(!ready){
       const wobble=e.status==='cracking'&&!v.reducedMotion?Math.sin(t/62+i)*1.3:0;
@@ -145,11 +151,18 @@ export function createRenderer(ctx,image){
     header(s,v);
     button(RECT.ingredient,v,'ingredient','#fff2c3',()=>{image(toolImage(2,s.selected[0]??0),9,104,38,38);text('调味料',27,144,10);});
     if(s.selected.length){oval(41,111,8,8,C.coral,C.ink,1);text(s.selected.length,41,112,10,'#fff');}
+    // Put the actual chosen ingredients on the wall shelf; no extra controls.
+    if(s.selected.length){
+      s.selected.slice(0,3).forEach((id,i)=>{oval(88+i*40,135,16,3,'#9d784638');image(toolImage(2,id),71+i*40,102,34,34);});
+      line([[68,138],[193,138]],'#b78b51',3);
+    }
     const cleanliness=E.kitchenCleanInfo(s,v.now);
     button(RECT.clean,v,'clean',cleanliness.dirty?'#ffe0b9':'#fff7dc',()=>{
       const r=RECT.clean;
       image(root+'MainGame/kitchen_fix_0_0.png',r.x+4,r.y+3,25,25);
       text(cleanliness.percent+'%',r.x+44,r.y+17,11,C.ink,700);
+      box(r.x+6,r.y+r.h-7,r.w-12,3,1.5,'#dcd5b5',null);
+      if(cleanliness.percent)box(r.x+6,r.y+r.h-7,(r.w-12)*cleanliness.percent/100,3,1.5,cleanliness.dirty?'#c2794f':'#95ac6b',null);
     });
     ctx.save();ctx.translate(0,L.eggOffset);
     tray(stage);
@@ -157,7 +170,7 @@ export function createRenderer(ctx,image){
     if(s.duck)[0,1].forEach(i=>button(duckRect(i),v,'duck:'+i,s.egg===i?C.yellow:C.paper,()=>image(eggArt(i),7,duckRect(i).y-5,30,30)));
     for(const [i,e] of (batch?.eggs??[]).entries())if(!e.collected)drawEgg(e,i,v);
     tray(stage,true);basket(stage,v);flights(v);basket(stage,v,true);feedback(v);
-    if(!remaining.length){ctx.fillStyle='#fff7de';ctx.strokeStyle='#b18a54';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(65,217,200,55,10);ctx.fill();ctx.stroke();text('点下方保温灯，开始第一批',165,237,12,'#68482d',700);text('免费调理24枚蛋',165,258,12,'#795b3c',500);}
+    if(!remaining.length){const returning=Object.values(s.total).some(n=>n>0);ctx.fillStyle='#fff7de';ctx.strokeStyle='#b18a54';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(65,217,200,55,10);ctx.fill();ctx.stroke();text(returning?'选一件厨具，准备下一锅':'点下方保温灯，开始第一批',165,237,12,'#68482d',700,'center',184);text(returning?'换个搭配，遇见新伙伴':'免费调理24枚蛋',165,258,12,'#795b3c',500);}
     ctx.restore();
     const readyAt=E.batchReadyAt(batch);
     const progress=readyAt!==null?Math.max(0,Math.min(1,(v.now-batch.started)/(readyAt-batch.started))):0;
@@ -198,7 +211,7 @@ export function createRenderer(ctx,image){
     text('厨具 '+(v.toolScroll+1)+'–'+(v.toolScroll+4)+' / '+TOOL_COUNT,160,485+L.extra,11,'#8c693e',600);
   }
   function farm(s,v){
-    farmRenderer.draw(s,v);header(s,v);
+    if(v.externalFarm)box(0,0,320,L.height,0,'#587749',null);else farmRenderer.draw(s,v);header(s,v);
   }
   function pageBackdrop(page){
     box(0,0,320,L.height,0,page===2?'#e0b77d':page===4?'#bcccaa':page===5?'#ecc88f':page===6?'#c6d8ae':'#e0c598',null);
@@ -211,7 +224,7 @@ export function createRenderer(ctx,image){
   return {paint(s,v){
     const scale=ctx.canvas.width/L.width;ctx.setTransform(scale,0,0,scale,0,0);ctx.clearRect(0,0,L.width,L.height);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
     if(v.page<0){titleRenderer(v);return;}
-    if(v.page===0)kitchen(s,v);else if(v.page===1)farm(s,v);else{pageBackdrop(v.page);header(s,v,v.page===5?'小店生意簿':v.page===6?'寻访与地区':'');}
+    if(v.page===0)goldenKitchen(s,v);else if(v.page===1)farm(s,v);else{pageBackdrop(v.page);header(s,v,v.page===5?'小店生意簿':v.page===6?'寻访与地区':'');}
     if(!v.externalNavigation)navigation(v.page,v);
   }};
 }

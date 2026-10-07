@@ -1,0 +1,100 @@
+{
+  "state_5.sqlite": [
+    [
+      "_sqlx_migrations",
+      "CREATE TABLE _sqlx_migrations (\n    version BIGINT PRIMARY KEY,\n    description TEXT NOT NULL,\n    installed_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n    success BOOLEAN NOT NULL,\n    checksum BLOB NOT NULL,\n    execution_time BIGINT NOT NULL\n)"
+    ],
+    [
+      "threads",
+      "CREATE TABLE threads (\r\n    id TEXT PRIMARY KEY,\r\n    rollout_path TEXT NOT NULL,\r\n    created_at INTEGER NOT NULL,\r\n    updated_at INTEGER NOT NULL,\r\n    source TEXT NOT NULL,\r\n    model_provider TEXT NOT NULL,\r\n    cwd TEXT NOT NULL,\r\n    title TEXT NOT NULL,\r\n    sandbox_policy TEXT NOT NULL,\r\n    approval_mode TEXT NOT NULL,\r\n    tokens_used INTEGER NOT NULL DEFAULT 0,\r\n    has_user_event INTEGER NOT NULL DEFAULT 0,\r\n    archived INTEGER NOT NULL DEFAULT 0,\r\n    archived_at INTEGER,\r\n    git_sha TEXT,\r\n    git_branch TEXT,\r\n    git_origin_url TEXT\r\n, cli_version TEXT NOT NULL DEFAULT '', first_user_message TEXT NOT NULL DEFAULT '', agent_nickname TEXT, agent_role TEXT, memory_mode TEXT NOT NULL DEFAULT 'enabled', model TEXT, reasoning_effort TEXT, agent_path TEXT, created_at_ms INTEGER, updated_at_ms INTEGER, thread_source TEXT, preview TEXT NOT NULL DEFAULT '', recency_at INTEGER NOT NULL DEFAULT 0, recency_at_ms INTEGER NOT NULL DEFAULT 0, history_mode TEXT NOT NULL DEFAULT 'legacy', name TEXT, is_pinned INTEGER NOT NULL DEFAULT 0, thread_section_id TEXT\r\n    REFERENCES thread_sections(id) ON DELETE SET NULL, section_position INTEGER, section_entered_at_ms INTEGER, project_id TEXT\r\n    REFERENCES projects(id) ON DELETE SET NULL, originator TEXT, daybreak_enabled BOOLEAN, creator_user_id TEXT, creator_account_id TEXT)"
+    ],
+    [
+      "sqlite_sequence",
+      "CREATE TABLE sqlite_sequence(name,seq)"
+    ],
+    [
+      "thread_dynamic_tools",
+      "CREATE TABLE thread_dynamic_tools (\r\n    thread_id TEXT NOT NULL,\r\n    position INTEGER NOT NULL,\r\n    name TEXT NOT NULL,\r\n    description TEXT NOT NULL,\r\n    input_schema TEXT NOT NULL, defer_loading INTEGER NOT NULL DEFAULT 0, namespace TEXT,\r\n    PRIMARY KEY(thread_id, position),\r\n    FOREIGN KEY(thread_id) REFERENCES threads(id) ON DELETE CASCADE\r\n)"
+    ],
+    [
+      "backfill_state",
+      "CREATE TABLE backfill_state (\r\n    id INTEGER PRIMARY KEY CHECK (id = 1),\r\n    status TEXT NOT NULL,\r\n    last_watermark TEXT,\r\n    last_success_at INTEGER,\r\n    updated_at INTEGER NOT NULL\r\n)"
+    ],
+    [
+      "thread_spawn_edges",
+      "CREATE TABLE thread_spawn_edges (\r\n    parent_thread_id TEXT NOT NULL,\r\n    child_thread_id TEXT NOT NULL PRIMARY KEY,\r\n    status TEXT NOT NULL\r\n)"
+    ],
+    [
+      "remote_control_enrollments",
+      "CREATE TABLE remote_control_enrollments (\r\n    websocket_url TEXT NOT NULL,\r\n    account_id TEXT NOT NULL,\r\n    app_server_client_name TEXT NOT NULL,\r\n    server_id TEXT NOT NULL,\r\n    environment_id TEXT NOT NULL,\r\n    server_name TEXT NOT NULL,\r\n    updated_at INTEGER NOT NULL, remote_control_enabled INTEGER,\r\n    PRIMARY KEY (websocket_url, account_id, app_server_client_name)\r\n)"
+    ],
+    [
+      "external_agent_config_imports",
+      "CREATE TABLE external_agent_config_imports (\r\n    import_id TEXT PRIMARY KEY,\r\n    completed_at_ms INTEGER NOT NULL,\r\n    successes TEXT NOT NULL,\r\n    failures TEXT NOT NULL\r\n, provider_id TEXT)"
+    ],
+    [
+      "thread_sections",
+      "CREATE TABLE thread_sections (\r\n    id TEXT PRIMARY KEY,\r\n    name TEXT NOT NULL\r\n, appearance TEXT)"
+    ],
+    [
+      "rollout_migration_state",
+      "CREATE TABLE rollout_migration_state (\r\n    migration_id TEXT PRIMARY KEY,\r\n    last_checked_thread_created_at INTEGER,\r\n    last_checked_thread_id TEXT,\r\n    updated_at INTEGER NOT NULL\r\n)"
+    ],
+    [
+      "rollout_migration_skipped_rollouts",
+      "CREATE TABLE rollout_migration_skipped_rollouts (\r\n    migration_id TEXT NOT NULL,\r\n    rollout_path TEXT NOT NULL,\r\n    rollout_size_bytes INTEGER NOT NULL,\r\n    rollout_modified_at_ns INTEGER NOT NULL,\r\n    skip_reason TEXT NOT NULL,\r\n    skipped_at INTEGER NOT NULL,\r\n    PRIMARY KEY (migration_id, rollout_path)\r\n)"
+    ],
+    [
+      "projects",
+      "CREATE TABLE projects (\r\n    id TEXT PRIMARY KEY,\r\n    name TEXT NOT NULL,\r\n    metadata TEXT NOT NULL DEFAULT '{}',\r\n    position INTEGER NOT NULL,\r\n    created_at_ms INTEGER NOT NULL,\r\n    updated_at_ms INTEGER NOT NULL\r\n)"
+    ],
+    [
+      "project_roots",
+      "CREATE TABLE project_roots (\r\n    project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE,\r\n    position INTEGER NOT NULL,\r\n    path TEXT NOT NULL,\r\n    PRIMARY KEY (project_id, position)\r\n)"
+    ],
+    [
+      "project_idempotency_keys",
+      "CREATE TABLE project_idempotency_keys (\r\n    key TEXT PRIMARY KEY,\r\n    project_id TEXT NOT NULL,\r\n    created_at_ms INTEGER NOT NULL\r\n)"
+    ],
+    [
+      "thread_attachments",
+      "CREATE TABLE \"thread_attachments\" (\r\n    id TEXT PRIMARY KEY,\r\n    thread_id TEXT NOT NULL REFERENCES threads(id) ON DELETE CASCADE,\r\n    attachment_type TEXT NOT NULL,\r\n    identity_key TEXT NOT NULL,\r\n    payload TEXT NOT NULL,\r\n    created_at INTEGER NOT NULL,\r\n    UNIQUE (thread_id, attachment_type, identity_key)\r\n)"
+    ]
+  ],
+  "thread_history_1.sqlite": [
+    [
+      "_sqlx_migrations",
+      "CREATE TABLE _sqlx_migrations (\n    version BIGINT PRIMARY KEY,\n    description TEXT NOT NULL,\n    installed_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n    success BOOLEAN NOT NULL,\n    checksum BLOB NOT NULL,\n    execution_time BIGINT NOT NULL\n)"
+    ],
+    [
+      "thread_turns",
+      "CREATE TABLE thread_turns (\r\n    thread_id TEXT NOT NULL,\r\n    turn_id TEXT NOT NULL,\r\n    rollout_ordinal INTEGER NOT NULL,\r\n    status TEXT NOT NULL,\r\n    error_json TEXT,\r\n    started_at INTEGER,\r\n    completed_at INTEGER,\r\n    duration_ms INTEGER,\r\n    first_user_item_id TEXT,\r\n    final_agent_item_id TEXT, rollout_byte_offset INTEGER, rollout_end_ordinal INTEGER, rollout_end_byte_offset INTEGER,\r\n    PRIMARY KEY (thread_id, turn_id)\r\n)"
+    ],
+    [
+      "thread_items",
+      "CREATE TABLE thread_items (\r\n    thread_id TEXT NOT NULL,\r\n    turn_id TEXT NOT NULL,\r\n    item_id TEXT NOT NULL,\r\n    rollout_ordinal INTEGER NOT NULL,\r\n    created_at_ms INTEGER NOT NULL,\r\n    item_json TEXT NOT NULL, item_type TEXT NOT NULL DEFAULT '', updated_at_ordinal INTEGER NOT NULL DEFAULT 0, started_at_ms INTEGER, completed_at_ms INTEGER,\r\n    PRIMARY KEY (thread_id, turn_id, item_id)\r\n)"
+    ],
+    [
+      "thread_history_projection_state",
+      "CREATE TABLE thread_history_projection_state (\r\n    thread_id TEXT PRIMARY KEY,\r\n    next_rollout_byte_offset INTEGER NOT NULL,\r\n    next_rollout_ordinal INTEGER NOT NULL\r\n)"
+    ],
+    [
+      "thread_realtime_items",
+      "CREATE TABLE thread_realtime_items (\r\n    thread_id TEXT NOT NULL,\r\n    item_id TEXT NOT NULL,\r\n    rollout_ordinal INTEGER NOT NULL,\r\n    created_at_ms INTEGER NOT NULL,\r\n    item_type TEXT NOT NULL,\r\n    item_json TEXT NOT NULL,\r\n    PRIMARY KEY (thread_id, item_id)\r\n)"
+    ]
+  ],
+  "logs_2.sqlite": [
+    [
+      "_sqlx_migrations",
+      "CREATE TABLE _sqlx_migrations (\n    version BIGINT PRIMARY KEY,\n    description TEXT NOT NULL,\n    installed_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n    success BOOLEAN NOT NULL,\n    checksum BLOB NOT NULL,\n    execution_time BIGINT NOT NULL\n)"
+    ],
+    [
+      "sqlite_sequence",
+      "CREATE TABLE sqlite_sequence(name,seq)"
+    ],
+    [
+      "logs",
+      "CREATE TABLE logs (\r\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\r\n    ts INTEGER NOT NULL,\r\n    ts_nanos INTEGER NOT NULL,\r\n    level TEXT NOT NULL,\r\n    target TEXT NOT NULL,\r\n    feedback_log_body TEXT,\r\n    module_path TEXT,\r\n    file TEXT,\r\n    line INTEGER,\r\n    thread_id TEXT,\r\n    process_uuid TEXT,\r\n    estimated_bytes INTEGER NOT NULL DEFAULT 0\r\n)"
+    ]
+  ]
+}

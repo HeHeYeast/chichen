@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<title>Kitchen Lv.2 重构候选对照</title>
+<style>
+@font-face{font-family:'Chicken UI';src:url('/web/fonts/chick-ui.woff2') format('woff2');font-weight:100 900}
+*{box-sizing:border-box}
+body{margin:0;background:#f0eee7;color:#3d3128;font-family:'Chicken UI','Microsoft YaHei',sans-serif;-webkit-font-smoothing:antialiased}
+.board{width:1780px;padding:28px 30px 36px}
+h1{margin:0;font-size:30px;font-weight:900;letter-spacing:.5px}
+.sub{margin:6px 0 0;font-size:15px;color:#7b6a58;font-weight:600}
+.row{display:grid;grid-template-columns:repeat(4,390px);gap:0 40px;margin-top:26px}
+.row h2{margin:0 0 8px;font-size:17px;font-weight:900}
+.row h2 small{font-weight:600;color:#8a7866;font-size:13px;margin-left:6px}
+.frame{position:relative;width:390px;height:844px;background:#fff;box-shadow:0 0 0 1px #d8d1c3;overflow:hidden}
+.frame iframe,.frame img{position:absolute;left:0;top:0;width:390px;height:844px;border:0;display:block}
+.frame.dim iframe,.frame.dim img{opacity:.32;filter:saturate(.5)}
+.frame svg{position:absolute;left:0;top:0}
+.section{margin-top:34px;font-size:19px;font-weight:900;border-top:2px solid #dcd3c3;padding-top:14px}
+.section small{font-size:13px;color:#8a7866;font-weight:600;margin-left:8px}
+.notes{font-size:13.5px;line-height:1.55;color:#4a3d31}
+.notes p{margin:0 0 7px}
+.notes b{color:#2f251d}
+.notes .risk{color:#b0512e}
+.notes .k{display:inline-block;min-width:62px;font-weight:900;color:#2f251d}
+.mini{display:flex;gap:14px;align-items:flex-start}
+.mini .cap{font-size:12px;font-weight:800;color:#7b6a58;margin:0 0 5px}
+.scale{position:relative;overflow:hidden;box-shadow:0 0 0 1px #d8d1c3;background:#fff}
+.scale iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;font-weight:800;margin-top:6px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:5px;vertical-align:-2px}
+.verdict{margin-top:30px;background:#fffaf0;border:2px solid #d9c9a8;border-radius:12px;padding:18px 22px;font-size:15px;line-height:1.65}
+.verdict h3{margin:0 0 6px;font-size:19px}
+</style>
+</head>
+<body>
+<div class="board">
+  <h1>鸡宝厨房 · Kitchen Lv.2 主界面重构候选</h1>
+  <p class="sub">正视 · 蛋群沿用 engine.js 原始排布公式与原蛋 / 原木窝素材 · HUD 与五入口为 Runtime 原样 · 背景为 SVG 程序化 Lv.2 木屋 · 390 × 844 · 独立原型，未改正式 Runtime</p>
+
+  <div class="row">
+    <div><h2>当前 Runtime · Lv.2</h2><div class="frame"><img src="./ref/runtime-lv2-390x844.png" alt="当前 Runtime"></div></div>
+    <div><h2>A · 木台正视 <small>保留较多原结构</small></h2><div class="frame"><iframe src="./index.html?v=A" data-v="A"></iframe></div></div>
+    <div><h2>B · 本锅 / 下一锅 <small>中度重构</small></h2><div class="frame"><iframe src="./index.html?v=B" data-v="B"></iframe></div></div>
+    <div><h2>C · 木屋剖面 <small>大胆重构</small></h2><div class="frame"><iframe src="./index.html?v=C" data-v="C"></iframe></div></div>
+  </div>
+
+  <div class="section">叠图：功能区块位置变化 <small>实色块 = 该方案的功能区；同色虚线 = 同一功能在当前 Runtime 的位置</small></div>
+  <div class="legend" id="legend"></div>
+  <div class="row" style="margin-top:12px">
+    <div><div class="frame dim" id="ov-R"><img src="./ref/runtime-lv2-390x844.png" alt=""></div></div>
+    <div><div class="frame dim" id="ov-A"><iframe src="./index.html?v=A" data-v="A"></iframe></div></div>
+    <div><div class="frame dim" id="ov-B"><iframe src="./index.html?v=B" data-v="B"></iframe></div></div>
+    <div><div class="frame dim" id="ov-C"><iframe src="./index.html?v=C" data-v="C"></iframe></div></div>
+  </div>
+
+  <div class="section">每个方案说明</div>
+  <div class="row" style="margin-top:12px">
+    <div class="notes">
+      <p><b>当前 Runtime 的结构问题</b>（取自 Kitchen / Farm Audit）</p>
+      <p>· 蛋窝、调味、计时、厨具分处"中间插画 / 左上按钮 / 下方横条 / 底部商品格"，选材 → 开锅 → 等待 → 收取需要玩家自己拼接。</p>
+      <p>· 右侧商店 / 仓库 / 手艺 / 帮助四个同权按钮常驻，与五入口一起让主场景像功能导航页。</p>
+      <p>· 计时条离蛋窝远；墙架上的"已选调味"只是回显，与左上入口关系弱。</p>
+      <p>· 背景是透视桌面 + 窗户 + 搁板的完整房间插画，功能区没有被背景承托。</p>
+    </div>
+    <div class="notes">
+      <p><span class="k">保留</span>上墙 → 蛋窝 → 厨具的阅读顺序；蛋窝尺寸与位置与 Runtime 一致（1.22×）；底部 4 格厨具 + 翻页。</p>
+      <p><span class="k">真正重构</span>① 透视台面房间 → 正视圆木墙 + 立柱 + 顶梁椽头 + 前立面柜台；② 独立计时横条 → 贴在蛋窝前沿的状态铭牌；③ 浮动厨具卡 → 嵌进柜台立面的格口，名牌挂在立板上；④ 右侧四按钮竖列 → 一根挂杆上的三块木牌，帮助进 HUD。</p>
+      <p><span class="k">调味区</span>左上整块搁板就是入口：柠檬 + 空位两个真实槽位，搁板右端立着"调味料 已选 1/2"价签卡。</p>
+      <p><span class="k">厨具区</span>柜台格口 4 格，当前锅格口亮起并挂"本锅"吊签；名牌含耗时 / CP；翻页是柜台上的木旋钮。</p>
+      <p><span class="k">子按钮</span>商店 / 仓库 / 手艺同挂一根杆（一个物件组），清洁挂在其下；帮助并入 HUD。</p>
+      <p><span class="k">背景</span>正视圆木墙（四色截面）、两侧立柱、顶梁椽头、蛋窝背后深色护墙板、柜台；无窗、无透视地板、无桌腿。</p>
+      <p class="risk"><span class="k">最大风险</span>与旧版关系最近，用户可能仍觉得"位置没大变"；右上三块木牌仍是三个同权入口。</p>
+    </div>
+    <div class="notes">
+      <p><span class="k">保留</span>蛋窝原群形与遮挡（1.25×，略大于 Runtime）；底部仍是 4 个厨具 + 翻页。</p>
+      <p><span class="k">真正重构</span>① 一条柜台木板把屏幕分成上"本锅舞台"、下"下一锅备料台"（沿用生意页已认可的木板分区 + 奶油底）；② 新增独立"本锅牌"：当前厨具 + 本锅已用调味 + 24 枚 + 影响本锅的清洁度；③ 调味从按钮 + 墙架回显 → 两格小木柜；④ 商店 / 仓库 / 手艺从右侧竖列 → 备料台底部三件物件。</p>
+      <p><span class="k">调味区</span>左上两格小柜：第一格柠檬，第二格空位 +；下方"下一锅调味 1/2 ›"。</p>
+      <p><span class="k">厨具区</span>奶油底上的四个木托盘展示位，名牌 + 耗时 / CP；当前锅托盘亮起 + "本锅"；标题"下一锅 · 点厨具开锅"。</p>
+      <p><span class="k">子按钮</span>三件物件入口在备料台底部（320 高度收成横向小签）；帮助进 HUD；清洁并入本锅牌。</p>
+      <p><span class="k">背景</span>上半浅色圆木墙 + 顶梁，中间柜台木板，下半奶油备料台。</p>
+      <p class="risk"><span class="k">最大风险</span>下半部与生意页的组织最像，Kitchen 自身辨识度偏弱；本锅牌复用生意"营业中"绿板，语义需确认。</p>
+    </div>
+    <div class="notes">
+      <p><span class="k">保留</span>正视、蛋窝原群形（1.20×）、4 格厨具 + 翻页、HUD / 五入口语义。</p>
+      <p><span class="k">真正重构</span>① 背景变为 Lv.2 木屋剖面：山墙交叉椽、两侧圆木端头、地梁——木屋本身就是舞台边框（升级＝换这个框的材质）；② 本锅从厨具栏高亮 → 屋脊吊下的"本锅吊牌"，读序变为 本锅 → 蛋窝 → 下一锅；③ 调味与厨具合并成底部唯一的"下一锅"配方台；④ 子按钮拆成有语义的物件：清洁＝扫帚、手艺＝厨师帽、仓库＝蛋窝旁收集盆、商店＝配方台上的小卖部牌。</p>
+      <p><span class="k">调味区</span>离开左上，与厨具同在"下一锅"台第一排：标签 + 2 槽位 + "调味 1/2 ›"。</p>
+      <p><span class="k">厨具区</span>第二排 4 个格口，当前锅亮起 + "本锅"；屋脊吊牌另行展示本锅。</p>
+      <p><span class="k">子按钮</span>没有按钮列，四个入口各自附着在对应物件上；帮助进 HUD。</p>
+      <p><span class="k">背景</span>木屋剖面 + 圆木墙 + 深色配方台。</p>
+      <p class="risk"><span class="k">最大风险</span>调味离开左上（与用户倾向相反）；山墙占顶部空间，320 高度下两侧物件缩到约 0.7；入口物件化后的可发现性需实测。</p>
+    </div>
+  </div>
+
+  <div class="section">压力测试与状态 <small>左：320 × 568 · 右：可收取状态（390 × 844 缩略）</small></div>
+  <div class="row" style="margin-top:12px">
+    <div class="notes" style="padding-top:4px">
+      <p><b>口径</b></p>
+      <p>· 蛋群：engine.js <code>startBatch</code> 同一公式（6×4 基础位 ±3 抖动、60px 蛋图、31 / 26 间距、从后往前绘制），素材 egg-v4 + stage-bed-1-v6，未重排。</p>
+      <p>· 三个方案共用同一枚种子，蛋群像素级一致，只缩放整组。</p>
+      <p>· 可收取状态用 Runtime 的破壳绘制（光圈 + 闪点 + 角色图），角色来自现有 chick-v4。</p>
+      <p>· 厨具、调味、扫帚、导航、HUD 全部为现有资产；木墙、屋架、柜台、槽位、吊牌为 SVG / CSS 绘制。</p>
+    </div>
+    <div class="mini"><div><p class="cap">A · 320×568</p><div class="scale" style="width:208px;height:369px"><iframe src="./index.html?v=A" style="width:320px;height:568px;transform:scale(.65)"></iframe></div></div><div><p class="cap">A · 可收取</p><div class="scale" style="width:170px;height:368px"><iframe src="./index.html?v=A&state=ready" style="width:390px;height:844px;transform:scale(.436)"></iframe></div></div></div>
+    <div class="mini"><div><p class="cap">B · 320×568</p><div class="scale" style="width:208px;height:369px"><iframe src="./index.html?v=B" style="width:320px;height:568px;transform:scale(.65)"></iframe></div></div><div><p class="cap">B · 可收取</p><div class="scale" style="width:170px;height:368px"><iframe src="./index.html?v=B&state=ready" style="width:390px;height:844px;transform:scale(.436)"></iframe></div></div></div>
+    <div class="mini"><div><p class="cap">C · 320×568</p><div class="scale" style="width:208px;height:369px"><iframe src="./index.html?v=C" style="width:320px;height:568px;transform:scale(.65)"></iframe></div></div><div><p class="cap">C · 可收取</p><div class="scale" style="width:170px;height:368px"><iframe src="./index.html?v=C&state=ready" style="width:390px;height:844px;transform:scale(.436)"></iframe></div></div></div>
+  </div>
+
+  <div id="verdict-block">
+  <div class="section">我的判断 · 建议继续 C′ <small>C 为主，调味回到左上屋檐吊架；清洁改为与"仓库"对称的地梁小签；其余沿用 C</small></div>
+  <div class="row" style="margin-top:12px">
+    <div><h2>当前 Runtime · Lv.2</h2><div class="frame"><img src="./ref/runtime-lv2-390x844.png" alt=""></div></div>
+    <div><h2>C′ · 木屋剖面 + 左上调味 <small>推荐混合</small></h2><div class="frame"><iframe src="./index.html?v=D" data-v="D"></iframe></div></div>
+    <div><h2>C′ 叠图 <small>虚线 = Runtime 同类功能</small></h2><div class="frame dim" id="ov-D"><iframe src="./index.html?v=D" data-v="D"></iframe></div></div>
+    <div>
+      <div class="mini" style="margin-top:31px"><div><p class="cap">C′ · 320×568</p><div class="scale" style="width:208px;height:369px"><iframe src="./index.html?v=D" style="width:320px;height:568px;transform:scale(.65)"></iframe></div></div><div><p class="cap">C′ · 可收取</p><div class="scale" style="width:170px;height:368px"><iframe src="./index.html?v=D&state=ready" style="width:390px;height:844px;transform:scale(.436)"></iframe></div></div></div>
+      <div class="notes" style="margin-top:16px">
+        <p><b>1.</b> C 是三者中唯一一眼读成"Lv.2 木屋厨房"、又没有退回完整室内插画的方案：木屋剖面是舞台边框而不是房间；本锅吊牌 → 蛋窝 → 下一锅的读序最清楚；子入口从按钮列变成有语义的物件。</p>
+        <p><b>2.</b> C 的硬伤是调味离开左上。C′ 用屋檐吊架把调味放回左上（仍是 2 个真实槽位 + 入口），底部配方台只剩厨具与商店，结构更干净。</p>
+        <p><b>3.</b> 从 B 借：本锅信息组合（厨具 + 已用调味 + 清洁）可以并进 C′ 的吊牌；320 高度下入口收成横签的做法也可复用。</p>
+        <p><b>4.</b> A 更像高质量换皮：背景和组件升级明显，但结构与旧版最近，不建议做主方向。</p>
+        <p class="risk"><b>5.</b> 限制：木屋框为 SVG 程序化绘制，质感低于 ImageGen 资产。C′ 若获认可，应以此屏为构图真值，只让 ImageGen 出无文字的木屋框分层（屋顶 / 圆木墙 / 端头 / 地梁 / 配方台），蛋窝、厨具、HUD 保持现有素材。</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<script>
+const COLORS={nest:'#e9b52e',status:'#2f9c98',seasoning:'#58a83b',cookware:'#3a78d0',current:'#e2663d',secondary:'#8a5fc2',clean:'#9a6b3c',help:'#6f6f6f'};
+const NAMES={nest:'蛋窝',status:'状态 / 倒计时',seasoning:'调味',cookware:'厨具选择',current:'本锅信息',secondary:'商店 / 仓库 / 手艺',clean:'清洁',help:'帮助'};
+// Runtime zones measured on the 390×844 baseline (canvas RECTs × 390/320, quick-action column from the capture).
+const RUNTIME=[
+  {kind:'seasoning',label:'调味料按钮',x:9.8,y:132.8,w:46.3,h:56},{kind:'seasoning',label:'墙架回显',x:62,y:122,w:150,h:48},
+  {kind:'clean',label:'清洁',x:253.5,y:134,w:75.6,h:43.9},{kind:'secondary',label:'商店/仓库/手艺',x:338,y:76,w:46,h:160},{kind:'help',label:'帮助',x:338,y:238,w:46,h:54},
+  {kind:'nest',label:'蛋窝',x:36.6,y:284,w:314.4,h:217},{kind:'status',label:'计时条',x:12,y:567,w:362,h:38},
+  {kind:'cookware',label:'厨具',x:4.9,y:614.9,w:380,h:144},{kind:'current',label:'本锅(高亮卡)',x:198,y:618,w:88,h:104},
+];
+// ?pair=A|B|C → a two-column "Runtime vs candidate" board built from the same rows.
+const pair=new URLSearchParams(location.search).get('pair');
+if(pair){const keep={A:1,B:2,C:3}[pair];
+  document.getElementById('verdict-block').remove();
+  document.querySelectorAll('.row').forEach(row=>{[...row.children].forEach((c,i)=>{if(i&&i!==keep)c.remove();});row.style.gridTemplateColumns='repeat(2,390px)';});
+  document.querySelector('.board').style.width='880px';document.title+=' · '+pair;}
+document.getElementById('legend').innerHTML=Object.entries(NAMES).map(([k,n])=>`<span><i style="background:${COLORS[k]}"></i>${n}</span>`).join('');
+function overlay(host,zones,ghost){
+  const s=[`<svg width="390" height="844" viewBox="0 0 390 844">`];
+  if(ghost)for(const z of ghost)s.push(`<rect x="${z.x}" y="${z.y}" width="${z.w}" height="${z.h}" rx="6" fill="none" stroke="${COLORS[z.kind]}" stroke-width="2.4" stroke-dasharray="7 5" opacity=".95"/>`);
+  for(const z of zones){const c=COLORS[z.kind];s.push(`<rect x="${z.x}" y="${z.y}" width="${z.w}" height="${z.h}" rx="6" fill="${c}" fill-opacity="${z.kind==='nest'?.2:.3}" stroke="${c}" stroke-width="2.4"/>`);}
+  for(const z of zones){const c=COLORS[z.kind],tw=z.label.length*12+12,tx=Math.min(390-tw-2,Math.max(2,z.x+4)),ty=z.kind==='nest'?z.y+z.h/2-10:z.y+3;
+    s.push(`<rect x="${tx}" y="${ty}" width="${tw}" height="19" rx="5" fill="${c}"/><text x="${tx+tw/2}" y="${ty+14}" text-anchor="middle" font-size="12" font-weight="800" fill="#fff" font-family="Chicken UI,Microsoft YaHei">${z.label}</text>`);}
+  s.push('</svg>');host.insertAdjacentHTML('beforeend',s.join(''));
+}
+overlay(document.getElementById('ov-R'),RUNTIME);
+const frames=[...document.querySelectorAll('iframe')];
+const done=frames.map(f=>new Promise(res=>{const tick=()=>{try{if(f.contentDocument?.documentElement?.dataset.ready)return res();}catch{}setTimeout(tick,80);};tick();}));
+Promise.all(done).then(()=>{
+  for(const v of ['A','B','C','D']){const f=document.querySelector(`#ov-${v} iframe`);if(f)overlay(document.getElementById('ov-'+v),f.contentWindow.ZONES,RUNTIME);}
+  document.documentElement.dataset.ready='1';
+});
+</script>
+</body>
+</html>

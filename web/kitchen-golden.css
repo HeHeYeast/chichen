@@ -1,0 +1,13 @@
+/* Only Kitchen changes; other successful pages keep their approved shell. */
+#game.is-golden-kitchen:not(.is-wide) #main-nav{height:87px;min-height:87px;border-top:0;background:#f5f7e9;padding:4px 6px max(4px,env(safe-area-inset-bottom));}
+#game.is-golden-kitchen:not(.is-wide) #main-nav button{min-height:0;font-family:'Chicken UI','Microsoft YaHei',sans-serif;font-size:18px;font-weight:700;gap:2px;}
+#game.is-golden-kitchen:not(.is-wide) #main-nav button>svg{width:37px;height:37px;}
+#game.is-golden-kitchen:not(.is-wide) #main-nav button[aria-current=page]::before{width:90%;height:68px;top:0;left:5%;transform:none;background:#ffedb4;border-radius:12px;opacity:.8;}
+#game.is-golden-kitchen #quick-actions{position:absolute;inset:0;margin:0;display:block;width:320px;height:100%;pointer-events:none;z-index:1;}
+#game.is-golden-kitchen #quick-actions[hidden]{display:none;}
+#game.is-golden-kitchen #quick-actions button{position:absolute;pointer-events:auto;min-height:0;min-width:0;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:3px;padding:2px;border:1.2px solid #795530;border-radius:7px;background:#fff8e5;box-shadow:0 1.7px #795530;color:#352310;font:800 13px 'Microsoft YaHei','Chicken UI',sans-serif;}
+#game.is-golden-kitchen #quick-actions button :is(.sprite-art,.interface-icon){width:25px;height:25px;flex:none;}
+#game.is-golden-kitchen #quick-actions button:active{transform:translateY(1px);}
+#game.is-golden-kitchen .harvest-allocation-launch{font-size:11px;background:#fff5d9eb;border-width:1px;}
+#game.is-golden-kitchen .hotspot:focus-visible{outline:2px solid #277f91;outline-offset:-2px;border-radius:7px;}
+@media(max-width:340px){#game.is-golden-kitchen:not(.is-wide) #main-nav button{font-size:16px;}#game.is-golden-kitchen:not(.is-wide) #main-nav button>svg{width:33px;height:33px;}}

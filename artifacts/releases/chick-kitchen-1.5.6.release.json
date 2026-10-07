@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.6",
+    "versionCode":  22,
+    "file":  "chick-kitchen-1.5.6.apk",
+    "sha256":  "014e1442a3ba4e0145aedcdd3305d58e5989a49fda2abd79e2b5e1ef9eaa4b59",
+    "bytes":  99771714,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-02T02:25:33.5296392Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "65b83896d455763e94743b926fa8e5d73b80f173dd8c0e2a62aa35a3f8bee62a",
+    "runtimeFiles":  1326,
+    "notes":  "收取鸡宝更流畅：一笔滑动合并为一次保存，画面空闲时不再每帧重画，进农场不再无谓存档。寻访新增出发前收获预估、同行能力说明与新手提示，帮助改写为分段说明。全片文字检查：修正与规则不符、露出内部编号和开发用语的说明约三百处，统一订单、可用伙伴、清洁度等叫法。保留原有玩法和存档。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

@@ -1,0 +1,423 @@
+{
+  "0:128": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "leaf",
+      "portable"
+    ],
+    "price": 14
+  },
+  "0:129": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 23
+  },
+  "0:130": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "leaf",
+      "grain"
+    ],
+    "price": 22
+  },
+  "0:131": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 28
+  },
+  "0:132": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 26
+  },
+  "0:133": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "grain",
+      "leaf"
+    ],
+    "price": 12
+  },
+  "1:65": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "leaf",
+      "portable"
+    ],
+    "price": 18
+  },
+  "1:66": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 23
+  },
+  "1:67": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "leaf",
+      "portable"
+    ],
+    "price": 23
+  },
+  "1:68": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "grain"
+    ],
+    "price": 30
+  },
+  "1:69": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 24
+  },
+  "1:70": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 12
+  },
+  "0:134": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "fruit",
+      "portable"
+    ],
+    "price": 25
+  },
+  "0:135": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "leaf",
+      "portable"
+    ],
+    "price": 24
+  },
+  "0:136": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "fruit",
+      "portable"
+    ],
+    "price": 26
+  },
+  "0:137": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "leaf",
+      "portable"
+    ],
+    "price": 25
+  },
+  "0:138": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "portable"
+    ],
+    "price": 24
+  },
+  "0:139": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "fruit"
+    ],
+    "price": 14
+  },
+  "1:71": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "tea",
+      "fruit"
+    ],
+    "price": 26
+  },
+  "1:72": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "leaf"
+    ],
+    "price": 22
+  },
+  "1:73": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "fruit",
+      "grain"
+    ],
+    "price": 25
+  },
+  "1:74": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "leaf",
+      "portable"
+    ],
+    "price": 23
+  },
+  "1:75": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 42
+  },
+  "1:76": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "leaf"
+    ],
+    "price": 14
+  },
+  "0:140": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "tea",
+      "leaf"
+    ],
+    "price": 18
+  },
+  "0:141": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "floral",
+      "grain"
+    ],
+    "price": 25
+  },
+  "0:142": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "tea",
+      "portable"
+    ],
+    "price": 24
+  },
+  "0:143": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "floral"
+    ],
+    "price": 30
+  },
+  "0:144": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 25
+  },
+  "0:145": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "tea",
+      "leaf"
+    ],
+    "price": 15
+  },
+  "1:77": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "tea"
+    ],
+    "price": 30
+  },
+  "1:78": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "tea",
+      "floral"
+    ],
+    "price": 27
+  },
+  "1:79": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "tea",
+      "grain"
+    ],
+    "price": 25
+  },
+  "1:80": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "floral",
+      "portable"
+    ],
+    "price": 27
+  },
+  "1:81": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "portable"
+    ],
+    "price": 25
+  },
+  "1:82": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "floral",
+      "leaf"
+    ],
+    "price": 15
+  },
+  "0:146": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "salt",
+      "portable"
+    ],
+    "price": 28
+  },
+  "0:147": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "leaf",
+      "portable"
+    ],
+    "price": 25
+  },
+  "0:148": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "salt",
+      "grain"
+    ],
+    "price": 29
+  },
+  "0:149": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "leaf",
+      "portable"
+    ],
+    "price": 26
+  },
+  "0:150": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "grain",
+      "portable"
+    ],
+    "price": 27
+  },
+  "0:151": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "salt"
+    ],
+    "price": 16
+  },
+  "1:83": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "salt",
+      "leaf"
+    ],
+    "price": 25
+  },
+  "1:84": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "leaf",
+      "grain"
+    ],
+    "price": 26
+  },
+  "1:85": {
+    "G": 3,
+    "F": 3,
+    "traits": [
+      "salt"
+    ],
+    "price": 31
+  },
+  "1:86": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "leaf",
+      "grain"
+    ],
+    "price": 25
+  },
+  "1:87": {
+    "G": 4,
+    "F": 2,
+    "traits": [
+      "fruit",
+      "portable"
+    ],
+    "price": 26
+  },
+  "1:88": {
+    "G": 2,
+    "F": 4,
+    "traits": [
+      "salt"
+    ],
+    "price": 16
+  }
+}

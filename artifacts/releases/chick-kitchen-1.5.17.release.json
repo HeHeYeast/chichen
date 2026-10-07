@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.17",
+    "versionCode":  33,
+    "file":  "chick-kitchen-1.5.17.apk",
+    "sha256":  "dd3e52111e16b10972283f7789c5bd0b4f88e1d2e9eeca25c1719fd309cf665a",
+    "bytes":  107295045,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-06T03:19:39.0742844Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "70ced63ac1be962e64512f6a953263682a42ce8bcb9cd4c65cc63b7fff183df7",
+    "runtimeFiles":  1472,
+    "notes":  "图鉴新增「线索簿」：按未发现的伙伴列出已读到的线索层数，标出线索够用于推荐的伙伴，可直接去下一锅看新伙伴。下一锅：多赚按每小时收益、每种厨具各推荐一个；新伙伴把低概率的也列出来；观察「差一味」的方向最多 3 个。包含 1.5.16 的拖出弹窗、节日限定提示、留在家数量、同种多只寻访和 1～20 数值。保留存档和签名，可直接覆盖更新。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

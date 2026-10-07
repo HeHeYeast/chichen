@@ -1,6 +1,6 @@
 // Append-only content; original recipes and character IDs remain unchanged.
 import {DATA} from './data.js';
-import {speciesKey,speciesDiscovered} from './species-state.js';
+import {speciesKey,speciesDiscovered,discoveryCount} from './species-state.js';
 export const SEASON_ART='/web/art/four-seasons-v12.png';
 export const SEASONS=Object.freeze([
   {id:'spring',title:'春日野餐',months:[3,4,5],color:'#9bb96b'},
@@ -35,8 +35,8 @@ export const seasonalCharacter=(egg,id)=>SEASONAL_CHARACTERS.find(c=>c.egg===egg
 export const seasonalFound=(s,c)=>speciesDiscovered(s,c.egg,c.id);
 export function seasonalRecipeInfo(s,key){
   const c=SEASONAL_CHARACTERS.find(c=>c.key===key);if(!c)return null;
-  const discovered=new Set([...Object.keys(s.total??{}).filter(k=>s.total[k]>0),...Object.keys(s.farm??{}).filter(k=>s.farm[k]>0)]).size;
-  const conditions=[{met:s.kitchenLevel>=1,label:'厨房 Lv.2'}, {met:discovered>=12,label:`认识 12 种伙伴（${discovered} / 12）`},
+  const discovered=discoveryCount(s);
+  const conditions=[{met:s.kitchenLevel>=1,label:'厨房 Lv.2'}, {met:discovered>=12,label:`发现 12 种伙伴（${discovered} / 12）`},
     {met:(s.toolLevels[c.toolId]??-1)>=c.minLevel,label:`${DATA.tools[1][c.toolId].title_zh_CN} Lv.${c.minLevel+1}`},
     ...(c.egg?[{met:s.duck===true,label:'商店开放鸭蛋'}]:[])];
   const missing=c.ingredients.filter(id=>!(s.ingredients?.[id]>0)),unlocked=conditions.every(c=>c.met);

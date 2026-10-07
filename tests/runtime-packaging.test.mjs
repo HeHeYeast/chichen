@@ -13,3 +13,15 @@ test('declared asset availability matches the files the packer will copy',()=>{
   const packer=readFileSync(new URL('android/package-runtime.mjs',root),'utf8');
   assert.match(packer,/pendingArt\.has\(clean\)/,'the packer skips only declared-unavailable pending art');
 });
+
+test('composed kit/settings/skill paths are included from the approved UI manifest',()=>{
+  const manifest=JSON.parse(readFileSync(new URL('web/art/golden-ui/manifest.json',root),'utf8'));
+  const paths=new Set(manifest.assets.map(a=>a.path));
+  for(const file of ['arrow','ic-broom','ic-hourglass','ic-flame','ic-calendar','skill-CUL-1','branch-home','set-music','set-notify','skill-point']){
+    const path=`/web/art/golden-ui/${file}.png`;
+    assert.ok(paths.has(path),path);assert.ok(existsSync(new URL(path.slice(1),root)),path);
+  }
+  const packer=readFileSync(new URL('android/package-runtime.mjs',root),'utf8');
+  assert.match(packer,/sourcePath\('web\/art\/golden-ui\/manifest\.json'\)/);
+  assert.match(packer,/for\(const asset of uiKit\.assets\)add\(asset\.path\)/);
+});

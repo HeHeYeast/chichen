@@ -2,9 +2,9 @@ import {validateRegionalTrip} from './regional-exploration.js';
 import {ROUTES} from './exploration.js';
 import {validateBatchPlan} from './batch-plan.js';
 import {RULES} from './integration-data.js';
-import {SPECIES_ABILITIES as ABILITIES} from './content-registry.js';
+import {SPECIES_ABILITIES as ABILITIES,REGIONAL} from './content-registry.js';
 import {earnedSources,skillPoints,skillGate,SKILL_BY_ID,SKILLS,TRADE_CATEGORIES,MAX_SKILL_POINTS} from './progression.js';
-import {RECIPE_CATALOG,recipeId} from './recipe-book.js';
+import {RECIPE_CATALOG,REGIONAL_RECIPE_ROWS,recipeId} from './recipe-book.js';
 export function freshProgress(s){
   return {skillVersion:2,migrationRespec:false,migrationNotice:false,leftovers:[],hotStove:null,lastHarvest:null,sources:earnedSources(s),skills:{},respecAt:null,protection:{freshness:true,sickness:true,calm:false},trade:{initialGranted:false,credits:0,harvestProgress:0,rebateRemainder:0,markupRemainder:0,category:null},
     fortune:{lastTarget:Number.isInteger(s.events?.gift_tool_2_68_character_id)&&s.events.gift_tool_2_68_character_id>=89&&s.events.gift_tool_2_68_character_id<=103?s.events.gift_tool_2_68_character_id:null,drought:0},
@@ -37,10 +37,16 @@ export function validateProgress(s,fail){
   if((p.skills['TRADE-3']||p.skills['TRADE-4'])&&!p.trade.initialGranted)fail('经营初次学习标记');
   object(p.fortune,'签礼');if(p.fortune.lastTarget!==null)int(p.fortune.lastTarget,'上次签',89,103);int(p.fortune.drought,'签礼计数');
   object(p.knowledge,'知识');list(p.knowledge.facts,'线索事实');list(p.knowledge.recipes,'配方知识');
-  const recipes=new Map(RECIPE_CATALOG.map(r=>[recipeId(r),r]));
-  const facts=new Set(RECIPE_CATALOG.flatMap(r=>[r.key+':L1',...[2,3,4,5].map(l=>recipeId(r)+':L'+l)]));
+  // Regional partners (loop batch 4) carry clue facts and trip tickets on their one recipe row as well; their 研读 stays the
+  // region's own (expansion.methods.full), so knowledge.recipes keeps the ordinary catalogue.
+  const studied=new Map(RECIPE_CATALOG.map(r=>[recipeId(r),r])),recipes=new Map([...studied,...REGIONAL_RECIPE_ROWS.map(r=>[recipeId(r),r])]);
+  const facts=new Set([...RECIPE_CATALOG,...REGIONAL_RECIPE_ROWS].flatMap(r=>[r.key+':L1',...[2,3,4,5].map(l=>recipeId(r)+':L'+l)]));
   for(const f of p.knowledge.facts)if(!facts.has(f))fail('线索事实身份');
-  for(const r of p.knowledge.recipes)if(!recipes.has(r))fail('配方身份');
+  for(const r of p.knowledge.recipes)if(!studied.has(r))fail('配方身份');
+  // 线索册「追踪」 is optional: absent (old saves) or null means nothing is tracked.
+  if(p.knowledge.tracked!==undefined&&p.knowledge.tracked!==null&&(typeof p.knowledge.tracked!=='string'||!RECIPE_CATALOG.some(r=>r.key===p.knowledge.tracked&&!['change','sign','gift'].includes(r.kind))&&!REGIONAL_RECIPE_ROWS.some(r=>r.key===p.knowledge.tracked)))fail('追踪伙伴');
+  // 订单情报 「地点」: the special finds an order pointed to (regional card ids), optional like tracked.
+  if(p.knowledge.hints!==undefined&&(!Array.isArray(p.knowledge.hints)||p.knowledge.hints.length>REGIONAL.cards.length||new Set(p.knowledge.hints).size!==p.knowledge.hints.length||p.knowledge.hints.some(id=>!REGIONAL.cards.some(c=>c.id===id))))fail('地点情报');
   object(p.orders,'采购');
   for(const [id,o]of Object.entries(p.orders)){
     const cfg=RULES.storyOrders.find(r=>r.id===id);if(!cfg)fail('采购编号');object(o,'采购状态');bool(o.accepted,'接单状态');bool(o.completed,'采购完成');
@@ -55,15 +61,15 @@ export function validateProgress(s,fail){
   if(p.trip!==null){
     const t=p.trip;object(t,'探索');int(t.version,'探索规则版本',1,s.version>=4?2:1);if(t.version===2)validateRegionalTrip(t,fail);
     if(t.id!=='trip-'+p.tripSequence||p.tripSequence<1)fail('探索事务身份');
-    const r=ROUTES.find(r=>r.id===t.routeId);if(!r)fail('探索路线');if(r.id==='bay'&&t.version!==2)fail('海湾只接受地区寻访票据');
+    const r=ROUTES.find(r=>r.id===t.routeId);if(!r)fail('探索路线');if(r.id==='bay'&&t.version!==2)fail('海湾寻访记录');
     if(!['running','returned','settled','recalled'].includes(t.status))fail('探索状态');
     list(t.members,'探索队员',3);if(!t.members.length)fail('空队伍');
-    for(const key of t.members)if(!ABILITIES[key]||(t.status==='running'&&(s.farm[key]??0)<1))fail('探索占用 '+key);
+    for(const key of t.members)if(!ABILITIES[key]||(t.status==='running'&&(s.farm[key]??0)<t.members.filter(m=>m===key).length))fail('探索占用 '+key);
     num(t.startedAt,'出发时间');num(t.endAt,'归队时间');if(t.endAt-t.startedAt!==r.hours*3600000*(t.snapshot?.light?.8:1))fail('路线时长');
     if(!Array.isArray(t.remaining)||t.remaining.length>r.baseUnits+1||t.remaining.some(id=>!Number.isInteger(id)||(id!==0&&!r.pool.includes(id)&&!(t.version===2&&(t.regional.intro?.materialId===id||t.regional.sampling?.materialId===id||t.cargo?.rewardMaterial===id)))))fail('探索材料');
     bool(t.clueHit,'线索票据');bool(t.clueProcessed,'线索结算');bool(t.special,'样本叙事');
     if(!Array.isArray(t.clueOrder)||t.clueOrder.length>386)fail('线索顺序');
-    const checkClue=c=>{object(c,'线索');const path=recipes.get(c.recipeId);if(!path||path.key!==c.key||![1,2].includes(c.level)||c.fact!==(c.level===1?c.key+':L1':c.recipeId+':L2'))fail('线索票据身份');};
+    const checkClue=c=>{object(c,'线索');const path=recipes.get(c.recipeId);if(!path||path.key!==c.key||![1,2,3,4,5].includes(c.level)||c.fact!==(c.level===1?c.key+':L1':c.recipeId+':L'+c.level))fail('线索票据身份');};
     t.clueOrder.forEach(checkClue);if(new Set(t.clueOrder.map(c=>c.fact)).size!==t.clueOrder.length)fail('重复线索票据');
     if(t.clueResult!==null){checkClue(t.clueResult);if(!t.clueProcessed||!t.clueHit||!p.knowledge.facts.includes(t.clueResult.fact))fail('线索发放状态');}
     if(t.status==='running'&&(t.clueProcessed||t.clueResult!==null))fail('在途奖励提前结算');
@@ -71,8 +77,8 @@ export function validateProgress(s,fail){
     if(['returned','settled'].includes(t.status)&&t.returnedAt!==t.endAt)fail('归队结算时间');
     if(t.status==='recalled'){num(t.recalledAt,'召回时间');if(t.recalledAt>=t.endAt||t.recalledAt<t.startedAt)fail('召回边界');}
     object(t.snapshot,'探索快照');const x=t.snapshot;
-    int(x.G,'采集快照',2,12);int(x.F,'发现快照',2,12);int(x.A,'环境快照',0,3);
-    if(x.G+x.F!==6*t.members.length||x.A>t.members.length)fail('能力总额');
+    int(x.G,'采集快照',0,60);int(x.F,'发现快照',0,60);int(x.A,'环境快照',0,3);
+    if(x.G>20*t.members.length||x.F>20*t.members.length||x.A>t.members.length)fail('能力总额');
     num(x.materialChance,'材料概率',0,.6);num(x.clueChance,'线索概率',0,.55);
     if(![6,8].includes(x.hardAttempt))fail('保底快照');bool(x.bonus,'额外材料');
     if(!Array.isArray(x.directed)||x.directed.length>2||x.directed.some(id=>!r.pool.includes(id)))fail('定向材料快照');

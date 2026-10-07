@@ -7,6 +7,7 @@ import {REGIONAL,resolveSpecies,resolveMaterial,resolveRecipeId,SPECIES_ABILITIE
 import {RECIPE_CATALOG,recipeId} from '../web/recipe-book.js';
 import {speciesView,collectionPageModel,saleSelectionSummary} from '../web/collection-ui.js';
 import {characterImage} from '../web/catalog.js';
+import {productionCharacter} from '../web/production-art.js';
 import {freshState,normalizeSave,sell} from '../web/engine.js';
 import {syncProgress} from '../web/progression.js';
 import {createSaveStore,makeBackup,parseBackup} from '../web/save-store.js';
@@ -60,10 +61,11 @@ test('unknown species projection masks all 48 new names, descriptions, price and
   for(const egg of [0,1]){const page=collectionPageModel(state,{egg,page:100});assert.equal(page.total,egg?89:152);for(const row of page.entries)assert.equal(row.known,false);}
 });
 
-test('new identities stay known after selling out; catalog artwork uses the marked concept resource instead of an old character',()=>{
+test('new identities stay known after selling out; catalog prefers each published character and retains its fallback',()=>{
   const state=freshState(NOW);
-  for(const row of author.species){state.total[row.key]=1;const id=Number(row.key.split(':')[1]),view=speciesView(state,row.egg,id);assert.equal(view.name,row.name);assert.equal(view.stock,0);assert.equal(view.known,true);assert.equal(characterImage(row.egg,id),'/web/art/regional-concept.svg');}
-  const svg=fs.readFileSync(new URL('../web/art/regional-concept.svg',import.meta.url),'utf8');assert.match(svg,/概念|concept/i);
+  for(const row of author.species){state.total[row.key]=1;const id=Number(row.key.split(':')[1]),view=speciesView(state,row.egg,id);assert.equal(view.name,row.name);assert.equal(view.stock,0);assert.equal(view.known,true);const path=characterImage(row.egg,id),production=productionCharacter(row.egg,id);if(production){assert.equal(path,production);assert.match(path,/^\/web\/art\/production\/.+\/full\.png$/);}else assert.match(path,/^\/web\/art\/polish\/species\/species-[VRTB]-[CD][1-6]\.svg$/);assert.ok(fs.existsSync(new URL('..'+path,import.meta.url)));}
+  assert.equal(new Set(author.species.map(row=>characterImage(row.egg,Number(row.key.split(':')[1])))).size,48);
+  const inventory=JSON.parse(fs.readFileSync(new URL('../web/art/polish/inventory.json',import.meta.url),'utf8'));assert.equal(inventory.assets.filter(a=>a.category==='species'&&a.status==='vector-placeholder').length,48);
 });
 
 test('compatibility fixture can save, sell every new species, restart and backup/restore through the transaction entry',()=>{

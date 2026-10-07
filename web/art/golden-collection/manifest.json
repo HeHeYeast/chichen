@@ -1,0 +1,816 @@
+{
+  "version": 1,
+  "style": "jibao-confirmed-mockups-v2",
+  "assets": [
+    {
+      "id": "golden:v2-paper",
+      "path": "/web/art/golden-collection/v2-paper.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G03-paper.png",
+      "crop": [
+        24,
+        42,
+        783,
+        1210
+      ],
+      "alphaBoundsInCrop": [
+        22,
+        31,
+        742,
+        1149
+      ],
+      "size": [
+        736,
+        1134
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "47c4413c68d2e7d60398aa7990078d431b980e02787c6231d97df93a5bf84f36",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-unknown",
+      "path": "/web/art/golden-collection/v2-unknown.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G03-paper.png",
+      "crop": [
+        818,
+        451,
+        1238,
+        870
+      ],
+      "alphaBoundsInCrop": [
+        21,
+        25,
+        400,
+        395
+      ],
+      "size": [
+        395,
+        386
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "88098150bd5c2eb40214b62e227c2a49980928ee4db463e36fa50e36915404d6",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-collection-active",
+      "path": "/web/art/golden-collection/v2-collection-active.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G04-stamps.png",
+      "crop": [
+        10,
+        186,
+        620,
+        603
+      ],
+      "alphaBoundsInCrop": [
+        34,
+        26,
+        599,
+        391
+      ],
+      "size": [
+        581,
+        381
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "d110bf1234f023853b60da4bde5a88e6d8e833caceb3cad653971ac7cac738db",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-collection-inactive",
+      "path": "/web/art/golden-collection/v2-collection-inactive.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G04-stamps.png",
+      "crop": [
+        620,
+        185,
+        1247,
+        610
+      ],
+      "alphaBoundsInCrop": [
+        19,
+        31,
+        582,
+        395
+      ],
+      "size": [
+        579,
+        380
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "ab76387b30d31ce338ef565a8432f17d2cbbd9563fa57e89891c974344679536",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-practice-active",
+      "path": "/web/art/golden-collection/v2-practice-active.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G04-stamps.png",
+      "crop": [
+        10,
+        741,
+        622,
+        1115
+      ],
+      "alphaBoundsInCrop": [
+        25,
+        33,
+        600,
+        339
+      ],
+      "size": [
+        591,
+        322
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "9e95e7faad3197d5fa58d5b58eb061ebf7ec785715d499c2a2aee6e9d5132c15",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-practice-inactive",
+      "path": "/web/art/golden-collection/v2-practice-inactive.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G04-stamps.png",
+      "crop": [
+        625,
+        740,
+        1247,
+        1120
+      ],
+      "alphaBoundsInCrop": [
+        24,
+        39,
+        597,
+        343
+      ],
+      "size": [
+        589,
+        320
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "9adc3b5b4f2364cc2927678efcbe27a934e2987790a9d623c43b27aa8a95408a",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-tape",
+      "path": "/web/art/golden-collection/v2-tape.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        19,
+        149,
+        407,
+        341
+      ],
+      "alphaBoundsInCrop": [
+        19,
+        31,
+        368,
+        171
+      ],
+      "size": [
+        365,
+        156
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "de7eb828c238e0862a41a76ef989b45c9d0ec77c799d903a427344658c6bc844",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-tab-idle",
+      "path": "/web/art/golden-collection/v2-tab-idle.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        420,
+        130,
+        830,
+        353
+      ],
+      "alphaBoundsInCrop": [
+        16,
+        26,
+        393,
+        200
+      ],
+      "size": [
+        393,
+        190
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "37a6264b6cf0928836af8f712badf5961e7df16916b3468db0a6df9fd82c9129",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-tab-current",
+      "path": "/web/art/golden-collection/v2-tab-current.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        836,
+        136,
+        1246,
+        354
+      ],
+      "alphaBoundsInCrop": [
+        17,
+        21,
+        392,
+        190
+      ],
+      "size": [
+        391,
+        185
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "c5749a645fd0517be0a7be3a0fdb973bb085904a6b59335910399872ddce2191",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-pin",
+      "path": "/web/art/golden-collection/v2-pin.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        130,
+        407,
+        308,
+        858
+      ],
+      "alphaBoundsInCrop": [
+        22,
+        20,
+        154,
+        425
+      ],
+      "size": [
+        148,
+        421
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "776f514662abe5aec0d65e18b54f4fb0b609bd34a58f92bfd6d6156b5584fa34",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-memento",
+      "path": "/web/art/golden-collection/v2-memento.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        429,
+        409,
+        804,
+        851
+      ],
+      "alphaBoundsInCrop": [
+        20,
+        24,
+        345,
+        413
+      ],
+      "size": [
+        341,
+        405
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "926746a54ebf6c91d845e90222e8c9cfd5dbfc010d0402f484facfeb18b9f2aa",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-swash",
+      "path": "/web/art/golden-collection/v2-swash.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        814,
+        553,
+        1244,
+        730
+      ],
+      "alphaBoundsInCrop": [
+        27,
+        30,
+        412,
+        152
+      ],
+      "size": [
+        401,
+        138
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "4c0db0d4fa7cdde0c246a1c9fcaf0fc8b60f9e2f35cde09952a22acde6610b03",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-round-button",
+      "path": "/web/art/golden-collection/v2-round-button.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        72,
+        895,
+        371,
+        1187
+      ],
+      "alphaBoundsInCrop": [
+        27,
+        30,
+        278,
+        273
+      ],
+      "size": [
+        267,
+        259
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "00cd80d3e4604507bbdd59392e940ae784d9521bdd13b05bb267ac1f40003c79",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-page-button",
+      "path": "/web/art/golden-collection/v2-page-button.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        473,
+        895,
+        768,
+        1186
+      ],
+      "alphaBoundsInCrop": [
+        29,
+        32,
+        275,
+        266
+      ],
+      "size": [
+        262,
+        250
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "7c64caf16a7cedfc51c83ad24314abe87ef2bf0390e918b538b419413d37ea2f",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:v2-backdrop",
+      "path": "/web/art/golden-collection/v2-backdrop.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/revision-2/G05-stationery.png",
+      "crop": [
+        806,
+        900,
+        1233,
+        1202
+      ],
+      "alphaBoundsInCrop": [
+        24,
+        34,
+        400,
+        261
+      ],
+      "size": [
+        392,
+        243
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "d3d46688023d6a4556ad6d0d2a1b13ea9eb663bebf00b73968cf1e1742f30648",
+      "status": "golden-sample",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:paper",
+      "path": "/web/art/golden-collection/paper.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G01-paper.png",
+      "crop": [
+        20,
+        90,
+        418,
+        766
+      ],
+      "alphaBoundsInCrop": [
+        20,
+        20,
+        383,
+        650
+      ],
+      "size": [
+        379,
+        646
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "827980704d4e1478a839da2b85f4b15721d3ca94bb8f43b253e8025c34027ef8",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:unknown",
+      "path": "/web/art/golden-collection/unknown.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G01-paper.png",
+      "crop": [
+        426,
+        236,
+        845,
+        681
+      ],
+      "alphaBoundsInCrop": [
+        21,
+        25,
+        394,
+        418
+      ],
+      "size": [
+        389,
+        409
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "78272e5a4592751ea3146c4b28cfd7df5b65192aed2c2cec4eb07b0b27547733",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:tape",
+      "path": "/web/art/golden-collection/tape.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G01-paper.png",
+      "crop": [
+        859,
+        383,
+        1237,
+        550
+      ],
+      "alphaBoundsInCrop": [
+        19,
+        20,
+        362,
+        144
+      ],
+      "size": [
+        359,
+        140
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "c0f6c2c7ffad861167fa93e1f8df70fc685a257cf49714f3ae304807d6f29675",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:tab-idle",
+      "path": "/web/art/golden-collection/tab-idle.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G01-paper.png",
+      "crop": [
+        10,
+        900,
+        427,
+        1187
+      ],
+      "alphaBoundsInCrop": [
+        24,
+        30,
+        403,
+        251
+      ],
+      "size": [
+        395,
+        237
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "b88bf27a47abcadced66207919bc6caa3f059f61c5426012330df5ff75ddaacf",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:tab-current",
+      "path": "/web/art/golden-collection/tab-current.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G01-paper.png",
+      "crop": [
+        430,
+        900,
+        846,
+        1187
+      ],
+      "alphaBoundsInCrop": [
+        17,
+        30,
+        398,
+        250
+      ],
+      "size": [
+        397,
+        236
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "329382d375b7feef708a148fb7e5029190aa0ba08fb59c4be7e38847ea3ad657",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:memento-clip",
+      "path": "/web/art/golden-collection/memento-clip.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G01-paper.png",
+      "crop": [
+        865,
+        786,
+        1226,
+        1224
+      ],
+      "alphaBoundsInCrop": [
+        20,
+        20,
+        332,
+        415
+      ],
+      "size": [
+        328,
+        411
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "b5bc1625c230c063f7f6a4a71b78057a64dda0098d81e91ec586767d5b543485",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:stamp-done",
+      "path": "/web/art/golden-collection/stamp-done.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G02-state.png",
+      "crop": [
+        10,
+        230,
+        505,
+        585
+      ],
+      "alphaBoundsInCrop": [
+        25,
+        21,
+        486,
+        322
+      ],
+      "size": [
+        477,
+        317
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "33a68c464abb79b9b7d54e1351f964f6c71734fdee8a3e93ec468c6f12d18f2f",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:stamp-pending",
+      "path": "/web/art/golden-collection/stamp-pending.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G02-state.png",
+      "crop": [
+        505,
+        230,
+        987,
+        585
+      ],
+      "alphaBoundsInCrop": [
+        7,
+        21,
+        468,
+        322
+      ],
+      "size": [
+        477,
+        317
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "194d49881de1eed15cdb8cf91b9451133c557683557547c1508e88a38d3a64cb",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:pin-on",
+      "path": "/web/art/golden-collection/pin-on.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G02-state.png",
+      "crop": [
+        1008,
+        125,
+        1210,
+        613
+      ],
+      "alphaBoundsInCrop": [
+        19,
+        21,
+        180,
+        463
+      ],
+      "size": [
+        177,
+        458
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "444522768d38e79421f908f32b2167d0e14c9a61e94b19afb10ced7d6dc3b5d8",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:pin-off",
+      "path": "/web/art/golden-collection/pin-off.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G02-state.png",
+      "crop": [
+        40,
+        671,
+        259,
+        1143
+      ],
+      "alphaBoundsInCrop": [
+        23,
+        17,
+        194,
+        450
+      ],
+      "size": [
+        187,
+        449
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "9560d150ff743729bbb1db2436e845d6ba8ca87421a2a224f3e534bbf779285f",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:nav-wash",
+      "path": "/web/art/golden-collection/nav-wash.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G02-state.png",
+      "crop": [
+        289,
+        791,
+        901,
+        1081
+      ],
+      "alphaBoundsInCrop": [
+        29,
+        24,
+        593,
+        264
+      ],
+      "size": [
+        580,
+        256
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "e463408dfde5b19e85de5977885895494b0d10b449ef9c160d6c1c414b371d43",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    },
+    {
+      "id": "golden:paper-button",
+      "path": "/web/art/golden-collection/paper-button.png",
+      "sheet": "docs/art-direction-20260924-v2/asset-sheets/G02-state.png",
+      "crop": [
+        919,
+        775,
+        1237,
+        1091
+      ],
+      "alphaBoundsInCrop": [
+        14,
+        15,
+        302,
+        294
+      ],
+      "size": [
+        304,
+        295
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "safeInset": 8,
+      "transparent": true,
+      "sha256": "1b362f234729f657a3d2fe20f813d2c39fe49646cefb287d1bd7085ba9595e20",
+      "status": "superseded",
+      "source": "built-in-imagegen; measured crop; no text"
+    }
+  ]
+}

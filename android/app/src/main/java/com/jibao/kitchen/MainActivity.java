@@ -57,6 +57,13 @@ public final class MainActivity extends Activity {
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
         settings.setMediaPlaybackRequiresUserGesture(false);
         settings.setSupportMultipleWindows(false); settings.setJavaScriptCanOpenWindowsAutomatically(false);
+        // WebView scales page text by the system font size by default (and forces
+        // pinch zoom from 130%). The game is laid out at fixed sizes, so a large
+        // system font would push text over its frames and buttons.
+        settings.setTextZoom(100);
+        // Honour the page's viewport tag. It stays device-width, except on screens under
+        // 320 CSS px where index.html asks for a 320 layout fitted to the screen.
+        settings.setUseWideViewPort(true);
         web.addJavascriptInterface(new Bridge(), "ChickNative");
         web.setWebViewClient(new WebViewClient() {
             @Override public void onPageStarted(WebView view, String url, android.graphics.Bitmap favicon) {
@@ -73,13 +80,27 @@ public final class MainActivity extends Activity {
                         Collections.singletonMap("Cache-Control", "no-cache"), getAssets().open(path.substring(1))); }
                 catch (IOException error) { return missing(); }
             }
+            /** A killed or crashed page renderer must not take the game down; saves are native. */
+            @Override public boolean onRenderProcessGone(WebView view, android.webkit.RenderProcessGoneDetail detail) {
+                if (view != web) return true;
+                ((android.view.ViewGroup) view.getParent()).removeView(view);
+                view.destroy(); web = null;
+                recreate();
+                return true;
+            }
             @Override public void onPageFinished(WebView view, String url) {
                 // The game loads sprites and fonts asynchronously. JS explicitly
                 // acknowledges readiness before we consume notification navigation.
                 ready = ENTRY.equals(url);
             }
         });
-        web.setWebChromeClient(new WebChromeClient());
+        web.setWebChromeClient(new WebChromeClient() {
+            @Override public boolean onConsoleMessage(ConsoleMessage message) {
+                if (message.messageLevel() == ConsoleMessage.MessageLevel.ERROR)
+                    android.util.Log.w("ChickKitchen", message.message() + " @" + message.sourceId() + ":" + message.lineNumber());
+                return true;
+            }
+        });
         goKitchen = getIntent().getBooleanExtra("goKitchen", false);
         notificationResumePending = goKitchen;
         web.loadUrl(ENTRY);
@@ -97,7 +118,10 @@ public final class MainActivity extends Activity {
         if (path.endsWith(".png")) return "image/png";
         if (path.endsWith(".jpg") || path.endsWith(".jpeg")) return "image/jpeg";
         if (path.endsWith(".svg")) return "image/svg+xml";
+        if (path.endsWith(".webp")) return "image/webp";
         if (path.endsWith(".mp3")) return "audio/mpeg";
+        if (path.endsWith(".ogg")) return "audio/ogg";
+        if (path.endsWith(".wav")) return "audio/wav";
         return "application/octet-stream";
     }
     private void emit(String type, String id, JSONObject result) {
@@ -180,7 +204,14 @@ public final class MainActivity extends Activity {
             });
         }
         @JavascriptInterface public String platformInfo() {
-            try { return new JSONObject().put("android", true).put("version", BuildConfig.VERSION_NAME).put("versionCode", BuildConfig.VERSION_CODE).toString(); }
+            try {
+                JSONObject info = new JSONObject().put("android", true).put("version", BuildConfig.VERSION_NAME).put("versionCode", BuildConfig.VERSION_CODE)
+                        .put("sdk", Build.VERSION.SDK_INT).put("release", Build.VERSION.RELEASE).put("maker", Build.MANUFACTURER).put("model", Build.MODEL)
+                        .put("fontScale", getResources().getConfiguration().fontScale);
+                android.content.pm.PackageInfo webView = WebView.getCurrentWebViewPackage();
+                if (webView != null) info.put("webview", webView.packageName + " " + webView.versionName);
+                return info.toString();
+            }
             catch (Exception ignored) { return "{}"; }
         }
         @JavascriptInterface public String loadSave() { return SaveRepository.load(MainActivity.this).toString(); }
@@ -207,6 +238,32 @@ public final class MainActivity extends Activity {
         @JavascriptInterface public void openNotificationSettings() { openSystemSettings(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName())); }
         @JavascriptInterface public void openExactAlarmSettings() { if (Build.VERSION.SDK_INT >= 31) openSystemSettings(new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, Uri.parse("package:" + getPackageName()))); }
         @JavascriptInterface public void openAppSettings() { openSystemSettings(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getPackageName()))); }
+        /** One system "allow" dialog instead of digging through battery settings. */
+        @JavascriptInterface public void requestBackgroundRun() {
+            Intent list = new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+            if (HatchScheduler.backgroundAllowed(MainActivity.this)) { openSystemSettings(list); return; }
+            runOnUiThread(() -> {
+                systemScreenPending = true;
+                try { startActivity(new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:" + getPackageName()))); }
+                catch (Exception missing) { systemScreenPending = false; openSystemSettings(list); }
+            });
+        }
+        /** Honor/Huawei keep their own auto-launch list; fall back to the app page elsewhere. */
+        @JavascriptInterface public void openStartupManager() {
+            runOnUiThread(() -> {
+                String[][] screens = {
+                    {"com.hihonor.systemmanager", "com.hihonor.systemmanager.startupmgr.ui.StartupNormalAppListActivity"},
+                    {"com.huawei.systemmanager", "com.huawei.systemmanager.startupmgr.ui.StartupNormalAppListActivity"},
+                };
+                for (String[] screen : screens) {
+                    Intent intent = new Intent().setClassName(screen[0], screen[1]);
+                    if (intent.resolveActivity(getPackageManager()) == null) continue;
+                    systemScreenPending = true;
+                    try { startActivity(intent); return; } catch (Exception blocked) { systemScreenPending = false; }
+                }
+                openAppSettings();
+            });
+        }
         @JavascriptInterface public String testDelayedNotification() {
             try { HatchScheduler.testDelayedNotification(MainActivity.this); return result(true, "已安排 1 分钟后的后台测试。请返回桌面或锁屏等待，正式孵化提醒继续保留。若锁屏后收不到，请查看设置中的“后台提醒帮助”。").toString(); }
             catch (Exception error) { return result(false, error.getMessage()).toString(); }
@@ -235,6 +292,15 @@ public final class MainActivity extends Activity {
                 try { startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType("*/*"), IMPORT); }
                 catch (Exception error) { systemScreenPending = false; documentError("无法打开文件选择器"); }
             });
+        }
+        /** Settings → device check: the WebView clipboard API is not reliable across vendors. */
+        @JavascriptInterface public boolean copyText(String text) {
+            try {
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                if (clipboard == null || text == null) return false;
+                clipboard.setPrimaryClip(android.content.ClipData.newPlainText("鸡宝厨房设备检测", text.length() > 8000 ? text.substring(0, 8000) : text));
+                return true;
+            } catch (Exception error) { return false; }
         }
         @JavascriptInterface public void closeApp() { runOnUiThread(() -> finish()); }
     }

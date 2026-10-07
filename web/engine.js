@@ -33,7 +33,7 @@ export function freshState(now=Date.now(),seed) {
 }
 export function cookInfo(s,id,now=Date.now()) {
  const t=tool(id),lv=s.toolLevels[id];
- if(!t||!Number.isInteger(lv)||lv<0||lv>2)throw Error('请先在商店购买调理用具。');
+ if(!t||!Number.isInteger(lv)||lv<0||lv>2)throw Error('请先在商店购买这件厨具。');
  const signature=batchSignature(s.egg,id,cookingIngredients(s));
  return {cost:t[`lv_${lv}_cook_cp`]+(s.progress?.replicate?10:0),...cookingTiming(s,t[`lv_${lv}_min`],{signature,now})};
 }
@@ -44,7 +44,8 @@ export function replicateOptions(s,id,now=Date.now()){
 }
 export function startBatch(s,id,now=Date.now(),random=economicRandom(s,'startBatch'),visualRandom=Math.random) {
   if(s.batch?.eggs.some(e=>!e.collected)) throw Error('请先收取这一批鸡宝。');
-  if(!tool(id)||!Number.isInteger(s.toolLevels[id])||s.toolLevels[id]<0) throw Error('请先在商店购买调理用具。');
+  if(s.egg===1&&!s.duck)throw Error('请先在商店开放鸭蛋。');
+  if(!tool(id)||!Number.isInteger(s.toolLevels[id])||s.toolLevels[id]<0) throw Error('请先在商店购买这件厨具。');
   const info=cookInfo(s,id,now),{cost,minutes}=info;
   const replicate=s.progress.replicate;if(replicate&&(!rank(s,'CUL-5')||!replicateOptions(s,id,now).some(c=>c.key===replicate)))throw Error('指定伙伴不符合本批普通候选，请重新选择');
   if(s.cp<cost) throw Error('CP不足。');
@@ -97,7 +98,9 @@ export function updateBatch(s,now=Date.now(),random=economicRandom(s,'updateBatc
     }
     if(e.status==='cracking'&&now-e.animationAt>=2000){e.status='hatching';e.animationAt=now;events.push(e.egg?'duck':'chick');}
     if(e.status==='hatching'&&now-e.animationAt>=900)e.status='ready';
-    if(e.status==='ready'&&e.blackAt&&now>e.blackAt&&s.batch.tool>0&&!burntExempt[e.egg].includes(e.id)) {
+    // Hatching is already collectible. Apply expiry at that same boundary so
+    // reopening an old batch cannot harvest fresh results during the animation.
+    if(['hatching','ready'].includes(e.status)&&e.blackAt&&now>e.blackAt&&s.batch.tool>0&&!burntExempt[e.egg].includes(e.id)) {
       if((e.egg===0&&[109,111,112,113].includes(e.id))||(e.egg===1&&[52,54,55,56].includes(e.id)))e.id=e.egg?53:110;
       else if((e.egg===0&&[69,71,72,73,74,75,76,77].includes(e.id))||(e.egg===1&&[37,39,40,41,42,43,44,45,46].includes(e.id)))e.id=e.egg?38:70;
       else {e.id=2;if(kitchenLevel>=1&&(tickets?.[4]??random())<1/50){e.id=e.egg?20:35;if(kitchenLevel>=2&&(tickets?.[5]??random())<(e.egg?1/20:1/3))e.id=e.egg?28:54;}}
@@ -115,7 +118,7 @@ export function collect(s,index,now=Date.now()) {
   if(s.batch.rules?.version>=2)s.batch.rules.harvestBonus+=bonus;
   if(s.progress){s.progress.discoveryClue=null;harvestCredit(s);if(!wasKnown&&e.egg===0&&e.id>=89&&e.id<=103)s.progress.fortune.drought=0;syncProgress(s);
     if(!wasKnown&&rank(s,'OBS-5')){
-      const clues=RULES.exploration.routes.flatMap(r=>clueCandidates(s,r,now)).sort((a,b)=>a.level-b.level);
+      const clues=RULES.exploration.routes.flatMap(r=>clueCandidates(s,r,now,{method:false})).sort((a,b)=>a.level-b.level);
       if(clues.length){s.progress.knowledge.facts.push(clues[0].fact);s.progress.discoveryClue=clues[0].key;}
     }
     const b=s.batch,r=b.rules;
@@ -166,10 +169,12 @@ export function buyDuck(s) {
   s.cp-=info.price;s.duck=true;return info.price;
 }
 export const availableIngredients=availableIngredientIds;
-export function buyIngredient(s,id,count=1) {
+// forBatch: bought inside the same transaction that starts a batch using it (下一锅 「开火」 buys what is missing): it goes
+// straight into the pot, so a full bag does not stop it; the batch start takes it out again before anything is saved.
+export function buyIngredient(s,id,count=1,{forBatch=false}={}) {
   if(!availableIngredients(s).includes(id))throw Error('尚未解锁。');
   if(!Number.isInteger(count)||count<1)throw Error('数量有误。');
-  if(Object.values(s.ingredients).reduce((a,b)=>a+b,0)+count>materialCapacity(s))throw Error(`调味料最多可持有${materialCapacity(s)}个。`);
+  if(!forBatch&&Object.values(s.ingredients).reduce((a,b)=>a+b,0)+count>materialCapacity(s))throw Error(`调味料最多可持有${materialCapacity(s)}份。`);
   const cost=ingredient(id).buy_cp*count;if(s.cp<cost)throw Error('CP不足。');
   const rebate=(s.progress?.trade.rebateRemainder??0)+cost*effects(s).rebate,refund=Math.floor(rebate/100);
   s.cp=s.cp-cost+refund;s.ingredients[id]=(s.ingredients[id]??0)+count;
@@ -192,7 +197,7 @@ export function canUpgradeKitchen(s){const info=kitchenUpgradeInfo(s);return !in
 export function upgradeKitchen(s,now=Date.now()) {
   const info=kitchenUpgradeInfo(s);
   if(info.maxed)throw Error('厨房已达到最高等级。');
-  if(!info.toolsReady)throw Error('请先将前六种调理用具升至当前厨房等级。');
+  if(!info.toolsReady)throw Error('请先将前六种厨具升至当前厨房等级。');
   if(!info.affordable)throw Error('CP不足。');
   updateBatch(s,now);s.cp-=info.cost;s.kitchenLevel++;s.dirty=false;s.lastClean=now;s.lastSeen=now;
   s.cleanCycle={hours:effects(s).cleanHours,dirtyAt:now+effects(s).cleanHours*3600000};syncProgress(s);
@@ -224,7 +229,8 @@ export function clean(s,now=Date.now(),quote=null){
   updateBatch(s,now);s.cp-=info.cost;s.dirty=false;s.lastClean=now;
   s.cleanCycle={hours:effects(s).cleanHours,dirtyAt:now+effects(s).cleanHours*3600000};return true;
 }
-export function repair(s,now=Date.now()){const cost=repairCost(s,now);if(s.cp<cost)throw Error('CP不足。');s.cp-=cost;s.farmFixed=now;s.farmChecked=now;}
+// Like the original, an intact fence has nothing to repair and its wear clock keeps running.
+export function repair(s,now=Date.now()){if(farmHP(s,now)>=100)return false;const cost=repairCost(s,now);if(s.cp<cost)throw Error('CP不足。');s.cp-=cost;s.farmFixed=now;s.farmChecked=now;return true;}
 
 export class SaveValidationError extends Error {
   constructor(message,code='INVALID_SAVE'){super(message);this.name='SaveValidationError';this.code=code;}
@@ -335,7 +341,7 @@ export function validateSaveSchema(input,now=Date.now()) {
 
 export function parseSave(text,now=Date.now()) {
   if(typeof text!=='string')throw new SaveValidationError('存档内容不是有效文本，原存档未修改。');
-  if(new TextEncoder().encode(text).length>2*1024*1024)throw new SaveValidationError('存档超过2MiB，原存档未修改。');
+  if(new TextEncoder().encode(text).length>2*1024*1024)throw new SaveValidationError('存档超过2MB，原存档未修改。');
   let value;
   try{value=JSON.parse(text);}catch{throw new SaveValidationError('存档文件无法读取，原存档未修改。');}
   return normalizeSave(value,now);

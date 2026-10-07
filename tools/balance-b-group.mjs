@@ -50,7 +50,7 @@ const abilities=D.characters.flatMap((list,egg)=>list.map(c=>{
  return {key,name:c.title_zh_CN,gather,discover,environment,reason};
 }));
 assert.equal(abilities.length,193);assert.equal(new Set(abilities.map(a=>a.key)).size,193);
-assert(abilities.every(a=>a.gather+a.discover===6&&[2,3,4].includes(a.gather)));
+assert(abilities.every(a=>a.gather>=1&&a.gather<=20&&a.discover>=1&&a.discover<=20));
 fs.writeFileSync(`${out}/exploration-species.json`,JSON.stringify(abilities,null,2)+'\n');
 
 function signDraw(found,last,misses,mode,random){

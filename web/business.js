@@ -1,14 +1,30 @@
 import {REGIONAL,resolveSpecies,SPECIES_TRADE} from './content-registry.js';
 import {effects,checkedIncome} from './progression.js';
 import {RULES} from './integration-data.js';
-import {freeCount,homeCount} from './inventory.js';
+import {freeCount,homeCount,lockedCount} from './inventory.js';
 import {assignMenuRoles,menuSnapshot,menuFit,menuSalesWitness,businessUnlockInfo,menuUnlockInfo} from './menu-model.js';
 import {reduceFacts} from './facts.js';
 import {orderMilestone} from './orders.js';
 import {visitorCandidates,presentVisitor} from './regulars.js';
 import {assertNewOperation} from './rollback-policy.js';
 
-export const BUSINESS_RULES_VERSION=1;
+// Rules 2 (2026-10-07; user rule: menu birds +25%, the spare ones at their warehouse price): a shop that opens with its
+// menu complete adds 25% to every menu-role bird it sells that day, in every window — also after the menu birds run low
+// (batch 5 playtest: judged window by window, the bonus stopped after the first window, so the bill fell far short of the
+// 「已凑齐 +25%」 on the sign and of the forecast). The opening tier is the first window's (nothing is sold before it).
+// A merely suitable menu adds nothing. Window tiers still follow the stock left (the menu witnesses use them). Sessions
+// opened under rules 1 (suitable 5%, complete 8%, at most 2 CP a bird, by window) finish under those rules, so a save from
+// before the change keeps validating window by window.
+export const BUSINESS_RULES_VERSION=2;
+export const BUSINESS_RULE_VERSIONS=Object.freeze([1,2]);
+export const MENU_BONUS_PERCENT=25;
+// Menu bonus of one sold bird, in hundredths of a CP (the shop carries the remainder from bird to bird).
+export function themeUnitsOf(rulesVersion,baseCP,fit,inRole){
+  if(!inRole)return 0;
+  return rulesVersion===1?Math.min(baseCP*fit.ratePercent,200):fit.complete?baseCP*MENU_BONUS_PERCENT:0;
+}
+// The most a single sale may carry (save validation): rules 1 cap at 2 CP; rules 2 at a quarter of the price, rounded up.
+export const themeCapCP=(rulesVersion,baseCP)=>rulesVersion===1?2:Math.floor((baseCP*MENU_BONUS_PERCENT+99)/100);
 export const BUSINESS_WINDOW_MS=2*3600000;
 export const BUSINESS_DURATION_MS=24*3600000;
 // All eight menus are defined; each still needs its own unlock (menuUnlockInfo).
@@ -39,8 +55,8 @@ export function prepareBusiness(s,{menuId='MN1',roles,stock,useRewards=false,ove
   const capacity=businessCapacity(s),policy=s.expansion.inventoryPolicy??{keepOne:true,collectionLocks:[]};
   const lockKeys=Array.isArray(policy.collectionLocks)?policy.collectionLocks:Object.keys(policy.collectionLocks??{}).filter(k=>policy.collectionLocks[k]);
   for(const key of keys){const c=resolveSpecies(key);if(!c?.edible)throw Error('营业只接受可食用出品');integer(stock[key],1,capacity,'备货数量无效');
-    if(freeCount(s,key)<stock[key])throw Error('自由库存不足，可能已用于寻访或采购');
-    if(!overrideKeepOne&&policy.keepOne!==false&&homeCount(s,key)-stock[key]<1)throw Error('默认在家留1只，确认后可以全部备货');
+    if(freeCount(s,key)<stock[key])throw Error('可用伙伴不足，可能已用于寻访或订单预留');
+    if(!overrideKeepOne&&homeCount(s,key)-stock[key]<lockedCount(s,key))throw Error(`已锁定在家${lockedCount(s,key)}只（默认每种留1只）；到仓库调整锁定数量后再用`);
     if(!overrideLocks&&lockKeys.includes(key))throw Error('这位伙伴已锁定收藏，请先取消锁定或明确确认使用');
   }
   if(sum(stock)>capacity)throw Error(`厨房本次最多备货${capacity}只`);
@@ -74,7 +90,7 @@ function nextSale(session){
 
 export function advanceBusiness(s,targetAt,{deferClose=false}={}){
   integer(targetAt,0,Number.MAX_SAFE_INTEGER,'营业时间无效');const b=business(s),session=b.active;if(!session)return {processed:0,sold:0,closed:false};
-  if(session.rulesVersion!==BUSINESS_RULES_VERSION)throw Error('不支持的营业规则版本');
+  if(!BUSINESS_RULE_VERSIONS.includes(session.rulesVersion))throw Error('不支持的营业规则版本');
   const maxWindow=Math.max(0,Math.min(12,Math.floor((Math.min(targetAt,session.hardEndAt)-session.startAt)/BUSINESS_WINDOW_MS)));
   let processed=0,sold=0;
   for(let window=session.processedWindow+1;window<=maxWindow;window++){
@@ -88,7 +104,8 @@ export function advanceBusiness(s,targetAt,{deferClose=false}={}){
       session.stock[key]--;s.farm[key]--;increment(session.soldByKey,key,1);increment(session.roleSales,roleId,1);
       if(fit.complete){increment(session.fullSoldByKey,key,1);increment(session.fullRoleSales,roleId,1);}
       const previousMarkup=Math.floor(markupUnits/100),previousTheme=Math.floor(themeUnits/100);
-      baseCP+=price.baseCP;markupUnits+=price.baseCP*price.markupPercent;themeUnits+=Math.min(price.baseCP*fit.ratePercent,200);
+      // Menu markup only for birds filling a menu role (rules 2: while the shop opened complete; rules 1: by window).
+      baseCP+=price.baseCP;markupUnits+=price.baseCP*price.markupPercent;themeUnits+=themeUnitsOf(session.rulesVersion,price.baseCP,session.rulesVersion===1?fit:{complete:(session.windowReports[0]?.tier??fit.tier)==='complete'},roleId!=='ordinary');
       entries.push({key,roleId,quantity:1,baseCP:price.baseCP,markupCP:Math.floor(markupUnits/100)-previousMarkup,themeCP:Math.floor(themeUnits/100)-previousTheme});
     }
     const markupCP=Math.floor(markupUnits/100),themeCP=Math.floor(themeUnits/100),income=baseCP+markupCP+themeCP;

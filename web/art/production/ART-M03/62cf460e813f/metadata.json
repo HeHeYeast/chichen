@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "processingVersion": 1,
+  "kind": "mementos",
+  "identityKey": null,
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceBounds": [
+    86,
+    214,
+    1171,
+    1061
+  ],
+  "components": [
+    {
+      "area": 9088,
+      "bbox": [
+        951,
+        214,
+        1043,
+        379
+      ]
+    },
+    {
+      "area": 4967,
+      "bbox": [
+        866,
+        297,
+        936,
+        415
+      ]
+    },
+    {
+      "area": 559916,
+      "bbox": [
+        86,
+        340,
+        1171,
+        1061
+      ]
+    },
+    {
+      "area": 4152,
+      "bbox": [
+        1024,
+        362,
+        1096,
+        461
+      ]
+    }
+  ],
+  "sourceLayersUnavailable": true,
+  "variants": {
+    "display": {
+      "path": "/web/art/production/ART-M03/62cf460e813f/display.png",
+      "width": 256,
+      "height": 256,
+      "sha256": "1866d3c39e4cc41afe1f6c79460a83cbd7aeb38a6bc450ce57f2f651ffe7fc36",
+      "visibleBounds": [
+        30,
+        52,
+        225,
+        204
+      ],
+      "centroid": [
+        0.5034198182294337,
+        0.5429810571831233
+      ],
+      "scale": 0.17931797235023042,
+      "translation": [
+        14.578654377880184,
+        13.625953917050687
+      ],
+      "bounds": [
+        30,
+        52,
+        195,
+        152
+      ],
+      "groundAnchor": [
+        0.5,
+        0.796875
+      ],
+      "available": true
+    },
+    "small-icon": {
+      "path": "/web/art/production/ART-M03/62cf460e813f/small-icon.png",
+      "width": 48,
+      "height": 48,
+      "sha256": "8ffa0f66c5671696a1fd62061f3183f4be801ce74df874575b1fd4488308c874",
+      "visibleBounds": [
+        6,
+        10,
+        42,
+        38
+      ],
+      "centroid": [
+        0.4972135150052033,
+        0.5335900206866624
+      ],
+      "scale": 0.033622119815668206,
+      "translation": [
+        3.1084976958525345,
+        2.8048663594470042
+      ],
+      "bounds": [
+        6,
+        10,
+        36,
+        28
+      ],
+      "groundAnchor": [
+        0.5,
+        0.7916666666666666
+      ],
+      "available": true
+    }
+  },
+  "source": {
+    "sourceHash": "1eba80fd42bad173ff989c4abbcb09289964843b5286752feb08f8fe8b193e30",
+    "provider": "native-imagegen"
+  }
+}

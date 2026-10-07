@@ -11,9 +11,8 @@ import {ORIGINAL_RECIPE_CATALOG} from './recipe-catalog-data.js';
 const deepFreeze=v=>{if(v&&typeof v==='object'&&!Object.isFrozen(v)){Object.values(v).forEach(deepFreeze);Object.freeze(v);}return v;};
 export const REGIONAL=deepFreeze(REGIONAL_CONTENT);
 export const CONTENT_TEXT=deepFreeze(REGIONAL_TEXT);
-export const CONTENT_ASSETS=deepFreeze(RUNTIME_ASSETS);
 export const REQUIREMENTS=deepFreeze(RUNTIME_REQUIREMENTS);
-const newSpecies=REGIONAL.species.map(def=>({...CONTENT_TEXT[def.id],...def,id:def.numericId,authorId:def.id,title_zh_CN:CONTENT_TEXT[def.id].name,cp_0:def.collectCP,cp_1:def.baseSaleCP,pack:'regional',artwork:'/web/art/regional-concept.svg'}));
+const newSpecies=REGIONAL.species.map(def=>({...CONTENT_TEXT[def.id],...def,id:def.numericId,authorId:def.id,title_zh_CN:CONTENT_TEXT[def.id].name,cp_0:def.collectCP,cp_1:def.baseSaleCP,pack:'regional',artwork:RUNTIME_ASSETS[def.assetId]?.variants.full?.available?RUNTIME_ASSETS[def.assetId].variants.full.path:'/web/art/regional-concept.svg'}));
 const oldSpecies=LEGACY193.characters.flatMap((list,egg)=>list.map(c=>({...c,egg,key:`${egg}:${c.id}`,...LEGACY_SEMANTICS[`${egg}:${c.id}`]})));
 export const speciesByKey=deepFreeze(Object.fromEntries([...oldSpecies,...newSpecies].map(s=>[s.key,s])));
 export const materialById=deepFreeze(Object.fromEntries([...LEGACY193.tools[2],...REGIONAL.materials.map(m=>({...m,...CONTENT_TEXT[m.id],title_zh_CN:CONTENT_TEXT[m.id]?.name??CONTENT_TEXT[m.stableId]?.name??String(m.id),buy_cp:m.priceCP,pack:'regional'}))].map(m=>[m.id,m])));
@@ -24,6 +23,9 @@ export const resolveSpecies=key=>speciesByKey[key]??null;
 export const resolveMaterial=id=>materialById[id]??null;
 export const resolveRecipeId=id=>recipeById[id]??null;
 export const allowedSets=deepFreeze(REGIONAL.allowedSets);
+// 采集/发现 run 1–20 for each partner (a typical one about 9). The chance formulas were tuned for a typical 3, so every
+// point of G or F counts for one third of what it did on the old 2–4 scale.
+export const ABILITY_SCALE=3;
 export const SPECIES_ABILITIES=deepFreeze({...ABILITIES,...Object.fromEntries(REGIONAL.species.map(s=>[s.key,{gather:s.exploration.G,discover:s.exploration.F,environment:s.exploration.environment}]))});
 export const SPECIES_DESCRIPTIONS=deepFreeze({...DESCRIPTIONS,...Object.fromEntries(REGIONAL.species.map(s=>[s.key,CONTENT_TEXT[s.id].description]))});
 export const SPECIES_CLUES=deepFreeze({...AUTHORED_CLUES,...Object.fromEntries(REGIONAL.species.map(s=>[s.key,CONTENT_TEXT[s.id].clue]))});

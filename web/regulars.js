@@ -11,9 +11,11 @@ import {regionInfo,nextRegionalFact} from './region-model.js';
 import {guideEligibility} from './regional-exploration.js';
 import {grantEntitlementOnce,reconcileEntitlements} from './collection-progress.js';
 import {RULES} from './integration-data.js';
+import {autoCompleteProjects} from './projects.js';
+import {convertFreeProgress} from './regional-methods.js';
+import {regionalTripLayers} from './regional-clues.js';
 
 import {newOperationsEnabled} from './rollback-policy.js';
-export const REGULARS_VERSION=1;
 export const REGULAR_IDS=Object.freeze(REGIONAL.regulars.map(r=>r.id));
 const STAGES=Object.fromEntries(REGIONAL.regulars.flatMap(r=>r.stages.map((st,i)=>[st.id,{...st,regularId:r.id,index:i}])));
 export const freshRegular=()=>({readStages:[],pendingStage:null,activatedSeq:null,baselines:{},lastVisit:null});
@@ -39,13 +41,13 @@ const activatedCount=(state,key)=>state?.baselines?.[key]??0;
 // Every gate/branch is transcribed once per stage ID (content-pack regulars);
 // nothing reads the Chinese source text at runtime.
 export const STAGE_RULES=Object.freeze({
-  'RG1-1':{gate:s=>{const o=ordersUnlockInfo(s);return [check(o.met,o.met?'收240只、发现8种':o.missing.join('；')),check(firstSale(s),'完成旧第一笔生意')];},
+  'RG1-1':{gate:s=>{const o=ordersUnlockInfo(s);return [check(o.met,o.met?'收240只、发现8种':o.missing.join('；')),check(firstSale(s),'完成「第一笔生意」')];},
     alts:[s=>service(s,'MN1'),s=>done(s,'O01')]},
   'RG1-2':{alts:[s=>service(s,'MN2'),s=>done(s,'O07')]},
   'RG1-3':{alts:[s=>service(s,'MN3','MN6'),s=>done(s,'O03','O09')]},
   'RG1-4':{gate:s=>{const n=Object.keys(s.total??{}).filter(k=>collected(s,k)&&resolveSpecies(k)?.edible).length;return [check(n>=6,`不同食用品种实收 ${Math.min(n,6)}/6 种`)];},
     alts:[s=>Object.keys(facts(s).menuWitnesses??{}).filter(m=>witness(s,`${m}:validService`)).length>=2,s=>Object.values(facts(s).orderTemplateCounts??{}).filter(n=>n>0).length>=2]},
-  'RG2-1':{gate:s=>{const o=ordersUnlockInfo(s);return [check(legacyRouteOpen(s,'R'),'原溪岸路线开放'),check(o.met,o.met?'情境采购开放':`情境采购开放（${o.missing.join('；')}）`)];},
+  'RG2-1':{gate:s=>{const o=ordersUnlockInfo(s);return [check(legacyRouteOpen(s,'R'),'溪岸小径已开放'),check(o.met,o.met?'订单已开放':`订单开放（${o.missing.join('；')}）`)];},
     alts:[s=>service(s,'MN4'),s=>done(s,'O05')]},
   'RG2-2':{gate:s=>[check(identified(s,77)||identified(s,78),`辨认${materialName(s,77)}或${materialName(s,78)}`)],
     alts:[s=>card(s,'R-E1')||card(s,'R-E2'),s=>regionCards(s,'R',['specimen','lore'])>=2]},
@@ -92,14 +94,17 @@ export function reconcileRegulars(s,{visitorRegularId=null}={}){
   if(!newOperationsEnabled('regulars'))return [];
   if(!s.expansion?.regulars||!s.expansion?.collections)return [];
   const queued=[];
-  for(const id of REGULAR_IDS){
+  for(const id of REGULAR_IDS)for(let step=0;step<8;step++){
     const info=regularInfo(s,id);
-    if(info.complete||info.pending||!info.met)continue;
+    // 不挡进度 (2026-10-07): an unread story never holds the next one back. When the stage after it is already met, the
+    // unread one is recorded as read (its text stays on the regular's page, to read any time) and the next one queues.
+    if(info.pending&&nextStageMet(s,id)){markRead(s,id);continue;}
+    if(info.complete||info.pending||!info.met)break;
     // First acquaintance by business is presented by an actual visitor step.
     // Manual order/group alternatives present immediately. Later stages retain
     // the authored retroactive rule, with no additional visit requirement.
     const branch=info.branches.find(b=>b.met&&(info.stage.index>0||b.index===1||visitorRegularId===id));
-    if(!branch)continue;
+    if(!branch)break;
     const r=regulars(s);r[id]??=freshRegular();
     const seq=s.meta.factSeq+1;if(!Number.isSafeInteger(seq))throw Error('事实序号超出范围');s.meta.factSeq=seq;
     r[id].pendingStage={id:info.stage.id,seq,branch:branch.index};
@@ -109,20 +114,30 @@ export function reconcileRegulars(s,{visitorRegularId=null}={}){
   }
   return queued;
 }
-// Every committed command runs this after its reducer; so does load (once).
-export function reconcileProgress(s){const stages=reconcileRegulars(s);return [...stages,...reconcileEntitlements(s)];}
+// Whether the stage after a regular's unread one would already be met once that one is read.
+function nextStageMet(s,id){
+  const state=s.expansion.regulars[id],next=definition(id).stages[state.readStages.length+1];if(!next)return false;
+  const rules=STAGE_RULES[next.id],view={...state,readStages:[...state.readStages,state.pendingStage.id],pendingStage:null,baselines:rules.baseline?rules.baseline(s):{}};
+  return (rules.gate?.(s,view)??[]).every(c=>c.met)&&rules.alts.some(fn=>fn(s,view));
+}
+// Every committed command runs this after its reducer; so does load (once). Project stages that cost nothing complete
+// as soon as they are met (projects.js autoCompleteProjects).
+// Also turns an old save's free-method trips into 线索册 layers once (loop batch 4, regional-methods convertFreeProgress).
+export function reconcileProgress(s){const stages=reconcileRegulars(s),projects=autoCompleteProjects(s),layers=s.expansion?.methods?convertFreeProgress(s,regionalTripLayers):[];return [...stages,...projects,...reconcileEntitlements(s),...layers];}
 
 // Reading moves the pending stage into readStages and activates the next one
 // (recording its baseline); it never pays and never consumes stock.
-export function readRegularStage(s,id){
-  const r=regulars(s),state=r[id];definition(id);
-  if(!state?.pendingStage)throw Error('这位常客暂时没有新的一段');
-  const stageId=state.pendingStage.id;state.readStages.push(stageId);state.pendingStage=null;
+function markRead(s,id){
+  const state=regulars(s)[id],stageId=state.pendingStage.id;state.readStages.push(stageId);state.pendingStage=null;
   state.activatedSeq=s.meta.factSeq;
   const next=definition(id).stages[state.readStages.length];
   state.baselines=next&&STAGE_RULES[next.id].baseline?STAGE_RULES[next.id].baseline(s):{};
-  reconcileRegulars(s);
   return {stageId,next:next?.id??null};
+}
+export function readRegularStage(s,id){
+  const r=regulars(s),state=r[id];definition(id);
+  if(!state?.pendingStage)throw Error('这位常客暂时没有新的一段');
+  const out=markRead(s,id);reconcileRegulars(s);return out;
 }
 
 // Frozen at opening: relationships already met/open, pinned first, then the

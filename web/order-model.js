@@ -6,7 +6,7 @@ import {freeCount,homeCount,usableByOwner} from './inventory.js';
 import {ordersUnlockInfo,orderOptions,MAX_ACTIVE_ORDERS,MAX_PROPOSALS} from './orders.js';
 import {storyOrders} from './story-orders.js';
 
-const SELECTORS={snack:'小点',portableMeal:'便携主食',savoryMeal:'咸香主食',season:'四时手作',display:'有趣模样',food:'任选食用',regionFood:'地方新味'};
+const SELECTORS={snack:'小点',portableMeal:'便携主食',savoryMeal:'咸香主食',season:'四时手作',display:'有趣模样',food:'任选食用',regionFood:'地方新味',stew:'炖煮'};
 const code=key=>{const [egg,id]=key.split(':').map(Number);return `${egg?'D':'C'}${String(id+1).padStart(3,'0')}`;};
 export const selectorLabel=selector=>CONTENT_TEXT.labels?.tags?.[selector]??SELECTORS[selector]??selector;
 const template=id=>REGIONAL.orders.find(o=>o.id===id);
@@ -17,15 +17,17 @@ function candidates(s,allowed,orderId=null){
   return {rows:known.map(key=>({key,code:code(key),name:resolveSpecies(key).title_zh_CN,egg:Number(key[0]),id:Number(key.split(':')[1]),price:resolveSpecies(key).cp_1,
     free:freeCount(s,key),home:homeCount(s,key),usable:orderId?usableByOwner(s,key,orderId):freeCount(s,key)})),hidden:allowed.length-known.length};
 }
+// Seasonal order groups are keyed by chapter id; players read the season.
+export const SEASON_NAME={spring:'春',summer:'夏',autumn:'秋',winter:'冬'};
 function groupLabel(def,group){
   const source=def.groups.find(g=>g.id===group.sourceGroupId??group.id);
   const chapter=group.id.includes(':')?group.id.split(':')[1]:null;
-  return chapter?`${selectorLabel(source.selector)} · ${chapter}`:selectorLabel(source.selector);
+  return chapter?`${selectorLabel(source.selector)} · ${SEASON_NAME[chapter]??chapter}`:selectorLabel(source.selector);
 }
 
 export function ordersModel(s,now){
   const o=s.expansion.orders,unlock=ordersUnlockInfo(s);
-  const story=storyOrders(s).map(x=>({id:x.id,chapter:x.chapter,unlocked:x.unlocked,accepted:x.accepted,completed:x.completed,delivered:x.delivered}));
+  const story=storyOrders(s).map(x=>({id:x.id,chapter:x.chapter,unlocked:x.unlocked,accepted:x.accepted,completed:x.completed,delivered:x.delivered,choice:x.choice,choices:x.choices}));
   const active=(o?.active??[]).map(a=>{
     const def=template(a.templateId),variant=CONTENT_TEXT[a.variantId]??{};
     return {id:a.id,templateId:a.templateId,kind:a.kind,name:CONTENT_TEXT[a.templateId]?.name??a.templateId,request:variant.text??CONTENT_TEXT[a.templateId]?.request,variantLabel:variant.label??'',
@@ -39,8 +41,12 @@ export function ordersModel(s,now){
     const def=template(p.templateId),options=orderOptions(s,p.templateId,now);
     return {id:p.id,templateId:p.templateId,kind:def.kind,name:CONTENT_TEXT[p.templateId]?.name,request:CONTENT_TEXT[p.templateId]?.request,bonusCP:def.bonusCP,minimumDistinct:def.kind==='display'?(def.displayDistinct??def.minimumDistinct):def.minimumDistinct,
       groups:def.groups.map(g=>({id:g.id,label:selectorLabel(g.selector),quantity:g.quantity})),
-      options:options.map(x=>({...x,label:CONTENT_TEXT[x.variantId]?.label??x.variantId,text:CONTENT_TEXT[x.variantId]?.text??'',regionName:x.region?CONTENT_TEXT[x.region]?.name:null})),
+      options:options.map(x=>{const variant=def.variants.find(v=>v.id===x.variantId);
+        // Artwork examples only. Acceptance still uses the authoritative command.
+        const keys=[...new Set(def.groups.flatMap(g=>(def.kind==='display'&&variant?.allowed?variant.allowed:g.allowed)
+          .filter(k=>(variant?.egg!==0||k.startsWith('0:'))&&(!x.region||g.selector!=='regionFood'||resolveSpecies(k).region===x.region)&&(!x.chapters||x.chapters.includes(resolveSpecies(k).season)))))];
+        return {...x,label:CONTENT_TEXT[x.variantId]?.label??x.variantId,text:CONTENT_TEXT[x.variantId]?.text??'',regionName:x.region?CONTENT_TEXT[x.region]?.name:null,artRows:candidates(s,keys).rows};}),
       firstResult:!(o.templateProgress[p.templateId]?.completed>0)?CONTENT_TEXT[def.firstResult.id]?.name:null};
   });
-  return {unlock,story,active,proposals,canAccept:(o?.active.length??0)<MAX_ACTIVE_ORDERS,limits:{active:MAX_ACTIVE_ORDERS,proposals:MAX_PROPOSALS}};
+  return {unlock,story,active,proposals,completed:Object.values(o?.templateProgress??{}).reduce((n,p)=>n+(p.completed??0),0),canAccept:(o?.active.length??0)<MAX_ACTIVE_ORDERS,limits:{active:MAX_ACTIVE_ORDERS,proposals:MAX_PROPOSALS}};
 }

@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.13",
+    "versionCode":  29,
+    "file":  "chick-kitchen-1.5.13.apk",
+    "sha256":  "9ea4e7e586f0a9fd2dceaebd84cda2cda25acb86d1109da9d390a7fd71105beb",
+    "bytes":  107284477,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-10-05T09:08:43.4559392Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "3e74e2c0ba7f371387930382154a45ea122a7165470f33bb608bb10c837bc539",
+    "runtimeFiles":  1469,
+    "notes":  "界面与玩法调整：商店「其他」页重做（蛋篮、厨房升级招牌）、厨具页更宽松；页签与纸张连在一起；下一锅「换一个」绿框修好；仓库里每种伙伴可单独设置「留在家」数量（默认 1），出售、全选、备货、交付都按它；近郊和地区寻访同一种伙伴可带多只，只剩一只也能带，出门期间不在农场、回来后回到农场；寻访地图上同行伙伴不再互相遮挡；每个品种的采集和发现改为 1～20，差距更大。保留 1.5.12 的存档和签名，可直接覆盖更新。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

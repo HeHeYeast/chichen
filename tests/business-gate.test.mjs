@@ -42,7 +42,8 @@ test('a close whose native acknowledgement is lost is read back as committed and
   const closed=run(state,lossy.store,NOW+8*WINDOW,'closeBusiness',d=>closeBusinessTimeline(d,NOW+8*WINDOW));
   const persisted=lossy.read();
   assert.equal(persisted.meta.revision,closed.state.meta.revision,'the persisted revision is the committed one');
-  assert.equal(closed.state.expansion.business.lastReport.income,95);
+  // rules 2: 鸡宝 alone does not complete 家常小铺, so no menu bonus (72 + markup 8 + basket 12)
+  assert.equal(closed.state.expansion.business.lastReport.income,92);
   const replay=execute({state:closed.state,store:lossy.store,commandId:closed.state.meta.lastCommit.commandId,command:{type:'closeBusiness'},now:NOW+8*WINDOW,reduce:d=>closeBusinessTimeline(d,NOW+8*WINDOW)});
   assert.equal(replay.replayed,true);assert.equal(replay.state.cp,closed.state.cp);
   const again=run(closed.state,lossy.store,NOW+9*WINDOW,'closeBusiness',d=>closeBusiness(d,NOW+9*WINDOW));

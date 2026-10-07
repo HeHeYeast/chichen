@@ -14,13 +14,13 @@ export function phoenixWindows(state,now=Date.now()){
     return {id,name:DATA.characters[0][id].title_zh_CN,active,start:nextStart,end,minutes,
       ready:(state.toolLevels?.[0]??-1)>=2,found:(state.total?.['0:'+id]??0)>0||(state.farm?.['0:'+id]??0)>0,
       window:id===52?'每天 10:00–12:59':'每天 13:00–次日 09:59',
-      status:active?'窗口开放中':minutes<=60?`${minutes} 分钟后开放`:`下次 ${new Date(nextStart).getDate()===today.getDate()?'今天':'明天'} ${id===52?'10:00':'13:00'}`};
+      status:active?'正在开放':minutes<=60?`${minutes} 分钟后开放`:`下次 ${new Date(nextStart).getDate()===today.getDate()?'今天':'明天'} ${id===52?'10:00':'13:00'}`};
   });
 }
 export function calendarNotice(state,now=Date.now()){
   if(state.events?.discoveryNotices===false)return null;
   const next=phoenixWindows(state,now).find(w=>w.ready&&!w.found&&!w.active&&w.minutes>0&&w.minutes<=60);
-  return next?{key:`${next.id}:${next.start}`,message:`${next.name}将在 ${next.minutes} 分钟后进入可遇见时段。用 Lv.3 保温灯开火，详见寻宝日历。`}:holidayNotice(state,now);
+  return next?{key:`${next.id}:${next.start}`,message:`再过 ${next.minutes} 分钟到${next.name}时段`}:holidayNotice(state,now);
 }
 export function seasonCalendar(now=Date.now()){
   const date=new Date(now),month=date.getMonth()+1,current=SEASONS.find(s=>s.months.includes(month));

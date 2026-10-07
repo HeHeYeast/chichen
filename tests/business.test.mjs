@@ -8,6 +8,7 @@ import {REGIONAL,resolveSpecies} from '../web/content-registry.js';
 import {assignMenuRoles,menuSnapshot,menuFit,menuSalesWitness} from '../web/menu-model.js';
 import {businessModel} from '../web/business-model.js';
 import {freeCount,homeCount,inventoryView} from '../web/inventory.js';
+import {validateBusinessState} from '../web/business-save.js';
 import {evaluate} from '../web/requirements.js';
 import {syncProgress} from '../web/progression.js';
 import {execute} from '../web/game-commands.js';
@@ -37,8 +38,8 @@ test('0 / 2h minus 1 / exact 2h / 24h and weeks stop at sold-out without repeate
   const after=structuredClone(s);advanceBusiness(s,NOW+30*24*3600000);closeBusiness(s,NOW+30*24*3600000);assert.deepEqual(s,after);
 });
 
-test('95CP audited example uses one shared markup remainder and a separate theme remainder',()=>{
-  const s=fixture({rewards:true}),start=s.cp;openBusiness(s,{stock,useRewards:true},NOW);
+test('95CP audited example (rules 1, a session opened before 2026-10-07) uses one shared markup remainder and a separate theme remainder',()=>{
+  const s=fixture({rewards:true}),start=s.cp;openBusiness(s,{stock,useRewards:true},NOW);s.expansion.business.active.rulesVersion=1;
   assert.equal(s.progress.trade.credits,1);assert.equal(s.expansion.business.active.creditReserve,1);
   advanceBusiness(s,NOW+24*3600000);const r=s.expansion.business.lastReport;
   assert.deepEqual([r.baseCP,r.markupCP,r.themeCP,r.bonusCP,r.income],[72,8,3,12,95]);assert.equal(s.cp,start+95);
@@ -65,7 +66,7 @@ test('backward clocks cannot repeat windows; later collected stock is never adde
 
 test('keep-one is at-home, Q and R cannot be stocked twice, locks require explicit override',()=>{
   const s=fixture();s.farm['0:0']=25;s.progress.trip={status:'running',members:['0:0']};
-  assert.throws(()=>prepareBusiness(s,{stock}),/留1只/);s.expansion.orders.active=[{id:'order-1',reserved:{'0:0':2}}];assert.throws(()=>prepareBusiness(s,{stock,overrideKeepOne:true}),/自由库存/);
+  assert.throws(()=>prepareBusiness(s,{stock}),/留1只/);s.expansion.orders.active=[{id:'order-1',reserved:{'0:0':2}}];assert.throws(()=>prepareBusiness(s,{stock,overrideKeepOne:true}),/可用伙伴不足/);
   s.progress.trip=null;s.expansion.orders.active=[];s.expansion.inventoryPolicy.collectionLocks=['0:0'];assert.throws(()=>prepareBusiness(s,{stock}),/锁定/);
   openBusiness(s,{stock,overrideLocks:true},NOW);assert.deepEqual(inventoryView(s,'0:0'),{T:25,R:0,S:24,Q:0,free:1,home:1});
 });
@@ -88,9 +89,43 @@ test('prices and skill percentages freeze at start; shared markup remains shared
   advanceBusiness(s,NOW+WINDOW);assert.equal(s.expansion.business.active.markupCP,3);assert.equal(s.progress.trade.markupRemainder,15);
 });
 
-test('theme cap is per bird, exactly 200 integer percent units before rounding',()=>{
-  const s=fixture();openBusiness(s,{stock},NOW);s.expansion.business.active.prices['0:0'].baseCP=100;
+test('rules 1: theme cap is per bird, exactly 200 integer percent units before rounding',()=>{
+  const s=fixture();openBusiness(s,{stock},NOW);s.expansion.business.active.rulesVersion=1;s.expansion.business.active.prices['0:0'].baseCP=100;
   advanceBusiness(s,NOW+WINDOW);assert.equal(s.expansion.business.active.baseCP,600);assert.equal(s.expansion.business.active.themeCP,12);assert.equal(s.expansion.business.themeRemainder,0);
+});
+
+test('rules 2: a suitable menu adds nothing; a complete one adds 25% to every menu bird, with no cap',()=>{
+  const plain=fixture();openBusiness(plain,{stock},NOW);assert.equal(plain.expansion.business.active.rulesVersion,2);
+  plain.expansion.business.active.prices['0:0'].baseCP=100;advanceBusiness(plain,NOW+WINDOW);assert.equal(plain.expansion.business.active.themeCP,0);
+  const full=fixture();openBusiness(full,{stock:{'0:0':12,'0:3':12}},NOW);const a=full.expansion.business.active;
+  for(const key of Object.keys(a.prices))a.prices[key].baseCP=100;
+  advanceBusiness(full,NOW+WINDOW);assert.equal(a.windowReports[0].tier,'complete');assert.equal(a.themeCP,150);
+  for(const e of a.windowReports[0].entries)assert.equal(e.themeCP,25);
+});
+
+test('theme markup applies only to birds filling a menu role, never to ordinary placements',()=>{
+  const s=fixture();openBusiness(s,{stock:{'0:0':6,'0:3':6,'0:8':6}},NOW);
+  const a=s.expansion.business.active;for(const key of Object.keys(a.prices))a.prices[key].baseCP=100;
+  assert.ok(a.roles.some(r=>r.roleId==='ordinary'&&r.keys.length));
+  advanceBusiness(s,NOW+WINDOW);const entries=a.windowReports[0].entries;
+  assert.ok(entries.some(e=>e.roleId==='ordinary'));for(const e of entries)assert.equal(e.themeCP,e.roleId==='ordinary'?0:25);
+});
+// Batch 5 playtest: judged window by window, the 25% stopped once the menu birds left in stock no longer made the menu.
+test('a shop that opened complete pays its menu birds 25% in every window, also once they run low; one that opened suitable never',()=>{
+  const s=fixture();openBusiness(s,{stock:{'0:0':6,'0:3':6,'0:8':6}},NOW);
+  const a=s.expansion.business.active;for(const key of Object.keys(a.prices))a.prices[key].baseCP=100;
+  advanceBusiness(s,NOW+3*WINDOW,{deferClose:true});
+  assert.equal(a.windowReports[0].tier,'complete');assert.ok(a.windowReports.slice(1).some(w=>w.tier!=='complete'));
+  const later=a.windowReports.slice(1).flatMap(w=>w.entries);assert.ok(later.some(e=>e.roleId!=='ordinary'));
+  for(const w of a.windowReports)for(const e of w.entries)assert.equal(e.themeCP,e.roleId==='ordinary'?0:25);
+  assert.doesNotThrow(()=>validateBusinessState(s));
+  const t=fixture();openBusiness(t,{stock:{'0:0':6,'0:3':2,'0:8':6}},NOW);const b=t.expansion.business.active;
+  advanceBusiness(t,NOW+2*WINDOW,{deferClose:true});assert.notEqual(b.windowReports[0].tier,'complete');for(const w of b.windowReports)for(const e of w.entries)assert.equal(e.themeCP,0);
+});
+test('rules 1 sessions still pay their menu markup to menu-role birds only',()=>{
+  const s=fixture();openBusiness(s,{stock:{'0:0':6,'0:3':6,'0:8':6}},NOW);
+  const a=s.expansion.business.active;a.rulesVersion=1;for(const key of Object.keys(a.prices))a.prices[key].baseCP=100;
+  advanceBusiness(s,NOW+WINDOW);for(const e of a.windowReports[0].entries)assert.equal(e.themeCP===0,e.roleId==='ordinary');
 });
 
 test('ordinary food sells normally without acquiring a false menu witness',()=>{

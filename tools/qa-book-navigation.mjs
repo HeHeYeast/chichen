@@ -23,23 +23,24 @@ try{
   const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
   await context.addInitScript(({seed,now})=>{Date.now=()=>now+Math.floor(performance.now());if(location.protocol!=='about:'&&!localStorage.getItem('chick-kitchen-v1'))localStorage.setItem('chick-kitchen-v1',JSON.stringify(seed));},{seed,now});
   p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(base+'/');await nav('开始游戏');await p.locator('.workshop-launch').waitFor();await p.waitForTimeout(650);
-  await nav('图鉴');assert.deepEqual(await p.locator('[data-book-tab]').allTextContents(),['总览','品种','收藏','见闻']);assert.ok(await p.locator('[data-book-direction]').count()<=2);await shot('overview');
+  await nav('图鉴');assert.deepEqual(await p.locator('[data-book-tab]').allTextContents(),['品种','配方','收藏','日历']);await shot('overview');
   await p.locator('[data-book-tab="species"]').click();
-  const search=async value=>{await p.locator('[data-book-search]').fill(value);await p.locator('[data-book-search-form] button').click();};
-  await search('荠菜煎饼鸡');assert.equal(await p.locator('[data-collection-card]').count(),0);assert.ok(!(await p.locator('.collection-screen').innerText()).includes('荠菜煎饼鸡'));
-  await search('C129');assert.equal(await p.locator('[data-collection-card]').count(),1);assert.equal(await p.locator('[data-collection-card="128"] .collection-name').innerText(),'未发现');
+  // No text box: the species page turns by code chips (nine stickers a page).
+  const goTo=async id=>{await p.locator(`[data-collection-page="${Math.floor(id/9)}"]`).click();};
+  await goTo(128);assert.ok(!(await p.locator('.collection-screen').innerText()).includes('荠菜煎饼鸡'));
+  assert.equal(await p.locator('[data-collection-card="128"] .collection-name').innerText(),'未发现');
   await p.locator('[data-collection-card="128"]').click();await p.locator('.regional-screen').waitFor();assert.ok(!(await p.locator('.regional-screen').innerText()).includes('荠菜煎饼鸡'));
-  await p.locator('.regional-screen .close').click();await p.locator('.collection-screen').waitFor();assert.equal(await p.locator('[data-book-search]').inputValue(),'C129');
+  await nav('图鉴');await p.locator('[data-book-tab="species"]').click();await p.locator('.collection-screen').waitFor();assert.equal(await p.locator('[data-collection-page="14"]').getAttribute('aria-pressed'),'true');
   checks.push('四分页与总览至多两方向；未知真名搜索无结果、稳定编号可查剪影，进入地区记录并原路返回保留搜索');
-  await search('C001');await p.locator('[data-collection-card="0"]').click();assert.equal(await p.locator('[data-species-sell],[data-species-quantity]').count(),0);await p.locator('[data-species-inventory]').click();
-  assert.equal(await p.locator('[data-harvest-row]').count(),1);assert.equal(await p.locator('[data-harvest-row="0:0"]').count(),1);await shot('inventory-deep-link');
+  await goTo(0);await p.locator('[data-collection-card="0"]').click();assert.equal(await p.locator('[data-species-sell],[data-species-quantity]').count(),0);await p.locator('[data-species-inventory]').click();
+  await p.locator('.warehouse-screen .wh-sheet').waitFor();assert.equal(await p.locator('.warehouse-screen [data-wh-bird="0:0"]').count(),1);await shot('inventory-deep-link');
   await nav('图鉴');await p.locator('[data-book-tab="species"]').click();await p.locator('[data-collection-card="0"]').click();const before=await read();await p.locator('[data-species-prepare]').click();await p.locator('[data-control-id="tool:0"]').waitFor();const after=await read();assert.equal(after.cp,before.cp);assert.deepEqual(after.farm,before.farm);assert.deepEqual(after.ingredients,before.ingredients);
   checks.push('品种档案无出售表，管理库存定位单品；准备下一锅只改厨房草稿，不扣CP/材料/伙伴');
-  await nav('图鉴');await p.locator('[data-book-tab="collections"]').click();assert.equal(await p.locator('[data-books-tab]').count(),0);assert.equal(await p.locator('[data-books-category] option').count(),5);assert.equal(await p.locator('[data-books-seasonal],[data-books-shrine]').count(),2);
-  await p.locator('[data-book-tab="lore"]').click();for(const text of ['尚未找到标本','未辨认','供货未开放','尚未用于料理'])assert.ok((await p.locator('.book-screen').innerText()).includes(text));
+  await nav('图鉴');await p.locator('[data-book-tab="collections"]').click();assert.equal(await p.locator('[data-books-tab]').count(),0);await p.locator('[data-gs-directory]').click();assert.equal(await p.locator('.gs-dialog [data-books-category]').count(),5);assert.equal(await p.locator('[data-books-seasonal],[data-books-shrine]').count(),2);
+  if(!await p.locator('[data-gs-lore]').isVisible())await p.locator('[data-gs-directory]').click();await p.locator('[data-gs-lore]').click();for(const text of ['尚未找到标本','未辨认','供货未开放','尚未用于料理'])assert.ok((await p.locator('.book-screen').innerText()).includes(text));
   for(const [width,height]of [[320,568],[390,844],[1280,900]]){
-    await p.setViewportSize({width,height});for(const tab of ['overview','species','collections','lore']){
-      await p.locator(`[data-book-tab="${tab}"]`).click();const b=await p.locator('.screen-panel').evaluate(el=>({overflow:el.scrollWidth-el.clientWidth,tabs:[...el.querySelectorAll('[data-book-tab]')].map(b=>({width:b.getBoundingClientRect().width,height:b.getBoundingClientRect().height}))}));
+    await p.setViewportSize({width,height});for(const tab of ['species','recipes','collections','calendar']){
+      if(!await p.locator(`[data-book-tab="${tab}"]`).isVisible())await p.locator("[data-gs-directory]").click();await p.locator(`[data-book-tab="${tab}"]`).click();const b=await p.locator('.screen-panel').evaluate(el=>({overflow:el.scrollWidth-el.clientWidth,tabs:[...el.querySelectorAll('[data-book-tab]')].map(b=>({width:b.getBoundingClientRect().width,height:b.getBoundingClientRect().height}))}));
       assert.ok(b.overflow<=1,`${tab} at ${width} overflows`);assert.ok(b.tabs.every(x=>x.width>=44&&x.height>=44),`${tab} touch targets at ${width}`);
     }await shot('lore-'+width);
   }

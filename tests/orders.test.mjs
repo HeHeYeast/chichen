@@ -62,7 +62,7 @@ test('Q is a per-order hold: never a delivery, never taken by business S, releas
   reserveForOrder(s,o.id,'0:0',8);assert.deepEqual(inventoryView(s,'0:0'),{T:30,R:0,S:0,Q:8,free:22,home:30});
   assert.throws(()=>reserveForOrder(s,o.id,'0:0',5),/还需要/);assert.throws(()=>reserveForOrder(s,o.id,'0:5',1),/不在本单/);
   s.progress.orders['first-sale']={accepted:true,choice:'0:0',delivered:12,completed:true};
-  assert.throws(()=>prepareBusiness(s,{stock:{'0:0':23}}),/自由库存不足/);
+  assert.throws(()=>prepareBusiness(s,{stock:{'0:0':23}}),/可用伙伴不足/);
   openBusiness(s,{stock:{'0:0':21}},NOW);assert.deepEqual(inventoryView(s,'0:0'),{T:30,R:0,S:21,Q:8,free:1,home:9});
   const cp=s.cp,r=deliverOrderGroups(s,o.id,[{groupId:'O01-G1',key:'0:0',quantity:6}],NOW);
   assert.equal(s.expansion.orders.active[0].reserved['0:0'],2,'own Q is consumed first');assert.equal(s.farm['0:0'],24);assert.equal(s.cp,cp+r.income);
@@ -70,6 +70,12 @@ test('Q is a per-order hold: never a delivery, never taken by business S, releas
   reserveForOrder(s,o.id,'0:3',3);const cancel=cancelOrderInstance(s,o.id);
   assert.deepEqual(cancel.released,{'0:3':3});assert.equal(cancel.paidCP,r.baseCP);assert.equal(freeCount(s,'0:3'),10);assert.equal(s.cp,cp+r.income,'no bonus, nothing clawed back');
   const next=acceptProposal(s,withProposal(s,'O01').id,{},NOW);assert.equal(next.id,'order-2');assert.deepEqual(next.groups[0].delivered,{},'a new instance inherits no cancelled progress');
+});
+
+test('delivering other species shrinks a hold that now exceeds the remaining need',()=>{
+  const s=fixture(),o=acceptProposal(s,withProposal(s,'O01').id,{},NOW);reserveForOrder(s,o.id,'0:0',12);
+  deliverOrderGroups(s,o.id,[{groupId:'O01-G1',key:'0:3',quantity:6}],NOW);
+  const left=s.expansion.orders.active[0];assert.equal(left.reserved['0:0'],6);assert.equal(s.farm['0:0'],30,'the released hold stays at home');check(s);
 });
 
 test('farm loss shrinks Q to what is still at home and marks restock without penalty',()=>{

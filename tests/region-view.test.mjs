@@ -28,10 +28,13 @@ test('specimen, direction, full method and collection reveal progressively',()=>
   let view=regionView(s,'V');const m75=view.materials.find(m=>m.id===75);
   assert.equal(m75.found,true);assert.equal(m75.name,'荠菜');assert.equal(m75.identified,false);
   identifyMaterial(s,75);view=regionView(s,'V');
+  // The one-ingredient entry dish is already complete; its direction names the only material.
   const c1=view.methods.find(m=>m.recipeId==='REC-V-C1');
-  assert.equal(c1.stage,'direction');assert.equal(c1.firstIngredient,'荠菜');assert.equal(c1.ingredients,null);assert.equal(c1.name,null);assert.ok(c1.pinned);
-  s.expansion.methods.full.push('REC-V-C1');view=regionView(s,'V');
-  const full=view.methods.find(m=>m.recipeId==='REC-V-C1');assert.equal(full.stage,'full');assert.deepEqual(full.ingredients,['荠菜']);assert.equal(full.name,null);
+  assert.equal(c1.stage,'full');assert.deepEqual(c1.ingredients,['荠菜']);assert.equal(c1.name,null);assert.ok(!c1.pinned);
+  const c3=view.methods.find(m=>m.recipeId==='REC-V-C3');
+  assert.equal(c3.stage,'direction');assert.equal(c3.firstIngredient,'荠菜');assert.equal(c3.ingredients,null);assert.equal(c3.name,null);
+  s.expansion.methods.full.push('REC-V-C3');view=regionView(s,'V');
+  const full=view.methods.find(m=>m.recipeId==='REC-V-C3');assert.equal(full.stage,'full');assert.deepEqual(full.ingredients,['荠菜','面粉']);assert.equal(full.name,null);
   assert.ok(!JSON.stringify(view).includes('荠菜煎饼鸡'),'full method still hides the real name');
   s.total['0:128']=1;view=regionView(s,'V');assert.equal(view.methods.find(m=>m.recipeId==='REC-V-C1').name,'荠菜煎饼鸡');
   assert.equal(view.counts.collected,1);

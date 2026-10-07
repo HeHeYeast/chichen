@@ -1,0 +1,17 @@
+{
+    "schema":  1,
+    "applicationId":  "com.jibao.kitchen",
+    "versionName":  "1.5.3",
+    "versionCode":  19,
+    "file":  "chick-kitchen-1.5.3.apk",
+    "sha256":  "e3dc77ea93a7bc0cea241c9234ecdf22261459f46f2b108f2f1f5fa03d84a805",
+    "bytes":  99239789,
+    "certificateSha256":  "525070886fc8b4292dce59b4e8062d39356eb610f6384f4c7d1e368c1f9b9862",
+    "builtAt":  "2026-09-30T10:58:31.5986989Z",
+    "minSdk":  26,
+    "targetSdk":  35,
+    "runtimeContentHash":  "fb93ed9ebf694a270408a505afe3a73e8f94f957ad556089b0ac2eebaa404303",
+    "runtimeFiles":  1323,
+    "notes":  "手机界面修正版：厨房比例调整、蛋群放大、底栏减高；生意文字和子页紧凑排版；寻访入口归位并压缩地区页；图鉴固定从总览进入、加厚边框并留出页边距。增加三种手机尺寸回归，保留原有玩法和存档。",
+    "installMode":  "Same applicationId and release signature; install with replacement, never uninstall to update."
+}

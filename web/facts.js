@@ -22,20 +22,25 @@ function businessWitness(f,e,seq){
   if(e.complete&&new Set(fullKeys.map(k=>species(k).egg)).size===2)witness(f,'SP-TABLE:practice',seq,e.sessionId);
 }
 
-function tripWitness(f,e,seq){
+function tripWitness(s,f,e,seq){
   if(!REGIONAL.regions.some(r=>r.id===e.region)||!Array.isArray(e.members)||e.members.length<1||e.members.length>3)throw Error('寻访事实无效');
-  const members=e.members.map(m=>{species(m.key);if(!Array.isArray(m.traits)||!Number.isInteger(m.gather)||!Number.isInteger(m.discover)||m.gather+m.discover!==6||!['yard','water','wood'].includes(m.environment))throw Error('同行事实缺少出发快照');return m;});
+  const members=e.members.map(m=>{species(m.key);if(!Array.isArray(m.traits)||!Number.isInteger(m.gather)||!Number.isInteger(m.discover)||m.gather<0||m.gather>20||m.discover<0||m.discover>20||!['yard','water','wood'].includes(m.environment))throw Error('同行事实缺少出发快照');return m;});
   const old=f.tripWitnesses[e.region]??{count:0,firstSeq:seq,lastSeq:seq};old.count++;old.lastSeq=seq;f.tripWitnesses[e.region]=old;
   for(const m of members)if(!f.companionFirst[m.key])f.companionFirst[m.key]={seq,tripId:e.tripId,region:e.region,gather:m.gather,discover:m.discover,environment:m.environment,traits:[...m.traits]};
   witness(f,'SP-ALL:practice',seq,e.tripId);
   if(members.some(m=>isOld(m.key))&&members.some(m=>species(m.key).region===e.region))witness(f,`COL-${e.region}:practice.trip`,seq,e.tripId);
   if(new Set(members.map(m=>species(m.key).season).filter(Boolean)).size>=2)witness(f,'COL-8:practice.trip',seq,e.tripId);
-  if(!e.cardId)return;
-  const card=REGIONAL.cards.find(c=>c.id===e.cardId);if(!card||card.region!==e.region)throw Error('发现卡事实无效');
-  const event=f.eventWitnesses[e.cardId];f.eventWitnesses[e.cardId]={firstSeq:event?.firstSeq??seq,lastSeq:seq,count:(event?.count??0)+1,tripId:e.tripId};
-  if(['V-E1','R-E1','T-E1','B-E2'].includes(e.cardId)&&members.some(m=>m.traits.includes('leaf')||m.traits.includes('tea')))witness(f,'SP-LEAF:practice',seq,e.tripId);
-  if(card.type==='event')for(const c of REGIONAL.collections.filter(c=>c.kind==='theme'&&c.region===e.region&&c.id!=='COL-8'))if(members.some(m=>c.optional.allowed.includes(m.key)))witness(f,`${c.id}:practice.trip`,seq,e.tripId);
-  const shape=REGIONAL.specials.find(s=>s.id==='SP-SHAPE');if(card.type==='lore'&&members.some(m=>[...shape.oldKeys,...shape.newKeys].includes(m.key)))witness(f,'SP-SHAPE:practice',seq,e.tripId);
+  if(e.cardId){
+    const card=REGIONAL.cards.find(c=>c.id===e.cardId);if(!card||card.region!==e.region)throw Error('发现卡事实无效');
+    const event=f.eventWitnesses[e.cardId];f.eventWitnesses[e.cardId]={firstSeq:event?.firstSeq??seq,lastSeq:seq,count:(event?.count??0)+1,tripId:e.tripId};
+  }else if(e.placeId===null)return;
+  // Cards are found once. Card-linked practices therefore also count on any later
+  // regional trip to a region whose card is already recorded, so a first trip with
+  // the "wrong" team never closes a page for good.
+  const cards=REGIONAL.cards.filter(c=>c.region===e.region&&(c.id===e.cardId||Object.hasOwn(s.expansion?.discovery?.cards??{},c.id)));
+  if(cards.some(c=>['V-E1','R-E1','T-E1','B-E2'].includes(c.id))&&members.some(m=>m.traits.includes('leaf')||m.traits.includes('tea')))witness(f,'SP-LEAF:practice',seq,e.tripId);
+  if(cards.some(c=>c.type==='event'))for(const c of REGIONAL.collections.filter(c=>c.kind==='theme'&&c.region===e.region&&c.id!=='COL-8'))if(members.some(m=>c.optional.allowed.includes(m.key)))witness(f,`${c.id}:practice.trip`,seq,e.tripId);
+  const shape=REGIONAL.specials.find(s=>s.id==='SP-SHAPE');if(cards.some(c=>c.type==='lore')&&members.some(m=>[...shape.oldKeys,...shape.newKeys].includes(m.key)))witness(f,'SP-SHAPE:practice',seq,e.tripId);
 }
 
 export function reduceFacts(s,events){
@@ -61,7 +66,7 @@ export function reduceFacts(s,events){
         if(e.templateId==='O06'&&['V','R','T','B'].includes(e.region))witness(f,`O06:${e.region}:complete`,seq,e.instanceId);break;
       }
       case 'orderDisplay':if(e.templateId!=='O04')throw Error('展示事实无效');else{witness(f,'O04:display',seq,e.instanceId);witness(f,'SP-SHAPE:practice',seq,e.instanceId);break;}
-      case 'tripComplete':tripWitness(f,e,seq);break;
+      case 'tripComplete':tripWitness(s,f,e,seq);break;
       case 'cargoExchange':if(e.cardId!=='B-E1'||e.quantity!==6)throw Error('带货事实无效');else{witness(f,'B-E1:cargoExchange',seq,e.tripId);break;}
       case 'materialBatch':for(const id of e.materialIds){if(!Number.isInteger(id)||id<0||id>82)throw Error('材料事实无效');add(f.materialBatches,String(id),1);}break;
       case 'regionalMaterialBatch':if(e.materialId!==79)throw Error('地区试做材料事实无效');else{witness(f,'RG3-2:regionalBatch',seq,e.batchId);break;}
