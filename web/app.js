@@ -28,6 +28,8 @@ import { GAME_DATA as DATA, TOOL_SCROLL_MAX } from './content-pack.js';
 import {beginToolDrag,moveToolDrag,settleToolDrag,toolScrollFor} from './tool-strip.js';
 import {cookingIngredients} from './cooking-query.js';
 import {createSaveStore,makeBackup,parseBackup} from './save-store.js';
+import {createProfileVault} from './cloud-profiles.js';
+import {createCloudUI} from './cloud-ui.js';
 import {createPlatform} from './native-platform.js';
 import * as E from './engine.js';
 import {farmDisplay,timeZone} from './farm.js';
@@ -67,7 +69,9 @@ const review=new URLSearchParams(location.search).has('review');
 const storageKey=review?'chick-kitchen-review-v1':'chick-kitchen-v1';
 const platform=createPlatform({disabled:review});
 const writer=await acquireWriter({key:storageKey,native:!!platform.bridge,isolated:review});
-const saveStore=createSaveStore({writer,storage:{getItem:key=>localStorage.getItem(key),setItem:(key,value)=>localStorage.setItem(key,value)},key:storageKey,native:platform.bridge});
+const profileVault=!review&&!platform.bridge?createProfileVault({storage:localStorage,key:storageKey}):null;
+const activeSaveKey=profileVault?.saveKey??storageKey;
+const saveStore=createSaveStore({writer,storage:{getItem:key=>localStorage.getItem(key),setItem:(key,value)=>localStorage.setItem(key,value)},key:activeSaveKey,native:platform.bridge});
 const initialSave=review?{state:E.readSave(localStorage,storageKey)}:saveStore.load();
 let recoveryError=initialSave.error??(!writer.writable?writer.reason:''),lastSaveError='',nativeKitchenPending=false;
 
@@ -551,7 +555,8 @@ const shrineUI=createShrineUI({getState:()=>state,getNow:now,panels,showPanel,so
   commitDraw:()=>commitActivity('shrine-gift'),commitReward:id=>commitProgress(candidate=>claimShrineGoal(candidate,id)),prepareGift:prepareGiftFromUI,
   getBackLabel:()=>shrineFromFarm?'‹ 返回营地':'‹ 返回',onClose:()=>closePanel(),openActivityTab:tab=>activitiesUI.open({tab}),openLetters:()=>activitiesUI.detail('shrine'),openGifts:()=>activitiesUI.detail('yokai'),openTravel:()=>activitiesUI.detail('time-travel'),
   openRecipes:()=>openRecipeBook({tool:8}),openDuckShop:()=>{shopUI.setTab(2);changePage(2);},openObservation:key=>workshopUI.observe(key,()=>collectionUI.renderCollection()),openWorkshop:()=>workshopUI.open(),openBooks:()=>bookUI.open({tab:'collections'}),openBookTab:tab=>bookUI.open({tab}),openInventory:key=>{changePage(1);warehouseUI.open({bird:key});},prepareRecipe:key=>prepareBookRecipe(key),openUse:use=>{if(use.kind==='collection')collectionsUI.open({id:use.id});else if(use.kind==='region'){const fromBook=page===4;if(!fromBook)changePage(6);if(fromBook)panelReturn=()=>bookUI.open({tab:'species'});regionalUI.open({regionId:use.id,tab:'record',recipeId:use.recipeId});}else openTrade(use.kind==='menu'?'business':'orders');}});
-const settingsUI=createSettingsUI({getState:()=>state,panels,showPanel,alertBox,save,music,sound,characterPortrait,toolPortrait,changePage,platform,toggleHatchAlarm,exportProgress,importProgress,openJournal,openWorkshop:()=>workshopUI.open(),getSaveError:()=>lastSaveError,returnFromSettings:()=>changePage(settingsReturnPage),returnToTitle:()=>{page=-1;closePanel();resize();music();renderControls();paint();}});
+const cloudUI=profileVault?createCloudUI({vault:profileVault,storage:localStorage,sessionStorage,saveKey:activeSaveKey,getRaw:()=>localStorage.getItem(activeSaveKey),replaceRaw:raw=>{const candidate=E.parseSave(raw);saveStore.write(candidate,{importing:true});state=candidate;committedState=structuredClone(candidate);},flush:()=>{flushHarvest();return save();},panels,showPanel,alertBox,confirmBox,back:()=>settingsUI.openSettings(),writable:()=>writer.writable&&!recoveryError}):null;
+const settingsUI=createSettingsUI({getState:()=>state,panels,showPanel,alertBox,save,music,sound,characterPortrait,toolPortrait,changePage,platform,toggleHatchAlarm,exportProgress,importProgress,openJournal,openCloud:cloudUI?.open,openFeedback:cloudUI?.feedback,openWorkshop:()=>workshopUI.open(),getSaveError:()=>lastSaveError,returnFromSettings:()=>changePage(settingsReturnPage),returnToTitle:()=>{page=-1;closePanel();resize();music();renderControls();paint();}});
 function openActivities(target){activitiesUI.open(target);}
 let journalReturn=()=>closePanel();
 const journalNotices=new Set();

@@ -12,7 +12,7 @@ const tool=id=>b.tools.find(t=>t.id===id)?.name??id;
 const env={yard:'菜园',water:'水边（溪岸/海湾共用）',wood:'林间'};
 const list=ids=>ids.length?ids.join('、'):'无';
 const mdTable=(heads,rs)=>'| '+heads.join(' | ')+' |\n| '+heads.map(()=>'---').join(' | ')+' |\n'+rs.map(r=>'| '+r.map(x=>String(x??'').replaceAll('|','／').replaceAll('\n','<br>')).join(' | ')+' |').join('\n')+'\n';
-const write=(name,title,text)=>fs.writeFileSync(path.join(dir,name),`# ${title}\n\n2026-09-23 内容定义；**尚未接入游戏**。返回[内容总册](../content-expansion-assets.md)。由作者源导出，与[结构化清单](content.json)共用稳定身份。\n\n${text}\n`);
+const write=(name,title,text)=>fs.writeFileSync(path.join(dir,name),`# ${title}\n\n2026-09-23 内容定义；**尚未接入游戏**。返回[内容总册](../design/content-expansion-assets.md)。由作者源导出，与[结构化清单](content.json)共用稳定身份。\n\n${text}\n`);
 const cond=q=>q.kind==='tool'?`${tool(q.id)}Lv.${q.level+1}`:q.kind==='kitchen'?`厨房Lv.${q.level+1}`:q.kind==='discovery'?`实收${label(q.egg+':'+q.id)}`:q.kind==='collected'?`累计收取${q.count}只`:JSON.stringify(q);
 let out='所有等级均为玩家显示等级，ID仍采用原内部编号。配方每味消耗1份，作用于一批24枚，不是每只消耗1份。鸡蛋/鸭蛋之外不暗加原料；料理形态允许沿用世界的调理抽象。\n\n';
 out+=mdTable(['地区','鸡','鸭','食用/观赏'],c.regions.map(r=>[r.name,labels(c.species.filter(s=>s.region===r.id&&!s.egg).map(s=>s.id)),labels(c.species.filter(s=>s.region===r.id&&s.egg).map(s=>s.id)),'10食用＋2观赏']));

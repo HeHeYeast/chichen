@@ -6,7 +6,7 @@
 
 旧 193 = 原作 171 张 120×120 手绘精灵（鸡 0:0–0:113、鸭 1:0–1:56）＋ 竹笼点心坊图集 6 只（0:114–0:119）＋ 四时食谱图集 16 只（鸡 0:120–0:127、鸭 1:57–1:64）。三批都在图鉴同一网格里并排显示，新 48 只必须能混在它们中间不被认出是“另一批”。
 
-| 维度 | 锚点结论（来自逐张观察 [old-chickens/ducks contact sheet](../../../artifacts/art/valley-golden-batch/review/) 与 [四时图集](../../../web/art/four-seasons-v12.png)） |
+| 维度 | 锚点结论（来自逐张观察 [old-chickens/ducks contact sheet](../../../artifacts/art/valley-golden-batch/review) 与 [四时图集](../../../web/art/four-seasons-v12.png)） |
 |---|---|
 | 体型 | 头身一体的矮胖蛋形／团形；食物就是身体，不是“鸡戴食物”。四分之三视角，脸朝右。 |
 | 眼睛 | 小圆豆眼（深棕近黑）＋一粒白高光；眼距近，位于身体上三分之一；淡桃色腮红允许但小而淡。 |

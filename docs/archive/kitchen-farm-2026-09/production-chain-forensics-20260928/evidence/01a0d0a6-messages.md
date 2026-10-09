@@ -141,7 +141,7 @@ visual-polish-report.md
 
 ## 10 · 2026-09-24T07:44:27.659000+08:00 · agentMessage
 
-我会先梳理页面、存档入口和现有美术资源，建立视觉资产清单，再直接统一主要界面并补齐缺失的视觉表达。完成后会实际运行游戏，检查新旧存档、各主要页面和不同屏幕尺寸，并把结果写入 `docs/visual-polish-report.md`。
+我会先梳理页面、存档入口和现有美术资源，建立视觉资产清单，再直接统一主要界面并补齐缺失的视觉表达。完成后会实际运行游戏，检查新旧存档、各主要页面和不同屏幕尺寸，并把结果写入 `docs/archive/iterations/visual-polish-report.md`。
 
 
 ## 24 · 2026-09-24T07:44:49.135000+08:00 · agentMessage
@@ -206,7 +206,7 @@ visual-polish-report.md
 
 48 个地区角色等仍为概念稿，正式美术缺口已明确登记；未做真机验收。
 
-[完整报告](../../../../visual-polish-report.md) · [截图画廊](http://127.0.0.1:56930/artifacts/visual-polish/index.html) · [运行游戏](http://127.0.0.1:56930/)
+[完整报告](../../../iterations/visual-polish-report.md) · [截图画廊](http://127.0.0.1:56930/artifacts/visual-polish/index.html) · [运行游戏](http://127.0.0.1:56930/)
 
 ## 474 · 2026-09-24T08:29:09.556000+08:00 · userMessage
 
@@ -321,6 +321,6 @@ This block is automatically supplied ambient UI state, not part of the user's re
 
 - 更新前已备份，更新后存档校验一致。
 - 主要页面已完成真机检查，手指滚动正常。
-- 验证结果已补入[视觉优化报告](../../../../visual-polish-report.md)。
+- 验证结果已补入[视觉优化报告](../../../iterations/visual-polish-report.md)。
 
 可以直接继续原来的进度。

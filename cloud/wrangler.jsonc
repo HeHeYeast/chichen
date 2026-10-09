@@ -1,0 +1,15 @@
+{
+  "name": "jibao-save-test",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-08",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "triggers": {"crons": ["0 3 * * *"]},
+  "vars": {
+    "ENABLE_TEST_API": "false",
+    "WEB_ORIGIN": "http://127.0.0.1:4173",
+    "CLOUD_EPOCH": "replace-with-new-test-environment-id",
+    "ALLOWED_USERNAMES": ""
+  },
+  "d1_databases": [{"binding":"DB","database_name":"jibao-save-test","database_id":"00000000-0000-0000-0000-000000000000"}]
+}

@@ -1,6 +1,28 @@
 # Permanent private signing identity: back up securely; never commit.
 /.signing/
 
+# New local outputs are opt-in. Existing tracked evidence remains versioned.
+/artifacts/**
+!/artifacts/README.md
+!/artifacts/font-source/
+/artifacts/font-source/*
+!/artifacts/font-source/README.md
+!/artifacts/font-source/ZCOOLKuaiLe-Regular.ttf
+!/artifacts/font-source/resource-rounded/
+/artifacts/font-source/resource-rounded/*
+!/artifacts/font-source/resource-rounded/ResourceHanRoundedCN-Regular.ttf
+!/artifacts/font-source/resource-rounded/ResourceHanRoundedCN-Medium.ttf
+!/artifacts/font-source/resource-rounded/ResourceHanRoundedCN-Bold.ttf
+!/artifacts/font-source/resource-rounded/ResourceHanRoundedCN-Heavy.ttf
+/.claude/
+*.log
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+.dev.vars*
+!/.dev.vars.example
+
 # Android generated files and machine-local configuration.
 /android/.gradle/
 /android/.gradle-home/
@@ -28,6 +50,11 @@
 
 # Dependencies, downloaded tools, and generated caches.
 node_modules/
+/cloud/.local/
+/cloud/.wrangler/
+/.wrangler/
+/cloud/.dev.vars
+/experiments/wechat/dist/
 __pycache__/
 *.py[cod]
 *.class

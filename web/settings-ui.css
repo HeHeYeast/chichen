@@ -6,6 +6,12 @@
 .settings-hero p { margin:4px 0; font-size:10px; line-height:1.5; color:var(--muted); }
 .settings-hero small { font-size:10px; color:var(--muted); }
 .settings-content { padding:0 1px 4px; }
+
+/* Cloud forms reuse the settings skin, with vertical actions on narrow screens. */
+#game #panels .cloud-screen .gd-row { flex-direction:column; align-items:stretch; }
+#game #panels .cloud-screen label { display:flex; flex-direction:column; gap:6px; }
+#game #panels .cloud-screen :is(input,textarea) { box-sizing:border-box; width:100%; min-width:0; padding:10px; border:1px solid #947044; border-radius:8px; background:#fff9e8; color:#624828; font:inherit; }
+#game #panels .cloud-screen p { overflow-wrap:anywhere; }
 .sound-console { border:2px solid #b98a54; border-radius:12px; padding:7px 9px 1px; background:#f5e6b9; box-shadow:inset 0 2px #fff9de,0 3px #dcc08c; }
 .settings-caption { margin:0 0 2px; color:#9a7045; font-size:10px; font-weight:700; letter-spacing:2px; }
 .settings-switch-row { display:flex; align-items:center; gap:7px; min-height:57px; }

@@ -32,6 +32,8 @@
 
 ## 4. 界面与绘制
 
+- Web 账号／手动云备份：`cloud-profiles.js` 隔离游客和 UID 本机分支，`cloud-client.js` 管理条件上传和恢复日志，`cloud-ui.js` 复用设置皮肤，`cloud-config.js` 只含公开地址。服务端位于独立 `cloud/`，不进入客户端 import 图；默认未配置线上服务，Android／review 不启用账号入口。
+
 - 画布场景：`scene.js`（厨房）、`kitchen-golden.js`（正式四级厨房；蛋堆布局来自生成的 `kitchen-egg-nests.js`）、`kitchen-stages.js`、`farm-scene.js`、`farm-world.js`、`farm-theme.js`、`title-scene.js`、`theme.js`、`tool-strip.js`。
 - 寻访地图：`regional-ui.js` 的 `mapMarkup` 把地形（`journey-art.js` 的 `journeyEnvironment`）、路线、地点和同行伙伴放进同一块按 390×684 参考坐标等比缩放的画布，只显示有地形的上方 520；尺寸规则在 `mobile-fit.css` 末尾，地点图标用 `cqw` 随画布缩放。
 - 改版共用部分（2026-10）：`game-frame.js`＋`game-frame.css`（星级、伙伴格子、按钮呼吸与停顿箭头、第一次指引、「?」图卡；不放常驻提示条）；`next-batch-ui.js`（下一锅：「推荐」书签 + 新伙伴/订单/多赚、缺调料开火时买）；`next-batch-goals.js`（「推荐」的卡片：追踪的伙伴第一，其余按推进价值排，只读）；`clue-book.js`＋`clue-book-ui.js`（线索册独立页：调查卡、☆ 追踪 `progress.knowledge.tracked`、全部伙伴筛选）；`clue-regions.js`（每只伙伴的主线索地区）；`regional-clues.js`（48 只地区伙伴在线索册里的五层：方向＝厨具和第一味、完整方法＝第 5 层，方向之前的地区步骤，试做概率与保底）；`journey-model.js`（寻访地图卡片的数据：地区进度、追踪去向、归来线索 x/5 → y/5）；`business-home.js`＋`business-home-ui.js`（生意主页：今日营业、订单板、常客/项目小卡；只读模型 + 画面）；`order-delivery.js`（订单一步交付、展示型摆出来、厨房往事一步交付、订单等着的伙伴）；`order-intel.js`（订单情报：调查线索或地点提示 `progress.knowledge.hints`）；`warehouse-ui.js`（仓库：伙伴/材料、卖掉多余预览）。

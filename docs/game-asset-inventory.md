@@ -12,7 +12,7 @@
 
 当前提取版本com.idtinc.ckchickandduck为初始＋三次升级，内部0～3；旧CK存档接收仅0～2，不能据此否定用户早期三阶段记忆。阶段规则与费用见游戏设计。
 
-原厨房素材在assets/png/Tool/Tool0：四张底图、四张dirty覆盖和初始front；原图已含床与容器。原版MainGameBackViewUnit的513–551行加载，727–731行检查六厨具，809–846行升级；Tool_2_SelectListUnit与ScrollView限制槽数；StoreUnit负责解锁。来源在[原版反编译依据](../artifacts/original-source/sources/com/idtinc/)。最高级清洁扣款遗漏与250 CP确认值的差异已在游戏设计登记。
+原厨房素材在assets/png/Tool/Tool0：四张底图、四张dirty覆盖和初始front；原图已含床与容器。原版MainGameBackViewUnit的513–551行加载，727–731行检查六厨具，809–846行升级；Tool_2_SelectListUnit与ScrollView限制槽数；StoreUnit负责解锁。来源在[原版反编译依据](../artifacts/original-source/sources/com/idtinc)。最高级清洁扣款遗漏与250 CP确认值的差异已在游戏设计登记。
 
 ## 2. 已找到的原始资源
 

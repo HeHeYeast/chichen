@@ -1,0 +1,7 @@
+{
+  "name": "jibao-cloud-development",
+  "private": true,
+  "type": "module",
+  "scripts": {"dev": "node dev-server.mjs", "test": "node --test --test-isolation=none ../tests/cloud-*.test.mjs"},
+  "devDependencies": {"esbuild": "^0.25.0", "wrangler": "^4.0.0"}
+}

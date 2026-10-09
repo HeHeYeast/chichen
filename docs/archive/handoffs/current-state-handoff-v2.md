@@ -86,6 +86,6 @@ Background A/B/C/D 仍显普通，差异有限，脱离完整 UI 难以选择。
 1. **本文件**；正式入口 `web/index.html`、`web/app.js`、`web/scene.js`、`web/kitchen-stages.js`，需要核对接入时再看 `web/production-art.js` / `web/runtime-assets.generated.js`。
 2. 已完成交付：`docs/art/work1-delivery-status.md`、`docs/ui/ui-remaster-final-report.md`、`docs/ui/current-ui-remaster-audit.md`。
 3. 厨房判断：`artifacts/kitchen-remaster-lv2-20260927/visual-forensics-source.md`、`docs/ui/kitchen-remaster-plan.md`、`artifacts/kitchen-background-direction-gate-20260927/README.md`、`artifacts/kitchen-asset-language-gate-20260927/Checklist.md`；再按需查看 Concept/Layout/Style 原文和图。
-4. 发行/历史边界：`docs/implementation-status.md`、`docs/regression-and-ui-audit.md`、`docs/current-state-audit.md` 仅作阶段证据；遇到冲突，以当前代码、较新交付与本文件标出的时间顺序复核。
+4. 发行/历史边界：`docs/archive/iterations/implementation-status.md`、`docs/quality/regression-and-ui-audit.md`、`docs/current-state-audit.md` 仅作阶段证据；遇到冲突，以当前代码、较新交付与本文件标出的时间顺序复核。
 
 **交接时工作树：**本轮开始 `git status --short` 已有大量已修改的 Runtime/文档与未跟踪 Asset/Artifact。本文是本轮唯一预期新增文件；没有清理、提交、构建或修改正式 Runtime。当前浏览器/设备是否正在运行、当前手机安装何包及真实玩家档状态，本轮未重新现场确认。

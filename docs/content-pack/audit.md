@@ -1,6 +1,6 @@
 # 内容关系审计
 
-按当前作者源生成；状态：**PASS，1599项静态检查，0失败**。返回[内容总册](../content-expansion-assets.md)。机器细节见[audit.json](audit.json)，全关系见[relation-graph.json](relation-graph.json)。这不是游戏实现测试或最终平衡通过。
+按当前作者源生成；状态：**PASS，1599项静态检查，0失败**。返回[内容总册](../design/content-expansion-assets.md)。机器细节见[audit.json](audit.json)，全关系见[relation-graph.json](relation-graph.json)。这不是游戏实现测试或最终平衡通过。
 
 ## 1. 继承依据与查阅范围
 

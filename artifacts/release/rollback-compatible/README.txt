@@ -4,4 +4,4 @@ This is one build-time policy module and a manifest bound to the current source 
 
 Do not restore an old save, downgrade schema, remove expansion fields, erase IDs, lower material capacity, reset protection, return already-sold stock, or replay rewards. Existing trip/batch/business/order settlement remains available.
 
-See docs/compatible-rollback.md for feature behavior and recovery.
+See docs/quality/compatible-rollback.md for feature behavior and recovery.

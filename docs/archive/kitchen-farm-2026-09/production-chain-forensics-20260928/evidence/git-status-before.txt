@@ -7,7 +7,7 @@
  M docs/content-pack/audit.json
  M docs/content-pack/audit.md
  M docs/content-pack/validate.mjs
- M docs/implementation-status.md
+ M docs/archive/iterations/implementation-status.md
  M docs/plan.md
  M docs/ui-ux.md
  M package.json
@@ -151,10 +151,10 @@
 ?? docs/kitchen-farm-architecture-gate-20260928/
 ?? docs/kitchen-farm-audit-20260928/
 ?? docs/production-chain-forensics-20260928/
-?? docs/regression-and-ui-audit.md
+?? docs/quality/regression-and-ui-audit.md
 ?? docs/ui/
-?? docs/visual-asset-inventory.md
-?? docs/visual-polish-report.md
+?? docs/quality/visual-asset-inventory.md
+?? docs/archive/iterations/visual-polish-report.md
 ?? tests/business-family-view.test.mjs
 ?? tests/production-art.test.mjs
 ?? tools/analyze-legacy-style.py

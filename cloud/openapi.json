@@ -1,0 +1,700 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "鸡宝厨房手动云备份 API（测试环境）",
+    "version": "1.0.0",
+    "description": "本地优先；不合并经济状态。云端默认关闭。完整游戏 JSON 由 web/engine.js 的 normalizeSave 校验。"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:4174",
+      "description": "仅本机开发"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "summary": "读取环境标识和 schema",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "const": true
+                    },
+                    "epoch": {
+                      "type": "string"
+                    },
+                    "schemaVersion": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "epoch",
+                    "schemaVersion"
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/accounts": {
+      "post": {
+        "summary": "白名单用户名注册；不自动上传本机进度",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Credentials"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Session"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sessions": {
+      "post": {
+        "summary": "登录；不自动下载进度",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Credentials"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Session"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sessions/current": {
+      "delete": {
+        "summary": "撤销当前会话",
+        "responses": {
+          "204": {
+            "description": "成功"
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/account": {
+      "delete": {
+        "summary": "密码复核后删除账号、会话及云端历史；本机由用户单独清理",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "maxLength": 128,
+                    "writeOnly": true
+                  }
+                },
+                "required": [
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "成功"
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/saves/current": {
+      "get": {
+        "summary": "读取本账号当前备份；尚无备份返回 save:null",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Download"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/saves": {
+      "post": {
+        "summary": "expectedRevision + epoch 原子条件写；相同 uploadId/内容可重试",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Upload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "此前已收到此上传；headRevision 可能更大",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "版本冲突、服务恢复后 epoch 改变或提交编号复用。先预览两份进度，再明确选择。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/saves/history": {
+      "get": {
+        "summary": "按版本倒序读取本账号元数据，包含当前备份",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/History"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 10
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "上一页 nextCursor"
+          }
+        ]
+      }
+    },
+    "/v1/saves/history/{revision}": {
+      "get": {
+        "summary": "读取本账号指定历史版本",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Download"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "revision",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ]
+      }
+    },
+    "/v1/feedback": {
+      "post": {
+        "summary": "匿名反馈；只接收主动填写的内容；随机 id 去重",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feedback"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "同一反馈此前已收到",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackReceipt"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackReceipt"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "400 JSON 无效；401 登录失效；403 来源/注册关闭；409 冲突；413 过大；415 非 JSON；422 校验失败；426 客户端过旧；429 限速（Retry-After 秒）；500/503 暂不可用。失败不修改本机。",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "requestId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "requestId"
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Credentials": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_]{3,24}$"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 128,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "Session": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "username": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string",
+            "description": "仅返回给本人；24 小时有效。不得记录日志。"
+          },
+          "expiresAt": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "epoch": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "uid",
+          "username",
+          "token",
+          "expiresAt",
+          "epoch"
+        ]
+      },
+      "Save": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "raw": {
+            "type": "string",
+            "description": "原始游戏 JSON 的 UTF-8 字节，上限 524288；保留原始字节用于摘要校验。"
+          },
+          "hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "schemaVersion": {
+            "type": "integer"
+          },
+          "createdAt": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "uploadId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "epoch": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "revision",
+          "raw",
+          "hash",
+          "schemaVersion",
+          "createdAt",
+          "uploadId",
+          "epoch"
+        ]
+      },
+      "Upload": {
+        "type": "object",
+        "properties": {
+          "raw": {
+            "type": "string",
+            "description": "同 Save.raw"
+          },
+          "expectedRevision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "epoch": {
+            "type": "string"
+          },
+          "uploadId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "raw",
+          "expectedRevision",
+          "epoch",
+          "uploadId"
+        ]
+      },
+      "Receipt": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "headRevision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "hash": {
+            "type": "string"
+          },
+          "epoch": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "revision",
+          "headRevision",
+          "hash",
+          "epoch"
+        ]
+      },
+      "Download": {
+        "type": "object",
+        "properties": {
+          "save": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Save"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "epoch": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "save",
+          "epoch"
+        ]
+      },
+      "History": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "revision": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "schema_version": {
+                  "type": "integer"
+                },
+                "created_at": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "revision",
+                "hash",
+                "schema_version",
+                "created_at"
+              ]
+            }
+          },
+          "nextCursor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "epoch": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "items",
+          "nextCursor",
+          "epoch"
+        ]
+      },
+      "Feedback": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "id",
+          "text"
+        ]
+      },
+      "FeedbackReceipt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "received": {
+            "const": true
+          }
+        },
+        "required": [
+          "id",
+          "received"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# Historical Windows sources contain CRLF; accept CR as part of line endings.
+* whitespace=cr-at-eol

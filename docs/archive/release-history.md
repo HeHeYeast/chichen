@@ -24,6 +24,6 @@
 | 1.4.8 / ABC | 193描述、10线索修订、3章、B系统、schema3；241规则／70存档／60通知／29更新；安全安装但未逐页真机 | artifacts/device-backups/20260921-090417-acbc8a55/；artifacts/qa/integration-final-node.log |
 | 1.5.0候选 | 30单级手艺替换旧树；256规则／76存档／60通知／29更新；追加图标后Magic8覆盖及三页查看 | artifacts/round2-implementation/delivery.md；artifacts/skill-polish/delivery.md；artifacts/device-backups/20260921-230634-cf3752b4/ |
 
-正式APK、校验文件与release.json保留在[发布产物](../../artifacts/releases/)；候选与诊断包可能同版本号不同内容，须核对文件摘要。旧QA中的“手机断开”“下次安装某旧版”均为当时状态，不继承为当前行动。
+正式APK、校验文件与release.json保留在[发布产物](../../artifacts/releases)；候选与诊断包可能同版本号不同内容，须核对文件摘要。旧QA中的“手机断开”“下次安装某旧版”均为当时状态，不继承为当前行动。
 
 浏览器模拟、JVM替身、静态检查、签名构建、真实安装、存档比较、系统通知和用户审美分别证明不同范围。android/build及release-ui目录可能被后续运行更新，不能凭该通用路径重新声称它仍是某次历史构建的证据；优先用版本目录和对应发布摘要。

@@ -1,6 +1,6 @@
 # 美术制作清单与角色视觉brief
 
-2026-09-23 内容定义；**尚未接入游戏**。返回[内容总册](../content-expansion-assets.md)。由作者源导出，与[结构化清单](content.json)共用稳定身份。
+2026-09-23 内容定义；**尚未接入游戏**。返回[内容总册](../design/content-expansion-assets.md)。由作者源导出，与[结构化清单](content.json)共用稳定身份。
 
 ## 制作总量与交付规格
 

@@ -9,7 +9,7 @@ import {kitSheet,kitTabs,kitButton,kitButton2,kitChip} from './ui-kit.js';
 import {deviceCheck,deviceCheckText,clearDeviceErrors} from './device-check.js';
 const sprite=name=>spriteSVG(resolveSprite(uiIcon(name==='chef'?4:6)));
 const GEAR='<img src="/web/art/ui-kit/gear.png" alt="">';
-export function createSettingsUI({getState,panels,showPanel,alertBox,save,music,sound,characterPortrait,toolPortrait,changePage,returnToTitle,returnFromSettings,platform,toggleHatchAlarm,exportProgress,importProgress,getSaveError,openJournal,openWorkshop}){
+export function createSettingsUI({getState,panels,showPanel,alertBox,save,music,sound,characterPortrait,toolPortrait,changePage,returnToTitle,returnFromSettings,platform,toggleHatchAlarm,exportProgress,importProgress,getSaveError,openJournal,openWorkshop,openCloud,openFeedback}){
   const chapters=[
     {title:'厨房',lead:'从一枚蛋，认识新的鸡宝',art:()=>toolPortrait(1,0),steps:[['下一锅','点「调整」打开下一锅：已经按推荐选好厨具和调味料，直接开火就行；缺的调味料开火时一起买。'],['点厨具也能开火','用当前选好的调味料，确认一下就开始。'],['收取','破壳后轻划蛋窝收进农场，每只 1 CP；放太久会焦。收完一锅会弹出这锅收成。'],['照顾厨房','清洁度低了会生病，点清洁度可以打扫，越早越便宜。']]},
     {title:'农场',lead:'伙伴住的地方',art:()=>characterPortrait(0,0),steps:[['仓库','伙伴和材料都在仓库。「卖掉多余」只卖超过锁定数量的，每种默认锁 1 只，点一种伙伴就能改。'],['神社','每天求一签、领小礼、看来信。'],['整修','完好度低了要整修，不然会有伙伴跑掉。']]},
@@ -22,7 +22,9 @@ export function createSettingsUI({getState,panels,showPanel,alertBox,save,music,
     const previousScroll=panels.querySelector('.settings-content')?.scrollTop??0;
     const s=getState(),discovered=discoveryCount(s);
     const hero=`<div class="gd-head settings-hero" data-row><span class="gd-face">${characterPortrait(0,0)}</span><div class="gd-row">${kitChip('',`${kitchenStage(s.kitchenLevel).title} Lv.${s.kitchenLevel+1}`,'soft')}${kitChip('',`认识 ${discovered} 种`,'soft')}</div></div>`;
-    showPanel('小厨房设置',kitSheet(hero+settingsOptions({state:s,platform,sprite}),`${kitButton2('回标题','data-title')}${kitButton('继续','data-return')}`,'','',{cls:'settings-content'}),'screen-panel settings-screen',{skin:'kitchen',icon:GEAR,short:'设置'});
+    showPanel('小厨房设置',kitSheet(hero+settingsOptions({state:s,platform,sprite})+(openCloud?`<div class="gd-row">${kitButton2('账号与云备份','data-cloud-open')}${kitButton2('反馈与建议','data-feedback-open')}</div>`:''),`${kitButton2('回标题','data-title')}${kitButton('继续','data-return')}`,'','',{cls:'settings-content'}),'screen-panel settings-screen',{skin:'kitchen',icon:GEAR,short:'设置'});
+    panels.querySelector('[data-cloud-open]')?.addEventListener('click',openCloud);
+    panels.querySelector('[data-feedback-open]')?.addEventListener('click',openFeedback);
     if(openWorkshop){panels.querySelector('[data-settings-workshop]').onclick=()=>openWorkshop();
       panels.querySelector('[data-replay-guides]').onclick=()=>{resetFirstVisitGuides();sound(3);alertBox('下次进入各页时会再指引一次');};}
     const notice=platform.notificationStatus();
