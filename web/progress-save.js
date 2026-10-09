@@ -57,7 +57,7 @@ export function validateProgress(s,fail){
   num(p.logicalAt,'逻辑时钟');int(p.tripSequence,'探索序号');list(p.lastTeam,'上次队伍',3);for(const k of p.lastTeam)if(!ABILITIES[k])fail('上次队伍身份');
   bool(p.tutorialSeen,'成长提示');object(p.routeFailures,'路线保底');for(const r of RULES.exploration.routes)int(p.routeFailures[r.id],'路线保底',0,7);
   // The bay counter is sparse: created by its first counted trip, never back-filled.
-  if(p.routeFailures.bay!==undefined)int(p.routeFailures.bay,'路线保底',0,7);if(Object.keys(p.routeFailures).some(k=>!ROUTES.some(r=>r.id===k)))fail('路线保底身份');
+  for(const id of ['bay','orchard','mushroom'])if(p.routeFailures[id]!==undefined)int(p.routeFailures[id],'路线保底',0,7);if(Object.keys(p.routeFailures).some(k=>!ROUTES.some(r=>r.id===k)))fail('路线保底身份');
   if(p.trip!==null){
     const t=p.trip;object(t,'探索');int(t.version,'探索规则版本',1,s.version>=4?2:1);if(t.version===2)validateRegionalTrip(t,fail);
     if(t.id!=='trip-'+p.tripSequence||p.tripSequence<1)fail('探索事务身份');

@@ -16,7 +16,7 @@ import {materialCapacity} from './material-capacity.js';
 import {resolveSprite,spriteSVG,uiIcon} from './art/manifest.js';
 import {kitTabs,kitSheet,kitButton,kitButton2,kitChip,kitChipHtml,kitBar,kitIcon,kitCell,kitLabel,kitArt} from './ui-kit.js';
 const shortEffects={
- 'CUL-1':'收取时，15%概率额外 +1 CP','CUL-2':'新批次减时10% · 最短6分钟','CUL-3':'收完一批，20%概率返1份普通材料','CUL-4':'30分钟内同配方接锅，额外减时5个百分点','CUL-5':'多付10 CP，安排1只已收录普通候选','CUL-S':'基础减时20% · 接锅时25%',
+ 'CUL-1':'收取时，15%概率额外 +1 CP','CUL-2':'新批次减时10% · 最短6分钟','CUL-3':'收完一批，20%概率返1份普通材料','CUL-4':'30分钟内同配方接锅，额外减时5个百分点','CUL-5':'多付10 CP，每枚普通蛋20%机会转为指定伙伴','CUL-S':'基础减时20% · 接锅时25%',
  'HOME-1':'每只破壳后，保鲜延长30分钟','HOME-2':'脱逃时，每个在家品种至少留1只','HOME-3':'下次打扫后，保持干净54小时','HOME-4':'额外保鲜提高至90分钟','HOME-5':'安心等候：用时+25%，保鲜至少8小时','HOME-S':'干净72小时 · 普通病变40%→20%',
  'TRADE-1':'普通材料货款返还6%，小数自动积攒','TRADE-2':'选一个招牌类别，出售加价12%','TRADE-3':'同种家常伙伴24只，额外获得12 CP','TRADE-4':'4种普通料理各3只，额外获得8 CP','TRADE-5':'经营奖励最多存6次','TRADE-S':'招牌加价18% · 整筐18 CP／拼盘12 CP',
  'OBS-1':'看剪影、蛋种、厨具与日期条件','OBS-2':'预览最多3种只差一味的未知方向','OBS-3':'看第一味、第二味类别与非材料条件','OBS-4':'100 CP，永久研读全部获取方法','OBS-5':'首次收取新品种，再记下1条可寻线索','OBS-S':'研读50 CP · 寻访可指定优先线索',

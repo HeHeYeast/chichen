@@ -49,6 +49,10 @@ async function shot(name){
   assert.ok(metrics.nav.h<=68,`${name} nav too tall`);assert.ok(metrics.scrolls.every(s=>s.xExtra<=2),`${name} horizontal overflow`);
   assert.ok(metrics.labels.every(s=>s.xExtra<=2&&s.yExtra<=2),`${name} text overflow: ${JSON.stringify(metrics.labels)}`);
   if(/^(regulars|projects|journey-map|journey-region)-\d+$/.test(name))assert.ok(metrics.scrolls.every(s=>s.extra<=2),`${name} should fit without scrolling: ${JSON.stringify(metrics.scrolls)}`);
+  if(/^journey-map-/.test(name)){
+    const clipped=await page.locator('.journey-map .journey-node strong').evaluateAll(nodes=>nodes.filter(n=>{const r=n.getBoundingClientRect(),p=n.closest('.journey-map-art').getBoundingClientRect();return r.left<p.left-1||r.right>p.right+1||r.top<p.top-1||r.bottom>p.bottom+1;}).map(n=>n.textContent));
+    assert.deepEqual(clipped,[],`${name}: every region label stays inside the map`);
+  }
   // an order's sheet sits over the (scrolling) 生意 page: the sheet itself shows everything
   if(/^orders(-active)?-\d+$/.test(name))assert.ok(metrics.scrolls.filter(s=>!/bs-main-scroll/.test(s.class)).every(s=>s.extra<=2),`${name}: the order sheet should fit without scrolling: ${JSON.stringify(metrics.scrolls)}`);
   // 2026-10-07 (batch 3): the 生意 page scrolls on to its order board, but 今日营业 is whole on the first screen

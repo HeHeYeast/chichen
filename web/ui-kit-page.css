@@ -1675,6 +1675,22 @@
 
 /* 下一锅: the empty 新伙伴 state */
 #game #panels .nb-reach{display:flex;flex-direction:column;gap:6px;width:100%}
+#game #panels .nb-partner-intro{font-size:13px;color:#715e45;margin:8px 0 12px}
+#game #panels .nb-partners{display:grid;gap:10px}
+#game #panels .nb-partner{display:grid;grid-template-columns:56px minmax(0,1fr);gap:8px 10px;align-items:center;padding:12px;background:#fff8e7;border:1px solid #cdb58a;border-radius:12px}
+#game #panels .nb-partner-art{width:56px;height:64px;display:flex;align-items:center;justify-content:center}
+#game #panels .nb-partner-art img,#game #panels .nb-partner-art svg{max-width:56px;max-height:64px}
+#game #panels .nb-partner-copy{min-width:0;display:grid;gap:4px;text-align:left}
+#game #panels .nb-partner-copy b{font-size:17px}
+#game #panels .nb-partner-copy span{font-size:13px;color:#46613d}
+#game #panels .nb-partner-copy small,#game #panels .nb-partner-copy p{font-size:13px;line-height:1.5;margin:0;overflow-wrap:anywhere}
+#game #panels .nb-partner>.gd-btn2{grid-column:2;justify-self:end;min-height:44px}
+#game #panels .sh-flavor-filter{display:flex;align-items:center;justify-content:flex-end;gap:8px;font-size:13px;margin:6px 0}
+#game #panels .sh-item-flavor{font-size:10px;line-height:1.4;color:#776248;overflow-wrap:anywhere;max-width:100%;text-align:center}
+#game #panels .sh-flavor-filter select{font:inherit;color:#513e2a;background:#fff8e7;border:1px solid #bda178;border-radius:8px;min-height:44px;padding:6px 8px;max-width:65%}
+#game #panels .gf-help-detail{text-align:left;padding:0 4px}
+#game #panels .gf-help-detail h3{font-size:16px;margin:18px 0 6px}
+#game #panels .gf-help-detail p{font-size:14px;line-height:1.75;margin:0}
 #game #panels .nb-reach-item{display:flex;align-items:center;gap:10px;min-height:44px;padding:2px 10px}
 #game #panels .nb-reach-item .nb-tool{flex:none;width:40px;height:40px}
 #game #panels .nb-reach-item b{font-size:16px;font-weight:900;color:#553922}
@@ -2168,3 +2184,51 @@
 #game #panels :is(.jr-track>span,.jr-title small){text-wrap:pretty}
 /* 下一锅 · 推荐: the reasons past the first secondary one fold into a small +N */
 #game #panels .nb-goal-also .nb-also-more{display:inline-block;margin-left:4px;padding:0 5px;border-radius:8px;background:#eadbc0;color:#6c4f30;font-style:normal;font-size:13px;line-height:18px;vertical-align:1px}
+
+/* Approved human visitors use the same paper and wood controls as the game. */
+.family-avatar .human-guest{object-fit:cover;width:80%;height:80%;border-radius:50%;object-position:50% 36%;transform:scale(1.65);clip-path:circle(30% at 50% 50%)}
+.family-avatar .human-RG4{object-position:34% 30%}
+.rg-conversation{position:relative;isolation:isolate;border-radius:16px;overflow:hidden;min-height:430px;background:#d5bd8e;margin:6px -6px 16px;display:flex;align-items:flex-end}
+.rg-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;z-index:-1}
+.rg-conversation-paper{width:calc(100% - 16px);margin:230px 8px 10px;padding:17px 12px 10px;background:#fff7df;border:2px solid #b79157;border-radius:15px;box-shadow:0 4px 0 #694b3933;position:relative}
+.rg-conversation-paper .rg-now{padding:4px 0;background:none;border:0;box-shadow:none;margin:0;min-height:0}.rg-conversation-paper .rg-envelope,.rg-conversation-paper .rg-eyebrow{display:none}.rg-conversation-paper h3{font-size:14px;margin:3px 0 8px}.rg-conversation-paper .regulars-story{font-size:16px;line-height:1.75;white-space:pre-line}.rg-conversation-paper .regulars-next{font-size:12px;line-height:1.5}
+.rg-speaker{position:absolute;top:-16px;left:12px;background:#f2d39c;border:2px solid #b58a51;border-radius:8px;padding:4px 12px;font-size:14px;color:#614321}
+.regulars-footer{flex-wrap:wrap}.regulars-footer .gd-btn{max-width:170px}.regulars-footer .gd-btn [data-safe]{white-space:normal;line-height:1.2}
+
+.jr-material-preview{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:6px 0 10px}.jr-material-preview span{background:#f8edcf;border-radius:9px;padding:8px}.jr-material-preview b,.jr-material-preview small{display:block;font-size:12px;line-height:1.6}.jr-material-preview small{font-size:11px;color:#78664b}
+@media(max-height:620px){
+  #game #panels .journey-map .journey-body{grid-template-rows:minmax(150px,1fr) max-content max-content;gap:3px;padding-bottom:3px}
+  #game #panels .journey-map .jr-card{gap:2px;border-width:10px;padding:0 2px 2px}
+  #game #panels .journey-map .jr-material-preview{gap:4px;padding:2px 0}
+  #game #panels .journey-map .jr-material-preview span{padding:3px 5px}
+  #game #panels .journey-map .jr-material-preview :is(b,small){font-size:11px!important;line-height:15px}
+  #game #panels .journey-map .jr-meter>.journey-art{height:18px}
+  #game #panels .journey-map .journey-map-stage{width:100%;height:100%;aspect-ratio:auto}
+  #game #panels .journey-map .journey-map-canvas{position:static;width:100%;height:100%;aspect-ratio:auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:2px 8px}
+  #game #panels .journey-map .journey-map-canvas>:not(.journey-node){display:none}
+  #game #panels .journey-map .journey-node{position:static;width:100%;height:100%;transform:none;translate:none;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:3px;min-height:0;padding:0}
+  #game #panels .journey-map .journey-node>.journey-art:first-child{width:32px;height:32px;flex:none}
+  #game #panels .journey-map .journey-node strong{translate:none;min-width:0;width:auto;height:auto;line-height:26px;font-size:13px;padding:0 3px}
+  #game #panels .journey-map .journey-node .journey-flag{display:none}
+  #game #panels .journey-map .journey-node[aria-pressed=true] strong{background-color:#e3edbc;border-radius:5px}
+  #game #panels .journey-map .journey-node small{display:none}
+}
+
+.loop-guide{position:relative;padding:10px 27px 12px 12px;background:#fff3d4;border:1px solid #c5a26b;border-radius:12px;margin:6px 0 14px}.loop-guide p{font-size:13px;line-height:1.6;margin:0 0 7px}.loop-dismiss{position:absolute;right:0;top:0;background:none;border:0;padding:10px;font-size:18px}.discovery-toast .gd-btn2{pointer-events:auto;min-height:40px}
+
+#game #panels .rg-conversation-paper{border:14px solid transparent;border-image:url('/web/art/golden-business/family-receipt.png') 64 fill / 14px;background:none;border-radius:0;box-shadow:none;padding:12px 5px 6px}
+#game #panels .rg-speaker{background:url('/web/art/ui-kit/plank-board.png') center / 100% 100% no-repeat;border:0;border-radius:0;top:-29px;left:0;padding:12px 20px}
+#game #panels .regulars-footer .gd-btn [data-safe]{font-size:16px;white-space:normal;line-height:1.3}
+
+#game #panels .shop-regulars .rg-head.is-reading{display:none}
+#game #panels .shop-regulars .rg-conversation .rg-now{border:0;border-image:none;padding:2px 0;margin:0;background:none;gap:8px;align-items:stretch;text-align:left}
+#game #panels .shop-regulars .rg-conversation .rg-now.is-dialogue h3{display:none}
+#game #panels .shop-regulars .rg-conversation .regulars-story{font-family:'Chicken UI',sans-serif;font-weight:400;font-size:16px;line-height:1.75}
+#game #panels .shop-regulars .rg-conversation .regulars-next{font-size:12px;font-weight:400}
+#game #panels .shop-regulars .rg-conversation{min-height:410px}
+#game #panels .shop-regulars .rg-conversation .rg-scene{object-position:center center}
+#game #panels .shop-regulars .regulars-footer .gd-btn2{min-width:65px}
+@media(max-height:650px){#game #panels .shop-regulars .rg-conversation{min-height:330px}#game #panels .shop-regulars .rg-conversation-paper{margin-top:170px}}
+
+#game #panels .rg-conversation .rg-eyebrow{display:block;font-size:13px}
+#game #panels .rg-conversation .is-dialogue .rg-eyebrow{display:none}

@@ -1,3 +1,4 @@
+import {INGREDIENT_FLAVOR_GROUPS} from './ingredient-flavors.js';
 // 线索册 = 调查中心: every partner not met yet, as an investigation.
 // A row carries what the player has read (cookware, first seasoning, the second one's flavour group, other conditions),
 // how far it has got (调查 x/5 — 5 only once the exact recipe is held: studied, or clues that leave nothing open), what can be
@@ -56,7 +57,7 @@ function visibleNeeds(s,c){
     if(c.levels[4]||(c.tool&&(dated||toolLevel)))out.push(x.label);
   }
   if(c.first&&p.ingredients.length&&!usable(s,p.ingredients[0])){const id=p.ingredients[0],u=ingredientUnlockInfo(s,id);out.push(`${E.label(E.ingredient(id))}：${u.special?'只能从神社小礼得到':u.reason??'还买不到'}`);}
-  if(c.group&&!(RULES.ingredientFlavorGroups[c.group]??[]).some(id=>id!==p.ingredients[0]&&usable(s,id)))out.push(`${c.group}类现在都买不到`);
+  if(c.group&&!(INGREDIENT_FLAVOR_GROUPS[c.group]??[]).some(id=>id!==p.ingredients[0]&&usable(s,id)))out.push(`${c.group}类现在都买不到`);
   return [...new Set(out)];
 }
 
@@ -94,7 +95,7 @@ export function clueRow(s,key,now=Date.now(),guess){
     status,
     toolId:c.tool?p.toolId:null,minLevel:c.tool?p.minLevel:null,
     first:c.first&&p.ingredients.length?p.ingredients[0]:null,none:c.first&&!p.ingredients.length,
-    second:group,secondCount:group?(RULES.ingredientFlavorGroups[group]??[]).length:0,
+    second:group,secondCount:group?(INGREDIENT_FLAVOR_GROUPS[group]??[]).length:0,
     when:(info?.details??[]).filter(d=>/^(已满足|尚缺)：/.test(d)).map(d=>d.replace(/^(已满足|尚缺)：/,'')).slice(0,2),
     need,guess,ready:false,chance:0};
 }
@@ -128,7 +129,7 @@ function regionalClueRow(s,key,now){
   return {...base,held:false,scout,scoutLevel:scout?(trip?.level??0):null,scoutFind:findTrip?step:null,identify,canTry:false,narrow:false,
     progress:Math.min(CLUE_STEPS-1,c.levels.filter(Boolean).length),depth:c.levels.filter(Boolean).length,status,
     toolId:c.tool?p.toolId:null,minLevel:c.tool?p.minLevel:null,first:c.first?p.ingredients[0]:null,none:false,
-    second:c.group,secondCount:c.group?(RULES.ingredientFlavorGroups[c.group]??[]).length:0,when:[],need,guess:null,ready:false,chance:0};
+    second:c.group,secondCount:c.group?(INGREDIENT_FLAVOR_GROUPS[c.group]??[]).length:0,when:[],need,guess:null,ready:false,chance:0};
 }
 
 // The tracked partner's card, or null when nothing is tracked (or the tracked one has been met).

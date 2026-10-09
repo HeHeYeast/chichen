@@ -1,3 +1,4 @@
+import {EXTRA_REGIONS} from './extra-regions.js';
 // 主线索地区: the one region whose 寻访 reads the next clue about a partner not met yet, so the 线索册 and the map can say
 // where to go instead of asking the player to remember it.
 // The region follows the recipe's own materials first: where its characteristic seasoning comes home from (the second one,
@@ -11,10 +12,10 @@ import {REGIONAL} from './content-registry.js';
 import {regionInfo,REGIONAL_RELEASE} from './region-model.js';
 import {legacyRouteOpen} from './menu-model.js';
 
-export const CLUE_REGIONS=Object.freeze(['V','R','T','B']);
-export const ROUTE_REGION=Object.freeze({yard:'V',water:'R',wood:'T',bay:'B'});
-export const REGION_ROUTE=Object.freeze({V:'yard',R:'water',T:'wood',B:'bay'});
-export const REGION_SHORT=Object.freeze({V:'谷地',R:'溪岸',T:'茶坡',B:'风湾'});
+export const CLUE_REGIONS=Object.freeze(['V','R','T','B','O','H']);
+export const ROUTE_REGION=Object.freeze({yard:'V',water:'R',wood:'T',bay:'B',orchard:'O',mushroom:'H'});
+export const REGION_ROUTE=Object.freeze({V:'yard',R:'water',T:'wood',B:'bay',O:'orchard',H:'mushroom'});
+export const REGION_SHORT=Object.freeze({V:'谷地',R:'溪岸',T:'茶坡',B:'风湾',O:'果园',H:'菌圃'});
 // Cookware with no material to follow: 谷地 the stall, the griddle and the bread machine (its riddles all smell of wheat),
 // 溪岸 the pots for water, 茶坡 the slow ovens and the steamer, 风湾 the fryer.
 export const TOOL_REGION=Object.freeze({0:'V',1:'V',7:'V',2:'R',6:'R',4:'T',5:'T',8:'T',3:'B'});
@@ -78,6 +79,7 @@ function build(){
   }
   // the regional partners (loop batch 4): their clues are where they come from
   for(const r of REGIONAL.recipes)if(r.mode==='regional-trial'&&!out.has(r.key)){const region=REGIONAL.species.find(c=>c.key===r.key)?.region;if(CLUE_REGIONS.includes(region))out.set(r.key,Object.freeze({key:r.key,region,by:'regional'}));}
+  for(const area of EXTRA_REGIONS)for(const key of area.keys)out.set(key,Object.freeze({key,region:area.id,by:'override',why:area.hint}));
   return out;
 }
 // {key, region, by: 'override' | 'second' | 'first' | 'tool' | 'regional', material?, toolId?, why?} or null for a partner

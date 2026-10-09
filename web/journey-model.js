@@ -1,3 +1,5 @@
+import {extraRegion} from './extra-regions.js';
+import {ingredientUnlockInfo} from './ingredient-unlocks.js';
 // 寻访 region card and trip return, read-only: how much each region still has to tell (伙伴线索 / 新食材 / 特殊发现),
 // where the tracked partner's next clue is, and what a returned trip's clue adds to the 线索册 (who, what, x/5 → y/5).
 import {REGIONAL,CONTENT_TEXT} from './content-registry.js';
@@ -27,6 +29,7 @@ export function trackedTrail(s,now=Date.now()){
 export function regionCard(s,regionId,now=Date.now()){
   const partners=regionPartners(regionId).filter(k=>!k.startsWith('1:')||s.duck);
   const done=partners.filter(k=>{const [e,i]=k.split(':').map(Number);return speciesDiscovered(s,e,i)||!nextClueLayer(s,k,now)&&!regionalStep(s,k);}).length;
+  const extra=extraRegion(regionId);
   const materials=REGIONAL.materials.filter(m=>m.region===regionId&&REGIONAL_RELEASE.materials.includes(m.id));
   const finds=REGIONAL.cards.filter(c=>c.region===regionId&&c.type!=='specimen'&&REGIONAL_RELEASE.cards.includes(c.id));
   const route=explorationInfo(s,REGION_ROUTE[regionId],[],now),access=regionAccess(s,regionId);
@@ -37,7 +40,7 @@ export function regionCard(s,regionId,now=Date.now()){
     if(latest)recent=CONTENT_TEXT[latest.id]?.title??'';}
   return {id:regionId,name:access.name,short:REGION_SHORT[regionId],met:access.met,routeOnly:access.routeOnly,missing:access.missing,
     hours:route.hours,minUnits:route.minUnits,pool:route.pool.filter(p=>p.unlocked).map(p=>p.id),
-    clues:{done,total:partners.length},materials:{done:materials.filter(m=>materialIdentified(s,m.id)).length,total:materials.length},
+    clues:{done,total:partners.length},materials:extra?{done:extra.materials.filter(id=>ingredientUnlockInfo(s,id).available).length,total:2}:{done:materials.filter(m=>materialIdentified(s,m.id)).length,total:materials.length},
     finds:{done:finds.filter(c=>hasRegionalCard(s,c.id)).length,total:finds.length},recent};
 }
 

@@ -44,9 +44,9 @@ try{
   const firstTrip=(await read()).progress.trip;assert.equal(firstTrip.regional.intro.materialId,75);assert.equal(firstTrip.remaining[0],75);assert.ok(firstTrip.remaining.length<=2);
   await finish();assert.ok(Object.hasOwn((await read()).expansion.discovery.cards,'V-S1'));assert.equal((await read()).ingredients[75],undefined);await screenshot('returned-full-bag');
   checks.push('正式谷地页面120/5资格、旧队员选择、切地点/关注仍首标本，满包自动记卡且试做料留篮');
-  await record();const beforeIdentify=await read();await p.locator('[data-regional-identify]').click();const identified=await read();assert.equal(identified.cp,beforeIdentify.cp);assert.deepEqual(identified.ingredients,beforeIdentify.ingredients);assert.ok(Object.hasOwn(identified.expansion.discovery.identified,'75'));assert.equal(await p.locator('[data-regional-identify]').count(),0);await screenshot('identified-method-direction');
+  await record();const beforeIdentify=await read();assert.equal(await p.locator('[data-regional-identify]').count(),0);const identified=await read();assert.equal(identified.cp,beforeIdentify.cp);assert.deepEqual(identified.ingredients,beforeIdentify.ingredients);assert.ok(Object.hasOwn(identified.expansion.discovery.identified,'75'));assert.equal(await p.locator('[data-regional-identify]').count(),0);await screenshot('identified-method-direction');
   await trip();await claim();assert.equal((await read()).ingredients[75],1);
-  checks.push('免费辨认不增实体材料、容量30→36，首次篮中75领取一次');
+  checks.push('自动识别不增实体材料、容量30→36，首次篮中75领取一次');
   // A one-ingredient entry dish is complete once identified, so free completion never targets it.
   for(let i=0;i<3;i++){await depart();await finish();await claim();assert.notEqual((await read()).expansion.methods.freeProgress.V.targetId,'REC-V-C1');}
   await record();await screenshot('full-method-free');assert.match(await p.locator('.regional-screen').innerText(),/做法齐了/,'the one-seasoning entry dish is complete with its 方向 (线索册 words since batch 4)');assert.ok(!(await p.locator('.regional-screen').innerHTML()).includes('荠菜煎饼鸡'));
@@ -70,8 +70,8 @@ try{
   s=await read();assert.ok(s.total['0:128']>=1,'C129 is collected within four full clean batches');assert.match(await p.locator('.regional-screen').innerText(),/荠菜煎饼鸡/);await screenshot('C129-collected');
   await leaveRegional();await p.getByRole('button',{name:'农场',exact:true}).click();await openFarmSale(p,'0:128');await pickSaleAmount(p,'max');await p.locator('[data-wh-sell-one]').click();await p.locator('[data-yes]').click();
   assert.equal((await read()).farm['0:128'],0);assert.ok((await read()).total['0:128']>=1);await closeWarehouse(p);await p.getByRole('button',{name:'厨房',exact:true}).click();await open();await record();
-  await buyTrialMaterial();await p.locator('[data-regional-prepare]').click();await p.locator('[data-control-id="tool:1"]').click();await p.locator('[data-yes]').click();s=await read();assert.equal(s.batch.plan.mode,'regional-repeat');assert.equal(s.batch.plan.targetScheduled,true);assert.equal(s.batch.plan.initialIds.filter(id=>id===128).length,1);
-  checks.push(`完整合法购买/试做在${trials}批内实收C129，售空仍保留图鉴与方法，再开批安排1+23复刻`);
+  await buyTrialMaterial();await p.locator('[data-regional-prepare]').click();await p.locator('[data-control-id="tool:1"]').click();await p.locator('[data-yes]').click();s=await read();assert.equal(s.batch.plan.mode,'regional-repeat');assert.equal(s.batch.plan.targetScheduled,true);assert.equal(s.batch.plan.chance,.3);
+  checks.push(`完整合法购买/试做在${trials}批内实收C129，售空仍保留图鉴与方法，再开批仍按逐枚30%抽取`);
   assert.deepEqual(errors,[]);passed=true;await context.close();
 }catch(error){if(p&&!p.isClosed()){await writeFile(resolve(output,'failure.txt'),await p.locator('body').innerText());await screenshot('failure');}throw error;}
 finally{await browser?.close();server.kill();const report={checkedAt:new Date().toISOString(),passed,checks,screens,errors,isolatedProfile:true,acceleratedClock:true,realDeviceTest:false};await writeFile(resolve(output,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}

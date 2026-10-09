@@ -70,7 +70,7 @@ export const INGREDIENT_UNLOCK_RULES=Object.freeze(rules.map((alternatives,id)=>
 
 function requirementInfo(state,requirement,total) {
   switch(requirement.kind) {
-    case 'regional':return {description:'在地区寻访取得标本，并免费辨认后开放供货',met:Object.hasOwn(state.expansion?.discovery?.identified??{},String(requirement.id))};
+    case 'regional':return {description:'在地区寻访首次发现该素材后开放供货',met:Object.hasOwn(state.expansion?.discovery?.identified??{},String(requirement.id))};
     case 'tool':return {description:`${DATA.tools[1].find(t=>t.id===requirement.id).title_zh_CN} Lv.${requirement.level+1}`,met:(state.toolLevels?.[requirement.id]??-1)>=requirement.level};
     case 'discovery':return {description:`收取过${requirement.egg===1&&requirement.id===0?'基础品种':''}「${DATA.characters[requirement.egg].find(c=>c.id===requirement.id).title_zh_CN}」`,met:(state.total?.[`${requirement.egg}:${requirement.id}`]??0)>0};
     case 'collected':return {description:`累计收取 ${requirement.count.toLocaleString('zh-CN')} 只鸡宝或鸭宝`,met:total>=requirement.count};

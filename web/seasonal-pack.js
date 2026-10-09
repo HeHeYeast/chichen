@@ -1,3 +1,4 @@
+import {recipeChance} from './hatch-probability.js';
 // Append-only content; original recipes and character IDs remain unchanged.
 import {DATA} from './data.js';
 import {speciesKey,speciesDiscovered,discoveryCount} from './species-state.js';
@@ -51,18 +52,18 @@ export function prepareSeasonalRecipe(s,key){
   s.egg=r.egg;s.selected=[...r.ingredients];s.events={...s.events,seasonalRecipe:key};return r;
 }
 // Unrecorded handmade companions must remain discoverable after recipe secrecy.
-// Only exact two-ingredient matches can add one surprise to an ordinary batch.
-// Known recipes retain the previous explicit preparation/guarantee behavior.
+// Exact ingredient matches enter the per-egg draw on both first and repeat batches.
 export function seasonalCandidates(s,toolId,ingredients){
-  return SEASONAL_CHARACTERS.filter(c=>c.egg===s.egg&&c.toolId===toolId&&!seasonalFound(s,c)&&
+  return SEASONAL_CHARACTERS.filter(c=>c.egg===s.egg&&c.toolId===toolId&&
     c.ingredients.length===ingredients.length&&c.ingredients.every(id=>ingredients.includes(id))&&seasonalRecipeInfo(s,c.key).unlocked);
 }
 export function seasonalSurprise(s,toolId,ingredients,random=Math.random){
   const candidates=seasonalCandidates(s,toolId,ingredients);
   if(!candidates.length)return null;
   const chance=random();if(!Number.isFinite(chance)||chance<0||chance>=1)throw Error('随机数异常，未开始调理。');
-  if(chance>=.25)return null;
-  return candidates[Math.min(candidates.length-1,Math.floor(chance/.25*candidates.length))];
+  const total=candidates.reduce((n,c)=>n+recipeChance(c),0);let cursor=0;
+  for(const c of candidates){cursor+=recipeChance(c)/Math.max(1,total);if(chance<cursor)return c;}
+  return null;
 }
 export function plannedSeasonalRecipe(s,toolId,ingredients=s.selected){
   const r=seasonalRecipeInfo(s,s.events?.seasonalRecipe);

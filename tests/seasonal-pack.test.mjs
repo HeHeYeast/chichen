@@ -33,18 +33,18 @@ test('preparing new chicken or duck recipes retains active opposite egg batch, s
     prepareSeasonalRecipe(s,c.key);assert.equal(s.egg,c.egg);assert.deepEqual(s.selected,c.ingredients);assert.deepEqual(s.batch,before.batch);assert.deepEqual(s.ingredients,before.ingredients);assert.equal(s.cp,before.cp);assert.equal(s.events.seasonalRecipe,c.key);
   }
 });
-test('all sixteen actual recipes make exactly one guaranteed target, consume once, hatch, sell and retain collection',()=>{
+test('all sixteen actual recipes make independent targets, consume once, hatch, sell and retain collection',()=>{
   for(const c of CH){const s=ready(c);prepareSeasonalRecipe(s,c.key);const cp=s.cp,cost=E.cookInfo(s,c.toolId).cost;const batch=E.startBatch(s,c.toolId,NOW,rng());
-    assert.equal(batch.eggs.length,24);assert.equal(batch.eggs.filter(e=>e.id===c.id).length,1);assert.equal(batch.egg,c.egg);assert.equal(batch.seasonalRecipe,c.key);assert.equal(s.cp,cp-cost);assert.equal(s.events.seasonalRecipe,undefined);c.ingredients.forEach(i=>assert.equal(s.ingredients[i],1));
+    assert.equal(batch.eggs.length,24);assert.equal(batch.eggs.filter(e=>e.id===c.id).length>1,true);assert.equal(batch.egg,c.egg);assert.equal(batch.seasonalRecipe,c.key);assert.equal(s.cp,cp-cost);assert.equal(s.events.seasonalRecipe,undefined);c.ingredients.forEach(i=>assert.equal(s.ingredients[i],1));
     E.updateBatch(s,batch.ends+1,()=>.9);E.updateBatch(s,batch.ends+2002,()=>.9);E.updateBatch(s,batch.ends+2903,()=>.9);
     const i=batch.eggs.findIndex(e=>e.id===c.id);assert.ok(E.collect(s,i),c.key);assert.equal(E.sell(s,{[c.key]:1}),c.cp_1);assert.equal(s.total[c.key],2);assert.equal(s.farm[c.key],0);
   }
 });
-test('already recorded handmade ingredient combinations retain original sampling unless explicitly chosen',()=>{
-  for(const c of CH){const s=ready(c);s.egg=c.egg;s.selected=[...c.ingredients];const expected=originalRecipes(s,c.egg,c.toolId,c.ingredients,NOW,rng());
-    assert.deepEqual(E.startBatch(s,c.toolId,NOW,rng()).eggs.map(e=>e.id),expected);
-  }
+test('known and unknown handmade recipes share the same distribution without an explicit intent',()=>{
+ for(const c of CH){const s=ready(c);s.egg=c.egg;s.selected=[...c.ingredients];const unknown=structuredClone(s);delete unknown.total[c.key];
+ assert.deepEqual(E.startBatch(s,c.toolId,NOW,rng()).eggs.map(e=>e.id),E.startBatch(unknown,c.toolId,NOW,rng()).eggs.map(e=>e.id));}
 });
+
 test('edited ingredients or egg do not accidentally manufacture stale target and successful other cooking clears intent',()=>{
   const s=ready();prepareSeasonalRecipe(s,CH[0].key);s.selected=[];assert.equal(plannedSeasonalRecipe(s,2),null);assert.equal(E.startBatch(s,2,NOW,rng()).eggs.some(e=>e.id===120),false);assert.equal(s.events.seasonalRecipe,undefined);
   const b=ready();prepareSeasonalRecipe(b,CH[0].key);b.egg=1;assert.equal(plannedSeasonalRecipe(b,2),null);

@@ -63,11 +63,11 @@ test('phoenix time windows and special changes are explained without claiming a 
 test('all sixteen unknown handmades remain discoverable before their recipe is visible, then unlock only on collection',()=>{
   for(const c of SEASONAL_CHARACTERS){const r=RECIPE_CATALOG.find(r=>r.key===c.key),s=known(r);delete s.total[c.key];s.egg=c.egg;s.selected=[...c.ingredients];
     assert.equal(discoveredRecipe(s,c.key),null);assert.throws(()=>prepareSeasonalRecipe(s,c.key),/收取/);
-    assert.equal(seasonalSurprise(s,c.toolId,c.ingredients,()=>.249).key,c.key);assert.equal(seasonalSurprise(s,c.toolId,c.ingredients,()=>.25),null);
-    const cp=s.cp,batch=E.startBatch(s,c.toolId,NOW,()=>0);assert.equal(batch.eggs.length,24);assert.equal(batch.eggs.filter(e=>e.id===c.id).length,1);assert.equal(s.cp,cp-E.cookInfo(s,c.toolId).cost);assert.equal(discoveredRecipe(s,c.key),null);
+    assert.equal(seasonalSurprise(s,c.toolId,c.ingredients,()=>.199).key,c.key);assert.equal(seasonalSurprise(s,c.toolId,c.ingredients,()=>.2),null);
+    const cp=s.cp,batch=E.startBatch(s,c.toolId,NOW,()=>0);assert.equal(batch.eggs.length,24);assert.equal(batch.eggs.filter(e=>e.id===c.id).length,24);assert.equal(s.cp,cp-E.cookInfo(s,c.toolId).cost);assert.equal(discoveredRecipe(s,c.key),null);
     E.updateBatch(s,batch.ends+1,()=>.9);E.updateBatch(s,batch.ends+2002,()=>.9);E.updateBatch(s,batch.ends+2903,()=>.9);
     const index=batch.eggs.findIndex(e=>e.id===c.id);E.collect(s,index);assert.ok(discoveredRecipe(s,c.key));E.sell(s,{[c.key]:1});assert.ok(discoveredRecipe(s,c.key));
-    assert.equal(seasonalSurprise(s,c.toolId,c.ingredients,()=>0),null);
+    assert.equal(seasonalSurprise(s,c.toolId,c.ingredients,()=>0).key,c.key);
   }
 });
 test('surprise discovery obeys exact pairing and progress gates and rejects invalid random data before spending',()=>{

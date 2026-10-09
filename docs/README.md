@@ -16,7 +16,7 @@
 
 | 分类 | 内容 |
 |---|---|
-| 设计 `design/` | [玩法扩展](design/gameplay-expansion-design.md)、[内容资产](design/content-expansion-assets.md)、[工程迁移合同](design/engineering-integration-design.md)、[UI 信息架构](design/ui-information-architecture.md)、[视觉语言](design/ui-visual-language.md)、[界面参考](design/ui-game-references.md)、[1.5.19 循环设计](design/loop-design-20261007.md) |
+| 设计 `design/` | [玩法扩展](design/gameplay-expansion-design.md)、[内容资产](design/content-expansion-assets.md)、[工程迁移合同](design/engineering-integration-design.md)、[UI 信息架构](design/ui-information-architecture.md)、[视觉语言](design/ui-visual-language.md)、[界面参考](design/ui-game-references.md)、[当前循环调整](design/loop-rebuild-20261009.md)、[前版循环设计](design/loop-design-20261007.md) |
 | 平台 `platform/` | [云备份实施合同](platform/cloud-wechat-implementation.md)、[早期云服务调研](platform/cloud-save-design.md)、[iOS 未实施方案](platform/ios-port-plan.md) |
 | 质量 `quality/` | [设备发行清单](quality/device-release-checklist.md)、[断言覆盖](quality/verification-coverage.md)、[兼容回滚](quality/compatible-rollback.md)、[回归审计](quality/regression-and-ui-audit.md)、[美术资产盘点](quality/visual-asset-inventory.md) |
 | 内容生成 | [内容包审计](content-pack/audit.md)、[193 品种描述](species-descriptions.md)、[发现线索](species-discovery-audit.md)、[B 组数据](b-group-balance/) |

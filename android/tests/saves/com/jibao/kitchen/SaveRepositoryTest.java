@@ -486,6 +486,13 @@ public final class SaveRepositoryTest {
             check(failsCommit(c,downgrade.toString(),entry.getJSONObject("state").getJSONObject("meta").getLong("revision")),"automatic commit cannot downgrade schema and drop progress: "+entry.getString("name"));
             check(SaveRepository.load(c).getString("raw").equals(raw),"rejected downgrade preserves current schema 6 bytes");
         }
+        JSONArray loopCases=new JSONObject(Files.readString(Path.of(args[2]))).getJSONArray("loop");
+        for(int i=0;i<loopCases.length();i++){
+            JSONObject entry=loopCases.getJSONObject(i);String raw=entry.getJSONObject("state").toString();c=context();SaveRepository.save(c,raw,true);
+            check(SaveRepository.load(c).getString("raw").equals(raw),"loop frozen ticket byte round trip: "+entry.getString("name"));
+        }
+        bad=new JSONObject(regionalBatch.toString());bad.getJSONObject("batch").getJSONObject("plan").put("chance",.99);
+        check(failsSave(context(),bad.toString(),true),"per-egg chance outside released tiers rejected");
         System.out.println("SaveRepository: "+assertions+" behavioral assertions passed (AOSP JSON + real files; JVM AtomicFile adapter).");
     }
 }

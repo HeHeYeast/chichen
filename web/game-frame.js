@@ -32,11 +32,11 @@ const icon=(name,cls='')=>{const src=ART[name]??ART.question;
   if(src==='barn'||src==='book'||src==='chick'){const sprite=src==='chick'?resolveSprite('/web/art/chick-v4-0.png'):resolveSprite(uiIcon(src==='barn'?5:6));return `<span class="gf-art ${cls}" aria-hidden="true">${spriteSVG(sprite)}</span>`;}
   return `<img class="gf-art ${cls}" src="${src}" alt="" aria-hidden="true" draggable="false">`;};
 export const HELP_CARDS={
-  business:[['basket','缺的伙伴点篮子去做'],['star','凑齐菜单，菜单伙伴多卖 25%'],['list','订单够了一下交付，有的带回情报']],
-  orders:[['list','客人要的伙伴写在格子里'],['check','够数就能交付'],['pan','缺的点「做」去厨房']],
+  business:[['basket','点货篮选出品，点「换菜单」改组合'],['star','凑齐菜单，对应出品售价 +25%'],['list','订单够数可交付；不足时点「去做」']],
+  orders:[['list','点订单查看品种、数量和报酬'],['check','可用库存够数后，点「交付」'],['pan','缺货时点「去做」，准备补货']],
   journey:[['map','选地区和方向'],['chick','同行已帮你选好'],['bag','回来点「全部收下」']],
   warehouse:[['box','伙伴和材料都在这里'],['coin','「卖掉多余」只卖超过锁定数量的'],['basket','「挑着卖」只卖点中的']],
-  nextBatch:[['star','「推荐」挑现在最值得做的几锅，追踪的伙伴排第一'],['pan','新伙伴、订单、多赚可以分开细看'],['coin','缺的调料开火时一起买']],
+  nextBatch:[['star','推荐综合追踪目标、订单和收益'],['pan','新伙伴按线索进度列出可尝试的目标'],['coin','开火前确认费用和要补买的调味']],
   book:[['book','品种、配方、收藏、日历'],['question','没收录的点开看线索'],['pan','「去做」打开下一锅']],
   shrine:[['sign','每天求一签'],['gift','小礼每天领一次'],['letter','来信开放节日伙伴']],
   harvest:[['chick','这一锅收好了'],['coin','多的可以直接卖'],['pan','接着做下一锅']],
@@ -45,7 +45,8 @@ export const HELP_CARDS={
 };
 export function helpCardsMarkup(key){
   const cards=HELP_CARDS[key]??[];
-  return `<div class="gf-help-cards" role="list">${cards.map(([name,line])=>`<div class="gf-help-card" role="listitem">${icon(name)}<span>${esc(line)}</span></div>`).join('')}</div>`;
+  const detail=key==='nextBatch'?`<section class="gf-help-detail"><h3>四个方向怎么选？</h3><p>推荐会综合追踪目标、订单缺口和收入，挑出现在值得做的几锅。新伙伴按线索册顺序列出最近的目标；订单看当前需求，多赚比较每种厨具的预计每小时净收益。</p><h3>配方还不完整怎么办？</h3><p>新伙伴卡片会标出下一步。已知配方可以直接准备；线索缩小到某一类调味时，可以去试做，自己选择剩余调味。还缺线索就去对应地区寻访。调味标签与线索中的类别一致。</p><h3>准备和开火有什么区别？</h3><p>准备只打开配方，不扣钱、不消耗材料。开火前会显示本锅费用，缺少且可以买到的调味会一起购买。如果上一锅还没收完，会先提醒你回去收取。</p></section>`:'';
+  return `<div class="gf-help-cards" role="list">${cards.map(([name,line])=>`<div class="gf-help-card" role="listitem">${icon(name)}<span>${esc(line)}</span></div>`).join('')}</div>${detail}`;
 }
 export const frameIcon=icon;
 

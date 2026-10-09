@@ -7,10 +7,10 @@ const root=new URL('../',import.meta.url);
 test('daily UI keeps the original seven while release always includes A-L and all final integration suites',()=>{
   assert.deepEqual(selectUIChecks(),['skill-art','integration','tool-strip','recipe-book','save-ui','resume','kitchen-care']);
   const release=selectUIChecks({release:true,only:'save-ui'});
-  assert.equal(release.length,29);assert.equal(new Set(release).size,29);
+  assert.equal(release.length,30);assert.equal(new Set(release).size,30);
   assert.ok(release.includes('ui-fit'));
   assert.ok(release.includes('packaged-mobile'));
-  assert.ok(release.includes('legacy-zoom'));
+  assert.ok(release.includes('legacy-zoom'));assert.ok(release.includes('loop-review'));
   for(const letter of 'abcdefghijkl')assert.ok(release.includes('work-'+letter));
   assert.ok(release.includes('book-navigation')&&release.includes('takeover-ui')&&release.includes('compatible-rollback'));
   assert.deepEqual(selectUIChecks({release:true,only:'misspelled-name'}),release,'release cannot be weakened by an inherited environment filter');
@@ -26,7 +26,7 @@ test('every release gate resolves to an existing real script and preserves each 
   const options={packagePath:'playwright-package',base:'http://127.0.0.1:4173',chrome:'chrome.exe',output:'qa-output'};
   for(const name of selectUIChecks({release:true})){
     const args=uiCheckArguments(name,options);assert.ok(existsSync(new URL(args[0],root)),name);assert.equal(args[1],options.packagePath);
-    if(name.startsWith('work-')||['book-navigation','takeover-ui','compatible-rollback','kitchen-golden','farm-ui-v1','release-final','ui-fit','packaged-mobile','legacy-zoom'].includes(name))assert.equal(args.length,2,'self-hosted suites own their isolated server');
+    if(name.startsWith('work-')||['book-navigation','takeover-ui','compatible-rollback','kitchen-golden','farm-ui-v1','release-final','ui-fit','packaged-mobile','legacy-zoom','loop-review'].includes(name))assert.equal(args.length,2,'self-hosted suites own their isolated server');
     else assert.equal(args[2],options.base);
   }
   assert.equal(uiCheckArguments('skill-art',options)[3],options.chrome);
@@ -41,7 +41,7 @@ test('release reports cannot pass on only the old seven, a duplicated gate, an i
   assert.equal(uiVerificationReport({required,checks:checks.map((c,i)=>i===required.length-1?{...c,passed:false,exitCode:1}:c)}).passed,false);
   assert.equal(uiVerificationReport({required,checks,error:'server failed'}).passed,false);
   assert.equal(uiVerificationReport({required:[],checks:[]}).passed,false);
-  assert.equal(uiVerificationReport({required,checks}).expectedCount,29);
+  assert.equal(uiVerificationReport({required,checks}).expectedCount,30);
 });
 
 test('release preflight requires read-only runtime/native generation checks, current asset declarations and the full UI release set',()=>{

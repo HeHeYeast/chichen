@@ -55,7 +55,7 @@ async function trip({place,focus,members}){
   return result;
 }
 async function until(card,options,limit){for(let i=0;i<limit;i++){const r=await trip(options);if((await read()).expansion.discovery.cards[card])return i+1;void r;}throw Error(`${card} not found within ${limit} complete trips`);}
-async function identify(id){await open();await tab('record');await p.locator(`[data-regional-identify="${id}"]`).click();assert.ok(Object.hasOwn((await read()).expansion.discovery.identified,String(id)));}
+async function identify(id){await open();await tab('record');assert.equal(await p.locator(`[data-regional-identify="${id}"]`).count(),0);assert.ok(Object.hasOwn((await read()).expansion.discovery.identified,String(id)));}
 // 线索册 (batch 4): a regional partner is tracked from its region page; every trip there then reads its next layer
 async function track(recipeId){await open();await tab('record');await p.locator(`[data-regional-method="${recipeId}"]`).click();const b=p.locator('[data-regional-track]');if(await b.getAttribute('aria-pressed')!=='true')await b.click();
   const key=(await import('../web/content-registry.js')).REGIONAL.recipes.find(r=>r.id===recipeId).key;assert.equal((await read()).progress.knowledge.tracked,key);}
@@ -115,7 +115,7 @@ try{
     for(const i of recipe.ingredients){const st=await read();if(!(st.ingredients[i.id]>0))await buy(i.id);}
     await open();await tab('record');await p.locator(`[data-regional-method="${target}"]`).click();await p.locator('[data-regional-prepare]').click();
     s=await read();assert.equal(s.expansion.prepareMode.recipeId,target);
-    text=await cook(recipe.toolId);assert.match(text,/地区试做/);
+    text=await cook(recipe.toolId);assert.match(text,/地区配方/);
     s=await read();if(recipe.toolId===8)assert.ok(s.batch.plan.initialIds.filter(id=>id!==Number(recipe.key.split(':')[1])).every(id=>[114,115].includes(id)||id<128));
     await harvest();batches++;
   }
@@ -133,7 +133,7 @@ try{
   await earn('REC-V-C3');await stock([75,9]);
   await open();await tab('record');await p.locator('[data-regional-method="REC-V-C3"]').click();await p.locator('[data-regional-prepare]').click();
   await tidy();await p.locator('[data-control-id="tool:8"]').click();await p.locator('.cooking-dialog').waitFor();
-  assert.match(await p.locator('[data-cook-mode]').innerText(),/地区试做/);
+  assert.match(await p.locator('[data-cook-mode]').innerText(),/地区配方/);
   const regionalBadge=await p.locator('.cooking-dialog [data-preview-species="0:115"] small').first().evaluate(e=>e.textContent);
   assert.equal(regionalBadge,'可能出现','regional steamer lists shaomai only as a weighted companion');
   await screenshot('steamer-regional-confirm');await p.locator('[data-yes]').click();
@@ -141,9 +141,9 @@ try{
   await stock([9]);await p.locator('[data-control-id="ingredient"]').click();await p.locator('[data-nb-lens="manual"]').click();await p.locator('.ingredients-grid [data-id="9"]').click();await p.locator('[data-ok]').click();
   await p.locator('[data-control-id="tool:8"]').click();await p.locator('.cooking-dialog').waitFor();
   assert.equal(await p.locator('[data-cook-mode]').count(),0,'ordinary mode shows no regional banner');
-  assert.equal(await p.locator('.cooking-dialog [data-preview-species="0:115"] small').first().evaluate(e=>e.textContent),'已安排1只','ordinary steamer keeps its per-recipe guarantee');
+  assert.equal(await p.locator('.cooking-dialog [data-preview-species="0:115"] small').first().evaluate(e=>e.textContent),'可能出现','ordinary steamer uses probability without fixed inserts');
   await screenshot('steamer-ordinary-confirm');await p.locator('[data-no]').click();
-  checks.push('V-C3以真实寻访补全后蒸笼开火：地区模式只用旧加权伴随（114/115）、无旧保证插入；改回普通面粉蒸笼，确认页仍显示烧麦鸡“已安排1只”');
+  checks.push('V-C3以真实寻访补全后蒸笼开火：地区模式只用旧加权伴随（114/115）、无旧保证插入；改回普通面粉蒸笼，确认页显示烧麦鸡“可能出现”，不再承诺固定只数');
 
   await earn('REC-V-C6');let tries=0;
   while(!(await read()).total['0:133']&&tries<4){await stock([76,0]);await open();await tab('record');await p.locator('[data-regional-method="REC-V-C6"]').click();await p.locator('[data-regional-prepare]').click();await cook(0);await harvest();tries++;}

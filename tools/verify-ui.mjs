@@ -11,7 +11,7 @@ export const DEFAULT_UI_CHECKS=Object.freeze(['skill-art','integration','tool-st
 // popup-swipe: popups close when dragged up or off to the side (runs with the release set, not the daily seven)
 export const SWIPE_UI_CHECKS=Object.freeze(['popup-swipe']);
 export const EXPANSION_UI_CHECKS=Object.freeze([...Array.from({length:12},(_,i)=>'work-'+String.fromCharCode(97+i)),'book-navigation','takeover-ui','compatible-rollback']);
-export const FINAL_UI_CHECKS=Object.freeze(['kitchen-golden','farm-ui-v1','release-final','ui-fit','packaged-mobile','legacy-zoom']);
+export const FINAL_UI_CHECKS=Object.freeze(['kitchen-golden','farm-ui-v1','release-final','ui-fit','packaged-mobile','legacy-zoom','loop-review']);
 export function selectUIChecks({release=false,only=null}={}){
   const all=[...DEFAULT_UI_CHECKS,...EXPANSION_UI_CHECKS,...SWIPE_UI_CHECKS,...FINAL_UI_CHECKS];
   if(release)return all;

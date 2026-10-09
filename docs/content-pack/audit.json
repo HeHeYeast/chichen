@@ -3462,12 +3462,12 @@
     "web/integration-data.js": "543b4c3f7577dd86ffd76847e6258075de1a326bbf8b95be0532157d732784d9",
     "web/recipes.js": "66766bfc5efb19d2b8bae6974291921aa7f8f660ff1ed960903cf00a361adfba",
     "web/recipe-catalog-data.js": "5c5edfe96146796803c3dd75ae97cf9cf40b70a331a145854df0a77354348409",
-    "web/ingredient-unlocks.js": "a7ef9edbb44600846000e501bdff8683e250d6299b458ee5f7fb13bcf0a4714b",
-    "web/seasonal-pack.js": "0bb865f4a75f0313c19cb0c318957791c6c48626c83ab8e21a867d9501f98fdd",
+    "web/ingredient-unlocks.js": "95895d863805ebb323448becc77ea2133b251ce2bde24d4ac698fa8cd081eb66",
+    "web/seasonal-pack.js": "a6152c4d14e3dffb5990d28e70007f65cd8067856468b9080403dab79018beeb",
     "web/trade-data.js": "e1bde0687f2bd687d01113dc3ab95d31c2f1e4e79af5d30ffa237d4740cea600",
-    "web/engine.js": "035c2f978657bd9652d9d60dddae50467adf76916fb0d7994d2ae8afbb5864cd",
+    "web/engine.js": "52f2970edfbcf089eb6e23bbb4452122785dcfa48d71e53b2222831b59e05839",
     "web/shrine.js": "b99e0a3d209b65b157d2c53d5ac004653e40650aa932378ed6ab57065de0c40a",
-    "docs/gameplay-expansion-design.md": "f5c866159d4658d26658ecc7ea1015a6b33f8bad83c4dbc0259496d59aa9abf3",
-    "docs/ui-information-architecture.md": "3244eb2b6a8e464173e23002a106cbf43fda18bf1e22e418f7864ee0041496ea"
+    "docs/design/gameplay-expansion-design.md": "c6c389fc8f99b3004f3d896346d99c5bdbb77cf9db7d9f45bbb980bfb05dc76f",
+    "docs/design/ui-information-architecture.md": "137c777067db35da29cf12dea1c0b09896bddae2c824b429dfb840494208be0f"
   }
 }

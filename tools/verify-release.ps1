@@ -43,7 +43,7 @@ try {
     Invoke-ReleaseCheck 'Native hatch notifications' $verificationShell @('-NoProfile','-ExecutionPolicy','Bypass','-File',(Join-Path $verificationRoot 'android\tests\run-notification-tests.ps1'),'-JavaHome',$JavaHome)
     Invoke-ReleaseCheck 'Backup and update simulations' 'python' @('-m','unittest','discover','-s','tools/tests','-v')
     Invoke-ReleaseCheck 'Browser UI regression' 'node' @('tools/verify-ui.mjs','--release')
-    Write-Output "Release preflight passed: all $verificationRequiredChecks required checks succeeded (29 browser suites including packaged offline touch and legacy WebView geometry regression)."
+    Write-Output "Release preflight passed: all $verificationRequiredChecks required checks succeeded (30 browser suites including packaged offline touch and legacy WebView geometry regression)."
 } finally {
     Pop-Location
     $result = [ordered]@{checkedAt=[DateTime]::UtcNow.ToString('o');passed=($verificationChecks.Count -eq $verificationRequiredChecks -and @($verificationChecks | Where-Object {-not $_.passed}).Count -eq 0);expectedCount=$verificationRequiredChecks;completedCount=$verificationChecks.Count;checks=@($verificationChecks.ToArray())}

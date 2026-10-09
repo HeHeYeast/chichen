@@ -257,7 +257,7 @@ public final class SaveRepository {
             if(!java.util.Arrays.asList("running","returned","settled","recalled").contains(status))throw new IOException("探索状态无效");
             integer(t,"version",1,s.getInt("version")>=4?2:1);integer(t,"startedAt",0,9007199254740991d);integer(t,"endAt",0,9007199254740991d);
             if(!t.getString("id").equals("trip-"+p.getLong("tripSequence")))throw new IOException("探索事务无效");
-            String route=t.getString("routeId");int hours=route.equals("yard")?2:route.equals("water")?6:route.equals("wood")?10:route.equals("bay")?12:0;
+            String route=t.getString("routeId");int hours=route.equals("yard")?2:route.equals("water")?6:route.equals("wood")?10:route.equals("bay")?12:route.equals("orchard")?6:route.equals("mushroom")?10:0;
             if(route.equals("bay")&&t.getInt("version")!=2)throw new IOException("海湾只接受地区寻访票据");
             if(hours==0||t.getLong("endAt")-t.getLong("startedAt")!=hours*3600000L*(t.getJSONObject("snapshot").optBoolean("light",false)?0.8:1))throw new IOException("探索时间无效");
             org.json.JSONArray members=t.getJSONArray("members"),remaining=t.getJSONArray("remaining");
@@ -374,11 +374,12 @@ public final class SaveRepository {
         java.util.Collections.sort(ids);return ids;
     }
     private static void validateBatchPlan(JSONObject batch,int version) throws Exception {
-        JSONObject plan=batch.getJSONObject("plan");integer(plan,"version",1,1);
+        JSONObject plan=batch.getJSONObject("plan");integer(plan,"version",1,2);
         String mode=plan.getString("mode");
         if(!java.util.Arrays.asList("legacy","regional-trial","regional-repeat","local-alternative").contains(mode))throw new IOException("批次模式无效");
         if(!(plan.get("targetScheduled") instanceof Boolean)||!(plan.get("finished") instanceof Boolean)||!plan.has("roll")||!plan.has("recipeId")||!plan.has("targetKey"))throw new IOException("批次计划字段无效");
         boolean regional=mode.startsWith("regional");int targetId=-1;
+        if(plan.getInt("version")==2&&!regional)throw new IOException("逐枚计划类型无效");
         if(mode.equals("legacy")) {
             if(!plan.isNull("recipeId")||!plan.isNull("targetKey")||plan.getBoolean("targetScheduled")||!plan.isNull("roll"))throw new IOException("旧池批次混入地区目标");
         } else if(mode.equals("local-alternative")) {
@@ -390,9 +391,11 @@ public final class SaveRepository {
             JSONObject recipe=plan.get("recipeId") instanceof String?findById("recipes",plan.getString("recipeId")):null;
             if(recipe==null||!recipe.getString("key").equals(plan.get("targetKey"))||batch.getInt("egg")!=recipe.getInt("egg")||batch.getInt("tool")!=recipe.getInt("toolId"))throw new IOException("地区目标与方法不符");
             targetId=Integer.parseInt(recipe.getString("key").split(":")[1]);
+            if(plan.getInt("version")==1){
             if(!plan.isNull("roll")){number(plan,"roll",0,1);if(plan.getDouble("roll")==1)throw new IOException("试做概率票据越界");if(plan.getBoolean("targetScheduled")!=(plan.getDouble("roll")<.25))throw new IOException("试做结果与概率票据不符");}
             else if(!plan.getBoolean("targetScheduled"))throw new IOException("保证批次未安排目标");
             if(mode.equals("regional-repeat")&&(!plan.getBoolean("targetScheduled")||!plan.isNull("roll")))throw new IOException("复刻必须保证目标");
+            }else if(!plan.isNull("roll")||!(plan.get("chance") instanceof Number)||!(plan.getDouble("chance")==.1||plan.getDouble("chance")==.2||plan.getDouble("chance")==.3))throw new IOException("逐枚概率票据无效");
             integer(batch,"level",recipe.getInt("toolLevel"),2);integer(batch.getJSONObject("rules"),"kitchenLevel",recipe.getInt("kitchenLevel"),3);
             if(!sortedIds(batch.getJSONArray("ingredients"),false).equals(sortedIds(recipe.getJSONArray("ingredients"),true)))throw new IOException("地区配方材料不精确");
         }
@@ -407,7 +410,7 @@ public final class SaveRepository {
             if(!eggs.getJSONObject(i).getBoolean("collected"))allCollected=false;
             for(int j=0;j<6;j++){Object v=tickets.get(j);if(!(v instanceof Number))throw new IOException("变化票据无效");double n=((Number)v).doubleValue();if(!Double.isFinite(n)||n<0||n>=1)throw new IOException("变化票据越界");}
         }
-        if(regional&&scheduled!=(plan.getBoolean("targetScheduled")?1:0))throw new IOException("地区安排目标数量无效");
+        if(regional&&(plan.getInt("version")==1?scheduled!=(plan.getBoolean("targetScheduled")?1:0):(scheduled>0)!=plan.getBoolean("targetScheduled")))throw new IOException("地区安排目标数量无效");
         if(!mode.equals("legacy")&&allCollected!=plan.getBoolean("finished"))throw new IOException("地区收锅结算状态无效");
     }
     private static void exactKeys(JSONObject o,String label,String... keys) throws Exception {

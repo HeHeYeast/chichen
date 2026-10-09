@@ -55,7 +55,7 @@ async function trip({place,focus,members}){
   return result;
 }
 async function until(card,options,limit){for(let i=0;i<limit;i++){const r=await trip(options);if((await read()).expansion.discovery.cards[card])return i+1;void r;}throw Error(`${card} not found within ${limit} complete trips`);}
-async function identify(id){await open();await tab('record');await p.locator(`[data-regional-identify="${id}"]`).click();assert.ok(Object.hasOwn((await read()).expansion.discovery.identified,String(id)));}
+async function identify(id){await open();await tab('record');assert.equal(await p.locator(`[data-regional-identify="${id}"]`).count(),0);assert.ok(Object.hasOwn((await read()).expansion.discovery.identified,String(id)));}
 async function buy(id,count=1){while(await p.locator('.screen-panel .close').count())await p.locator('.screen-panel .close').first().click();await p.getByRole('button',{name:'厨房',exact:true}).click();await p.getByRole('button',{name:'补给 · 小卖部',exact:true}).click();await p.locator('[data-shop-tab="1"]').click();await p.locator(`[data-shop-ingredient-details="${id}"]`).click();for(let i=0;i<count;i++){await p.locator(`[data-shop-buy-ingredient="${id}"]`).click();await p.locator('[data-yes]').click();}await p.getByRole('button',{name:'厨房',exact:true}).click();}
 // A careful player cleans before a trial batch; dirt may otherwise turn the scheduled egg sick.
 async function tidy(){await p.locator('[data-control-id="clean"]').click();const yes=p.locator('[data-yes]');if(await yes.isEnabled())await yes.click();else await p.locator('[data-no]').click();}
@@ -77,7 +77,7 @@ try{
   await open();await p.locator('[data-journey-back]').click();await p.locator('[data-regional-region="T"]').click();
   assert.equal((await trip({place:'T:1',focus:'lore',members:['0:10']})).cardId,'T-S1');await identify(79);
   await tab('record');await p.locator('[data-regional-card="T-N2"] summary').click();const text=await p.locator('.regional-screen').innerText();
-  assert.match(text,/先找到并辨认「[^」]+」的标本/,'T-N2 names the unfound osmanthus only by its riddle');
+  assert.match(text,/先找到「[^」]+」对应的食材/,'T-N2 names the unfound osmanthus only by its riddle');
   await p.locator('[data-regional-method="REC-T-D1"]').click();const detail=await p.locator('[data-regional-method-detail]').innerText();
   assert.match(detail,/厨房 Lv\.4/);assert.match(detail,/烧水壶/);await screenshot('tea-kettle-lock');
   for(const [width,height] of [[320,568],[1280,900]]){await p.setViewportSize({width,height});await fit();await screenshot(`tea-record-${width}`);}

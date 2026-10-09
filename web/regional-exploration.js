@@ -7,7 +7,7 @@ import {discoveryCount} from './progression.js';
 import {economicRandom,RNG_ALGORITHM} from './rng.js';
 import {randomUnit} from './progression.js';
 import {REGIONAL_RELEASE,regionInfo,regionalCard,hasRegionalCard,materialIdentified,regionalCompanion,teamMeets,regionCardCandidates,regionalCardChance,nextRegionalFact,recordRegionalTrip} from './region-model.js';
-import {regionalRecipeInfo,regionalMethodPlan,settleRegionalMethod,refreshRegionalDirections} from './regional-methods.js';
+import {regionalRecipeInfo,regionalMethodPlan,settleRegionalMethod,refreshRegionalDirections,identifyMaterial} from './regional-methods.js';
 import {newOperationsEnabled,assertNewOperation} from './rollback-policy.js';
 import {trackedKey} from './knowledge.js';
 import {isRegionalKey,regionOfKey,regionalGate} from './regional-clues.js';
@@ -127,6 +127,8 @@ export function settleRegionalTrip(s,trip){
   refreshRegionalDirections(s,ticket.regionId);
   const methodId=settleRegionalMethod(s,ticket.regionId,ticket.method);
   recordRegionalTrip(s,trip,outcome.cardId);
+  const foundMaterial=regionalCard(outcome.cardId)?.material;
+  if(foundMaterial!=null&&!materialIdentified(s,foundMaterial))identifyMaterial(s,foundMaterial,{settlement:true});
   if(s.expansion.facts)reduceFacts(s,[{kind:'tripComplete',tripId:trip.id,region:ticket.regionId,placeId:ticket.placeId,focus:ticket.focus,cardId:outcome.cardId,members:ticket.companions.map(c=>({key:c.key,gather:c.G,discover:c.F,environment:c.environment,traits:[...c.traits]}))}]);
   // Cargo is consumed only by a complete return: no sale CP, no order/business counts.
   if(trip.cargo&&!trip.cargo.processed){

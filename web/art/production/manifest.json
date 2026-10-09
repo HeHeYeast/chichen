@@ -8399,45 +8399,25 @@
       "kind": "regulars",
       "region": "V",
       "identityKey": null,
-      "productionStatus": "FINAL",
-      "runtimeQA": "passed",
-      "sourceHash": "8c9efbeea31601c193b4891295c306860d5dda9ce5eb29680fc92c5de159ffc3",
+      "productionStatus": "art-approved",
+      "sourceHash": "2429fe85de374e0c70e97a2d14fc27158d2b5e308cdc327e18f0226c25be5abb",
       "safeArea": null,
       "variants": {
         "portrait": {
-          "path": "/web/art/production/ART-RG1/8cbbf14ee801/portrait.png",
-          "width": 256,
-          "height": 256,
-          "sha256": "cdf42f446404ac918174da401508a7b2d86ca735520fd890b7c225d63a325b9d",
-          "visibleBounds": [
-            40,
-            30,
-            216,
-            225
-          ],
-          "centroid": [
-            0.4999374651206852,
-            0.5125974139542511
-          ],
-          "scale": 0.2672527472527473,
-          "translation": [
-            -43.11560439560441,
-            -60.59868131868133
-          ],
-          "bounds": [
-            40,
-            30,
-            176,
-            195
-          ],
-          "groundAnchor": [
-            0.5,
-            0.87890625
-          ],
+          "path": "/web/art/production/ART-RG1/loop-20261009/scene.png",
+          "width": 1086,
+          "height": 1448,
+          "sha256": "2429fe85de374e0c70e97a2d14fc27158d2b5e308cdc327e18f0226c25be5abb",
+          "available": true
+        },
+        "scene": {
+          "path": "/web/art/production/ART-RG1/loop-20261009/scene.png",
+          "width": 1086,
+          "height": 1448,
+          "sha256": "2429fe85de374e0c70e97a2d14fc27158d2b5e308cdc327e18f0226c25be5abb",
           "available": true
         }
-      },
-      "metadata": "/web/art/production/ART-RG1/8cbbf14ee801/metadata.json"
+      }
     },
     "ART-RG2": {
       "id": "ART-RG2",
@@ -8445,45 +8425,25 @@
       "kind": "regulars",
       "region": "R",
       "identityKey": null,
-      "productionStatus": "FINAL",
-      "runtimeQA": "passed",
-      "sourceHash": "5e5926e17a64fc3077f44be1e4284b1df270c9f5b22c7bce32b5eadc9a5a3edd",
+      "productionStatus": "art-approved",
+      "sourceHash": "e9b2dff937a3abef6a128ea769d30d0b1864995488f5a879ea958c79d58be4ec",
       "safeArea": null,
       "variants": {
         "portrait": {
-          "path": "/web/art/production/ART-RG2/e5878d596da0/portrait.png",
-          "width": 256,
-          "height": 256,
-          "sha256": "8aa2b959d925a26663e6ded681a15e46233233dc9778f3b35b63f3c40f7f3507",
-          "visibleBounds": [
-            38,
-            30,
-            218,
-            225
-          ],
-          "centroid": [
-            0.4863714597549227,
-            0.5194604482064633
-          ],
-          "scale": 0.27441466854724966,
-          "translation": [
-            -47.89179125528915,
-            -58.635937940761636
-          ],
-          "bounds": [
-            38,
-            30,
-            180,
-            195
-          ],
-          "groundAnchor": [
-            0.5,
-            0.87890625
-          ],
+          "path": "/web/art/production/ART-RG2/loop-20261009/scene.png",
+          "width": 1086,
+          "height": 1448,
+          "sha256": "e9b2dff937a3abef6a128ea769d30d0b1864995488f5a879ea958c79d58be4ec",
+          "available": true
+        },
+        "scene": {
+          "path": "/web/art/production/ART-RG2/loop-20261009/scene.png",
+          "width": 1086,
+          "height": 1448,
+          "sha256": "e9b2dff937a3abef6a128ea769d30d0b1864995488f5a879ea958c79d58be4ec",
           "available": true
         }
-      },
-      "metadata": "/web/art/production/ART-RG2/e5878d596da0/metadata.json"
+      }
     },
     "ART-RG3": {
       "id": "ART-RG3",
@@ -8491,45 +8451,25 @@
       "kind": "regulars",
       "region": "T",
       "identityKey": null,
-      "productionStatus": "FINAL",
-      "runtimeQA": "passed",
-      "sourceHash": "e9f0afbaf35a1f50b52925276ef5c29b9dcc97a8b1b04ccfea1dc1a23efc381c",
+      "productionStatus": "art-approved",
+      "sourceHash": "530ac97578e8fa9fce2e58ada8d8fa8e60b00e4309434df902842b18b15acc44",
       "safeArea": null,
       "variants": {
         "portrait": {
-          "path": "/web/art/production/ART-RG3/e73f7dfa1a4f/portrait.png",
-          "width": 256,
-          "height": 256,
-          "sha256": "a44451a03e7437a026dc3829111bb7861bbb3ce97858c4ad9f28847a97db2156",
-          "visibleBounds": [
-            45,
-            30,
-            211,
-            225
-          ],
-          "centroid": [
-            0.5084116639400773,
-            0.5311086888222589
-          ],
-          "scale": 0.26542974079126874,
-          "translation": [
-            -38.610368349249654,
-            -58.653533424283765
-          ],
-          "bounds": [
-            45,
-            30,
-            166,
-            195
-          ],
-          "groundAnchor": [
-            0.5,
-            0.87890625
-          ],
+          "path": "/web/art/production/ART-RG3/loop-20261009/scene.png",
+          "width": 1086,
+          "height": 1448,
+          "sha256": "530ac97578e8fa9fce2e58ada8d8fa8e60b00e4309434df902842b18b15acc44",
+          "available": true
+        },
+        "scene": {
+          "path": "/web/art/production/ART-RG3/loop-20261009/scene.png",
+          "width": 1086,
+          "height": 1448,
+          "sha256": "530ac97578e8fa9fce2e58ada8d8fa8e60b00e4309434df902842b18b15acc44",
           "available": true
         }
-      },
-      "metadata": "/web/art/production/ART-RG3/e73f7dfa1a4f/metadata.json"
+      }
     },
     "ART-RG4": {
       "id": "ART-RG4",
@@ -8537,45 +8477,25 @@
       "kind": "regulars",
       "region": "B",
       "identityKey": null,
-      "productionStatus": "FINAL",
-      "runtimeQA": "passed",
-      "sourceHash": "a0c2782b295fd7ab9383e7387418654f6b0dc463dc6f8ad37485e8c32818451d",
+      "productionStatus": "art-approved",
+      "sourceHash": "39154b80bdc03879a525ce097baa0ceb447e0ab8214f74ad4f03ca4998cc59c9",
       "safeArea": null,
       "variants": {
         "portrait": {
-          "path": "/web/art/production/ART-RG4/385d364aca18/portrait.png",
-          "width": 256,
-          "height": 256,
-          "sha256": "e0565052692692d6eeb2f0df570c8a840207d391e4457e53a7dd79da323482f1",
-          "visibleBounds": [
-            45,
-            30,
-            211,
-            225
-          ],
-          "centroid": [
-            0.4962464627817498,
-            0.5235233353160018
-          ],
-          "scale": 0.24784713375796177,
-          "translation": [
-            -27.6192101910828,
-            -59.4728152866242
-          ],
-          "bounds": [
-            45,
-            30,
-            166,
-            195
-          ],
-          "groundAnchor": [
-            0.5,
-            0.87890625
-          ],
+          "path": "/web/art/production/ART-RG4/loop-20261009/scene.png",
+          "width": 1086,
+          "height": 1448,
+          "sha256": "39154b80bdc03879a525ce097baa0ceb447e0ab8214f74ad4f03ca4998cc59c9",
+          "available": true
+        },
+        "scene": {
+          "path": "/web/art/production/ART-RG4/loop-20261009/scene.png",
+          "width": 1086,
+          "height": 1448,
+          "sha256": "39154b80bdc03879a525ce097baa0ceb447e0ab8214f74ad4f03ca4998cc59c9",
           "available": true
         }
-      },
-      "metadata": "/web/art/production/ART-RG4/385d364aca18/metadata.json"
+      }
     }
   },
   "runtimeReportHash": "b41db20a893b1c1dfd0f2e4e1ee74954ba15a13bfe69e6f22ffc579589470781"

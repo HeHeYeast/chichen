@@ -118,3 +118,16 @@ test('a paused region retains an already learned local alternative and its origi
   s.expansion.methods.directions.push('ALT-V');s.expansion.methods.full.push('ALT-V');s.ingredients={76:1};
   await isolatedPolicy(allOff,async load=>{const methods=await load('regional-methods'),e=await load('engine');methods.prepareLocalAlternative(s,'ALT-V');e.startBatch(s,4,NOW);assert.equal(s.batch.plan.mode,'local-alternative');assert.ok(s.batch.plan.initialIds.every(id=>id<128));e.normalizeSave(s,NOW);});
 });
+
+test('paused build still automatically recognizes the first material from an already running trip',async()=>{
+ const s=base();s.expansion.discovery.cards={};s.expansion.discovery.identified={};s.expansion.regions.introSpecimenDone=[];
+ departRegional(s,{regionId:'V',placeId:'V:0',focus:'specimen',members:['0:0']},NOW);
+ await isolatedPolicy(allOff,async load=>{
+  const [engine,explore]=await Promise.all([load('engine'),load('exploration')]);
+  engine.advanceWorld(s,s.progress.trip.endAt,()=>.99);
+  assert.ok(Object.hasOwn(s.expansion.discovery.identified,75));
+  explore.claimTrip(s,s.progress.trip.id,{},s.progress.trip.endAt,()=>.99);
+  assert.equal(s.progress.trip.status,'settled');
+  assert.throws(()=>explore.depart(s,{routeId:'orchard',members:['0:0']},s.progress.trip.endAt),/暂时暂停/);
+ });
+});

@@ -41,8 +41,8 @@ test('missing gift and missing cookware cannot replace next-batch choices',()=>{
   noChange(s,()=>prepareGiftRecipe(s,0),/特别配方/);
 });
 test('the prepared sign uses the original recipe and only a collected chick stamps the book',()=>{
-  const s=progressed();claimActivity(s,'shrine-gift',NOW,()=>0);prepareGiftRecipe(s,68);E.startBatch(s,0,NOW,()=>.5);
-  const index=s.batch.eggs.findIndex(e=>e.id===89);assert.ok(index>=0);assert.equal(s.batch.eggs.filter(e=>e.id===89).length,1);
+  const s=progressed();claimActivity(s,'shrine-gift',NOW,()=>0);prepareGiftRecipe(s,68);E.startBatch(s,0,NOW,()=>.99);
+  const index=s.batch.eggs.findIndex(e=>e.id===89);assert.ok(index>=0);assert.equal(s.batch.eggs.filter(e=>e.id===89).length,24);
   let book=shrineBook(s,NOW);assert.equal(book.held,false);assert.equal(book.signs[0].cooking,true);assert.equal(book.discovered,0);
   s.batch.eggs[index].status='ready';E.collect(s,index);book=shrineBook(s,NOW);assert.equal(book.discovered,1);assert.equal(book.signs[0].found,true);
 });
@@ -65,7 +65,7 @@ test('partial progress, unknown goals and CP overflow cannot award or consume pr
 });
 test('milestones and sign sequence survive current backup and do not disturb unrelated events or live eggs',()=>{
   const s=progressed();s.events.unrelated={keep:true};for(const id of [89,90,91])s.total['0:'+id]=1;
-  claimShrineGoal(s,'signs-3');claimActivity(s,'shrine-gift',NOW,()=>0);prepareGiftRecipe(s,68);E.startBatch(s,0,NOW,()=>.5);
+  claimShrineGoal(s,'signs-3');claimActivity(s,'shrine-gift',NOW,()=>0);prepareGiftRecipe(s,68);E.startBatch(s,0,NOW,()=>.99);
   const restored=parseBackup(makeBackup(s,NOW),NOW);
   assert.deepEqual(restored.batch,s.batch);assert.deepEqual(restored.events,s.events);assert.equal(restored.cp,s.cp);
   assert.equal(shrineGoals(restored)[0].claimed,true);assert.equal(shrineBook(restored,NOW).latest,89);

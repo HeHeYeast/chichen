@@ -1,3 +1,4 @@
+import {EXTRA_REGIONS} from './extra-regions.js';
 // Read-only projection of one region for UI use. Raw author text never reaches
 // the page directly: names, portraits and full recipes pass the unknown rules.
 import {REGIONAL,REQUIREMENTS,CONTENT_TEXT,resolveSpecies,materialById} from './content-registry.js';
@@ -10,7 +11,7 @@ import {evaluate} from './requirements.js';
 
 const TRAITS={portable:'便携',fruit:'果香',tea:'茶香',leaf:'叶形',grain:'谷物',salt:'盐晶',floral:'花香'};
 const ENVIRONMENTS={yard:'菜园',water:'水边',wood:'林间'};
-const FOCUS={specimen:'找标本',lore:'寻见闻',materials:'补材料'};
+const FOCUS={specimen:'找素材',lore:'找线索',materials:'补材料'};
 export const traitLabel=id=>TRAITS[id]??id;
 export const environmentLabel=id=>ENVIRONMENTS[id]??id;
 export const focusLabel=id=>FOCUS[id]??id;
@@ -18,19 +19,19 @@ const toolName=id=>LEGACY193.tools[1].find(t=>t.id===id)?.title_zh_CN??'厨具';
 export const speciesCode=key=>{const [egg,id]=key.split(':').map(Number);return `${egg?'D':'C'}${String(id+1).padStart(3,'0')}`;};
 
 // A regional material's name is known once its specimen was recorded; before
-// that the page shows only "未辨认材料". Old materials are always public.
+// that the page shows only "未发现食材". Old materials are always public.
 export function materialLabel(s,id){
   if(id<75)return materialById[id]?.title_zh_CN??String(id);
   const m=REGIONAL.materials.find(x=>x.id===id);
-  return m&&(hasRegionalCard(s,m.specimen)||materialIdentified(s,id))?materialById[id].title_zh_CN:'未辨认材料';
+  return m&&(hasRegionalCard(s,m.specimen)||materialIdentified(s,id))?materialById[id].title_zh_CN:'未发现食材';
 }
 
 // An unfound material is referred to by its specimen card title, never its name.
 function identifyHint(s,id){
-  const label=materialLabel(s,id);if(label!=='未辨认材料')return `先辨认${label}`;
-  const m=REGIONAL.materials.find(x=>x.id===id);return `先找到并辨认「${CONTENT_TEXT[m.specimen]?.title??m.specimen}」的标本`;
+  const label=materialLabel(s,id);if(label!=='未发现食材')return `先找到${label}`;
+  const m=REGIONAL.materials.find(x=>x.id===id);return `先找到「${CONTENT_TEXT[m.specimen]?.title??m.specimen}」对应的食材`;
 }
-export function releasedRegions(){return REGIONAL.regions.filter(r=>REGIONAL_RELEASE.regions.includes(r.id)).map(r=>r.id);}
+export function releasedRegions(){return [...REGIONAL.regions.filter(r=>REGIONAL_RELEASE.regions.includes(r.id)).map(r=>r.id),...EXTRA_REGIONS.map(r=>r.id)];}
 
 export function cardView(s,card,companions=null){
   const text=CONTENT_TEXT[card.id]??{},found=hasRegionalCard(s,card.id);
@@ -47,7 +48,7 @@ export function cardView(s,card,companions=null){
 export function materialView(s,material){
   const text=CONTENT_TEXT[material.stableId]??{},found=hasRegionalCard(s,material.specimen),identified=materialIdentified(s,material.id);
   return {id:material.id,specimenCard:material.specimen,found,identified,supplyOpen:identified,used:!!s.expansion.regions.materialUse?.[material.id],
-    name:found||identified?text.name:'未辨认材料',specimenName:found?text.specimenName:null,recognition:found?text.recognition:null,
+    name:found||identified?text.name:'未发现食材',specimenName:found?text.specimenName:null,recognition:found?text.recognition:null,
     lore:identified?text.lore:null,shop:identified?text.shop:null,price:identified?material.priceCP:null};
 }
 
@@ -88,7 +89,7 @@ export function regionView(s,regionId,{members=[]}={}){
   const alternatives=REGIONAL.alternatives.filter(a=>a.region===regionId&&REGIONAL_RELEASE.alternatives.includes(a.id)).map(a=>alternativeView(s,a));
   const free=s.expansion.methods.freeProgress[regionId]??{count:0,targetId:null};
   const protection=s.expansion.cardProtection[regionId]??{specimen:0,lore:0};
-  return {id:regionId,name:CONTENT_TEXT[regionId]?.name??regionId,met:info.met,missing:info.missing,places:info.places,opened:info.opened,
+  return {id:regionId,name:info.name,met:info.met,missing:info.missing,places:info.places,opened:info.opened,
     introDone:s.expansion.regions.introSpecimenDone.includes(regionId),cards,materials,methods,alternatives,free,protection,
     counts:{cards:cards.filter(c=>c.found).length,collected:methods.filter(m=>m.collected).length,total:methods.length}};
 }

@@ -44,10 +44,10 @@ export function regionalMethodInfo(s,recipeId){
   return {...info,direction,full,canStudy:!full&&direction&&executableUnknown(s,recipeId)&&!!rank(s,'OBS-4'),studyCost:full?0:rank(s,'OBS-S')?50:100,freeProgress:s.expansion.methods.freeProgress[info.species.region]??{count:0,targetId:null}};
 }
 
-export function identifyMaterial(s,id){
+export function identifyMaterial(s,id,{settlement=false}={}){
   const material=regionalMaterial(id);
   if(!material||!REGIONAL_RELEASE.materials.includes(id))throw Error('这份标本尚未开放。');
-  assertNewOperation('region',material.region);
+  if(!settlement)assertNewOperation('region',material.region);
   if(!hasRegionalCard(s,material.specimen))throw Error('先在寻访中找到这份标本。');
   if(materialIdentified(s,id))return {id,identified:false,directions:[]};
   s.expansion.discovery.identified[id]=nextRegionalFact(s);

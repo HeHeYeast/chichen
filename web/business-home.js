@@ -22,8 +22,13 @@ import {MENU_BONUS_PERCENT} from './business.js';
 
 const known=(s,key)=>{const c=resolveSpecies(key);return !!c&&speciesDiscovered(s,c.egg,c.id);};
 const nameOf=key=>resolveSpecies(key)?.title_zh_CN??'';
+const shelfAvailable=(s,key)=>{
+  const locks=s.expansion?.inventoryPolicy?.collectionLocks??[];
+  if(Array.isArray(locks)?locks.includes(key):locks[key])return 0;
+  const v=inventoryView(s,key);return Math.max(0,Math.min(v.free,v.home-lockedCount(s,key)));
+};
 // What can go on sale: spare (free, above the number kept at home), less what the order board is counting on.
-const usable=(s,key,now=Date.now())=>{const v=inventoryView(s,key);return Math.max(0,Math.min(v.free,v.home-lockedCount(s,key))-(holdsOf(s,now)[key]??0));};
+const usable=(s,key,now=Date.now())=>Math.max(0,shelfAvailable(s,key)-(holdsOf(s,now)[key]??0));
 const RANK={ordinary:0,suitable:1,complete:2};
 export {MENU_BONUS_PERCENT};
 
@@ -38,18 +43,24 @@ export function todayMenuId(s,preferred=null){
 export function menuCore(s,menuId,stock=null,now=Date.now()){
   const menu=REGIONAL.menus.find(m=>m.id===menuId);if(!menu)return null;
   const unlock=menuUnlockInfo(s,menuId),plan=unlock.met?suggestBusinessStock(s,menuId,{now}):null;
-  const used=stock&&Object.keys(stock).length?stock:plan?.stock??{};
+  const used=stock??plan?.stock??{};
   const roles=Object.keys(used).length?assignMenuRoles(menuId,used):[];
   const fit=Object.keys(used).length?menuFit(menuId,used,roles,menuSnapshot(s,menuId,used,roles)):{tier:'ordinary',complete:false};
   const need=menuId==='MN1'?6:3,roleKeys=roles.filter(r=>r.roleId!=='ordinary').flatMap(r=>r.keys);
   let slots;
-  if(fit.complete)slots=roleKeys.slice(0,3).map(key=>({key,need,have:Math.max(need,used[key]??0),ok:true,known:true}));
+  if(fit.complete)slots=roleKeys.slice(0,3).map(key=>({key,need,have:used[key]??0,ok:true,known:true}));
+  else if(plan?.tier==='complete'){
+    // Use the actual available alternative, not an authored example that would
+    // send the player cooking despite already owning a complete combination.
+    slots=assignMenuRoles(menuId,plan.stock).filter(r=>r.roleId!=='ordinary').flatMap(r=>r.keys).slice(0,3)
+      .map(key=>({key,need,have:used[key]??0,ok:(used[key]??0)>=need,known:known(s,key)}));
+  }
   else{
     let best=null;
     for(const ex of menu.examples??[]){const rows=ex.map(({key,quantity})=>({key,need:quantity,have:Math.min(quantity,usable(s,key,now))}));const lack=rows.reduce((n,r)=>n+r.need-r.have,0);if(!best||lack<best.lack)best={rows,lack};}
-    slots=(best?.rows??[]).map(r=>({...r,ok:r.have>=r.need,known:known(s,r.key)}));
+    slots=(best?.rows??[]).map(r=>({...r,have:used[r.key]??0,ok:(used[r.key]??0)>=r.need,known:known(s,r.key)}));
   }
-  slots=slots.map(x=>({...x,name:x.known?nameOf(x.key):'',makeable:!x.ok&&x.known&&speciesProducible(s,x.key,now)}));
+  slots=slots.map(x=>({...x,name:x.known?nameOf(x.key):'',available:shelfAvailable(s,x.key),makeable:!x.ok&&usable(s,x.key,now)<x.need&&x.known&&speciesProducible(s,x.key,now)}));
   const missing=fit.complete?0:slots.reduce((n,x)=>n+Math.max(0,x.need-x.have),0);
   const count=Object.values(used).reduce((a,b)=>a+b,0),extra=Object.entries(used).filter(([k])=>!roleKeys.includes(k)).reduce((n,[,q])=>n+q,0);
   return {id:menuId,name:CONTENT_TEXT[menuId]?.name??menuId,unlocked:unlock.met,unlock,tier:fit.tier,complete:fit.complete,slots,missing,

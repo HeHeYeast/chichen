@@ -9,19 +9,19 @@ import {RECIPE_CATALOG,recipePathInfo} from './recipe-book.js';
 import {rank} from './progression.js';
 import {speciesCode,ingredientName} from './knowledge.js';
 export function cookingCandidates(s,toolId,now=Date.now()){
-  if(s.expansion?.prepareMode){const {plan,candidates:raw}=regionalPreview(s,toolId,now);const candidates=raw.map(c=>({...c,egg:Number(c.key.split(':')[0]),id:Number(c.key.split(':')[1]),code:speciesCode(c.key),known:speciesDiscovered(s,...c.key.split(':').map(Number))}));return {ingredients:plan.materials,candidates,known:candidates.filter(c=>c.known).length,unknown:candidates.filter(c=>!c.known).length,nearby:[],blocked:[],changes:[plan.mode==='local-alternative'?'地方替代做法沿用原配方的候选与概率，不额外安排目标；地区新材料只替换原配料，候选不变。':'地区做法成功时安排1只目标，其余23只来自原配方；请保持清洁并及时收取。'],mode:plan.mode,plan};}
+  if(s.expansion?.prepareMode){const {plan,candidates:raw}=regionalPreview(s,toolId,now);const candidates=raw.map(c=>({...c,egg:Number(c.key.split(':')[0]),id:Number(c.key.split(':')[1]),code:speciesCode(c.key),known:speciesDiscovered(s,...c.key.split(':').map(Number))}));return {ingredients:plan.materials,candidates,known:candidates.filter(c=>c.known).length,unknown:candidates.filter(c=>!c.known).length,nearby:[],blocked:[],changes:[plan.mode==='local-alternative'?'地方替代做法沿用原配方的候选与概率，不额外安排目标；地区新材料只替换原配料，候选不变。':'地区配方逐枚抽取，同锅可出多只；请保持清洁并及时收取。'],mode:plan.mode,plan};}
   const ingredients=cookingIngredients(s),entries=new Map();
   const add=(egg,id,status,guaranteed=0)=>{const key=egg+':'+id;entries.set(key,{key,egg,id,code:speciesCode(key),status,guaranteed,known:speciesDiscovered(s,egg,id)});};
   if(toolId===8){
     if(s.egg!==0)throw Error('竹蒸笼目前只调理鸡蛋');
-    for(const c of expansionMatches(s,s.egg,toolId,ingredients))add(0,c.id,c.ingredients.length?'guaranteed':'possible',c.ingredients.length?1:0);
+    for(const c of expansionMatches(s,s.egg,toolId,ingredients))add(0,c.id,'possible',0);
   }else{
     const plan=originalRecipePlan(recipeStateAt(s,now),s.egg,toolId,ingredients,now);
     for(const id of new Set(plan.pool))add(s.egg,id,(s.egg===0&&[51,52].includes(id)||s.egg===1&&id===27)?'gate':'possible');
-    for(const c of plan.gifts)add(s.egg,c.id,c.guaranteed?'guaranteed':'gate',c.guaranteed);
+    for(const c of plan.gifts)add(s.egg,c.id,'gate',0);
   }
   const planned=plannedSeasonalRecipe(s,toolId,ingredients);
-  if(planned&&speciesDiscovered(s,planned.egg,planned.id))add(planned.egg,planned.id,'guaranteed',1);
+  if(planned&&speciesDiscovered(s,planned.egg,planned.id))add(planned.egg,planned.id,'possible',0);
   else for(const c of seasonalCandidates(s,toolId,ingredients))add(c.egg,c.id,'encounter');
   // Replacing index zero can remove the original gift or one steamer guarantee.
   if(planned)for(const e of entries.values())if(e.key!==planned.key&&e.guaranteed)e.guaranteed=0,e.status='possible';

@@ -51,10 +51,10 @@ try{
   s=await read();assert.ok(s.expansion.facts.predicateWitnesses['O01:complete']);assert.equal(s.expansion.business.sequence,0,'no business was opened');assert.equal(s.expansion.orders.active.length,0);
   assert.equal(s.expansion.regulars.RG1.pendingStage.id,'RG1-1');assert.ok(s.expansion.collections.entitlements['NOTE-RG1-1']);
   await regulars();text=await p.locator('.regulars-screen').innerText();assert.match(text,/有新故事/);await screenshot('regulars-unread');
-  await p.locator('[data-regular-open="RG1"]').click();await p.locator('[data-regular-read]').click();assert.match(await p.locator('.regulars-screen').innerText(),/篮子还是熟悉的样子/);await screenshot('regulars-reading');
-  const cp=s.cp,farm=structuredClone(s.farm);await p.locator('[data-regular-read]').click();
+  await p.locator('[data-regular-open="RG1"]').click();await p.locator('[data-regular-read]').click();assert.match(await p.locator('.regulars-screen').innerText(),/今天这份火候正好/);await screenshot('regulars-reading');
+  const cp=s.cp,farm=structuredClone(s.farm);await p.locator('[data-regular-read]').click();assert.equal((await read()).expansion.regulars.RG1.readStages.length,0);await p.locator('[data-regular-read]').click();
   s=await read();assert.deepEqual(s.expansion.regulars.RG1.readStages,['RG1-1']);assert.equal(s.cp,cp);assert.deepEqual(s.farm,farm);
-  text=await p.locator('.regulars-screen').innerText();assert.match(text,/纸包里的茶香/);assert.match(text,/「茶香便当」有效接待一次/);assert.ok(!/MN2|O07/.test(text),"content IDs are shown as names");await screenshot('regulars-next-stage');
+  text=await p.locator('.regulars-screen').innerText();assert.match(text,/分开包/);assert.match(text,/「茶香便当」有效接待一次/);assert.ok(!/MN2|O07/.test(text),"content IDs are shown as names");await screenshot('regulars-next-stage');
   for(const [width,height]of [[320,568],[1280,900]]){await p.setViewportSize({width,height});await p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));await fitRegulars();await screenshot(`regulars-${width}`);}
   await p.setViewportSize({width:390,height:844});
   checks.push('不开营业：交付完成“街坊备早饭”(O01)即在常客页出现第一段；读完才显示第二段的两条路（MN2营业或O07采购），读取不扣货不付款');
@@ -70,18 +70,18 @@ try{
   await p.locator('[data-business-open]').click();await ok();s=await read();const began=s.expansion.business.active.startAt;assert.ok(s.expansion.business.active.visitorCandidates.includes('RG1'));
   await jump(began+2*3600000+1000);await p.waitForFunction(()=>JSON.parse(localStorage.getItem('chick-kitchen-v1')).expansion.business.active?.totalSold===6);
   s=await read();assert.equal(s.expansion.business.visitorSequence,0);assert.equal(s.expansion.regulars.RG1?.pendingStage??null,null);
-  await p.reload();await start();await regulars();await p.locator('[data-regular-open="RG1"]').click();assert.equal(await p.locator('[data-regular-read]').count(),0);assert.ok(!(await p.locator('.regulars-screen').innerText()).includes('篮子还是熟悉的样子'));await screenshot('six-sales-waits-for-visitor');
+  await p.reload();await start();await regulars();await p.locator('[data-regular-open="RG1"]').click();assert.equal(await p.locator('[data-regular-read]').count(),0);assert.ok(!(await p.locator('.regulars-screen').innerText()).includes('今天这份火候正好'));await screenshot('six-sales-waits-for-visitor');
   await closePanels();await p.getByRole('button',{name:'生意',exact:true}).click();if(await p.locator('.shop-subpage [data-shop-back]').count())await p.locator('.shop-subpage [data-shop-back]').click();
   checks.push('首窗只售6只时没有来客、没有首段阅读按钮；刷新与打开常客页也不提前排队');
   await jump(began+4*3600000+1000);await p.waitForFunction(()=>JSON.parse(localStorage.getItem('chick-kitchen-v1')).expansion.business.lastReport?.totalSold===12);
-  await p.locator('.business-receipt-head').waitFor();text=await p.locator('.business-screen').innerText();assert.match(text,/来访的常客/);assert.match(text,/旧厨房老顾客带来「熟悉的早饭」/);await screenshot('receipt-visitor');
+  await p.locator('.business-receipt-head').waitFor();text=await p.locator('.business-screen').innerText();assert.match(text,/来访的常客/);assert.match(text,/旧厨房老顾客带来「早饭趁热」/);await screenshot('receipt-visitor');
   s=await read();assert.equal(s.expansion.business.lastReport.validMenu,true);const ledger=JSON.stringify(s.expansion.collections.entitlements),incomeCP=s.expansion.business.lastReport.income;
   await p.locator('[data-business-regulars="RG1"]').click();await p.locator('.regulars-screen').waitFor();assert.match(await p.locator('.regulars-screen').innerText(),/可继续 · 「家常小铺」有效接待一次/);
   await p.reload();await start();s=await read();assert.equal(s.expansion.regulars.RG1.pendingStage.id,'RG1-1','refresh keeps the unread stage');assert.equal(JSON.stringify(s.expansion.collections.entitlements),ledger,'no second note');
-  await regulars();await p.locator('[data-regular-open="RG1"]').click();await p.locator('[data-regular-read]').click();await p.locator('[data-regular-read]').click();
+  await regulars();await p.locator('[data-regular-open="RG1"]').click();await p.locator('[data-regular-read]').click();await p.locator('[data-regular-read]').click();await p.locator('[data-regular-read]').click();
   s=await read();assert.deepEqual(s.expansion.regulars.RG1.readStages,['RG1-1']);assert.equal(s.expansion.business.lastReport.income,incomeCP);
   await p.reload();await start();s=await read();assert.deepEqual(s.expansion.regulars.RG1.readStages,['RG1-1']);assert.equal(s.expansion.regulars.RG1.pendingStage,null);
-  checks.push('开MN1营业12只：第2窗来客带来“熟悉的早饭”，账单列出并可“去读”；读前刷新不丢不重复纸条，读后刷新不跳段、账款不变');
+  checks.push('开MN1营业12只：第2窗来客带来“早饭趁热”，账单列出并可“去读”；读前刷新不丢不重复纸条，读后刷新不跳段、账款不变');
   await context.close();
   assert.deepEqual(errors,[]);passed=true;
 }catch(error){if(p&&!p.isClosed()){await writeFile(resolve(output,'failure.txt'),await p.locator('body').innerText());await screenshot('failure');}throw error;}

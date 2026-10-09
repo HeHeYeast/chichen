@@ -1,3 +1,5 @@
+import {REGIONAL} from './content-registry.js';
+import {identifyMaterial} from './regional-methods.js';
 import {advanceBusiness,nextBusinessBoundary,settleBusinessClose,closeBusiness} from './business.js';
 import {settleRegionalTrip} from './regional-exploration.js';
 import {farmLossAt} from './farm-clock.js';
@@ -7,6 +9,8 @@ import {recordLegacyTripFact} from './regional-exploration.js';
 
 export function advanceTimeline(s,now=Date.now(),random=null,{checkFarm=false}={}){
   if(!Number.isSafeInteger(now)||now<0)throw Error('时间无效');
+  // Old records gain the same automatic recognition, without replaying rewards.
+  for(const m of REGIONAL.materials)if(Object.hasOwn(s.expansion?.discovery?.cards??{},m.specimen)&&!Object.hasOwn(s.expansion.discovery.identified,m.id))identifyMaterial(s,m.id,{settlement:true});
   const at=Math.max(now,s.progress.logicalAt??0),trip=s.progress.trip;
   let lost=0,returned=false,sold=0,closed=false,lastRelease=null;
   const loss=when=>farmLossAt(s,when,random??channelRandom(s,`farm-${when}`,'farm-loss'));

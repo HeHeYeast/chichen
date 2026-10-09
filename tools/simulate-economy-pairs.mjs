@@ -44,7 +44,7 @@ export function produce(r,recipe,{forcedFailure=false,regional=true,pairedSeed=n
  const purchaseCP=beforeCP-r.s.cp;
  const fireBefore=r.s.cp;
  r.run(regional?'regional-cook':'legacy-cook',d=>{if(regional)prepareRegionalRecipe(d,recipe.id);else{d.egg=recipe.egg;d.selected=[...ingredients];delete d.expansion.prepareMode;}
-   let random=pairedSeed===null?undefined:channelRandom(d,`paired-${pairedSeed}`,'batch-comparison');if(forcedFailure){const plan=buildBatchPlan(d,recipe.toolId,r.now),seed=37+(d.expansion.trial[recipe.id]?.attemptSeq??0)*71;let calls=0;const previewRandom=seeded(seed);sampleLegacyCompanions(structuredClone(d),plan,r.now,()=>{calls++;return previewRandom();});let index=0;const actualRandom=seeded(seed);random=()=>{index++;const value=actualRandom();return !plan.guaranteed&&index===calls+1?.99:value;};}
+   let random=pairedSeed===null?undefined:channelRandom(d,`paired-${pairedSeed}`,'batch-comparison');if(forcedFailure){const plan=buildBatchPlan(d,recipe.toolId,r.now),seed=37+(d.expansion.trial[recipe.id]?.attemptSeq??0)*71;let calls=0;const previewRandom=seeded(seed);sampleLegacyCompanions(structuredClone(d),plan,r.now,()=>{calls++;return previewRandom();});let index=0;const actualRandom=seeded(seed);random=()=>{index++;const value=actualRandom();return !plan.guaranteed&&index>calls&&index<=calls+24?.99:value;};}
    E.startBatch(d,recipe.toolId,r.now,random,()=>.5);
  },{recipeId:recipe.id??recipe.key,forcedFailure,pairedSeed});
  const fireCP=fireBefore-r.s.cp,plan=structuredClone(r.s.batch.plan),minutes=(r.s.batch.ends-r.s.batch.started)/60000;
@@ -58,8 +58,8 @@ export function produce(r,recipe,{forcedFailure=false,regional=true,pairedSeed=n
 export function failureCosts(){return REGIONAL.recipes.map(recipe=>{
  const r=createRunner(recipeFixture(),{trace:false}),attempts=[];
  for(let i=0;i<4;i++){const c=E.kitchenCleanInfo(r.s,r.now);if(c.dirty)r.run('clean',d=>E.clean(d,r.now));attempts.push(produce(r,recipe,{forcedFailure:true}));}
- assert.deepEqual(attempts.map(x=>x.target),[0,0,0,1],recipe.id+' fourth fully collected batch');
- assert.deepEqual(attempts.map(x=>x.failedFullBatches),[1,2,3,0]);
+ assert.deepEqual(attempts.map(x=>x.target),[0,0,0,0],recipe.id+' independent misses');
+ assert.deepEqual(attempts.map(x=>x.failedFullBatches),[0,0,0,0]);
  return {recipeId:recipe.id,key:recipe.key,price:resolveSpecies(recipe.key).cp_1,attempts,firstFailureNet:attempts[0].netCP,fourBatchNet:attempts.reduce((n,x)=>n+x.netCP,0),grossInputsFirst:attempts[0].ingredientNominal+attempts[0].fireCP,commands:r.commands};
 });}
 export function sameStockChannels(){

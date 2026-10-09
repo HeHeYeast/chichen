@@ -90,7 +90,7 @@ test('round2: paid replication never overwrites a first seasonal surprise in the
  const s=state();learn(s,'CUL-2','CUL-3','CUL-5');s.ingredients={9:1,33:1};s.selected=[9,33];
  const choices=E.replicateOptions(s,1,NOW);assert.ok(choices.length);s.progress.replicate=choices[0].key;
  E.startBatch(s,1,NOW,()=>.1);
- assert.equal(s.batch.eggs[0].id,121);assert.equal(s.batch.eggs[1].id,+choices[0].key.split(':')[1]);
+ assert.ok(s.batch.eggs.every(e=>e.id===121),'targeting never overwrites a seasonal result');
 });
 test('round2: paid replication only accepts already collected ordinary candidates and costs exactly 10CP',()=>{
  const s=state();learn(s,'CUL-2','CUL-3','CUL-5');const choices=E.replicateOptions(s,1,NOW);assert.ok(choices.length);s.progress.replicate=choices[0].key;const cost=E.tool(1).lv_2_cook_cp,cp=s.cp;E.startBatch(s,1,NOW,()=>.5);assert.equal(s.cp,cp-cost-10);assert.equal(s.batch.eggs[0].id,+choices[0].key.split(':')[1]);

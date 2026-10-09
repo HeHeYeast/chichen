@@ -44,8 +44,8 @@ test('planner delivers goods into staged projects instead of checking only alrea
  for(const c of [...REGIONAL.species.filter(c=>c.region==='R'&&c.egg===0).slice(0,3),REGIONAL.species.find(c=>c.region==='R'&&c.egg===1)])initialState.total[c.key]=1;
  const r=simulate('hoarder','daily3','none',{days:1,initialState});assert.ok(r.ledger['project-delivery']?.count>0);assert.ok(r.ledger['project-payment']?.spend>0);assert.ok(r.end.projectStages>=2);
 });
-test('all 48 authored recipes charge full first-failure inputs and guarantee the fourth fully collected batch',()=>{
- const rows=failureCosts();assert.equal(rows.length,48);for(const row of rows){assert.equal(row.attempts.length,4);assert.deepEqual(row.attempts.map(x=>x.target),[0,0,0,1]);assert.equal(row.attempts[0].roll,.99);assert.equal(row.attempts[3].roll,null);assert.equal(row.attempts[0].netCP,row.attempts[0].harvestCP+row.attempts[0].saleCP-row.attempts[0].fireCP-row.attempts[0].purchaseCP);}
+test('all 48 authored recipes charge full first-failure inputs and do not hide a fourth-batch guarantee',()=>{
+ const rows=failureCosts();assert.equal(rows.length,48);for(const row of rows){assert.equal(row.attempts.length,4);assert.deepEqual(row.attempts.map(x=>x.target),[0,0,0,0]);assert.equal(row.attempts[0].roll,null);assert.equal(row.attempts[3].roll,null);assert.equal(row.attempts[0].netCP,row.attempts[0].harvestCP+row.attempts[0].saleCP-row.attempts[0].fireCP-row.attempts[0].purchaseCP);}
 });
 test('same actual batch is exhausted once in every revenue channel and credits are recorded',()=>{
  const rows=sameStockChannels();assert.equal(rows.length,4);for(const row of rows){assert.deepEqual(row.produced,{'0:0':24});assert.equal(row.business.report.totalSold,24);assert.equal(row.order.completed,1);assert.ok(row.business.cp>=row.instant.cp-18);assert.ok(row.order.cp>0);}

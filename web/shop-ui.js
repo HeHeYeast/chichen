@@ -14,6 +14,7 @@ import {projectMaterial} from './visibility-model.js';
 import {unknownArt,visualImage} from './visual-assets.js';
 import {RECIPE_CATALOG,recipeDiscovered} from './recipe-book.js';
 import {kitTabs,kitSheet,kitCell,kitCoin,kitButton,kitButton2,kitChip,kitChipHtml,kitIcon,kitEgg} from './ui-kit.js';
+import {ingredientFlavor,INGREDIENT_FLAVOR_GROUPS} from './ingredient-flavors.js';
 
 const escapeHTML = value => String(value).replace(/[&<>"']/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[character]));
 const formatCP = value => Number(value).toLocaleString('zh-CN');
@@ -61,7 +62,7 @@ const toolRequirement=(id,level)=>level===0?id===8?'厨房 Lv.2 · 发现 12 种
 export function createShopUI({ characterPortrait=()=>'', skillFeedback=()=>{}, notify=()=>{}, getState, panels, showPanel, confirmBox, alertBox, act, sound, toolPortrait, changePage, returnFromShop=()=>changePage(0), openCookware=()=>changePage(0), openJournal, openMaterialLore, openRecipeBook=()=>changePage(4), openKitchenUpgrade=()=>{}, openActivities=()=>alertBox('请从厨房打开常驻委托。') }) {
   let shopTab = 0;
   // Seasoning shelf: 'all' | 'owned' | a cookware id; locked ones show only on request.
-  let seasonFilter = 'all', showLocked = false;
+  let seasonFilter = 'all', seasonFlavor = '', showLocked = false;
   // The open drawer: {kind:'tool'|'ingredient'|'egg'|'duck', id} or null; amount for seasonings.
   let drawer = null, amount = 1;
   const scrollPositions = [0, 0, 0];
@@ -80,7 +81,7 @@ export function createShopUI({ characterPortrait=()=>'', skillFeedback=()=>{}, n
 
   // ---- shelves --------------------------------------------------------------
   // Goods stand on wooden shelves (no tile frames); the price hangs below on a tag, the name under it.
-  const shelfItem=({pic,name,price,badge='',attrs='',label=name,locked=false})=>`<button type="button" class="sh-item${locked?' is-locked':''}" ${attrs} aria-label="${escapeHTML(label)}"><span class="sh-item-art" data-visual>${pic}${badge?`<b class="sh-item-badge">${escapeHTML(badge)}</b>`:''}</span><span class="sh-tag">${price}</span><span class="sh-item-name">${escapeHTML(name)}</span></button>`;
+  const shelfItem=({pic,name,price,badge='',attrs='',label=name,locked=false,flavor=''})=>`<button type="button" class="sh-item${locked?' is-locked':''}" ${attrs} aria-label="${escapeHTML(label)}"><span class="sh-item-art" data-visual>${pic}${badge?`<b class="sh-item-badge">${escapeHTML(badge)}</b>`:''}</span><span class="sh-tag">${price}</span><span class="sh-item-name">${escapeHTML(name)}</span>${flavor?`<small class="sh-item-flavor">${escapeHTML(flavor)}</small>`:''}</button>`;
   // The counter: 鸡宝 minds the shop and says one useful thing for this shelf; the wallet lies on the counter.
   function counter(state) {
     let line = '今天想买点什么？';
@@ -108,17 +109,18 @@ export function createShopUI({ characterPortrait=()=>'', skillFeedback=()=>{}, n
   function seasoningTile(state, {id, item, available, special}) {
     const known = projectMaterial(state, id).known, n = state.ingredients[id] ?? 0, name = E.label(item);
     const sub = special ? '<span class="sh-price">委托</span>' : available ? `<span class="sh-price">${COIN}${formatCP(item.buy_cp)}</span>` : `<span class="sh-price lock"><img src="/web/art/golden-journey/lock.png" alt="">待解锁</span>`;
-    return shelfItem({pic:known ? ingredientPortrait(id) : visualImage(unknownArt, 'unknown'), name, price:sub, badge:n ? `×${n}` : '', attrs:`data-shop-ingredient-details="${id}" data-shop-focus="ingredient-details-${id}"${available || special ? '' : ' data-locked'}`, label:`${name}${n ? `，持有 ${n}` : ''}`, locked:!(available || special)});
+    return shelfItem({pic:known ? ingredientPortrait(id) : visualImage(unknownArt, 'unknown'), name, price:sub, badge:n ? `×${n}` : '', flavor:known?ingredientFlavor(id):'', attrs:`data-shop-ingredient-details="${id}" data-shop-focus="ingredient-details-${id}"${available || special ? '' : ' data-locked'}`, label:`${name}${n ? `，持有 ${n}` : ''}`, locked:!(available || special)});
   }
   function seasoningShelf(state) {
-    const all = seasoningEntries(state), open = all.filter(e => e.available || e.special || (state.ingredients[e.id] ?? 0) > 0), locked = all.filter(e => !open.includes(e));
+    const all = seasoningEntries(state).filter(e=>!seasonFlavor||projectMaterial(state,e.id).known&&ingredientFlavor(e.id)===seasonFlavor), open = all.filter(e => e.available || e.special || (state.ingredients[e.id] ?? 0) > 0), locked = all.filter(e => !open.includes(e));
     const owned = DATA.tools[1].filter(t => state.toolLevels[t.id] >= 0);
     const coins = `<div class="gd-scroll-row sh-filters" role="group" aria-label="按厨具筛选调味料" data-hscroll>${kitCoin('全部', 'data-shop-season="all"', seasonFilter === 'all', '全部调味料')}${kitCoin('持有', 'data-shop-season="owned"', seasonFilter === 'owned', '我持有的')}${owned.map(t => kitCoin(toolPortrait(t.id, Math.max(0, state.toolLevels[t.id])), `data-shop-season="${t.id}"`, seasonFilter === String(t.id), `${E.label(t)}用到的调味料`)).join('')}</div>`;
     const tiles = [...open.map(e => seasoningTile(state, e)), ...(showLocked ? locked.map(e => seasoningTile(state, e)) : [])];
     const more = locked.length ? shelfItem({pic:visualImage(unknownArt, 'unknown'), name:showLocked ? '收起' : '待解锁', price:`<span class="sh-price lock"><img src="/web/art/golden-journey/lock.png" alt="">${showLocked ? '收起' : `${locked.length} 种`}</span>`, attrs:'data-shop-locked-toggle', label:showLocked ? '收起待解锁的调味料' : `显示 ${locked.length} 种待解锁的调味料`}) : '';
     const tool = /^\d+$/.test(seasonFilter) ? E.tool(Number(seasonFilter)) : null;
     const empty = !tiles.length && !more ? `<p class="kp-empty">${tool ? `${escapeHTML(E.label(tool))}还没记下要放调味料的配方` : '还没有调味料'}</p>` : '';
-    return `${coins}<div class="sh-shelf">${tiles.join('')}${more}</div>${empty}`;
+    const flavors=`<label class="sh-flavor-filter">线索类别 <select data-shop-flavor aria-label="按线索类别筛选"><option value="">全部类别</option>${Object.keys(INGREDIENT_FLAVOR_GROUPS).map(name=>`<option${seasonFlavor===name?' selected':''}>${escapeHTML(name)}</option>`).join('')}</select></label>`;
+    return `${coins}${flavors}<div class="sh-shelf">${tiles.join('')}${more}</div>${empty}`;
   }
   // 其他: four big cards (eggs, the kitchen itself, neighbour requests).
   const BEDS=['stage-bed-0-v6.png','stage-bed-1-v6.png','stage-bed-2-v6.png','stage-facility-3-v6.png'];
@@ -170,7 +172,7 @@ export function createShopUI({ characterPortrait=()=>'', skillFeedback=()=>{}, n
     const shut = !info.special && !info.available;
     const head = `<div class="sh-show${shut ? ' locked' : ''}"><span class="sh-show-item"><span class="sh-show-art" data-visual>${ingredientPortrait(id)}</span><span class="sh-tag">${info.special ? '<span class="sh-price">委托赠品</span>' : shut ? '<span class="sh-price lock"><img src="/web/art/golden-journey/lock.png" alt="">待解锁</span>' : `<span class="sh-price">${COIN}${formatCP(item.buy_cp)}/份</span>`}</span></span><span class="sh-show-bag">${kitIcon.pouch}<b>${n}</b><small>包里有</small></span></div>`;
     const use = id === 18 ? '这一锅不会因为厨房变脏而生病' : id === 36 ? '这一锅成熟后不会烧焦' : '';
-    const useRow = uses.length ? `<div class="sh-uses" data-row><span>用在</span>${uses.map(t => `<span class="sh-use" title="${escapeHTML(E.label(E.tool(t)))}">${toolPortrait(t, Math.max(0, state.toolLevels[t]))}</span>`).join('')}</div>` : use ? `<span class="gd-note">${use}</span>` : '';
+    const useRow = `${kitChip('',ingredientFlavor(id),'mini')}`+(uses.length ? `<div class="sh-uses" data-row><span>用在</span>${uses.map(t => `<span class="sh-use" title="${escapeHTML(E.label(E.tool(t)))}">${toolPortrait(t, Math.max(0, state.toolLevels[t]))}</span>`).join('')}</div>` : use ? `<span class="gd-note">${use}</span>` : '');
     const lore = id >= 75 && openMaterialLore ? kitButton2('见闻', 'data-shop-material-lore') : kitButton2('关闭', 'data-shop-drawer-close');
     if (info.special) return {title:name, body:`${head}${useRow}<div class="gd-actions" data-row>${kitButton2('关闭', 'data-shop-drawer-close')}${kitButton('去看委托', `data-shop-detail-ingredient="${id}" data-shop-activity="${id}"`)}</div>`};
     if (!info.available) {
@@ -269,6 +271,7 @@ export function createShopUI({ characterPortrait=()=>'', skillFeedback=()=>{}, n
     all('[data-shop-ingredient-details]', button => { button.onclick = () => { sound(4); amount = 1; drawer = {kind:'ingredient', id:Number(button.dataset.shopIngredientDetails)}; openShop(); }; });
     all('[data-shop-egg]', button => { button.onclick = () => { sound(4); drawer = {kind:'egg', id:Number(button.dataset.shopEgg)}; openShop(); }; });
     all('[data-shop-season]', button => { button.onclick = () => { seasonFilter = button.dataset.shopSeason; scrollPositions[1] = 0; sound(3); openShop(); }; });
+    find('[data-shop-flavor]')?.addEventListener('change',event=>{seasonFlavor=event.target.value;scrollPositions[1]=0;openShop();});
     screen.querySelector('[data-shop-locked-toggle]')?.addEventListener('click', () => { showLocked = !showLocked; sound(3); openShop(); });
     all('[data-shop-drawer-close]', button => { button.onclick = () => { drawer = null; sound(2); openShop(); }; });
     all('[data-shop-buy-tool]', button => { button.onclick = () => requestTool(Number(button.dataset.shopBuyTool)); });

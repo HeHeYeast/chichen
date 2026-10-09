@@ -30,7 +30,7 @@ test('every 线索册 partner has exactly one main clue region; overrides win; C
   assert.equal(table.length,keys.size);
   // the 48 regional partners (batch 4) belong to their own region
   for(const r of REGIONAL_RECIPE_ROWS){const x=clueRegionOf(r.key);assert.equal(x.by,'regional');assert.equal(x.region,REGIONAL.species.find(c=>c.key===r.key).region);}
-  for(const x of table)assert.ok(['V','R','T','B'].includes(x.region),x.key);
+  for(const x of table)assert.ok(['V','R','T','B','O','H'].includes(x.region),x.key);
   for(const [key,o] of Object.entries(CLUE_REGION_OVERRIDES)){assert.equal(clueRegionOf(key).region,o.region);assert.equal(clueRegionOf(key).by,'override');}
   assert.ok(Object.keys(CLUE_REGION_OVERRIDES).length<=table.length*.1,'overrides stay a short list');
   assert.deepEqual({region:clueRegionOf('0:121').region,by:clueRegionOf('0:121').by},{region:'T',by:'second'});

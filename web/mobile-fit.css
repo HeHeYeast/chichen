@@ -327,3 +327,6 @@
 .bs-dialog .business-more summary {min-height:36px;display:flex;align-items:center;font-size:14px;color:#6c5437;cursor:pointer;}
 .bs-dialog .business-more[open] summary {margin-bottom:2px;}
 .bs-dialog .business-role-tag {grid-column:2/-1;justify-self:start;padding:1px 8px;border-radius:9px;background:#f1e6c8;color:#6c5437;font-size:12px;line-height:18px;}
+
+/* Extra destinations need explicit art bounds, just like the original landmarks. */
+#panels .journey-screen .journey-map-stage .journey-node:is([data-regional-region=O],[data-regional-region=H]){--art-w:17cqw;--art-h:16cqw}

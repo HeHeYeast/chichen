@@ -2,26 +2,26 @@
   "runtimeFormat": 1,
   "rulesVersion": 1,
   "contentRevision": "regional-1",
-  "sourceHash": "ad914ce37abed6fbabe6cbdf8dae1dfead2fd5803d8638a162f8e5e75bb76d03",
+  "sourceHash": "d80a2ade7d2563f084c5d3af973a20254fb1273f3e0f3841f8a1be54f8e093e4",
   "sources": {
     "docs/content-pack/art-manifest.json": "66c482ab174ba9f3f32eb1624a435cbe1c962003e9b6280d0cdc88b24ce8dd7e",
     "docs/content-pack/baseline.json": "4616134377f6e7d002f0b225be0c3fe18b3f96697356922d703ea7da4dcd45f3",
-    "docs/content-pack/content.json": "0bdb2a274993f2ac32ea6a75dff18a002c81a42615ec8ebfe416d5e0877e2db6",
-    "tools/build-runtime-content.mjs": "edb7ef6c2754690f97f8a749be675ee10489f24d8cfa93e980523dc9f2287f19",
+    "docs/content-pack/content.json": "9c0b1dff61fadcf23de17531efb7c31ce1688c410ff1b7423946c9c321bfeffc",
+    "tools/build-runtime-content.mjs": "7e4bcfdce5c2b035bfe224a4bd84ac05aa08ba9d4e61986afb7ba335473c2c15",
     "tools/content-business-rules.mjs": "1b27252a765fc352f372ac67956c3d6e80230a5f453f7c64eec3669a275f4ad1",
     "tools/content-collection-rules.mjs": "16539554e5e998bc342d456625f3e767ff4512a5d4ab83dcc9be8f61d18a2954",
     "tools/content-project-rules.mjs": "e4a9d3263c0033afcebc5397136c131c2f6909d4d2f4c38e0c9f1896eb8914ca",
     "tools/content-regional-rules.mjs": "f454c6ade4da3a4da9acafb79cce6c8fd1aa6073d3fe8288be1f628c63ed6457",
     "tools/content-regular-rules.mjs": "6ffaaa23b236904f7da70ef5fc701a26a6e9a5fa77e632f527f7877cc77768aa",
-    "tools/content-runtime-rules.mjs": "4fbeeec0a45a95170b4d410d0fc5ee417807db2dfc9139539cde0d4b79e854ff",
+    "tools/content-runtime-rules.mjs": "7d4ea02e207fa2e6e9aa70eadca6edde84f1d776e4d4908d33c2f468a8935a21",
     "tools/production-art-manifest.mjs": "ed724a98f3b632bac05748d0e1639e514707ae3c595774f956904f84d685be01",
-    "web/art/production/manifest.json": "78393fc75664ff63385a19079f72b7298069eade3573b8864ba70c4423299e0b",
+    "web/art/production/manifest.json": "75575bc3f3e223b722b30e79afd9535df7ad9c6516de5e93d57644ad8833b21a",
     "web/data.js": "1595b413bd3056f138276f95fb1258d87d8ea4025c0c87bf2f614fe65885209e",
-    "web/ingredient-unlocks.js": "7ffac132432c96054c1d4078b9bc2039a30671c6835e3cd119a18c4fb7323eb3",
+    "web/ingredient-unlocks.js": "95895d863805ebb323448becc77ea2133b251ce2bde24d4ac698fa8cd081eb66",
     "web/integration-data.js": "543b4c3f7577dd86ffd76847e6258075de1a326bbf8b95be0532157d732784d9",
-    "web/legacy-content.js": "b7dd616eb69e75410f356cc35bc8769e0070c3eb1d506dfe5b954ddb00732650",
+    "web/legacy-content.js": "7583afbca61f76839116550a644306ffb33eef496157a74964ba6cb34a6c49c1",
     "web/recipe-catalog-data.js": "5c5edfe96146796803c3dd75ae97cf9cf40b70a331a145854df0a77354348409",
-    "web/seasonal-pack.js": "0bb865f4a75f0313c19cb0c318957791c6c48626c83ab8e21a867d9501f98fdd",
+    "web/seasonal-pack.js": "a6152c4d14e3dffb5990d28e70007f65cd8067856468b9080403dab79018beeb",
     "web/trade-data.js": "e1bde0687f2bd687d01113dc3ab95d31c2f1e4e79af5d30ffa237d4740cea600"
   },
   "counts": {
@@ -93,8 +93,8 @@
   "legacyMaterialHash": "846163dd7543c05e00b9f47f6f9cd448ebf0f0489ed5082e375e47414560e4f5",
   "finalArtReady": false,
   "productionArt": {
-    "final": 96,
-    "approved": 0,
+    "final": 92,
+    "approved": 4,
     "pending": 20
   },
   "priceStatus": "proposal-unbalanced",
@@ -104,10 +104,10 @@
     "unavailable": 0
   },
   "outputs": {
-    "web/regional-content.generated.js": "41e88a6bb6ee58b30231c0ffb7b26b7dfc77deed1880bf3b3ee8d5c418cdeaf4",
-    "web/regional-text.generated.js": "cd38b8578556dfae271d8ed4058b6d99eb3a935b7f5a1845761f36804b623d8b",
-    "web/runtime-requirements.generated.js": "2f455d44585911b1284773d227f98a72c34d55a43d5cfe86d4d98bf3e8927d88",
-    "web/runtime-assets.generated.js": "d6ba8f5c5927905327117dc09d151344027ba0fdcf07f683c86274ee915cf217",
-    "web/runtime-condition-coverage.generated.json": "e90290f437d8bf5659b91599036c4053eec567a8fea55473fd552be797739c29"
+    "web/regional-content.generated.js": "61a0d82fe8426e1188924e16b28103e133feb7c613d805e4851b0efa8efd6b48",
+    "web/regional-text.generated.js": "18ca54650bd3e90a6a093bbc430d4d5ea3144b2344e79bcd5db7b8058722b983",
+    "web/runtime-requirements.generated.js": "a713b0d8f40b20c48deb36dfcfe2482e457c2d776d446ea4a53f73702ff6fb45",
+    "web/runtime-assets.generated.js": "6f394a712be08c78ba99cb09e2ce4da007b962b57ce772f1470a4c18a8c954b2",
+    "web/runtime-condition-coverage.generated.json": "709178f2652ec657e6488a78ba26b14e050f350d507b280bffe478defbc6a204"
   }
 }

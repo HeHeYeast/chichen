@@ -36,7 +36,7 @@
 
 - 画布场景：`scene.js`（厨房）、`kitchen-golden.js`（正式四级厨房；蛋堆布局来自生成的 `kitchen-egg-nests.js`）、`kitchen-stages.js`、`farm-scene.js`、`farm-world.js`、`farm-theme.js`、`title-scene.js`、`theme.js`、`tool-strip.js`。
 - 寻访地图：`regional-ui.js` 的 `mapMarkup` 把地形（`journey-art.js` 的 `journeyEnvironment`）、路线、地点和同行伙伴放进同一块按 390×684 参考坐标等比缩放的画布，只显示有地形的上方 520；尺寸规则在 `mobile-fit.css` 末尾，地点图标用 `cqw` 随画布缩放。
-- 改版共用部分（2026-10）：`game-frame.js`＋`game-frame.css`（星级、伙伴格子、按钮呼吸与停顿箭头、第一次指引、「?」图卡；不放常驻提示条）；`next-batch-ui.js`（下一锅：「推荐」书签 + 新伙伴/订单/多赚、缺调料开火时买）；`next-batch-goals.js`（「推荐」的卡片：追踪的伙伴第一，其余按推进价值排，只读）；`clue-book.js`＋`clue-book-ui.js`（线索册独立页：调查卡、☆ 追踪 `progress.knowledge.tracked`、全部伙伴筛选）；`clue-regions.js`（每只伙伴的主线索地区）；`regional-clues.js`（48 只地区伙伴在线索册里的五层：方向＝厨具和第一味、完整方法＝第 5 层，方向之前的地区步骤，试做概率与保底）；`journey-model.js`（寻访地图卡片的数据：地区进度、追踪去向、归来线索 x/5 → y/5）；`business-home.js`＋`business-home-ui.js`（生意主页：今日营业、订单板、常客/项目小卡；只读模型 + 画面）；`order-delivery.js`（订单一步交付、展示型摆出来、厨房往事一步交付、订单等着的伙伴）；`order-intel.js`（订单情报：调查线索或地点提示 `progress.knowledge.hints`）；`warehouse-ui.js`（仓库：伙伴/材料、卖掉多余预览）。
+- 改版共用部分（2026-10）：`game-frame.js`＋`game-frame.css`（星级、伙伴格子、按钮呼吸与停顿箭头、第一次指引、「?」图卡；不放常驻提示条）；`next-batch-ui.js`（下一锅：「推荐」书签 + 新伙伴/订单/多赚、缺调料开火时买）；`next-batch-goals.js`（「推荐」的卡片：追踪的伙伴第一，其余按推进价值排，只读）；`clue-book.js`＋`clue-book-ui.js`（线索册独立页：调查卡、☆ 追踪 `progress.knowledge.tracked`、全部伙伴筛选）；`clue-regions.js`（每只伙伴的主线索地区）；`regional-clues.js`（48 只地区伙伴在线索册里的五层：方向＝厨具和第一味、完整方法＝第 5 层，方向之前的地区步骤，逐枚试做概率与旧锅兼容）；`journey-model.js`（寻访地图卡片的数据：地区进度、追踪去向、归来线索 x/5 → y/5）；`business-home.js`＋`business-home-ui.js`（生意主页：今日营业、订单板、常客/项目小卡；只读模型 + 画面）；`order-delivery.js`（订单一步交付、展示型摆出来、厨房往事一步交付、订单等着的伙伴）；`order-intel.js`（订单情报：调查线索或地点提示 `progress.knowledge.hints`）；`warehouse-ui.js`（仓库：伙伴/材料、卖掉多余预览）。
 - 面板 UI：`*-ui.js`（`collection-ui`、`shop-ui`、`business-ui`、`order-ui`、`regular-ui`、`project-ui`、`regional-ui`、`workshop-ui`、`recipe-book-ui`、`book-ui`、`farm-map-ui` 等），以及 `*-view.js`、`*-art.js`、`*-icons.js` 等纯展示辅助。
 - 样式：`index.html` 按顺序加载 31 个样式表；后加载的 `visual-polish.css`、`ui-remaster.css`、`journey.css`、`mobile-fit.css` 等覆盖前面的基础样式。
 - 平台：`native-platform.js`（Android 桥）、`device-check.js`（设置 → 设备检测：网页组件版本、功能、画面/点按对齐和 `boot.js` 记下的脚本错误，可复制发回）、`ui-preferences.js`（仅本机界面偏好）、`sfx.js`（音效解码一次后用 Web Audio 播放；每次克隆 `<audio>` 会让 Android WebView 新建播放器，收取时卡顿）。
@@ -44,3 +44,12 @@
 ## 5. 非运行时页面
 
 `classic.html`/`classic-app.js`（旧版对照）、`baseline-20260908/`（返工前基线，供 `compare.html`、`art-board.html` 对照）、`review.html`、`ui-review.html`、`stage-review.html`、`icon-review.html`、`asset-plan.html`、`prototypes/`（未采纳的厨房原型）。这些都不进 APK。
+
+## 6. 循环修订（2026-10-10）
+
+- `hatch-probability.js`：常见／少见／稀有的逐枚概率；`batch-plan.js` 版本2地区票据，版本1只负责旧锅结算。
+- `new-partner-advice.js`：线索册顺序的最多五个新伙伴目标；`ingredient-flavors.js`：调味类别共享词表。
+- `extra-regions.js`：果园与菌圃的两档材料、路线和关联伙伴；沿用已有身份与供货条件。
+- `loop-guide.js`：由已完成事实生成的首次循环提示、由实际库存生成的菜单建议。
+- `visitor-dialogue.js`：已确认的初访／回访对白；`regular-ui.js` 使用人类场景和多轮阅读，故事阶段仍按对应营业／订单文案呈现。
+- `tools/qa-loop-review.mjs`、`tests/loop-rebuild.test.mjs`：多宽度对话、真实新伙伴与新地区交互、概率分布和组合衔接验证。

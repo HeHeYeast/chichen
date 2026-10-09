@@ -26,7 +26,7 @@ test('an untouched valley shows card riddles and codes, never species names, rec
 test('specimen, direction, full method and collection reveal progressively',()=>{
   const s=eligible();departRegional(s,{regionId:'V',placeId:'V:0',focus:'specimen',members:['0:0']},NOW);advanceWorld(s,s.progress.trip.endAt);
   let view=regionView(s,'V');const m75=view.materials.find(m=>m.id===75);
-  assert.equal(m75.found,true);assert.equal(m75.name,'荠菜');assert.equal(m75.identified,false);
+  assert.equal(m75.found,true);assert.equal(m75.name,'荠菜');assert.equal(m75.identified,true);
   identifyMaterial(s,75);view=regionView(s,'V');
   // The one-ingredient entry dish is already complete; its direction names the only material.
   const c1=view.methods.find(m=>m.recipeId==='REC-V-C1');

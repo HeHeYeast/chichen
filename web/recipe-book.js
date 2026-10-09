@@ -50,7 +50,7 @@ export function recipePathInfo(s,r,now=Date.now(),{gates=true}={}){
   const missing=r.ingredients.filter(id=>!(s.ingredients?.[id]>0));
   const special=r.kind==='change',tool=r.toolId>=0?DATA.tools[1][r.toolId]:null;
   const level=tool?Math.max(r.minLevel,s.toolLevels[r.toolId]??0):0;
-  const note=r.note??(r.kind==='regional'?'地区做法每批安排1只已收录目标，其余23枚来自原配方；请保持清洁并及时收取。':r.kind==='seasonal'?'从本册选定配方后开火，每批安排 1 只；其余结果沿用原配方。':r.kind==='dim-sum'?(r.ingredients.length?'搭配成功，每批至少安排 1 只；请保持清洁并及时收取。':'不放调味料时只会孵出小笼包鸡；请保持清洁并及时收取。'):'随机出现，数量不固定；符合条件也不保证每批都有。');
+  const note=r.note??(r.kind==='regional'?'地区做法按稀有度逐枚抽取，同锅可以出多只；请保持清洁并及时收取。':r.kind==='seasonal'?'配方匹配时逐枚抽取，首见和再次制作概率相同。':r.kind==='dim-sum'?(r.ingredients.length?'搭配成功后按候选权重逐枚抽取，数量不固定。':'不放调味料时只会孵出小笼包鸡；请保持清洁并及时收取。'):'随机出现，数量不固定；符合条件也不保证每批都有。');
   return {...r,name:c.title_zh_CN,toolName:tool?.title_zh_CN??'特殊变化',ingredientNames:r.ingredients.map(id=>DATA.tools[2][id].title_zh_CN),
     conditions,missing,special,note,activityId:access?.activityId,originalMinutes:tool?.[`lv_${level}_min`],minutes:tool?cookingTiming(s,tool[`lv_${level}_min`],{signature:batchSignature(r.egg,r.toolId,r.ingredients),now}).minutes:undefined,cost:tool?.[`lv_${level}_cook_cp`],
     ready:!special&&!missing.length&&conditions.every(c=>c.met)};

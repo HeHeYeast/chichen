@@ -59,7 +59,7 @@ test('fortune excludes previous, soft pity reweights and sole hard-pity target i
 test('candidate query is pure, does not consume RNG, and enumerates gated phoenix and guaranteed steamer targets',()=>{
  const s=full(),before=structuredClone(s),original=Math.random;Math.random=()=>{throw Error('preview consumed RNG');};
  try{const q=cookingCandidates(s,0,NOW);assert.ok(q.candidates.some(c=>c.id===52&&c.status==='gate'));assert.deepEqual(s,before);
- s.egg=0;s.ingredients={9:1,16:1,25:1};s.selected=[9,16,25];const steam=cookingCandidates(s,8,NOW);for(const id of [115,116,118])assert.equal(steam.candidates.find(c=>c.id===id).guaranteed,1);
+ s.egg=0;s.ingredients={9:1,16:1,25:1};s.selected=[9,16,25];const steam=cookingCandidates(s,8,NOW);for(const id of [115,116,118])assert.equal(steam.candidates.find(c=>c.id===id).guaranteed,0);
  }finally{Math.random=original;}
 });
 test('observation learns facts separately from discovery and unknown seasonal preparation has no guarantee marker',()=>{

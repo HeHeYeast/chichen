@@ -86,9 +86,9 @@ test('compiled runtime contains no author work names, art briefs, raw natural-la
   assert.equal(result.text['RG1-1'].text,source.content.regulars[0].stages[0].text);
 });
 
-test('all 48 recipes preserve exact batch quantities, probability and independent guarantee contract',()=>{
+test('all 48 recipes preserve exact batch quantities, probability and independent egg probability contract',()=>{
   assert.equal(result.runtime.recipes.length,48);
-  for(const r of result.runtime.recipes){assert.equal(r.firstChancePercent,25);assert.equal(r.hardAttempt,4);assert.equal(r.repeatGuaranteed,1);assert.equal(r.exact,true);assert.equal(r.extraIngredientsAllowed,false);for(const i of r.ingredients)assert.equal(i.quantity,1);if(r.toolId===8)assert.equal(r.egg,0);}
+  for(const r of result.runtime.recipes){assert.equal(r.firstChancePercent,r.toolLevel>=2?10:r.toolLevel>=1||r.ingredients.length>1?20:30);assert.equal(r.hardAttempt,0);assert.equal(r.repeatGuaranteed,0);assert.equal(r.exact,true);assert.equal(r.extraIngredientsAllowed,false);for(const i of r.ingredients)assert.equal(i.quantity,1);if(r.toolId===8)assert.equal(r.egg,0);}
   assert.throws(()=>compile(d=>d.content.species[0].recipe.ingredients[0].quantity=2),/Invalid ingredient/);
   assert.throws(()=>compile(d=>d.content.species[0].recipe.firstChance=25),/Trial contract changed/);
   assert.throws(()=>compile(d=>d.content.species[6].recipe.toolId=8),/Steamer remains chicken-only/);

@@ -68,8 +68,8 @@ test('GUIDE-B identifies the actual first specimen, including an executable seco
       now+=3200;command('collect',()=>{E.updateBatch(s,now);for(let j=0;j<24;j++)E.collect(s,j,now);});
     }
     assert.ok(s.total['0:129']>0,'new dish is obtained through actual paid cooking and collection');
-    assert.equal(s.expansion.discovery.identified[75],undefined);
-    assert.equal(guideEligibility(s).met,secondFirst,'second material qualifies only when it was the actual first specimen');
+    assert.equal(!!s.expansion.discovery.identified[75],!secondFirst);
+    assert.equal(guideEligibility(s).met,true,'second material qualifies only when it was the actual first specimen');
     if(!secondFirst){command('identify',()=>identifyMaterial(s,75));assert.equal(guideEligibility(s).met,true);}
   }
 });
@@ -79,7 +79,7 @@ test('a legacy region with missing first-specimen history needs both identificat
   const before=structuredClone(s);assert.equal(guideEligibility(s).met,false);assert.deepEqual(s,before,'qualification never reconstructs or grants facts');
   // A later real specimen snapshot does not prove it was the first one.
   for(let i=0;!s.expansion.discovery.cards['V-S2']&&i<4;i++)trip(s,'V',{placeId:'V:1',focus:'specimen'});
-  assert.ok(s.expansion.regions.history.cardFacts['V-S2']);assert.equal(guideEligibility(s).met,false);
+  assert.ok(s.expansion.regions.history.cardFacts['V-S2']);assert.equal(guideEligibility(s).met,true);
   identifyMaterial(s,76);assert.equal(guideEligibility(s).met,true,'both identified is safe regardless of missing historical order');
 });
 

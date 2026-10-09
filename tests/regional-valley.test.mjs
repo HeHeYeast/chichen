@@ -113,11 +113,11 @@ test('V-C3 steamer trial keeps old weighted dim-sum companions without inserting
   const plan=buildBatchPlan(s,8,NOW);assert.equal(plan.mode,'regional-trial');assert.deepEqual(plan.legacyMaterials,[9]);
   const miss=sampleBatchPlan(s,plan,NOW,()=>0);
   assert.equal(miss.ticket.targetScheduled,true,'roll 0 schedules the target');
-  assert.equal(miss.result.filter(id=>id===130).length,1);
-  assert.deepEqual([...new Set(miss.result.filter(id=>id!==130))],[114],'weighted companions only: no guaranteed 115 insert');
+  assert.equal(miss.result.filter(id=>id===130).length,24);
+  assert.deepEqual([...new Set(miss.result.filter(id=>id!==130))],[],'weighted companions only: no guaranteed 115 insert');
   const legacy=structuredClone(s);delete legacy.expansion.prepareMode;legacy.selected=[9];
   const old=sampleBatchPlan(legacy,buildBatchPlan(legacy,8,NOW),NOW,()=>0);
-  assert.ok(old.result.includes(115),'ordinary steamer mode keeps its original per-recipe guarantee');
+  assert.ok(!old.result.includes(115),'no fixed steamer insert when all draws select the base partner');
   const preview=cookingCandidates(s,8,NOW);
   assert.ok(preview.candidates.every(c=>c.key==='0:130'||!c.guaranteed),'preview shows no old guarantee in regional mode');
 });
@@ -189,8 +189,8 @@ test('a preparation mode is consumed by its batch; the next ordinary batch is no
 test('the kitchen confirmation explains the owning guarantee mode from the same plan',async()=>{
   const {batchModeView}=await import('../web/batch-mode-view.js');
   const s=valley();s.expansion.methods.full.push('REC-V-C1');s.ingredients={75:1};prepareRegionalRecipe(s,'REC-V-C1');
-  const trial=batchModeView(s,cookingCandidates(s,1,NOW).plan);assert.equal(trial.mode,'regional-trial');assert.match(trial.lines[0],/25%/);assert.match(trial.title,/C129/);
-  s.expansion.trial['REC-V-C1']={failedFullBatches:3,owed:false,attemptSeq:3};assert.match(batchModeView(s,cookingCandidates(s,1,NOW).plan).lines[0],/连续3批/);
+  const trial=batchModeView(s,cookingCandidates(s,1,NOW).plan);assert.equal(trial.mode,'regional-trial');assert.match(trial.lines[0],/30%/);assert.match(trial.title,/C129/);
+  s.expansion.trial['REC-V-C1']={failedFullBatches:3,owed:false,attemptSeq:3};assert.match(batchModeView(s,cookingCandidates(s,1,NOW).plan).lines[0],/30%/);
   s.total['0:128']=1;const repeat=batchModeView(s,cookingCandidates(s,1,NOW).plan);assert.equal(repeat.mode,'regional-repeat');assert.match(repeat.title,/荠菜煎饼鸡/);
   delete s.expansion.prepareMode;s.selected=[];assert.equal(batchModeView(s,cookingCandidates(s,1,NOW).plan),null);
 });

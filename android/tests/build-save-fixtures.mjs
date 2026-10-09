@@ -15,7 +15,8 @@ import {orderMilestone,acceptProposal,reserveForOrder,deliverOrderGroups} from '
 import {departRegional,regionalTripInfo} from '../../web/regional-exploration.js';
 import {identifyMaterial,prepareRegionalRecipe,prepareLocalAlternative,pinRegionalMethod,regionalRecipeInfo} from '../../web/regional-methods.js';
 import {trackPartner} from '../../web/knowledge.js';
-import {claimTrip} from '../../web/exploration.js';
+import {claimTrip,depart,recall} from '../../web/exploration.js';
+import {recipeFixture} from '../../tools/simulate-economy-pairs.mjs';
 
 const legacy=JSON.parse(readFileSync(new URL('../../tests/fixtures/save-contract.json',import.meta.url),'utf8'));
 const now=legacy.now;
@@ -154,6 +155,23 @@ fixtures.upgrades=[business[0],regional[0],regional.at(-1)].map(row=>{
   const migrated=normalizeSave(source,now),state=execute({state:migrated,now:migrated.lastSeen,command:{type:'resume-after-upgrade'},reduce:()=>{}}).state;
   return {name:row.name,source,state,expectedRevision:source.meta.revision};
 });
+// Current route tickets plus frozen version-one regional pots cross the native boundary.
+fixtures.loop=[];
+for(const routeId of ['orchard','mushroom']){
+ const x=recipeFixture();x.farm['0:0']=5;x.total['0:0']=4000;x.toolLevels.fill(2);x.kitchenLevel=3;
+ depart(x,{routeId,members:['0:0']},now,()=>.1);
+ fixtures.loop.push({name:routeId+'-running',state:normalizeSave(x,now)});
+ const back=structuredClone(x);advanceWorld(back,back.progress.trip.endAt,()=>.99);claimTrip(back,back.progress.trip.id,{},back.progress.trip.endAt,()=>.99);
+ fixtures.loop.push({name:routeId+'-settled',state:normalizeSave(back,back.progress.trip.endAt)});
+ recall(x,x.progress.trip.id,now+1,()=>.99);fixtures.loop.push({name:routeId+'-recalled',state:normalizeSave(x,now+1)});
+}
+for(const hit of [false,true]){
+ const x=structuredClone(regional.at(-1).state),p=x.batch.plan,target=Number(p.targetKey.split(':')[1]);
+ p.version=1;delete p.chance;p.roll=hit?0:.99;p.targetScheduled=hit;
+ p.initialIds=p.initialIds.map(id=>id===target?3:id);for(const e of x.batch.eggs)if(e.id===target)e.id=3;
+ if(hit){p.initialIds[0]=target;x.batch.eggs[0].id=target;}x.expansion.trial[p.recipeId].owed=hit;
+ fixtures.loop.push({name:'frozen-v1-'+hit,state:normalizeSave(x,x.lastSeen)});
+}
 writeFileSync(process.argv[2],JSON.stringify(fixtures));
 console.log(`Web validator: ${fixtures.invalid.length} shared malformed states rejected.`);
 console.log(`Web execute: ${bay.length} bay states generated through real commands.`);

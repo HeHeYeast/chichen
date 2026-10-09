@@ -1,3 +1,4 @@
+import {discoveryCombinations} from './loop-guide.js';
 import {installPopupSwipe} from './popup-swipe.js';
 import {createClueBookUI} from './clue-book-ui.js';
 import {KITCHEN_ART,goldenRect,goldenEggHit} from './kitchen-golden.js';
@@ -287,7 +288,7 @@ function startCookNow(id,prepare=null){
     if(info.hot)events.push({id:'CUL-4',text:'本批总减时 '+Math.round(info.reduction*100)+'%'});
     else if(info.reduction)events.push({id:rank(state,'CUL-S')?'CUL-S':'CUL-2',text:'本批减时 '+Math.round(info.reduction*100)+'%'});
     if(info.calm)events.push({id:'HOME-5',text:'安心等候 · 破壳后保鲜至少8小时'});
-    if(replicate)events.push({id:'CUL-5',text:'已安排1只 · 记得及时照料'});
+    if(replicate)events.push({id:'CUL-5',text:'目标概率已提高 · 记得及时照料'});
     if(events.length)skillFeedback(events);
     if(panels.querySelector('.next-batch-screen'))closePanel();
     return true;
@@ -303,7 +304,7 @@ function requestCook(id){
     const quote=signature(),escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const level=state.toolLevels[id],capacity=Math.min(3,state.kitchenLevel+1),picked=preview.ingredients;
     const seconds=Math.round(info.minutes%1*60),time=`${Math.floor(info.minutes)}分${seconds?seconds+'秒':''}`;
-    const badge={possible:'',gate:'有机会',guaranteed:'已安排1只',encounter:'首次偶遇'};
+    const badge={possible:'',gate:'有机会',guaranteed:'有机会',encounter:'配方匹配'};
     const mode=batchModeView(state,preview.plan),fresh=effects(state).freshMinutes;
     const seasoning=picked.length?`<span class="gd-season">${picked.map(i=>`<span class="gd-season-item" title="${escape(E.label(E.ingredient(i)))}">${ingredientPortrait(i)}</span>`).join('')}</span>`:`<span class="gd-dashes">${'<i class="gd-dash"></i>'.repeat(Math.max(1,capacity))}</span>`;
     const candidates=preview.candidates.map(c=>{
@@ -407,6 +408,9 @@ function flushHarvest(){
     if(events.length)notice.insertAdjacentHTML('afterbegin','<div class="discovery-toast-title">'+intro+'</div>');
     else{notice.classList.add('discovery-toast');notice.innerHTML=intro;}
     notice.querySelector('[data-discovery-name]').textContent=discovered.map(e=>E.label(E.char(e.egg,e.id))).join('、');
+    const combinations=discoveryCombinations(state,discovered.map(e=>`${e.egg}:${e.id}`));
+    if(combinations.length){const best=combinations[0];notice.querySelector('small').textContent=best.complete?`${best.name}可凑齐 · 对应出品售价 +25%`:`可搭配${best.name} · 查看库存与缺口`;const button=document.createElement('button');button.className='gd-btn2';button.textContent='看组合';button.onclick=()=>{openTrade('business');businessUI.chooseMenu(best.id);};notice.append(button);}
+
   }
   announce(eggs.length===1?'收取'+E.label(E.char(eggs[0].egg,eggs[0].id))+'，获得'+(1+bonus)+' CP':'收取'+eggs.length+'只，获得'+(eggs.length+bonus)+' CP');
   return true;
@@ -518,7 +522,7 @@ const recipeBookUI=createRecipeBookUI({getState:()=>state,getNow:now,panels,show
   openKitchen:()=>{changePage(0);openKitchenUpgrade();},
   openActivities,openDuckShop:()=>supplyFromRecipe(2),openCalendar:()=>openJournal('calendar')});
 const workshopUI=createWorkshopUI({skillFeedback,getState:()=>state,getNow:now,panels,showPanel,confirmBox,alertBox,commit:commitProgress,characterPortrait,openRegional:()=>openExplore(),openBusiness:()=>openTrade('business'),businessNote:()=>state.expansion.business?.active?'营业中':businessUI.unreadReport()?'有新账单':'',goKitchen:()=>{if(page===0)closePanel();else changePage(0);},prepareTool:id=>{toolScroll=toolScrollFor(id,TOOL_SCROLL_MAX);if(page===0)closePanel();else changePage(0);}});
-const nextBatchUI=createNextBatchUI({getState:()=>state,getNow:now,showPanel,panels,closePanel,confirmBox,alertBox,act,sound,characterPortrait,ingredientPortrait,toolPortrait,startCook:startCookNow,openClueBook:(tab='focus')=>clueBookUI.open({tab,back:()=>nextBatchUI.open({keep:true})}),openJourney:regionId=>openJourneyAt(regionId),
+const nextBatchUI=createNextBatchUI({getState:()=>state,getNow:now,showPanel,panels,closePanel,confirmBox,alertBox,act,sound,characterPortrait,ingredientPortrait,toolPortrait,startCook:startCookNow,openClueBook:(tab='focus',focusKey=null)=>clueBookUI.open({tab,focusKey,back:()=>nextBatchUI.open({keep:true})}),openJourney:(regionId,forKey=null)=>openJourneyAt(regionId,forKey),
   getMenuId:()=>businessUI.todayMenu(),openBusiness:()=>openTrade('business'),
   openRestock:after=>{shopUI.setTab(1);changePage(2);shopReturnAction=()=>{changePage(0);after();};}});
 const warehouseUI=createWarehouseUI({getState:()=>state,getNow:now,showPanel,panels,act,confirmBox,alertBox,sound,characterPortrait,ingredientPortrait,skillFeedback,
@@ -531,7 +535,7 @@ const businessUI=createBusinessUI({getState:()=>state,getNow:now,commitProgress,
   openGoal:openNextBatchGoal,openClueBook:key=>clueBookUI.open({focusKey:key,back:()=>openTrade('business')}),openJourney:regionId=>openJourneyAt(regionId),
   openStory:()=>{panelReturn=()=>openTrade('business');workshopUI.open('story',{back:()=>openTrade('business')});}});
 const orderUI=createOrderUI({getState:()=>state,getNow:now,commitProgress,showPanel,panels,alertBox,confirmBox,characterPortrait,openBusiness:()=>openTrade('business'),openRegulars:()=>openTrade('regulars'),openProjects:()=>openTrade('projects'),openStory:()=>{panelReturn=()=>openTrade('orders');workshopUI.open('story',{back:()=>openTrade('orders')});},openRecipe:key=>openRecipeFromOrder(key),goKitchen:()=>{if(page===0)closePanel();else changePage(0);}});
-const regularUI=createRegularUI({getState:()=>state,commitProgress,showPanel,panels,openBusiness:()=>openTrade('business'),openOrders:()=>openTrade('orders'),openProjects:()=>openTrade('projects')});
+const regularUI=createRegularUI({openJourney:id=>openJourneyAt(id),getState:()=>state,commitProgress,showPanel,panels,openBusiness:()=>openTrade('business'),openOrders:()=>openTrade('orders'),openProjects:()=>openTrade('projects')});
 const projectUI=createProjectUI({getState:()=>state,commitProgress,showPanel,panels,alertBox,confirmBox,characterPortrait,openBusiness:()=>openTrade('business'),openOrders:()=>openTrade('orders'),openRegulars:()=>openTrade('regulars')});
 const collectionsUI=createCollectionsUI({showSpecies:(egg,id,back)=>collectionUI.showCharacter(egg,id,back),getState:()=>state,commitProgress,showPanel,panels,alertBox,characterPortrait,openBookTab:tab=>bookUI.open({tab}),openJournal,openShrine,goBack:()=>{if(page===4)bookUI.open();else closePanel();}});
 const clueBookUI=createClueBookUI({getState:()=>state,getNow:now,panels,showPanel,characterPortrait,toolPortrait,ingredientPortrait,commit:commitProgress,confirmBox,alertBox,openObservation:(key,back)=>workshopUI.observe(key,back),openSpecies:()=>collectionUI.renderCollection(),openBookTab:tab=>bookUI.open({tab}),

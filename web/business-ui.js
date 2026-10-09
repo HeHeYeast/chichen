@@ -100,11 +100,13 @@ export function createBusinessUI({getState,getNow,commitProgress,showPanel,panel
       const sheetBody=sheet==='stock'?prepareMarkup(model):sheet==='menu'?(model.active?menuMarkup(model):menuGridMarkup(model)):sheet==='help'?helpMarkup(model):sheet==='basket'?basketMarkup(model):sheet==='why'?whyMarkup():sheet==='orders'?`<div class="bh-orders is-all">${board.all.map(c=>orderCardMarkup(c,characterPortrait)).join('')}</div>`:sheet==='order'?orderSheet(s,board,now):'';
       showPanel('小店营业',`${main}<dialog class="bs-dialog" aria-labelledby="bs-dialog-title"><header><h3 id="bs-dialog-title" class="bs-plank" data-art="plank" data-overhang><span data-safe><b>${sheetTitles[sheet]??''}</b></span></h3><button data-business-sheet-close data-overhang aria-label="关闭详情">×</button></header><div class="business-scroll scroll">${sheetBody}</div></dialog>`,`screen-panel business-screen golden-business business-home${model.active?' is-active':''}`);
       find('.bs-main-scroll').scrollTop=mainScrollTop;updateTime();
+      find('[data-loop-action]')?.addEventListener('click',e=>{const target=e.currentTarget.dataset.loopAction;if(target==='story')openStory?.();else if(target==='visitor')openRegulars?.('intro:RG1');else if(target==='journey')openJourney?.('V');else if(target==='clue')openClueBook?.('0:128');else if(target==='stock'){sheet='stock';render();}else openOrders?.();});
+      find('[data-loop-dismiss]')?.addEventListener('click',e=>{const id=e.currentTarget.dataset.loopDismiss;commitProgress(draft=>{draft.events.loopGuideHidden=id;});render();});
       panels.querySelectorAll('[data-business-sheet]').forEach(button=>button.onclick=()=>{basketFrom=button.dataset.businessFrom??null;if(!button.closest('.bs-dialog'))returnSheetButton=button.dataset.businessStockKey?`[data-business-stock-key="${button.dataset.businessStockKey}"]`:`[data-business-sheet="${button.dataset.businessSheet}"]`;sheet=button.dataset.businessSheet;if(sheet==='basket')basketKey=button.dataset.businessStockKey??null;scrollTop=0;render(true);});
       find('[data-business-sheet-close]').onclick=dismissSheet;
       find('.bs-dialog').addEventListener('cancel',()=>{sheet=null;});
       if(sheet)find('.bs-dialog').showModal();
-      if(!sheet&&mode==='prepare'&&selectedKeys().length)firstVisitGuide('business',[{selector:'#panels .golden-business .bh-counter',text:'菜单要的伙伴摆在篮子里，缺的点一下去做'},{selector:'#panels .golden-business .bh-orders',text:'订单够了就能一下交付'}]);
+      if(!sheet&&mode==='prepare'&&selectedKeys().length)firstVisitGuide('business',[{selector:'#panels .golden-business .bh-counter',text:'点货篮调整出品；已有库存可直接摆货'},{selector:'#panels .golden-business .bh-orders',text:'订单够数后，点「交付」'}]);
     }
     if(find('.business-scroll'))find('.business-scroll').scrollTop=scrollTop;
     find('[data-business-first-order]')?.addEventListener('click',()=>{dismissSheet();openOrders?.();});
@@ -147,7 +149,9 @@ export function createBusinessUI({getState,getNow,commitProgress,showPanel,panel
       const s=getState(),key=b.dataset.businessSlot,[egg,id]=key.split(':').map(Number);
       if(model.active){sheet='ledger';render(true);return;}
       if(!speciesDiscovered(s,egg,id)){openClueBook?.(key);return;}
-      if(b.classList.contains('is-ok')){basketKey=key;basketFrom=null;returnSheetButton=`[data-business-slot="${key}"]`;sheet='basket';render(true);return;}
+      const row=rows().find(r=>r.key===key);
+      if(row&&!row.locked&&usable(row)>0){basketKey=key;basketFrom=null;returnSheetButton=`[data-business-slot="${key}"]`;sheet='basket';render(true);return;}
+      if(row){sheet='stock';render(true);return;}
       openGoal?.({kind:'menu',id:menuId,key,name:title()});
     });
     find('[data-business-gap]')?.addEventListener('click',()=>openGoal?.({kind:'menu',id:menuId,name:title()}));
@@ -176,7 +180,8 @@ export function createBusinessUI({getState,getNow,commitProgress,showPanel,panel
     const best=overview.filter(o=>o.plan).sort((a,b)=>rank[b.plan.tier]-rank[a.plan.tier]||b.plan.income-a.plan.income)[0]?.id;
     const lock='<img class="bs-menu-lock-art" src="/web/art/golden-journey/lock.png" alt="">';
     return `<div class="bs-menu-grid" role="group" aria-label="选择菜单">${model.menus.map(m=>{const o=overview.find(x=>x.id===m.id);
-      if(!m.unlock.met||!o?.plan)return `<button data-business-pick-menu="${m.id}" aria-disabled="true" aria-label="${esc(m.name)}，还没开放"><strong>${esc(m.name)}</strong><span class="bs-menu-lock">${lock}</span></button>`;
+      if(!m.unlock.met)return `<button data-business-pick-menu="${m.id}" aria-disabled="true" aria-label="${esc(m.name)}，还没开放"><strong>${esc(m.name)}</strong><span class="bs-menu-lock">${lock}</span></button>`;
+      if(!o?.plan)return `<button data-business-pick-menu="${m.id}" aria-pressed="${m.id===menuId}"><strong>${esc(m.name)}</strong><span class="bs-menu-mini">暂无可摆伙伴</span></button>`;
       return `<button data-business-pick-menu="${m.id}" aria-pressed="${m.id===menuId}"><strong>${m.id===best?'<span class="bs-menu-tag">荐</span>':''}${esc(m.name)}</strong>${starsMarkup(o.plan.tier)}<span class="bs-menu-mini">${menuSlots(s,m.id,false)}</span><span class="bs-menu-income"><img src="/web/art/golden-business/coin.png" alt="">+${number(o.plan.income)}</span></button>`;}).join('')}</div>`;
   }
   function basketRows(){const menu=REGIONAL.menus.find(m=>m.id===menuId);return rows().filter(r=>!r.locked).sort((a,b)=>Number(b.fits)-Number(a.fits)||usable(b)-usable(a));}
@@ -210,12 +215,13 @@ export function createBusinessUI({getState,getNow,commitProgress,showPanel,panel
   }
   function helpMarkup(model){return `${helpCardsMarkup('business')}<details class="business-rules"><summary>详细规则</summary><p>点货篮选择出品和数量，点菜单牌换菜单。确认开张前不会占用库存。</p><ul><li>每单摆1至6种食用出品，当前最多${model.capacity}只；默认每种在家留1只，收藏锁定的伙伴不参与备货。</li><li>每满2小时招待一轮，最多卖6只；最长营业24小时，售罄自动收摊。</li><li>主选卖完才卖替补，与普通出品轮流成交。卖满6只且每个菜单位都卖出过，算一次有效接待。</li><li>开张时凑齐菜单，这一单里菜单要的伙伴每只多卖 25%，卖到收摊都算；其余多余的伙伴按原价一起卖。订单正等着的伙伴留在家里，不会摆出来。</li><li>订单够了点「交付」一次完成，卡上有「情报」的这次还带回本地区的消息；不够点「去做」。</li><li>货款随成交入账；收摊结算整筐、拼盘等奖励。未售出品与未用奖励次数自动解除占用。</li><li>“使用已有经营奖励”和来客倾向在货篮备货详情中设置。已开张的这单不再改货。</li><li>账单可以反复查看，不会重复发放货款。</li></ul>${!model.access.met?`<h4>开张前还需</h4><ul>${model.access.missing.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><button data-business-first-order>去完成第一笔生意</button>`:''}<button data-business-kitchen>回厨房做一锅</button></details>`;}
   function prepareMarkup(model){
-    if(!model.access.met)return `<div class="business-empty"><div class="business-welcome-art" aria-hidden="true">${interfaceIcon('shop')}${characterPortrait(0,0)}</div><span class="business-shop-sign" aria-hidden="true">歇一歇</span><h3>先把第一笔生意做好</h3><p>认得几样熟悉的出品，就能把小店摆起来。</p><ul>${model.access.missing.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><button class="cream" data-business-first-order>去完成第一笔生意</button><p class="business-note">收成可以在仓库即时出售，也可以准备好后摆到小店。</p></div>`;
+    if(!model.access.met)return `<div class="business-empty"><div class="business-welcome-art" aria-hidden="true">${interfaceIcon('shop')}${characterPortrait(0,0)}</div><span class="business-shop-sign" aria-hidden="true">歇一歇</span><h3>先把第一笔生意做好</h3><p>完成下面的条件后，就能选菜单、摆货开张。</p><ul>${model.access.missing.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><button class="cream" data-business-first-order>去完成第一笔生意</button><p class="business-note">收成可以在仓库即时出售，也可以准备好后摆到小店。</p></div>`;
     const p=preview(),count=selectedKeys().reduce((sum,key)=>sum+stock[key],0),all=rows(),visible=all.filter(row=>filter==='all'||row.fits||stock[row.key]>0);
     const chooser=model.menus.length>1?`<div class="business-menu-list" role="group" aria-label="选择今天的菜单">${model.menus.map(m=>`<button data-business-menu="${m.id}" aria-pressed="${m.id===menuId}" ${m.unlock.met?'':'aria-disabled="true"'}>${esc(m.name)}${m.unlock.met?'':'<small>未开放</small>'}</button>`).join('')}</div>`:'';
     const forecast=p.ready?businessForecast(getState(),menuId,p.plan.stock,p.plan.roles,p.plan.fit):null;
     const tiles=visible.map(row=>{const n=stock[row.key]??0,can=!row.locked&&usable(row)>0;
-      return kitCell({pic:characterPortrait(row.egg,row.id),name:row.name,count:n?`摆 ${n}`:`×${usable(row)}`,on:n>0,attrs:`data-business-sheet="basket" data-business-stock-key="${row.key}" data-business-from="stock"${can||n?'':' disabled'}`,label:`${row.name}，${n?`摆了 ${n} 只，`:''}可用 ${row.free} 只`});}).join('');
+      const available=row.locked?0:usable(row),reason=row.locked?'收藏锁定':!available?(row.reserved?'订单已预留':row.away?'伙伴在寻访':`在家留 ${lockedCount(getState(),row.key)} 只`):'';
+      return kitCell({pic:characterPortrait(row.egg,row.id),name:row.name,count:n?`摆 ${n}`:reason||`可摆 ${available}`,on:n>0,attrs:`data-business-sheet="basket" data-business-stock-key="${row.key}" data-business-from="stock"${can||n?'':' disabled'}`,label:`${row.name}，${n?`摆了 ${n} 只，`:''}可摆 ${available} 只${reason?'，'+reason:''}`});}).join('');
     const toggle=(attr,on,label)=>`<button type="button" class="gd-toggle" role="checkbox" aria-checked="${on}" aria-pressed="${on}" ${attr}><i>${on?'✓':''}</i>${label}</button>`;
     const more=`<details class="gd-more business-more"><summary>更多设置</summary><div class="gd-row gd-wrap">${toggle('data-business-rewards',useRewards,`用经营奖励${useRewards&&p.ready?` · 留 ${p.plan.creditReserve}`:''}`)}${toggle('data-business-manual',manualPlacement,'手动摆位')}</div><div class="gd-row bs-tendency" role="group" aria-label="来客倾向">${[['regulars','熟客故事'],['discovery','外地常客']].map(([v,l])=>`<button type="button" class="gd-btn2 mini" data-business-tendency="${v}" aria-pressed="${tendency===v}">${l}</button>`).join('')}</div></details>`;
     return `${presetsMarkup()}<div class="bs-prep-head"><b class="bs-prep-name">${esc(title())}</b>${p.ready?starsMarkup(p.plan.fit.tier):''}</div>
@@ -305,5 +311,6 @@ export function createBusinessUI({getState,getNow,commitProgress,showPanel,panel
   // todayMenu: what 下一锅 counts as today's menu. openOrders: this page with the 全部订单 sheet open.
   return {open,refresh,updateTime,unreadReport,todayMenu:()=>todayMenuId(getState(),menuId??uiPreference('businessMenu')),
     openOrders(){dismissSheet();const b=getState().expansion.business;mode=b.active?'active':'prepare';sheet='orders';render();},
+    chooseMenu(id){pickMenu(id);open('prepare');},
     prepareDraft(next){stock={...next};manualStock=true;resetAssignments();mode='prepare';},reset(){stock={};placements={};manualStock=false;mode='prepare';scrollTop=0;}};
 }

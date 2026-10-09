@@ -1,3 +1,5 @@
+import {ingredientUnlockInfo} from './ingredient-unlocks.js';
+import {extraRegion} from './extra-regions.js';
 import {REGIONAL,CONTENT_TEXT,resolveSpecies,SPECIES_ABILITIES,ABILITY_SCALE} from './content-registry.js';
 import {collectedTotal,discoveryCount} from './progression.js';
 
@@ -24,16 +26,17 @@ export const materialIdentified=(s,id)=>Object.hasOwn(s.expansion?.discovery?.id
 export const nextRegionalFact=s=>++s.meta.factSeq;
 
 export function regionInfo(s,id){
-  const region=REGIONAL.regions.find(r=>r.id===id);
+  const region=REGIONAL.regions.find(r=>r.id===id)??extraRegion(id);
   if(!region)throw Error('没有找到这处地区。');
   const missing=[];
-  if(!REGIONAL_RELEASE.regions.includes(id))missing.push('这处地区尚未开放。');
+  if(!REGIONAL_RELEASE.regions.includes(id)&&!extraRegion(id))missing.push('这处地区尚未开放。');
   if(collectedTotal(s)<region.collected)missing.push(`累计收取 ${collectedTotal(s)}/${region.collected} 只`);
   if(discoveryCount(s)<region.discoveries)missing.push(`发现 ${discoveryCount(s)}/${region.discoveries} 种`);
   if(s.kitchenLevel<region.kitchenLevel)missing.push(`厨房 Lv.${region.kitchenLevel+1}`);
+  if(extraRegion(id)&&!region.materials.some(mid=>ingredientUnlockInfo(s,mid).available))missing.push('先在小卖部开放本地区的食材供货');
   // The bay route itself exists only after the deterministic guide (GUIDE-B).
   if(region.route==='bay'&&!s.expansion?.regions?.guideFlags?.includes('GUIDE-B'))missing.push('在溪岸小集的岸边摊找到沿湾路标');
-  return {region,name:CONTENT_TEXT[id]?.name??id,met:missing.length===0,canEnter:missing.length===0,missing,places:region.places,opened:s.expansion.regions.opened.includes(id),requirementId:region.gateRequirement};
+  return {region,name:region.name??CONTENT_TEXT[id]?.name??id,met:missing.length===0,canEnter:missing.length===0,missing,places:region.places??[],opened:s.expansion.regions.opened.includes(id),requirementId:region.gateRequirement};
 }
 
 export function regionalCompanion(key){

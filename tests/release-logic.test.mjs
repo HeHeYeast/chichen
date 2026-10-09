@@ -106,7 +106,7 @@ test('all 48 regional recipes produce their target only when every required gate
     const b=E.startBatch(s,r.toolId,NOW,()=>0,()=>.5);assert.ok(b.eggs.some(e=>`${e.egg}:${e.id}`===r.key),r.id);
     const restored=E.normalizeSave(JSON.parse(JSON.stringify(s)),NOW);assert.deepEqual(restored.batch.plan,b.plan);
     E.updateBatch(restored,b.ends+1);E.updateBatch(restored,b.ends+2001);E.updateBatch(restored,b.ends+2901);
-    for(let i=0;i<24;i++)E.collect(restored,i,b.ends+2901);assert.equal(restored.farm[r.key],1,r.id+' inventory');
+    for(let i=0;i<24;i++)E.collect(restored,i,b.ends+2901);assert.equal(restored.farm[r.key],24,r.id+' inventory');
     const deny=(mutate,label)=>{
       const x=structuredClone(base);x.ingredients=Object.fromEntries(r.ingredients.map(m=>[m.id,m.count??1]));prepareRegionalRecipe(x,r.id);mutate(x);const before=structuredClone(x);
       assert.throws(()=>E.startBatch(x,r.toolId,NOW,()=>0),undefined,`${r.id} missing ${label}`);assert.deepEqual(x,before);negatives++;

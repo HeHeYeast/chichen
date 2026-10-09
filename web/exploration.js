@@ -1,3 +1,5 @@
+import {assertNewOperation} from './rollback-policy.js';
+import {EXTRA_ROUTES} from './extra-regions.js';
 import {materialCapacity,materialRoom} from './material-capacity.js';
 import {economicRandom} from './rng.js';
 import {RULES} from './integration-data.js';
@@ -13,12 +15,13 @@ export const LEGACY_ROUTES=RULES.exploration.routes;
 // The bay (Work G) is a new 12h route with its own ordinary pool (salt, laver,
 // lemon); it exists only after GUIDE-B and uses the water adaptation as alias.
 export const BAY_ROUTE=Object.freeze({id:'bay',name:'风湾盐田',hours:12,baseUnits:3,pool:Object.freeze([27,74,1]),requiredCollected:240,requiredDiscoveries:40,environment:'water',requiresGuide:'GUIDE-B'});
-export const ROUTES=Object.freeze([...LEGACY_ROUTES,BAY_ROUTE]);
+export const ROUTES=Object.freeze([...LEGACY_ROUTES,BAY_ROUTE,...EXTRA_ROUTES]);
 const routeEnvironment=route=>route.environment??route.id;
 export function explorationInfo(s,routeId,members=[],now=Date.now(),{light=false}={}){
   const route=ROUTES.find(r=>r.id===routeId);if(!route)throw Error('路线无效');
-  const unlocked=collectedTotal(s)>=route.requiredCollected&&discoveryCount(s)>=route.requiredDiscoveries&&(!route.requiresGuide||!!s.expansion?.regions?.guideFlags?.includes(route.requiresGuide));
+  let unlocked=s.kitchenLevel>=(route.kitchenLevel??0)&&collectedTotal(s)>=route.requiredCollected&&discoveryCount(s)>=route.requiredDiscoveries&&(!route.requiresGuide||!!s.expansion?.regions?.guideFlags?.includes(route.requiresGuide));
   const pool=availableIngredientIds(s),team=members.map(key=>({key,...ABILITIES[key]}));
+  if(EXTRA_ROUTES.some(r=>r.id===routeId)&&!route.pool.some(id=>pool.includes(id)))unlocked=false;
   const G=team.reduce((n,a)=>n+a.gather,0),F=team.reduce((n,a)=>n+a.discover,0),A=team.filter(a=>a.environment===routeEnvironment(route)).length;
   light=!!(light&&route.id!=='yard'&&rank(s,'TRIP-5'));
   const baseUnits=route.baseUnits-(light?1:0),hours=Number((route.hours*(light?.8:1)).toFixed(2));
@@ -34,6 +37,7 @@ export function explorationInfo(s,routeId,members=[],now=Date.now(),{light=false
 }
 export function depart(s,{routeId,members,directed=[],priority=null,light=false},now=Date.now(),random=economicRandom(s,'depart')){
   advanceWorld(s,now,random);
+  if(['orchard','mushroom'].includes(routeId))assertNewOperation('region');
   if(['running','returned'].includes(s.progress.trip?.status))throw Error('请先等待归队并收完上一篮');
   const need={};if(Array.isArray(members))for(const k of members)need[k]=(need[k]??0)+1;
   if(!Array.isArray(members)||members.length<1||members.length>3||members.some(k=>!ABILITIES[k])||Object.entries(need).some(([k,n])=>availableCount(s,k)<n))throw Error('请选择1至3位在家伙伴；同一种可以多带，但不能超过在家的只数');
@@ -41,7 +45,9 @@ export function depart(s,{routeId,members,directed=[],priority=null,light=false}
   if(!Array.isArray(directed)||directed.length>info.directedUnits||directed.some(id=>!info.pool.some(p=>p.id===id&&p.unlocked)))throw Error('定向材料不符合当前手艺或供应资格');
   if(priority!==null&&(!rank(s,'OBS-S')||!info.clues.slice(0,3).some(c=>c.key===priority)))throw Error('线索目标已变化，请重新选择');
   const remaining=[],bonus=randomUnit(random)<info.materialChance;
-  for(let i=0;i<info.baseUnits+(bonus?1:0);i++)remaining.push(i<directed.length?directed[i]:info.pool[Math.floor(randomUnit(random)*info.pool.length)].actual);
+  const gatherPool=['orchard','mushroom'].includes(routeId)?info.pool.filter(p=>p.unlocked):info.pool;
+  if(!gatherPool.length)throw Error('这里的食材尚未开放供货');
+  for(let i=0;i<info.baseUnits+(bonus?1:0);i++)remaining.push(i<directed.length?directed[i]:gatherPool[Math.floor(randomUnit(random)*gatherPool.length)].actual);
   // One ticket per partner, in clueCandidates order (the tracked partner, then those closest to done); a chosen priority
   // (寻味专家) goes first unless the tracked partner's clue is on this route, which then always comes home.
   const order=info.clues.slice(0,12);

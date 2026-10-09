@@ -5,6 +5,7 @@ import {JOURNEY_METRICS} from './journey-art-metrics.js';
 import {productionAsset} from './production-art.js';
 export const journeyPath=name=>`/web/art/golden-journey/${name}.png`;
 export const journeyArt=(name,cls='')=>{
+ if(name==='precision-ref-node-O'||name==='precision-ref-node-H')return `<img class="journey-art ${cls}" src="${toolImage(2,name.endsWith('O')?44:35)}" alt="">`;
  const m=JOURNEY_METRICS[name];
  // SVG is solely a raster crop viewport, never a replacement drawing.
  return m&&name!=='world-terrain'?`<svg class="journey-art ${cls}" viewBox="${m.visualBounds.join(' ')}" preserveAspectRatio="${['precision-river','mat','precision-envelope-back','precision-envelope-front'].includes(name)?'none':`xMidY${m.anchorKind==='ground-center'?'Max':'Mid'} meet`}" aria-hidden="true" data-asset="${name}" data-anchor="${m.anchor.join(',')}"><image href="${journeyPath(name)}" width="${m.size[0]}" height="${m.size[1]}"/></svg>`:`<img class="journey-art ${cls}" src="${journeyPath(name)}" alt="" draggable="false">`;
@@ -18,12 +19,14 @@ export function journeyCharacter(key){
  return m?`<svg class="journey-character" viewBox="${m.bounds.join(' ')}" aria-hidden="true"><image href="${path}" width="${m.size[0]}" height="${m.size[1]}"/></svg>`:`<img class="journey-character" src="${path}" alt="">`;
 }
 export const journeySeat=key=>`<span class="journey-seat">${journeyArt('mat')}${key?journeyCharacter(key):journeyArt('backpack','journey-empty-pack')}</span>`;
-export const journeyPositions={"V": [22.83, 10.938], "T": [75.147, 13.454], "R": [46.152, 36.635], "B": [71.47, 59.935]};
+export const journeyPositions={"V": [22.83, 10.938], "T": [75.147, 13.454], "R": [46.152, 36.635], "B": [71.47, 59.935], "O":[20,58], "H":[47,66]};
 // Reference-space cubic paths, measured in the 390 x 684 map viewport.
 // The DOM path is also the source of arc-length positions for the live party.
 const trunk='M 20 508 C 34 472 72 479 130 428 C 165 398 213 366 200 347 C 187 328 134 350 126 300';
 export const journeyRoutePath=id=>({
  V:trunk+' C 116 266 151 237 168 215 C 197 181 166 176 160 152 C 149 129 184 107 170 98 C 164 91 157 88 149 85',
+ O:'M 20 508 C 34 472 62 450 78 405',
+ H:'M 20 508 C 65 485 133 455 183 452',
  R:trunk+' C 123 275 155 263 177 263',
  T:trunk+' C 117 266 157 226 204 207 C 238 193 250 171 264 160',
  B:'M 20 508 C 37 476 70 478 127 437 C 169 402 192 431 217 450 C 239 466 262 460 276 441'

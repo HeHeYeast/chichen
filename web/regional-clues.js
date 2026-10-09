@@ -1,3 +1,4 @@
+import {recipeChance,chanceInBatch} from './hatch-probability.js';
 // 地区伙伴并入线索册 (loop batch 4, 2026-10-07): the 48 regional partners are investigated like every other partner — the
 // same 调查 x/5, main region (their own), 追踪, 去寻访 / 去制作 and 研读 — instead of a second system of 方向, 完整方法,
 // 免费 3 趟 and a separate 研读 on the region page. What their old states mean on the five layers:
@@ -103,7 +104,8 @@ export function regionalTrial(s,key){
   const r=regionalRow(key);if(!r)return null;
   const t=s.expansion?.trial?.[r.runtimeId]??{failedFullBatches:0,owed:false},sure=discovered(s,r)||t.owed||t.failedFullBatches>=3;
   const plan=s.batch?.plan,inPot=!discovered(s,r)&&plan?.mode==='regional-trial'&&plan.recipeId===r.runtimeId&&!plan.finished&&!!s.batch.eggs?.some(e=>!e.collected);
-  return {recipeId:r.runtimeId,chance:sure?1:.25,sure,inPot,failed:t.failedFullBatches,left:sure?1:4-t.failedFullBatches};
+  const perEgg=recipeChance({minLevel:r.minLevel,ingredients:r.ingredients});
+  return {recipeId:r.runtimeId,chance:chanceInBatch(perEgg),perEgg,expected:24*perEgg,sure:false,inPot,failed:0,left:null};
 }
 // What stops a held regional recipe from being tried now: the region's own conditions (all but the complete method) and
 // any seasoning that cannot be had.

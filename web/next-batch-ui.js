@@ -1,7 +1,7 @@
 // 下一锅: a kit page with four bookmarks — 推荐 (default), 新伙伴, 订单, 多赚 — and 自己选 from the foot.
 // 「推荐」 (next-batch-goals.js) is a short list of cards, each a batch worth making now with the one reason why; the tracked
 // partner (线索册「追踪」) sits on top. Each card starts its batch (or, for an investigation, opens 自己选 to put it together).
-// The other bookmarks show one recommendation card (cookware, seasoning slots, why, likely partners) with other picks
+// 新伙伴 is a short list of clue-book targets and their next actions. Orders and income show one recipe card with other picks
 // as small tiles below; 自己选 gets the whole sheet (cookware coins, slots, seasoning tiles).
 // The cost sits above the foot; 开火 buys any missing seasoning; 选好了 only saves the choice.
 // 新伙伴 only offers sets whose recipe the player holds; a row that is the recipe of a 线索册「已解锁」 partner shows that
@@ -14,6 +14,8 @@ import {speciesCode} from './knowledge.js';
 import {rankAdvice,recipeForSpecies,undiscoveredReach,holidayLimited} from './seasoning-advisor.js';
 import {nextBatchGoals,allAdvice,directions,narrowed,rateOf} from './next-batch-goals.js';
 import {CLUE_STEPS} from './clue-book.js';
+import {newPartnerAdvice} from './new-partner-advice.js';
+import {ingredientFlavor} from './ingredient-flavors.js';
 import {regionalTrial} from './regional-clues.js';
 import {prepareRegionalRecipe} from './regional-methods.js';
 import {availableIngredientIds,ingredientUnlockInfo} from './ingredient-unlocks.js';
@@ -63,7 +65,7 @@ export function createNextBatchUI({getState,getNow,showPanel,panels,closePanel,c
       pick=row?fromRow({...row,toolId:recipe.toolId}):{toolId:recipe.toolId,egg,ingredients:[...recipe.ingredients],birds:[],targets:[],profit:0};return;}
     if(preset){const r=recipeForSpecies(s,preset.key,now);if(r){egg=r.egg;const rows=allAdvice(s,egg,now).find(a=>a.toolId===r.toolId)?.rows??[];const row=rows.find(x=>x.ingredients.join('+')===r.ingredients.join('+'));pick=row?fromRow({...row,toolId:r.toolId}):{toolId:r.toolId,egg,ingredients:r.ingredients,birds:[],profit:0};return;}preset=null;}
     if(manual){pick={toolId,egg,ingredients:[...draft],birds:null};return;}
-    if(lens==='goals'){pick=null;return;}
+    if(lens==='goals'||lens==='new'){pick=null;return;}
     const rows=ranked(s,egg,lens,now,menuNow());pick=rows[alt]?fromRow(rows[alt]):rows[0]?fromRow(rows[0]):null;
   }
   // Likely partners for a hand-picked set come from the same advice tables when the set is known.
@@ -72,7 +74,7 @@ export function createNextBatchUI({getState,getNow,showPanel,panels,closePanel,c
     return allAdvice(getState(),p.egg,getNow()).find(a=>a.toolId===p.toolId)?.rows.find(r=>r.key===key)?.birds??[];
   }
   function reason(p){
-    if(recipe?.regional){const t=regionalTrial(getState(),recipe.key);return t?.sure?`为 ${speciesCode(recipe.key)} 准备 · 这锅一定出`:`为 ${speciesCode(recipe.key)} 准备 · 每锅 ${pct(t?.chance??.25)}`;}
+    if(recipe?.regional){const t=regionalTrial(getState(),recipe.key);return `为 ${speciesCode(recipe.key)} 准备 · 每枚 ${pct(t?.perEgg??.2)}`;}
     if(recipe){const t=p.targets.find(x=>x.key===recipe.key);return t?`为 ${speciesCode(recipe.key)} 准备 · 每锅约 ${pct(t.chance)} 出现`:`为 ${speciesCode(recipe.key)} 准备`;}
     if(preset)return `一锅约 ${Math.round(birdsFor(p).find(b=>b.key===preset.key)?.n??0)} 只${esc(E.label(E.char(...preset.key.split(':').map(Number))))}`;
     if(manual||!p.birds)return '';
@@ -80,8 +82,8 @@ export function createNextBatchUI({getState,getNow,showPanel,panels,closePanel,c
   }
   // a regional trial keeps the region's promise: three batches without it, the fourth brings it
   function trialNote(p){
-    if(!p.regional)return '';const t=regionalTrial(getState(),p.targets?.[0]?.key??recipe?.key);if(!t||t.sure)return '';
-    return `<p class="nb-trial-note">地区试做：${t.failed?`已经 ${t.failed} 锅没出，`:''}最多 ${t.left} 锅一定出</p>`;
+    if(!p.regional)return '';const t=regionalTrial(getState(),p.targets?.[0]?.key??recipe?.key);if(!t)return '';
+    return `<p class="nb-trial-note">每枚独立抽取 · 一锅平均 ${t.expected.toFixed(1)} 只</p>`;
   }
   function costs(s,p){
     const missing=p.ingredients.filter(id=>!(s.ingredients[id]>0)),buy=missing.reduce((v,id)=>v+E.ingredient(id).buy_cp,0);
@@ -111,13 +113,15 @@ export function createNextBatchUI({getState,getNow,showPanel,panels,closePanel,c
     // Holiday-only partners that can be cooked right now: tell the player, name nothing.
     const holidays=(preset||recipe||manual)?[]:holidayLimited(s,egg,getNow());
     const holidayNote=holidays.length?`<div class="nb-holiday" role="note">${holidays.map(h=>`<span class="nb-holiday-item"><b>${esc(h.title)} · 限定鸡宝开放中</b><small>${esc(h.range)}</small><small>还有 ${h.count} 种没见过，开火就有机会</small></span>`).join('')}</div>`:'';
-    const context=holidayNote+(preset?`<div class="kp-bar nb-context" data-row>${kitChip('',`为${preset.menu??'订单'}做${E.label(E.char(...preset.key.split(':').map(Number)))}`,'')}${kitButton2('看推荐','data-nb-unpreset')}</div>`:recipe?`<div class="kp-bar nb-context" data-row>${kitChip('',`线索册 · ${speciesCode(recipe.key)}`,'')}${kitButton2('看推荐','data-nb-unpreset')}</div>`:'');
+    const context=holidayNote+(preset?`<div class="kp-bar nb-context" data-row>${kitChip('',`为${preset.menu??'订单'}做${E.label(E.char(...preset.key.split(':').map(Number)))}`,'')}${kitButton2('看推荐','data-nb-unpreset')}</div>`:recipe?`<div class="kp-bar nb-context" data-row>${kitChip('',`线索册 · ${speciesCode(recipe.key)}`,'')}${kitButton2('返回新伙伴','data-nb-return-partners')}</div>`:'');
     let body;
     const home=lens==='goals'&&!manual&&!preset&&!recipe;
+    const partners=lens==='new'&&!manual&&!preset&&!recipe;
     if(home)body=holidayNote+goalsBody(s);
+    else if(partners)body=holidayNote+eggCoins+partnersBody(s);
     else if(manual){
       const owned=s.toolLevels.map((l,id)=>({id,l})).filter(t=>t.l>=0);
-      const cell=id=>{const n=s.ingredients[id]??0;return kitCell({pic:ingredientPortrait(id),name:E.label(E.ingredient(id)),count:n>0?`×${n}`:`买${E.ingredient(id).buy_cp}`,attrs:`data-id="${id}" aria-pressed="${draft.includes(id)}"`,on:draft.includes(id)});};
+      const cell=id=>{const n=s.ingredients[id]??0;return kitCell({pic:ingredientPortrait(id),name:E.label(E.ingredient(id)),sub:esc(ingredientFlavor(id)),count:n>0?`×${n}`:`买${E.ingredient(id).buy_cp}`,attrs:`data-id="${id}" aria-pressed="${draft.includes(id)}"`,on:draft.includes(id)});};
       // Guessing: the second seasoning's group when the clues name it, otherwise everything that can be had now
       // (in stock first); seasonings not in stock are bought when the batch starts.
       const usable=id=>(s.ingredients[id]??0)>0||(()=>{const u=ingredientUnlockInfo(s,id);return u.available&&!u.special;})();
@@ -141,18 +145,29 @@ export function createNextBatchUI({getState,getNow,showPanel,panels,closePanel,c
         :`${context}<div class="kp-empty nb-empty"><span class="bk-q">?</span><span>${title}</span>${short?'':more}<div class="gd-row">${lens==='new'&&openClueBook?kitButton2('去线索册','data-nb-clues'):''}${kitButton2('自己选','data-nb-lens="manual"')}${lens==='new'?'':kitButton2('看「多赚」','data-nb-lens="income"')}</div></div>`;}
     else{
       // from the 线索册 the other 新伙伴 picks stay one tap away
-      const alts=!preset?ranked(s,egg,lens,getNow(),menuNow()):[],r=reason(p);
+      const alts=!preset&&lens!=='new'?ranked(s,egg,lens,getNow(),menuNow()):[],r=reason(p);
       const altGrid=alts.length>1?`${kitLabel('换一个')}<div class="nb-alts" role="list" aria-label="换一个推荐">${alts.map((a,i)=>`<button type="button" role="listitem" class="nb-alt" data-nb-alt="${i}" aria-pressed="${p.toolId===a.toolId&&p.ingredients.join('+')===a.ingredients.join('+')}"><span class="nb-alt-tool">${toolPortrait(a.toolId,s.toolLevels[a.toolId])}</span><span class="nb-alt-ings">${a.ingredients.map(id=>`<span class="nb-alt-ing">${ingredientPortrait(id)}</span>`).join('')||'<small>不加</small>'}</span><b>${metric(a)}</b></button>`).join('')}</div>`:'';
       body=`${context}<section class="nb-pick nb-hero" aria-label="这一锅">${top(p.toolId,eggCoins)}${slots(p.ingredients)}${r?`<div class="gd-row">${kitChipHtml(`<span class="nb-star" aria-hidden="true">★</span>${r}`,'mini nb-reason')}</div>`:''}${out(outFor(p))}</section>${trialNote(p)}${altGrid}${guessBlock}`;
     }
     const c=p?costs(s,p):null,afford=c&&s.cp>=c.total;
     const above=remaining?kitChip('',`还有 ${remaining} 只没收，开火会放弃`,'mini hot'):'';
     const fire=`<button type="button" class="gd-btn nb-fire" data-nb-fire${p?' data-next':' disabled'} aria-label="开火${c?`，共 ${c.total} CP`:''}"><span data-safe><b>开火</b>${c?`<small class="${afford?'':'short'}">${COIN}${c.total}</small>`:''}</span></button>`;
-    const foot=home?`${kitButton2('自己选','data-nb-lens="manual"')}${openClueBook?kitButton2('线索册','data-nb-book'):''}`:`${manual?draft.every(id=>s.ingredients[id]>0)?kitButton2('选好了','data-ok'):'':kitButton2('自己选','data-nb-lens="manual"')}${fire}`;
-    showPanel('下一锅',`${tabs}${kitSheet(body,foot,'nb-sheet'+(manual?' nb-is-manual':'')+(home?' nb-is-home':''),above,{cls:'nb-scroll',attrs:manual||home?'data-list':''})}${help?nbHelp():''}`,'screen-panel ingredient-screen next-batch-screen',{skin:'kitchen',icon:toolPortrait(1,0),help:'data-nb-help',short:'下一锅'});
+    const foot=home||partners?`${kitButton2('自己选','data-nb-lens="manual"')}${openClueBook?kitButton2('线索册','data-nb-book'):''}`:`${manual?draft.every(id=>s.ingredients[id]>0)?kitButton2('选好了','data-ok'):'':kitButton2('自己选','data-nb-lens="manual"')}${fire}`;
+    showPanel('下一锅',`${tabs}${kitSheet(body,foot,'nb-sheet'+(manual?' nb-is-manual':'')+(home||partners?' nb-is-home':''),above,{cls:'nb-scroll',attrs:manual||home||partners?'data-list':''})}${help?nbHelp():''}`,'screen-panel ingredient-screen next-batch-screen',{skin:'kitchen',icon:toolPortrait(1,0),help:'data-nb-help',short:'下一锅'});
     bind();
     if(home)firstVisitGuide('nextBatchGoals',[{selector:'#panels .nb-goal',text:'每张卡写着为什么推荐这一锅，点按钮就开火'},{selector:'#panels .nb-track',text:'在线索册追踪一只伙伴，它会排在最前面'}]);
+    else if(partners)firstVisitGuide('nextBatchPartners',[{selector:'#panels .nb-partner',text:'按线索册顺序，先看距离发现最近的伙伴；每张卡都标出下一步'}]);
     else firstVisitGuide('nextBatch',[{selector:'#panels .nb-pick',text:'这是推荐的一组，理由写在这里'},{selector:'#panels .nb-fire',text:'直接开火就行；也可以点下面的其他推荐'}]);
+  }
+  function partnersBody(s){
+    const model=newPartnerAdvice(s,egg,getNow());
+    if(!model.rows.length)return `<div class="kp-empty nb-empty"><span class="bk-q">?</span><span>${model.total?'先找一条线索':'这一类伙伴都认识了'}</span><small>新线索会记在线索册里</small>${kitButton2('去线索册','data-nb-book')}</div>`;
+    const state={recipe:'可以制作',guess:'可以试做',journey:'还缺线索',clues:'查看条件',funds:'CP 不足',collect:'等待收取'};
+    return `<p class="nb-partner-intro">按线索册排序 · 先看最近的 ${model.rows.length} 个目标</p><div class="nb-partners" role="list" aria-label="新伙伴目标">${model.rows.map(r=>{
+      const known=[r.toolId!=null?E.label(E.tool(r.toolId)):null,r.first!=null?E.label(E.ingredient(r.first)):r.none?'不加调味':null,r.second?`${r.second}类`:null].filter(Boolean).join(' · ');
+      const portrait=r.silhouette?`<span class="unknown-silhouette" aria-hidden="true">${characterPortrait(r.egg,r.id)}</span>`:'<span class="bk-q" aria-hidden="true">?</span>';
+      return `<article class="nb-partner" role="listitem" data-partner-key="${r.key}"><span class="nb-partner-art">${portrait}</span><div class="nb-partner-copy"><b>${esc(r.code)}${r.tracked?' · 追踪中':''}</b><span>${state[r.action]}</span>${known?`<small>${esc(known)}</small>`:''}<p>${esc(r.note)}</p></div><button type="button" class="gd-btn2" data-nb-partner="${r.key}">${r.label}</button></article>`;
+    }).join('')}</div>${model.more?`<div class="gd-row">${kitButton2('更多目标 · 线索册','data-nb-book')}</div>`:''}`;
   }
   // 「推荐」: the tracked partner on a bar, then the cards. Only pictures, a number and one reason per card.
   function goalsBody(s){
@@ -197,6 +212,15 @@ export function createNextBatchUI({getState,getNow,showPanel,panels,closePanel,c
     if(remaining)confirmBox(`还有 ${remaining} 只没收\n开火会放弃它们`,go,false,{yes:'放弃并开火',no:'先去收',onNo:closePanel});else go();
   }
   function bind(){
+    panels.querySelectorAll('[data-nb-partner]').forEach(b=>b.onclick=()=>{
+      const r=newPartnerAdvice(getState(),egg,getNow()).rows.find(x=>x.key===b.dataset.nbPartner);if(!r)return;
+      if(r.action==='collect'){closePanel();return;}
+      if(r.action==='journey'){openJourney?.(r.region.id,r.key);return;}
+      if(r.action==='guess'){startGuess(r.guess);sound(3);render();return;}
+      if(r.action!=='recipe'){openClueBook?.('focus',r.key);return;}
+      recipe={key:r.key,egg:r.egg,toolId:r.toolId,ingredients:[...r.ingredients],chance:r.chance,regional:r.recipeId??null};
+      manual=false;preset=null;guess=null;sound(3);render();
+    });
     panels.querySelectorAll('[data-nb-lens]').forEach(b=>b.onclick=()=>{const next=b.dataset.nbLens;if(next==='manual'){manual=true;}else{lens=next;manual=false;guess=null;}alt=0;preset=null;recipe=null;sound(3);render();});
     find('[data-nb-clues]')?.addEventListener('click',()=>openClueBook?.());
     find('[data-nb-business]')?.addEventListener('click',()=>openBusiness?.());
@@ -213,6 +237,7 @@ export function createNextBatchUI({getState,getNow,showPanel,panels,closePanel,c
     panels.querySelectorAll('[data-nb-alt]').forEach(b=>b.onclick=()=>{alt=Number(b.dataset.nbAlt);manual=false;preset=null;recipe=null;sound(3);render();});
     panels.querySelectorAll('[data-nb-egg]').forEach(b=>b.onclick=()=>{egg=Number(b.dataset.nbEgg);if(guess&&guess.egg!==egg)guess=null;alt=0;preset=null;recipe=null;sound(3);render();});
     find('[data-nb-unpreset]')?.addEventListener('click',()=>{lens='goals';preset=null;recipe=null;render();});
+    find('[data-nb-return-partners]')?.addEventListener('click',()=>{lens='new';preset=null;recipe=null;manual=false;guess=null;render();});
     find('[data-nb-help]')?.addEventListener('click',()=>{help=true;render();});
     panels.querySelectorAll('[data-nb-help-close]').forEach(b=>b.onclick=()=>{help=false;render();});
     panels.querySelectorAll('[data-nb-tool]').forEach(b=>b.onclick=()=>{toolId=Number(b.dataset.nbTool);if(guess&&guess.toolId!==toolId)guess=null;manual=true;preset=null;recipe=null;sound(3);render();});

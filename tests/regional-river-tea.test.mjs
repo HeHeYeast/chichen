@@ -1,3 +1,4 @@
+import {sampleLegacyCompanions} from '../web/legacy-recipe-adapter.js';
 // Work F: river (R) and tea slope (T) on the same data-driven regional chain,
 // plus the orders F opens (front-region O06, tea O07-O10, O12).
 import test from 'node:test';
@@ -81,7 +82,7 @@ test('ALT-T maps roasted leaf to oolong (3), keeps butter (27) and draws exactly
   const info=regionalAlternativeInfo(s,'ALT-T');assert.deepEqual(info.legacyMaterials,[3,27]);assert.equal(info.recipe.target,'0:10','target is species 0:10, not material 10');
   s.ingredients={79:1,27:1};prepareLocalAlternative(s,'ALT-T');const plan=buildBatchPlan(s,2,NOW);
   let i=0;const seq=()=>[.2,.8,.4,.6][i++%4];const drawn=sampleBatchPlan(s,plan,NOW,seq).result;i=0;
-  assert.deepEqual(drawn,originalRecipes(recipeStateAt(s,NOW),0,2,[3,27],NOW,seq));
+  assert.deepEqual(drawn,sampleLegacyCompanions(s,{mode:'legacy',egg:0,toolId:2,legacyMaterials:[3,27]},NOW,seq));
 });
 
 test('identifying four regional materials widens the bag to 42 without opening any other supply',()=>{

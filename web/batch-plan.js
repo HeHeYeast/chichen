@@ -1,3 +1,4 @@
+import {recipeChance} from './hatch-probability.js';
 import {REGIONAL,resolveRecipeId,resolveSpecies} from './content-registry.js';
 import {regionalRecipeInfo,regionalAlternativeInfo} from './regional-methods.js';
 import {cookingIngredients} from './cooking-query.js';
@@ -26,7 +27,7 @@ export function buildBatchPlan(s,toolId,now){
     if(s.egg!==r.egg||toolId!==r.toolId||JSON.stringify(expected)!==JSON.stringify(actual)||materials.length!==expected.length)throw Error('本批蛋种、厨具或材料与地区做法不一致，请按完整做法准备，不能额外放料。');
     if(s.events.seasonalRecipe||s.progress.replicate||materials.some(id=>[68,69,70].includes(id)))throw Error('请只选择一种调理模式，再确认开火。');
     const known=speciesDiscovered(s,r.egg,Number(r.key.split(':')[1])),trial=s.expansion.trial[r.id];
-    return {version:1,mode:known?'regional-repeat':'regional-trial',recipeId:r.id,key:r.key,egg:r.egg,toolId,materials,legacyMaterials:materials.filter(id=>id<75),guaranteed:known||!!trial?.owed||(trial?.failedFullBatches??0)>=3,chance:.25};
+    return {version:2,mode:known?'regional-repeat':'regional-trial',recipeId:r.id,key:r.key,egg:r.egg,toolId,materials,legacyMaterials:materials.filter(id=>id<75),guaranteed:false,chance:recipeChance(r)};
   }
   if(intent)throw Error('这条地方做法尚未开放。');
   return {version:1,mode:'legacy',egg:s.egg,toolId,materials,legacyMaterials:materials.filter(id=>id<75),guaranteed:false};
@@ -35,23 +36,19 @@ export function sampleBatchPlan(s,plan,now,random){
   const regional=plan.mode.startsWith('regional'),result=sampleLegacyCompanions(s,plan,now,random);
   let targetScheduled=false,roll=null,seasonal=null;
   if(regional){
-    if(!plan.guaranteed)roll=randomUnit(random);
-    targetScheduled=plan.guaranteed||roll<plan.chance;
-    if(targetScheduled)result[0]=Number(plan.key.split(':')[1]);
+    for(let i=0;i<24;i++)if(randomUnit(random)<plan.chance){result[i]=Number(plan.key.split(':')[1]);targetScheduled=true;}
   }else if(plan.mode==='legacy'){
     seasonal=plannedSeasonalRecipe(s,plan.toolId,plan.materials);
-    let surprise=null;
-    if(seasonal)result[0]=seasonal.id;
-    else{surprise=seasonalSurprise(s,plan.toolId,plan.materials,random);if(surprise)result[0]=surprise.id;}
-    // A seasonal surprise keeps egg 0; the paid replicate target takes the next egg.
-    if(s.progress.replicate)result[surprise?1:0]=Number(s.progress.replicate.split(':')[1]);
+    for(let i=0;i<24;i++){const found=seasonalSurprise(s,plan.toolId,plan.materials,random);if(found)result[i]=found.id;}
+    // Paid targeting is a probability boost, never a fixed insert.
+    if(s.progress.replicate)for(let i=0;i<24;i++)if(result[i]<(plan.egg?57:120)&&randomUnit(random)<.20)result[i]=Number(s.progress.replicate.split(':')[1]);
   }
-  return {result,seasonal,ticket:{version:1,mode:plan.mode,recipeId:plan.recipeId??null,targetKey:plan.key??null,targetScheduled,roll,initialIds:[...result]}};
+  return {result,seasonal,ticket:{version:regional?2:1,...(regional?{chance:plan.chance}:{}),mode:plan.mode,recipeId:plan.recipeId??null,targetKey:plan.key??null,targetScheduled,roll,initialIds:[...result]}};
 }
 export function recordBatchStarted(s,ticket){
   if(!ticket.mode.startsWith('regional'))return;
   const t=s.expansion.trial[ticket.recipeId]??={failedFullBatches:0,owed:false,attemptSeq:0};t.attemptSeq++;
-  if(ticket.targetScheduled)t.owed=true;
+  if(ticket.version===1&&ticket.targetScheduled)t.owed=true;
 }
 export function recordRegionalHarvest(s,batch,actualKey){
   const ticket=batch.plan;if(!ticket)return;
@@ -62,7 +59,7 @@ export function recordRegionalHarvest(s,batch,actualKey){
   if(batch.eggs.every(e=>e.collected)&&!ticket.finished){
     ticket.finished=true;
     if(batch.ingredients.includes(79))reduceFacts(s,[{kind:'regionalMaterialBatch',batchId:String(batch.started),materialId:79}]);
-    if(!speciesDiscovered(s,...ticket.targetKey.split(':').map(Number)))trial.failedFullBatches=Math.min(3,trial.failedFullBatches+1);
+    if(ticket.version===1&&!speciesDiscovered(s,...ticket.targetKey.split(':').map(Number)))trial.failedFullBatches=Math.min(3,trial.failedFullBatches+1);
     const used=s.expansion.regions.materialUse??={};for(const id of batch.ingredients)if(id>=75)used[id]=true;
   }
 }
@@ -72,7 +69,8 @@ export function regionalPreview(s,toolId,now){
 }
 export function validateBatchPlan(s,fail){
   const b=s.batch,p=b.plan;
-  if(!p||p.version!==1||!['legacy','regional-trial','regional-repeat','local-alternative'].includes(p.mode)||typeof p.targetScheduled!=='boolean'||typeof p.finished!=='boolean')fail('调理计划');
+  if(!p||![1,2].includes(p.version)||!['legacy','regional-trial','regional-repeat','local-alternative'].includes(p.mode)||typeof p.targetScheduled!=='boolean'||typeof p.finished!=='boolean')fail('调理计划');
+  if(p.version===2&&!p.mode.startsWith('regional-'))fail('逐枚计划类型');
   if(!Array.isArray(p.initialIds)||p.initialIds.length!==24||p.initialIds.some(id=>!resolveSpecies(`${b.egg}:${id}`)))fail('原始调理票据');
   for(const e of b.eggs)if(!Array.isArray(e.tickets)||e.tickets.length!==6||e.tickets.some(v=>!Number.isFinite(v)||v<0||v>=1))fail('变化概率票据');
   if(p.mode==='legacy'){
@@ -86,10 +84,11 @@ export function validateBatchPlan(s,fail){
     const r=resolveRecipeId(p.recipeId);
     if(!r||r.mode!=='regional-trial'||r.key!==p.targetKey||r.egg!==b.egg||r.toolId!==b.tool||!s.expansion.trial[r.id])fail('地区调理身份');
     if(p.roll!==null&&(!Number.isFinite(p.roll)||p.roll<0||p.roll>=1))fail('试做票据');
-    if(p.roll===null&&!p.targetScheduled||p.roll!==null&&p.targetScheduled!==(p.roll<.25)||p.mode==='regional-repeat'&&(!p.targetScheduled||p.roll!==null))fail('地区命中票据');
+    if(p.version===1&&(p.roll===null&&!p.targetScheduled||p.roll!==null&&p.targetScheduled!==(p.roll<.25)||p.mode==='regional-repeat'&&(!p.targetScheduled||p.roll!==null)))fail('地区命中票据');
     if(b.level<r.toolLevel||b.rules.kitchenLevel<r.kitchenLevel||JSON.stringify([...b.ingredients].sort((a,b)=>a-b))!==JSON.stringify(r.ingredients.map(x=>x.id).sort((a,b)=>a-b)))fail('地区精确配方');
     if(p.initialIds.some(id=>id!==Number(p.targetKey.split(':')[1])&&id>=(b.egg?65:128)))fail('地区旧伴随边界');
-    if(p.targetScheduled&&p.initialIds.filter(id=>id===Number(p.targetKey.split(':')[1])).length!==1)fail('地区唯一目标');
+    if(p.version===2&&(p.roll!==null||![.1,.2,.3].includes(p.chance)||p.targetScheduled!==p.initialIds.includes(Number(p.targetKey.split(':')[1]))))fail('逐枚概率票据');
+    if(p.version===1&&p.targetScheduled&&p.initialIds.filter(id=>id===Number(p.targetKey.split(':')[1])).length!==1)fail('地区唯一目标');
     if(!p.targetScheduled&&p.initialIds.some(id=>id===Number(p.targetKey.split(':')[1])))fail('地区未命中目标');
     if(p.finished!==b.eggs.every(e=>e.collected))fail('地区收锅状态');
   }

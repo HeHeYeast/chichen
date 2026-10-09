@@ -56,7 +56,7 @@ test('a regional partner from unknown to met: track → its specimen is sure →
   const info=regionalTripInfo(s,{regionId:'V',placeId:'V:1',focus:'specimen',members:['0:0']},NOW);assert.equal(info.sureCardId,'V-S2');
   const t1=trip(s,{placeId:'V:1',focus:'specimen'},{miss:true});
   assert.equal(t1.regional.sure,'V-S2');assert.equal(t1.regional.candidates[0].cardId,'V-S2');assert.equal(t1.regional.result.cardId,'V-S2','found even though every roll missed');
-  assert.equal(clueRow(s,'0:129',NOW).identify,76,'the next step is 辨认, one tap');assert.ok(valid(s));
+  assert.equal(clueRow(s,'0:129',NOW).identify,null,'recognition is automatic on return');assert.ok(valid(s));
   identifyMaterial(s,76);
   let row=clueRow(s,'0:129',NOW);
   assert.deepEqual(regionalLevels(s,'0:129'),[false,true,true,false,false],'the 方向 = cookware and first seasoning');
@@ -69,14 +69,14 @@ test('a regional partner from unknown to met: track → its specimen is sure →
   assert.deepEqual(seen,[1,4,5]);
   assert.equal(s.expansion.methods.full.includes('REC-V-C2'),true,'the trip wrote the method down, as 研读 would');
   row=clueRow(s,'0:129',NOW);assert.equal(row.held,true);assert.equal(row.progress,CLUE_STEPS);assert.equal(row.status,'ready');
-  assert.equal(row.chance,.25);assert.deepEqual([row.trial.left,row.trial.sure],[4,false]);assert.ok(valid(s));
+  assert.equal(row.chance,1-.8**24);assert.deepEqual([row.trial.left,row.trial.sure],[null,false]);assert.ok(valid(s));
   // 下一锅: the tracked card leads, in the region's trial mode
   const g=nextBatchGoals(s,NOW),card=g.cards[0];
-  assert.equal(card.kind,'track');assert.equal(card.regional,'REC-V-C2');assert.equal(card.outcome.chance,.25);assert.deepEqual(card.ingredients,[76,9]);
-  // three full batches without it: the fourth is sure (the old 保底, unchanged)
+  assert.equal(card.kind,'track');assert.equal(card.regional,'REC-V-C2');assert.equal(card.outcome.chance,1-.8**24);assert.deepEqual(card.ingredients,[76,9]);
+  // Old miss counters never force a new batch to contain the target.
   s.expansion.trial['REC-V-C2']={failedFullBatches:3,owed:false,attemptSeq:3};
-  assert.deepEqual([regionalTrial(s,'0:129').sure,regionalTrial(s,'0:129').chance],[true,1]);
-  assert.equal(nextBatchGoals(s,NOW).cards[0].outcome.chance,1);
+  assert.deepEqual([regionalTrial(s,'0:129').sure,regionalTrial(s,'0:129').chance],[false,1-.8**24]);
+  assert.equal(nextBatchGoals(s,NOW).cards[0].outcome.chance,1-.8**24);
   for(const id of card.ingredients)E.buyIngredient(s,id,1,{forBatch:true});prepareRegionalRecipe(s,'REC-V-C2');E.startBatch(s,4,NOW);
   assert.equal(s.batch.plan.mode,'regional-trial');assert.equal(s.batch.plan.targetScheduled,true);assert.ok(s.batch.plan.initialIds.includes(129));
   // batch 5: it is in the pot now — collecting is all that is left, so 下一锅 offers no second trial (that would throw the

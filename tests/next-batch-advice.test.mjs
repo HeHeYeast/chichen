@@ -62,12 +62,12 @@ test('every 新伙伴 row can really bring a partner not met yet: real batches a
     }}
   assert.ok(checked>=4);
 });
-test('a held 四时 recipe gets its quarter chance per batch (it used to count as nothing)',()=>{
+test('a held 四时 recipe gets its independent per-egg chance (it used to count as nothing)',()=>{
   const s=observer();learnSkill(s,'OBS-4');const key='0:121';assert.equal(speciesDiscovered(s,0,121),false);
   studyRecipe(s,key,NOW);
   const r=RECIPE_CATALOG.find(x=>x.key===key&&x.kind==='seasonal'),row=seasoningAdvice(s,r.toolId,NOW).rows.find(x=>x.key===[...r.ingredients].sort((a,b)=>a-b).join('+'));
   assert.ok(row,'the studied set is advised');const t=row.targets.find(x=>x.key===key);assert.ok(t,'and names its partner');
-  assert.ok(Math.abs(t.chance-.25)<1e-9);assert.ok(rankAdvice({rows:[row]},'new').length===1);
+  assert.ok(Math.abs(t.chance-(1-.8**24))<1e-9);assert.ok(rankAdvice({rows:[row]},'new').length===1);
 });
 test('combinations built from known recipes are offered for income but never for 新伙伴, and show only known birds',()=>{
   const s=observer();let combos=0;

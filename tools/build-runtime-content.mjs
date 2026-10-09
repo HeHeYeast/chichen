@@ -144,7 +144,7 @@ export function compileRuntimeContent(content,baseline,art) {
     assert(r.id===`REC-${s.id}`&&r.mode==='regional-trial','Regional recipe identity/mode');
     safeInteger(r.toolId,0,8,`${s.id} tool`);safeInteger(r.toolLevel,1,3,`${s.id} display tool level`);safeInteger(r.kitchenLevel,1,4,`${s.id} display kitchen level`);
     assert(!(r.toolId===8&&s.egg===1),`Steamer remains chicken-only: ${s.id}`);
-    assert(r.exact&&!r.extraIngredientsAllowed&&r.firstChance===0.25&&r.hardAttempt===4&&r.repeatGuaranteed===1,`Trial contract changed: ${s.id}`);
+    assert(r.exact&&!r.extraIngredientsAllowed&&[.1,.2,.3].includes(r.firstChance)&&r.hardAttempt===0&&r.repeatGuaranteed===0,`Trial contract changed: ${s.id}`);
     assert(r.ingredients.length>=1&&r.ingredients.length<=3,`Ingredient arity ${s.id}`);unique(r.ingredients,`${s.id} ingredients`);
     for(const ingredient of r.ingredients)assert(materialIds.has(ingredient.id)&&![68,69,70].includes(ingredient.id)&&ingredient.quantity===1,`Invalid ingredient ${s.id}/${ingredient.id}`);
     same(r.materialSupplyRequired,r.ingredients.map(m=>m.id),`Supply coverage ${s.id}`);

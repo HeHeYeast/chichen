@@ -161,7 +161,7 @@ test('the regulars validator rejects out-of-order reads, missing results, stray 
 test('branch text shows names for menus and orders but keeps unfound cards and materials masked',async()=>{
   const {readableRequirement}=await import('../web/regular-model.js');const s=base();
   assert.equal(readableRequirement(s,'MN2有效接待一次'),'「茶香便当」有效接待一次');
-  assert.equal(readableRequirement(s,'完成T-N1并用79完整收取一批'),'完成茶坡见闻一并用茶坡新材料完整收取一批');
+  assert.equal(readableRequirement(s,'完成T-N1并用79完整收取一批'),'完成茶坡线索一并用茶坡新材料完整收取一批');
   s.expansion.discovery.identified['79']=++s.meta.factSeq;assert.match(readableRequirement(s,'用79'),/用焙香叶/);
   assert.equal(readableRequirement(s,'营业累计18只、发现40种'),'营业累计18只、发现40种','quantities are not materials');
 });

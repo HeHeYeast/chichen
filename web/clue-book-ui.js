@@ -41,7 +41,7 @@ export function createClueBookUI({getState,getNow=()=>Date.now(),panels,showPane
   }
   const needText=r=>r.identify!=null?r.need[0]:r.need?.length?`还差：${r.need.map(short).slice(0,2).join('、')}`:'还有条件没满足';
   // a regional trial: its odds, and how many batches at most until it is sure
-  const trialText=r=>r.trial?.inPot?'这锅正在试做 · 收取后揭晓':r.trial?.sure?'这锅一定出':`每锅 ${pct(r.chance)} · 最多 ${r.trial.left} 锅`;
+  const trialText=r=>r.trial?.inPot?'这锅正在试做 · 收取后揭晓':`每枚 ${pct(r.trial.perEgg)} · 平均 ${r.trial.expected.toFixed(1)} 只`;
   const study=(r,mini=true)=>r.held||r.studyHidden?'':r.canStudy?`<button type="button" class="gd-btn2${mini?' mini':''} cb-study" data-cb-study="${r.key}" aria-label="研读 ${esc(r.code)}，${r.studyCost} CP">研读<span class="cb-cost">${kitIcon.coin}${r.studyCost}</span></button>`
     :`<button type="button" class="gd-btn2${mini?' mini':''} cb-study is-locked" data-cb-study-locked aria-label="研读：先学会手艺「配方研读」"><img class="cb-lock" src="/web/art/golden-journey/lock.png" alt="">研读</button>`;
   // the one thing to do with this partner now

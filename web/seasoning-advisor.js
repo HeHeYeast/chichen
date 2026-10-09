@@ -1,7 +1,8 @@
+import {recipeChance} from './hatch-probability.js';
+import {INGREDIENT_FLAVOR_GROUPS} from './ingredient-flavors.js';
 // Seasoning advice for one cookware, built only from what the player already knows:
 // collected or studied recipes, plus clue directions. Expected outcomes use the same
-// pools as a real batch: original pools draw 24 without replacement (hypergeometric
-// means), the steamer keeps one per matched recipe and draws the rest by rate.
+// weighted pools as a real batch: all 24 eggs draw independently; no fixed inserts.
 // Read-only: nothing here changes the save.
 import * as E from './engine.js';
 import {originalRecipePlan} from './recipes.js';
@@ -58,20 +59,17 @@ export function expectedOutcome(s,toolId,ingredients,now=Date.now(),{hideUnknown
   const egg=s.egg,out=new Map(),kinds=new Map(),add=(id,n)=>out.set(id,(out.get(id)??0)+n),seen=id=>speciesDiscovered(s,egg,id);
   if(toolId===8){
     let matches=expansionMatches(s,egg,toolId,ingredients)??[];if(hideUnknown)matches=matches.filter(c=>seen(c.id));
-    const kept=matches.filter(c=>c.ingredients.length),rate=matches.reduce((n,c)=>n+c.rate,0);
-    for(const c of kept)add(c.id,1);
-    if(rate)for(const c of matches)add(c.id,(24-kept.length)*c.rate/rate);
-    for(const c of matches)kinds.set(c.id,c.ingredients.length?1:rate?1-(1-c.rate/rate)**(24-kept.length):0);
+    const rate=matches.reduce((n,c)=>n+c.rate,0);
+    if(rate)for(const c of matches){add(c.id,24*c.rate/rate);kinds.set(c.id,1-(1-c.rate/rate)**24);}
     return {counts:out,kinds,possible:[]};
   }
-  const plan=originalRecipePlan(recipeStateAt(s,now),egg,toolId,ingredients,now),pool=hideUnknown?plan.pool.filter(seen):plan.pool,n=pool.length,draws=Math.min(24,n);
+  const plan=originalRecipePlan(recipeStateAt(s,now),egg,toolId,ingredients,now),giftPool=plan.gifts.flatMap(g=>Array(Math.max(1,Math.round(plan.pool.length*.25/plan.gifts.length))).fill(g.id)),pool=[...plan.pool,...giftPool].filter(id=>!hideUnknown||seen(id)),n=pool.length,draws=24;
   const weight=new Map();for(const id of pool)weight.set(id,(weight.get(id)??0)+1);
   for(const id of pool)add(id,draws/n);
-  for(const [id,w] of weight){let none=1;if(n-w<draws)none=0;else for(let i=0;i<draws;i++)none*=(n-w-i)/(n-i);kinds.set(id,1-none);}
-  // A 四时 partner not met yet: an exact two-seasoning match puts it on egg 0 in a quarter of batches (seasonalSurprise),
-  // shared evenly when several match; that egg is taken from the ordinary draw.
+  for(const [id,w] of weight)kinds.set(id,1-(1-w/n)**24);
+  // Exact seasonal recipes replace each ordinary draw with the same per-egg chance on first and repeat batches.
   const surprise=hideUnknown?[]:seasonalCandidates(s,toolId,ingredients);
-  if(surprise.length){for(const [id,v] of out)out.set(id,v*(1-.25/24));for(const c of surprise){add(c.id,.25/surprise.length);kinds.set(c.id,.25/surprise.length);}}
+  if(surprise.length){const total=surprise.reduce((n,c)=>n+recipeChance(c),0),mass=Math.min(1,total);for(const [id,v] of out){const mean=v*(1-mass);out.set(id,mean);kinds.set(id,1-(1-mean/24)**24);}for(const c of surprise){const p=recipeChance(c)/Math.max(1,total);add(c.id,24*p);kinds.set(c.id,1-(1-p)**24);}}
   return {counts:out,kinds,possible:[...new Set(plan.gifts.map(g=>g.id))]};
 }
 
@@ -240,7 +238,7 @@ export function guessDirections(s,egg,now=Date.now()){
     const p=c.path;if(!p.conditions.every(x=>x.met)||(p.toolId===8&&egg!==0)||!p.ingredients.every(usable))continue;
     const first=c.first&&p.ingredients.length?p.ingredients[0]:null;
     let candidates=null;
-    if(c.group){candidates=(RULES.ingredientFlavorGroups[c.group]??[]).filter(id=>id!==first&&usable(id));if(!candidates.length)continue;}
+    if(c.group){candidates=(INGREDIENT_FLAVOR_GROUPS[c.group]??[]).filter(id=>id!==first&&usable(id));if(!candidates.length)continue;}
     out.push({key:r.key,egg,id:r.id,code:speciesCode(r.key),silhouette:c.levels[0],riddle:SPECIES_CLUES[r.key]??'',toolId:p.toolId,level:p.minLevel,
       first,group:c.group,candidates,depth:c.levels.filter(Boolean).length});
   }

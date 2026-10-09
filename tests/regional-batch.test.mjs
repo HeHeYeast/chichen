@@ -40,72 +40,44 @@ function finish(s,at=s.batch.ends+1){
   return readyAt;
 }
 
-test('real startBatch handles 25% boundaries with one target plus23 legacy companions',()=>{
-  for(const [roll,hit]of [[0,true],[.25-Number.EPSILON,true],[.25,false],[1-Number.EPSILON,false]]){
-    const s=readyState(),beforeCP=s.cp,beforeMaterial=s.ingredients[75];
-    const b=start(s,()=>roll);
-    assert.equal(b.plan.roll,roll);assert.equal(b.plan.targetScheduled,hit);
-    assert.equal(b.eggs.filter(e=>e.id===128).length,hit?1:0);
-    assert.equal(b.eggs.filter(e=>e.id<128).length,hit?23:24);
-    assert.equal(s.ingredients[75],beforeMaterial-1);assert.equal(s.cp,beforeCP-E.tool(1).lv_0_cook_cp);
-    assert.deepEqual(b.plan.initialIds,b.eggs.map(e=>e.id));assert.equal(b.rules.version,3);
+test('each regional egg uses its own 30% draw with exact inputs and frozen results',()=>{
+  for(const [roll,hit] of [[0,true],[.3-Number.EPSILON,true],[.3,false],[.999,false]]){
+    const s=readyState(),cp=s.cp,material=s.ingredients[75],b=start(s,()=>roll);
+    assert.equal(b.plan.version,2);assert.equal(b.plan.chance,.3);assert.equal(b.plan.roll,null);
+    assert.equal(b.eggs.filter(e=>e.id===128).length,hit?24:0);assert.equal(b.plan.targetScheduled,hit);
+    assert.equal(s.ingredients[75],material-1);assert.equal(s.cp,cp-E.tool(1).lv_0_cook_cp);
     assert.deepEqual(E.normalizeSave(s,b.started),s);
   }
 });
-
-test('three complete failures schedule fourth batch and collecting actual target clears protection',()=>{
-  const s=readyState();
-  for(let i=0;i<3;i++){
-    const b=start(s,()=>.9);assert.equal(b.plan.targetScheduled,false);finish(s);
-    assert.deepEqual(s.expansion.trial[RECIPE],{failedFullBatches:i+1,owed:false,attemptSeq:i+1});
-    assert.equal(E.collect(s,23,b.ends+3001),false,'last-slot double click cannot count another failed batch');
-    assert.equal(s.expansion.trial[RECIPE].failedFullBatches,i+1);
-    assert.deepEqual(E.normalizeSave(s,b.ends+3001),s);
-  }
-  const fourth=start(s,()=>.999);assert.equal(fourth.plan.targetScheduled,true);assert.equal(fourth.plan.roll,null);assert.equal(s.expansion.trial[RECIPE].owed,true);
-  finish(s);assert.equal(s.total[KEY],1);assert.equal(s.farm[KEY],1);
-  assert.deepEqual(s.expansion.trial[RECIPE],{failedFullBatches:0,owed:false,attemptSeq:4});
-  assert.equal(s.expansion.regions.materialUse[75],true);
+test('four misses never insert a guaranteed target and each attempt still costs inputs',()=>{
+  const s=readyState();for(let i=0;i<4;i++){const b=start(s,()=>.9);finish(s);assert.equal(b.plan.targetScheduled,false);assert.equal(s.expansion.trial[RECIPE].failedFullBatches,0);assert.equal(E.collect(s,23,b.ends+3001),false);}assert.equal(s.total[KEY],undefined);
 });
-
-test('a partial batch never increments failure or marks material used',()=>{
-  const s=readyState();start(s,()=>.9);const at=mature(s);
-  for(let i=0;i<23;i++)E.collect(s,i,at);
-  assert.equal(s.expansion.trial[RECIPE].failedFullBatches,0);assert.equal(s.batch.plan.finished,false);assert.equal(s.expansion.regions.materialUse?.[75],undefined);
-  E.collect(s,23,at);assert.equal(s.expansion.trial[RECIPE].failedFullBatches,1);assert.equal(s.batch.plan.finished,true);assert.equal(s.expansion.regions.materialUse[75],true);
+test('partial collection cannot finish the batch or mark material use',()=>{
+  const s=readyState();start(s,()=>.9);const at=mature(s);for(let i=0;i<23;i++)E.collect(s,i,at);
+  assert.equal(s.batch.plan.finished,false);assert.equal(s.expansion.regions.materialUse?.[75],undefined);
+  E.collect(s,23,at);assert.equal(s.batch.plan.finished,true);assert.equal(s.expansion.regions.materialUse[75],true);
 });
-
-test('overcooked target is not discovery and owed protection survives full collection and reload',()=>{
-  const s=readyState();start(s,()=>0);assert.equal(s.batch.eggs[0].id,128);
-  finish(s,Math.max(...s.batch.eggs.map(e=>e.blackAt))+1);
-  assert.equal(s.total[KEY],undefined);assert.equal(s.batch.eggs[0].id,2);
-  assert.equal(s.expansion.trial[RECIPE].owed,true);assert.equal(s.expansion.trial[RECIPE].failedFullBatches,1);
-  const restored=parseBackup(makeBackup(s,s.batch.ends),s.batch.ends);
-  const next=start(restored,()=>.999);assert.equal(next.plan.targetScheduled,true);assert.equal(next.plan.roll,null);
-  finish(restored);assert.equal(restored.total[KEY],1);assert.equal(restored.expansion.trial[RECIPE].owed,false);
+test('spoiled results do not create discoveries or a new hidden guarantee',()=>{
+  const s=readyState();start(s,()=>0);finish(s,Math.max(...s.batch.eggs.map(e=>e.blackAt))+1);
+  assert.equal(s.total[KEY],undefined);assert.equal(s.expansion.trial[RECIPE].owed,false);
+  const restored=parseBackup(makeBackup(s,s.batch.ends),s.batch.ends);assert.equal(start(restored,()=>.999).plan.targetScheduled,false);
 });
-
-test('dirty-kitchen disease uses frozen tickets and retains the unpaid target',()=>{
-  const s=readyState(),at=NOW+37*3600000;
-  E.resume(s,at);assert.equal(s.dirty,true);start(s,()=>0,at);finish(s);
-  assert.equal(s.batch.eggs[0].id,1);assert.equal(s.total[KEY],undefined);assert.equal(s.expansion.trial[RECIPE].owed,true);
-  assert.equal(s.expansion.trial[RECIPE].failedFullBatches,1);
+test('disease uses frozen tickets without rerolling or promising another target',()=>{
+  const s=readyState(),at=NOW+37*3600000;E.resume(s,at);start(s,()=>0,at);finish(s);
+  assert.equal(s.batch.eggs[0].id,1);assert.equal(s.total[KEY],undefined);assert.equal(s.expansion.trial[RECIPE].owed,false);
 });
-
-test('abandoning a paid scheduled batch retains owed without increasing full-batch failure',()=>{
-  const s=readyState();start(s,()=>0);const before=structuredClone(s.expansion.trial[RECIPE]),paid=s.cp;
-  // The real overwrite UI explicitly clears the old batch on its command draft
-  // before startBatch. No settlement is synthesized for this abandoned batch.
-  const at=s.batch.started+1;s.batch=null;start(s,()=>.999,at);
-  assert.equal(before.owed,true);assert.equal(s.expansion.trial[RECIPE].failedFullBatches,0);assert.equal(s.expansion.trial[RECIPE].owed,true);assert.equal(s.batch.plan.targetScheduled,true);
-  assert.ok(s.cp<paid,'replacement is a new paid batch, never a free reroll');
+test('discarding a batch never creates a free reroll',()=>{
+  const s=readyState();start(s,()=>0);const cp=s.cp,at=s.batch.started+1;s.batch=null;start(s,()=>.999,at);
+  assert.ok(s.cp<cp);assert.equal(s.batch.plan.targetScheduled,false);assert.equal(s.expansion.trial[RECIPE].owed,false);
 });
-
-test('permanent actual discovery guarantees repeat after selling the final copy',()=>{
-  const s=readyState();start(s,()=>0);finish(s);const at=s.batch.ends+3001;
-  assert.equal(s.farm[KEY],1);E.sell(s,{[KEY]:1},{},at);assert.equal(s.farm[KEY],0);
-  const b=start(s,()=>.999,at+1);assert.equal(b.plan.mode,'regional-repeat');assert.equal(b.plan.roll,null);assert.equal(b.plan.targetScheduled,true);assert.equal(b.eggs.filter(e=>e.id===128).length,1);
-  finish(s);assert.equal(s.total[KEY],2);
+test('first discovery and repeat have identical probabilities after selling all copies',()=>{
+  const s=readyState();start(s,()=>0);finish(s);assert.equal(s.farm[KEY],24);const at=s.batch.ends+3001;
+  E.sell(s,{[KEY]:24},{overrideKeepOne:true},at);const b=start(s,()=>.999,at+1);
+  assert.equal(b.plan.mode,'regional-repeat');assert.equal(b.plan.chance,.3);assert.equal(b.plan.targetScheduled,false);
+});
+test('version-one single-target batches remain valid without changing saved outcomes',()=>{
+  const s=readyState();start(s,()=>.9);s.batch.plan.version=1;delete s.batch.plan.chance;s.batch.plan.roll=.9;
+  const before=structuredClone(s.batch);assert.deepEqual(parseBackup(makeBackup(s,s.batch.started),s.batch.started).batch,before);
 });
 
 test('extra/duplicate/wrong egg/wrong tool/missing material conflict rejects before any debit',()=>{
@@ -153,7 +125,7 @@ test('current save rejects impossible legacy/new companion tickets and inconsist
   const s=readyState();start(s,()=>.9);
   for(const mutate of [
     state=>{state.batch.plan.initialIds[1]=129;},
-    state=>{state.batch.plan.roll=null;},
+    state=>{state.batch.plan.chance=.9;},
     state=>{state.batch.ingredients=[0];},
     state=>{state.batch.level=-1;},
   ]){const invalid=structuredClone(s);mutate(invalid);assert.throws(()=>E.normalizeSave(invalid,s.batch.started));}

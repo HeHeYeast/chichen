@@ -1,3 +1,4 @@
+import {loopGuide} from './loop-guide.js';
 // 生意主页 markup (2026-10-07, loop design batch 3). One page you can play from: 今日营业 on top (the wood sign, the
 // menu, its core partners in their baskets on the counter, the forecast and 开张), the order board (2–3 slips: what
 // each still needs, its reward and the one next step), then two small cards for 常客 and 项目. Words stay on the
@@ -30,17 +31,18 @@ function face(key,characterPortrait,cls=''){
 // kitchen can make it now; 「?」 for a partner not met yet.
 function basket(slot,characterPortrait,{active=false,count=null}={}){
   const state=slot.ok?'ok':slot.known?'need':'unknown',tag=active?`×${count}`:slot.ok?'✓':`${slot.have}/${slot.need}`;
-  const label=active?`${slot.name}，还剩 ${count} 只`:slot.ok?`${slot.name}，够了`:slot.known?`${slot.name}，还差 ${slot.need-slot.have} 只${slot.makeable?'，去做':''}`:'还不认识的伙伴，看线索';
+  const canStock=slot.known&&slot.available>slot.have;
+  const label=active?`${slot.name}，还剩 ${count} 只`:slot.ok?`${slot.name}，已摆 ${slot.have} 只，调整数量`:slot.known?`${slot.name}，已摆 ${slot.have}/${slot.need} 只${canStock?'，有库存可摆':slot.makeable?'，去做':''}`:'还不认识的伙伴，看线索';
   return `<button type="button" class="bh-basket is-${state}" data-business-slot="${slot.key}" aria-label="${esc(label)}">${art('basket-base','bh-basket-base')}
     <span class="bh-basket-face">${slot.known?face(slot.key,characterPortrait):'<span class="bh-face"><span class="bk-q" aria-hidden="true">?</span></span>'}</span>${art('basket-front','bh-basket-front')}
-    <b class="bh-basket-tag">${esc(tag)}</b>${slot.makeable&&!active?'<i class="bh-make" aria-hidden="true">做</i>':''}</button>`;
+    <b class="bh-basket-tag">${esc(tag)}</b>${!active&&(canStock||slot.makeable)?`<i class="bh-make" aria-hidden="true">${canStock?'摆':'做'}</i>`:''}</button>`;
 }
 
 export function todayMarkup({core,model,live,stars,characterPortrait,canOpen}){
   // legacy: a shop opened before the 25% rule (1.5.17 or older) finishes on its old, smaller menu markup; no percent on its sign
   const active=!!model.active,legacy=model.active?.rulesVersion===1;
   const slots=active?core.slots.filter(x=>(live.stock[x.key]??0)>0||live.initialStock[x.key]):core.slots;
-  const baskets=slots.length?slots.map(x=>basket(x,characterPortrait,{active,count:active?live.stock[x.key]??0:null})).join(''):`<p class="bh-empty">${active?'这一单没摆菜单要的伙伴':'点「换」挑一张菜单'}</p>`;
+  const baskets=slots.length?slots.map(x=>basket(x,characterPortrait,{active,count:active?live.stock[x.key]??0:null})).join(''):`<p class="bh-empty">${active?'这一单没摆菜单要的伙伴':'点「换菜单」选择组合'}</p>`;
   let foot;
   if(active){
     const sold=model.active.sold,left=Object.values(live.stock).reduce((a,b)=>a+b,0);
@@ -48,7 +50,7 @@ export function todayMarkup({core,model,live,stars,characterPortrait,canOpen}){
     foot=`<div class="bh-live" data-row><span class="bh-live-n"><b>${sold}</b>/${sold+left}</span>${kitBar(sold+left?sold/(sold+left)*100:0,'已售')}<span class="bh-live-cp">${COIN}+${number(model.active.income)}</span></div>
       <div class="bh-actions is-live" data-row><span class="gd-chip mini">${kitIcon.clock}<span data-business-next>…</span></span><button type="button" class="gd-btn" data-business-sheet="ledger"><span data-safe>账单</span></button></div>`;
   }else{
-    const gap=core.missing&&core.makeable?`<button type="button" class="gd-btn2 bh-gap" data-business-gap>还差 ${core.missing} 只 · 去做</button>`:'';
+    const gap=core.missing?core.slots.some(x=>x.available>x.have)?'<button type="button" class="gd-btn2 bh-gap" data-business-sheet="stock">有库存 · 去摆货</button>':core.makeable?`<button type="button" class="gd-btn2 bh-gap" data-business-gap>还差 ${core.missing} 只 · 去做</button>`:'':'';
     foot=`<div class="bh-chips" data-row>${core.count?`<span class="gd-chip mini">${COIN}+${number(core.income)}</span>`:''}${core.extra?`<span class="gd-chip mini">另 ${core.extra} 只一起卖</span>`:''}</div>
       <div class="bh-actions" data-row>${gap}<button type="button" class="gd-btn" ${canOpen?'data-business-open data-next':'data-business-sheet="stock"'}><span data-safe>${core.count?'开张':'摆货'}</span></button></div>`;
   }
@@ -57,7 +59,7 @@ export function todayMarkup({core,model,live,stars,characterPortrait,canOpen}){
   return `<section class="bh-today${active?' is-open':''}" aria-label="今日营业">
     <div class="bh-today-head"><div class="bh-sign-col"><button type="button" class="bh-sign" data-business-sheet="${active?'ledger':'stock'}" aria-label="${active?'营业中，看账单':'待开张，看全部出品'}">${art(active?'sign-open':'sign-prepare')}<span>${active?'营业中':'待开张'}</span></button>${last}</div>
       <div class="bh-menu-name"><h2>${esc(core.name)}</h2><span class="bh-bonus${core.complete?' is-on':''}">${active?'':stars}<b>${core.complete?'已凑齐':'凑齐'}${legacy?'':' +25%'}</b></span></div>
-      <button type="button" class="bs-menu bh-easel" data-business-sheet="menu" aria-label="${active?'看本单菜单':'换菜单'}">${art('menu-easel')}<span>${active?'菜单':'换'}</span></button></div>
+      <button type="button" class="bs-menu bh-easel" data-business-sheet="menu" aria-label="${active?'看本单菜单':'换菜单'}">${art('menu-easel')}<span>${active?'菜单':'换菜单'}</span></button></div>
     <div class="bh-counter" data-count="${slots.length}">${baskets}</div><div class="bh-ledge" aria-hidden="true">${art('v2-counter')}</div>
     <div class="bh-today-foot">${foot}</div></section>`;
 }
@@ -88,7 +90,9 @@ export function businessHomeMarkup({state,core,model,live,board,regulars,project
   const today=access.met?todayMarkup({core,model,live,stars,characterPortrait,canOpen})
     :`<section class="bh-today is-closed" aria-label="今日营业"><div class="bh-today-head"><button type="button" class="bh-sign" data-business-sheet="stock" aria-label="筹备中，看还差什么">${art('sign-prepare')}<span>筹备中</span></button><div class="bh-menu-name"><h2>先做第一笔生意</h2></div></div><div class="bh-today-foot"><div class="bh-chips" data-row>${access.missing.map(x=>`<span class="gd-chip mini">${esc(x)}</span>`).join('')}</div></div></section>`;
   const orders=board.cards.length?board.cards.map(c=>orderCardMarkup(c,characterPortrait)).join(''):'<p class="bh-empty">营业、寻访或开火后，会有人来问</p>';
-  return `${header}<div class="bs-main-scroll scroll"><div class="bh-main">${today}
+  const guide=loopGuide(state),hidden=state.events.loopGuideHidden===guide?.id;
+  const guidance=guide&&!hidden?`<aside class="loop-guide"><p>${esc(guide.text)}</p><button class="gd-btn2" data-loop-action="${guide.target}">${guide.action}</button><button class="loop-dismiss" data-loop-dismiss="${guide.id}" aria-label="暂时收起引导">×</button></aside>`:'';
+  return `${header}<div class="bs-main-scroll scroll"><div class="bh-main">${guidance}${today}
     <div class="bh-label"><span>订单${board.ready?`<i class="bh-ready">${board.ready} 张能交</i>`:''}</span>${board.total>board.cards.length?`<button type="button" data-business-sheet="orders">全部 ${board.total} ›</button>`:''}</div>
     <div class="bh-orders">${orders}</div>
     <div class="bh-smalls" data-row>${smallCard('regulars',regulars)}${smallCard('projects',projects)}</div></div></div>`;

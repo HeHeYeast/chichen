@@ -77,9 +77,8 @@ export function expansionMatches(state,egg,toolId,ingredients){
 export function expansionRecipes(state,egg,toolId,ingredients,random=Math.random) {
   const matches=expansionMatches(state,egg,toolId,ingredients);if(matches===null)return null;
   const pool=matches.flatMap(c=>Array(c.rate).fill(c.id));
-  // A recipe is learnable: each matched combination gets one guaranteed result.
-  // Remaining eggs are weighted surprises; old recipe sampling is untouched.
-  const result=matches.filter(c=>c.ingredients.length).map(c=>c.id);
+  // Every egg draws from the matched weighted pool; no result occupies a fixed slot.
+  const result=[];
   const index=length=>{const value=random();if(!Number.isFinite(value)||value<0||value>=1)throw Error('随机数异常，未开始调理。');return Math.floor(value*length);};
   while(result.length<24)result.push(pool[index(pool.length)]);
   for(let i=result.length-1;i>0;i--){const j=index(i+1);[result[i],result[j]]=[result[j],result[i]];}

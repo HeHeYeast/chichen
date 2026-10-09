@@ -1,3 +1,4 @@
+import {INGREDIENT_FLAVOR_GROUPS} from './ingredient-flavors.js';
 import {RECIPE_CATALOG,recipePaths,recipeId,recipePathInfo} from './recipe-book.js';
 import {speciesDiscovered} from './species-state.js';
 import {rank,checkedIncome} from './progression.js';
@@ -24,7 +25,7 @@ export function observationInfo(s,key,now=Date.now()){
   const can=l=>known||studied||levels[l]||hasFact(s,r,l),details=[];
   if(can(2))details.push(r.special?'这是后续特殊变化或交换':`${r.egg?'鸭蛋':'鸡蛋'} · ${r.toolName} Lv.${r.minLevel+1} 起`,...r.conditions.filter(c=>c.kind==='calendar'||c.label.startsWith('开火时段')).map(c=>(c.met?'已满足：':'尚缺：')+c.label));
   if(can(3)&&!r.special)details.push(r.ingredients.length?'第一味：'+r.ingredientNames[0]:'无需材料');
-  if(can(4)&&r.ingredients.length>1){const group=Object.entries(RULES.ingredientFlavorGroups).find(([,ids])=>ids.includes(r.ingredients[1]))?.[0];details.push('第二味类别：'+group);}
+  if(can(4)&&r.ingredients.length>1){const group=Object.entries(INGREDIENT_FLAVOR_GROUPS).find(([,ids])=>ids.includes(r.ingredients[1]))?.[0];details.push('第二味类别：'+group);}
   if(can(5))details.push(...r.conditions.map(c=>(c.met?'已满足：':'尚缺：')+c.label),'缺少材料 '+r.missing.length+' 份');
   const full=known||studied;
   return {key,code:speciesCode(key),known,name:known?r.name:null,silhouette:can(1),clue:AUTHORED_CLUES[key],details,
@@ -34,7 +35,7 @@ function regionalObservation(s,key,now){
   const r=regionalPath(s,key,now),levels=[false,...regionalLevels(s,key)],known=speciesDiscovered(s,r.egg,r.id),full=levels[5],gate=regionalGate(s,key),study=regionalStudy(s,key),details=[];
   if(levels[2])details.push(`${r.egg?'鸭蛋':'鸡蛋'} · ${r.toolName} Lv.${r.minLevel+1} 起`);
   if(levels[3])details.push('第一味：'+r.ingredientNames[0]);
-  if(levels[4]&&r.ingredients.length>1){const group=Object.entries(RULES.ingredientFlavorGroups).find(([,ids])=>ids.includes(r.ingredients[1]))?.[0];if(group)details.push('第二味类别：'+group);}
+  if(levels[4]&&r.ingredients.length>1){const group=Object.entries(INGREDIENT_FLAVOR_GROUPS).find(([,ids])=>ids.includes(r.ingredients[1]))?.[0];if(group)details.push('第二味类别：'+group);}
   if(!gate.met)details.push('下一步：'+gate.step.text);
   return {key,code:speciesCode(key),known,name:known?r.name:null,silhouette:levels[1],clue:gate.met||known?AUTHORED_CLUES[key]:gate.step.hint||gate.step.text,details,
     full,paths:full?[r]:[],studyCost:full?0:study.studyCost,canStudy:!full&&study.canStudy,path:r,levels,regional:true};
@@ -44,14 +45,14 @@ function regionalObservation(s,key,now){
 export function clueReach(s,key,now=Date.now()){
   if(isRegionalKey(key)){
     const r=regionalPath(s,key,now),levels=regionalLevels(s,key),full=speciesDiscovered(s,r.egg,r.id)||regionalHeld(s,key);
-    const group=levels[3]&&r.ingredients.length>1?Object.entries(RULES.ingredientFlavorGroups).find(([,ids])=>ids.includes(r.ingredients[1]))?.[0]??null:null;
+    const group=levels[3]&&r.ingredients.length>1?Object.entries(INGREDIENT_FLAVOR_GROUPS).find(([,ids])=>ids.includes(r.ingredients[1]))?.[0]??null:null;
     return {path:r,full,levels,tool:levels[1],first:levels[2],group,count:r.ingredients.length,regional:true};
   }
   const r=accessiblePath(s,key,now);if(!r)return null;
   const full=speciesDiscovered(s,r.egg,r.id)||s.progress.knowledge.recipes.includes(recipeId(r));
   const levels=[false,!!rank(s,'OBS-1'),!!rank(s,'OBS-1'),!!rank(s,'OBS-3'),!!rank(s,'OBS-3'),!!rank(s,'OBS-3')];
   const can=l=>full||levels[l]||hasFact(s,r,l);
-  const group=can(4)&&r.ingredients.length>1?Object.entries(RULES.ingredientFlavorGroups).find(([,ids])=>ids.includes(r.ingredients[1]))?.[0]??null:null;
+  const group=can(4)&&r.ingredients.length>1?Object.entries(INGREDIENT_FLAVOR_GROUPS).find(([,ids])=>ids.includes(r.ingredients[1]))?.[0]??null:null;
   return {path:r,full,levels:[1,2,3,4,5].map(can),tool:can(2),first:can(3)&&!r.special,group,count:r.ingredients.length};
 }
 // The exact recipe the player holds for a partner not met yet (线索册「已解锁」): a studied recipe, or clues that leave
@@ -180,7 +181,7 @@ export function clueFactText(c){
   if(c.level===1)return '看清了它的剪影';
   if(c.level===2)return `要用${GAME_DATA.tools[1][path.toolId]?.title_zh_CN??'厨具'} Lv.${path.minLevel+1}`;
   if(c.level===3)return path.ingredients.length?`第一味是「${ingredientName(path.ingredients[0])}」`:'不用放调味料';
-  if(c.level===4){const group=Object.entries(RULES.ingredientFlavorGroups).find(([,ids])=>ids.includes(path.ingredients[1]))?.[0];return `第二味是${group}类`;}
+  if(c.level===4){const group=Object.entries(INGREDIENT_FLAVOR_GROUPS).find(([,ids])=>ids.includes(path.ingredients[1]))?.[0];return `第二味是${group}类`;}
   return c.detail?`其余条件：${c.detail}`:'其余条件';
 }
 // The region whose trips read this partner's next clue, with its short name.

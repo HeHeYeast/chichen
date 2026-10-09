@@ -35,7 +35,7 @@ for(const s of c.species){
  check('完整字段 '+s.id,['name','workName','description','clue','art','recipe','unlock','signature','tags','exploration','menus','collections','relatedCards','orders','regulars','projects','uses'].every(k=>Object.hasOwn(s,k))&&s.description.length>=25&&Object.values(s.art).every(Boolean));
  check('至少两项跨系统用途 '+s.id,new Set(s.uses.map(u=>u.system)).size>=2);
  check('非图鉴孤岛 '+s.id,s.edible?s.menus.length>0&&s.orders.length>0:s.uses.some(u=>u.system==='exploration')&&s.orders.includes('O04'));
- check('可追寻的完整入口 '+s.id,!!s.recipe.id&&s.unlock.fullMethodRequired&&s.recipe.hardAttempt===4&&s.recipe.repeatGuaranteed===1&&s.unlock.minimumKitchen===s.recipe.kitchenLevel);
+ check('可追寻的完整入口 '+s.id,!!s.recipe.id&&s.unlock.fullMethodRequired&&s.recipe.hardAttempt===0&&s.recipe.repeatGuaranteed===0&&[.1,.2,.3].includes(s.recipe.firstChance)&&s.unlock.minimumKitchen===s.recipe.kitchenLevel);
  check('合法材料和厨具 '+s.id,s.recipe.ingredients.every(i=>i.quantity===1&&[...b.ingredients,...c.materials].some(m=>m.id===i.id))&&s.recipe.ingredients.length<=3&&s.recipe.toolLevel>=1&&s.recipe.toolLevel<=3);
  check('不碰神社媒介/鸭蒸笼 '+s.id,!s.recipe.ingredients.some(i=>[68,69,70].includes(i.id))&&!(s.egg&&s.recipe.toolId===8));
  check('合法唯一招牌与食用 '+s.id,s.edible?['家常','煎炸','炖煮','烘焙','蒸点','茶饮'].includes(s.signature):s.signature===null&&s.menus.length===0);
