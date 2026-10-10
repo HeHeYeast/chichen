@@ -1,4 +1,3 @@
-import {materialCapacity,materialRoom} from './material-capacity.js';
 import {economicRandom} from './rng.js';
 // Permanent offline qualifications for original server / cross-app rewards.
 // These commissions are a local adaptation; generated recipes remain intact.
@@ -94,9 +93,7 @@ function infoFor(state,entry,now) {
   }
   if(entry.kind==='gift') {
     const held=positiveCount(state.ingredients?.[entry.ingredientId]);
-    const full=Object.values(state.ingredients??{}).reduce((sum,value)=>sum+positiveCount(value),0)>=materialCapacity(state);
     if(!reason&&held>0)reason='请先用完同一种赠品';
-    if(!reason&&full)reason=`调味料已满 ${materialCapacity(state)} 个，请先腾出空间`;
     if(entry.ingredientId===68) {
       rewardText+=' · 随机签意，未收录的更容易抽到';
     }

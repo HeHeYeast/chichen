@@ -73,11 +73,11 @@ test('exploration reservations block sales, travel and story consumption, recall
  same(s,()=>E.sell(s,{'0:0':1},{},NOW));same(s,()=>deliverOrder(s,'first-sale',1,NOW));same(s,()=>claimActivity(s,'time-travel',NOW));
  same(s,()=>T.depart(s,{routeId:'yard',members:['0:1']},NOW));same(s,()=>P.respecSkills(s,NOW));const ingredients=structuredClone(s.ingredients);T.recall(s,s.progress.trip.id,NOW+1);assert.equal(availableCount(s,'0:0'),1);assert.deepEqual(s.ingredients,ingredients);assert.deepEqual(s.total,total);assert.equal(s.progress.routeFailures.yard,0);
 });
-test('exploration auto-return, full bag, partial claim, once-only clues, import and saved tickets',()=>{
+test('exploration auto-return, notes-only claim, unlimited materials, import and saved tickets',()=>{
  const s=full();s.ingredients={0:30};T.depart(s,{routeId:'wood',members:['0:0','0:1','0:2']},NOW,()=>0);const id=s.progress.trip.id,end=s.progress.trip.endAt,ticket=structuredClone(s.progress.trip);
  const loaded=parseBackup(makeBackup(s,NOW),NOW);assert.deepEqual(loaded.progress.trip,ticket);E.advanceWorld(loaded,end);assert.equal(reservedCount(loaded,'0:0'),0);
- T.claimTrip(loaded,id,{},end);assert.equal(loaded.progress.trip.remaining.length,4);const facts=loaded.progress.knowledge.facts.length;T.claimTrip(loaded,id,{},end);assert.equal(loaded.progress.knowledge.facts.length,facts);same(loaded,()=>T.depart(loaded,{routeId:'yard',members:['0:0']},end));
- loaded.ingredients[0]=28;assert.equal(T.claimTrip(loaded,id,{},end).materials.length,2);assert.equal(loaded.progress.trip.remaining.length,2);const cp=loaded.cp;T.claimTrip(loaded,id,{materials:false,discard:true},end);assert.equal(loaded.progress.trip.status,'settled');assert.equal(loaded.cp,cp);assert.deepEqual(T.claimTrip(loaded,id,{},end).materials,[]);
+ T.claimTrip(loaded,id,{materials:false},end);assert.equal(loaded.progress.trip.remaining.length,4);const facts=loaded.progress.knowledge.facts.length;T.claimTrip(loaded,id,{materials:false},end);assert.equal(loaded.progress.knowledge.facts.length,facts);same(loaded,()=>T.depart(loaded,{routeId:'yard',members:['0:0']},end));
+ assert.equal(T.claimTrip(loaded,id,{},end).materials.length,4);assert.equal(loaded.progress.trip.remaining.length,0);assert.equal(Object.values(loaded.ingredients).reduce((a,b)=>a+b,0),34);const cp=loaded.cp;T.claimTrip(loaded,id,{materials:false,discard:true},end);assert.equal(loaded.progress.trip.status,'settled');assert.equal(loaded.cp,cp);assert.deepEqual(T.claimTrip(loaded,id,{},end).materials,[]);
  assert.deepEqual(E.normalizeSave(loaded,end).progress.trip,loaded.progress.trip);
 });
 test('trip return boundary and rollback never re-reserve, far-offline farm losses preserve away stock until return',()=>{

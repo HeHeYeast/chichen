@@ -17,13 +17,11 @@ import {regionHints} from './order-intel.js';
 const INTEL_ART='/web/art/golden-journey/envelope.png';
 import {availableCount} from './inventory.js';
 import {toolImage} from './catalog.js';
-import {materialCapacity} from './material-capacity.js';
 import {resolveSpecies,SPECIES_ABILITIES,CONTENT_TEXT,REGIONAL} from './content-registry.js';
 import {projectMaterial} from './visibility-model.js';
 import {regionView,releasedRegions,focusLabel,traitLabel,environmentLabel,materialLabel} from './region-view.js';
 
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const countMaterials=s=>Object.values(s.ingredients).reduce((sum,n)=>sum+n,0);
 const percent=n=>`${Math.round(n*100)}%`;
 const minutes=n=>`${Math.floor(n/60)}小时${n%60?`${n%60}分`:''}`;
 // The region's partners speak the 线索册's words (loop batch 4): 调查 x/5, 做法齐了, 已收录.
@@ -76,7 +74,7 @@ export function createRegionalUI({getState,getNow=Date.now,commitProgress,showPa
       `<h3>素材和线索有什么用？</h3><p>首次带回当地素材时自动认识，并开放商店供货。见闻记录当地发生的事，部分伙伴也需要先获得对应见闻。这些记录在旅途记录查看；用于试做的厨具、调味等信息在线索册查看。</p><p>地区伙伴满足食材或见闻条件后，可以继续寻访，逐步获得剪影、厨具、调味和完整做法。其他伙伴的最后一味需要根据类别自己尝试。追踪地区伙伴时，会优先带回它当前可获得的记录或线索。</p>`+
       `<h3>地区配方现在怎样出货？</h3><p>配方按常见、少见、稀有分为每枚 30%、20%、10% 三档。同锅可以出现多只，首次和再次制作概率相同；不设置固定只数或累计锅数保底。</p>`+
       `<h3>寻访连续没有新发现怎么办？</h3><p>「找食材」「找线索」每趟最多获得 1 张新记录。同地区、同方向连续 3 趟没有新发现后，只要还有符合条件的内容，第 4 趟会获得一张。更换地点或队伍不重置次数。</p>`+
-      `<h3>提前召回与材料包满</h3><p>提前召回会让伙伴立刻回家，但本趟没有材料、CP 或发现。正常返回时，材料包放不下的收获会留在归来篮，腾出空位后再领。</p>`+
+      `<h3>提前召回与收获领取</h3><p>提前召回会让伙伴立刻回家，但本趟没有材料、CP 或发现。正常返回后可一次领完收获，调味料没有持有数量上限。</p>`+
       `<details><summary>采样、路标和顺路带货</summary><p>采集地方食材：辨认素材后可选，用 1 份基础材料换成本地区材料。</p><p>沿湾路标：在溪岸小集的岸边摊勾选，完成寻访后开放风湾盐田。</p><p>顺路带货：额外带伙伴去换盐花，平安返回时才扣除货物，并占用 1 份基础材料。</p><p>地区未开放时，可沿老路线寻访，带回基础材料和伙伴线索。</p></details>`+
       `${detail}`;
   }
@@ -189,7 +187,7 @@ export function createRegionalUI({getState,getNow=Date.now,commitProgress,showPa
   }
   // 寻访归来: what came home, the clue (whose, what, 调查 x/5 → y/5) and any regional find, then one button to take it all.
   function returnCard(s,t){
-    const id=regionOfTrip(t),room=materialCapacity(s)-countMaterials(s),ticket=t.regional,card=ticket?.result?.cardId,definition=REGIONAL.cards.find(c=>c.id===card);
+    const id=regionOfTrip(t),ticket=t.regional,card=ticket?.result?.cardId,definition=REGIONAL.cards.find(c=>c.id===card);
     const groups=Object.entries(t.remaining.reduce((a,m)=>(a[m]=(a[m]??0)+1,a),{}));
     const loot=`<div class="jr-loot">${groups.map(([m,n])=>{const v=projectMaterial(s,Number(m));return `<span class="jr-slot" role="img" aria-label="${esc(v.name)} ×${n}"><span class="jr-slot-art">${visualImage(v.known?materialArt(Number(m)):unknownArt)}</span><small>${esc(v.known?v.name:'未辨认')}${n>1?` ×${n}`:''}</small></span>`;}).join('')||'<p class="jr-note">材料已收好</p>'}</div>`;
     const adv=tripClueAdvance(s,t,getNow());
@@ -200,10 +198,9 @@ export function createRegionalUI({getState,getNow=Date.now,commitProgress,showPa
     const find=definition?`<div class="jr-find"><span class="jr-find-art">${visualImage(definition.material!=null?materialArt(definition.material):discoveryArt(card),'stamp')}</span><span class="jr-clue-copy"><b>新发现 · ${esc(CONTENT_TEXT[card]?.title??card)}</b><small>${definition.type==='specimen'?identify?'食材已记进旅途记录 · 辨认后就能用':'食材已记进旅途记录':`${definition.type==='event'?'事件':'见闻'}已记进旅途记录`}</small></span>${identify?`<button type="button" class="gd-btn2 mini" data-regional-identify-find="${definition.material}">辨认</button>`:'<button type="button" class="gd-btn2 mini" data-regional-record>旅途记录</button>'}</div>`
       :protection!==null?`<p class="jr-note">${journeyArt('flag')}特殊发现 · ${protection>=3?'下一趟一定有':`最多再走 ${4-protection} 趟一定有`}</p>`:'';
     const notes=[ticket?.result?.guide?'找到沿湾路标 · 风湾盐田开放了':'',t.cargo?.outcome==='exchanged'?'带货换回盐花 ×1':'',ticket?.result?.methodId?'记下了一份地方做法':'',!t.cpProcessed&&t.cpReward?`还有 ${t.cpReward} CP`:''].filter(Boolean);
-    const full=!room&&t.remaining.length?'<p class="regional-shortage jr-note">材料包满了，放不下的会留在这里</p>':'';
     const manage=`<details class="jr-manage"><summary>整理</summary><div class="jr-manage-row"><button type="button" class="gd-btn2 mini" data-regional-claim-notes>先领CP与线索</button>${t.remaining.length?`<button type="button" class="gd-btn2 mini" data-regional-discard>放弃剩余${t.remaining.length}份</button>`:''}</div></details>`;
     const names=t.members.map(name).join('、');
-    return `<section class="jr-card jr-return regional-basket" aria-label="寻访归来"><div class="jr-head"><span class="jr-place">${journeyArt('pouch')}</span><div class="jr-title"><h2>${esc(regionName(id))} · 归来</h2><small>${esc(names)}回来了</small></div></div>${loot}${clue}${find}${notes.map(n=>`<p class="jr-note">${esc(n)}</p>`).join('')}${full}${manage}<div class="jr-go-row jr-return-go">${room>0||!t.remaining.length?kitButton2('再去一次','data-regional-again'):''}<button type="button" class="jr-go" data-regional-claim>收下</button></div></section>`;
+    return `<section class="jr-card jr-return regional-basket" aria-label="寻访归来"><div class="jr-head"><span class="jr-place">${journeyArt('pouch')}</span><div class="jr-title"><h2>${esc(regionName(id))} · 归来</h2><small>${esc(names)}回来了</small></div></div>${loot}${clue}${find}${notes.map(n=>`<p class="jr-note">${esc(n)}</p>`).join('')}${manage}<div class="jr-go-row jr-return-go">${kitButton2('再去一次','data-regional-again')}<button type="button" class="jr-go" data-regional-claim>收下</button></div></section>`;
   }
   function bindTrip(t){
     find('[data-regional-recall]')?.addEventListener('click',()=>confirmBox('现在召回，伙伴立即回家。这趟不会得到材料、CP、配方线索或地区新发现。',()=>transact(draft=>recall(draft,t.id,getNow()),()=>{screen='map';render();}),false,{yes:'召回伙伴'}));
@@ -213,9 +210,9 @@ export function createRegionalUI({getState,getNow=Date.now,commitProgress,showPa
     // note: what to tell after claiming (the CP line is added when there was any); one dialog, so the receipt stays on it
     const claim=(options,note='')=>{const r=transact(draft=>claimTrip(draft,t.id,options,getNow()),()=>{screen='map';render();});
       if(r&&(r.cp||note)){alertBox([r.cp?`这趟额外带回 ${r.cp} CP。`:'',note].filter(Boolean).join(''));if(r.cp)skillFeedback?.([{id:'TRIP-1',text:'这趟额外 +'+r.cp+' CP'}]);}return r;};
-    find('[data-regional-claim]')?.addEventListener('click',()=>{const r=claim({});if(r?.remaining)alertBox(`材料包满了，还有 ${r.remaining} 份留在归来篮`);});
-    find('[data-regional-clue]')?.addEventListener('click',e=>{const key=e.currentTarget.dataset.regionalClue;const r=claim({});if(!r)return;if(r.remaining)alertBox(`材料包满了，还有 ${r.remaining} 份留在归来篮`);openClueBook?.(key);});
-    find('[data-regional-again]')?.addEventListener('click',()=>{const prev={regionId:regionOfTrip(t),placeId:t.regional?.placeId,focus:t.regional?.focus??focus,members:[...t.members]};const r=claim({});if(!r)return;if(r.remaining){alertBox(`材料包满了，还有 ${r.remaining} 份留在归来篮`);return;}selectRegion(prev.regionId);if(prev.placeId){placeId=prev.placeId;focus=prev.focus;manualPlan=true;}members=prev.members.filter(k=>availableCount(getState(),k)>0);autoTeam=prev.regionId;screen='map';render();});
+    find('[data-regional-claim]')?.addEventListener('click',()=>{const r=claim({});if(r?.remaining)alertBox(`还有 ${r.remaining} 份留在归来篮`);});
+    find('[data-regional-clue]')?.addEventListener('click',e=>{const key=e.currentTarget.dataset.regionalClue;const r=claim({});if(!r)return;if(r.remaining)alertBox(`还有 ${r.remaining} 份留在归来篮`);openClueBook?.(key);});
+    find('[data-regional-again]')?.addEventListener('click',()=>{const prev={regionId:regionOfTrip(t),placeId:t.regional?.placeId,focus:t.regional?.focus??focus,members:[...t.members]};const r=claim({});if(!r)return;if(r.remaining){alertBox(`还有 ${r.remaining} 份留在归来篮`);return;}selectRegion(prev.regionId);if(prev.placeId){placeId=prev.placeId;focus=prev.focus;manualPlan=true;}members=prev.members.filter(k=>availableCount(getState(),k)>0);autoTeam=prev.regionId;screen='map';render();});
     find('[data-regional-claim-notes]')?.addEventListener('click',()=>claim({materials:false},'CP与线索已领取，剩余材料继续留在篮里。'));
     find('[data-regional-discard]')?.addEventListener('click',()=>confirmBox(`放弃剩余${t.remaining.length}份材料，不会换成CP。已经获得的发现与方法记录保留。`,()=>claim({materials:false,discard:true}),false,{yes:'放弃这些材料'}));
   }
@@ -356,13 +353,13 @@ export function createRegionalUI({getState,getNow=Date.now,commitProgress,showPa
     kitDialog({title:'出发',label:'准备出发',className:'journey-confirm',body,no:'再看看',yes:'出发',yesAttrs:'data-journey-confirm',yesClass:'green',yesDisabled:!info.canDepart,onYes:()=>transact(draft=>departRegional(draft,options(),getNow()),()=>{cargo={};guide=false;screen='map';render();})});
   }
   function outlook(s,info,view) {
-    const free=materialCapacity(s)-countMaterials(s),protection=view.protection[focus]??0;
+    const protection=view.protection[focus]??0;
     const intro=info.firstSpecimen?CONTENT_TEXT[REGIONAL.materials.find(m=>m.id===info.introMaterial).stableId]?.name:null;
     const here=view.cards.filter(c=>c.placeId===placeId&&c.focus===focus);
     const chances=new Map(info.candidates.map(c=>[c.cardId,c.chance]));
     const rows=here.map(c=>`<li data-regional-card-preview="${c.id}">${visualImage(c.found?discoveryArt(c.id):unknownArt,"stamp")}<strong>${esc(CARD_TYPE[c.type])} · ${esc(c.title)}</strong> ${c.found?'<span class="regional-success">已记录</span>':chances.has(c.id)?`<span>${percent(chances.get(c.id))}机会</span>`:'<span class="regional-shortage">暂不符合</span>'}${!c.found?`<br><small>${esc(c.hint)}</small>${c.team.length?`<br><small>队伍条件：${c.team.map(esc).join('＋')}（同一位可同时满足）${c.teamMet===false?' · 当前队伍尚未满足':''}</small>`:''}${c.gateMissing.length?`<br><small class="regional-shortage">${c.gateMissing.map(esc).join('；')}</small>`:''}`:''}</li>`).join('');
     const discovery=intro?`这趟带回${intro}食材`:focus==='materials'?'本次专心补材料；新发现卡只在找食材或找线索时出现':info.candidates.length?`约 ${percent(info.candidates.reduce((n,c)=>n+c.chance,0)/info.candidates.length)} 机会记下1张新发现（每趟最多1张）`:here.length&&here.every(c=>c.found)?'本方向已完成，可继续补材料':'这个方向暂时没有能找的发现';
-    return `<section class="regional-outlook"><h3>这一趟能带回什么</h3><p><strong>${info.minUnits}份材料保证</strong> · ${percent(info.materialChance)}机会再添1份</p><p>${info.clueSure?`伙伴线索：一定带回追踪的 ${speciesCode(info.trackedClue.key)} 的下一条`:info.clues?.length?`伙伴线索 ${percent(info.clueChance)} · 保底 ${s.progress.routeFailures[info.route.id]??0}/${info.hardAttempt-1}`:'伙伴线索：这里暂时没有可读的新线索'}</p><p class="regional-discovery-preview">${discovery}</p>${rows&&focus!=='materials'?`<details class="discovery-outlook"><summary>可寻找的发现 · ${here.length} 张</summary><ul class="regional-card-preview">${rows}</ul></details>`:''}${!info.firstSpecimen&&focus!=='materials'&&info.candidates.length?`<p>新发现保底 ${protection}/3 · 连续3趟没有新发现，第4趟只要还有能找的就必得；换地点、换队伍不清零</p>`:''}${info.firstSpecimen?`<small>试做材料替换1份基础材料；食材自动入册。${info.introOverridesPlace?'首次行程会先带你找到入门食材。':''}</small>`:''}${info.entryMissing?.length?`<p class="regional-shortage">要带回入门食材，还需：${info.entryMissing.map(esc).join('；')}</p>`:''}${free<info.minUnits?`<p class="regional-shortage">材料包还可放${free}份。放不下的材料留在归来篮中，食材照常记录。</p>`:''}${info.sureCardId?`<p class="regional-success">追踪的 ${speciesCode(info.trackedFind.key)}：这趟一定找到「${esc(CONTENT_TEXT[info.sureCardId]?.title??'')}」</p>`:''}</section>`;
+    return `<section class="regional-outlook"><h3>这一趟能带回什么</h3><p><strong>${info.minUnits}份材料保证</strong> · ${percent(info.materialChance)}机会再添1份</p><p>${info.clueSure?`伙伴线索：一定带回追踪的 ${speciesCode(info.trackedClue.key)} 的下一条`:info.clues?.length?`伙伴线索 ${percent(info.clueChance)} · 保底 ${s.progress.routeFailures[info.route.id]??0}/${info.hardAttempt-1}`:'伙伴线索：这里暂时没有可读的新线索'}</p><p class="regional-discovery-preview">${discovery}</p>${rows&&focus!=='materials'?`<details class="discovery-outlook"><summary>可寻找的发现 · ${here.length} 张</summary><ul class="regional-card-preview">${rows}</ul></details>`:''}${!info.firstSpecimen&&focus!=='materials'&&info.candidates.length?`<p>新发现保底 ${protection}/3 · 连续3趟没有新发现，第4趟只要还有能找的就必得；换地点、换队伍不清零</p>`:''}${info.firstSpecimen?`<small>试做材料替换1份基础材料；食材自动入册。${info.introOverridesPlace?'首次行程会先带你找到入门食材。':''}</small>`:''}${info.entryMissing?.length?`<p class="regional-shortage">要带回入门食材，还需：${info.entryMissing.map(esc).join('；')}</p>`:''}${info.sureCardId?`<p class="regional-success">追踪的 ${speciesCode(info.trackedFind.key)}：这趟一定找到「${esc(CONTENT_TEXT[info.sureCardId]?.title??'')}」</p>`:''}</section>`;
   }
   // The detailed method defaults to something actionable, so returning to the
   // page always lands on the next real step instead of the first grid cell.

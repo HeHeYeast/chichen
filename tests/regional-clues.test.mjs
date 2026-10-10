@@ -13,7 +13,6 @@ import {nextBatchGoals} from '../web/next-batch-goals.js';
 import {trackedTrail,regionCard} from '../web/journey-model.js';
 import {orderIntelPlan,grantOrderIntel,orderIntelDue,ORDER_INTEL,orderRegion} from '../web/order-intel.js';
 import {regionPartners} from '../web/clue-regions.js';
-import {materialCapacity} from '../web/material-capacity.js';
 import {recipeId} from '../web/recipe-book.js';
 import {REGIONAL} from '../web/content-registry.js';
 import {ROUTES} from '../web/exploration.js';
@@ -144,9 +143,9 @@ test('订单情报 is configured per order and stays in its region; with nothing
   assert.equal(orderRegion('O02'),'V');
 });
 
-test('开火 buys what the batch is missing even when the bag is full: it goes straight into the pot',()=>{
-  const s=valley();const cap=materialCapacity(s);s.ingredients={1:cap};
-  assert.throws(()=>E.buyIngredient(s,9,1),/最多可持有/);
+test('shop and batch restocking both accept large ingredient inventories',()=>{
+  const s=valley();const cap=3000;s.ingredients={1:cap};
+  E.buyIngredient(s,9,1);
   E.buyIngredient(s,9,1,{forBatch:true});s.selected=[9];s.egg=0;E.startBatch(s,4,NOW);
-  assert.equal(Object.values(s.ingredients).reduce((a,b)=>a+b,0),cap,'the bag is as full as before');
+  assert.equal(Object.values(s.ingredients).reduce((a,b)=>a+b,0),cap+1,'only the ingredient used by the batch is consumed');
 });

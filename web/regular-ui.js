@@ -27,14 +27,14 @@ export function createRegularUI({getState,commitProgress,showPanel,panels,openBu
     find('.regulars-scroll').scrollTop=scroll;bindShopSubpage(panels,openBusiness);if(helpOpen)find('.bs-sub-dialog').showModal();
     all('[data-trade-view]').forEach(b=>b.onclick=()=>{if(b.dataset.tradeView==='business')openBusiness?.();else if(b.dataset.tradeView==='orders')openOrders?.();else if(b.dataset.tradeView==='projects')openProjects?.();});
   }
-  function open(id=null){introState=null;if(id?.startsWith('intro:')){intro(id.slice(6),0);return;}detail=id;reading=false;render();}
+  function open(id=null){introState=null;if(id?.startsWith('intro:')){if(getState().events.loopVisitorMet){openBusiness?.();return;}intro(id.slice(6),0);return;}detail=id;reading=false;render();}
   function intro(id,turn){
     introState={id,turn};
     const lines=VISITOR_DIALOGUES[id]?.first;if(!lines)return;
     const last=turn===lines.length-1,scene=productionAsset('regulars',id,'scene');
     shell(`<div class="rg-conversation"><img class="rg-scene" src="${scene}" alt="来访的老街坊"><div class="rg-conversation-paper"><b class="rg-speaker">老街坊</b><p class="regulars-story">${esc(lines[turn].text)}</p></div></div>`,`${kitButton2('先忙去了','data-intro-close')}${kitButton(lines[turn].reply,'data-intro-next')}`);
     find('[data-intro-close]').onclick=()=>openBusiness?.();
-    find('[data-intro-next]').onclick=()=>{if(last){commitProgress(s=>{s.events.loopVisitorMet=true;});openJourney?.('V');}else intro(id,turn+1);};
+    find('[data-intro-next]').onclick=()=>{if(last){const result=commitProgress(s=>{s.events.loopVisitorMet=true;return true;});if(result===null||result===false)return;introState=null;detail=null;openJourney?.('V');}else intro(id,turn+1);};
   }
   function refresh(){if(find('.regulars-screen'))render();}
   function render(){if(introState){intro(introState.id,introState.turn);return;}const m=regularsModel(getState(),pinnedRegular());if(detail)page(m.rows.find(r=>r.id===detail));else list(m);}

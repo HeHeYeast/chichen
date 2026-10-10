@@ -34,8 +34,8 @@ test('future saves and malformed current saves throw instead of returning a new 
   assert.throws(()=>E.parseSave('{broken'),error=>error.code==='INVALID_SAVE');
   for(const mutate of [
     state=>state.toolLevels.pop(),state=>state.cp=-1,state=>state.cp=Infinity,state=>state.cp=1.5,
-    state=>state.kitchenLevel=4,state=>state.toolLevels[1]=3,state=>state.ingredients={0:31},
-    state=>state.ingredients={0:20,1:11},state=>state.ingredients={83:1},state=>state.total={'0:152':1},
+    state=>state.kitchenLevel=4,state=>state.toolLevels[1]=3,state=>state.ingredients={0:-1},
+    state=>state.ingredients={0:20,1:1.5},state=>state.ingredients={83:1},state=>state.total={'0:152':1},
     state=>state.farm={'2:0':1},state=>state.farm={'0:0':-1},state=>state.lastSeen='yesterday',state=>state.egg=1,
   ]){
     const candidate=structuredClone(current);mutate(candidate);const before=structuredClone(candidate);

@@ -87,12 +87,11 @@ test('three special materials remain unavailable for normal purchase and point t
   assert.equal(ingredientActivityId(0),null);
 });
 
-test('full inventory and an unused matching gift never consume a gift entitlement',()=>{
+test('large inventory accepts gifts; an unused matching gift still preserves the next entitlement',()=>{
   for(const [id,ingredient] of [['shrine-gift',68],['flame-gift',69],['cotton-gift',70]]){
-    const state=giftReady();state.ingredients={0:30};
-    unchangedOnFailure(state,()=>claimActivity(state,id,NOW),/已满/);
-    state.ingredients={0:29};claimActivity(state,id,NOW);
-    assert.equal(state.ingredients[ingredient],1);assert.equal(Object.values(state.ingredients).reduce((a,b)=>a+b),30);
+    const state=giftReady();state.ingredients={0:3000};
+    claimActivity(state,id,NOW);
+    assert.equal(state.ingredients[ingredient],1);assert.equal(Object.values(state.ingredients).reduce((a,b)=>a+b),3001);
     state.total['0:0']+=24;
     unchangedOnFailure(state,()=>claimActivity(state,id,NOW+DAY),/先用完/);
     state.ingredients[ingredient]=0;claimActivity(state,id,NOW+DAY);

@@ -12,7 +12,7 @@ import {recipeId} from './recipe-book.js';
 const escape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 import {skillIcon,branchEmblem} from './skill-icons.js';
 import {progressTrack} from './visual-assets.js';
-import {materialCapacity} from './material-capacity.js';
+import {materialCount} from './material-capacity.js';
 import {resolveSprite,spriteSVG,uiIcon} from './art/manifest.js';
 import {kitTabs,kitSheet,kitButton,kitButton2,kitChip,kitChipHtml,kitBar,kitIcon,kitCell,kitLabel,kitArt} from './ui-kit.js';
 const shortEffects={
@@ -21,7 +21,7 @@ const shortEffects={
  'TRADE-1':'普通材料货款返还6%，小数自动积攒','TRADE-2':'选一个招牌类别，出售加价12%','TRADE-3':'同种家常伙伴24只，额外获得12 CP','TRADE-4':'4种普通料理各3只，额外获得8 CP','TRADE-5':'经营奖励最多存6次','TRADE-S':'招牌加价18% · 整筐18 CP／拼盘12 CP',
  'OBS-1':'看剪影、蛋种、厨具与日期条件','OBS-2':'预览最多3种只差一味的未知方向','OBS-3':'看第一味、第二味类别与非材料条件','OBS-4':'100 CP，永久研读全部获取方法','OBS-5':'首次收取新品种，再记下1条可寻线索','OBS-S':'研读50 CP · 寻访可指定优先线索',
  'TRIP-1':'每趟20%概率带回6／12／18 CP','TRIP-2':'指定第1份基础材料','TRIP-3':'每位适应伙伴：材料+3、线索+2个百分点','TRIP-4':'连续5趟无线索，下次有合格线索时必得','TRIP-5':'溪岸／林间轻装：减时20%，基础材料少1份','TRIP-S':'可指定前2份材料 · 额外材料概率+6个百分点'};
-const helpCopy={skills:'发现新品种、累计收取和升级厨房都能获得手艺点。点开手艺看具体效果，加入方案后点击「应用这套手艺」才会生效。普通手艺可以跨方向学习，专精只能选一个。正在进行的批次和寻访，沿用开始时的手艺。',trip:'选一条路线，再派出1～3种在家伙伴，每种1只。每种伙伴有采集、发现和适应环境；选人时可以看到带回材料和线索的机会。到期后伙伴自动回家，材料、CP和线索等你领取。材料包满了也不会丢失已带回的材料。',story:'采购没有截止日期，可以分批交付。每次交付都按数量支付普通货款，全部交齐后再给一次酬谢。已交付的伙伴不能取回；尚未交第一只时，可以更换订单允许的出品。',observe:'线索告诉你可以尝试什么；研读可以学会完整获取方法；只有实际收取，才会正式收入图鉴。知道方法不代表已经满足条件，也不保证普通随机配方每批都有目标。'};
+const helpCopy={skills:'发现新品种、累计收取和升级厨房都能获得手艺点。点开手艺看具体效果，加入方案后点击「应用这套手艺」才会生效。普通手艺可以跨方向学习，专精只能选一个。正在进行的批次和寻访，沿用开始时的手艺。',trip:'选一条路线，再派出1～3种在家伙伴，每种1只。每种伙伴有采集、发现和适应环境；选人时可以看到带回材料和线索的机会。到期后伙伴自动回家，材料、CP和线索等你领取。调味料没有持有数量上限。',story:'采购没有截止日期，可以分批交付。每次交付都按数量支付普通货款，全部交齐后再给一次酬谢。已交付的伙伴不能取回；尚未交第一只时，可以更换订单允许的出品。',observe:'线索告诉你可以尝试什么；研读可以学会完整获取方法；只有实际收取，才会正式收入图鉴。知道方法不代表已经满足条件，也不保证普通随机配方每批都有目标。'};
 const pct=v=>Number((v*100).toFixed(1))+'%';
 const duration=h=>Math.floor(h)+'小时'+(Math.round(h%1*60)?Math.round(h%1*60)+'分':'');
 export function createWorkshopUI({getState,getNow,panels,showPanel,confirmBox,alertBox,commit,characterPortrait,goKitchen,prepareTool,openRegional=()=>{},openBusiness=()=>{},businessNote=()=>'',skillFeedback=()=>{}}){
@@ -69,7 +69,7 @@ export function createWorkshopUI({getState,getNow,panels,showPanel,confirmBox,al
     const why=respecReason(actual,getNow());
     const now=`${kitLabel('现在生效')}<div class="ws-effects">${[[kitIcon.hourglass,`${Math.round(e.reduction*100)}%`,'减时'],[kitIcon.fresh,`+${e.freshMinutes}`,'保鲜分钟'],[kitIcon.broom,`${actual.cleanCycle.hours}`,e.cleanHours!==actual.cleanCycle.hours?`干净小时 · 下次 ${e.cleanHours}`:'干净小时'],[kitIcon.gift,`${actual.progress.trade.credits}/${e.capacity}`,'经营奖励'],[kitIcon.coin,`${e.rebate}%`,actual.progress.trade.rebateRemainder?`返利 · 攒 ${(actual.progress.trade.rebateRemainder/100).toFixed(2)}`:'采购返利']].map(([icon,v,l])=>`<span class="ws-effect-cell"><i>${icon}</i><b>${v}</b><small>${escape(l)}</small></span>`).join('')}</div>
       <div class="ws-respec" data-row>${kitButton2('免费重配','data-respec'+(why?' disabled':''))}${actual.expansion?.business?.active?kitButton2('收摊后重配','data-respec-close-business'):''}</div><p class="ws-respec-note">${escape(why||'收完这批、队伍归队后可免费重配；之后每 72 小时一次。')}</p>`;
-    const leftovers=actual.progress.leftovers.length?`<div class="ws-leftovers" data-row>${kitArt('crate-empty')}<span><b>待收余料 ${actual.progress.leftovers.length}/5 份</b><small>材料包满时继续为你保留</small></span>${kitButton2('收下','data-leftovers')}</div>`:'';
+    const leftovers=actual.progress.leftovers.length?`<div class="ws-leftovers" data-row>${kitArt('crate-empty')}<span><b>待收余料 ${actual.progress.leftovers.length}/5 份</b><small>之前留存的余料可以全部收下</small></span>${kitButton2('收下','data-leftovers')}</div>`:'';
     const trade=rank(s,'TRADE-2')&&branch==='TRADE'?(()=>{const keys=Object.keys(TRADE_SPECIES).filter(k=>TRADE_SPECIES[k].category===category),have=keys.filter(k=>(s.total[k]??0)>0||(s.farm[k]??0)>0);
       return `${kitLabel('小店的招牌')}<div class="ws-cats" role="radiogroup" aria-label="招牌类别">${TRADE_CATEGORIES.map(c=>`<button type="button" class="ws-cat" role="radio" data-category="${c}" aria-checked="${category===c}" aria-pressed="${category===c}" ${rank(actual,'TRADE-2')&&!draftReset?'disabled':''}>${c}</button>`).join('')}</div>${category?`<div class="ws-cat-who" aria-label="${category}的合格伙伴">${have.slice(0,12).map(k=>`<span title="${escape(name(k))}">${portrait(k)}</span>`).join('')}${have.length>12?`<b>+${have.length-12}</b>`:''}</div><p class="ws-respec-note">还有 ${keys.length-have.length} 种没收录 · 重配时才能换招牌</p>`:'<p class="ws-respec-note">选一类，出售时加价</p>'}`;})():'';
     shell('厨房手艺',`${branches}${purse}${H<24?`<div class="workshop-empty">${portrait('0:0')}<h3>第一批，也是第一份本领</h3><p>再收取 ${24-H} 只，开启手艺。<br>完成第一批就能获得2点。</p><button data-workshop-home>回厨房收取</button></div>`:''}${sticky}${tree}${trade}${leftovers}${now}`,`${kitButton2('放弃','data-plan-cancel'+(changed?'':' disabled'))}${kitButton('应用','data-plan-apply'+(changed?'':' disabled'))}`,false,{above:changed?`<span class="draft-status sr-only" role="status">试配中，效果尚未生效</span>${kitChip('',draftReset?`重新分配 ${spent} 点`:`花 ${spent} 点`,'mini')}${kitChip('',`剩 ${p.available} 点`,'mini')}`:''});
@@ -84,7 +84,7 @@ export function createWorkshopUI({getState,getNow,panels,showPanel,confirmBox,al
     find('[data-respec]')?.addEventListener('click',()=>{draft=structuredClone(getState());draft.progress.skills={};draftSteps=[];draftReset=true;category=null;skills();});
     // Respec never rewrites a running business snapshot: close first (settling past windows), then draft.
     find('[data-respec-close-business]')?.addEventListener('click',()=>confirmBox('先按已经过去的接待窗口结算，并收摊释放未售备货与未用经营奖励；已成交的货款不变。随后进入手艺重新分配。',()=>{if(transact(s=>closeBusinessTimeline(s,getNow()))){draft=structuredClone(getState());draft.progress.skills={};draftSteps=[];draftReset=true;category=null;skills();}},false,{yes:'收摊并继续'}));
-    find('[data-leftovers]')?.addEventListener('click',()=>{const r=transact(s=>claimLeftovers(s));draft=null;skills();alertBox(r?.length?'已收下 '+r.length+' 份余料。':'材料包已满。先去厨房使用材料，余料会继续保留。');});
+    find('[data-leftovers]')?.addEventListener('click',()=>{const r=transact(s=>claimLeftovers(s));draft=null;skills();alertBox(r?.length?'已收下 '+r.length+' 份余料。':'没有待领取的余料。');});
     find('[data-workshop-home]')?.addEventListener('click',goKitchen);
   }
   function addSkill(id){try{learnSkill(draft,id);draftSteps.push(id);skills();const card=find(`[data-skill-detail="${id}"]`)?.closest(".ws-node");card?.classList.add("skill-just-selected");card?.scrollIntoView({block:"nearest"});}catch(e){alertBox(e.message);}}
@@ -144,16 +144,16 @@ export function createWorkshopUI({getState,getNow,panels,showPanel,confirmBox,al
     if(members===null){const st=getState(),room=k=>availableCount(st,k)>0;members=fitTeam(st,st.progress.lastTeam??[]);
       if(!members.length){const score=k=>(ABILITIES[k]?.environment===routeId?100:0)+(ABILITIES[k]?.gather??0)*10;members=Object.keys(st.farm).filter(k=>ABILITIES[k]&&(st.total[k]??0)>0&&room(k)).sort((a,b)=>score(b)-score(a)).slice(0,3);}}
     detailKey=null;skillDetail=null;tripStatus=getState().progress.trip?.status;
-    const s=getState(),t=s.progress.trip,room=materialCapacity(s)-Object.values(s.ingredients).reduce((a,b)=>a+b,0);
+    const s=getState(),t=s.progress.trip;
     if(t&&['running','returned'].includes(t.status)){
       const route=ROUTES.find(r=>r.id===t.routeId),running=t.status==='running',minutes=Math.max(0,Math.ceil((t.endAt-getNow())/60000));
       const groups=Object.entries(t.remaining.reduce((a,id)=>(a[id]=(a[id]??0)+1,a),{}));
       shell('日常寻访',`<div class="trip-landscape ${route.id}"><span>${running?'沿着香气，慢慢走':'带着收获，回家了'}</span><h3>${route.name} · ${running?'正在寻访':'伙伴已回家'}</h3><div class="trip-team">${t.members.map(k=>`<div>${portrait(k)}<strong>${escape(name(k))}</strong></div>`).join('')}</div></div>
         ${running?`<div class="gd-row">${kitChipHtml(`${kitIcon.clock}<span data-trip-countdown>还需 ${Math.floor(minutes/60)}小时${minutes%60}分</span>`)}</div><details class="recall-menu gd-more"><summary>行程管理</summary><p>提前召回会空手归来</p>${kitButton2('提前召回','data-recall')}</details>`
         :`<div class="trip-return">${kitLabel('这一趟的收获')}<div class="gd-row gd-wrap material-chips">${groups.map(([id,n])=>kitChip('',`${ingredientName(Number(id))} ×${n}`,'mini')).join('')||kitChip('','材料已收好','mini')}</div>
-          <div class="gd-row gd-wrap">${t.cpProcessed?'':kitChipHtml(`${kitIcon.coin}+${t.cpReward??0}`,'mini')}${kitChip('',`材料包 ${materialCapacity(s)-room}/${materialCapacity(s)}`,'mini'+(room?'':' hot'))}${t.clueResult?kitButton2('读线索',`data-trip-clue="${t.clueResult.key}"`):''}</div>
-          ${!room&&t.remaining.length?'<span class="gd-alert shortage">材料包满了，先领 CP 与线索</span>':''}<details class="gd-more"><summary>整理篮子</summary>${kitButton2('放弃余料','data-discard-trip')}</details></div>`}`,
-        running?kitButton('回厨房','data-trip-home'):`${kitButton2('先领CP','data-claim-clue')}${room?kitButton(`领取 ${Math.min(room,t.remaining.length)} 份`,'data-claim-trip'):kitButton('用材料','data-trip-home')}`);
+          <div class="gd-row gd-wrap">${t.cpProcessed?'':kitChipHtml(`${kitIcon.coin}+${t.cpReward??0}`,'mini')}${kitChip('',`材料包 ${materialCount(s)} 份`,'mini')}${t.clueResult?kitButton2('读线索',`data-trip-clue="${t.clueResult.key}"`):''}</div>
+          <details class="gd-more"><summary>整理篮子</summary>${kitButton2('放弃余料','data-discard-trip')}</details></div>`}`,
+        running?kitButton('回厨房','data-trip-home'):`${kitButton2('先领CP','data-claim-clue')}${kitButton(`领取 ${t.remaining.length} 份`,'data-claim-trip')}`);
       find('[data-trip-home]')?.addEventListener('click',goKitchen);
       find('[data-recall]')?.addEventListener('click',()=>confirmBox('现在召回会立即归队，但这趟没有材料、CP或线索奖励，也不计入线索保底。',()=>{if(transact(s=>recall(s,t.id,getNow())))trip();},false,{yes:'召回'}));
       find('[data-claim-trip]')?.addEventListener('click',()=>{const r=transact(s=>claimTrip(s,t.id,{},getNow()));if(r){trip();alertBox(`已收下 ${r.materials.length} 份材料${r.cp?'、'+r.cp+' CP':''}。${r.clue?'另记下1条新线索。':''}${r.remaining?'篮中还剩 '+r.remaining+' 份，腾出空位后可继续领取。':''}`);if(r.cp)skillFeedback([{id:'TRIP-1',text:'这趟额外 +'+r.cp+' CP'}]);}});

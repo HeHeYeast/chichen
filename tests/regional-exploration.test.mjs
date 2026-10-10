@@ -1,4 +1,3 @@
-import {materialCapacity} from '../web/material-capacity.js';
 import {inventoryView} from '../web/inventory.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -93,14 +92,16 @@ test('regional ticket preserves the old trip material bonus, CP and clue result 
   assert.deepEqual(x,y);
 });
 
-test('full bag does not drop the card or duplicate intro material; basket blocks next trip',()=>{
-  const s=eligible();s.ingredients={0:materialCapacity(s)};const cp=s.cp;
-  departRegional(s,opts,NOW);returnTrip(s);s.ingredients={0:materialCapacity(s)};const t=s.progress.trip,remaining=[...t.remaining];
+test('large inventory accepts all trip rewards without duplicating the intro material',()=>{
+  const s=eligible();s.ingredients={0:3000};const cp=s.cp;
+  departRegional(s,opts,NOW);returnTrip(s);s.ingredients={0:3000};const t=s.progress.trip,remaining=[...t.remaining];
   assert.ok(Object.hasOwn(s.expansion.discovery.cards,'V-S1'));
   claimTrip(s,t.id,{},t.endAt,()=>.99);
-  assert.deepEqual(t.remaining,remaining);assert.equal(t.status,'returned');assert.equal(s.ingredients[75],undefined);assert.equal(s.cp,cp);
-  assert.throws(()=>departRegional(s,opts,t.endAt));
+  assert.deepEqual(t.remaining,[]);assert.equal(t.status,'settled');assert.equal(s.ingredients[75],1);assert.equal(s.cp,cp);
+  assert.equal(Object.values(s.ingredients).reduce((a,b)=>a+b,0),3000+remaining.length);
+  assert.deepEqual(claimTrip(s,t.id,{},t.endAt,()=>.99).materials,[]);
   const before=structuredClone(s);settleRegionalTrip(s,t);assert.deepEqual(s,before);
+  assert.doesNotThrow(()=>departRegional(s,opts,t.endAt));
 });
 
 test('identification is free, idempotent and grants every released direction using that material',()=>{

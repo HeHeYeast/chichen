@@ -1,4 +1,4 @@
-import {materialCapacity,materialRoom} from './material-capacity.js';
+import {materialRoom} from './material-capacity.js';
 import {economicRandom} from './rng.js';
 import {RULES} from './integration-data.js';
 

@@ -38,8 +38,8 @@ test('round2: old skill migration refunds once and preserves all in-flight clock
 });
 test('round2: kitchen snapshot gold is once per egg, whole-batch returns once and a full pending basket disables eligibility before starting',()=>{
  const s=state();learn(s,'CUL-1','CUL-3');s.ingredients={0:30};s.selected=[0];E.startBatch(s,1,NOW,()=>0);s.ingredients[0]=30;const cp=s.cp;
- finish(s,NOW+600000);assert.equal(s.cp,cp+48);assert.equal(s.progress.leftovers.length,1);assert.equal(s.progress.lastHarvest.bonus,24);
- assert.equal(E.collect(s,0),false);assert.equal(s.cp,cp+48);assert.equal(P.claimLeftovers(s).length,0);s.ingredients[0]=29;assert.equal(P.claimLeftovers(s).length,1);assert.equal(P.claimLeftovers(s).length,0);
+ finish(s,NOW+600000);assert.equal(s.cp,cp+48);assert.equal(s.progress.leftovers.length,0);assert.equal(s.ingredients[0],31);assert.equal(s.progress.lastHarvest.bonus,24);
+ assert.equal(E.collect(s,0),false);assert.equal(s.cp,cp+48);assert.equal(P.claimLeftovers(s).length,0);s.progress.leftovers=[0,0];assert.equal(P.claimLeftovers(s).length,2);assert.equal(s.ingredients[0],33);assert.equal(P.claimLeftovers(s).length,0);
  s.progress.leftovers=[0,0,0,0,0];s.selected=[0];E.startBatch(s,1,NOW+600001,()=>0);assert.equal(s.batch.rules.returnEligible,false);assert.equal(s.batch.rules.returnTicket,null);finish(s);assert.equal(s.progress.leftovers.length,5);
 });
 test('round2: pickup and return probabilities match confirmed rates with seeded samples',()=>{
@@ -74,7 +74,7 @@ test('round2: basket-first then maximum platters consumes disjoint stock, opt ou
 test('round2: light expedition uses 4h48/8h and actual base units, directed materials and CP are settled once even full',()=>{
  const s=state();learn(s,'TRIP-1','TRIP-2','TRIP-3','TRIP-5','TRIP-S');s.ingredients={0:30};const i=T.explorationInfo(s,'water',['0:0'],NOW,{light:true});assert.equal(i.hours,4.8);assert.equal(i.minUnits,1);assert.equal(i.directedUnits,1);assert.equal(i.cpReward,6);
  const w=T.explorationInfo(s,'wood',['0:0'],NOW,{light:true});assert.equal(w.hours,8);assert.equal(w.minUnits,2);
- T.depart(s,{routeId:'water',members:['0:0'],light:true},NOW,()=>0);const t=s.progress.trip;assert.equal(t.endAt-NOW,17280000);assert.equal(t.cpReward,6);const cp=s.cp;T.claimTrip(s,t.id,{materials:false},t.endAt);assert.equal(s.cp,cp+6);T.claimTrip(s,t.id,{},t.endAt);assert.equal(s.cp,cp+6);assert.ok(t.remaining.length);assert.deepEqual(E.normalizeSave(s,t.endAt).progress.trip,t);
+ T.depart(s,{routeId:'water',members:['0:0'],light:true},NOW,()=>0);const t=s.progress.trip;assert.equal(t.endAt-NOW,17280000);assert.equal(t.cpReward,6);const cp=s.cp;T.claimTrip(s,t.id,{materials:false},t.endAt);assert.equal(s.cp,cp+6);T.claimTrip(s,t.id,{},t.endAt);assert.equal(s.cp,cp+6);assert.equal(t.remaining.length,0);assert.equal(t.status,'settled');assert.deepEqual(E.normalizeSave(s,t.endAt).progress.trip,t);
 });
 test('round2: matching team improves odds exactly and empty clue pools show zero without advancing pity',()=>{
  const s=state();delete s.total['0:4'];delete s.farm['0:4'];const team=['0:0','0:3','0:8'];const a=T.explorationInfo(s,'yard',team,NOW);const G=team.reduce((n,k)=>n+ABILITIES[k].gather,0),F=team.reduce((n,k)=>n+ABILITIES[k].discover,0),A=team.filter(k=>ABILITIES[k].environment==='yard').length;assert.ok(Math.abs(a.materialChance-(.05+.025*G/3+.04*A))<1e-8);assert.ok(Math.abs(a.clueChance-(.10+.02*F/3+.03*A))<1e-8);learn(s,'TRIP-2','TRIP-3');const b=T.explorationInfo(s,'yard',team,NOW);assert.ok(Math.abs(b.materialChance-(.05+.025*G/3+.04*A+.03*A))<1e-8);assert.ok(Math.abs(b.clueChance-(.10+.02*F/3+.03*A+.02*A))<1e-8);

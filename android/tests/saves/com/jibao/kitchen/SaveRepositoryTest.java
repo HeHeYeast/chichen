@@ -292,8 +292,14 @@ public final class SaveRepositoryTest {
         check(failsSave(context(),bad.toString(),true),"batch3 recipe and target identity must agree");
         bad=new JSONObject(regionalBatch.toString());bad.getJSONObject("batch").getJSONObject("plan").put("mode","legacy");
         check(failsSave(context(),bad.toString(),true),"batch3 legacy and regional guarantees cannot overlap");
-        bad=new JSONObject(regionalBatch.toString());bad.getJSONObject("ingredients").put("0",37);
-        check(failsSave(context(),bad.toString(),true),"single identification capacity does not exceed36");
+        JSONObject largeStock=new JSONObject(regionalBatch.toString());largeStock.getJSONObject("ingredients").put("0",100000).put("1",4294967296L);
+        c=context();SaveRepository.save(c,largeStock.toString(),true);
+        check(SaveRepository.readState(c).getJSONObject("ingredients").getLong("0")==100000,"materials above old capacity survive native save");
+        check(SaveRepository.readState(c).getJSONObject("ingredients").getLong("1")==4294967296L,"material counts do not wrap Java int range");
+        for(double quantity:new double[]{-1,1.5,9007199254740992d}) {
+            bad=new JSONObject(regionalBatch.toString());bad.getJSONObject("ingredients").put("0",quantity);
+            check(failsSave(context(),bad.toString(),true),"invalid material quantity remains rejected: "+quantity);
+        }
         bad=new JSONObject(regionalBatch.toString());bad.getJSONObject("batch").getJSONObject("plan").getJSONArray("initialIds").put(0,4294967296L);
         check(failsSave(context(),bad.toString(),true),"batch initial IDs cannot wrap Java integer range");
         bad=new JSONObject(regionalRunning.toString());bad.getJSONObject("progress").getJSONObject("trip").getJSONArray("remaining").put(1,4294967296L);

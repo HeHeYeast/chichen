@@ -85,10 +85,10 @@ test('ALT-T maps roasted leaf to oolong (3), keeps butter (27) and draws exactly
   assert.deepEqual(drawn,sampleLegacyCompanions(s,{mode:'legacy',egg:0,toolId:2,legacyMaterials:[3,27]},NOW,seq));
 });
 
-test('identifying four regional materials widens the bag to 42 without opening any other supply',()=>{
-  const s=mid();trip(s,'R',{placeId:'R:0',focus:'specimen'});identifyMaterial(s,77);assert.equal(materialCapacity(s),36);
-  give(s,'R-S2');identifyMaterial(s,78);trip(s,'T',{placeId:'T:0',focus:'specimen'});identifyMaterial(s,79);assert.equal(materialCapacity(s),36,'three identified');
-  give(s,'T-S2');identifyMaterial(s,80);assert.equal(materialCapacity(s),42);s.expansion.discovery.identified={77:1,78:2,79:3,80:4};
+test('material storage is unlimited while identification still controls supply',()=>{
+  const s=mid();trip(s,'R',{placeId:'R:0',focus:'specimen'});identifyMaterial(s,77);assert.equal(materialCapacity(s),Infinity);
+  give(s,'R-S2');identifyMaterial(s,78);trip(s,'T',{placeId:'T:0',focus:'specimen'});identifyMaterial(s,79);assert.equal(materialCapacity(s),Infinity,'three identified');
+  give(s,'T-S2');identifyMaterial(s,80);assert.equal(materialCapacity(s),Infinity);s.expansion.discovery.identified={77:1,78:2,79:3,80:4};
   const other=structuredClone(s);delete other.expansion.discovery.identified[80];assert.throws(()=>E.buyIngredient(other,80,1),'osmanthus supply stays closed until identified');
 });
 

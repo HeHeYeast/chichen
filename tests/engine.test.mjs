@@ -54,9 +54,10 @@ test('invalid transactions leave state unchanged',()=>{
   assert.throws(()=>E.buyTool(s,2));assert.throws(()=>E.sell(s,{'0:0':1}));assert.throws(()=>E.buyIngredient(s,1));assert.deepEqual(s,before);
   s.toolLevels[1]=0;s.cp=0;const poor=structuredClone(s);assert.throws(()=>E.startBatch(s,1,NOW));assert.deepEqual(s,poor);
 });
-test('ingredient stock cap is shared across all types and purchase is atomic',()=>{
+test('ingredient stock grows beyond the former shared cap and invalid purchases are atomic',()=>{
   const s=prepared();s.ingredients={0:29};E.buyIngredient(s,1);assert.equal(s.ingredients[1],1);
-  const before=structuredClone(s);assert.throws(()=>E.buyIngredient(s,2));assert.deepEqual(s,before);
+  E.buyIngredient(s,2);assert.equal(s.ingredients[2],1);
+  const before=structuredClone(s);assert.throws(()=>E.buyIngredient(s,2,-1));assert.deepEqual(s,before);
 });
 test('ingredient unlocks require the specific cookware or discovered duck',()=>{
   const s=E.freshState(NOW);s.kitchenLevel=2;assert.deepEqual(E.availableIngredients(s),[0,36]);

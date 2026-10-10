@@ -1,6 +1,6 @@
 import {buildBatchPlan,sampleBatchPlan,recordBatchStarted,recordRegionalHarvest} from './batch-plan.js';
 import {orderMilestone} from './orders.js';
-import {materialCapacity,materialRoom} from './material-capacity.js';
+import {materialRoom} from './material-capacity.js';
 import {economicRandom} from './rng.js';
 import {CURRENT_SAVE_VERSION,migrateSave,migrate3to4,migrate4to5,migrate5to6,validateExpansionSave} from './save-migrations.js';
 import { GAME_DATA as DATA, TOOL_COUNT, expansionRecipes, expansionUnlockInfo } from './content-pack.js';
@@ -169,12 +169,9 @@ export function buyDuck(s) {
   s.cp-=info.price;s.duck=true;return info.price;
 }
 export const availableIngredients=availableIngredientIds;
-// forBatch: bought inside the same transaction that starts a batch using it (下一锅 「开火」 buys what is missing): it goes
-// straight into the pot, so a full bag does not stop it; the batch start takes it out again before anything is saved.
-export function buyIngredient(s,id,count=1,{forBatch=false}={}) {
+export function buyIngredient(s,id,count=1) {
   if(!availableIngredients(s).includes(id))throw Error('尚未解锁。');
-  if(!Number.isInteger(count)||count<1)throw Error('数量有误。');
-  if(!forBatch&&Object.values(s.ingredients).reduce((a,b)=>a+b,0)+count>materialCapacity(s))throw Error(`调味料最多可持有${materialCapacity(s)}份。`);
+  if(!Number.isSafeInteger(count)||count<1||!Number.isSafeInteger((s.ingredients[id]??0)+count))throw Error('数量有误。');
   const cost=ingredient(id).buy_cp*count;if(s.cp<cost)throw Error('CP不足。');
   const rebate=(s.progress?.trade.rebateRemainder??0)+cost*effects(s).rebate,refund=Math.floor(rebate/100);
   s.cp=s.cp-cost+refund;s.ingredients[id]=(s.ingredients[id]??0)+count;
@@ -271,9 +268,8 @@ export function validateSaveSchema(input,now=Date.now()) {
         const [egg,id]=key.split(':').map(Number);
         if(!char(egg,id)||(legacy&&id>=(egg?57:114))||(input.version<4&&id>=(egg?65:128)))fail(`${path} ${key}`);
       }
-      result[key]=integer(value,`${path} ${key}`,0,isIngredient?materialCapacity(input):99999);
+      result[key]=integer(value,`${path} ${key}`,0,isIngredient?Number.MAX_SAFE_INTEGER:99999);
     }
-    if(isIngredient&&Object.values(result).reduce((sum,value)=>sum+value,0)>materialCapacity(input))fail('调味料总数');
     return result;
   };
   const ingredients=stockMap(input.ingredients,'调味料',true);

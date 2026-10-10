@@ -109,7 +109,7 @@ test('per-region rollback stops only that region and preserves identity, capacit
     const trip=await load('regional-exploration'),e=await load('engine'),capacity=await load('material-capacity'),registry=await load('content-registry');const s=base();
     const before=structuredClone(s);paused(()=>trip.departRegional(s,{regionId:'V',members:['0:0']},NOW));assert.deepEqual(s,before);
     assert.equal(trip.regionalTripInfo(s,{regionId:'R',placeId:'R:0',focus:'materials',members:['1:0']},NOW).canDepart,true);
-    assert.equal(Object.keys(registry.speciesByKey).length,241);assert.equal(Object.keys(registry.materialById).length,83);assert.equal(capacity.materialCapacity(s),36);assert.equal(s.ingredients[75],1);e.normalizeSave(s,NOW);
+    assert.equal(Object.keys(registry.speciesByKey).length,241);assert.equal(Object.keys(registry.materialById).length,83);assert.equal(capacity.materialCapacity(s),Infinity);assert.equal(s.ingredients[75],1);e.normalizeSave(s,NOW);
   });
 });
 

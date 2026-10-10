@@ -7,6 +7,7 @@ import {menuCore} from './business-home.js';
 // lock an old save, and reading a visitor never awards or consumes anything.
 export function loopGuide(s){
   if(!businessUnlockInfo(s).met)return {id:'first-sale',text:'先交第一笔生意，之后就能自己摆摊。',action:'看需求',target:'story'};
+  if(!s.expansion.regions.introSpecimenDone.includes('V')&&['running','returned'].includes(s.progress.trip?.status))return {id:'valley-trip',text:s.progress.trip.status==='running'?'伙伴正在寻访，回来后记得领取收获。':'伙伴已经回来了，去收下这趟的收获。',action:s.progress.trip.status==='running'?'查看寻访':'领取收获',target:'journey'};
   if(!s.expansion.regions.introSpecimenDone.includes('V')&&s.events.loopVisitorMet)return {id:'valley-trip',text:'去谷地走走，第一趟就能带回一份地方食材。',action:'去寻访',target:'journey'};
   if(!s.expansion.regions.introSpecimenDone.includes('V'))return {id:'valley',text:'老街坊带了条消息来，听听她说什么。',action:'聊两句',target:'visitor'};
   if(!(s.total['0:128']>0))return {id:'first-partner',text:'地方食材带回来了，去线索册看看荠菜煎饼的做法。',action:'看线索',target:'clue'};

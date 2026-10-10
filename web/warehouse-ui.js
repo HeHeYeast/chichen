@@ -8,13 +8,14 @@ import {inventoryView,lockedCount} from './inventory.js';
 import {resolveSpecies} from './content-registry.js';
 import {speciesView,saleSelectionSummary} from './collection-ui.js';
 import {basketQuote,effects} from './progression.js';
-import {materialCapacity,materialCount} from './material-capacity.js';
+import {materialCount} from './material-capacity.js';
 import {helpCardsMarkup,firstVisitGuide} from './game-frame.js';
 import {interfaceIcon} from './ui-icons.js';
-import {kitTabs,kitSheet,kitCell,kitCoin,kitButton,kitButton2,kitChip,kitChipHtml,kitBar,kitIcon,kitEgg} from './ui-kit.js';
+import {kitTabs,kitSheet,kitCell,kitCoin,kitButton,kitButton2,kitChip,kitChipHtml,kitIcon,kitEgg} from './ui-kit.js';
 
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=n=>Number(n??0).toLocaleString('zh-CN');
+const compactNumber=n=>Number(n).toLocaleString('zh-CN',{notation:'compact',maximumFractionDigits:1});
 const COIN=kitIcon.coin;
 
 export function createWarehouseUI({getState,getNow,showPanel,panels,act,confirmBox,alertBox,sound,characterPortrait,ingredientPortrait,showCharacter,openShopFor,afterSale,skillFeedback}){
@@ -50,7 +51,7 @@ export function createWarehouseUI({getState,getNow,showPanel,panels,act,confirmB
   const eggCoins=()=>`<div class="kp-coins" role="group" aria-label="蛋种">${kitCoin('全','data-wh-egg="all"',egg==='all','全部')}${kitCoin(kitEgg(false),'data-wh-egg="0"',egg==='0','鸡宝')}${kitCoin(kitEgg(true),'data-wh-egg="1"',egg==='1','鸭宝')}</div>`;
   function render(){
     const s=getState(),list=birds(),sel=allExtras(),extraN=Object.values(sel).reduce((a,b)=>a+b,0);
-    const cap=materialCapacity(s),used=materialCount(s),mats=Object.entries(s.ingredients).filter(([,n])=>n>0);
+    const used=materialCount(s),mats=Object.entries(s.ingredients).filter(([,n])=>n>0);
     const home=Object.keys(s.farm??{}).filter(k=>s.farm[k]>0&&resolveSpecies(k)).reduce((a,k)=>a+inventoryView(s,k).home,0);
     const tabs=kitTabs([{label:'伙伴',attrs:'data-wh-tab="birds"',on:tab==='birds'},{label:'材料',attrs:'data-wh-tab="mats"',on:tab==='mats'}],'仓库分类');
     let body,foot,above='';
@@ -63,8 +64,8 @@ export function createWarehouseUI({getState,getNow,showPanel,panels,act,confirmB
       foot=picking?`${kitButton2('取消','data-wh-pick-cancel')}${kitButton('卖掉','data-wh-pick-sell'+(total?'':' disabled'))}`
         :`${kitButton2('挑着卖','data-wh-pick-start')}${kitButton('卖掉多余',`data-wh-sell-extra ${extraN?'data-next':'disabled'}`)}`;
     }else{
-      body=`<div class="kp-bar wh-bag" data-row aria-label="材料包 ${used} / ${cap} 格">${kitChipHtml(`${kitIcon.pouch}材料包`,'mini')}${kitBar(cap?used/cap*100:0,'材料包')}<b class="wh-bag-n">${used}/${cap}</b></div>
-        <div class="wh-slots wh-grid" role="list">${mats.flatMap(([id,n])=>{const name=E.label(E.ingredient(Number(id)));return Array.from({length:n},(_,i)=>`<button type="button" class="wh-slot${i?'':' first'}" role="listitem" data-wh-mat="${id}" aria-label="${esc(name)}${i?'':`，${n} 份`}"><span data-visual>${ingredientPortrait(Number(id))}</span></button>`);}).join('')}${Array.from({length:Math.max(0,cap-used)},()=>'<span class="wh-slot is-empty" aria-hidden="true"></span>').join('')}</div>${mats.length?`<div class="gd-label">包里有</div><div class="wh-kinds">${mats.map(([id,n])=>`<button type="button" class="gd-chip mini wh-kind" data-wh-mat="${id}"><span class="wh-kind-art" data-visual>${ingredientPortrait(Number(id))}</span>${esc(E.label(E.ingredient(Number(id))))}<b>${n}</b></button>`).join('')}</div>`:''}${mats.length?'':'<p class="kp-empty">材料包是空的，去商店或寻访带一些回来</p>'}`;
+      body=`<div class="kp-bar wh-bag" data-row aria-label="材料包 ${number(used)} 份，无持有上限">${kitChipHtml(`${kitIcon.pouch}材料包`,'mini')}<b class="wh-bag-n">${number(used)} 份</b></div>
+        <div class="sh-shelf wh-grid">${mats.map(([id,n])=>`<button type="button" class="sh-item wh-item" data-wh-mat="${id}" aria-label="${esc(E.label(E.ingredient(Number(id))))}，${number(n)} 份"><span class="sh-item-art" data-visual>${ingredientPortrait(Number(id))}</span><span class="sh-tag wh-count">×${compactNumber(n)}</span><span class="sh-item-name">${esc(E.label(E.ingredient(Number(id))))}</span></button>`).join('')||'<p class="kp-empty">材料包是空的，去商店或寻访带一些回来</p>'}</div>`;
       foot=kitButton('去商店','data-wh-shop');
     }
     showPanel('仓库',`${tabs}${kitSheet(body,foot,picking?'wh-picking':'',above,{attrs:'data-list'})}${sheetMarkup(sel)}`,'screen-panel warehouse-screen',{skin:'kitchen',icon:interfaceIcon('farm'),help:'data-wh-help'});

@@ -112,17 +112,12 @@ public final class SaveRepository {
                 String key=keys.next();species(key,version);integer(stock,key,0,99999);
             }
         }
-        JSONObject materials=s.getJSONObject("ingredients");int sum=0,capacity=30;
-        if(version>=4) {
-            int identified=s.getJSONObject("expansion").getJSONObject("discovery").getJSONObject("identified").length();
-            capacity=identified>=4?42:identified>=1?36:30;
-        }
+        JSONObject materials=s.getJSONObject("ingredients");
         for(java.util.Iterator<String> keys=materials.keys();keys.hasNext();) {
             String key=keys.next();
             if(!key.matches("0|[1-9][0-9]*")||Long.parseLong(key)>(version<4?74:82))throw new IOException("材料身份无效");
-            integer(materials,key,0,capacity);sum+=materials.getInt(key);
+            integer(materials,key,0,SAFE_INTEGER);
         }
-        if(sum>capacity)throw new IOException("材料容量无效");
         if(!s.isNull("batch")) {
             JSONObject batch=s.getJSONObject("batch");org.json.JSONArray eggs=batch.getJSONArray("eggs");
             for(int i=0;i<eggs.length();i++) {

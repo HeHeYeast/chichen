@@ -3,7 +3,6 @@
 // Seasonings filter by the player's own cookware: what it opens for sale (配套调味料, public) and what recipes already
 // recorded use (never spoilers); the cookware's drawer lists the 配套调味料 of each level,
 // and amounts come from quick picks, never from typing.
-import {materialCapacity,materialRoom} from './material-capacity.js';
 import { GAME_DATA as DATA, EXPANSION, expansionUnlockInfo } from './content-pack.js';
 import {effects} from './progression.js';
 import * as E from './engine.js';
@@ -88,9 +87,8 @@ export function createShopUI({ characterPortrait=()=>'', skillFeedback=()=>{}, n
     if (shopTab === 0) { const up = DATA.tools[1].find(t => state.toolLevels[t.id] >= 0 && state.toolLevels[t.id] < 2 && E.canBuyTool(state, t.id) && state.cp >= t[`lv_${state.toolLevels[t.id] + 1}_buy_cp`]); line = up ? `${E.label(up)}能升 Lv.${state.toolLevels[up.id] + 2} 了` : '好锅开火更快'; }
     else if (shopTab === 1) line = /^\d+$/.test(seasonFilter) ? `${E.label(E.tool(Number(seasonFilter)))}用得上这些` : seasonFilter === 'owned' ? '这些你手里都有' : '按厨具挑最快';
     else line = !state.duck && state.cp >= 2500 ? '鸭蛋到货了！' : '蛋和厨房都在这儿';
-    // On the seasoning shelf the material bag lies on the counter beside the purse (how full it is matters when buying).
-    const count = inventoryCount(state), cap = materialCapacity(state);
-    const bag = shopTab === 1 ? kitChipHtml(`${kitIcon.pouch}<b>${count}</b>/${cap}`, 'sh-bagchip' + (count >= cap ? ' hot' : '')) : '';
+    const count = inventoryCount(state);
+    const bag = shopTab === 1 ? kitChipHtml(`${kitIcon.pouch}<b>${count}</b> 份`, 'sh-bagchip') : '';
     return `<div class="sh-counter"><span class="sh-keeper">${characterPortrait(0, 0)}</span><p class="sh-say">${escapeHTML(line)}</p><span class="sh-purse" data-row>${bag}${kitChipHtml(`${COIN}<b>${formatCP(state.cp)}</b>`, 'sh-wallet')}</span></div>`;
   }
   function toolTiles(state) {
@@ -183,13 +181,13 @@ export function createShopUI({ characterPortrait=()=>'', skillFeedback=()=>{}, n
       const conds = `<div class="sh-unlock">${groups.length > 1 ? '<span class="sh-conds-head">满足任意一条就开放</span>' : ''}${groups.map(g => `<div class="sh-unlock-row${g.met ? ' met' : ''}">${(g.conditions?.length ? g.conditions : [{description:g.description, met:g.met}]).map(c => `<span class="sh-unlock-need${c.met ? ' met' : ''}"><span class="sh-unlock-art" data-visual>${c.kind ? pic(c) : kitIcon.glass}</span><b>${escapeHTML(c.description)}</b>${c.met ? kitArt('ic-check', 'sh-unlock-mark') : '<img class="sh-unlock-mark" src="/web/art/golden-journey/lock.png" alt="未达成">'}</span>`).join('')}</div>`).join('')}</div>`;
       return {title:name, body:`${head}${conds}${useRow}<div class="gd-actions" data-row>${lore}${tool ? kitButton(`去看${E.label(E.tool(tool.id))}`, `data-shop-goto-tool="${tool.id}"`) : kitButton('待解锁', `data-shop-detail-ingredient="${id}" disabled`)}</div>`};
     }
-    const room = materialRoom(state), afford = Math.floor(state.cp / Math.max(1, item.buy_cp)), max = Math.max(0, Math.min(room, afford));
+    const max = Math.max(0, Math.floor(state.cp / Math.max(1, item.buy_cp)));
     amount = Math.max(max ? 1 : 0, Math.min(amount, max));
-    const quick = [...new Map([[1, '1 份'], [5, '5 份'], [10, '10 份'], [max, '装满']].filter(([v]) => v > 0 && v <= max)).entries()];
+    const quick = [...new Map([[1, '1 份'], [5, '5 份'], [10, '10 份'], [max, '最多']].filter(([v]) => v > 0 && v <= max)).entries()];
     const picker = max ? `<div class="gd-qty" data-row><button type="button" class="gd-round minus" data-shop-step="-1" aria-label="少买" ${amount > 1 ? '' : 'disabled'}></button><output class="gd-big" aria-live="polite">${amount}<small>份</small></output><button type="button" class="gd-round plus" data-shop-step="1" aria-label="多买" ${amount < max ? '' : 'disabled'}></button></div>
       <div class="gd-coins" data-row>${quick.map(([v, l]) => `<button type="button" class="gd-coinwrap${v === amount ? ' on' : ''}" data-shop-set="${v}" aria-pressed="${v === amount}"><span class="gd-coin">${v}</span><b>${l}</b></button>`).join('')}</div>
       <div class="gd-row" data-row>${kitChipHtml(`共${COIN}${formatCP(amount * item.buy_cp)}`, 'mini')}</div>`
-      : `<span class="gd-note">${room ? `还差 ${formatCP(item.buy_cp - state.cp)} CP` : `材料包满了（${materialCapacity(state)} 份）`}</span>`;
+      : `<span class="gd-note">还差 ${formatCP(item.buy_cp - state.cp)} CP</span>`;
     return {title:name, body:`${head}${useRow}${picker}<div class="gd-actions" data-row>${lore}${kitButton('买下', `data-shop-buy-ingredient="${id}" data-shop-detail-ingredient="${id}"${max ? '' : ' disabled'}`)}</div>`};
   }
   function eggDrawer(state, egg) {
@@ -250,7 +248,7 @@ export function createShopUI({ characterPortrait=()=>'', skillFeedback=()=>{}, n
     const active = panels.ownerDocument?.activeElement;
     const focusKey = oldScreen?.contains(active) ? active?.dataset?.shopFocus : null;
     rememberScroll();
-    const state = getState(), count = inventoryCount(state), cap = materialCapacity(state);
+    const state = getState();
     const wallet = kitChipHtml(`${COIN}<b>${formatCP(state.cp)}</b>`, 'sh-wallet');
     let body;
     if (shopTab === 0) body = `${counter(state)}<div class="sh-shelf big">${toolTiles(state).join('')}</div>${openJournal ? `<div class="gd-row">${kitButton2('寻宝日历', 'data-shop-journal')}</div>` : ''}`;

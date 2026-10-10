@@ -216,7 +216,7 @@ test('ingredient confirmation updates the latest state without mutating the prev
   assert.deepEqual(shop.alerts, []);
 });
 
-test('ingredient confirmation fails atomically when its quantity no longer fits', () => {
+test('ingredient confirmation still succeeds when inventory grows beyond the old cap', () => {
   const shop = shopHarness();
   shop.open(1);
   shop.quantity(0, 1);
@@ -224,8 +224,9 @@ test('ingredient confirmation fails atomically when its quantity no longer fits'
   E.buyIngredient(shop.state, 0, 28);
   const changed = structuredClone(shop.state);
   shop.confirm();
-  assert.deepEqual(shop.state, changed);
-  assert.match(shop.alerts.at(-1), /最多可持有30份/);
+  assert.equal(shop.state.ingredients[0], changed.ingredients[0]+2);
+  assert.equal(shop.state.cp,changed.cp-10);
+  assert.deepEqual(shop.alerts,[]);
 });
 
 test('ingredient confirmation fails atomically if its balance becomes insufficient', () => {

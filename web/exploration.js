@@ -1,6 +1,6 @@
 import {assertNewOperation} from './rollback-policy.js';
 import {EXTRA_ROUTES} from './extra-regions.js';
-import {materialCapacity,materialRoom} from './material-capacity.js';
+import {materialRoom} from './material-capacity.js';
 import {economicRandom} from './rng.js';
 import {RULES} from './integration-data.js';
 import {SPECIES_ABILITIES as ABILITIES,ABILITY_SCALE} from './content-registry.js';
