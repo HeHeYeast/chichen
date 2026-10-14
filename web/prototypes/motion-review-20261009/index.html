@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>鸡宝厨房 · 动效试映</title><link rel="stylesheet" href="./motion.css"></head>
+<body>
+<main>
+  <header class="intro"><p class="eyebrow">鸡宝厨房 / 动效试映 01</p><h1>让每次收获，<br>都有一点回应。</h1><p>沿用游戏素材的交互样片 · 演示数值不影响存档</p></header>
+  <div class="workbench">
+    <section class="preview" aria-label="游戏组件动效样片">
+      <header class="hud"><span class="scene-title">厨房收取</span><span class="wallet"><img src="/web/art/golden-business/coin.png" alt=""><b id="balance">1,280</b></span></header>
+      <div class="stage" id="stage">
+        <div class="scene harvest" data-scene="harvest">
+          <p class="scene-kicker">这一锅，收好了</p><div class="tray"><img class="tray-back" src="/web/art/golden-business/tray-base.png" alt=""><div class="birds"><img src="/web/art/chick-v4-0.png" alt="鸡宝"><img src="/web/art/chick-v4-3.png" alt="鸡宝"><img src="/web/art/chick-v4-4.png" alt="鸡宝"></div><img class="tray-front" src="/web/art/golden-business/tray-front.png" alt=""></div>
+          <div class="stock"><img src="/web/art/golden-ui/basket-empty.png" alt="仓库"><span>伙伴入仓 <b id="stock-count">0 / 3</b></span></div>
+        </div>
+        <div class="scene discovery" data-scene="discovery" hidden><p class="scene-kicker">图鉴添了新朋友</p><div class="discovery-paper"><div class="portrait-wrap"><img class="new-bird" src="/web/art/chick-v4-4.png" alt="新发现的鸡宝"></div><strong>新伙伴</strong><p>已加入你的图鉴</p><span class="discovery-stamp"><img src="/web/art/golden-collection/stamp-done.png" alt=""><b>收录</b></span></div></div>
+        <div class="scene reward" data-scene="reward" hidden><p class="scene-kicker">今天也辛苦啦</p><div class="receipt"><small>小店账单</small><strong>+ 240 <em>CP</em></strong><p>本次营业收入</p><span class="receipt-stamp"><img src="/web/art/golden-business/family-stamp-done.png" alt=""><b>结清</b></span></div><img class="coin-pile" src="/web/art/golden-business/coin.png" alt="金币"></div>
+        <div class="scene dialog-demo" data-scene="dialog" hidden><p class="scene-kicker">轻一点，也能很有手感</p><img class="host-bird" src="/web/art/chick-v4-0.png" alt="鸡宝"><p class="dialog-hint">木牌按下 → 纸面出现 → 确认盖章</p></div>
+        <div class="particles" aria-hidden="true"></div>
+        <div class="modal" hidden><section class="paper-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><h2 id="dialog-title">下一锅准备好了</h2><img src="/web/art/chick-v4-3.png" alt=""><p>让鸡宝们暖暖身子</p><button class="wood" id="confirm">开火</button><button class="plain" id="dismiss">再看看</button></section></div>
+      </div>
+      <footer class="playbar"><p id="status" role="status" aria-live="polite">准备好，试着收取这三只鸡宝。</p><button class="wood" id="play">收取伙伴</button></footer>
+    </section>
+    <aside class="direction">
+      <div class="choices" role="group" aria-label="选择动效场景"><button data-demo="harvest" aria-pressed="true"><span>01</span>收取入仓</button><button data-demo="discovery" aria-pressed="false"><span>02</span>新伙伴亮相</button><button data-demo="reward" aria-pressed="false"><span>03</span>营业结算</button><button data-demo="dialog" aria-pressed="false"><span>04</span>弹窗反馈</button></div>
+      <section class="settings"><h2>效果强度</h2><div class="intensity" role="group" aria-label="效果强度"><button data-level="off" aria-pressed="false">关闭</button><button data-level="daily" aria-pressed="true">日常</button><button data-level="celebrate" aria-pressed="false">庆祝</button></div><p id="motion-note">日常：短位移、少量纸星，不打断连续操作。</p><label><input type="checkbox" id="slow"> 慢速观看 × 0.5</label></section>
+      <section class="notes"><p class="eyebrow">这组效果的重点</p><h2 id="effect-title">看得见的去向</h2><p id="effect-copy">伙伴轻轻弹起，沿弧线进入仓库；每只到达时，计数与篮子同时回应。</p><div class="timing"><b id="duration">约 0.9 秒</b><span>可随时切换场景 / 重播</span></div></section>
+      <p class="footnote">只展示组件动效，不代表最终页面布局。庆祝档适合首次发现、升级和大奖励。</p>
+    </aside>
+  </div>
+</main><script type="module" src="./motion.js"></script>
+</body></html>
