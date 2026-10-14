@@ -301,6 +301,7 @@ export function createBusinessUI({getState,getNow,commitProgress,showPanel,panel
   }
   function refresh(){
     const screen=find('.business-screen');if(!screen)return;
+    if(screen.querySelector(':active')){updateTime();return;}
     const focused=document.activeElement;
     // The clock must not replace an uncommitted quantity or an open select.
     // A real stock change is validated on blur/confirmation against current state.

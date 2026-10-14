@@ -37,8 +37,7 @@ import {farmDisplay,timeZone} from './farm.js';
 import {createRenderer} from './scene.js';
 import {NAV,LAYOUT as L,RECT,navRect,toolRect,duckRect,contains,MOTION,fitViewport,setViewportHeight} from './theme.js';
 import {characterImage,toolImage} from './catalog.js';
-import {originalPortraitFrame} from './portrait-frames.js';
-import {productionCharacter} from './production-art.js';
+import {characterPortraitMarkup} from './character-art.js';
 import {resolveSprite,spriteSVG,ASSET_FILES} from './art/manifest.js';
 import {KITCHEN_STAGES,kitchenStage,kitchenBackgroundParts} from './kitchen-stages.js';
 import {createCollectionUI} from './collection-ui.js';
@@ -90,6 +89,7 @@ let reducedMotion=motionPreference.matches;
 motionPreference.addEventListener('change',event=>{reducedMotion=event.matches;});
 const now=()=>Math.max(Math.floor(virtualNow+clockOffset),state.clock?.logicalAt??0);
 let cleaningDialog=null;
+let panelRefreshTimer=null;
 const imgPath=toolImage;
 const charPath=characterImage;
 const sourcePath=p=>'/assets/png/'+p;
@@ -126,6 +126,9 @@ function act(fn){
   if(!result){refreshPanel();renderControls();return false;}return true;
 }
 function refreshPanel(){
+  // Background returns must not replace a panel's native press target before
+  // release. Refresh the same page after the interaction finishes instead.
+  if(panels.querySelector(':active')){const title=panel;clearTimeout(panelRefreshTimer);panelRefreshTimer=setTimeout(()=>{if(panel===title)refreshPanel();},100);return;}
   if(panels.querySelector('.clue-screen'))clueBookUI.refresh();
   else if(panels.querySelector('.book-screen'))bookUI.refresh();
   else if(panels.querySelector('.business-screen'))businessUI.refresh();
@@ -162,11 +165,7 @@ function toolPortrait(id,lv){
   return sprite.frame?spriteSVG(sprite):`<img src="${path}" alt="">`;
 }
 function characterPortrait(egg,id){
-  const production=productionCharacter(egg,id,'portrait');
-  if(production)return `<img class="sprite-art" src="${production}" alt="">`;
-  const path=charPath(egg,id),resolved=resolveSprite(path),sprite=resolved.frame?resolved:originalPortraitFrame(egg,id)??resolved;
-  if(!sprite.frame)return `<img src="${path}" alt="">`;
-  return `<svg class="sprite-art" viewBox="${sprite.frame.join(' ')}" aria-hidden="true"><image href="${sprite.file}" width="${sprite.size[0]}" height="${sprite.size[1]}"/></svg>`;
+  return characterPortraitMarkup(egg,id);
 }
 function round(x,y,w,h,r,fill,stroke=null,line=1){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=line;ctx.stroke();}}
 const renderer=createRenderer(ctx,image);
@@ -206,7 +205,7 @@ function startGame(){
 function renderControls(){
   wake();updateFarmMap();game.dataset.page=String(page);
   const focusedId=document.activeElement?.dataset?.controlId;
-  controls.replaceChildren();quickActions.replaceChildren();quickActions.hidden=page!==0||!!panel;
+  controls.replaceChildren();if(page!==0)quickActions.replaceChildren();quickActions.hidden=page!==0||!!panel;
   if(page<0){mainNav.replaceChildren();if(loaded)hotspot(recoveryError?'恢复存档':'开始游戏',RECT.start,()=>{if(recoveryError){openRecovery();return;}startGame();},'start');return;}
   renderNavigation();
   if(page!==1)hotspot('设置',RECT.settings,()=>changePage(3),'settings');
@@ -226,7 +225,7 @@ function renderControls(){
       ['inventory','仓库','inventory',()=>warehouseUI.open()],
       ['workshop','手艺','workshop',()=>workshopUI.open()],
       ['help','帮助','help',()=>settingsUI.openManual()],
-    ]){const b=document.createElement('button');b.dataset.controlId=id;b.className=id+'-launch';b.setAttribute('aria-label',id==='supply'?'补给 · 小卖部':label);b.innerHTML=interfaceIcon(icon)+`<span>${label}</span>`;b.onclick=()=>{if(!entryInputBlocked()&&!dialogs.children.length)action();};const r=goldenRect(id,state.kitchenLevel);Object.assign(b.style,{left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px'});quickActions.append(b);}
+    ]){let b=quickActions.querySelector(`[data-control-id="${id}"]`);if(!b){b=document.createElement('button');b.dataset.controlId=id;b.className=id+'-launch';b.setAttribute('aria-label',id==='supply'?'补给 · 小卖部':label);b.innerHTML=interfaceIcon(icon)+`<span>${label}</span>`;quickActions.append(b);}b.onclick=()=>{if(!entryInputBlocked()&&!dialogs.children.length)action();};const r=goldenRect(id,state.kitchenLevel);Object.assign(b.style,{left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px'});}
     hotspot('向右滚动厨具',RECT.next,()=>{toolScroll=Math.min(TOOL_SCROLL_MAX,toolScroll+1);renderControls();},'next').disabled=toolScroll===TOOL_SCROLL_MAX;
     hotspot('向左滚动厨具',RECT.prev,()=>{toolScroll=Math.max(0,toolScroll-1);renderControls();},'prev').disabled=toolScroll===0;
     state.batch?.eggs.forEach((e,i)=>{if(!e.collected&&!pendingHarvest.has(i))hotspot(e.status==='egg'?'孵化中的蛋 '+(i+1):'收取'+E.label(E.char(e.egg,e.id))+' '+(i+1),eggHitRect(e),()=>collectEgg(i),'egg:'+i);});
@@ -241,10 +240,11 @@ function renderControls(){
 }
 function renderNavigation(){
   const focused=document.activeElement?.dataset?.controlId,badges=navBadges();
-  mainNav.replaceChildren();
-  for(const n of NAV){const b=document.createElement('button');b.dataset.controlId='nav:'+n.id;b.tabIndex=entryInputBlocked()?-1:0;b.setAttribute('aria-label',n.title);const active=page===n.id||n.id===0&&(page===2||page===3);b.setAttribute('aria-current',active?'page':'false');b.innerHTML=!wide?compactNavItem(n):interfaceIcon(({0:'kitchen',1:'farm',5:'shop',6:'explore',4:'book'})[n.id])+`<span>${n.title}</span>`;
-    if(badges[n.id]){const dot=document.createElement('span');dot.className='nav-result';dot.setAttribute('aria-label','有新结果');b.append(dot);}
-    b.onclick=()=>{if(entryInputBlocked()||dialogs.children.length)return;if(n.id===5&&page!==5&&businessUI.unreadReport())tradeView={kind:'business'};changePage(n.id);};mainNav.append(b);
+  // Keep live button nodes: a hatch/save can refresh between press and release.
+  // Replacing a pressed native button swallows desktop mouse/keyboard clicks.
+  for(const n of NAV){let b=mainNav.querySelector(`[data-control-id="nav:${n.id}"]`);if(!b){b=document.createElement('button');b.dataset.controlId='nav:'+n.id;b.setAttribute('aria-label',n.title);mainNav.append(b);}b.tabIndex=entryInputBlocked()?-1:0;const active=page===n.id||n.id===0&&(page===2||page===3);b.setAttribute('aria-current',active?'page':'false');if(b.dataset.layout!==String(wide)){b.dataset.layout=String(wide);b.innerHTML=!wide?compactNavItem(n):interfaceIcon(({0:'kitchen',1:'farm',5:'shop',6:'explore',4:'book'})[n.id])+`<span>${n.title}</span>`;}
+    const oldDot=b.querySelector('.nav-result');if(badges[n.id]&&!oldDot){const dot=document.createElement('span');dot.className='nav-result';dot.setAttribute('aria-label','有新结果');b.append(dot);}else if(!badges[n.id])oldDot?.remove();
+    b.onclick=()=>{if(entryInputBlocked()||dialogs.children.length)return;if(n.id===5&&page!==5&&businessUI.unreadReport())tradeView={kind:'business'};changePage(n.id);};
   }
   if(focused?.startsWith('nav:'))mainNav.querySelector(`[data-control-id="${focused}"]`)?.focus({preventScroll:true});
 }
@@ -253,7 +253,7 @@ function reportStatus(){
 }
 // 生意 remembers its last sub-page; 寻访 always opens on its trip/region page.
 let tradeView={kind:'business'},panelReturn=null;
-function showTrade(){const v=tradeView;if(v.kind==='orders')businessUI.openOrders();else if(v.kind==='regulars')v.id?regularUI.open(v.id):regularUI.resume();else if(v.kind==='projects')v.id?projectUI.open(v.id):projectUI.resume();else businessUI.open();}
+function showTrade(){const v=tradeView;if(v.kind==='orders')businessUI.openOrders();else if(v.kind==='regulars'){if(v.open)regularUI.open(v.id);else regularUI.resume();}else if(v.kind==='projects'){if(v.open)projectUI.open(v.id);else projectUI.resume();}else businessUI.open();v.open=false;}
 // Order → method detour: legacy species open the recipe book, regional ones their
 // region record; both come back to the same order sheet.
 function openRecipeFromOrder(key){
@@ -261,7 +261,7 @@ function openRecipeFromOrder(key){
   if(c?.region){panelReturn=back;regionalUI.open({regionId:c.region,tab:'record'});return;}
   recipeBookUI.open({key,back,label:'返回订单'});
 }
-function openTrade(kind,id=null){tradeView={kind,id};if(page!==5)changePage(5);else showTrade();}
+function openTrade(kind,id=null){tradeView={kind,id,open:true};if(page!==5)changePage(5);else showTrade();}
 function openExplore(){if(page!==6)changePage(6);else regionalUI.open();}
 function changePage(index){
   // The kitchen's calendar note belongs to the kitchen; it never follows the player to another page.
@@ -1095,7 +1095,7 @@ setInterval(()=>{advanceClock();tick++;if(recoveryError)return;
     else{if(page===0)[...new Set(events)].forEach(s=>sound(s==='break'?11:s==='duck'?14:12));if(alarmed){sound(5);announce('这一批鸡宝已经孵化，请及时收取。');}if(becameDirty)announce('厨房有些脏了，可以打扫。');if(world.returned){makeWalkers();refreshPanel();toast('寻访伙伴已归队，奖励在篮中等你。');}renderControls();}
   }
   if(!state.progress.tutorialSeen&&collectedTotal(state)>=24&&!panel&&!dialogs.children.length){if(commitProgress(s=>{s.progress.tutorialSeen=true;return true;}))toast('手艺开放了！点击厨房的「手艺」查看，完成第一批已获得2点。',8000);}
-  if(tick%600===0){maybeDiscoveryNotice();journalUI.updateTime();}animateFlights();for(const w of walkers){w.turn+=Math.floor(Math.random()*2);if(w.turn>=30){w.turn=0;w.dir=Math.random()<.5?-1:1;}}if(tick%10===0){if(page===1)updateFarmMap();updateDesk();updateCleaningStatus();workshopUI.updateTime();regionalUI.refresh();businessUI.refresh();reportStatus();}
+  if(tick%600===0){maybeDiscoveryNotice();journalUI.updateTime();}animateFlights();for(const w of walkers){w.turn+=Math.floor(Math.random()*2);if(w.turn>=30){w.turn=0;w.dir=Math.random()<.5?-1:1;}}if(tick%10===0){if(page===1)updateFarmMap();updateDesk();updateCleaningStatus();workshopUI.updateTime();regionalUI.refresh();businessUI.refresh();regularUI.refresh();reportStatus();}
 },100);
 
 // Repaint every frame only while something moves (cover, farm walkers, flights,

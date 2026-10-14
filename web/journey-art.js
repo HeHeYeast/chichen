@@ -1,6 +1,6 @@
 // Presentation only. Existing character pixels retain their identity and palette.
-import {characterImage,toolImage} from './catalog.js';
-import {GOLDEN_PORTRAITS} from './golden-portrait-metrics.js';
+import {toolImage} from './catalog.js';
+import {characterPortraitMarkup} from './character-art.js';
 import {JOURNEY_METRICS} from './journey-art-metrics.js';
 import {productionAsset} from './production-art.js';
 export const journeyPath=name=>`/web/art/golden-journey/${name}.png`;
@@ -15,8 +15,8 @@ export const journeyUnknown=journeyPath('unknown');
 export function journeyCharacter(key){
  const reference='precision-ref-character-'+key.replace(':','-'),ref=JOURNEY_METRICS[reference];
  if(ref)return `<svg class="journey-character" data-character="${key}" data-asset="${reference}" viewBox="${ref.visualBounds.join(' ')}" aria-hidden="true"><image href="${journeyPath(reference)}" width="${ref.size[0]}" height="${ref.size[1]}"/></svg>`;
- const [egg,id]=key.split(':').map(Number),path=characterImage(egg,id),m=GOLDEN_PORTRAITS[path];
- return m?`<svg class="journey-character" viewBox="${m.bounds.join(' ')}" aria-hidden="true"><image href="${path}" width="${m.size[0]}" height="${m.size[1]}"/></svg>`:`<img class="journey-character" src="${path}" alt="">`;
+ const [egg,id]=key.split(':').map(Number);
+ return characterPortraitMarkup(egg,id,'journey-character');
 }
 export const journeySeat=key=>`<span class="journey-seat">${journeyArt('mat')}${key?journeyCharacter(key):journeyArt('backpack','journey-empty-pack')}</span>`;
 export const journeyPositions={"V": [22.83, 10.938], "T": [75.147, 13.454], "R": [46.152, 36.635], "B": [71.47, 59.935], "O":[20,58], "H":[47,66]};

@@ -38,6 +38,8 @@
 - 寻访地图：`regional-ui.js` 的 `mapMarkup` 把地形（`journey-art.js` 的 `journeyEnvironment`）、路线、地点和同行伙伴放进同一块按 390×684 参考坐标等比缩放的画布，只显示有地形的上方 520；尺寸规则在 `mobile-fit.css` 末尾，地点图标用 `cqw` 随画布缩放。
 - 改版共用部分（2026-10）：`game-frame.js`＋`game-frame.css`（星级、伙伴格子、按钮呼吸与停顿箭头、第一次指引、「?」图卡；不放常驻提示条）；`next-batch-ui.js`（下一锅：「推荐」书签 + 新伙伴/订单/多赚、缺调料开火时买）；`next-batch-goals.js`（「推荐」的卡片：追踪的伙伴第一，其余按推进价值排，只读）；`clue-book.js`＋`clue-book-ui.js`（线索册独立页：调查卡、☆ 追踪 `progress.knowledge.tracked`、全部伙伴筛选）；`clue-regions.js`（每只伙伴的主线索地区）；`regional-clues.js`（48 只地区伙伴在线索册里的五层：方向＝厨具和第一味、完整方法＝第 5 层，方向之前的地区步骤，逐枚试做概率与旧锅兼容）；`journey-model.js`（寻访地图卡片的数据：地区进度、追踪去向、归来线索 x/5 → y/5）；`business-home.js`＋`business-home-ui.js`（生意主页：今日营业、订单板、常客/项目小卡；只读模型 + 画面）；`order-delivery.js`（订单一步交付、展示型摆出来、厨房往事一步交付、订单等着的伙伴）；`order-intel.js`（订单情报：调查线索或地点提示 `progress.knowledge.hints`）；`warehouse-ui.js`（仓库：伙伴/材料、卖掉多余预览）。
 - 面板 UI：`*-ui.js`（`collection-ui`、`shop-ui`、`business-ui`、`order-ui`、`regular-ui`、`project-ui`、`regional-ui`、`workshop-ui`、`recipe-book-ui`、`book-ui`、`farm-map-ui` 等），以及 `*-view.js`、`*-art.js`、`*-icons.js` 等纯展示辅助。
+- 共用角色画像：`character-art.js` 优先正式独立画像，再解析合集图的单角色裁框与原图边界；裁框使用内层 SVG 截断，避免宽高不一致的槽位漏出其他角色。`app.js`、`journey-art.js`、`business-family-art.js` 共用。常客／项目提示的 `data-trade-focus` 与只读摘要中的目标一致；常客返回时优先未读故事，进行中的阅读保持轮次。
+- 连续操作与后台推进：`regular-ui.js` 在阅读时保留故事文本快照，`regulars.js` 的 `readRegularStage` 可绑定显示的阶段ID；后台已记录该阶段时只确认它，不读取下一段。`app.js` 保留导航／厨房快捷按钮，自动刷新避开正在按压的页面；`business-ui.js`、`regional-ui.js`、`regular-ui.js` 的周期刷新也保留原生按压目标。常客／项目显式入口调用 `open`，导航返回调用 `resume`，项目草稿按实际编辑页恢复。
 - 样式：`index.html` 按顺序加载 31 个样式表；后加载的 `visual-polish.css`、`ui-remaster.css`、`journey.css`、`mobile-fit.css` 等覆盖前面的基础样式。
 - 平台：`native-platform.js`（Android 桥）、`device-check.js`（设置 → 设备检测：网页组件版本、功能、画面/点按对齐和 `boot.js` 记下的脚本错误，可复制发回）、`ui-preferences.js`（仅本机界面偏好）、`sfx.js`（音效解码一次后用 Web Audio 播放；每次克隆 `<audio>` 会让 Android WebView 新建播放器，收取时卡顿）。
 
@@ -53,3 +55,5 @@
 - `loop-guide.js`：由已完成事实生成的首次循环提示、由实际库存生成的菜单建议。
 - `visitor-dialogue.js`：已确认的初访／回访对白；`regular-ui.js` 使用人类场景和多轮阅读，故事阶段仍按对应营业／订单文案呈现。
 - `tools/qa-loop-review.mjs`、`tests/loop-rebuild.test.mjs`：多宽度对话、真实新伙伴与新地区交互、概率分布和组合衔接验证。
+- `tools/qa-player-regressions.mjs`、`tests/character-art.test.mjs`：新故事提示跨常客定位、触屏阅读／切页／重载、320／390／430 宽度按钮、241 种画像源与22个合集角色的裁图验证；纳入正式发布门禁。
+- `tests/regular-reading.test.mjs` 及玩家问题专项还覆盖后台真实营业推进时的故事确认、重复／错误阶段确认、破壳期间的鼠标／触摸／键盘按压、项目提示后切换项目并保留画像草稿；不使用玩家真实存档。

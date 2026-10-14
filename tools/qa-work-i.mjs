@@ -34,7 +34,9 @@ async function cookAndHarvest(){await closePanels();await p.locator('[data-contr
 const contextFor=async source=>{const c=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
   await c.addInitScript(({seed,now})=>{if(location.protocol==='about:')return;window.__workEOffset=Number(sessionStorage.getItem('work-e-clock')??0);Date.now=()=>now+window.__workEOffset+Math.floor(performance.now());if(!localStorage.getItem('chick-kitchen-v1'))localStorage.setItem('chick-kitchen-v1',JSON.stringify(seed));},{seed:source,now});
   p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(base+'/');await start();return c;};
-const regulars=async()=>{await closePanels();await p.getByRole('button',{name:'生意',exact:true}).click();if(await p.locator('.shop-subpage [data-shop-back]').count())await p.locator('.shop-subpage [data-shop-back]').click();await p.locator('[data-trade-view="regulars"]').first().click();await p.locator('.regulars-screen').waitFor();};
+// New-story notifications open the relevant detail directly. Return to the list
+// explicitly here, preserving all existing list and per-guest assertions.
+const regulars=async()=>{await closePanels();await p.getByRole('button',{name:'生意',exact:true}).click();if(await p.locator('.shop-subpage [data-shop-back]').count())await p.locator('.shop-subpage [data-shop-back]').click();await p.locator('[data-trade-view="regulars"]').first().click();await p.locator('.regulars-screen').waitFor();if(await p.locator('[data-regular-list]').count())await p.locator('[data-regular-list]').click();};
 async function fitRegulars(){await p.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));const r=await p.locator('.regulars-screen').evaluate(el=>{const a=el.getBoundingClientRect(),g=document.querySelector('#game').getBoundingClientRect(),b=el.querySelector('.regulars-scroll');return {inside:a.left>=g.left-1&&a.right<=g.right+1&&a.top>=g.top-1&&a.bottom<=g.bottom+1,overflow:b.scrollWidth-b.clientWidth};});assert.ok(r.inside);assert.ok(r.overflow<2);}
 let base;
 try{

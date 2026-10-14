@@ -32,7 +32,7 @@
 
 ## 浏览器 QA 套件
 
-`verify-ui.mjs` 的浏览器套件都在隔离档案里运行，不接触玩家存档。现行门禁：默认 7 套（`qa-skill-art`、`qa-round2`、`qa-tool-strip`、`qa-recipe-book-v14`、`qa-save-ui`、`qa-resume-v146`、`qa-kitchen-care-v145`），发布时再加 `qa-work-a`…`qa-work-l`、`qa-book-navigation`、`qa-takeover-ui`、`qa-compatible-rollback`、`qa-kitchen-golden`、`qa-farm-ui-v1`、`qa-release-final`、`qa-ui-fit`、`qa-packaged-mobile`、`qa-legacy-zoom`，共 28 套。`qa-legacy-zoom` 验证旧、新缩放行为确实启用，并按独立计算的画面位置测试单点和连续触摸。`qa-regression-audit.mjs` 对应 `npm run test:regression`。其余 `qa-*` 是对应版本或视觉轮次的验收脚本，保留以便复现证据。
+`verify-ui.mjs` 的浏览器套件都在隔离档案里运行，不接触玩家存档。现行门禁：默认 7 套（`qa-skill-art`、`qa-round2`、`qa-tool-strip`、`qa-recipe-book-v14`、`qa-save-ui`、`qa-resume-v146`、`qa-kitchen-care-v145`），发布时再加 `qa-work-a`…`qa-work-l`、`qa-book-navigation`、`qa-takeover-ui`、`qa-compatible-rollback`、`qa-popup-swipe`、`qa-kitchen-golden`、`qa-farm-ui-v1`、`qa-release-final`、`qa-ui-fit`、`qa-packaged-mobile`、`qa-legacy-zoom`、`qa-loop-review`、`qa-player-regressions`，共 31 套。`qa-legacy-zoom` 验证旧、新缩放行为确实启用，并按独立计算的画面位置测试单点和连续触摸。`qa-player-regressions` 复现并验证常客提示打开旧详情的问题，同时检查241种画像和22个合集角色的独立裁图、多尺寸触屏阅读与存档不变量。`qa-regression-audit.mjs` 对应 `npm run test:regression`。其余 `qa-*` 是对应版本或视觉轮次的验收脚本，保留以便复现证据。
 
 原生设备审查使用显式序列号：`device-ui.py --serial <序列号>` 读取画面、定位按钮并执行普通点击（会保存正常玩法结果，不清数据）；`prepare-device-harness.py` 在 artifacts 下生成独立 `com.jibao.kitchen.deviceqa` 测试项目，发布源码与正式签名不变，可用 `CHICK_DEVICE_QA_PAYLOAD` 对照旧 APK 解包资源；`qa-device-webview.mjs <序列号> <输出目录>` 只连接此测试副本的 review 页面，通过真实引擎生成隔离测试存档、原生触摸输入和 CDP 读取结果。其测试副本允许重载固定 review URL，正式 Activity 不开放该入口。
 

@@ -134,8 +134,15 @@ function markRead(s,id){
   state.baselines=next&&STAGE_RULES[next.id].baseline?STAGE_RULES[next.id].baseline(s):{};
   return {stageId,next:next?.id??null};
 }
-export function readRegularStage(s,id){
-  const r=regulars(s),state=r[id];definition(id);
+export function readRegularStage(s,id,expectedStageId=null){
+  const r=regulars(s),state=r[id],def=definition(id);
+  if(expectedStageId!==null){
+    if(!def.stages.some(st=>st.id===expectedStageId))throw Error('没有这段常客故事');
+    // A background service can record this stage and queue its successor while
+    // the player is still reading. Acknowledge only the displayed stage.
+    if(state?.readStages.includes(expectedStageId))return {stageId:expectedStageId,next:def.stages[state.readStages.length]?.id??null,alreadyRead:true};
+    if(state?.pendingStage?.id!==expectedStageId)throw Error('故事进度已变化，请重新打开这位常客');
+  }
   if(!state?.pendingStage)throw Error('这位常客暂时没有新的一段');
   const out=markRead(s,id);reconcileRegulars(s);return out;
 }

@@ -100,7 +100,7 @@ export function createRegionalUI({getState,getNow=Date.now,commitProgress,showPa
   }
   function render(){picking=false;if(tab==='record'){screen='record';record();}else if(screen==='map'||tripActive()&&screen!=='pick'){screen='map';world();}else if(screen==='confirm')confirmation();else trip();lastSignature=signature();}
   function signature(){const s=getState();return JSON.stringify([s.progress.trip,s.progress.knowledge,s.expansion.regions,s.expansion.discovery,s.expansion.methods,s.expansion.trial,s.expansion.prepareMode,s.ingredients,s.farm,s.total,s.cp,s.kitchenLevel,s.toolLevels]);}
-  function refresh(){if(!find('.regional-screen')||picking||find('.journey-help[open]'))return;if(signature()!==lastSignature)render();else updateCountdown();}
+  function refresh(){if(!find('.regional-screen')||picking||find('.journey-help[open]'))return;if(!find('.regional-screen :active')&&signature()!==lastSignature)render();else updateCountdown();}
   function updateCountdown(){const t=getState().progress.trip;all('[data-regional-countdown]').forEach(node=>{if(t?.status==='running')node.textContent=minutes(Math.max(0,Math.ceil((t.endAt-getNow())/60000)));});if(tripActive())positionTravellers(t);}
   function mapMarkup(s,t=null){
     const active=['running','returned'].includes(t?.status),destination=active?regionOfTrip(t):regionId,positions=journeyPositions,trail=active?null:trackedTrail(s,getNow());

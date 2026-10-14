@@ -64,7 +64,7 @@ try{
   await load(w,h);await shot(`kitchen-${w}`);
   await nav('生意');await shot(`business-${w}`);
   // 订单: an order's own sheet (its name opens it); 常客 / 项目: the small cards
-  for(const kind of ['orders','regulars','projects']){if(kind==='orders'){if(!await page.locator('#panels .bh-main [data-order-detail]').count())continue;await page.locator('#panels .bh-main [data-order-detail]').first().click();await shot(`${kind}-${w}`);await page.locator('#panels [data-business-sheet-close]').click();continue;}await page.locator(`[data-trade-view="${kind}"]`).first().click();await shot(`${kind}-${w}`);await page.locator('.shop-subpage [data-shop-back]').click();}
+  for(const kind of ['orders','regulars','projects']){if(kind==='orders'){if(!await page.locator('#panels .bh-main [data-order-detail]').count())continue;await page.locator('#panels .bh-main [data-order-detail]').first().click();await shot(`${kind}-${w}`);await page.locator('#panels [data-business-sheet-close]').click();continue;}await page.locator(`[data-trade-view="${kind}"]`).first().click();const back=page.locator(kind==='regulars'?'[data-regular-list]':'[data-project-list]');if(await back.count())await back.click();await shot(`${kind}-${w}`);await page.locator('.shop-subpage [data-shop-back]').click();}
   await nav('寻访');await shot(`journey-map-${w}`);await page.locator('[data-journey-enter]').click();await shot(`journey-region-${w}`);
   await nav('图鉴');if(!baseline)await page.locator('#panels [data-book-tab="species"][aria-selected="true"]').waitFor();await shot(`book-entry-${w}`);
   await page.locator('#panels [data-book-tab="calendar"]').first().click();await shot(`book-calendar-${w}`);
@@ -72,7 +72,7 @@ try{
   if(!baseline)assert.equal(await page.locator('#panels [data-book-tab="species"][aria-selected="true"]').count(),1,'main navigation opens the species bookmark');
   await load(w,h,'trading');await nav('生意');await shot(`business-trading-${w}`);
   await page.locator('#panels .bh-today .gd-btn[data-business-sheet="ledger"]').click();await shot(`business-ledger-${w}`);await nav('生意');
-  await page.locator('[data-trade-view="projects"]').first().click();await page.locator('[data-project-open]').first().click();await shot(`project-detail-${w}`);
+  await page.locator('[data-trade-view="projects"]').first().click();if(await page.locator('[data-project-list]').count())await page.locator('[data-project-list]').click();await page.locator('[data-project-open]').first().click();await shot(`project-detail-${w}`);
   await load(w,h,'orders');await nav('生意');await shot(`business-orders-${w}`);await page.locator('#panels .bh-main [data-order-detail^="order:"]').first().click();await shot(`orders-active-${w}`);await page.locator('#panels [data-business-sheet-close]').click();
  }
  assert.deepEqual(errors,[]);

@@ -81,7 +81,8 @@ export function orderCardMarkup(card,characterPortrait){
 function smallCard(kind,summary){
   if(!summary)return '';
   const label=kind==='regulars'?'常客':'项目';
-  return `<button type="button" class="bh-small" data-trade-view="${kind}">${art(kind==='regulars'?'regulars-original':'projects','bh-small-art')}
+  const focus=summary.dot?summary.focus:null;
+  return `<button type="button" class="bh-small" data-trade-view="${kind}"${focus?` data-trade-focus="${esc(focus)}"`:''}>${art(kind==='regulars'?'regulars-original':'projects','bh-small-art')}
     <span class="bh-small-copy"><b>${label}<i>${summary.done}/${summary.total}</i></b><small>${esc(summary.line)}</small></span>${summary.dot?'<i class="bh-dot" aria-label="有新进展"></i>':''}</button>`;
 }
 
